@@ -1,3 +1,0 @@
-# fastai
-
-FastAI from R
