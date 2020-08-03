@@ -1,6 +1,9 @@
 
 
 nn <- NULL
+fastai<-NULL
+tabular<-NULL
+vision<-NULL
 
 .onLoad <- function(libname, pkgname) {
 
@@ -13,6 +16,9 @@ nn <- NULL
 
   # tabular module
   tabular <<- fastai$tabular
+
+  # vision module
+  vision <<- fastai$vision
 
 }
 

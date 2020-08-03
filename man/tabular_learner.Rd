@@ -10,6 +10,7 @@ tabular_learner(
   emb_szs = NULL,
   metrics = NULL,
   path = NULL,
+  callback_fns = NULL,
   ps = NULL,
   emb_drop = 0,
   y_range = NULL,
