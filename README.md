@@ -51,8 +51,10 @@ procs = list(FillMissing(),Categorify(),Normalize())
 Split:
 
 ```
-test = fastai::tabular_TabularList_from_df(df[800:1000,], cat_names=cat_names, cont_names=cont_names)
-data = fastai::tabular_TabularList_from_df(df, cat_names=cat_names, cont_names=cont_names, procs=procs)
+test = tabular_TabularList_from_df(df[800:1000,], 
+                                   cat_names=cat_names, cont_names=cont_names)
+data = tabular_TabularList_from_df(df, cat_names=cat_names, 
+                                   cont_names=cont_names, procs=procs)
 ```
 
 Prepare:
