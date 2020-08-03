@@ -31,7 +31,7 @@ reticulate::py_install('fastai',pip = TRUE)
 library(fastai)
 library(magrittr)
 
-df = data.table::fread('~/Downloads/adult_sample/adult.csv')
+df = data.table::fread('https://github.com/henry090/fastai/raw/master/files/adult.csv')
 ```
 
 Variables:
