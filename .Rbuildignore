@@ -1,2 +1,16 @@
+^\.travis\.yml$
+^appveyor\.yml$
+^codecov\.yml$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^docs$
+^images$
+^pkgdown$
+^\.github/workflows$
+^cran-comments\.md$
+^NEWS\.md$
+^CRAN-RELEASE$
+^Dockerfile$
+^\.github$
+^CODE_OF_CONDUCT\.md$
+^LICENSE$
