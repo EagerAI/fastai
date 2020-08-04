@@ -44,7 +44,7 @@ jobs:
         run: |
           Rscript -e "remotes::install_local()"
           Rscript -e "reticulate::py_install(c('setuptools', 'wheel', 'requests'), pip = TRUE)"
-          Rscript -e "reticulate::py_install('fastai==Sys.getenv('FASTAI_VERSION')',pip = T)"
+          Rscript -e "reticulate::py_install('fastai==Sys.getenv("FASTAI_VERSION")',pip = T)"
       - name: Check
         continue-on-error: ${{ matrix.config.allow_failure }}
 
