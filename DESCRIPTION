@@ -22,7 +22,8 @@ LazyData: true
 RoxygenNote: 7.1.1
 Imports:
     reticulate,
-    generics
+    generics,
+    data.table
 Suggests:
     knitr,
     testthat,
