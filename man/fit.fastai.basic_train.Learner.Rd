@@ -4,7 +4,13 @@
 \alias{fit.fastai.basic_train.Learner}
 \title{Fit}
 \usage{
-\method{fit}{fastai.basic_train.Learner}(object, epochs, lr = 0.01, wd = NULL, callbacks = NULL)
+fit.fastai.basic_train.Learner(
+  object,
+  epochs,
+  lr = 0.01,
+  wd = NULL,
+  callbacks = NULL
+)
 }
 \arguments{
 \item{epochs}{epochs}
