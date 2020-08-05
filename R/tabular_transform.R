@@ -138,7 +138,9 @@ tabular_apply <- function(object, DT) {
     for (j in names(object$na_dict))
       set(DT,which(is.na(DT[[j]])), j, object$na_dict[j])
   } else {
-
+    for (j in names(object$means))
+      set(DT,which(names(DT[[j]]) %in% names(norm$means)),
+          j, (DT[[j]] - norm$means[[j]] ) / norm$stds[[j]])
   }
 
 }
