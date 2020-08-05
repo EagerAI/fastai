@@ -1,6 +1,6 @@
 on: [push, pull_request]
 
-name: fastai_stable
+name: fastai_win
 
 jobs:
   R-CMD:
@@ -40,7 +40,7 @@ jobs:
           Rscript -e "reticulate::conda_create('r-reticulate', packages = 'python==3.6.10')"
       - name: Install FASTAI & TORCH
         run: |
-          Rscript -e "reticulate::py_install(c('setuptools', 'wheel', 'requests','torch'), pip = TRUE)"
+          Rscript -e "reticulate::py_install(c('install torch==1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html'), pip = TRUE)"
           Rscript -e "reticulate::py_install('fastai',pip = TRUE)"
           Rscript -e "remotes::install_local()"
       - name: Check
