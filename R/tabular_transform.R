@@ -112,23 +112,6 @@ FillStrategy_CONSTANT <- function() {
   tabular$FillStrategy$CONSTANT
 }
 
-#' @title Fill
-#'
-#' @description An enumeration.
-#'
-#' @export
-fill <- function(object, DT) {
-
-  islist = tryCatch({identical(class(tfm$na_dict), "list")
-  }, error = function(e){FALSE})
-
-  if (!islist) {
-    object(DT)
-  }
-
-  for (j in names(object$na_dict))
-    set(DT,which(is.na(DT[[j]])), j, object$na_dict[j])
-}
 
 
 
