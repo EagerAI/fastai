@@ -116,3 +116,36 @@ FillStrategy_CONSTANT <- function() {
 
 
 
+
+#' @title CONSTANT
+#'
+#' @description An enumeration.
+#'
+#' @export
+tabular_apply <- function(object, DT) {
+
+  # fill
+  islist = tryCatch({identical(class(object$na_dict), "list")
+  }, error = function(e){FALSE})
+
+  # norm
+  islist2 = tryCatch({identical(class(object$means), "list")
+  }, error = function(e){FALSE})
+
+  if (!islist) {
+    object(DT)
+  }
+
+  islist = tryCatch({identical(class(object$na_dict), "list")
+  }, error = function(e){FALSE})
+
+  if(islist) {
+    for (j in names(object$na_dict))
+      set(DT,which(is.na(DT[[j]])), j, object$na_dict[j])
+  } else {
+    for (j in names(object$means))
+      set(DT,which(names(DT[[j]]) %in% names(norm$means)),
+          j, (DT[[j]] - norm$means[[j]] ) / norm$stds[[j]])
+  }
+
+}

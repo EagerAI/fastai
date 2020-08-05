@@ -2,7 +2,7 @@
 % Please edit documentation in R/tabular_transform.R
 \name{tabular_apply}
 \alias{tabular_apply}
-\title{Apply}
+\title{CONSTANT}
 \usage{
 tabular_apply(object, DT)
 }
