@@ -143,6 +143,18 @@ epoch     train_loss  valid_loss  accuracy  time
 9         0.352725    0.337811    0.850746  00:02 
 ```
 
+Extract confusion matrix:
+
+```
+model %>% confusion_matrix()
+```
+
+```
+     [,1] [,2]
+[1,]  152    4
+[2,]   29   16
+```
+
 
 
 
