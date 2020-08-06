@@ -14,7 +14,8 @@ tabular_learner(
   ps = NULL,
   emb_drop = 0,
   y_range = NULL,
-  use_bn = TRUE
+  use_bn = TRUE,
+  ...
 )
 }
 \arguments{
