@@ -7,7 +7,7 @@
 FillMissing(
   cat_names,
   cont_names,
-  fill_strategy = MEDIAN(),
+  fill_strategy = FillStrategy_MEDIAN(),
   add_col = TRUE,
   fill_val = 0
 )
