@@ -10,7 +10,7 @@
 #' @param fill_val fill_val
 #'
 #' @export
-FillMissing <- function(cat_names, cont_names, fill_strategy = MEDIAN(), add_col = TRUE, fill_val = 0.0) {
+FillMissing <- function(cat_names, cont_names, fill_strategy = FillStrategy_MEDIAN(), add_col = TRUE, fill_val = 0.0) {
 
 
   if (missing(cat_names) & missing(cont_names)) {
@@ -117,8 +117,8 @@ FillStrategy_CONSTANT <- function() {
 
 
 
-#' @title CONSTANT
-#'
+#' @title Apply tabular transformation
+#' @importFrom data.table := set
 #' @description An enumeration.
 #'
 #' @export
@@ -132,11 +132,14 @@ tabular_apply <- function(object, DT) {
   islist2 = tryCatch({identical(class(object$means), "list")
   }, error = function(e){FALSE})
 
-  if (!islist) {
-    object(DT)
-  }
+  tryCatch({object(DT)}, error = function(e){FALSE})
 
+  # fill
   islist = tryCatch({identical(class(object$na_dict), "list")
+  }, error = function(e){FALSE})
+
+  # norm
+  islist2 = tryCatch({identical(class(object$means), "list")
   }, error = function(e){FALSE})
 
   if(islist) {
