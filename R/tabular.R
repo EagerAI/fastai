@@ -264,7 +264,7 @@ databunch <- function(object, path = NULL, bs = 64, val_bs = NULL, num_workers =
   args <- list(
     path = path,
     bs = as.integer(bs),
-    val_bs = val_bs,
+    val_bs = as.integer(val_bs),
     num_workers = as.integer(num_workers),
     dl_tfms = dl_tfms,
     device = device,
@@ -276,8 +276,109 @@ databunch <- function(object, path = NULL, bs = 64, val_bs = NULL, num_workers =
 
 }
 
+#' @title TabularDataBunch
+#'
+#' @description Create a `DataBunch` suitable for tabular data.
+#'
+#'
+#' @param train_dl train_dl
+#' @param valid_dl valid_dl
+#' @param fix_dl fix_dl
+#' @param test_dl test_dl
+#' @param device device
+#' @param dl_tfms dl_tfms
+#' @param path path
+#' @param collate_fn collate_fn
+#' @param no_check no_check
+#'
+#' @export
+TabularDataBunch <- function(train_dl, valid_dl, fix_dl = NULL,
+                             test_dl = NULL, device = NULL, dl_tfms = NULL,
+                             path = getwd(), collate_fn = data_collate(), no_check = FALSE) {
+
+  args <- list(
+    train_dl = train_dl,
+    valid_dl = valid_dl,
+    fix_dl = fix_dl,
+    test_dl = test_dl,
+    device = device,
+    dl_tfms = dl_tfms,
+    path = path,
+    collate_fn = collate_fn,
+    no_check = no_check
+  )
+
+  do.call(tabular$TabularDataBunch, args)
+}
 
 
+#' @title from_df
+#'
+#' @description Create a `DataBunch` from `df` and `valid_idx` with `dep_var`. `kwargs` are passed to `DataBunch.create`.
+#'
+#' @param path path
+#' @param df df
+#' @param dep_var dep_var
+#' @param valid_idx valid_idx
+#' @param procs procs
+#' @param cat_names cat_names
+#' @param cont_names cont_names
+#' @param classes classes
+#' @param test_df test_df
+#' @param bs bs
+#' @param val_bs val_bs
+#' @param num_workers num_workers
+#' @param dl_tfms dl_tfms
+#' @param device device
+#' @param collate_fn collate_fn
+#' @param no_check no_check
+#'
+#' @export
+tabular_TabularDataBunch_from_df <- function(path, df, dep_var, valid_idx, procs = NULL, cat_names = NULL,
+                    cont_names = NULL, classes = NULL, test_df = NULL,
+                    bs = 64, val_bs = NULL, num_workers = 6L, dl_tfms = NULL,
+                    device = NULL, collate_fn = data_collate(), no_check = FALSE) {
+
+  args <- list(
+    path = path,
+    df = df,
+    dep_var = dep_var,
+    valid_idx = as.integer(valid_idx),
+    procs = procs,
+    cat_names = cat_names,
+    cont_names = cont_names,
+    classes = classes,
+    test_df = test_df,
+    bs = as.integer(bs),
+    val_bs = as.integer(val_bs),
+    num_workers = as.integer(num_workers),
+    dl_tfms = dl_tfms,
+    device = device,
+    collate_fn = collate_fn,
+    no_check = no_check
+  )
+
+  do.call(tabular$TabularDataBunch$from_df, args)
+
+}
+
+
+#' @title Get_emb_szs
+#'
+#' @description Return the default embedding sizes suitable for this data or takes the ones in `sz_dict`.
+#'
+#' @details
+#'
+#' @param sz_dict sz_dict
+#'
+#' @export
+tabular_TabularList_get_emb_szs <- function(sz_dict = NULL) {
+
+ tabular$TabularList$get_emb_szs(
+    sz_dict = sz_dict
+  )
+
+}
 
 
 
