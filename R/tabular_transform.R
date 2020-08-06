@@ -206,5 +206,63 @@ add_cyclic_datepart <- function(df, field_name, prefix = NULL, drop = TRUE, time
 
 }
 
+#' @title Show_xys
+#'
+#' @description Show the `xs` (inputs) and `ys` (targets).
+#'
+#' @details
+#'
+#' @param xs xs
+#' @param ys ys
+#'
+#' @export
+tabular_TabularList_show_xys <- function(xs, ys) {
+
+  tabular$TabularList$show_xys(
+    xs = xs,
+    ys = ys
+  )
+
+}
+
+#' @title show_xyzs
+#'
+#' @description Show `xs` (inputs), `ys` (targets) and `zs` (predictions).
+#'
+#' @details
+#'
+#' @param xs xs
+#' @param ys ys
+#' @param zs zs
+#'
+#' @export
+tabular_TabularList_show_xyzs <- function(xs, ys, zs) {
+
+  tabular$TabularList$show_xyzs(
+    xs = xs,
+    ys = ys,
+    zs = zs
+  )
+
+}
+
+
+#' @title confusion_matrix
+#'
+#' @description Confusion matrix as an `np.ndarray`.
+#'
+#' @param slice_size slice_size
+#'
+#' @export
+confusion_matrix <- function(model, slice_size = 1) {
+
+  tabular$ClassificationInterpretation$from_learner(model)$confusion_matrix(slice_size = as.integer(slice_size))
+
+}
+
+
+
+
+
 
 

@@ -71,7 +71,7 @@ tabular_TabularList_from_df <- function(df, cat_names = NULL, cont_names = NULL,
 #' @export
 tabular_learner <- function(data, layers, emb_szs = NULL, metrics = NULL,
                             path = NULL, callback_fns = NULL,
-                            ps = NULL, emb_drop = 0.0, y_range = NULL, use_bn = TRUE) {
+                            ps = NULL, emb_drop = 0.0, y_range = NULL, use_bn = TRUE, ...) {
 
   args <- list(
     data = data,
@@ -82,7 +82,8 @@ tabular_learner <- function(data, layers, emb_szs = NULL, metrics = NULL,
     ps = ps,
     emb_drop = emb_drop,
     y_range = y_range,
-    use_bn = use_bn
+    use_bn = use_bn,
+    ...
   )
 
   if (is.null(args$callback_fns)) {
@@ -264,13 +265,16 @@ databunch <- function(object, path = NULL, bs = 64, val_bs = NULL, num_workers =
   args <- list(
     path = path,
     bs = as.integer(bs),
-    val_bs = as.integer(val_bs),
+    val_bs = val_bs,
     num_workers = as.integer(num_workers),
     dl_tfms = dl_tfms,
     device = device,
     collate_fn = collate_fn,
     no_check = no_check
   )
+
+  if(!is.null(val_bs))
+    args$val_abs <- as.integer(args$val_bs)
 
   do.call(object$databunch, args)
 
