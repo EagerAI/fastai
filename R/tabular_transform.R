@@ -151,3 +151,60 @@ tabular_apply <- function(object, DT) {
 
 }
 
+
+#' @title Add datepart
+#'
+#' @description Helper function that adds columns relevant to a date in the column `field_name` of `df`.
+#'
+#'
+#' @param df df
+#' @param field_name field_name
+#' @param prefix prefix
+#' @param drop drop
+#' @param time time
+#'
+#' @export
+add_datepart <- function(df, field_name, prefix = NULL, drop = TRUE, time = FALSE) {
+
+  args <- list(
+    df = df,
+    field_name = field_name,
+    prefix = prefix,
+    drop = drop,
+    time = time
+  )
+
+  do.call(tabular$add_datepart, args)
+
+}
+
+#' @title Add cyclic datepart
+#'
+#' @description Helper function that adds trigonometric date/time features to a date in the column `field_name` of `df`.
+#'
+#'
+#' @param df df
+#' @param field_name field_name
+#' @param prefix prefix
+#' @param drop drop
+#' @param time time
+#' @param add_linear add_linear
+#'
+#' @export
+add_cyclic_datepart <- function(df, field_name, prefix = NULL, drop = TRUE, time = FALSE, add_linear = FALSE) {
+
+  args <- list(
+    df = df,
+    field_name = field_name,
+    prefix = prefix,
+    drop = drop,
+    time = time,
+    add_linear = add_linear
+  )
+
+  do.call(tabular$add_cyclic_datepart, args)
+
+}
+
+
+
