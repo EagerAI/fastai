@@ -132,7 +132,8 @@ tabular_apply <- function(object, DT) {
   islist2 = tryCatch({identical(class(object$means), "list")
   }, error = function(e){FALSE})
 
-  tryCatch({object(DT)}, error = function(e){FALSE})
+  if(!islist & !islist2)
+    tryCatch({object(DT)}, error = function(e){FALSE})
 
   # fill
   islist = tryCatch({identical(class(object$na_dict), "list")
