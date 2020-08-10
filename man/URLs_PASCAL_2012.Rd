@@ -4,7 +4,7 @@
 \alias{URLs_PASCAL_2012}
 \title{PASCAL_2012 dataset}
 \usage{
-URLs_PASCAL_2012(filename = PASCAL_2012, untar = TRUE)
+URLs_PASCAL_2012(filename = "PASCAL_2012", untar = TRUE)
 }
 \arguments{
 \item{filename}{the name of the file}

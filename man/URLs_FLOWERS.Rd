@@ -4,7 +4,7 @@
 \alias{URLs_FLOWERS}
 \title{FLOWERS dataset}
 \usage{
-URLs_FLOWERS(filename = FLOWERS, untar = TRUE)
+URLs_FLOWERS(filename = "FLOWERS", untar = TRUE)
 }
 \arguments{
 \item{filename}{the name of the file}

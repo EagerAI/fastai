@@ -4,7 +4,7 @@
 \alias{URLs_CUB_200_2011}
 \title{CUB_200_2011 dataset}
 \usage{
-URLs_CUB_200_2011(filename = CUB_200_2011, untar = TRUE)
+URLs_CUB_200_2011(filename = "CUB_200_2011", untar = TRUE)
 }
 \arguments{
 \item{filename}{the name of the file}

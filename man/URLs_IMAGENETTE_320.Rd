@@ -4,7 +4,7 @@
 \alias{URLs_IMAGENETTE_320}
 \title{IMAGENETTE_320 dataset}
 \usage{
-URLs_IMAGENETTE_320(filename = IMAGENETTE_320, untar = TRUE)
+URLs_IMAGENETTE_320(filename = "IMAGENETTE_320", untar = TRUE)
 }
 \arguments{
 \item{filename}{the name of the file}

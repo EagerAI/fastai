@@ -4,7 +4,7 @@
 \alias{URLs_S3_MODEL}
 \title{S3_MODEL dataset}
 \usage{
-URLs_S3_MODEL(filename = S3_MODEL, untar = TRUE)
+URLs_S3_MODEL(filename = "S3_MODEL", untar = TRUE)
 }
 \arguments{
 \item{filename}{the name of the file}

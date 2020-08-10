@@ -4,7 +4,7 @@
 \alias{URLs_YELP_REVIEWS_POLARITY}
 \title{YELP_REVIEWS_POLARITY dataset}
 \usage{
-URLs_YELP_REVIEWS_POLARITY(filename = YELP_REVIEWS_POLARITY, untar = TRUE)
+URLs_YELP_REVIEWS_POLARITY(filename = "YELP_REVIEWS_POLARITY", untar = TRUE)
 }
 \arguments{
 \item{filename}{the name of the file}

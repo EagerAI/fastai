@@ -4,7 +4,7 @@
 \alias{URLs_PLANET_TINY}
 \title{PLANET_TINY dataset}
 \usage{
-URLs_PLANET_TINY(filename = PLANET_TINY, untar = TRUE)
+URLs_PLANET_TINY(filename = "PLANET_TINY", untar = TRUE)
 }
 \arguments{
 \item{filename}{the name of the file}

@@ -4,7 +4,7 @@
 \alias{URLs_S3_IMAGE}
 \title{S3_IMAGE dataset}
 \usage{
-URLs_S3_IMAGE(filename = S3_IMAGE, untar = TRUE)
+URLs_S3_IMAGE(filename = "S3_IMAGE", untar = TRUE)
 }
 \arguments{
 \item{filename}{the name of the file}

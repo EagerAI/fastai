@@ -4,7 +4,7 @@
 \alias{URLs_CALTECH_101}
 \title{CALTECH_101 dataset}
 \usage{
-URLs_CALTECH_101(filename = CALTECH_101, untar = TRUE)
+URLs_CALTECH_101(filename = "CALTECH_101", untar = TRUE)
 }
 \arguments{
 \item{filename}{the name of the file}

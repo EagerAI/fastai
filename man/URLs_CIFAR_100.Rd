@@ -4,7 +4,7 @@
 \alias{URLs_CIFAR_100}
 \title{CIFAR_100 dataset}
 \usage{
-URLs_CIFAR_100(filename = CIFAR_100, untar = TRUE)
+URLs_CIFAR_100(filename = "CIFAR_100", untar = TRUE)
 }
 \arguments{
 \item{filename}{the name of the file}

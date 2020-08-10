@@ -4,7 +4,7 @@
 \alias{URLs_S3_NLP}
 \title{S3_NLP dataset}
 \usage{
-URLs_S3_NLP(filename = S3_NLP, untar = TRUE)
+URLs_S3_NLP(filename = "S3_NLP", untar = TRUE)
 }
 \arguments{
 \item{filename}{the name of the file}

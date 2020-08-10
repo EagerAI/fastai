@@ -4,7 +4,7 @@
 \alias{URLs_SKIN_LESION}
 \title{SKIN_LESION dataset}
 \usage{
-URLs_SKIN_LESION(filename = SKIN_LESION, untar = TRUE)
+URLs_SKIN_LESION(filename = "SKIN_LESION", untar = TRUE)
 }
 \arguments{
 \item{filename}{the name of the file}

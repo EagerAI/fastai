@@ -4,7 +4,7 @@
 \alias{URLs_ADULT_SAMPLE}
 \title{ADULT_SAMPLE dataset}
 \usage{
-URLs_ADULT_SAMPLE(filename = ADULT_SAMPLE, untar = TRUE)
+URLs_ADULT_SAMPLE(filename = "ADULT_SAMPLE", untar = TRUE)
 }
 \arguments{
 \item{filename}{the name of the file}

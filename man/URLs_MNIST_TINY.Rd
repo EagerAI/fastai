@@ -4,7 +4,7 @@
 \alias{URLs_MNIST_TINY}
 \title{MNIST_TINY dataset}
 \usage{
-URLs_MNIST_TINY(filename = MNIST_TINY, untar = TRUE)
+URLs_MNIST_TINY(filename = "MNIST_TINY", untar = TRUE)
 }
 \arguments{
 \item{filename}{the name of the file}

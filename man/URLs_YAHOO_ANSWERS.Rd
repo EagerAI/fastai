@@ -4,7 +4,7 @@
 \alias{URLs_YAHOO_ANSWERS}
 \title{YAHOO_ANSWERS dataset}
 \usage{
-URLs_YAHOO_ANSWERS(filename = YAHOO_ANSWERS, untar = TRUE)
+URLs_YAHOO_ANSWERS(filename = "YAHOO_ANSWERS", untar = TRUE)
 }
 \arguments{
 \item{filename}{the name of the file}

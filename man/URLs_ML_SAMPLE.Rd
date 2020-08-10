@@ -4,7 +4,7 @@
 \alias{URLs_ML_SAMPLE}
 \title{ML_SAMPLE dataset}
 \usage{
-URLs_ML_SAMPLE(filename = ML_SAMPLE, untar = TRUE)
+URLs_ML_SAMPLE(filename = "ML_SAMPLE", untar = TRUE)
 }
 \arguments{
 \item{filename}{the name of the file}

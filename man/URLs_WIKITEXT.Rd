@@ -4,7 +4,7 @@
 \alias{URLs_WIKITEXT}
 \title{WIKITEXT dataset}
 \usage{
-URLs_WIKITEXT(filename = WIKITEXT, untar = TRUE)
+URLs_WIKITEXT(filename = "WIKITEXT", untar = TRUE)
 }
 \arguments{
 \item{filename}{the name of the file}

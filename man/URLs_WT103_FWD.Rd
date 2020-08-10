@@ -4,7 +4,7 @@
 \alias{URLs_WT103_FWD}
 \title{WT103_FWD dataset}
 \usage{
-URLs_WT103_FWD(filename = WT103_FWD, untar = TRUE)
+URLs_WT103_FWD(filename = "WT103_FWD", untar = TRUE)
 }
 \arguments{
 \item{filename}{the name of the file}

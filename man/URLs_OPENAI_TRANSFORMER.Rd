@@ -4,7 +4,7 @@
 \alias{URLs_OPENAI_TRANSFORMER}
 \title{OPENAI_TRANSFORMER dataset}
 \usage{
-URLs_OPENAI_TRANSFORMER(filename = OPENAI_TRANSFORMER, untar = TRUE)
+URLs_OPENAI_TRANSFORMER(filename = "OPENAI_TRANSFORMER", untar = TRUE)
 }
 \arguments{
 \item{filename}{the name of the file}

@@ -4,7 +4,7 @@
 \alias{URLs_LSUN_BEDROOMS}
 \title{LSUN_BEDROOMS dataset}
 \usage{
-URLs_LSUN_BEDROOMS(filename = LSUN_BEDROOMS, untar = TRUE)
+URLs_LSUN_BEDROOMS(filename = "LSUN_BEDROOMS", untar = TRUE)
 }
 \arguments{
 \item{filename}{the name of the file}

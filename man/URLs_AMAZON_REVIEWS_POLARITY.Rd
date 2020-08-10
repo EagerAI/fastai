@@ -4,7 +4,10 @@
 \alias{URLs_AMAZON_REVIEWS_POLARITY}
 \title{AMAZON_REVIEWS_POLARITY dataset}
 \usage{
-URLs_AMAZON_REVIEWS_POLARITY(filename = AMAZON_REVIEWS_POLARITY, untar = TRUE)
+URLs_AMAZON_REVIEWS_POLARITY(
+  filename = "AMAZON_REVIEWS_POLARITY",
+  untar = TRUE
+)
 }
 \arguments{
 \item{filename}{the name of the file}

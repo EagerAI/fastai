@@ -4,7 +4,7 @@
 \alias{URLs_IMDB_SAMPLE}
 \title{IMDB_SAMPLE dataset}
 \usage{
-URLs_IMDB_SAMPLE(filename = IMDB_SAMPLE, untar = TRUE)
+URLs_IMDB_SAMPLE(filename = "IMDB_SAMPLE", untar = TRUE)
 }
 \arguments{
 \item{filename}{the name of the file}

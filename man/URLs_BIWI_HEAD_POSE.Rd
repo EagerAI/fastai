@@ -4,7 +4,7 @@
 \alias{URLs_BIWI_HEAD_POSE}
 \title{BIWI_HEAD_POSE dataset}
 \usage{
-URLs_BIWI_HEAD_POSE(filename = BIWI_HEAD_POSE, untar = TRUE)
+URLs_BIWI_HEAD_POSE(filename = "BIWI_HEAD_POSE", untar = TRUE)
 }
 \arguments{
 \item{filename}{the name of the file}

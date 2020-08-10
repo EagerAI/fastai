@@ -4,7 +4,7 @@
 \alias{URLs_CAMVID}
 \title{CAMVID dataset}
 \usage{
-URLs_CAMVID(filename = CAMVID, untar = TRUE)
+URLs_CAMVID(filename = "CAMVID", untar = TRUE)
 }
 \arguments{
 \item{filename}{the name of the file}

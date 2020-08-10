@@ -4,7 +4,7 @@
 \alias{URLs_MT_ENG_FRA}
 \title{MT_ENG_FRA dataset}
 \usage{
-URLs_MT_ENG_FRA(filename = MT_ENG_FRA, untar = TRUE)
+URLs_MT_ENG_FRA(filename = "MT_ENG_FRA", untar = TRUE)
 }
 \arguments{
 \item{filename}{the name of the file}

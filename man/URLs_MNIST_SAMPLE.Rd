@@ -4,7 +4,7 @@
 \alias{URLs_MNIST_SAMPLE}
 \title{MNIST_SAMPLE dataset}
 \usage{
-URLs_MNIST_SAMPLE(filename = MNIST_SAMPLE, untar = TRUE)
+URLs_MNIST_SAMPLE(filename = "MNIST_SAMPLE", untar = TRUE)
 }
 \arguments{
 \item{filename}{the name of the file}

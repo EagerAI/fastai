@@ -4,7 +4,7 @@
 \alias{URLs_DBPEDIA}
 \title{DBPEDIA dataset}
 \usage{
-URLs_DBPEDIA(filename = DBPEDIA, untar = TRUE)
+URLs_DBPEDIA(filename = "DBPEDIA", untar = TRUE)
 }
 \arguments{
 \item{filename}{the name of the file}

@@ -4,7 +4,7 @@
 \alias{URLs_S3_COCO}
 \title{S3_COCO dataset}
 \usage{
-URLs_S3_COCO(filename = S3_COCO, untar = TRUE)
+URLs_S3_COCO(filename = "S3_COCO", untar = TRUE)
 }
 \arguments{
 \item{filename}{the name of the file}

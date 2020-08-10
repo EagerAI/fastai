@@ -4,7 +4,7 @@
 \alias{URLs_IMAGEWOOF}
 \title{IMAGEWOOF dataset}
 \usage{
-URLs_IMAGEWOOF(filename = IMAGEWOOF, untar = TRUE)
+URLs_IMAGEWOOF(filename = "IMAGEWOOF", untar = TRUE)
 }
 \arguments{
 \item{filename}{the name of the file}
