@@ -16,6 +16,3 @@ ImagePoints(flow, scale = TRUE, y_first = TRUE)
 \description{
 Support applying transforms to a `flow` of points.
 }
-\details{
-
-}

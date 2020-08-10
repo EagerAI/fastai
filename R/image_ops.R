@@ -70,7 +70,6 @@ open_mask_rle <- function(mask_rle, shape) {
 #'
 #' @description Support applying transforms to a `flow` of points.
 #'
-#' @details
 #'
 #' @param flow flow
 #' @param scale scale
