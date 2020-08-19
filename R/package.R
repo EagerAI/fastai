@@ -7,18 +7,18 @@ vision<-NULL
 
 .onLoad <- function(libname, pkgname) {
 
-  fastai <<- reticulate::import("fastai", delay_load = list(
+  fastai2 <<- reticulate::import("fastai2", delay_load = list(
     priority = 10,
     environment = "r-fastai"
   ))
 
-  nn <<- fastai$train$nn
+  nn <<- fastai2$torch_basics$nn
 
   # tabular module
-  tabular <<- fastai$tabular
+  tabular <<- fastai2$tabular$all
 
   # vision module
-  vision <<- fastai$vision
+  vision <<- fastai2$vision
 
 }
 

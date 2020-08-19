@@ -4,13 +4,15 @@
 \alias{accuracy}
 \title{Accuracy}
 \usage{
-accuracy(input, targs)
+accuracy(inp, targ, axis = -1)
 }
 \arguments{
-\item{input}{input}
+\item{inp}{inp}
 
-\item{targs}{targs}
+\item{targ}{targ}
+
+\item{axis}{axis}
 }
 \description{
-Computes accuracy with `targs` when `input` is bs * n_classes.
+Compute accuracy with `targ` when `pred` is bs * n_classes
 }

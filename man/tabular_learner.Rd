@@ -2,40 +2,66 @@
 % Please edit documentation in R/tabular.R
 \name{tabular_learner}
 \alias{tabular_learner}
-\title{Tabular learner}
+\title{Tabular_learner}
 \usage{
 tabular_learner(
-  data,
-  layers,
+  dls,
+  layers = NULL,
   emb_szs = NULL,
+  config = NULL,
+  n_out = NULL,
+  y_range = NULL,
+  loss_func = NULL,
+  opt_func = Adam(),
+  lr = 0.001,
+  splitter = trainable_params(),
+  cbs = NULL,
   metrics = NULL,
   path = NULL,
-  callback_fns = NULL,
-  ps = NULL,
-  emb_drop = 0,
-  y_range = NULL,
-  use_bn = TRUE,
-  ...
+  model_dir = "models",
+  wd = NULL,
+  wd_bn_bias = FALSE,
+  train_bn = TRUE,
+  moms = list(0.95, 0.85, 0.95)
 )
 }
 \arguments{
-\item{data}{data}
+\item{dls}{dls}
 
 \item{layers}{layers}
 
 \item{emb_szs}{emb_szs}
 
-\item{metrics}{metrics}
+\item{config}{config}
 
-\item{ps}{ps}
-
-\item{emb_drop}{emb_drop}
+\item{n_out}{n_out}
 
 \item{y_range}{y_range}
 
-\item{use_bn}{use_bn}
+\item{loss_func}{loss_func}
+
+\item{opt_func}{opt_func}
+
+\item{lr}{lr}
+
+\item{splitter}{splitter}
+
+\item{cbs}{cbs}
+
+\item{metrics}{metrics}
+
+\item{path}{path}
+
+\item{model_dir}{model_dir}
+
+\item{wd}{wd}
+
+\item{wd_bn_bias}{wd_bn_bias}
+
+\item{train_bn}{train_bn}
+
+\item{moms}{moms}
 }
 \description{
-Get a `Learner` using `data`, with `metrics`,
-including a `TabularModel` created using the remaining params.
+Get a `Learner` using `dls`, with `metrics`, including a `TabularModel` created using the remaining params.
 }

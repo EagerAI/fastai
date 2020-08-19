@@ -1,24 +1,24 @@
 
 #' @title Accuracy
 #'
-#' @description Computes accuracy with `targs` when `input` is bs * n_classes.
+#' @description Compute accuracy with `targ` when `pred` is bs * n_classes
 #'
-#' @param input input
-#' @param targs targs
+#'
+#' @param inp inp
+#' @param targ targ
+#' @param axis axis
 #'
 #' @export
-accuracy <- function(input, targs) {
+accuracy <- function(inp, targ, axis = -1) {
 
-
-  if(missing(input) & missing(targs)) {
+  if(missing(inp) && missing(targ)){
     tabular$accuracy
   } else {
-    args <- list(
-      input = input,
-      targs = targs
+    args <- list(inp = inp,
+                 targ = targ,
+                 axis = as.integer(axis)
     )
-
-    do.call(tabular$accuracy, args)
+    do.call(tabular$accuracy,args)
   }
 
 }
@@ -27,76 +27,163 @@ attr(accuracy,"py_function_name") <- "accuracy"
 
 
 
-
-
-#' @title Tabular List from dataframe
+#' @title TabularDataTable
 #'
-#' @description Get the list of inputs in the `col` of `path/csv_name`.
+#' @description A `Tabular` object with transforms
 #'
-#' @param cls cls
+#'
 #' @param df df
+#' @param procs procs
 #' @param cat_names cat_names
 #' @param cont_names cont_names
-#' @param procs procs
+#' @param y_names y_names
+#' @param y_block y_block
+#' @param splits splits
+#' @param do_setup do_setup
+#' @param device device
+#' @param inplace inplace
+#' @param reduce_memory reduce_memory
 #'
 #' @export
-tabular_TabularList_from_df <- function(df, cat_names = NULL, cont_names = NULL, procs = NULL) {
+TabularDataTable <- function(df, procs = NULL, cat_names = NULL, cont_names = NULL,
+                             y_names = NULL, y_block = NULL, splits = NULL,
+                             do_setup = TRUE, device = NULL, inplace = FALSE, reduce_memory = TRUE) {
 
   args <- list(
     df = df,
+    procs = procs,
     cat_names = cat_names,
     cont_names = cont_names,
-    procs = procs
+    y_names = y_names,
+    y_block = y_block,
+    splits = splits,
+    do_setup = do_setup,
+    device = device,
+    inplace = inplace,
+    reduce_memory = reduce_memory
   )
-  do.call(tabular$TabularList$from_df, args)
+
+  if(!is.null(splits))
+    args$splits = list(as.integer(splits[[1]]-1),as.integer(splits[[2]]-1))
+
+  do.call(tabular$TabularPandas, args)
 
 }
 
-
-#' @title Tabular learner
+#' @title Dataloaders
 #'
-#' @description Get a `Learner` using `data`, with `metrics`,
-#' including a `TabularModel` created using the remaining params.
+#' @description Get a `DataLoaders`
 #'
 #'
-#' @param data data
-#' @param layers layers
-#' @param emb_szs emb_szs
-#' @param metrics metrics
-#' @param ps ps
-#' @param emb_drop emb_drop
-#' @param y_range y_range
-#' @param use_bn use_bn
+#' @param object object
+#' @param bs bs
+#' @param val_bs val_bs
+#' @param shuffle_train shuffle_train
+#' @param n n
+#' @param ... parameters to pass
 #'
 #' @export
-tabular_learner <- function(data, layers, emb_szs = NULL, metrics = NULL,
-                            path = NULL, callback_fns = NULL,
-                            ps = NULL, emb_drop = 0.0, y_range = NULL, use_bn = TRUE, ...) {
+dataloaders <- function(object, bs = 64, val_bs = NULL, shuffle_train = TRUE, n = NULL, ...) {
 
   args <- list(
-    data = data,
-    layers = layers,
-    emb_szs = emb_szs,
-    metrics = metrics,
-    path = path,
-    ps = ps,
-    emb_drop = emb_drop,
-    y_range = y_range,
-    use_bn = use_bn,
+    bs = as.integer(bs),
+    val_bs = val_bs,
+    shuffle_train = shuffle_train,
+    n = n,
     ...
   )
 
-  if (is.null(args$callback_fns)) {
-    args$callback_fns = list(CSVLogger())
-  } else {
-    args$callback_fns = ifelse(!is.list(callback_fns),list(callback_fns),callback_fns)
-    args$callback_fns = args$callback_fns %>% append(CSVLogger())
-  }
-
-  do.call(tabular$tabular_learner, args)
+  do.call(object$dataloaders, args)
 
 }
 
+#' @title Trainable_params
+#'
+#' @description Return all trainable parameters of `m`
+#'
+#'
+#' @param m m
+#'
+#' @export
+trainable_params <- function(m) {
+
+  if(missing(m)) {
+    tabular$trainable_params
+  } else {
+    tabular$trainable_params(
+      m = m
+    )
+  }
+
+}
+
+#' @title Tabular_learner
+#'
+#' @description Get a `Learner` using `dls`, with `metrics`, including a `TabularModel` created using the remaining params.
+#'
+#'
+#' @param dls dls
+#' @param layers layers
+#' @param emb_szs emb_szs
+#' @param config config
+#' @param n_out n_out
+#' @param y_range y_range
+#' @param loss_func loss_func
+#' @param opt_func opt_func
+#' @param lr lr
+#' @param splitter splitter
+#' @param cbs cbs
+#' @param metrics metrics
+#' @param path path
+#' @param model_dir model_dir
+#' @param wd wd
+#' @param wd_bn_bias wd_bn_bias
+#' @param train_bn train_bn
+#' @param moms moms
+#'
+#' @export
+tabular_learner <- function(dls, layers = NULL, emb_szs = NULL, config = NULL,
+                            n_out = NULL, y_range = NULL, loss_func = NULL,
+                            opt_func = Adam(), lr = 0.001,
+                            splitter = trainable_params(), cbs = NULL,
+                            metrics = NULL, path = NULL, model_dir = "models",
+                            wd = NULL, wd_bn_bias = FALSE, train_bn = TRUE,
+                            moms = list(0.95, 0.85, 0.95)) {
+
+ args <- list(
+    dls = dls,
+    layers = layers,
+    emb_szs = emb_szs,
+    config = config,
+    n_out = n_out,
+    y_range = y_range,
+    loss_func = loss_func,
+    opt_func = opt_func,
+    lr = lr,
+    splitter = splitter,
+    cbs = cbs,
+    metrics = metrics,
+    path = path,
+    model_dir = model_dir,
+    wd = wd,
+    wd_bn_bias = wd_bn_bias,
+    train_bn = train_bn,
+    moms = moms
+  )
+
+ if(is.list(layers)) {
+   args$layers <- as.list(
+     as.integer(
+       unlist(args$layers)
+     )
+   )
+ } else{
+   args$layers <- as.integer(args$layers)
+ }
+
+ do.call(tabular$tabular_learner, args)
+
+}
 
 #' @title Fit
 #' @description Fit the model on this learner with `lr` learning rate, `wd` weight decay for `epochs` with `callbacks`.
@@ -107,22 +194,17 @@ tabular_learner <- function(data, layers, emb_szs = NULL, metrics = NULL,
 #' @param callbacks callbacks
 #'
 #' @export
-fit.fastai.basic_train.Learner <- function(object, epochs, lr = 1e-2, wd = NULL, callbacks = NULL) {
+fit.fastai2.tabular.learner.TabularLearner <- function(object, n_epoch, lr = 1e-2, wd = NULL, callbacks = NULL) {
 
   args <- list(
-    epochs = as.integer(epochs),
+    n_epoch = as.integer(n_epoch),
     lr = lr,
     wd = wd,
     callbacks = callbacks
   )
 
   # fit the model
-  history <- do.call(object$fit, args)
-
-  # get csv file
-  history <- object$csv_logger$read_logged_file()
-
-  invisible(fastai_history(history))
+  do.call(object$fit, args)
 
 }
 
@@ -134,32 +216,10 @@ fit.fastai.basic_train.Learner <- function(object, epochs, lr = 1e-2, wd = NULL,
 #' @param m m
 #'
 #' @export
-summary.fastai.basic_train.Learner <- function(m, n = 70) {
+summary.fastai2.tabular.learner.TabularLearner <- function(object) {
 
-  m$summary(
-    n = as.integer(n)
-  )
+  object$summary()
 
-}
-
-#' @title Plot history
-#' @export
-fastai_history <- function(history) {
-
-  return(
-    structure(class = "fastai_training_history", list(
-      train_loss = history$train_loss,
-      valid_loss = history$valid_loss
-    ))
-  )
-
-}
-
-#' @export
-plot.fastai_training_history <- function(history) {
-
-  history = fastai_history(history)
-  plot(history$train_loss, history$valid_loss)
 }
 
 
@@ -183,18 +243,6 @@ split_by_idx <- function(object, valid_idx) {
 
 }
 
-#' @title Label from dataframe
-#'
-#' @description Pass label column name from dataframe
-#'
-#'
-#' @param ... arguments to pass
-#'
-#' @export
-label_from_df <- function(object,...) {
-  args = list(...)
-  do.call(object$label_from_df,args)
-}
 
 
 
@@ -242,148 +290,26 @@ data_collate <- function(object, batch) {
 
 }
 
-#' @title Databunch
+
+
+#' @title get_emb_sz
 #'
-#' @description Create an `DataBunch` from self, `path` will override `self.path`,
-#' `kwargs` are passed to `DataBunch.create`.
-#'
-#' @details
-#'
-#' @param path path
-#' @param bs bs
-#' @param val_bs val_bs
-#' @param num_workers num_workers
-#' @param dl_tfms dl_tfms
-#' @param device device
-#' @param collate_fn collate_fn
-#' @param no_check no_check
-#'
-#' @export
-databunch <- function(object, path = NULL, bs = 64, val_bs = NULL, num_workers = 6,
-                      dl_tfms = NULL, device = NULL, collate_fn = data_collate(), no_check = FALSE) {
-
-  args <- list(
-    path = path,
-    bs = as.integer(bs),
-    val_bs = val_bs,
-    num_workers = as.integer(num_workers),
-    dl_tfms = dl_tfms,
-    device = device,
-    collate_fn = collate_fn,
-    no_check = no_check
-  )
-
-  if(!is.null(val_bs))
-    args$val_abs <- as.integer(args$val_bs)
-
-  do.call(object$databunch, args)
-
-}
-
-#' @title TabularDataBunch
-#'
-#' @description Create a `DataBunch` suitable for tabular data.
-#'
-#'
-#' @param train_dl train_dl
-#' @param valid_dl valid_dl
-#' @param fix_dl fix_dl
-#' @param test_dl test_dl
-#' @param device device
-#' @param dl_tfms dl_tfms
-#' @param path path
-#' @param collate_fn collate_fn
-#' @param no_check no_check
-#'
-#' @export
-TabularDataBunch <- function(train_dl, valid_dl, fix_dl = NULL,
-                             test_dl = NULL, device = NULL, dl_tfms = NULL,
-                             path = getwd(), collate_fn = data_collate(), no_check = FALSE) {
-
-  args <- list(
-    train_dl = train_dl,
-    valid_dl = valid_dl,
-    fix_dl = fix_dl,
-    test_dl = test_dl,
-    device = device,
-    dl_tfms = dl_tfms,
-    path = path,
-    collate_fn = collate_fn,
-    no_check = no_check
-  )
-
-  do.call(tabular$TabularDataBunch, args)
-}
-
-
-#' @title from_df
-#'
-#' @description Create a `DataBunch` from `df` and `valid_idx` with `dep_var`. `kwargs` are passed to `DataBunch.create`.
-#'
-#' @param path path
-#' @param df df
-#' @param dep_var dep_var
-#' @param valid_idx valid_idx
-#' @param procs procs
-#' @param cat_names cat_names
-#' @param cont_names cont_names
-#' @param classes classes
-#' @param test_df test_df
-#' @param bs bs
-#' @param val_bs val_bs
-#' @param num_workers num_workers
-#' @param dl_tfms dl_tfms
-#' @param device device
-#' @param collate_fn collate_fn
-#' @param no_check no_check
-#'
-#' @export
-tabular_TabularDataBunch_from_df <- function(path, df, dep_var, valid_idx, procs = NULL, cat_names = NULL,
-                    cont_names = NULL, classes = NULL, test_df = NULL,
-                    bs = 64, val_bs = NULL, num_workers = 6L, dl_tfms = NULL,
-                    device = NULL, collate_fn = data_collate(), no_check = FALSE) {
-
-  args <- list(
-    path = path,
-    df = df,
-    dep_var = dep_var,
-    valid_idx = as.integer(valid_idx),
-    procs = procs,
-    cat_names = cat_names,
-    cont_names = cont_names,
-    classes = classes,
-    test_df = test_df,
-    bs = as.integer(bs),
-    val_bs = as.integer(val_bs),
-    num_workers = as.integer(num_workers),
-    dl_tfms = dl_tfms,
-    device = device,
-    collate_fn = collate_fn,
-    no_check = no_check
-  )
-
-  do.call(tabular$TabularDataBunch$from_df, args)
-
-}
-
-
-#' @title Get_emb_szs
-#'
-#' @description Return the default embedding sizes suitable for this data or takes the ones in `sz_dict`.
+#' @description Get default embedding size from `TabularPreprocessor` `proc` or the ones in `sz_dict`
 #'
 #' @details
 #'
+#' @param to to
 #' @param sz_dict sz_dict
 #'
 #' @export
-tabular_TabularList_get_emb_szs <- function(sz_dict = NULL) {
+get_emb_sz <- function(to, sz_dict = NULL) {
 
- tabular$TabularList$get_emb_szs(
+  tabular$get_emb_sz(
+    to = to,
     sz_dict = sz_dict
   )
 
 }
-
 
 
 

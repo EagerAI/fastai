@@ -28,10 +28,10 @@ reticulate::py_install('fastai',pip = TRUE)
 ## Usage: the basics
 
 ```
-library(fastai)
 library(magrittr)
+library(fastai)
 
-df = read.csv('https://github.com/henry090/fastai/raw/master/files/adult.csv')
+df = data.table::fread('https://github.com/henry090/fastai/raw/master/files/adult.csv')
 ```
 
 Variables:
@@ -48,85 +48,77 @@ Preprocess strategy:
 procs = list(FillMissing(),Categorify(),Normalize())
 ```
 
-Split:
-
-```
-test = tabular_TabularList_from_df(df[800:1000,], 
-                                   cat_names=cat_names, cont_names=cont_names)
-data = tabular_TabularList_from_df(df, cat_names=cat_names, 
-                                   cont_names=cont_names, procs=procs)
-```
-
 Prepare:
 
 ```
-baked <- data %>% split_by_idx(800:1000) %>% 
-  label_from_df(dep_var) %>% 
-  add_test(test) %>% 
-  databunch()
+dls = TabularDataTable(df, procs, cat_names, cont_names, 
+      y_names="salary", splits = list(c(1:32000),c(32001:32561))) %>% 
+      dataloaders(bs=64)
 ```
 
 Summary:
 
 ```
-model = baked %>% tabular_learner(layers=list(200L,100L), metrics=accuracy,
-                                path=getwd())
-
-summary(model)
+model = dls %>% tabular_learner(layers=c(200,100), metrics=accuracy)
+model %>% summary()
 ```
 
 ```
-TabularModel
-======================================================================
+epoch     train_loss  valid_loss  accuracy  time    
+TabularModel (Input shape: ['64 x 7', '64 x 3'])
+================================================================
 Layer (type)         Output Shape         Param #    Trainable 
-======================================================================
-Embedding            [6]                  60         True      
-______________________________________________________________________
-Embedding            [8]                  136        True      
-______________________________________________________________________
-Embedding            [5]                  40         True      
-______________________________________________________________________
-Embedding            [8]                  136        True      
-______________________________________________________________________
-Embedding            [5]                  35         True      
-______________________________________________________________________
-Embedding            [4]                  24         True      
-______________________________________________________________________
-Embedding            [3]                  9          True      
-______________________________________________________________________
-Dropout              [39]                 0          False     
-______________________________________________________________________
-BatchNorm1d          [3]                  6          True      
-______________________________________________________________________
-Linear               [200]                8,600      True      
-______________________________________________________________________
-ReLU                 [200]                0          False     
-______________________________________________________________________
-BatchNorm1d          [200]                400        True      
-______________________________________________________________________
-Linear               [100]                20,100     True      
-______________________________________________________________________
-ReLU                 [100]                0          False     
-______________________________________________________________________
-BatchNorm1d          [100]                200        True      
-______________________________________________________________________
-Linear               [2]                  202        True      
-______________________________________________________________________
+================================================================
+Embedding            64 x 6               60         True      
+________________________________________________________________
+Embedding            64 x 8               136        True      
+________________________________________________________________
+Embedding            64 x 5               40         True      
+________________________________________________________________
+Embedding            64 x 8               136        True      
+________________________________________________________________
+Embedding            64 x 5               35         True      
+________________________________________________________________
+Embedding            64 x 4               24         True      
+________________________________________________________________
+Embedding            64 x 3               9          True      
+________________________________________________________________
+Dropout              64 x 39              0          False     
+________________________________________________________________
+BatchNorm1d          64 x 3               6          True      
+________________________________________________________________
+BatchNorm1d          64 x 42              84         True      
+________________________________________________________________
+Linear               64 x 200             8,400      True      
+________________________________________________________________
+ReLU                 64 x 200             0          False     
+________________________________________________________________
+BatchNorm1d          64 x 200             400        True      
+________________________________________________________________
+Linear               64 x 100             20,000     True      
+________________________________________________________________
+ReLU                 64 x 100             0          False     
+________________________________________________________________
+Linear               64 x 2               202        True      
+________________________________________________________________
 
-Total params: 29,948
-Total trainable params: 29,948
+Total params: 29,532
+Total trainable params: 29,532
 Total non-trainable params: 0
-Optimized with 'torch.optim.adam.Adam', betas=(0.9, 0.99)
-Using true weight decay as discussed in https://www.fast.ai/2018/07/02/adam-weight-decay/ 
-Loss function : FlattenedLoss
-======================================================================
-Callbacks functions applied 
+
+Optimizer used: <function Adam at 0x7fa246283598>
+Loss function: FlattenedLoss of CrossEntropyLoss()
+
+Callbacks:
+  - TrainEvalCallback
+  - Recorder
+  - ProgressCallback
 ```
 
 Run:
 
 ```
-model %>% fit(10, 1e-2)
+model %>% fastai::fit(5,1e-2)
 ```
 
 ```

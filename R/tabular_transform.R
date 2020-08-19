@@ -44,7 +44,7 @@ FillMissing <- function(cat_names, cont_names, fill_strategy = FillStrategy_MEDI
 Normalize <- function(cat_names, cont_names) {
 
   if(missing(cat_names) & missing(cont_names)) {
-    tabular$Categorify
+    tabular$Normalize
   } else {
     args <- list(
       cat_names = cat_names,
