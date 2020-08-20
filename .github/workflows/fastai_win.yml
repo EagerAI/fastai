@@ -41,6 +41,6 @@ jobs:
           Rscript -e "print(paste(Sys.info()[['machine']]))"
       - name: Install FASTAI & TORCH
         run: |
-          Rscript -e "reticulate::py_install(c('install torch==1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html'), pip = TRUE)"
+          Rscript -e "reticulate::py_install(c('IPython torch==1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html'), pip = TRUE)"
           Rscript -e "reticulate::py_install('fastai2==0.0.30',pip = TRUE)"
           Rscript -e "reticulate::py_config()"
