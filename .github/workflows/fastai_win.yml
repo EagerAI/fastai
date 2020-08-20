@@ -1,22 +1,22 @@
 on: [push, pull_request]
 
-name: fastai_win
+name: fastai2_win
 
 jobs:
   R-CMD:
     runs-on: ${{ matrix.config.os }}
 
-    name: ${{ matrix.config.os }} (fastai ${{ matrix.config.fastai }})
+    name: ${{ matrix.config.os }} (fastai2 ${{ matrix.config.fastai2 }})
 
     strategy:
       fail-fast: false
       matrix:
         config:
-        - { os: windows-latest, fastai: '1.0.61', platform: x64}
+        - { os: windows-latest, fastai2: '0.0.30', platform: x64}
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       PIP_NO_WARN_SCRIPT_LOCATION: false
-      FASTAI_VERSION: ${{ matrix.config.fastai }}
+      FASTAI2_VERSION: ${{ matrix.config.fastai2 }}
       RETICULATE_AUTOCONFIGURE: 'FALSE'
       CRAN: ${{ matrix.config.cran }}
 
@@ -42,5 +42,5 @@ jobs:
       - name: Install FASTAI & TORCH
         run: |
           Rscript -e "reticulate::py_install(c('install torch==1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html'), pip = TRUE)"
-          Rscript -e "reticulate::py_install('fastai',pip = TRUE)"
+          Rscript -e "reticulate::py_install('fastai2==0.0.30',pip = TRUE)"
           Rscript -e "reticulate::py_config()"

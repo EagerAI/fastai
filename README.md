@@ -22,7 +22,7 @@ devtools::install_github('henry090/fastai')
 Later, you need to install the python module kerastuner:
 
 ```
-reticulate::py_install('fastai',pip = TRUE)
+reticulate::py_install('fastai2==0.0.30',pip = TRUE)
 ```
 
 ## Usage: the basics
@@ -128,11 +128,6 @@ epoch     train_loss  valid_loss  accuracy  time
 2         0.356449    0.354734    0.830846  00:02     
 3         0.356077    0.355024    0.825871  00:02     
 4         0.357948    0.361930    0.835821  00:02     
-5         0.347525    0.352505    0.860696  00:02     
-6         0.349367    0.341253    0.860696  00:02     
-7         0.351288    0.337538    0.840796  00:02     
-8         0.358390    0.343998    0.845771  00:02     
-9         0.352725    0.337811    0.850746  00:02 
 ```
 
 Extract confusion matrix:
@@ -147,6 +142,12 @@ model %>% confusion_matrix()
 [2,]   29   16
 ```
 
+Get predictions on new data:
 
+```
+model %>% predict(df[4,])
+
+[1] 0.09785532 0.90214473
+```
 
 

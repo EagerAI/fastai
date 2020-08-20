@@ -4,6 +4,7 @@
 \name{reexports}
 \alias{reexports}
 \alias{fit}
+\alias{predict}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -12,5 +13,7 @@ below to see their documentation.
 
 \describe{
   \item{generics}{\code{\link[generics]{fit}}}
+
+  \item{stats}{\code{\link[stats]{predict}}}
 }}
 

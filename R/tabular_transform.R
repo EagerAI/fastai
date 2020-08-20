@@ -262,6 +262,20 @@ confusion_matrix <- function(model, slice_size = 1) {
 }
 
 
+#' @title Predict
+#'
+#' @description Prediction on `item`, fully decoded, loss function decoded and probabilities
+#' @importFrom reticulate r_to_py
+#'
+#' @param object the model
+#' @param row row
+#'
+#' @export
+predict.fastai2.tabular.learner.TabularLearner <- function(object, row) {
+
+  res = invisible(model$predict(reticulate::r_to_py(row)$iloc[0])[[3]]$numpy())
+
+}
 
 
 
