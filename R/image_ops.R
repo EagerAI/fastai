@@ -1,90 +1,137 @@
-#' @title open_image
+
+#' @title Resize
 #'
-#' @description Return `Image` object created from image in file `fn`.
+#' @description A transform that before_call its state at each `__call__`
 #'
-#' @details
 #'
-#' @param fn fn
-#' @param div div
-#' @param convert_mode convert_mode
-#' @param cls cls
-#' @param after_open after_open
+#' @param size size
+#' @param method method
+#' @param pad_mode pad_mode
+#' @param resamples resamples
 #'
 #' @export
-open_image <- function(fn, div = TRUE, convert_mode = "RGB", after_open = NULL, ...) {
+Resize <- function(size, method = "crop", pad_mode = "reflection", resamples = list(2, 0)) {
 
-  vision$image$open_image(
-    fn = fn,
-    div = div,
-    convert_mode = convert_mode,
-    after_open = after_open,
-    ...
+  args <- list(
+    size = as.integer(size),
+    method = method,
+    pad_mode = pad_mode,
+    resamples = as.list(as.integer(unlist(resamples)))
   )
+
+  do.call(vision$all$Resize, args)
 
 }
 
 
 
-#' @title open_mask
+#' @title Aug_transforms
 #'
-#' @description Return `ImageSegment` object create from mask in file `fn`. If `div`, divides pixel values by 255.
+#' @description Utility func to easily create a list of flip, rotate, zoom, warp, lighting transforms.
 #'
-#' @details
 #'
-#' @param fn fn
-#' @param div div
-#' @param convert_mode convert_mode
-#' @param after_open after_open
-#'
+#' @param mult mult
+#' @param do_flip do_flip
+#' @param flip_vert flip_vert
+#' @param max_rotate max_rotate
+#' @param min_zoom min_zoom
+#' @param max_zoom max_zoom
+#' @param max_lighting max_lighting
+#' @param max_warp max_warp
+#' @param p_affine p_affine
+#' @param p_lighting p_lighting
+#' @param xtra_tfms xtra_tfms
+#' @param size size
+#' @param mode mode
+#' @param pad_mode pad_mode
+#' @param align_corners align_corners
+#' @param batch batch
+#' @param min_scale min_scale
 #' @export
-open_mask <- function(fn, div = FALSE, convert_mode = "L", after_open = NULL) {
+aug_transforms <- function(mult = 1.0, do_flip = TRUE, flip_vert = FALSE,
+                           max_rotate = 10.0, min_zoom = 1.0, max_zoom = 1.1,
+                           max_lighting = 0.2, max_warp = 0.2, p_affine = 0.75,
+                           p_lighting = 0.75, xtra_tfms = NULL, size = NULL,
+                           mode = "bilinear", pad_mode = "reflection",
+                           align_corners = TRUE, batch = FALSE, min_scale = 1.0) {
 
-  vision$image$open_mask(
-    fn = fn,
-    div = div,
-    convert_mode = convert_mode,
-    after_open = after_open
+  args <- list(
+    mult = mult,
+    do_flip = do_flip,
+    flip_vert = flip_vert,
+    max_rotate = max_rotate,
+    min_zoom = min_zoom,
+    max_zoom = max_zoom,
+    max_lighting = max_lighting,
+    max_warp = max_warp,
+    p_affine = p_affine,
+    p_lighting = p_lighting,
+    xtra_tfms = xtra_tfms,
+    size = as.integer(size),
+    mode = mode,
+    pad_mode = pad_mode,
+    align_corners = align_corners,
+    batch = batch,
+    min_scale = min_scale
   )
+
+  aug = do.call(vision$all$aug_transforms, args)
+  return(list(aug[[1]],aug[[2]],aug[[3]]))
 
 }
 
-#' @title open_mask_rle
+
+#' @title Imagenet_stats
 #'
-#' @description Return `ImageSegment` object create from run-length encoded string in `mask_lre` with size in `shape`.
+#' @description list() -> empty list
 #'
+#' @details list(iterable) -> list initialized from iterable's items If the argument is a list, the return value is the same object.
 #'
-#' @param mask_rle mask_rle
-#' @param shape shape
 #'
 #' @export
-open_mask_rle <- function(mask_rle, shape) {
+imagenet_stats = function() {
+  res = vision$all$imagenet_stats
+  return(list(res[[1]],res[[2]]))
+}
 
-  vision$image$open_mask_rle(
-    mask_rle = mask_rle,
-    shape = shape
-  )
+
+
+#' @title Normalize_from_stats
+#'
+#' @param mean mean
+#' @param std std
+#' @param dim dim
+#' @param ndim ndim
+#' @param cuda cuda
+#'
+#' @export
+Normalize_from_stats <- function(mean, std, dim = 1, ndim = 4, cuda = TRUE) {
+
+  if(is.list(mean)) {
+    obj = mean
+    mean = obj[[1]]
+    std = obj[[2]]
+    args <- list(
+      mean = mean,
+      std = std,
+      dim = as.integer(dim),
+      ndim = as.integer(ndim),
+      cuda = cuda
+    )
+  } else {
+    args <- list(
+      mean = mean,
+      std = std,
+      dim = as.integer(dim),
+      ndim = as.integer(ndim),
+      cuda = cuda
+    )
+  }
+
+  do.call(vision$all$Normalize$from_stats, args)
 
 }
 
-#' @title ImagePoints
-#'
-#' @description Support applying transforms to a `flow` of points.
-#'
-#'
-#' @param flow flow
-#' @param scale scale
-#' @param y_first y_first
-#'
-#' @export
-ImagePoints <- function(flow, scale = TRUE, y_first = TRUE) {
-
-  python_function_result <- vision$image$ImagePoints(
-    flow = flow,
-    scale = scale,
-    y_first = y_first
-  )
-
-}
 
 
 

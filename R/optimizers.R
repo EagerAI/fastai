@@ -8,9 +8,9 @@ Adam <- function(...) {
   args = list(...)
 
   if(is.null(unlist(args))) {
-    tabular$Adam
+    vision$all$Adam
   } else {
-    do.call(tabular$Adam,args)
+    do.call(vision$all$Adam, args)
   }
 
 }

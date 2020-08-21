@@ -5,6 +5,8 @@ The fastai package provides R wrappers to [FASTAI](https://github.com/fastai/fas
 The fastai library simplifies training fast and accurate neural nets using modern best practices. See the fastai website to get started. The library is based on research into deep learning best practices undertaken at ```fast.ai```, and includes "out of the box" support for ```vision```, ```text```, ```tabular```, and ```collab``` (collaborative filtering) models. 
 
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+![fastai_stable](https://github.com/henry090/fastai/workflows/fastai_stable/badge.svg)
+![fastai2_win](https://github.com/henry090/fastai/workflows/fastai2_win/badge.svg)
 
 ## Installation
 
@@ -19,13 +21,13 @@ The dev version:
 devtools::install_github('henry090/fastai')
 ```
 
-Later, you need to install the python module kerastuner:
+Later, you need to install the python module fastai:
 
 ```
 reticulate::py_install('fastai2==0.0.30',pip = TRUE)
 ```
 
-## Usage: the basics
+## Tabular data
 
 ```
 library(magrittr)
@@ -149,5 +151,62 @@ model %>% predict(df[4,])
 
 [1] 0.09785532 0.90214473
 ```
+
+## Image data
+
+Get Pets dataset:
+
+```
+fastai::URLs_PETS()
+```
+
+Define path to folders:
+
+```
+path = 'oxford-iiit-pet'
+path_anno = 'oxford-iiit-pet/annotations'
+path_img = 'oxford-iiit-pet/images'
+fnames = get_image_files(path_img)
+```
+
+See one of examples:
+
+```
+fnames[1]
+
+oxford-iiit-pet/images/american_pit_bull_terrier_129.jpg
+```
+
+Load the data into GPU/CPU:
+
+```
+dls = ImageDataLoaders_from_name_re(
+  path, fnames, pat='(.+)_\\d+.jpg$',
+  item_tfms=Resize(size = 460), bs = 10,
+  batch_tfms=list(aug_transforms(size = 224, min_scale = 0.75),
+                  Normalize_from_stats( imagenet_stats() )
+                  ),
+  device = 'cuda'
+)
+```
+
+Model architecture:
+
+```
+learn = cnn_learner(dls, resnet34, metrics = error_rate)
+```
+
+And fit:
+
+```
+learn %>% fit_one_cycle(n_epoch = 2)
+
+epoch     train_loss  valid_loss  error_rate  time
+0         0.904872    0.317927    0.105548    00:35
+1         0.694395    0.239520    0.083897    00:36
+```
+
+
+
 
 
