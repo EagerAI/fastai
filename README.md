@@ -5,7 +5,7 @@ The fastai package provides R wrappers to [FASTAI](https://github.com/fastai/fas
 The fastai library simplifies training fast and accurate neural nets using modern best practices. See the fastai website to get started. The library is based on research into deep learning best practices undertaken at ```fast.ai```, and includes "out of the box" support for ```vision```, ```text```, ```tabular```, and ```collab``` (collaborative filtering) models. 
 
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-![fastai_stable](https://github.com/henry090/fastai/workflows/fastai_stable/badge.svg)
+![fastai_stable](https://github.com/henry090/fastai/workflows/fastai2_stable/badge.svg)
 ![fastai2_win](https://github.com/henry090/fastai/workflows/fastai2_win/badge.svg)
 
 ## Installation

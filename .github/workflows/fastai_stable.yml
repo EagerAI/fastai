@@ -1,6 +1,6 @@
 on: [push, pull_request]
 
-name: fastai_stable
+name: fastai2_stable
 
 jobs:
   R-CMD:
@@ -42,6 +42,7 @@ jobs:
       - name: Install FASTAI
         run: |
           Rscript -e "reticulate::py_config()"
+          Rscript -e "reticulate::use_python('/Users/runner/Library/r-miniconda/envs/r-reticulate/bin/python', required = T)"
           Rscript -e "reticulate::py_install('torch torchvision',pip = TRUE)"
           Rscript -e "reticulate::py_install('fastai2==0.0.30',pip = TRUE)"
           Rscript -e "reticulate::py_install(c('ipython'), pip = TRUE)"
