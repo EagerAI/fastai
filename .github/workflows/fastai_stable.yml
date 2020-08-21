@@ -45,6 +45,7 @@ jobs:
           Rscript -e "reticulate::py_install(c('IPython'), pip = TRUE)"
           Rscript -e "reticulate::py_install('torch torchvision',pip = TRUE)"
           Rscript -e "reticulate::py_install('fastai2==0.0.30',pip = TRUE)"
+          Rscript -e "reticulate::py_module_available('IPython')"
           Rscript -e "remotes::install_local()"
       - name: Check
         continue-on-error: ${{ matrix.config.allow_failure }}
