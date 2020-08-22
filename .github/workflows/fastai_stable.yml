@@ -42,10 +42,9 @@ jobs:
       - name: Install FASTAI
         run: |
           Rscript -e "reticulate::py_config()"
-          Rscript -e "reticulate::use_python('/Users/runner/Library/r-miniconda/envs/r-reticulate/bin/python', required = T)"
-          Rscript -e "reticulate::py_install('torch torchvision',pip = TRUE)"
+          Rscript -e "reticulate::py_install('torch==1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html',pip = TRUE)"
           Rscript -e "reticulate::py_install('fastai2==0.0.30',pip = TRUE)"
-          Rscript -e "reticulate::py_install(c('ipython'), pip = TRUE)"
+          Rscript -e "reticulate::py_install(c('IPython'), pip = TRUE)"
           Rscript -e "reticulate::py_module_available('IPython')"
           Rscript -e "remotes::install_local()"
       - name: Check
