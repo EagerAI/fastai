@@ -74,6 +74,27 @@ fit_one_cycle = function(object, n_epoch, ...) {
 }
 
 
+#' @title Random image batch
+#'
+#' @description for visualization
+#' @param object dataloaders object
+#' @param regex for img titles
+#' @export
+random_batch <- function(object, regex = "[A-z]+_") {
+  batch = object$one_batch()
+  indices = batch[[2]]$cpu()$numpy()+1
+
+  object$train_ds$items[indices] -> img_p
+  lapply(1:length(img_p), function(x) as.character(img_p[[x]])) -> img_p
+  names(img_p) = unlist(img_p)
+  names(img_p) = trimws(gsub(pattern="_",replacement=' ', regmatches(img_p,regexpr(regex,names(img_p))) ))
+  img_p
+}
+
+
+
+
+
 
 
 

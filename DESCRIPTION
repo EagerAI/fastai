@@ -24,9 +24,7 @@ Imports:
     reticulate,
     generics,
     data.table,
-    highcharter,
-    ggplot2,
-    cowplot
+    highcharter
 Suggests:
     knitr,
     testthat,

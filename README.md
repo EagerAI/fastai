@@ -190,6 +190,17 @@ dls = ImageDataLoaders_from_name_re(
 )
 ```
 
+Random batch for visualization:
+
+```
+par(mar=c(0.5, 0.5, 1, 1))
+
+imager::map_il(dls %>% fastai::random_batch(),
+               imager::load.image) %>% plot(axes=FALSE)
+```
+
+<img src="files/pets.png" width=650 align=center alt="Pets"/>
+
 Model architecture:
 
 ```
