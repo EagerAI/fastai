@@ -27,7 +27,7 @@ WORKDIR k
 
 # Install dependecies
 RUN R -e "install.packages('remotes', repos='http://cran.us.r-project.org')"
-RUN R -e "remotes::install_deps(dependencies =  TRUE)"
+RUN R -e "remotes::install_deps(dependencies =  TRUE,repos='http://cran.us.r-project.org')"
 RUN R -e "remotes::install_cran('rcmdcheck',repos='http://cran.us.r-project.org')"
 
 
