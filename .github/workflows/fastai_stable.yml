@@ -46,8 +46,8 @@ jobs:
       - name: Install FASTAI
         run: |
           Rscript -e "reticulate::py_install(c('torch==1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html'),pip = TRUE)"
-          Rscript -e "reticulate::py_install('fastai2 IPython',pip = TRUE)"
-          Rscript -e "reticulate::py_install('IPython')"
+          Rscript -e "reticulate::py_install('fastai2 IPython==7.17.0',pip = TRUE)"
+          Rscript -e "reticulate::py_install('IPython==7.17.0')"
           Rscript -e "reticulate::py_module_available('IPython')"
           Rscript -e "remotes::install_local()"
       - name: Check
