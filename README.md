@@ -135,13 +135,13 @@ epoch     train_loss  valid_loss  accuracy  time
 Extract confusion matrix:
 
 ```
-model %>% confusion_matrix()
+model %>% get_confusion_matrix()
 ```
 
 ```
-     [,1] [,2]
-[1,]  152    4
-[2,]   29   16
+       <50k  >=50k
+<50k   407    22
+>=50k   68    64
 ```
 
 Get predictions on new data:

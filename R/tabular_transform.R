@@ -248,20 +248,6 @@ tabular_TabularList_show_xyzs <- function(xs, ys, zs) {
 }
 
 
-#' @title confusion_matrix
-#'
-#' @description Confusion matrix as an `np.ndarray`.
-#'
-#' @param slice_size slice_size
-#'
-#' @export
-confusion_matrix <- function(model, slice_size = 1) {
-
-  tabular$ClassificationInterpretation$from_learner(model)$confusion_matrix(slice_size = as.integer(slice_size))
-
-}
-
-
 #' @title Predict
 #'
 #' @description Prediction on `item`, fully decoded, loss function decoded and probabilities

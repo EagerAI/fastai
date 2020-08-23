@@ -6,18 +6,29 @@
 #' @param dataloader dataloaders object
 #' @export
 plot_confusion_matrix <- function(object, dataloader) {
-  interp = vision$all$ClassificationInterpretation$from_learner(object)
+  if(inherits(object,"fastai2.learner.Learner")) {
+    interp = vision$all$ClassificationInterpretation$from_learner(object)
 
-  conf=interp$confusion_matrix()
-  conf=apply(conf, 2, as.integer)
-  itms = dls$vocab$items$items
-  colnames(conf)=itms
-  rownames(conf)=itms
+    conf=interp$confusion_matrix()
+    conf=apply(conf, 2, as.integer)
+    itms = dls$vocab$items$items
+    colnames(conf)=itms
+    rownames(conf)=itms
 
-  hchart(conf,label=TRUE) %>%
-    hc_yAxis(title = list(text='Actual')) %>%
-    hc_xAxis(title = list(text='Predicted'),
-             labels = list(rotation=-90))
+    hchart(conf,label=TRUE) %>%
+      hc_yAxis(title = list(text='Actual')) %>%
+      hc_xAxis(title = list(text='Predicted'),
+               labels = list(rotation=-90))
+  } else if (inherits(object,"fastai2.tabular.learner.TabularLearner")) {
+    conf = tabular$ClassificationInterpretation$from_learner(model)$confusion_matrix()
+    colnames(conf)=dls$vocab$items$items
+    rownames(conf)=dls$vocab$items$items
+    hchart(conf,label=TRUE) %>%
+      hc_yAxis(title = list(text='Actual')) %>%
+      hc_xAxis(title = list(text='Predicted'),
+               labels = list(rotation=-90))
+  }
+
 }
 
 
@@ -28,14 +39,18 @@ plot_confusion_matrix <- function(object, dataloader) {
 #' @param dataloader dataloaders object
 #' @export
 get_confusion_matrix <- function(object, dataloader) {
-  interp = vision$all$ClassificationInterpretation$from_learner(object)
+  if(inherits(object,"fastai2.learner.Learner")) {
+    interp = vision$all$ClassificationInterpretation$from_learner(object)
 
-  conf=interp$confusion_matrix()
-  conf=apply(conf, 2, as.integer)
-  itms = dls$vocab$items$items
-  colnames(conf)=itms
-  rownames(conf)=itms
-  conf
+    conf=interp$confusion_matrix()
+    conf=apply(conf, 2, as.integer)
+    itms = dls$vocab$items$items
+    colnames(conf)=itms
+    rownames(conf)=itms
+    conf
+  } else if (inherits(object,"fastai2.tabular.learner.TabularLearner")) {
+    tabular$ClassificationInterpretation$from_learner(model)$confusion_matrix()
+  }
 }
 
 #' @title Most_confused
