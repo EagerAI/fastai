@@ -27,13 +27,14 @@ WORKDIR k
 
 # Install required libraries -- using prebuild binaries where available
 RUN apt-get update && apt-get install -y \
-    git \
     r-cran-data.table \
     r-cran-reticulate \
     r-cran-generics \
     r-cran-knitr \
     r-cran-testthat \
-    r-cran-rmarkdown 
+    r-cran-rmarkdown \
+    r-cran-remotes \
+    r-cran-rcmdcheck
 
 
 # Install python
