@@ -28,5 +28,6 @@ Imports:
 Suggests:
     knitr,
     testthat,
-    rmarkdown
+    rmarkdown,
+    igraph
 VignetteBuilder: knitr
