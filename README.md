@@ -217,11 +217,16 @@ epoch     train_loss  valid_loss  error_rate  time
 1         0.694395    0.239520    0.083897    00:36
 ```
 
-Get or plot confusion matrix:
+Get confusion matrix and plot:
 
 ```
 learn %>% fastai::get_confusion_matrix()
-learn %>% fastai::plot_confusion_matrix()
+
+library(highcharter)
+hchart(conf,label=TRUE) %>%
+    hc_yAxis(title = list(text='Actual')) %>%
+    hc_xAxis(title = list(text='Predicted'),
+             labels = list(rotation=-90))
 ```
 
 <img src="files/conf.png" geight=500 align=center alt="Pets"/>

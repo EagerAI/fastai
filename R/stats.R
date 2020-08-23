@@ -1,10 +1,4 @@
 
-#' @title Plot confusion matrix
-#'
-#' @importFrom highcharter hchart hc_yAxis hc_xAxis
-#' @param object model
-#' @param dataloader dataloaders object
-#' @export
 plot_confusion_matrix <- function(object, dataloader) {
   if(inherits(object,"fastai2.learner.Learner")) {
     interp = vision$all$ClassificationInterpretation$from_learner(object)

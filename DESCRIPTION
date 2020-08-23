@@ -23,11 +23,9 @@ RoxygenNote: 7.1.1
 Imports:
     reticulate,
     generics,
-    data.table,
-    highcharter
+    data.table
 Suggests:
     knitr,
     testthat,
-    rmarkdown,
-    igraph
+    rmarkdown
 VignetteBuilder: knitr
