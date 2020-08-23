@@ -67,7 +67,7 @@ aug_transforms <- function(mult = 1.0, do_flip = TRUE, flip_vert = FALSE,
     p_affine = p_affine,
     p_lighting = p_lighting,
     xtra_tfms = xtra_tfms,
-    size = as.integer(size),
+    size = size,
     mode = mode,
     pad_mode = pad_mode,
     align_corners = align_corners,
@@ -75,9 +75,17 @@ aug_transforms <- function(mult = 1.0, do_flip = TRUE, flip_vert = FALSE,
     min_scale = min_scale
   )
 
-  aug = do.call(vision$all$aug_transforms, args)
-  return(list(aug[[1]],aug[[2]],aug[[3]]))
+  if(!is.null(size)) {
+    args$size = as.integer(args$size)
+  }
 
+  aug = do.call(vision$all$aug_transforms, args)
+
+  if(length(aug)==2) {
+    return(list(aug[[1]],aug[[2]]))
+  } else {
+    return(list(aug[[1]],aug[[2]],aug[[3]]))
+  }
 }
 
 

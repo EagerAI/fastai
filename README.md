@@ -199,7 +199,7 @@ imager::map_il(dls %>% fastai::random_batch(),
                imager::load.image) %>% plot(axes=FALSE)
 ```
 
-<img src="files/pets.png" width=650 align=center alt="Pets"/>
+<img src="files/pets.png" geight=500 align=center alt="Pets"/>
 
 Model architecture:
 
@@ -216,6 +216,45 @@ epoch     train_loss  valid_loss  error_rate  time
 0         0.904872    0.317927    0.105548    00:35
 1         0.694395    0.239520    0.083897    00:36
 ```
+
+Get or plot confusion matrix:
+
+```
+learn %>% fastai::get_confusion_matrix()
+learn %>% fastai::plot_confusion_matrix()
+```
+
+<img src="files/conf.png" geight=500 align=center alt="Pets"/>
+
+> Note that the plot is built with highcharter.
+
+Alternatively, load images from folders:
+
+```
+# get sample data
+URLs_MNIST_SAMPLE()
+
+# transformations
+tfms = aug_transforms(do_flip=FALSE)
+path='mnist_sample'
+bs=20
+
+#load into memory
+data = ImageDataLoaders_from_folder(path, batch_tfms = tfms, size = 26, bs=bs)
+
+# Visualize and train 
+par(mar=c(0.5, 0.5, 1, 1))
+
+imager::map_il(data %>% fastai::random_batch(regex = '[0-9]+'),
+               imager::load.image) %>% plot(axes=FALSE)
+               
+learn = cnn_learner(data, resnet18, metrics=accuracy)
+learn %>% fit(2)
+```
+
+<img src="files/mnist.png" geight=500 align=center alt="Pets"/>
+
+
 
 
 

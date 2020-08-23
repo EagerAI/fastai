@@ -59,5 +59,28 @@ cnn_learner <- function(dls, arch, loss_func = NULL, pretrained = TRUE, cut = NU
 
 }
 
+#' @title Fit
+#' @description Fit the model on this learner with `lr` learning rate, `wd` weight decay for `epochs` with `callbacks`.
+#'
+#' @param epochs epochs
+#' @param lr lr
+#' @param wd wd
+#' @param callbacks callbacks
+#'
+#' @export
+fit.fastai2.learner.Learner <- function(object, n_epoch, lr = 1e-2, wd = NULL, callbacks = NULL) {
+
+  args <- list(
+    n_epoch = as.integer(n_epoch),
+    lr = lr,
+    wd = wd,
+    callbacks = callbacks
+  )
+
+  # fit the model
+  do.call(object$fit, args)
+
+}
+
 
 

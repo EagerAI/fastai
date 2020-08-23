@@ -92,6 +92,62 @@ random_batch <- function(object, regex = "[A-z]+_") {
 }
 
 
+#' @title from_folder
+#'
+#' @description Create from imagenet style dataset in `path` with `train` and `valid` subfolders (or provide `valid_pct`)
+#'
+#' @details
+#'
+#' @param cls cls
+#' @param path path
+#' @param train train
+#' @param valid valid
+#' @param valid_pct valid_pct
+#' @param seed seed
+#' @param vocab vocab
+#' @param item_tfms item_tfms
+#' @param batch_tfms batch_tfms
+#' @param bs bs
+#' @param val_bs val_bs
+#' @param shuffle_train shuffle_train
+#' @param device device
+#'
+#' @export
+ImageDataLoaders_from_folder <- function(path, train = "train", valid = "valid",
+                        valid_pct = NULL, seed = NULL, vocab = NULL,
+                        item_tfms = NULL, batch_tfms = NULL, bs = 64,
+                        val_bs = NULL, shuffle_train = TRUE, device = NULL,
+                        size = NULL,
+                        ...) {
+
+  args <- list(
+    path = path,
+    train = train,
+    valid = valid,
+    valid_pct = valid_pct,
+    seed = seed,
+    vocab = vocab,
+    item_tfms = item_tfms,
+    batch_tfms = batch_tfms,
+    bs = as.integer(bs),
+    val_bs = val_bs,
+    shuffle_train = shuffle_train,
+    device = device,
+    size = size,
+    ...
+  )
+  if(!is.null(args$batch_tfms)) {
+    args$batch_tfms <- unlist(args$batch_tfms)
+  }
+
+  if(!is.null(args$size)) {
+    args$size = as.integer(args$size)
+  }
+
+  do.call(vision$all$ImageDataLoaders$from_folder, args)
+
+}
+
 
 
 
