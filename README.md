@@ -220,7 +220,7 @@ epoch     train_loss  valid_loss  error_rate  time
 Get confusion matrix and plot:
 
 ```
-learn %>% fastai::get_confusion_matrix()
+conf = learn %>% fastai::get_confusion_matrix()
 
 library(highcharter)
 hchart(conf,label=TRUE) %>%
