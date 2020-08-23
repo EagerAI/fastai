@@ -46,7 +46,7 @@ jobs:
       - name: Install FASTAI
         run: |
           Rscript -e "reticulate::py_install(c('setuptools', 'wheel', 'requests', 'IPython'),pip = TRUE)"
-          Rscript -e "reticulate::py_module_available('fastai2==0.0.30',pip = TRUE)"
+          Rscript -e "reticulate::py_install('fastai2==0.0.30',pip = TRUE)"
           Rscript -e "reticulate::py_module_available('IPython')"
           Rscript -e "remotes::install_local()"
       - name: Check
