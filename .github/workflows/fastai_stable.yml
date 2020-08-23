@@ -1,0 +1,58 @@
+on: [push, pull_request]
+
+name: fastai2_stable
+
+jobs:
+  R-CMD:
+    runs-on: ${{ matrix.config.os }}
+
+    name: ${{ matrix.config.os }} (fastai2 ${{ matrix.config.fastai2 }})
+
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+        - { os: ubuntu-16.04,  cran: "https://demo.rstudiopm.com/all/__linux__/xenial/latest",  fastai2: '0.0.30'}
+    env:
+      R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
+      PIP_NO_WARN_SCRIPT_LOCATION: false
+      FASTAI2_VERSION: ${{ matrix.config.fastai }}
+      RETICULATE_AUTOCONFIGURE: 'FALSE'
+      CRAN: ${{ matrix.config.cran }}
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - uses: r-lib/actions/setup-r@master
+
+      - uses: r-lib/actions/setup-pandoc@master
+
+      - name: Install dependencies Linux
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get install libxml2-dev
+
+      - name: Install MacOS/Windows/Linux
+        run: |
+          Rscript -e "install.packages('remotes')"
+          Rscript -e "remotes::install_deps(dependencies =  TRUE)"
+          Rscript -e "remotes::install_cran('rcmdcheck')"
+
+      - name: Install Python
+        run: |
+          Rscript -e "remotes::install_github('rstudio/reticulate')"
+          Rscript -e "try(reticulate::install_miniconda())"
+          Rscript -e "reticulate::conda_create('r-reticulate', packages = 'python==3.6.9')"
+      - name: Install FASTAI
+        run: |
+          Rscript -e "reticulate::py_install('fastai2==0.0.30',pip = TRUE,envname = 'r-reticulate',python_version = '3.6.9')"
+          Rscript -e "reticulate::py_install(c('IPython'), pip = TRUE,,envname = 'r-reticulate',python_version = '3.6.9')"
+          Rscript -e "reticulate::py_module_available('IPython')"
+          Rscript -e "reticulate::py_module_available('fastai2')"
+          Rscript -e "remotes::install_local()"
+      - name: Check
+        continue-on-error: ${{ matrix.config.allow_failure }}
+
+
+
+        run: Rscript -e "rcmdcheck::rcmdcheck(args = '--no-manual', error_on = 'error', check_dir = 'check')"
