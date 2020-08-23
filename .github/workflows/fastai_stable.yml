@@ -27,6 +27,11 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@master
 
+      - name: Install dependencies Linux
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get install libxml2-dev
+
       - name: Install MacOS/Windows/Linux
         run: |
           Rscript -e "install.packages('remotes')"
