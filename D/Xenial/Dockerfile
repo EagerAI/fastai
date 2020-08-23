@@ -25,16 +25,10 @@ RUN git clone https://github.com/henry090/fastai.git k
 
 WORKDIR k
 
-# Install required libraries -- using prebuild binaries where available
-RUN apt-get update && apt-get install -y \
-    r-cran-data.table \
-    r-cran-reticulate \
-    r-cran-generics \
-    r-cran-knitr \
-    r-cran-testthat \
-    r-cran-rmarkdown \
-    r-cran-remotes \
-    r-cran-rcmdcheck
+# Install dependecies
+RUN R -e "install.packages('remotes', repos='http://cran.us.r-project.org')"
+RUN R -e "remotes::install_deps(dependencies =  TRUE, repos='http://cran.us.r-project.org')"
+RUN R -e "remotes::install_cran('rcmdcheck',repos='http://cran.us.r-project.org')"
 
 
 # Install python
