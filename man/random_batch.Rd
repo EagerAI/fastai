@@ -4,12 +4,21 @@
 \alias{random_batch}
 \title{Random image batch}
 \usage{
-random_batch(object, regex = "[A-z]+_")
+random_batch(
+  object,
+  regex = "[A-z]+_",
+  label = "label",
+  folder_name = "mnist_sample"
+)
 }
 \arguments{
 \item{object}{dataloaders object}
 
 \item{regex}{for img titles}
+
+\item{label}{if dataloader from csv, then colname should be provided for viz-n}
+
+\item{folder_name}{if dataloader from csv, then colname should be provided for viz-n}
 }
 \description{
 for visualization

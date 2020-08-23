@@ -79,16 +79,28 @@ fit_one_cycle = function(object, n_epoch, ...) {
 #' @description for visualization
 #' @param object dataloaders object
 #' @param regex for img titles
+#' @param label if dataloader from csv, then colname should be provided for viz-n
+#' @param folder_name if dataloader from csv, then colname should be provided for viz-n
 #' @export
-random_batch <- function(object, regex = "[A-z]+_") {
+random_batch <- function(object, regex = "[A-z]+_", label = 'label', folder_name = 'mnist_sample') {
   batch = object$one_batch()
   indices = batch[[2]]$cpu()$numpy()+1
 
-  object$train_ds$items[indices] -> img_p
-  lapply(1:length(img_p), function(x) as.character(img_p[[x]])) -> img_p
-  names(img_p) = unlist(img_p)
-  names(img_p) = trimws(gsub(pattern="_",replacement=' ', regmatches(img_p,regexpr(regex,names(img_p))) ))
-  img_p
+  if(is.data.frame(object$train_ds$items)){
+    img_p = object$train_ds$items[sample(nrow(object$train_ds$items), object$bs), ]
+    nm = label
+    lbl = img_p[,nm]
+    img_p =  as.list(paste(folder_name,img_p[[1]],sep = '/'))
+    names(img_p) = lbl
+    img_p
+  } else {
+    object$train_ds$items[indices] -> img_p
+    lapply(1:length(img_p), function(x) as.character(img_p[[x]])) -> img_p
+
+    names(img_p) = unlist(img_p)
+    names(img_p) = trimws(gsub(pattern="_",replacement=' ', regmatches(img_p,regexpr(regex,names(img_p))) ))
+    img_p
+  }
 }
 
 
@@ -146,6 +158,75 @@ ImageDataLoaders_from_folder <- function(path, train = "train", valid = "valid",
 
   do.call(vision$all$ImageDataLoaders$from_folder, args)
 
+}
+
+
+#' @title From_csv
+#'
+#' @description Create from `path/csv_fname` using `fn_col` and `label_col`
+#'
+#' @details
+#'
+#' @param cls cls
+#' @param path path
+#' @param csv_fname csv_fname
+#' @param header header
+#' @param delimiter delimiter
+#' @param valid_pct valid_pct
+#' @param seed seed
+#' @param fn_col fn_col
+#' @param folder folder
+#' @param suff suff
+#' @param label_col label_col
+#' @param label_delim label_delim
+#' @param y_block y_block
+#' @param valid_col valid_col
+#' @param item_tfms item_tfms
+#' @param batch_tfms batch_tfms
+#' @param bs bs
+#' @param val_bs val_bs
+#' @param shuffle_train shuffle_train
+#' @param device device
+#'
+#' @export
+ImageDataLoaders_from_csv <- function(path, csv_fname = "labels.csv", header = "infer",
+                     delimiter = NULL, valid_pct = 0.2, seed = NULL, fn_col = 0,
+                     folder = NULL, suff = "", label_col = 1, label_delim = NULL,
+                     y_block = NULL, valid_col = NULL, item_tfms = NULL,
+                     batch_tfms = NULL, bs = 64, val_bs = NULL,
+                     size = NULL,
+                     shuffle_train = TRUE, device = NULL,
+                     ...) {
+
+  args <- list(
+    path = path,
+    csv_fname = csv_fname,
+    header = header,
+    delimiter = delimiter,
+    valid_pct = valid_pct,
+    seed = seed,
+    fn_col = as.integer(fn_col),
+    folder = folder,
+    suff = suff,
+    label_col = as.integer(label_col),
+    label_delim = label_delim,
+    y_block = y_block,
+    valid_col = valid_col,
+    item_tfms = item_tfms,
+    batch_tfms = batch_tfms,
+    bs = as.integer(bs),
+    val_bs = val_bs,
+    shuffle_train = shuffle_train,
+    device = device,
+    size = size,
+    ...
+  )
+
+  if(!is.null(size)) {
+    args$size = as.integer(args$size)
+  }
+
+  do.call(vision$all$ImageDataLoaders$from_csv, args)
 }
 
 
