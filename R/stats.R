@@ -28,7 +28,6 @@ plot_confusion_matrix <- function(object, dataloader) {
 
 #' @title Extract confusion matrix
 #'
-#' @importFrom highcharter hchart hc_yAxis hc_xAxis
 #' @param object model
 #' @param dataloader dataloaders object
 #' @export
