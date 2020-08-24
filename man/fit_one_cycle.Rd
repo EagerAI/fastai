@@ -4,7 +4,7 @@
 \alias{fit_one_cycle}
 \title{Fit one cycle}
 \usage{
-fit_one_cycle(object, n_epoch, ...)
+fit_one_cycle(object, n_epoch, lr, ...)
 }
 \arguments{
 \item{n_epoch}{n_epoch}

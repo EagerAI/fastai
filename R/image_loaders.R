@@ -67,8 +67,9 @@ get_image_files <- function(path, recurse = TRUE, folders = NULL) {
 #' @param ... parameters to pass
 #'
 #' @export
-fit_one_cycle = function(object, n_epoch, ...) {
+fit_one_cycle <- function(object, n_epoch, lr, ...) {
   args = list(n_epoch = as.integer(n_epoch),
+              lr = lr,
               ...)
   do.call(object$fit_one_cycle, args)
 }

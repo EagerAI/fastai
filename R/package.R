@@ -18,6 +18,9 @@ vision<-NULL
   # vision module
   vision <<- fastai2$vision
 
+  # collab module
+  collab <<- fastai2$collab
+
   nn <<- fastai2$torch_core$nn
 
 }
