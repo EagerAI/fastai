@@ -12,13 +12,13 @@ vision<-NULL
     environment = "r-fastai"
   ))
 
-  nn <<- fastai2$torch_core$nn
-
   # tabular module
   tabular <<- fastai2$tabular$all
 
   # vision module
   vision <<- fastai2$vision
+
+  nn <<- fastai2$torch_core$nn
 
 }
 
