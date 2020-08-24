@@ -45,7 +45,7 @@ jobs:
           Rscript -e "reticulate::conda_create('r-reticulate', packages = 'python==3.6.10')"
       - name: Install FASTAI
         run: |
-          Rscript -e "reticulate::py_install('pip', 'wheel', 'setuptools',pip = T)"
+          Rscript -e "reticulate::py_install(c('pip', 'wheel', 'setuptools'),pip = T)"
           Rscript -e "reticulate::py_install('--ignore-installed -U ipython',pip = TRUE)"
           Rscript -e "reticulate::py_install(c('torch==1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html'),pip = TRUE)"
           Rscript -e "reticulate::py_install('fastai2',pip = TRUE)"
