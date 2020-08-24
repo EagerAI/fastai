@@ -45,11 +45,10 @@ jobs:
           Rscript -e "reticulate::virtualenv_create('r-reticulate', packages = 'python==3.6.10')"
       - name: Install FASTAI
         run: |
+          Rscript -e "reticulate::py_install('pip', 'wheel', 'setuptools',pip = T)"
+          Rscript -e "reticulate::py_install('--ignore-installed -U ipython',pip = TRUE)"
           Rscript -e "reticulate::py_install(c('torch==1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html'),pip = TRUE)"
-          Rscript -e "reticulate::py_install('fastai2 IPython',pip = TRUE)"
-          Rscript -e "reticulate::virtualenv_remove('r-reticulate','-y ipython prompt_toolkit', confirm = FALSE)"
-          Rscript -e "reticulate::py_install('ipython prompt_toolkit', pip = TRUE)"
-          Rscript -e "reticulate::virtualenv_install('r-reticulate','--ignore-installed -U ipython')"
+          Rscript -e "reticulate::py_install('fastai2',pip = TRUE)"
           Rscript -e "reticulate::py_module_available('IPython')"
           Rscript -e "remotes::install_local()"
       - name: Check
