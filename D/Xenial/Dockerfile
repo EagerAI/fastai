@@ -27,12 +27,11 @@ WORKDIR k
 
 # Install dependecies
 RUN R -e "install.packages('remotes', repos='http://cran.us.r-project.org')"
-RUN R -e "remotes::install_deps(dependencies =  TRUE,repos='http://cran.us.r-project.org')"
+RUN R -e "remotes::install_deps(dependencies =  TRUE, repos='http://cran.us.r-project.org')"
 RUN R -e "remotes::install_cran('rcmdcheck',repos='http://cran.us.r-project.org')"
 
 
 # Install python
-RUN R -e "remotes::install_github('rstudio/reticulate')"
 RUN R -e "try(reticulate::install_miniconda())"
 RUN R -e "reticulate::conda_create('r-reticulate', packages = 'python==3.6.10')"
 
