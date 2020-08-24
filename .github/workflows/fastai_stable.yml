@@ -51,6 +51,4 @@ jobs:
           Rscript -e "reticulate::py_install('fastai2',pip = TRUE)"
           Rscript -e "reticulate::py_module_available('IPython')"
 
-      - name: Check
-        continue-on-error: ${{ matrix.config.allow_failure }}
 
