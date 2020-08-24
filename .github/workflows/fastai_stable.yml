@@ -46,8 +46,8 @@ jobs:
       - name: Install FASTAI
         run: |
           Rscript -e "reticulate::py_install(c('pip', 'wheel', 'setuptools'),pip = T)"
-          Rscript -e "reticulate::conda_remove('-y ipython prompt_toolkit', confirm = FALSE)"
-          Rscript -e "reticulate::conda_remove('-y ipython prompt_toolkit', confirm = FALSE)"
+          Rscript -e "reticulate::conda_remove(packages = '-y ipython prompt_toolkit')"
+          Rscript -e "reticulate::conda_remove(packages = '-y ipython prompt_toolkit')"
           Rscript -e "reticulate::py_install('--ignore-installed -U ipython',pip = TRUE)"
           Rscript -e "reticulate::py_install(c('torch==1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html'),pip = TRUE)"
           Rscript -e "reticulate::py_install('fastai2',pip = TRUE)"
