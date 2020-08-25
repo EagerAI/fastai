@@ -257,9 +257,135 @@ learn = cnn_learner(data, resnet18, metrics=accuracy)
 learn %>% fit(2)
 ```
 
-<img src="files/mnist.png" geight=500 align=center alt="Pets"/>
+<img src="files/mnist.png" geight=500 align=center alt="Mnist"/>
 
 
+## Collab (Collaborative filtering)
+
+Call libraries:
+
+```
+library(zeallot)
+library(magrittr)
+```
+
+Get data:
+
+```
+URLs_MOVIE_LENS_ML_100k()
+```
+
+Specify column names:
+
+```
+c(user,item,title)  %<-% list('userId','movieId','title')
+```
+
+Read datasets:
+
+```
+ratings = fread('ml-100k/u.data', col.names = c(user,item,'rating','timestamp'))
+movies = fread('ml-100k/u.item', col.names = c(item, 'title', 'date', 'N', 'url',
+                                                           paste('g',1:19,sep = '')))
+```
+
+Left join on item:
+
+```
+rating_movie = ratings[movies[, .SD, .SDcols=c(item,title)], on = item]
+```
+
+Load data from dataframe (R):
+
+```
+dls = CollabDataLoaders_from_df(rating_movie, seed=42, valid_pct=0.1, bs=64, item_name=title, path='ml-100k')
+```
+
+Build model:
+
+```
+learn = collab_learner(dls, n_factors=40, y_range=c(0,5.5))
+```
+
+Start learning:
+
+```
+learn %>% fit_one_cycle(1, 5e-3,  wd=1e-1)
+```
+
+Get top 1,000 movies:
+
+```
+top_movies = head(unique(rating_movie[ , count := .N, by = .(title)]
+                    [order(count,decreasing = T)]
+                    [, c('title','count')]),
+                   1e3)[['title']]
+```
+
+Find mean ratings for the films:
+
+```
+mean_ratings = unique(rating_movie[ , .(mean = mean(rating)), by = title])
+```
+
+```
+                                          title     mean
+   1:                          Toy Story (1995) 3.878319
+   2:                          GoldenEye (1995) 3.206107
+   3:                         Four Rooms (1995) 3.033333
+   4:                         Get Shorty (1995) 3.550239
+   5:                            Copycat (1995) 3.302326
+  ---                                                   
+1660:                      Sweet Nothing (1995) 3.000000
+1661:                         Mat' i syn (1997) 1.000000
+1662:                          B. Monkey (1998) 3.000000
+1663:                       You So Crazy (1994) 3.000000
+1664: Scream of Stone (Schrei aus Stein) (1991) 3.000000
+```
+
+Extract bias from model:
+
+```
+movie_bias = learn %>% get_bias(top_movies, is_item=TRUE)
+
+result = data.table(bias = movie_bias,
+           title = top_movies)
+           
+res = merge(result,mean_ratings, all.y = F)
+
+res[order(bias,decreasing = T)]
+```
+
+```
+                                           title        bias     mean
+   1:                           Star Wars (1977)  0.29479960 4.358491
+   2:                               Fargo (1996)  0.25264889 4.155512
+   3:                      Godfather, The (1972)  0.23247446 4.283293
+   4:           Silence of the Lambs, The (1991)  0.22765337 4.289744
+   5:                             Titanic (1997)  0.22353025 4.245714
+  ---                                                                
+ 996: Children of the Corn: The Gathering (1996) -0.05671900 1.315789
+ 997:                       Jungle2Jungle (1997) -0.05957306 2.439394
+ 998:                  Leave It to Beaver (1997) -0.06268980 1.840909
+ 999:             Speed 2: Cruise Control (1997) -0.06567496 2.131579
+1000:           Island of Dr. Moreau, The (1996) -0.07530680 2.157895
+```
+
+Get weights:
+
+```
+movie_w = learn %>% get_weights(top_movies, is_item = TRUE, convert = TRUE)
+```
+
+Visualize with highcharter:
+
+```
+rownames(movie_w) = res$title
+
+highcharter::hchart(princomp(movie_w, cor = TRUE)) %>% highcharter::hc_legend(enabled=FALSE)
+```
+
+<img src="files/pca.png" geight=500 align=center alt="PCA"/>
 
 
 

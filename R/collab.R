@@ -203,4 +203,27 @@ get_bias <- function(object, arr, is_item = TRUE, convert = TRUE) {
 }
 
 
+#' @title Pca
+#'
+#' @description Compute PCA of `x` with `k` dimensions.
+#'
+#'
+#' @param object object
+#' @param k k
+#' @param convert to matrix
+#' @export
+pca <- function(object, k = 3, convert = TRUE) {
+
+  if(convert){
+    result = object$pca(
+      k = as.integer(k)
+    )
+    t(result$t()$numpy())
+  } else {
+    object$pca(
+      k = as.integer(k)
+    )
+  }
+
+}
 
