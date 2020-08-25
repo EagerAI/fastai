@@ -51,13 +51,19 @@ ImageDataLoaders_from_name_re <- function(path, fnames, pat, bs = 64,
 #' @export
 get_image_files <- function(path, recurse = TRUE, folders = NULL) {
 
-  args <- list(
-    path = path,
-    recurse = recurse,
-    folders = folders
-  )
 
-  do.call(vision$all$get_image_files, args)
+
+  if(missing(path)) {
+    invisible(vision$all$get_image_files)
+  } else {
+    args <- list(
+      path = path,
+      recurse = recurse,
+      folders = folders
+    )
+    do.call(vision$all$get_image_files, args)
+  }
+
 
 }
 
