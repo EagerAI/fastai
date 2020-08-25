@@ -34,6 +34,14 @@ CollabDataLoaders_from_df <- function(ratings, valid_pct = 0.2, user_name = NULL
     device = device
   )
 
+  if(!is.null(seed)) {
+    args$seed <- as.integer(args$seed)
+  }
+
+  if(!is.null(val_bs)) {
+    args$val_bs <- as.integer(args$val_bs)
+  }
+
   do.call(collab$CollabDataLoaders$from_df, args)
 
 }
@@ -65,6 +73,10 @@ CollabDataLoaders_from_dblock <- function(dblock, source, path = ".", bs = 64,
     shuffle_train = shuffle_train,
     device = device
   )
+
+  if(!is.null(val_bs)) {
+    args$val_bs <- as.integer(args$val_bs)
+  }
 
   do.call(collab$CollabDataLoaders$from_dblock, args)
 
@@ -152,6 +164,43 @@ trainable_params <- function(m) {
 }
 
 
+#' @title Get weights
+#'
+#' @description Weight for item or user (based on `is_item`) for all in `arr`
+#'
+#' @param object object
+#' @param arr arr
+#' @param is_item is_item
+#' @param convert to matrix
+#' @export
+get_weights <- function(object, arr, is_item = TRUE, convert = FALSE) {
+
+  if(convert)
+    learn$model$weight(arr = arr,is_item = is_item)$numpy()
+  else
+    learn$model$weight(arr = arr,is_item = is_item)
+
+}
+
+
+
+#' @title Get bias
+#'
+#' @description Bias for item or user (based on `is_item`) for all in `arr`
+#'
+#' @param object object
+#' @param arr arr
+#' @param is_item is_item
+#' @param convert to matrix
+#' @export
+get_bias <- function(object, arr, is_item = TRUE, convert = TRUE) {
+
+  if(convert)
+    learn$model$bias(arr = arr,is_item = is_item)$numpy()
+  else
+    learn$model$bias(arr = arr,is_item = is_item)
+
+}
 
 
 
