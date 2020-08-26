@@ -257,7 +257,7 @@ tabular_TabularList_show_xyzs <- function(xs, ys, zs) {
 #' @param row row
 #'
 #' @export
-predict.fastai2.tabular.learner.TabularLearner <- function(object, row) {
+predict.fastai.tabular.learner.TabularLearner <- function(object, row) {
 
   res = invisible(model$predict(reticulate::r_to_py(row)$iloc[0])[[3]]$numpy())
 

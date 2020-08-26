@@ -177,6 +177,203 @@ dataloaders <- function(object, source, path = ".", verbose = FALSE, bs = 64,
 }
 
 
+#' @title Basic_generator
+#'
+#' @description A basic generator from `in_sz` to images `n_channels` x `out_size` x `out_size`.
+#'
+#'
+#' @param out_size out_size
+#' @param n_channels n_channels
+#' @param in_sz in_sz
+#' @param n_features n_features
+#' @param n_extra_layers n_extra_layers
+#' @param ... additional params to pass
+#' @param bias bias
+#' @param ndim ndim
+#' @param norm_type norm_type
+#' @param bn_1st bn_1st
+#' @param act_cls act_cls
+#' @param transpose transpose
+#' @param init init
+#' @param xtra xtra
+#' @param bias_std bias_std
+#' @param dilation dilation
+#' @param groups groups
+#'
+#' @export
+basic_generator <- function(out_size, n_channels, in_sz = 100,
+                            n_features = 64, n_extra_layers = 0,
+                            bias = NULL, ndim = 2,
+                            norm_type = 1, bn_1st = TRUE,
+                            act_cls = nn$ReLU, init = "auto",
+                            xtra = NULL, bias_std = 0.01, dilation = 1,
+                            groups = 1,
+                            ...) {
+
+  args <- list(
+    out_size = out_size,
+    n_channels = as.integer(n_channels),
+    in_sz = as.integer(in_sz),
+    n_features = as.integer(n_features),
+    n_extra_layers = as.integer(n_extra_layers),
+    bias = bias,
+    ndim = as.integer(ndim),
+    norm_type = as.integer(norm_type),
+    bn_1st = bn_1st,
+    act_cls = act_cls,
+    init = init,
+    xtra = xtra,
+    bias_std = bias_std,
+    dilation = as.integer(dilation),
+    groups = as.integer(groups),
+    ...
+  )
+
+  do.call(vision$gan$basic_generator, args)
+}
+
+
+#' @title Basic_critic
+#'
+#' @description A basic critic for images `n_channels` x `in_size` x `in_size`.
+#'
+#'
+#' @param in_size in_size
+#' @param n_channels n_channels
+#' @param n_features n_features
+#' @param n_extra_layers n_extra_layers
+#' @param norm_type norm_type
+#' @param bias bias
+#' @param ndim ndim
+#' @param bn_1st bn_1st
+#' @param act_cls act_cls
+#' @param transpose transpose
+#' @param xtra xtra
+#' @param bias_std bias_std
+#' @param dilation dilation
+#' @param groups groups
+#' @param padding_mode padding_mode
+#' @param ... additional parameters to pass
+#'
+#' @export
+basic_critic <- function(in_size, n_channels, n_features = 64,
+                         n_extra_layers = 0, norm_type = 1,
+                         bias = NULL,
+                         ndim = 2, bn_1st = TRUE, act_cls = nn$ReLU,
+                         transpose = FALSE,
+                         xtra = NULL, bias_std = 0.01, dilation = 1,
+                         groups = 1, padding_mode = "zeros",
+                         ...) {
+
+  args <- list(
+    in_size = in_size,
+    n_channels = as.integer(n_channels),
+    n_features = as.integer(n_features),
+    n_extra_layers = as.integer(n_extra_layers),
+    norm_type = as.integer(norm_type),
+    bias = bias,
+    ndim = as.integer(ndim),
+    bn_1st = bn_1st,
+    act_cls = act_cls,
+    transpose = transpose,
+    xtra = xtra,
+    bias_std = bias_std,
+    dilation = as.integer(dilation),
+    groups = as.integer(groups),
+    padding_mode = padding_mode,
+    ...
+  )
+
+  do.call(vision$gan$basic_critic, args)
+
+}
+
+
+
+#' @title Wgan
+#'
+#' @description Create a WGAN from `data`, `generator` and `critic`.
+#'
+#' @param dls dls
+#' @param generator generator
+#' @param critic critic
+#' @param switcher switcher
+#' @param clip clip
+#' @param switch_eval switch_eval
+#' @param gen_first gen_first
+#' @param show_img show_img
+#' @param cbs cbs
+#' @param metrics metrics
+#' @param opt_func opt_func
+#' @param lr lr
+#' @param splitter splitter
+#' @param path path
+#' @param model_dir model_dir
+#' @param wd wd
+#' @param wd_bn_bias wd_bn_bias
+#' @param train_bn train_bn
+#' @param moms moms
+#'
+#' @export
+GANLearner_wgan <- function(dls, generator, critic, switcher = NULL, clip = 0.01,
+                 switch_eval = FALSE, gen_first = FALSE, show_img = TRUE,
+                 cbs = NULL, metrics = NULL,  opt_func = Adam(),
+                 lr = 0.001, splitter = trainable_params, path = NULL,
+                 model_dir = "models", wd = NULL, wd_bn_bias = FALSE,
+                 train_bn = TRUE, moms = list(0.95, 0.85, 0.95)) {
+
+  args <- list(
+    dls = dls,
+    generator = generator,
+    critic = critic,
+    switcher = switcher,
+    clip = clip,
+    switch_eval = switch_eval,
+    gen_first = gen_first,
+    show_img = show_img,
+    cbs = cbs,
+    metrics = metrics,
+    opt_func = opt_func,
+    lr = lr,
+    splitter = splitter,
+    path = path,
+    model_dir = model_dir,
+    wd = wd,
+    wd_bn_bias = wd_bn_bias,
+    train_bn = train_bn,
+    moms = moms
+  )
+
+  do.call(vision$gan$GANLearner$wgan, args)
+
+}
+
+
+
+
+#' @title Fit
+#' @description Fit the model on this learner with `lr` learning rate, `wd` weight decay for `epochs` with `callbacks`.
+#'
+#' @param epochs epochs
+#' @param lr lr
+#' @param wd wd
+#' @param callbacks callbacks
+#'
+#' @export
+fit.fastai.vision.gan.GANLearner <- function(object, n_epoch, lr = 1e-2, wd = NULL, callbacks = NULL) {
+
+  args <- list(
+    n_epoch = as.integer(n_epoch),
+    lr = lr,
+    wd = wd,
+    callbacks = callbacks
+  )
+
+  # fit the model
+  do.call(object$fit, args)
+
+}
+
 
 
 

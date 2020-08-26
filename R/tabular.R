@@ -194,7 +194,7 @@ tabular_learner <- function(dls, layers = NULL, emb_szs = NULL, config = NULL,
 #' @param callbacks callbacks
 #'
 #' @export
-fit.fastai2.tabular.learner.TabularLearner <- function(object, n_epoch, lr = 1e-2, wd = NULL, callbacks = NULL) {
+fit.fastai.tabular.learner.TabularLearner <- function(object, n_epoch, lr = 1e-2, wd = NULL, callbacks = NULL) {
 
   args <- list(
     n_epoch = as.integer(n_epoch),
@@ -216,7 +216,7 @@ fit.fastai2.tabular.learner.TabularLearner <- function(object, n_epoch, lr = 1e-
 #' @param m m
 #'
 #' @export
-summary.fastai2.tabular.learner.TabularLearner <- function(object) {
+summary.fastai.tabular.learner.TabularLearner <- function(object) {
 
   object$summary()
 

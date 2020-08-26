@@ -1,6 +1,6 @@
 
 plot_confusion_matrix <- function(object, dataloader) {
-  if(inherits(object,"fastai2.learner.Learner")) {
+  if(inherits(object,"fastai.learner.Learner")) {
     interp = vision$all$ClassificationInterpretation$from_learner(object)
 
     conf=interp$confusion_matrix()
@@ -13,7 +13,7 @@ plot_confusion_matrix <- function(object, dataloader) {
       hc_yAxis(title = list(text='Actual')) %>%
       hc_xAxis(title = list(text='Predicted'),
                labels = list(rotation=-90))
-  } else if (inherits(object,"fastai2.tabular.learner.TabularLearner")) {
+  } else if (inherits(object,"fastai.tabular.learner.TabularLearner")) {
     conf = tabular$ClassificationInterpretation$from_learner(model)$confusion_matrix()
     colnames(conf)=dls$vocab$items$items
     rownames(conf)=dls$vocab$items$items
@@ -32,7 +32,7 @@ plot_confusion_matrix <- function(object, dataloader) {
 #' @param dataloader dataloaders object
 #' @export
 get_confusion_matrix <- function(object, dataloader) {
-  if(inherits(object,"fastai2.learner.Learner")) {
+  if(inherits(object,"fastai.learner.Learner")) {
     interp = vision$all$ClassificationInterpretation$from_learner(object)
 
     conf=interp$confusion_matrix()
@@ -41,7 +41,7 @@ get_confusion_matrix <- function(object, dataloader) {
     colnames(conf)=itms
     rownames(conf)=itms
     conf
-  } else if (inherits(object,"fastai2.tabular.learner.TabularLearner")) {
+  } else if (inherits(object,"fastai.tabular.learner.TabularLearner")) {
     tabular$ClassificationInterpretation$from_learner(model)$confusion_matrix()
   }
 }
