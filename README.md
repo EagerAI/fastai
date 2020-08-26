@@ -259,6 +259,56 @@ learn %>% fit(2)
 
 <img src="files/mnist.png" geight=500 align=center alt="Mnist"/>
 
+### GAN example
+
+Get data (4,4 GB):
+
+```
+URLs_LSUN_BEDROOMS()
+
+path = 'bedroom'
+```
+
+Dataloader function:
+
+```
+get_dls <- function(bs, size) {
+  dblock = DataBlock(blocks = list(TransformBlock(), ImageBlock()),
+                     get_x = generate_noise(),
+                     get_items = get_image_files(),
+                     splitter = IndexSplitter(c()),
+                     item_tfms=Resize(size, method="crop"),
+                     batch_tfms = Normalize_from_stats(c(0.5,0.5,0.5),c(0.5,0.5,0.5))
+  )
+  dblock %>% dataloaders(source=path,path=path,bs=bs)
+}
+
+dls = get_dls(128, 64)
+```
+
+Generator and discriminator:
+
+```
+generator = basic_generator(out_size = 64, n_channels=3, n_extra_layers=1)
+critic    = basic_critic(in_size=64, n_channels=3, n_extra_layers = 1,
+                                    act_cls = pryr::partial(nn$LeakyReLU, negative_slope=0.2))
+
+```
+
+Model:
+
+```
+learn = GANLearner_wgan(dls, generator, critic, opt_func = pryr::partial(Adam(), mom=0.))
+```
+
+And fit:
+
+```
+learn$recorder$train_metrics=T
+learn$recorder$valid_metrics=F
+
+learn %>% fit(1, 2e-4, wd=0)
+```
 
 ## Collab (Collaborative filtering)
 
