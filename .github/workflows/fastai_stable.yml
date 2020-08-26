@@ -6,7 +6,7 @@ jobs:
   R-CMD:
     runs-on: ${{ matrix.config.os }}
 
-    name: ${{ matrix.config.os }} (fastai2 ${{ matrix.config.fastai }})
+    name: ${{ matrix.config.os }} (fastai ${{ matrix.config.fastai }})
 
     strategy:
       fail-fast: false
@@ -47,7 +47,7 @@ jobs:
       - name: Install FASTAI
         run: |
           Rscript -e "reticulate::conda_create('r-reticulate', packages = c('python==3.6.9'))"
-          Rscript -e "reticulate::py_install(c( 'IPython', 'pip', 'wheel', 'setuptools'), pip = T)"
+          Rscript -e "reticulate::py_install(c('--ignore-installed -U ipython', 'pip', 'wheel', 'setuptools'), pip = T)"
           Rscript -e "reticulate::py_module_available('IPython')"
           Rscript -e "reticulate::py_install('torch==1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html',pip = TRUE)"
           Rscript -e "reticulate::py_install('fastai',pip = TRUE)"
