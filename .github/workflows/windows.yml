@@ -1,6 +1,6 @@
 on: [push, pull_request]
 
-name: fastai2_win
+name: windows
 
 jobs:
   R-CMD:
@@ -12,7 +12,7 @@ jobs:
       fail-fast: false
       matrix:
         config:
-        - { os: windows-latest, fastai2: '0.0.30', platform: x64}
+        - { os: windows-latest, fastai: '2.0.0', platform: x64}
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       PIP_NO_WARN_SCRIPT_LOCATION: false
@@ -37,11 +37,19 @@ jobs:
         run: |
           Rscript -e "remotes::install_github('rstudio/reticulate')"
           Rscript -e "try(reticulate::install_miniconda())"
-          Rscript -e "reticulate::py_config()"
-          Rscript -e "print(paste(Sys.info()[['machine']]))"
       - name: Install FASTAI & TORCH
         run: |
-          Rscript -e "reticulate::py_install(c('IPython torch==1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html'), pip = TRUE)"
-          Rscript -e "reticulate::py_install('fastai2==0.0.30',pip = TRUE)"
-          Rscript -e "reticulate::py_config()"
+          Rscript -e "reticulate::conda_create('r-reticulate', packages = c('python==3.6.9'))"
+          Rscript -e "reticulate::conda_install('r-reticulate','IPython')"
           Rscript -e "reticulate::py_module_available('IPython')"
+          Rscript -e "reticulate::py_install('torch==1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html',pip = TRUE)"
+          Rscript -e "reticulate::py_install('fastai',pip = TRUE)"
+          Rscript -e "reticulate::py_module_available('IPython')"
+          Rscript -e "remotes::install_local()"
+
+      - name: Check
+        continue-on-error: ${{ matrix.config.allow_failure }}
+
+
+
+        run: Rscript -e "rcmdcheck::rcmdcheck(args = '--no-manual', error_on = 'error', check_dir = 'check')"

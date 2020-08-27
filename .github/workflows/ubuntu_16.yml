@@ -1,6 +1,6 @@
 on: [push, pull_request]
 
-name: fastai2_stable
+name: ubuntu_16
 
 jobs:
   R-CMD:
