@@ -6,7 +6,7 @@ jobs:
   R-CMD:
     runs-on: ${{ matrix.config.os }}
 
-    name: ${{ matrix.config.os }} (fastai2 ${{ matrix.config.fastai2 }})
+    name: (fastai ${{ matrix.config.fastai2 }})
 
     strategy:
       fail-fast: false
@@ -16,7 +16,7 @@ jobs:
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       PIP_NO_WARN_SCRIPT_LOCATION: false
-      FASTAI2_VERSION: ${{ matrix.config.fastai2 }}
+      FASTAI_VERSION: ${{ matrix.config.fastai2 }}
       RETICULATE_AUTOCONFIGURE: 'FALSE'
       CRAN: ${{ matrix.config.cran }}
 

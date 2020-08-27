@@ -6,7 +6,7 @@ jobs:
   R-CMD:
     runs-on: ${{ matrix.config.os }}
 
-    name: ${{ matrix.config.os }} (fastai ${{ matrix.config.fastai }})
+    name: (fastai ${{ matrix.config.fastai }})
 
     strategy:
       fail-fast: false
