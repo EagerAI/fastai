@@ -5,8 +5,14 @@ The fastai package provides R wrappers to [FASTAI](https://github.com/fastai/fas
 The fastai library simplifies training fast and accurate neural nets using modern best practices. See the fastai website to get started. The library is based on research into deep learning best practices undertaken at ```fast.ai```, and includes "out of the box" support for ```vision```, ```text```, ```tabular```, and ```collab``` (collaborative filtering) models. 
 
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-![fastai_stable](https://github.com/henry090/fastai/workflows/fastai2_stable/badge.svg)
-![fastai2_win](https://github.com/henry090/fastai/workflows/fastai2_win/badge.svg)
+
+## Continuous Build Status
+
+| Build      | Status |
+| ---             | ---    |
+| **Ubuntu 16**   | ![ubuntu_16](https://github.com/henry090/fastai/workflows/ubuntu_16/badge.svg)|
+| **Mac OS**   | ![mac_os](https://github.com/henry090/fastai/workflows/mac_os/badge.svg) |
+| **Windows**   | ![windows](https://github.com/henry090/fastai/workflows/windows/badge.svg)|
 
 ## Installation
 
@@ -24,7 +30,7 @@ devtools::install_github('henry090/fastai')
 Later, you need to install the python module fastai:
 
 ```
-reticulate::py_install('fastai2==0.0.30',pip = TRUE)
+reticulate::py_install('fastai',pip = TRUE)
 ```
 
 ## Tabular data

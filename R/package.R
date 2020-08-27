@@ -4,6 +4,7 @@ nn <- NULL
 fastai<-NULL
 tabular<-NULL
 vision<-NULL
+text<-NULL
 
 .onLoad <- function(libname, pkgname) {
 
@@ -22,7 +23,7 @@ vision<-NULL
   collab <<- fastai2$collab
 
   # text module
-  text <<- fastai2$text
+  text <<- fastai2$text$all
 
   # Torch module
 
