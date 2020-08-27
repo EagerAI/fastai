@@ -1,6 +1,6 @@
 ## R interface to FASTAI
 
-The fastai package provides R wrappers to [FASTAI](https://github.com/fastai/fastai).
+The fastai package provides R wrappers to [fastai](https://github.com/fastai/fastai).
 
 The fastai library simplifies training fast and accurate neural nets using modern best practices. See the fastai website to get started. The library is based on research into deep learning best practices undertaken at ```fast.ai```, and includes "out of the box" support for ```vision```, ```text```, ```tabular```, and ```collab``` (collaborative filtering) models. 
 
