@@ -376,4 +376,48 @@ fit.fastai.vision.gan.GANLearner <- function(object, n_epoch, lr = 1e-2, wd = NU
 
 
 
+#' @title GANModule
+#'
+#' @description Wrapper around a `generator` and a `critic` to create a GAN.
+#'
+#'
+#' @param generator generator
+#' @param critic critic
+#' @param gen_mode gen_mode
+#'
+#' @export
+GANModule <- function(generator = NULL, critic = NULL, gen_mode = FALSE) {
+
+  args <- list(
+    generator = generator,
+    critic = critic,
+    gen_mode = gen_mode
+  )
+
+  do.call(vision$gan$GANModule, args)
+
+}
+
+
+#' @title GANDiscriminativeLR
+#'
+#' @description `Callback` that handles multiplying the learning rate by `mult_lr` for the critic.
+#'
+#'
+#' @param mult_lr mult_lr
+#'
+#' @export
+GANDiscriminativeLR <- function(mult_lr = 5.0) {
+
+  vision$gan$GANDiscriminativeLR(
+    mult_lr = mult_lr
+  )
+
+}
+
+
+
+
+
+
 
