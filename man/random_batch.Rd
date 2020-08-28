@@ -6,9 +6,10 @@
 \usage{
 random_batch(
   object,
-  regex = "[A-z]+_",
+  regex = "[0-9]+",
   label = "label",
-  folder_name = "mnist_sample"
+  folder_name = NULL,
+  img_patter = "jpg|jpeg|png"
 )
 }
 \arguments{
