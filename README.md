@@ -1,4 +1,4 @@
-## R interface to FASTAI
+## R interface to fastai
 
 The fastai package provides R wrappers to [fastai](https://github.com/fastai/fastai).
 
@@ -201,7 +201,8 @@ Random batch for visualization:
 ```
 par(mar=c(0.5, 0.5, 1, 1))
 
-imager::map_il(dls %>% fastai::random_batch(),
+imager::map_il(dls %>% random_batch(regex = '[A-z]+_',
+               folder_name = 'oxford-iiit-pet/images'),
                imager::load.image) %>% plot(axes=FALSE)
 ```
 
@@ -256,7 +257,8 @@ data = ImageDataLoaders_from_folder(path, batch_tfms = tfms, size = 26, bs=bs)
 # Visualize and train 
 par(mar=c(0.5, 0.5, 1, 1))
 
-imager::map_il(data %>% fastai::random_batch(regex = '[0-9]+'),
+imager::map_il(dls %>% random_batch(regex = '[0-9]+',
+               folder_name = 'mnist_sample'),
                imager::load.image) %>% plot(axes=FALSE)
                
 learn = cnn_learner(data, resnet18, metrics=accuracy)
