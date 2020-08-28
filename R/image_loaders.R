@@ -89,25 +89,18 @@ fit_one_cycle <- function(object, n_epoch, lr, ...) {
 #' @param label if dataloader from csv, then colname should be provided for viz-n
 #' @param folder_name if dataloader from csv, then colname should be provided for viz-n
 #' @export
-random_batch <- function(object, regex = "[A-z]+_", label = 'label', folder_name = 'mnist_sample') {
-  batch = object$one_batch()
-  indices = batch[[2]]$cpu()$numpy()+1
+random_batch <- function(object, regex = "[0-9]+", label = 'label', folder_name = NULL,
+                         img_patter = "jpg|jpeg|png") {
 
-  if(is.data.frame(object$train_ds$items)){
-    img_p = object$train_ds$items[sample(nrow(object$train_ds$items), object$bs), ]
-    nm = label
-    lbl = img_p[,nm]
-    img_p =  as.list(paste(folder_name,img_p[[1]],sep = '/'))
-    names(img_p) = lbl
-    img_p
-  } else {
-    object$train_ds$items[indices] -> img_p
-    lapply(1:length(img_p), function(x) as.character(img_p[[x]])) -> img_p
 
-    names(img_p) = unlist(img_p)
-    names(img_p) = trimws(gsub(pattern="_",replacement=' ', regmatches(img_p,regexpr(regex,names(img_p))) ))
-    img_p
-  }
+  if(is.null(folder_name))
+    folder_name = capture.output(dls$path)
+  bs = object$bs
+  fls = sample(list.files(folder_name,pattern = img_patter, recursive = TRUE,full.names = TRUE))[1:bs]
+  fls = as.list(fls)
+  names(fls) = unlist(fls)
+  names(fls) = trimws(gsub(pattern="_",replacement=' ', regmatches(fls,regexpr(regex, names(fls))) ))
+  fls
 }
 
 

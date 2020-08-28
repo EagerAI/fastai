@@ -493,6 +493,183 @@ ColSplitter <- function(col = "is_valid") {
 }
 
 
+#' @title from_df
+#'
+#' @description Create from `df` in `path` with `valid_pct`
+#'
+#' @details
+#'
+#' @param cls cls
+#' @param df df
+#' @param path path
+#' @param valid_pct valid_pct
+#' @param seed seed
+#' @param text_col text_col
+#' @param label_col label_col
+#' @param label_delim label_delim
+#' @param y_block y_block
+#' @param text_vocab text_vocab
+#' @param is_lm is_lm
+#' @param valid_col valid_col
+#' @param tok_tfm tok_tfm
+#' @param seq_len seq_len
+#' @param backwards backwards
+#' @param bs bs
+#' @param val_bs val_bs
+#' @param shuffle_train shuffle_train
+#' @param device device
+#'
+#' @export
+TextDataLoaders_from_df <- function(cls, df, path = ".", valid_pct = 0.2, seed = NULL,
+                    text_col = 0, label_col = 1, label_delim = NULL,
+                    y_block = NULL, text_vocab = NULL, is_lm = FALSE,
+                    valid_col = NULL, tok_tfm = NULL, seq_len = 72,
+                    backwards = FALSE, bs = 64, val_bs = NULL,
+                    shuffle_train = TRUE, device = NULL) {
+
+  args <- list(
+    cls = cls,
+    df = df,
+    path = path,
+    valid_pct = valid_pct,
+    seed = seed,
+    text_col = as.integer(text_col),
+    label_col = as.integer(label_col),
+    label_delim = label_delim,
+    y_block = y_block,
+    text_vocab = text_vocab,
+    is_lm = is_lm,
+    valid_col = valid_col,
+    tok_tfm = tok_tfm,
+    seq_len = as.integer(seq_len),
+    backwards = backwards,
+    bs = as.integer(bs),
+    val_bs = val_bs,
+    shuffle_train = shuffle_train,
+    device = device
+  )
+
+  do.call(text$TextDataLoaders$from_df, args)
+
+}
+
+
+#' @title from_folder
+#'
+#' @description Create from imagenet style dataset in `path` with `train` and `valid` subfolders (or provide `valid_pct`)
+#'
+#' @details
+#'
+#' @param cls cls
+#' @param path path
+#' @param train train
+#' @param valid valid
+#' @param valid_pct valid_pct
+#' @param seed seed
+#' @param vocab vocab
+#' @param text_vocab text_vocab
+#' @param is_lm is_lm
+#' @param tok_tfm tok_tfm
+#' @param seq_len seq_len
+#' @param backwards backwards
+#' @param bs bs
+#' @param val_bs val_bs
+#' @param shuffle_train shuffle_train
+#' @param device device
+#'
+#' @export
+TextDataLoaders_from_folder <- function(path, train = "train", valid = "valid",
+                        valid_pct = NULL, seed = NULL, vocab = NULL,
+                        text_vocab = NULL, is_lm = FALSE, tok_tfm = NULL,
+                        seq_len = 72, backwards = FALSE, bs = 64,
+                        val_bs = NULL, shuffle_train = TRUE, device = NULL) {
+
+  args <- list(
+    path = path,
+    train = train,
+    valid = valid,
+    valid_pct = valid_pct,
+    seed = seed,
+    vocab = vocab,
+    text_vocab = text_vocab,
+    is_lm = is_lm,
+    tok_tfm = tok_tfm,
+    seq_len = as.integer(seq_len),
+    backwards = backwards,
+    bs = as.integer(bs),
+    val_bs = val_bs,
+    shuffle_train = shuffle_train,
+    device = device
+  )
+
+  do.call(text$TextDataLoaders$from_folder, args)
+
+}
+
+
+#' @title from_csv
+#'
+#' @description Create from `csv` file in `path/csv_fname`
+#'
+#' @details
+#'
+#' @param cls cls
+#' @param path path
+#' @param csv_fname csv_fname
+#' @param header header
+#' @param delimiter delimiter
+#' @param valid_pct valid_pct
+#' @param seed seed
+#' @param text_col text_col
+#' @param label_col label_col
+#' @param label_delim label_delim
+#' @param y_block y_block
+#' @param text_vocab text_vocab
+#' @param is_lm is_lm
+#' @param valid_col valid_col
+#' @param tok_tfm tok_tfm
+#' @param seq_len seq_len
+#' @param backwards backwards
+#' @param bs bs
+#' @param val_bs val_bs
+#' @param shuffle_train shuffle_train
+#' @param device device
+#'
+#' @export
+from_csv <- function(path, csv_fname = "labels.csv",
+                     header = "infer", delimiter = NULL, valid_pct = 0.2,
+                     seed = NULL, text_col = 0, label_col = 1,
+                     label_delim = NULL, y_block = NULL, text_vocab = NULL,
+                     is_lm = FALSE, valid_col = NULL, tok_tfm = NULL, seq_len = 72,
+                     backwards = FALSE, bs = 64, val_bs = NULL,
+                     shuffle_train = TRUE, device = NULL) {
+
+  args <- list(
+    path = path,
+    csv_fname = csv_fname,
+    header = header,
+    delimiter = delimiter,
+    valid_pct = valid_pct,
+    seed = seed,
+    text_col = as.integer(text_col),
+    label_col = as.integer(label_col),
+    label_delim = label_delim,
+    y_block = y_block,
+    text_vocab = text_vocab,
+    is_lm = is_lm,
+    valid_col = valid_col,
+    tok_tfm = tok_tfm,
+    seq_len = seq_len,
+    backwards = backwards,
+    bs = as.integer(bs),
+    val_bs = val_bs,
+    shuffle_train = shuffle_train,
+    device = device
+  )
+
+  do.call(text$TextDataLoaders$from_csv, args)
+
+}
 
 
 
