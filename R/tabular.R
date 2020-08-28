@@ -70,32 +70,6 @@ TabularDataTable <- function(df, procs = NULL, cat_names = NULL, cont_names = NU
 
 }
 
-#' @title Dataloaders
-#'
-#' @description Get a `DataLoaders`
-#'
-#'
-#' @param object object
-#' @param bs bs
-#' @param val_bs val_bs
-#' @param shuffle_train shuffle_train
-#' @param n n
-#' @param ... parameters to pass
-#'
-#' @export
-dataloaders <- function(object, bs = 64, val_bs = NULL, shuffle_train = TRUE, n = NULL, ...) {
-
-  args <- list(
-    bs = as.integer(bs),
-    val_bs = val_bs,
-    shuffle_train = shuffle_train,
-    n = n,
-    ...
-  )
-
-  do.call(object$dataloaders, args)
-
-}
 
 #' @title Trainable_params
 #'

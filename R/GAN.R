@@ -129,51 +129,26 @@ IndexSplitter <- function(valid_idx) {
 #'
 #' @description Create a `DataLoaders` object from `source`
 #'
-#' @details
 #'
 #' @param source source
-#' @param path path
-#' @param verbose verbose
-#' @param bs bs
-#' @param shuffle shuffle
-#' @param num_workers num_workers
-#' @param do_setup do_setup
-#' @param pin_memory pin_memory
-#' @param timeout timeout
-#' @param batch_size batch_size
-#' @param drop_last drop_last
-#' @param indexed indexed
-#' @param n n
-#' @param device device
+#' @param ... additional parameters to pass
 #'
 #' @export
-dataloaders <- function(object, source, path = ".", verbose = FALSE, bs = 64,
-                        shuffle = FALSE, num_workers = NULL, do_setup = TRUE,
-                        pin_memory = FALSE, timeout = 0, batch_size = NULL,
-                        drop_last = FALSE, indexed = NULL, n = NULL, device = NULL) {
+dataloaders <- function(object, ...) {
 
-  args <- list(
+  my_list <- list(
     source = source,
-    path = path,
-    verbose = verbose,
-    bs = as.integer(bs),
-    shuffle = shuffle,
-    num_workers = num_workers,
-    do_setup = do_setup,
-    pin_memory = pin_memory,
-    timeout = as.integer(timeout),
-    batch_size = batch_size,
-    drop_last = drop_last,
-    indexed = indexed,
-    n = n,
-    device = device
+    ...
   )
-
-  if(!is.null(batch_size)) {
-    args$batch_size <- as.integer(args$batch_size)
+  for (i in 1:length(my_list)) {
+    if(names(my_list)[[i]]=='bs') {
+      my_list[['bs']] = as.integer(my_list[['bs']])
+    } else if (names(my_list)[[i]]=='batch_size') {
+      my_list[['batch_size']] = as.integer(my_list[['batch_size']])
+    }
   }
 
-  do.call(object$dataloaders,args)
+  do.call(object$dataloaders,my_list)
 }
 
 
