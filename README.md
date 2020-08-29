@@ -74,7 +74,6 @@ model %>% summary()
 ```
 
 ```
-epoch     train_loss  valid_loss  accuracy  time    
 TabularModel (Input shape: ['64 x 7', '64 x 3'])
 ================================================================
 Layer (type)         Output Shape         Param #    Trainable 
@@ -480,11 +479,51 @@ learn = language_model_learner(dbunch_lm, AWD_LSTM(), drop_mult=0.3, metrics = l
 learn %>% fit_one_cycle(1, 2e-2, moms=c(0.8,0.7,0.8))
 ```
 
-```
-
-```
 
 > Note: [AWD_LSTM() can throw an error](https://github.com/fastai/fastai/issues/1439). In this case find and clean .fastai folder.
 
+## Additional features
 
+Get optimal learning rate and then fit:
+
+```
+model %>% lr_find()
+
+# grab data
+data = model %>% lr_find_() 
+```
+
+```
+         lr_rates   losses
+1 0.0000001000000 5.349157
+2 0.0000001202264 5.231493
+3 0.0000001445440 5.087494
+4 0.0000001737801 5.068282
+5 0.0000002089296 5.043181
+6 0.0000002511886 5.023340
+```
+
+Visualize:
+
+```
+highcharter::hchart(data, "line", highcharter::hcaes(y = losses, x = lr_rates ))
+```
+
+<p align="center">
+<img src="files/lr.png" geight=500 align=center alt="Learning_rates"/>
+</p>
+
+Visualize tensor(s):
+
+```
+# get batch
+batch = dls %>% one_batch()
+
+# visualize img 9 with transformations
+magick::image_read(batch[[1]][[9]])
+```
+
+<p align="center">
+<img src="files/cat.png" geight=500 align=center alt="Batch"/>
+</p>
 
