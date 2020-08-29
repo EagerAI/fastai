@@ -145,6 +145,8 @@ dataloaders <- function(object, ...) {
       my_list[['bs']] = as.integer(my_list[['bs']])
     } else if (names(my_list)[[i]]=='batch_size') {
       my_list[['batch_size']] = as.integer(my_list[['batch_size']])
+    } else if (names(my_list)[[i]]=='seq_len') {
+      my_list[['seq_len']] = as.integer(my_list[['seq_len']])
     }
   }
 
