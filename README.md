@@ -445,7 +445,44 @@ highcharter::hchart(princomp(movie_w, cor = TRUE)) %>% highcharter::hc_legend(en
 
 <img src="files/pca.png" geight=500 align=center alt="PCA"/>
 
+## Text data
 
+Grab data:
+
+```
+URLs_IMDB()
+```
+
+Specify path and small batch_size because it consumes a lot of GPU:
+
+```
+path = 'imdb'
+bs=20
+```
+
+Create datablock and iterator:
+
+```
+imdb_lm = DataBlock(blocks=list(TextBlock_from_folder(path, is_lm=T)),
+                    get_items=pryr::partial(get_text_files(), folders=c('train', 'test', 'unsup')),
+                    splitter=RandomSplitter(0.1))
+
+dbunch_lm = imdb_lm %>% dataloaders(source=path, path=path, bs=bs, seq_len=80)
+```
+
+Load a pretrained model and fit:
+
+```
+learn = language_model_learner(dbunch_lm, AWD_LSTM(), drop_mult=0.3, metrics = list(accuracy, Perplexity()))
+
+learn %>% fit_one_cycle(1, 2e-2, moms=c(0.8,0.7,0.8))
+```
+
+```
+
+```
+
+> Note: [AWD_LSTM() can throw an error](https://github.com/fastai/fastai/issues/1439). In this case find and clean .fastai folder.
 
 
 
