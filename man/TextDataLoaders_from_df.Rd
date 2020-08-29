@@ -5,7 +5,6 @@
 \title{from_df}
 \usage{
 TextDataLoaders_from_df(
-  cls,
   df,
   path = ".",
   valid_pct = 0.2,
@@ -27,8 +26,6 @@ TextDataLoaders_from_df(
 )
 }
 \arguments{
-\item{cls}{cls}
-
 \item{df}{df}
 
 \item{path}{path}
@@ -67,7 +64,5 @@ TextDataLoaders_from_df(
 }
 \description{
 Create from `df` in `path` with `valid_pct`
-}
-\details{
-
+'
 }
