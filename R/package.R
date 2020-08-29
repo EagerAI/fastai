@@ -29,6 +29,9 @@ text<-NULL
 
   nn <<- fastai2$torch_core$nn
 
+  # Module
+  Module <<- fastai2$vision$all$Module
+
 }
 
 

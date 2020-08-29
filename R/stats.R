@@ -95,6 +95,24 @@ lr_find <- function(object, start_lr = 1e-07, end_lr = 10, num_it = 100,
 
 }
 
+#' @title lr_find
+#'
+#' @description Launch a mock training to find a good learning rate, return lr_min, lr_steep if `suggestions` is TRUE
+#'
+#' @param object learner
+#'
+#' @export
+lr_find_ <- function(object) {
+
+  losses = object$recorder$losses
+  losses = unlist(lapply(1:length(losses),function(x) losses[[x]]$numpy()))
+  lrs = object$recorder$lrs
+
+  data.frame(lr_rates = lrs,
+             losses = losses)
+
+}
+
 
 #' @title Accuracy
 #'
@@ -133,8 +151,18 @@ Perplexity <- function(...) {
 }
 
 
-
-
+#' @title One batch
+#'
+#' @param object dataloader
+#'
+#' @export
+one_batch <- function(object) {
+  obj = object$one_batch()
+  bs = object$bs - 1
+  obj[[1]] = lapply(0:bs, function(x) aperm(obj[[1]][[x]]$cpu()$numpy(), c(2,3,1)))
+  indices = obj[[2]]$cpu()$numpy()
+  list(obj[[1]],indices)
+}
 
 
 
