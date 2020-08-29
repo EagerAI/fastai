@@ -505,9 +505,41 @@ SentencePieceTokenizer <- function(lang = "en", special_toks = NULL,
 }
 
 
+#' @title fa_collate
+#'
+#'
+#' @param t t
+#'
+#' @export
+fa_collate <- function(t) {
 
+  if(missing(t)) {
+    text$fa_collate
+  } else {
+    text$fa_collate(
+      t = t
+    )
+  }
 
+}
 
+#' @title fa_convert
+#'
+#'
+#' @param t t
+#'
+#' @export
+fa_convert <- function(t) {
+
+  if(missing(t)) {
+    text$fa_convert
+  } else {
+    text$fa_convert(
+      t = t
+    )
+  }
+
+}
 
 
 

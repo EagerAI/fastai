@@ -496,10 +496,7 @@ ColSplitter <- function(col = "is_valid") {
 #' @title from_df
 #'
 #' @description Create from `df` in `path` with `valid_pct`
-#'
-#' @details
-#'
-#' @param cls cls
+#''
 #' @param df df
 #' @param path path
 #' @param valid_pct valid_pct
@@ -520,7 +517,7 @@ ColSplitter <- function(col = "is_valid") {
 #' @param device device
 #'
 #' @export
-TextDataLoaders_from_df <- function(cls, df, path = ".", valid_pct = 0.2, seed = NULL,
+TextDataLoaders_from_df <- function(df, path = ".", valid_pct = 0.2, seed = NULL,
                     text_col = 0, label_col = 1, label_delim = NULL,
                     y_block = NULL, text_vocab = NULL, is_lm = FALSE,
                     valid_col = NULL, tok_tfm = NULL, seq_len = 72,
@@ -528,13 +525,12 @@ TextDataLoaders_from_df <- function(cls, df, path = ".", valid_pct = 0.2, seed =
                     shuffle_train = TRUE, device = NULL) {
 
   args <- list(
-    cls = cls,
     df = df,
     path = path,
     valid_pct = valid_pct,
     seed = seed,
-    text_col = as.integer(text_col),
-    label_col = as.integer(label_col),
+    text_col = text_col,
+    label_col = label_col,
     label_delim = label_delim,
     y_block = y_block,
     text_vocab = text_vocab,
@@ -548,6 +544,11 @@ TextDataLoaders_from_df <- function(cls, df, path = ".", valid_pct = 0.2, seed =
     shuffle_train = shuffle_train,
     device = device
   )
+
+  if(is.numeric(text_col))
+    args$text_col <- as.integer(args$text_col)
+  if(is.numeric(label_col))
+    args$label_col <- as.integer(args$label_col)
 
   do.call(text$TextDataLoaders$from_df, args)
 
@@ -670,6 +671,27 @@ from_csv <- function(path, csv_fname = "labels.csv",
   do.call(text$TextDataLoaders$from_csv, args)
 
 }
+
+
+
+#' @title RandomSplitter
+#'
+#' @description Create function that splits `items` between train/val with `valid_pct` randomly.
+#'
+#'
+#' @param valid_pct valid_pct
+#' @param seed seed
+#'
+#' @export
+RandomSplitter <- function(valid_pct = 0.2, seed = NULL) {
+
+  text$RandomSplitter(
+    valid_pct = valid_pct,
+    seed = seed
+  )
+
+}
+
 
 
 

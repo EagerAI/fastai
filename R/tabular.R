@@ -1,29 +1,5 @@
 
-#' @title Accuracy
-#'
-#' @description Compute accuracy with `targ` when `pred` is bs * n_classes
-#'
-#'
-#' @param inp inp
-#' @param targ targ
-#' @param axis axis
-#'
-#' @export
-accuracy <- function(inp, targ, axis = -1) {
 
-  if(missing(inp) && missing(targ)){
-    tabular$accuracy
-  } else {
-    args <- list(inp = inp,
-                 targ = targ,
-                 axis = as.integer(axis)
-    )
-    do.call(tabular$accuracy,args)
-  }
-
-}
-
-attr(accuracy,"py_function_name") <- "accuracy"
 
 
 
