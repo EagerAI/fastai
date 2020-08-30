@@ -153,15 +153,21 @@ Perplexity <- function(...) {
 
 #' @title One batch
 #'
+#' @param convert to R matrix
 #' @param object dataloader
 #'
 #' @export
-one_batch <- function(object) {
+one_batch <- function(object, convert = TRUE) {
   obj = object$one_batch()
-  bs = object$bs - 1
-  obj[[1]] = lapply(0:bs, function(x) aperm(obj[[1]][[x]]$cpu()$numpy(), c(2,3,1)))
-  indices = obj[[2]]$cpu()$numpy()
-  list(obj[[1]],indices)
+
+  if(convert) {
+    bs = object$bs - 1
+    obj[[1]] = lapply(0:bs, function(x) aperm(obj[[1]][[x]]$cpu()$numpy(), c(2,3,1)))
+    indices = obj[[2]]$cpu()$numpy()
+    list(obj[[1]],indices)
+  } else {
+    obj
+  }
 }
 
 
