@@ -482,6 +482,31 @@ learn %>% fit_one_cycle(1, 2e-2, moms=c(0.8,0.7,0.8))
 
 > Note: [AWD_LSTM() can throw an error](https://github.com/fastai/fastai/issues/1439). In this case find and clean .fastai folder.
 
+## Medical data
+
+[Import dicom data](https://www.kaggle.com/c/rsna-intracranial-hemorrhage-detection/overview):
+
+```
+img = dcmread('hemorrhage.dcm')
+```
+
+Visualize data with different [window effects](https://radiopaedia.org/articles/windowing-ct):
+
+```
+types = c('raw', 'normalized','brain','subdural')
+p_ = list()
+for ( i in 1:length(types)) {
+  p = nandb::matrix_raster_plot(img %>% get_dcm_matrix(type = types[i]))
+  p_[[i]] = p
+}
+
+ggpubr::ggarrange(p_[[1]],p_[[2]],p_[[3]],p_[[4]], labels = types)
+```
+
+<p align="center">
+<img src="files/dcm.png" geight=500 align=center alt="dicom"/>
+</p>
+
 ## Additional features
 
 Get optimal learning rate and then fit:
