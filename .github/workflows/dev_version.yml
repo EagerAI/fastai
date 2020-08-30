@@ -43,6 +43,7 @@ jobs:
         run: |
           Rscript -e "reticulate::py_install(c('setuptools', 'wheel', 'requests', 'IPython'), pip = TRUE)"
           Rscript -e "reticulate::py_install('fastai',pip = TRUE)"
+          Rscript -e "reticulate::py_install('pydicom kornia opencv-python scikit-image',pip = TRUE)"
           Rscript -e "remotes::install_local()"
       - name: Check
         continue-on-error: ${{ matrix.config.allow_failure }}

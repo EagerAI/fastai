@@ -5,6 +5,8 @@ fastai<-NULL
 tabular<-NULL
 vision<-NULL
 text<-NULL
+Module<-NULL
+medical<-NULL
 
 .onLoad <- function(libname, pkgname) {
 
@@ -31,6 +33,9 @@ text<-NULL
 
   # Module
   Module <<- fastai2$vision$all$Module
+
+  # Medical
+  medical <<- fastai2$medical$imaging
 
 }
 
