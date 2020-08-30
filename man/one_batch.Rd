@@ -4,10 +4,12 @@
 \alias{one_batch}
 \title{One batch}
 \usage{
-one_batch(object)
+one_batch(object, convert = TRUE)
 }
 \arguments{
 \item{object}{dataloader}
+
+\item{convert}{to R matrix}
 }
 \description{
 One batch
