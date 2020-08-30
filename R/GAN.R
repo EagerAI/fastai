@@ -392,7 +392,25 @@ GANDiscriminativeLR <- function(mult_lr = 5.0) {
 
 }
 
+#' @title MaskBlock
+#'
+#' @description A `TransformBlock` for segmentation masks, potentially with `codes`
+#'
+#'
+#' @param codes codes
+#'
+#' @export
+MaskBlock <- function(codes = NULL) {
 
+  if(is.null(codes)) {
+    vision$all$MaskBlock
+  } else {
+    vision$all$MaskBlock(
+      codes = codes
+    )
+  }
+
+}
 
 
 
