@@ -1,9 +1,10 @@
-#' @title Cnn_learner
+#' @title CNNlearner
 #'
 #' @description Build a convnet style learner from `dls` and `arch`
 #'
 #'
-#' @param dls dls
+#' @param dls dataloader object
+#'
 #' @param arch arch
 #' @param loss_func loss_func
 #' @param pretrained pretrained
