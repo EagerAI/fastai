@@ -27,5 +27,6 @@ Imports:
 Suggests:
     knitr,
     testthat,
-    rmarkdown
+    rmarkdown,
+    curl
 VignetteBuilder: knitr
