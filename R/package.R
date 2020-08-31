@@ -1,7 +1,7 @@
 
 
 nn <- NULL
-fastai<-NULL
+fastai2<-NULL
 tabular<-NULL
 vision<-NULL
 text<-NULL
@@ -15,27 +15,28 @@ medical<-NULL
     environment = "r-fastai"
   ))
 
-  # tabular module
-  tabular <<- fastai2$tabular$all
+  if(reticulate::py_module_available('fastai')) {
+    # tabular module
+    tabular <<- fastai2$tabular$all
 
-  # vision module
-  vision <<- fastai2$vision
+    # vision module
+    vision <<- fastai2$vision
 
-  # collab module
-  collab <<- fastai2$collab
+    # collab module
+    collab <<- fastai2$collab
 
-  # text module
-  text <<- fastai2$text$all
+    # text module
+    text <<- fastai2$text$all
 
-  # Torch module
+    # Torch module
+    nn <<- fastai2$torch_core$nn
 
-  nn <<- fastai2$torch_core$nn
+    # Module
+    Module <<- fastai2$vision$all$Module
 
-  # Module
-  Module <<- fastai2$vision$all$Module
-
-  # Medical
-  medical <<- fastai2$medical$imaging
+    # Medical
+    medical <<- fastai2$medical$imaging
+  }
 
 }
 
