@@ -5,8 +5,8 @@
 #' @description A `LearnerCallback` that saves history of metrics while training `learn` into CSV `filename`.
 #'
 #'
-#' @param learn learn
-#' @param filename filename
+#' @param learn the model object
+#' @param filename the name of the file
 #' @param append append
 #'
 #' @export
