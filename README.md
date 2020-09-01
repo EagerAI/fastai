@@ -32,7 +32,7 @@ devtools::install_github('henry090/fastai')
 Later, you need to install the python module fastai:
 
 ```
-reticulate::py_install('fastai',pip = TRUE)
+install_fastai(version = '2.0.0', gpu = FALSE, cuda_version = '10.1', overwrite = FALSE)
 ```
 
 ## Tabular data
