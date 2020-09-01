@@ -175,7 +175,12 @@ one_batch <- function(object, convert = TRUE) {
 
 }
 
-
+#' @title Summary
+#' @param object model
+#' @export
+summary.fastai.learner.Learner <- function(object) {
+  object$summary()
+}
 
 
 
