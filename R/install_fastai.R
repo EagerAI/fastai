@@ -5,7 +5,6 @@
 #' @param gpu installation of gpu
 #' @param cuda_version if gpu true, then cuda version is required. By default it is 10.1
 #' @param overwrite will install all the dependencies
-#' @importFrom reticulate py_config condaenv_exists
 #' @export
 install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrite = FALSE) {
   invisible(py_config())
