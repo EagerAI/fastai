@@ -4,7 +4,7 @@
 \alias{get_dcm_matrix}
 \title{Get image matrix}
 \usage{
-get_dcm_matrix(img, type = "raw")
+get_dcm_matrix(img, type = "raw", scan = "", size = 50, convert = TRUE)
 }
 \arguments{
 \item{img}{dicom file}
