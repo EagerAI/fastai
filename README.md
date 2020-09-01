@@ -539,7 +539,7 @@ for ( i in 1:length(types)) {
     p = nandb::matrix_raster_plot(img %>% get_dcm_matrix(type = types[i],
                                                          scan = scan),
                                                          colours = colors[[i]])
-    p + ylim(c(res[[1]][[1]],res[[2]][[1]])) + xlim(c(res[[1]][[2]],res[[2]][[2]]))
+    p = p + ylim(c(res[[1]][[1]],res[[2]][[1]])) + xlim(c(res[[1]][[2]],res[[2]][[2]]))
 
   # zoom image (25 %)
   } else if (i==4) {
