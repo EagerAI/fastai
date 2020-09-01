@@ -5,10 +5,10 @@
 #' @param gpu installation of gpu
 #' @param cuda_version if gpu true, then cuda version is required. By default it is 10.1
 #' @param overwrite will install all the dependencies
-#' @importFrom reticulate py_config condaenv_exists
+#' @importFrom reticulate py_install
 #' @export
 install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrite = FALSE) {
-  invisible(py_config())
+  invisible(reticulate::py_config())
 
   required_py_pkgs <- c('IPython', 'torch', 'torchvision', 'fastai',
                        'pydicom', 'kornia', 'cv2',
@@ -54,7 +54,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
 
   if (!length(required_py_pkgs) == 0) {
 
-    if(reticulate:::condaenv_exists()) {
+    if(!reticulate::virtualenv_list() == 0) {
 
       if (os %in% 'linux' & !length(required_py_pkgs) == 0) {
         if(os %in% 'linux' & gpu & cuda_version %in% '9.2') {
