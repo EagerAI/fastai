@@ -65,7 +65,7 @@ unet_config <- function(blur = FALSE, blur_final = TRUE, self_attention = FALSE,
 #' @export
 unet_learner <- function(dls, arch, loss_func = NULL, pretrained = TRUE,
                          cut = NULL, splitter = NULL, config = NULL, n_in = 3,
-                         n_out = NULL, normalize = TRUE, opt_func = Adam, lr = 0.001,
+                         n_out = NULL, normalize = TRUE, opt_func = Adam(), lr = 0.001,
                          cbs = NULL, metrics = NULL, path = NULL, model_dir = "models",
                          wd = NULL, wd_bn_bias = FALSE, train_bn = TRUE,
                          moms = list(0.95, 0.85, 0.95)) {

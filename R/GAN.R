@@ -25,6 +25,10 @@ DataBlock <- function(blocks = NULL, dl_type = NULL, getters = NULL,
     ...
   )
 
+  if(!is.null(args$batch_tfms)) {
+    args$batch_tfms <- unlist(args$batch_tfms)
+  }
+
   do.call(vision$gan$DataBlock, args)
 
 }
@@ -121,6 +125,27 @@ IndexSplitter <- function(valid_idx) {
     do.call(vision$gan$IndexSplitter,args)
   }
 
+
+}
+
+
+#' @title FileSplitter
+#'
+#' @description Split `items` by providing file `fname` (contains names of valid items separated by newline).
+#'
+#'
+#' @param fname fname
+#'
+#' @export
+FileSplitter <- function(fname) {
+
+  if(missing(fname)) {
+    vision$all$FileSplitter
+  } else {
+    vision$all$FileSplitter(
+      fname = fname
+    )
+  }
 
 }
 

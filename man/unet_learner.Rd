@@ -15,7 +15,7 @@ unet_learner(
   n_in = 3,
   n_out = NULL,
   normalize = TRUE,
-  opt_func = Adam,
+  opt_func = Adam(),
   lr = 0.001,
   cbs = NULL,
   metrics = NULL,
