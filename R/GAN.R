@@ -140,9 +140,9 @@ IndexSplitter <- function(valid_idx) {
 FileSplitter <- function(fname) {
 
   if(missing(fname)) {
-    vision$all$FileSplitter
+    vision$gan$FileSplitter
   } else {
-    vision$all$FileSplitter(
+    vision$gan$FileSplitter(
       fname = fname
     )
   }
