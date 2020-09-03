@@ -3,15 +3,15 @@
 #' @description Create a `DataLoaders` suitable for collaborative filtering from `ratings`.
 #'
 #' @param ratings ratings
-#' @param valid_pct valid_pct
-#' @param user_name user_name
-#' @param item_name item_name
-#' @param rating_name rating_name
+#' @param valid_pct The random percentage of the dataset to set aside for validation (with an optional seed)
+#' @param user_name The name of the column containing the user (defaults to the first column)
+#' @param item_name The name of the column containing the item (defaults to the second column)
+#' @param rating_name The name of the column containing the rating (defaults to the third column)
 #' @param seed seed
-#' @param path path
-#' @param bs bs
-#' @param val_bs val_bs
-#' @param shuffle_train shuffle_train
+#' @param path The folder where to work
+#' @param bs The batch size
+#' @param val_bs The batch size for the validation DataLoader (defaults to bs)
+#' @param shuffle_train If we shuffle the training DataLoader or not
 #' @param device device
 #'
 #' @export
@@ -53,10 +53,10 @@ CollabDataLoaders_from_df <- function(ratings, valid_pct = 0.2, user_name = NULL
 #'
 #' @param dblock dblock
 #' @param source source
-#' @param path path
-#' @param bs bs
-#' @param val_bs val_bs
-#' @param shuffle_train shuffle_train
+#' @param path The folder where to work
+#' @param bs The batch size
+#' @param val_bs The batch size for the validation DataLoader (defaults to bs)
+#' @param shuffle_train If we shuffle the training DataLoader or not
 #' @param device device
 #'
 #' @export
@@ -90,24 +90,24 @@ CollabDataLoaders_from_dblock <- function(dblock, source, path = ".", bs = 64,
 #'
 #'
 #' @param dls dls
-#' @param n_factors n_factors
+#' @param n_factors The number of factors
 #' @param use_nn use_nn
 #' @param emb_szs emb_szs
 #' @param layers layers
 #' @param config config
 #' @param y_range y_range
-#' @param loss_func loss_func
-#' @param opt_func opt_func
+#' @param loss_func It can be any loss function you like. It needs to be one of fastai's if you want to use Learn.predict or Learn.get_preds, or you will have to implement special methods (see more details after the BaseLoss documentation).
+#' @param opt_func The function used to create the optimizer
 #' @param lr lr
-#' @param splitter splitter
-#' @param cbs cbs
-#' @param metrics metrics
-#' @param path path
-#' @param model_dir model_dir
-#' @param wd wd
-#' @param wd_bn_bias wd_bn_bias
-#' @param train_bn train_bn
-#' @param moms moms
+#' @param splitter It is a function that takes self.model and returns a list of parameter groups (or just one parameter group if there are no different parameter groups).
+#' @param cbs Cbs is one or a list of Callbacks to pass to the Learner.
+#' @param metrics It is an optional list of metrics, that can be either functions or Metrics.
+#' @param path The folder where to work
+#' @param model_dir Path and model_dir are used to save and/or load models.
+#' @param wd It is the default weight decay used when training the model.
+#' @param wd_bn_bias It controls if weight decay is applied to BatchNorm layers and bias.
+#' @param train_bn It controls if BatchNorm layers are trained even when they are supposed to be frozen according to the splitter.
+#' @param moms The default momentums used in Learner.fit_one_cycle.
 #'
 #' @export
 collab_learner <- function(dls, n_factors = 50, use_nn = FALSE,

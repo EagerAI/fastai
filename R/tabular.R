@@ -8,17 +8,17 @@
 #' @description A `Tabular` object with transforms
 #'
 #'
-#' @param df df
+#' @param df A DataFrame of your data
 #' @param procs procs
-#' @param cat_names cat_names
-#' @param cont_names cont_names
-#' @param y_names y_names
-#' @param y_block y_block
-#' @param splits splits
-#' @param do_setup do_setup
-#' @param device device
-#' @param inplace inplace
-#' @param reduce_memory reduce_memory
+#' @param cat_names the names of the categorical variables
+#' @param cont_names the names of the continuous variables
+#' @param y_names the names of the dependent variables
+#' @param y_block the TransformBlock to use for the target
+#' @param splits How to split your data
+#' @param do_setup A parameter for if Tabular will run the data through the procs upon initialization
+#' @param device cuda or cpu
+#' @param inplace If True, Tabular will not keep a separate copy of your original DataFrame in memory
+#' @param reduce_memory fastai will attempt to reduce the overall memory usage
 #'
 #' @export
 TabularDataTable <- function(df, procs = NULL, cat_names = NULL, cont_names = NULL,
@@ -72,24 +72,24 @@ trainable_params <- function(m) {
 #' @description Get a `Learner` using `dls`, with `metrics`, including a `TabularModel` created using the remaining params.
 #'
 #'
-#' @param dls dls
+#' @param dls It is a DataLoaders object.
 #' @param layers layers
 #' @param emb_szs emb_szs
 #' @param config config
 #' @param n_out n_out
 #' @param y_range y_range
-#' @param loss_func loss_func
-#' @param opt_func opt_func
-#' @param lr lr
-#' @param splitter splitter
-#' @param cbs cbs
-#' @param metrics metrics
-#' @param path path
-#' @param model_dir model_dir
-#' @param wd wd
-#' @param wd_bn_bias wd_bn_bias
-#' @param train_bn train_bn
-#' @param moms moms
+#' @param loss_func It can be any loss function you like.
+#' @param opt_func It will be used to create an optimizer when Learner.fit is called.
+#' @param lr It is learning rate.
+#' @param splitter It is a function that takes self.model and returns a list of parameter groups (or just one parameter group if there are no different parameter groups)
+#' @param cbs It is one or a list of Callbacks to pass to the Learner.
+#' @param metrics It is an optional list of metrics, that can be either functions or Metrics.
+#' @param path İt is used to save and/or load models.Often path will be inferred from dls, but you can override it or pass a Path object to model_dir. Make sure you can write in path/model_dir!
+#' @param model_dir İt is used to save and/or load models.Often path will be inferred from dls, but you can override it or pass a Path object to model_dir. Make sure you can write in path/model_dir!
+#' @param wd It is the default weight decay used when training the model.
+#' @param wd_bn_bias It controls if weight decay is applied to BatchNorm layers and bias.
+#' @param train_bn It controls if BatchNorm layers are trained even when they are supposed to be frozen according to the splitter.
+#' @param moms The default momentums used in Learner.fit_one_cycle.
 #'
 #' @export
 tabular_learner <- function(dls, layers = NULL, emb_szs = NULL, config = NULL,

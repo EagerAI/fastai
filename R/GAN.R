@@ -6,9 +6,9 @@
 #' @param blocks blocks
 #' @param dl_type dl_type
 #' @param getters getters
-#' @param n_inp n_inp
-#' @param item_tfms item_tfms
-#' @param batch_tfms batch_tfms
+#' @param n_inp Is the number of elements in the tuples that should be considered part of the input and will default to 1
+#' @param item_tfms One or several transforms applied to the items before batching them
+#' @param batch_tfms One or several transforms applied to the batches once they are formed
 #'
 #' @export
 DataBlock <- function(blocks = NULL, dl_type = NULL, getters = NULL,
@@ -42,7 +42,7 @@ DataBlock <- function(blocks = NULL, dl_type = NULL, getters = NULL,
 #'
 #' @param type_tfms type_tfms
 #' @param item_tfms item_tfms
-#' @param batch_tfms batch_tfms
+#' @param batch_tfms one or several transforms applied to the batches once they are formed
 #' @param dl_type dl_type
 #' @param dls_kwargs dls_kwargs
 #'
@@ -111,7 +111,7 @@ generate_noise <- function(fn, size = 100) {
 #' @description Split `items` so that `val_idx` are in the validation set and the others in the training set
 #'
 #'
-#' @param valid_idx valid_idx
+#' @param valid_idx The indices to use for the validation set (defaults to a random split otherwise)
 #'
 #' @export
 IndexSplitter <- function(valid_idx) {
@@ -187,8 +187,8 @@ dataloaders <- function(object, ...) {
 #' @param out_size out_size
 #' @param n_channels n_channels
 #' @param in_sz in_sz
-#' @param n_features n_features
-#' @param n_extra_layers n_extra_layers
+#' @param n_features The number of features
+#' @param n_extra_layers The number of extra layers
 #' @param ... additional params to pass
 #' @param bias bias
 #' @param ndim ndim
@@ -241,9 +241,9 @@ basic_generator <- function(out_size, n_channels, in_sz = 100,
 #'
 #'
 #' @param in_size in_size
-#' @param n_channels n_channels
-#' @param n_features n_features
-#' @param n_extra_layers n_extra_layers
+#' @param n_channels The number of channels
+#' @param n_features The number of features
+#' @param n_extra_layers The number of extra layers
 #' @param norm_type norm_type
 #' @param bias bias
 #' @param ndim ndim
@@ -254,7 +254,7 @@ basic_generator <- function(out_size, n_channels, in_sz = 100,
 #' @param bias_std bias_std
 #' @param dilation dilation
 #' @param groups groups
-#' @param padding_mode padding_mode
+#' @param padding_mode Mode of padding
 #' @param ... additional parameters to pass
 #'
 #' @export
