@@ -21,23 +21,23 @@ CollabDataLoaders_from_df(
 \arguments{
 \item{ratings}{ratings}
 
-\item{valid_pct}{valid_pct}
+\item{valid_pct}{The random percentage of the dataset to set aside for validation (with an optional seed)}
 
-\item{user_name}{user_name}
+\item{user_name}{The name of the column containing the user (defaults to the first column)}
 
-\item{item_name}{item_name}
+\item{item_name}{The name of the column containing the item (defaults to the second column)}
 
-\item{rating_name}{rating_name}
+\item{rating_name}{The name of the column containing the rating (defaults to the third column)}
 
 \item{seed}{seed}
 
-\item{path}{path}
+\item{path}{The folder where to work}
 
-\item{bs}{bs}
+\item{bs}{The batch size}
 
-\item{val_bs}{val_bs}
+\item{val_bs}{The batch size for the validation DataLoader (defaults to bs)}
 
-\item{shuffle_train}{shuffle_train}
+\item{shuffle_train}{If we shuffle the training DataLoader or not}
 
 \item{device}{device}
 }

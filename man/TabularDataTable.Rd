@@ -19,27 +19,27 @@ TabularDataTable(
 )
 }
 \arguments{
-\item{df}{df}
+\item{df}{A DataFrame of your data}
 
 \item{procs}{procs}
 
-\item{cat_names}{cat_names}
+\item{cat_names}{the names of the categorical variables}
 
-\item{cont_names}{cont_names}
+\item{cont_names}{the names of the continuous variables}
 
-\item{y_names}{y_names}
+\item{y_names}{the names of the dependent variables}
 
-\item{y_block}{y_block}
+\item{y_block}{the TransformBlock to use for the target}
 
-\item{splits}{splits}
+\item{splits}{How to split your data}
 
-\item{do_setup}{do_setup}
+\item{do_setup}{A parameter for if Tabular will run the data through the procs upon initialization}
 
-\item{device}{device}
+\item{device}{cuda or cpu}
 
-\item{inplace}{inplace}
+\item{inplace}{If True, Tabular will not keep a separate copy of your original DataFrame in memory}
 
-\item{reduce_memory}{reduce_memory}
+\item{reduce_memory}{fastai will attempt to reduce the overall memory usage}
 }
 \description{
 A `Tabular` object with transforms

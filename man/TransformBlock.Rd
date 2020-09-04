@@ -17,7 +17,7 @@ TransformBlock(
 
 \item{item_tfms}{item_tfms}
 
-\item{batch_tfms}{batch_tfms}
+\item{batch_tfms}{one or several transforms applied to the batches once they are formed}
 
 \item{dl_type}{dl_type}
 

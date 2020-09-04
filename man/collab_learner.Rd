@@ -29,7 +29,7 @@ collab_learner(
 \arguments{
 \item{dls}{dls}
 
-\item{n_factors}{n_factors}
+\item{n_factors}{The number of factors}
 
 \item{use_nn}{use_nn}
 
@@ -41,29 +41,29 @@ collab_learner(
 
 \item{y_range}{y_range}
 
-\item{loss_func}{loss_func}
+\item{loss_func}{It can be any loss function you like. It needs to be one of fastai's if you want to use Learn.predict or Learn.get_preds, or you will have to implement special methods (see more details after the BaseLoss documentation).}
 
-\item{opt_func}{opt_func}
+\item{opt_func}{The function used to create the optimizer}
 
 \item{lr}{lr}
 
-\item{splitter}{splitter}
+\item{splitter}{It is a function that takes self.model and returns a list of parameter groups (or just one parameter group if there are no different parameter groups).}
 
-\item{cbs}{cbs}
+\item{cbs}{Cbs is one or a list of Callbacks to pass to the Learner.}
 
-\item{metrics}{metrics}
+\item{metrics}{It is an optional list of metrics, that can be either functions or Metrics.}
 
-\item{path}{path}
+\item{path}{The folder where to work}
 
-\item{model_dir}{model_dir}
+\item{model_dir}{Path and model_dir are used to save and/or load models.}
 
-\item{wd}{wd}
+\item{wd}{It is the default weight decay used when training the model.}
 
-\item{wd_bn_bias}{wd_bn_bias}
+\item{wd_bn_bias}{It controls if weight decay is applied to BatchNorm layers and bias.}
 
-\item{train_bn}{train_bn}
+\item{train_bn}{It controls if BatchNorm layers are trained even when they are supposed to be frozen according to the splitter.}
 
-\item{moms}{moms}
+\item{moms}{The default momentums used in Learner.fit_one_cycle.}
 }
 \description{
 Create a Learner for collaborative filtering on `dls`.

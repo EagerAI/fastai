@@ -21,11 +21,11 @@ DataBlock(
 
 \item{getters}{getters}
 
-\item{n_inp}{n_inp}
+\item{n_inp}{Is the number of elements in the tuples that should be considered part of the input and will default to 1}
 
-\item{item_tfms}{item_tfms}
+\item{item_tfms}{One or several transforms applied to the items before batching them}
 
-\item{batch_tfms}{batch_tfms}
+\item{batch_tfms}{One or several transforms applied to the batches once they are formed}
 }
 \description{
 Generic container to quickly build `Datasets` and `DataLoaders`

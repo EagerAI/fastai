@@ -26,11 +26,11 @@ basic_critic(
 \arguments{
 \item{in_size}{in_size}
 
-\item{n_channels}{n_channels}
+\item{n_channels}{The number of channels}
 
-\item{n_features}{n_features}
+\item{n_features}{The number of features}
 
-\item{n_extra_layers}{n_extra_layers}
+\item{n_extra_layers}{The number of extra layers}
 
 \item{norm_type}{norm_type}
 
@@ -52,7 +52,7 @@ basic_critic(
 
 \item{groups}{groups}
 
-\item{padding_mode}{padding_mode}
+\item{padding_mode}{Mode of padding}
 
 \item{...}{additional parameters to pass}
 }

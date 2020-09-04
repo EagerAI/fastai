@@ -30,9 +30,9 @@ basic_generator(
 
 \item{in_sz}{in_sz}
 
-\item{n_features}{n_features}
+\item{n_features}{The number of features}
 
-\item{n_extra_layers}{n_extra_layers}
+\item{n_extra_layers}{The number of extra layers}
 
 \item{bias}{bias}
 
