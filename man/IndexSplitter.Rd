@@ -7,7 +7,7 @@
 IndexSplitter(valid_idx)
 }
 \arguments{
-\item{valid_idx}{valid_idx}
+\item{valid_idx}{The indices to use for the validation set (defaults to a random split otherwise)}
 }
 \description{
 Split `items` so that `val_idx` are in the validation set and the others in the training set

@@ -26,7 +26,7 @@ tabular_learner(
 )
 }
 \arguments{
-\item{dls}{dls}
+\item{dls}{It is a DataLoaders object.}
 
 \item{layers}{layers}
 
@@ -38,29 +38,29 @@ tabular_learner(
 
 \item{y_range}{y_range}
 
-\item{loss_func}{loss_func}
+\item{loss_func}{It can be any loss function you like.}
 
-\item{opt_func}{opt_func}
+\item{opt_func}{It will be used to create an optimizer when Learner.fit is called.}
 
-\item{lr}{lr}
+\item{lr}{It is learning rate.}
 
-\item{splitter}{splitter}
+\item{splitter}{It is a function that takes self.model and returns a list of parameter groups (or just one parameter group if there are no different parameter groups)}
 
-\item{cbs}{cbs}
+\item{cbs}{It is one or a list of Callbacks to pass to the Learner.}
 
-\item{metrics}{metrics}
+\item{metrics}{It is an optional list of metrics, that can be either functions or Metrics.}
 
-\item{path}{path}
+\item{path}{İt is used to save and/or load models.Often path will be inferred from dls, but you can override it or pass a Path object to model_dir. Make sure you can write in path/model_dir!}
 
-\item{model_dir}{model_dir}
+\item{model_dir}{İt is used to save and/or load models.Often path will be inferred from dls, but you can override it or pass a Path object to model_dir. Make sure you can write in path/model_dir!}
 
-\item{wd}{wd}
+\item{wd}{It is the default weight decay used when training the model.}
 
-\item{wd_bn_bias}{wd_bn_bias}
+\item{wd_bn_bias}{It controls if weight decay is applied to BatchNorm layers and bias.}
 
-\item{train_bn}{train_bn}
+\item{train_bn}{It controls if BatchNorm layers are trained even when they are supposed to be frozen according to the splitter.}
 
-\item{moms}{moms}
+\item{moms}{The default momentums used in Learner.fit_one_cycle.}
 }
 \description{
 Get a `Learner` using `dls`, with `metrics`, including a `TabularModel` created using the remaining params.
