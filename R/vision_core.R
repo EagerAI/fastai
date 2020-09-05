@@ -176,12 +176,143 @@ resize_max <- function(img, resample = 0, max_px = NULL, max_h = NULL, max_w = N
 }
 
 
+#' @title to_image
+#'
+#' @description Convert a tensor or array to a PIL int8 Image
+#'
+#'
+#' @param x x
+#'
+#' @export
+to_image <- function(x) {
+
+  vision$all$to_image(
+    x = x
+  )
+
+}
+
+#' @title load_image
+#'
+#' @description Open and load a `PIL.Image` and convert to `mode`
+#'
+#'
+#' @param fn fn
+#' @param mode mode
+#'
+#' @export
+load_image <- function(fn, mode = NULL) {
+
+  vision$all$load_image(
+    fn = fn,
+    mode = mode
+  )
+
+}
 
 
+#' @title image2tensor
+#'
+#' @description Transform image to byte tensor in `c*h*w` dim order.
+#'
+#'
+#' @param img img
+#'
+#' @export
+image2tensor <- function(img) {
+
+  vision$all$image2tensor(
+    img = img
+  )
+
+}
+
+#' @title create
+#'
+#' @description Open an `Image` from path `fn`
+#'
+#' @param fn fn
+#'
+#' @export
+Image_create <- function(fn) {
+
+  vision$all$PILImage$create(
+    fn = fn
+  )
+
+}
 
 
+#' @title create
+#'
+#' @description Delegates (`__call__`,`decode`,`setup`) to (`encodes`,`decodes`,`setups`) if `split_idx` matches
+#'
+#' @details
+#'
+#' @param enc enc
+#' @param dec dec
+#' @param split_idx split_idx
+#' @param order order
+#'
+#' @export
+create <- function(enc = NULL, dec = NULL, split_idx = NULL, order = NULL) {
+
+  args = list(
+    enc = enc,
+    dec = dec,
+    split_idx = split_idx,
+    order = order
+  )
+
+  if(!is.null(split_idx)) {
+    args$split_idx = as.integer(args$split_idx)
+  }
+
+  do.call(vision$all$PILMask$create, args)
+
+}
 
 
+#' @title Transform
+#'
+#' @description Delegates (`__call__`,`decode`,`setup`) to (`encodes`,`decodes`,`setups`) if `split_idx` matches
+#'
+#'
+#' @param enc enc
+#' @param dec dec
+#' @param split_idx split_idx
+#' @param order order
+#'
+#' @export
+Transform <- function(enc = NULL, dec = NULL, split_idx = NULL, order = NULL) {
 
+  args <- list(
+    enc = enc,
+    dec = dec,
+    split_idx = split_idx,
+    order = order
+  )
 
+  if(!is.null(split_idx)) {
+    args$split_idx = as.integer(args$split_idx)
+  }
+
+  do.call(vision$all$Transform, args)
+
+}
+
+#' @title create
+#'
+#' @description Open an `Image` from path `fn`
+#'
+#' @param fn fn
+#'
+#' @export
+ImageBW_create <- function(fn) {
+
+  vision$all$PILImageBW$create(
+    fn = fn
+  )
+
+}
 
