@@ -139,7 +139,7 @@ epoch     train_loss  valid_loss  accuracy  time
 4         0.357948    0.361930    0.835821  00:02     
 ```
 
-Extract confusion matrix:
+Get confusion matrix:
 
 ```
 model %>% get_confusion_matrix()
@@ -164,7 +164,7 @@ model %>% predict(df[4,])
 Get Pets dataset:
 
 ```
-fastai::URLs_PETS()
+URLs_PETS()
 ```
 
 Define path to folders:
@@ -184,7 +184,7 @@ fnames[1]
 oxford-iiit-pet/images/american_pit_bull_terrier_129.jpg
 ```
 
-Load the data into GPU/CPU:
+Dataloader:
 
 ```
 dls = ImageDataLoaders_from_name_re(
@@ -228,13 +228,13 @@ epoch     train_loss  valid_loss  error_rate  time
 Get confusion matrix and plot:
 
 ```
-conf = learn %>% fastai::get_confusion_matrix()
+conf = learn %>% get_confusion_matrix()
 
 library(highcharter)
-hchart(conf,label=TRUE) %>%
-    hc_yAxis(title = list(text='Actual')) %>%
-    hc_xAxis(title = list(text='Predicted'),
-             labels = list(rotation=-90))
+hchart(conf, label = TRUE) %>%
+    hc_yAxis(title = list(text = 'Actual')) %>%
+    hc_xAxis(title = list(text = 'Predicted'),
+             labels = list(rotation = -90))
 ```
 
 <img src="files/conf.png" geight=500 align=center alt="Pets"/>
@@ -248,15 +248,15 @@ Alternatively, load images from folders:
 URLs_MNIST_SAMPLE()
 
 # transformations
-tfms = aug_transforms(do_flip=FALSE)
-path='mnist_sample'
-bs=20
+tfms = aug_transforms(do_flip = FALSE)
+path = 'mnist_sample'
+bs = 20
 
 #load into memory
-data = ImageDataLoaders_from_folder(path, batch_tfms = tfms, size = 26, bs=bs)
+data = ImageDataLoaders_from_folder(path, batch_tfms = tfms, size = 26, bs = bs)
 
 # Visualize and train 
-par(mar=c(0.5, 0.5, 1, 1))
+par(mar = c(0.5, 0.5, 1, 1))
 
 imager::map_il(dls %>% random_batch(regex = '[0-9]+',
                folder_name = 'mnist_sample'),
@@ -277,7 +277,6 @@ URLs_LSUN_BEDROOMS()
 
 path = 'bedroom'
 ```
-
 Dataloader function:
 
 ```
@@ -286,7 +285,7 @@ get_dls <- function(bs, size) {
                      get_x = generate_noise(),
                      get_items = get_image_files(),
                      splitter = IndexSplitter(c()),
-                     item_tfms=Resize(size, method="crop"),
+                     item_tfms = Resize(size, method="crop"),
                      batch_tfms = Normalize_from_stats(c(0.5,0.5,0.5),c(0.5,0.5,0.5))
   )
   dblock %>% dataloaders(source=path,path=path,bs=bs)
@@ -298,9 +297,9 @@ dls = get_dls(128, 64)
 Generator and discriminator:
 
 ```
-generator = basic_generator(out_size = 64, n_channels=3, n_extra_layers=1)
+generator = basic_generator(out_size = 64, n_channels = 3, n_extra_layers = 1)
 critic    = basic_critic(in_size=64, n_channels=3, n_extra_layers = 1,
-                                    act_cls = pryr::partial(nn$LeakyReLU, negative_slope=0.2))
+                                    act_cls = pryr::partial(nn$LeakyReLU, negative_slope = 0.2))
 
 ```
 
@@ -340,7 +339,7 @@ Specify folders:
 path = 'camvid'
 fnames = get_image_files(paste(path,'images',sep = '/'))
 lbl_names = get_image_files(paste(path,'labels',sep = '/'))
-codes = data.table::fread(paste(path,'codes.txt',sep = '/'),header = F)[['V1']]
+codes = data.table::fread(paste(path,'codes.txt',sep = '/'), header = F)[['V1']]
 valid_fnames = data.table::fread(paste(path,'valid.txt',sep = '/'),header = FALSE)[['V1']]
 # batch size
 bs=8
@@ -349,7 +348,7 @@ bs=8
 Define a loader object:
 
 ```
-camvid = DataBlock(blocks=c(ImageBlock(), MaskBlock(codes)),
+camvid = DataBlock(blocks = c(ImageBlock(), MaskBlock(codes)),
                    get_items = get_image_files,
                    splitter = FileSplitter('camvid/valid.txt'),
                    get_y = function(x) {paste('camvid/labels/',x$stem,'_P',x$suffix,sep = '')},
@@ -419,7 +418,7 @@ acc_camvid <- function(input, target) {
  # exlude/filter void label 
   mask = target != void_code
   return(
-    (input$argmax(dim=1L)[mask]==target[mask]) %>%
+    (input$argmax(dim=1L)[mask] == target[mask]) %>%
             float() %>% mean()
     )
 }
@@ -827,12 +826,12 @@ TensorMask([[[True, True, True,  ..., True, True, True],
 ```
 
 ```
-> (input$argmax(dim=1L)[mask]==target[mask])
+> (input$argmax(dim=1L)[mask] == target[mask])
 tensor([False, False, False,  ..., False, False, False], device='cuda:0')
 ```
 
 ```
-> (input$argmax(dim=1L)[mask]==target[mask]) %>%
+> (input$argmax(dim=1L)[mask] == target[mask]) %>%
               float() 
 tensor([0., 0., 0.,  ..., 0., 0., 0.], device='cuda:0')
 ```
@@ -950,7 +949,7 @@ mean_ratings = unique(rating_movie[ , .(mean = mean(rating)), by = title])
 1664: Scream of Stone (Schrei aus Stein) (1991) 3.000000
 ```
 
-Extract bias from model:
+Extract bias:
 
 ```
 movie_bias = learn %>% get_bias(top_movies, is_item=TRUE)
@@ -1006,7 +1005,7 @@ Specify path and small batch_size because it consumes a lot of GPU:
 
 ```
 path = 'imdb'
-bs=20
+bs = 20
 ```
 
 Create datablock and iterator:
@@ -1028,7 +1027,7 @@ learn %>% fit_one_cycle(1, 2e-2, moms=c(0.8,0.7,0.8))
 ```
 
 
-> Note: [AWD_LSTM() can throw an error](https://github.com/fastai/fastai/issues/1439). In this case find and clean .fastai folder.
+> Note: [AWD_LSTM() can throw an error](https://github.com/fastai/fastai/issues/1439). In this case find and clean ".fastai"" folder.
 
 ## Medical data
 
