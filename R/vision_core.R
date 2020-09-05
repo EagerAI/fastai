@@ -28,7 +28,7 @@ Image_open <- function(fp, mode = "r") {
 #' @param reducing_gap reducing_gap
 #'
 #' @export
-resize <- function(img, size, resample = 3, box = NULL, reducing_gap = NULL) {
+Image_resize <- function(img, size, resample = 3, box = NULL, reducing_gap = NULL) {
 
   args <- list(
     size = size,
@@ -255,20 +255,24 @@ Image_create <- function(fn) {
 #' @param order order
 #'
 #' @export
-create <- function(enc = NULL, dec = NULL, split_idx = NULL, order = NULL) {
+Mask_create <- function(enc = NULL, dec = NULL, split_idx = NULL, order = NULL) {
 
-  args = list(
-    enc = enc,
-    dec = dec,
-    split_idx = split_idx,
-    order = order
-  )
+  if(is.null(enc) & is.null(dec) & is.null(split_idx) & is.null(order)) {
+    invisible(vision$all$PILMask$create)
+  } else {
+    args = list(
+      enc = enc,
+      dec = dec,
+      split_idx = split_idx,
+      order = order
+    )
 
-  if(!is.null(split_idx)) {
-    args$split_idx = as.integer(args$split_idx)
+    if(!is.null(split_idx)) {
+      args$split_idx = as.integer(args$split_idx)
+    }
+
+    do.call(vision$all$PILMask$create, args)
   }
-
-  do.call(vision$all$PILMask$create, args)
 
 }
 
