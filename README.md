@@ -207,7 +207,7 @@ imager::map_il(dls %>% random_batch(regex = '[A-z]+_',
                imager::load.image) %>% plot(axes=FALSE)
 ```
 
-<img src="files/pets.png" geight=500 align=center alt="Pets"/>
+<img src="files/pets.png" height=500 align=center alt="Pets"/>
 
 Model architecture:
 
@@ -237,7 +237,7 @@ hchart(conf, label = TRUE) %>%
              labels = list(rotation = -90))
 ```
 
-<img src="files/conf.png" geight=500 align=center alt="Pets"/>
+<img src="files/conf.png" height=500 align=center alt="Pets"/>
 
 > Note that the plot is built with highcharter.
 
@@ -266,7 +266,7 @@ learn = cnn_learner(data, resnet18, metrics=accuracy)
 learn %>% fit(2)
 ```
 
-<img src="files/mnist.png" geight=500 align=center alt="Mnist"/>
+<img src="files/mnist.png" height=500 align=center alt="Mnist"/>
 
 ### GAN example
 
@@ -991,7 +991,7 @@ rownames(movie_w) = res$title
 highcharter::hchart(princomp(movie_w, cor = TRUE)) %>% highcharter::hc_legend(enabled=FALSE)
 ```
 
-<img src="files/pca.png" geight=500 align=center alt="PCA"/>
+<img src="files/pca.png" height=500 align=center alt="PCA"/>
 
 ## Text data
 
@@ -1051,7 +1051,7 @@ ggpubr::ggarrange(p_[[1]],p_[[2]],p_[[3]],p_[[4]], labels = types)
 ```
 
 <p align="center">
-<img src="files/dcm.png" geight=500 align=center alt="dicom"/>
+<img src="files/dcm.png" height=500 align=center alt="dicom"/>
 </p>
 
 Let's try a relatively complex example:
@@ -1115,10 +1115,12 @@ ggpubr::ggarrange(p_[[1]],
 ```
 
 <p align="center">
-<img src="files/dcm2.png" geight=500 align=center alt="dicom2"/>
+<img src="files/dcm2.png" height=500 align=center alt="dicom2"/>
 </p>
 
 ## Additional features
+
+### Find optimal learning rate
 
 Get optimal learning rate and then fit:
 
@@ -1146,8 +1148,10 @@ highcharter::hchart(data, "line", highcharter::hcaes(y = losses, x = lr_rates ))
 ```
 
 <p align="center">
-<img src="files/lr.png" geight=500 align=center alt="Learning_rates"/>
+<img src="files/lr.png" height=500 align=center alt="Learning_rates"/>
 </p>
+
+### Visualize batch
 
 Visualize tensor(s):
 
@@ -1160,6 +1164,122 @@ magick::image_read(batch[[1]][[9]])
 ```
 
 <p align="center">
-<img src="files/cat.png" geight=500 align=center alt="Batch"/>
+<img src="files/cat.png" height=500 align=center alt="Batch"/>
 </p>
+
+### Mask
+
+Visualize mask:
+
+```
+library(magrittr)
+library(fastai)
+
+# original image
+fns = get_image_files('camvid/images')
+cam_fn = capture.output(fns[0])
+
+# mask
+mask_fn = 'camvid/labels/0016E5_01110_P.png'
+cam_img = Image_create(cam_fn)
+
+# create mask
+tmask = Transform(Mask_create())
+mask = tmask(mask_fn)
+
+# visualize
+mask %>% to_matrix() %>%
+  nandb::matrix_raster_plot(colours = viridis::plasma(3)) + theme(legend.position = "none")
+```
+
+<p align="center">
+<img src="files/mask.png" height=500 align=center alt="Mask"/>
+</p>
+
+### TensorPoints
+
+Load Tiny Mnist:
+
+```
+# download
+URLs_MNIST_TINY()
+
+# black and white img
+timg = Transform(ImageBW_create)
+mnist_fn = "mnist_tiny/valid/3/9007.png"
+mnist_img = timg(mnist_fn)
+
+# resize img
+pnt_img = TensorImage(mnist_img %>% Image_resize(size = list(28,35)))
+
+# visualize
+library(ggplot2)
+pnt_img %>% to_matrix() %>% nandb::matrix_raster_plot(colours = c('white','black')) +
+  geom_point(aes(x=0, y=0),size=2, colour="red")+
+  geom_point(aes(x=0, y=35),size=2, colour="red")+
+  geom_point(aes(x=28, y=0),size=2, colour="red")+
+  geom_point(aes(x=28, y=35),size=2, colour="red")+
+  geom_point(aes(x=9, y=17),size=2, colour="red")+
+  theme(legend.position = "none")
+```
+
+
+<p align="center">
+<img src="files/ggplot.png" height=500 align=center alt="Mnist_3"/>
+</p>
+
+### Annotations on Tiny COCO
+
+```
+library(magrittr)
+library(zeallot)
+library(fastai)
+
+URLs_COCO_TINY()
+
+c(images, lbl_bbox) %<-% get_annotations('coco_tiny/train.json')
+timg = Transform(ImageBW_create)
+idx = 49
+c(coco_fn,bbox) %<-% list(paste('coco_tiny/train',images[[idx]],sep = '/'),
+                       lbl_bbox[[idx]])
+coco_img = timg(coco_fn)
+
+tbbox = LabeledBBox(TensorBBox(bbox[[1]]), bbox[[2]])
+
+```
+
+```
+(#2) [TensorBBox([[ 91.3000,  77.9400, 102.4300,  82.4700],
+        [ 27.5800,  77.6500,  40.7600,  82.3400]]),['tv', 'tv']]
+```
+
+Visualize:
+
+```
+library(imager)
+coco = imager::load.image(coco_fn)
+plot(coco,axes=F)
+
+for ( i in 1:length(bbox[[1]])) {
+  rect(bbox[[1]][[i]][[1]],bbox[[1]][[i]][[2]],
+       bbox[[1]][[i]][[3]],bbox[[1]][[i]][[4]],
+       border = "white", lwd = 2)
+
+  text(bbox[[1]][[i]][[3]]-2.5,bbox[[1]][[i]][[4]]+2.5, labels = bbox[[2]][i],
+       offset = 2,
+       pos = 2,
+       cex = 1,
+       col = "white"
+  )
+}
+
+```
+
+<p align="center">
+<img src="files/annotate.png" height=500 align=center alt="Annotation"/>
+</p>
+
+
+
+
 
