@@ -320,3 +320,83 @@ ImageBW_create <- function(fn) {
 
 }
 
+
+
+#' @title create
+#'
+#' @description Delegates (`__call__`,`decode`,`setup`) to (`encodes`,`decodes`,`setups`) if `split_idx` matches
+#'
+#' @details
+#'
+#' @param enc enc
+#' @param dec dec
+#' @param split_idx split_idx
+#' @param order order
+#'
+#' @export
+TensorPoint_create <- function(enc = NULL, dec = NULL, split_idx = NULL, order = NULL) {
+
+  if(is.null(enc) & is.null(dec) & is.null(split_idx) & is.null(order)) {
+    invisible(vision$all$TensorPoint$create)
+  } else {
+    args = list(
+      enc = enc,
+      dec = dec,
+      split_idx = split_idx,
+      order = order
+    )
+
+    if(!is.null(split_idx)) {
+      args$split_idx = as.integer(args$split_idx)
+    }
+
+    do.call(vision$all$TensorPoint$create, args)
+  }
+}
+
+
+#' @title TensorBBox
+#'
+#' @description Basic type for a tensor of bounding boxes in an image
+#'
+#' @param x x
+#'
+#' @export
+TensorBBox <- function(x) {
+
+  vision$all$TensorBBox(
+    x = x
+  )
+
+}
+
+#' @title LabeledBBox
+#'
+#' @description Basic type for a list of bounding boxes in an image
+#'
+#'
+#' @param items items
+#'
+#' @export
+LabeledBBox <- function( ...) {
+
+  vision$all$LabeledBBox(
+    ...
+  )
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

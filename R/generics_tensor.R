@@ -46,3 +46,13 @@ float <- function(tensor) {
 
 
 
+#' @title To matrix
+#'
+#'
+#' @export
+to_matrix = function(obj) {
+  fastai2$basics$tensor(obj)$cpu()$numpy()
+}
+
+
+
