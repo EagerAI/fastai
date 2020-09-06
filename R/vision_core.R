@@ -386,6 +386,276 @@ LabeledBBox <- function( ...) {
 
 }
 
+#' @title ToTensor
+#'
+#' @description Convert item to appropriate tensor class
+#'
+#' @details
+#'
+#' @param enc enc
+#' @param dec dec
+#' @param split_idx split_idx
+#' @param order order
+#'
+#' @export
+ToTensor <- function(enc = NULL, dec = NULL, split_idx = NULL, order = NULL) {
+
+  vision$all$ToTensor(
+    enc = enc,
+    dec = dec,
+    split_idx = split_idx,
+    order = order
+  )
+
+}
+
+#' @title Pipeline
+#'
+#' @description A pipeline of composed (for encode/decode) transforms, setup with types
+#'
+#'
+#' @param funcs funcs
+#' @param split_idx split_idx
+#'
+#' @export
+Pipeline <- function(funcs = NULL, split_idx = NULL) {
+
+  vision$all$Pipeline(
+    funcs = funcs,
+    split_idx = split_idx
+  )
+
+}
+
+#' @title TensorImageBW
+#'
+#' @param x x
+#'
+#' @export
+TensorImageBW <- function(x) {
+
+  if(missing(x)) {
+    invisible(vision$all$TensorImageBW)
+  } else {
+    vision$all$TensorImageBW(
+      x = x
+    )
+  }
+
+}
+
+
+#' @title Datasets
+#'
+#' @description A dataset that creates a list from each `tfms`, passed thru `item_tfms`
+#'
+#'
+#' @param items items
+#' @param tfms tfms
+#' @param tls tls
+#' @param n_inp n_inp
+#' @param dl_type dl_type
+#' @param use_list use_list
+#' @param do_setup do_setup
+#' @param split_idx split_idx
+#' @param train_setup train_setup
+#' @param splits splits
+#' @param types types
+#' @param verbose verbose
+#'
+#' @export
+Datasets <- function(items = NULL, tfms = NULL, tls = NULL, n_inp = NULL,
+                     dl_type = NULL, use_list = NULL, do_setup = TRUE,
+                     split_idx = NULL, train_setup = TRUE, splits = NULL,
+                     types = NULL, verbose = FALSE) {
+
+  vision$all$Datasets(
+    items = items,
+    tfms = tfms,
+    tls = tls,
+    n_inp = n_inp,
+    dl_type = dl_type,
+    use_list = use_list,
+    do_setup = do_setup,
+    split_idx = split_idx,
+    train_setup = train_setup,
+    splits = splits,
+    types = types,
+    verbose = verbose
+  )
+
+}
+
+
+#' @title Image
+#'
+#'
+#'
+#' @param ... parameters to pass
+#'
+#' @export
+Image = function(...) {
+  args = list(...)
+
+  do.call(vision$all$PILImage, args)
+}
+
+
+#' @title TfmdDL
+#'
+#' @description Transformed `DataLoader`
+#'
+#' @details
+#'
+#' @param dataset dataset
+#' @param bs bs
+#' @param shuffle shuffle
+#' @param num_workers num_workers
+#' @param verbose verbose
+#' @param do_setup do_setup
+#' @param pin_memory pin_memory
+#' @param timeout timeout
+#' @param batch_size batch_size
+#' @param drop_last drop_last
+#' @param indexed indexed
+#' @param n n
+#' @param device device
+#'
+#' @export
+TfmdDL <- function(dataset, bs = 64, shuffle = FALSE, num_workers = NULL,
+                   verbose = FALSE, do_setup = TRUE, pin_memory = FALSE,
+                   timeout = 0, batch_size = NULL, drop_last = FALSE,
+                   indexed = NULL, n = NULL, device = NULL) {
+
+  vision$all$TfmdDL(
+    dataset = dataset,
+    bs = as.integer(bs),
+    shuffle = shuffle,
+    num_workers = num_workers,
+    verbose = verbose,
+    do_setup = do_setup,
+    pin_memory = pin_memory,
+    timeout = as.integer(timeout),
+    batch_size = batch_size,
+    drop_last = drop_last,
+    indexed = indexed,
+    n = n,
+    device = device
+  )
+
+}
+
+#' @title PointScaler
+#'
+#' @description Scale a tensor representing points
+#'
+#' @param do_scale do_scale
+#' @param y_first y_first
+#'
+#' @export
+PointScaler <- function(do_scale = TRUE, y_first = FALSE) {
+
+  vision$all$PointScaler(
+    do_scale = do_scale,
+    y_first = y_first
+  )
+
+}
+
+
+#' @title tensor
+#'
+#' @description Like `torch.as_tensor`, but handle lists too, and can pass multiple vector elements directly.
+#'
+#'
+#' @param ... image
+#'
+#' @export
+tensor <- function(...) {
+
+  vision$all$tensor(
+    ...
+  )
+
+}
+
+
+#' @title TensorPoint
+#'
+#' @description Basic type for points in an image
+#'
+#' @param x x
+#'
+#' @export
+TensorPoint <- function(x) {
+
+  vision$all$TensorPoint(
+    x = x
+  )
+
+}
+
+
+#' @title create
+#'
+#' @description Delegates (`__call__`,`decode`,`setup`) to (`encodes`,`decodes`,`setups`) if `split_idx` matches
+#'
+#' @param x x
+#' @param img_size img_size
+#'
+#' @export
+TensorBBox_create <- function(x, img_size = NULL) {
+
+  if(is.list(img_size)) {
+    img_size = as.list(as.integer(unlist(img_size)))
+  } else {
+    img_size = as.integer(img_size)
+  }
+
+  vision$all$TensorBBox$create(
+    x = x,
+    img_size = img_size
+  )
+
+}
+
+
+#' @title BBoxLabeler
+#'
+#' @description Delegates (`__call__`,`decode`,`setup`) to (`encodes`,`decodes`,`setups`) if `split_idx` matches
+#'
+#'
+#' @param enc enc
+#' @param dec dec
+#' @param split_idx split_idx
+#' @param order order
+#'
+#' @export
+BBoxLabeler <- function(enc = NULL, dec = NULL, split_idx = NULL, order = NULL) {
+
+  vision$all$BBoxLabeler(
+    enc = enc,
+    dec = dec,
+    split_idx = split_idx,
+    order = order
+  )
+
+}
+
+
+#' @title TensorMultiCategory
+#'
+#' @param x x
+#'
+#' @export
+TensorMultiCategory <- function(x) {
+
+  vision$all$TensorMultiCategory(
+    x = x
+  )
+
+}
+
 
 
 
