@@ -127,7 +127,7 @@ Callbacks:
 Run:
 
 ```
-model %>% fastai::fit(5,1e-2)
+model %>% fastai::fit(5, 1e-2)
 ```
 
 ```
@@ -204,7 +204,7 @@ par(mar=c(0.5, 0.5, 1, 1))
 
 imager::map_il(dls %>% random_batch(regex = '[A-z]+_',
                folder_name = 'oxford-iiit-pet/images'),
-               imager::load.image) %>% plot(axes=FALSE)
+               imager::load.image) %>% plot(axes = FALSE)
 ```
 
 <img src="files/pets.png" height=500 align=center alt="Pets"/>
@@ -260,9 +260,9 @@ par(mar = c(0.5, 0.5, 1, 1))
 
 imager::map_il(dls %>% random_batch(regex = '[0-9]+',
                folder_name = 'mnist_sample'),
-               imager::load.image) %>% plot(axes=FALSE)
+               imager::load.image) %>% plot(axes = FALSE)
                
-learn = cnn_learner(data, resnet18, metrics=accuracy)
+learn = cnn_learner(data, resnet18, metrics = accuracy)
 learn %>% fit(2)
 ```
 
@@ -286,9 +286,9 @@ get_dls <- function(bs, size) {
                      get_items = get_image_files(),
                      splitter = IndexSplitter(c()),
                      item_tfms = Resize(size, method="crop"),
-                     batch_tfms = Normalize_from_stats(c(0.5,0.5,0.5),c(0.5,0.5,0.5))
+                     batch_tfms = Normalize_from_stats(c(0.5,0.5,0.5), c(0.5,0.5,0.5))
   )
-  dblock %>% dataloaders(source=path,path=path,bs=bs)
+  dblock %>% dataloaders(source = path, path = path,bs = bs)
 }
 
 dls = get_dls(128, 64)
@@ -312,10 +312,10 @@ learn = GANLearner_wgan(dls, generator, critic, opt_func = pryr::partial(Adam(),
 And fit:
 
 ```
-learn$recorder$train_metrics=T
-learn$recorder$valid_metrics=F
+learn$recorder$train_metrics = TRUE
+learn$recorder$valid_metrics = FALSE
 
-learn %>% fit(1, 2e-4, wd=0)
+learn %>% fit(1, 2e-4, wd = 0)
 ```
 
 ## UNET example
@@ -339,10 +339,10 @@ Specify folders:
 path = 'camvid'
 fnames = get_image_files(paste(path,'images',sep = '/'))
 lbl_names = get_image_files(paste(path,'labels',sep = '/'))
-codes = data.table::fread(paste(path,'codes.txt',sep = '/'), header = F)[['V1']]
+codes = data.table::fread(paste(path,'codes.txt',sep = '/'), header = FALSE)[['V1']]
 valid_fnames = data.table::fread(paste(path,'valid.txt',sep = '/'),header = FALSE)[['V1']]
 # batch size
-bs=8
+bs = 8
 ```
 
 Define a loader object:
@@ -367,6 +367,8 @@ Dataloader object and list of labels:
 
 ```
 dls = camvid %>% dataloaders(source = "camvid/images", bs = bs, path = path)
+
+void_code = which(codes == "Void")
 
 dls$vocab = codes
 
@@ -848,7 +850,7 @@ tensor(0.0011, device='cuda:0')
 Resnet34 model architecture for unet:
 
 ```
-learn = unet_learner(dls, resnet34, metrics=acc_camvid)
+learn = unet_learner(dls, resnet34, metrics = acc_camvid)
 ```
 
 And finally, fit:
@@ -857,7 +859,7 @@ And finally, fit:
 lr=3e-3
 wd=1e-2
 
-learn %>% fit_one_cycle(2, lr, pct_start=0.9, wd=wd)
+learn %>% fit_one_cycle(2, lr, pct_start = 0.9, wd = wd)
 ```
 
 ```
@@ -910,13 +912,13 @@ dls = CollabDataLoaders_from_df(rating_movie, seed=42, valid_pct=0.1, bs=64, ite
 Build model:
 
 ```
-learn = collab_learner(dls, n_factors=40, y_range=c(0,5.5))
+learn = collab_learner(dls, n_factors = 40, y_range=c(0, 5.5))
 ```
 
 Start learning:
 
 ```
-learn %>% fit_one_cycle(1, 5e-3,  wd=1e-1)
+learn %>% fit_one_cycle(1, 5e-3,  wd = 1e-1)
 ```
 
 Get top 1,000 movies:
@@ -952,14 +954,14 @@ mean_ratings = unique(rating_movie[ , .(mean = mean(rating)), by = title])
 Extract bias:
 
 ```
-movie_bias = learn %>% get_bias(top_movies, is_item=TRUE)
+movie_bias = learn %>% get_bias(top_movies, is_item = TRUE)
 
 result = data.table(bias = movie_bias,
            title = top_movies)
            
-res = merge(result,mean_ratings, all.y = F)
+res = merge(result, mean_ratings, all.y = FALSE)
 
-res[order(bias,decreasing = T)]
+res[order(bias, decreasing = TRUE)]
 ```
 
 ```
@@ -988,7 +990,7 @@ Visualize with highcharter:
 ```
 rownames(movie_w) = res$title
 
-highcharter::hchart(princomp(movie_w, cor = TRUE)) %>% highcharter::hc_legend(enabled=FALSE)
+highcharter::hchart(princomp(movie_w, cor = TRUE)) %>% highcharter::hc_legend(enabled = FALSE)
 ```
 
 <img src="files/pca.png" height=500 align=center alt="PCA"/>
@@ -1011,23 +1013,25 @@ bs = 20
 Create datablock and iterator:
 
 ```
-imdb_lm = DataBlock(blocks=list(TextBlock_from_folder(path, is_lm=T)),
-                    get_items=pryr::partial(get_text_files(), folders=c('train', 'test', 'unsup')),
-                    splitter=RandomSplitter(0.1))
+imdb_lm = DataBlock(blocks=list(TextBlock_from_folder(path, is_lm = TRUE)),
+                    get_items = pryr::partial(get_text_files(), 
+                    folders = c('train', 'test', 'unsup')),
+                    splitter = RandomSplitter(0.1))
 
-dbunch_lm = imdb_lm %>% dataloaders(source=path, path=path, bs=bs, seq_len=80)
+dbunch_lm = imdb_lm %>% dataloaders(source = path, path = path, bs = bs, seq_len = 80)
 ```
 
 Load a pretrained model and fit:
 
 ```
-learn = language_model_learner(dbunch_lm, AWD_LSTM(), drop_mult=0.3, metrics = list(accuracy, Perplexity()))
+learn = language_model_learner(dbunch_lm, AWD_LSTM(), drop_mult = 0.3, 
+                               metrics = list(accuracy, Perplexity()))
 
-learn %>% fit_one_cycle(1, 2e-2, moms=c(0.8,0.7,0.8))
+learn %>% fit_one_cycle(1, 2e-2, moms = c(0.8, 0.7, 0.8))
 ```
 
 
-> Note: [AWD_LSTM() can throw an error](https://github.com/fastai/fastai/issues/1439). In this case find and clean ".fastai"" folder.
+> Note: [AWD_LSTM() can throw an error](https://github.com/fastai/fastai/issues/1439). In this case find and clean ".fastai" folder.
 
 ## Medical data
 
@@ -1040,14 +1044,14 @@ img = dcmread('hemorrhage.dcm')
 Visualize data with different [window effects](https://radiopaedia.org/articles/windowing-ct):
 
 ```
-types = c('raw', 'normalized','brain','subdural')
+types = c('raw', 'normalized', 'brain', 'subdural')
 p_ = list()
 for ( i in 1:length(types)) {
   p = nandb::matrix_raster_plot(img %>% get_dcm_matrix(type = types[i]))
   p_[[i]] = p
 }
 
-ggpubr::ggarrange(p_[[1]],p_[[2]],p_[[3]],p_[[4]], labels = types)
+ggpubr::ggarrange(p_[[1]], p_[[2]], p_[[3]], p_[[4]], labels = types)
 ```
 
 <p align="center">
@@ -1064,7 +1068,7 @@ img = dcmread('hemorrhage.dcm')
 res = img %>% mask_from_blur(win_brain()) %>%
   mask2bbox()
 
-types = c('raw', 'normalized','brain','subdural')
+types = c('raw', 'normalized', 'brain', 'subdural')
 
 # colors for matrix filling
 colors = list(viridis::inferno(30), viridis::magma(30),
