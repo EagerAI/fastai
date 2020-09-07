@@ -1,4 +1,5 @@
 
+
 #' @export
 "+.torch.nn.modules.container.Sequential" <- function(a, b) {
 
@@ -8,7 +9,12 @@
     ll = names(res)
     ll = suppressWarnings(as.numeric(ll))
     ll = ll[!is.na(ll)]
-    max_ = as.character(max(ll) + 1)
+    if(length(ll) > 0) {
+      max_ = as.character(max(ll) + 1)
+    } else {
+      max_ = '0'
+    }
+
   } else {
     max_ = '0'
   }
