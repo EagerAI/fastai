@@ -1284,6 +1284,43 @@ for ( i in 1:length(bbox[[1]])) {
 </p>
 
 
+### NN module
 
+To build a custom sequential model and pass it to learner:
+
+```
+nn$Sequential() +
+  nn$Conv2d(1L,20L,5L) +
+  nn$Conv2d(1L,20L,5L) +
+  nn$Conv2d(1L,20L,5L)
+```
+
+```
+Sequential(
+  (0): Conv2d(1, 20, kernel_size=(5, 5), stride=(1, 1))
+  (1): Conv2d(1, 20, kernel_size=(5, 5), stride=(1, 1))
+  (2): Conv2d(1, 20, kernel_size=(5, 5), stride=(1, 1))
+)
+```
+
+To specify the name of the layers, one has to pass layer within lists, 
+because torch layers have no ```name``` argument:
+
+```
+nn$Sequential() +
+  nn$Conv2d(1L,20L,5L) +
+  list('my_conv2',nn$Conv2d(1L,20L,5L)) +
+  nn$Conv2d(1L,20L,5L) +
+  list('my_conv4',nn$Conv2d(1L,20L,5L))
+```
+
+```
+Sequential(
+  (0): Conv2d(1, 20, kernel_size=(5, 5), stride=(1, 1))
+  (my_conv2): Conv2d(1, 20, kernel_size=(5, 5), stride=(1, 1))
+  (1): Conv2d(1, 20, kernel_size=(5, 5), stride=(1, 1))
+  (my_conv4): Conv2d(1, 20, kernel_size=(5, 5), stride=(1, 1))
+)
+```
 
 
