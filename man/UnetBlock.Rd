@@ -13,7 +13,7 @@ UnetBlock(...)
 
 \item{x_in_c}{x_in_c}
 
-\item{hook}{hook}
+\item{hook}{The hook is set to this intermediate layer to store the output needed for this block.}
 
 \item{final_div}{final_div}
 
@@ -21,7 +21,7 @@ UnetBlock(...)
 
 \item{act_cls}{act_cls}
 
-\item{self_attention}{self_attention}
+\item{self_attention}{self_attention determines if we use a self-attention layer}
 
 \item{init}{init}
 
@@ -49,7 +49,7 @@ UnetBlock(...)
 
 \item{groups}{groups}
 
-\item{padding_mode}{padding_mode}
+\item{padding_mode}{The mode of padding}
 }
 \description{
 A quasi-UNet block, using `PixelShuffle_ICNR upsampling`.

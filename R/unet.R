@@ -3,11 +3,11 @@
 #' @description Convenience function to easily create a config for `DynamicUnet`
 #'
 #'
-#' @param blur blur
-#' @param blur_final blur_final
-#' @param self_attention self_attention
-#' @param y_range y_range
-#' @param last_cross last_cross
+#' @param blur blur is used to avoid checkerboard artifacts at each layer.
+#' @param blur_final blur_final is specific to the last layer.
+#' @param self_attention self_attention determines if we use a self attention layer at the third block before the end.
+#' @param y_range If y_range is passed, the last activations go through a sigmoid rescaled to that range.
+#' @param last_cross last_cros
 #' @param bottle bottle
 #' @param act_cls act_cls
 #' @param init init
@@ -105,11 +105,11 @@ unet_learner <- function(dls, arch, loss_func = NULL, pretrained = TRUE,
 #'
 #' @param up_in_c up_in_c
 #' @param x_in_c x_in_c
-#' @param hook hook
+#' @param hook The hook is set to this intermediate layer to store the output needed for this block.
 #' @param final_div final_div
 #' @param blur blur
 #' @param act_cls act_cls
-#' @param self_attention self_attention
+#' @param self_attention self_attention determines if we use a self-attention layer
 #' @param init init
 #' @param norm_type norm_type
 #' @param ks ks
@@ -123,7 +123,7 @@ unet_learner <- function(dls, arch, loss_func = NULL, pretrained = TRUE,
 #' @param bias_std bias_std
 #' @param dilation dilation
 #' @param groups groups
-#' @param padding_mode padding_mode
+#' @param padding_mode The mode of padding
 #'
 #' @export
 UnetBlock <- function(up_in_c, x_in_c, hook, final_div = TRUE,
