@@ -7,6 +7,8 @@
 UnetBlock(...)
 
 UnetBlock(...)
+
+UnetBlock(...)
 }
 \arguments{
 \item{up_in_c}{up_in_c}
@@ -52,6 +54,8 @@ UnetBlock(...)
 \item{padding_mode}{padding_mode}
 }
 \description{
+A quasi-UNet block, using `PixelShuffle_ICNR upsampling`.
+
 A quasi-UNet block, using `PixelShuffle_ICNR upsampling`.
 
 Load model architecture

@@ -29,10 +29,10 @@ The dev version:
 devtools::install_github('henry090/fastai')
 ```
 
-Later, you need to install the python module fastai:
+Later, you need to install the python module ```fastai```:
 
 ```
-install_fastai(version = '2.0.0', gpu = FALSE, cuda_version = '10.1', overwrite = FALSE)
+install_fastai(version = '2.0.8', gpu = FALSE, cuda_version = '10.1', overwrite = FALSE)
 ```
 
 ## Tabular data
@@ -127,7 +127,7 @@ Callbacks:
 Run:
 
 ```
-model %>% fastai::fit(5, 1e-2)
+model %>% fit(5, 1e-2)
 ```
 
 ```
@@ -285,7 +285,7 @@ get_dls <- function(bs, size) {
                      get_x = generate_noise(),
                      get_items = get_image_files(),
                      splitter = IndexSplitter(c()),
-                     item_tfms = Resize(size, method="crop"),
+                     item_tfms = Resize(size, method = "crop"),
                      batch_tfms = Normalize_from_stats(c(0.5,0.5,0.5), c(0.5,0.5,0.5))
   )
   dblock %>% dataloaders(source = path, path = path,bs = bs)
@@ -298,7 +298,7 @@ Generator and discriminator:
 
 ```
 generator = basic_generator(out_size = 64, n_channels = 3, n_extra_layers = 1)
-critic    = basic_critic(in_size=64, n_channels=3, n_extra_layers = 1,
+critic    = basic_critic(in_size = 64, n_channels = 3, n_extra_layers = 1,
                                     act_cls = pryr::partial(nn$LeakyReLU, negative_slope = 0.2))
 
 ```
@@ -358,9 +358,7 @@ camvid = DataBlock(blocks = c(ImageBlock(), MaskBlock(codes)),
 )
 
 # prefix and suffix of the name of the file
-
 x$stem; x$suffix
-
 ```
 
 Dataloader object and list of labels:
@@ -417,7 +415,7 @@ Custom accuracy function:
 
 ```
 acc_camvid <- function(input, target) {
- # exlude/filter void label 
+ # exclude/filter void label 
   mask = target != void_code
   return(
     (input$argmax(dim=1L)[mask] == target[mask]) %>%
@@ -773,7 +771,7 @@ Filter Void class:
 mask = target != void_code
 ```
 
-```30``` will be filtered as ```False```:
+```31``` will be filtered as ```False```:
 
 ```
 TensorMask([[[True, True, True,  ..., True, True, True],
