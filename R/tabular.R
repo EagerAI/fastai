@@ -144,15 +144,15 @@ tabular_learner <- function(dls, layers = NULL, emb_szs = NULL, config = NULL,
 #' @param callbacks callbacks
 #'
 #' @export
-fit.fastai.tabular.learner.TabularLearner <- function(object, n_epoch, lr = 1e-2, wd = NULL, callbacks = NULL) {
+fit.fastai.tabular.learner.TabularLearner <- function(object, ...) {
 
   args <- list(
-    n_epoch = as.integer(n_epoch),
-    lr = lr,
-    wd = wd,
-    callbacks = callbacks
+    ...
   )
 
+  if(!is.null(args[[1]])) {
+    args[[1]] = as.integer(args[[1]])
+  }
   # fit the model
   do.call(object$fit, args)
 
