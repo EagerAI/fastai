@@ -13,13 +13,13 @@ random_batch(
 )
 }
 \arguments{
-\item{object}{dataloaders object}
+\item{object}{Dataloaders object}
 
-\item{regex}{for img titles}
+\item{regex}{For img titles}
 
-\item{label}{if dataloader from csv, then colname should be provided for viz-n}
+\item{label}{If dataloader from csv, then colname should be provided for viz-n}
 
-\item{folder_name}{if dataloader from csv, then colname should be provided for viz-n}
+\item{folder_name}{If dataloader from csv, then colname should be provided for viz-n}
 }
 \description{
 for visualization

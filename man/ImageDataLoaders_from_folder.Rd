@@ -38,7 +38,7 @@ ImageDataLoaders_from_folder(
 
 \item{batch_tfms}{One or several transforms applied to the batches once they are formed}
 
-\item{bs}{bs}
+\item{bs}{The batch size}
 
 \item{val_bs}{The batch size for the validation DataLoader (defaults to bs)}
 

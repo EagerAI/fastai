@@ -90,10 +90,10 @@ fit_one_cycle <- function(object, n_epoch, lr, ...) {
 #' @title Random image batch
 #'
 #' @description for visualization
-#' @param object dataloaders object
-#' @param regex for img titles
-#' @param label if dataloader from csv, then colname should be provided for viz-n
-#' @param folder_name if dataloader from csv, then colname should be provided for viz-n
+#' @param object Dataloaders object
+#' @param regex For img titles
+#' @param label If dataloader from csv, then colname should be provided for viz-n
+#' @param folder_name If dataloader from csv, then colname should be provided for viz-n
 #' @export
 random_batch <- function(object, regex = "[0-9]+", label = 'label', folder_name = NULL,
                          img_patter = "jpg|jpeg|png") {
@@ -122,7 +122,7 @@ random_batch <- function(object, regex = "[0-9]+", label = 'label', folder_name 
 #' @param vocab vocab
 #' @param item_tfms One or several transforms applied to the items before batching them
 #' @param batch_tfms One or several transforms applied to the batches once they are formed
-#' @param bs bs
+#' @param bs The batch size
 #' @param val_bs The batch size for the validation DataLoader (defaults to bs)
 #' @param shuffle_train If we shuffle the training DataLoader or not
 #' @param device device
