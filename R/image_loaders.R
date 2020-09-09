@@ -74,10 +74,16 @@ get_image_files <- function(path, recurse = TRUE, folders = NULL) {
 #'
 #' @export
 fit_one_cycle <- function(object, n_epoch, lr, ...) {
-  args = list(n_epoch = as.integer(n_epoch),
-              lr = lr,
-              ...)
-  do.call(object$fit_one_cycle, args)
+  if(missing(lr)) {
+    args = list(n_epoch = as.integer(n_epoch),
+                ...)
+    do.call(object$fit_one_cycle, args)
+  } else {
+    args = list(n_epoch = as.integer(n_epoch),
+                lr = lr,
+                ...)
+    do.call(object$fit_one_cycle, args)
+  }
 }
 
 

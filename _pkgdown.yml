@@ -1,0 +1,14 @@
+
+
+template:
+  path: docs
+  params:
+    bootswatch: lumen
+
+development:
+  mode: release
+
+
+authors:
+  Turgut Abdullayev:
+    href: https://github.com/henry090

@@ -14,3 +14,4 @@
 ^\.github$
 ^CODE_OF_CONDUCT\.md$
 ^LICENSE$
+^_pkgdown\.yml$

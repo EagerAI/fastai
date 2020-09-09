@@ -206,7 +206,68 @@ DynamicUnet <- function(encoder, n_classes, img_size, blur = FALSE,
 }
 
 
+#' @title UnetBlock
+#'
+#' @description A quasi-UNet block, using `PixelShuffle_ICNR upsampling`.
+#'
+#'
+#' @param up_in_c up_in_c
+#' @param x_in_c x_in_c
+#' @param hook hook
+#' @param final_div final_div
+#' @param blur blur
+#' @param act_cls act_cls
+#' @param self_attention self_attention
+#' @param init init
+#' @param norm_type norm_type
+#' @param ks ks
+#' @param stride stride
+#' @param padding padding
+#' @param bias bias
+#' @param ndim ndim
+#' @param bn_1st bn_1st
+#' @param transpose transpose
+#' @param xtra xtra
+#' @param bias_std bias_std
+#' @param dilation dilation
+#' @param groups groups
+#' @param padding_mode padding_mode
+#'
+#' @export
+UnetBlock <- function(up_in_c, x_in_c, hook, final_div = TRUE,
+                      blur = FALSE, act_cls = nn$ReLU, self_attention = FALSE,
+                      init = nn$init$kaiming_normal_, norm_type = NULL, ks = 3, stride = 1,
+                      padding = NULL, bias = NULL, ndim = 2, bn_1st = TRUE,
+                      transpose = FALSE, xtra = NULL, bias_std = 0.01,
+                      dilation = 1, groups = 1, padding_mode = "zeros") {
 
+  args <- list(
+    up_in_c = up_in_c,
+    x_in_c = x_in_c,
+    hook = hook,
+    final_div = final_div,
+    blur = blur,
+    act_cls = act_cls,
+    self_attention = self_attention,
+    init = init,
+    norm_type = norm_type,
+    ks = as.integer(ks),
+    stride = as.integer(stride),
+    padding = padding,
+    bias = bias,
+    ndim = as.integer(ndim),
+    bn_1st = bn_1st,
+    transpose = transpose,
+    xtra = xtra,
+    bias_std = bias_std,
+    dilation = as.integer(dilation),
+    groups = as.integer(groups),
+    padding_mode = padding_mode
+  )
+
+  do.call(vision$all$UnetBlock, args)
+
+}
 
 
 

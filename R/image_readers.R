@@ -1,28 +1,3 @@
-#' @title open_image
-#'
-#' @description Return `Image` object created from image in file `fn`.
-#'
-#' @details
-#'
-#' @param fn fn
-#' @param div div
-#' @param convert_mode convert_mode
-#' @param cls cls
-#' @param after_open after_open
-#'
-#' @export
-open_image <- function(fn, div = TRUE, convert_mode = "RGB", after_open = NULL, ...) {
-
-  vision$image$open_image(
-    fn = fn,
-    div = div,
-    convert_mode = convert_mode,
-    after_open = after_open,
-    ...
-  )
-
-}
-
 
 
 #' @title open_mask

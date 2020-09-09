@@ -2,3 +2,13 @@
 .Rhistory
 .RData
 .Ruserdata
+bedroom/
+camvid/
+coco_tiny/
+imdb/
+imdb_tok/
+ml-100k/
+mnist_sample/
+mnist_tiny/
+movie_lens_sample/
+oxford-iiit-pet/

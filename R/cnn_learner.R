@@ -68,14 +68,20 @@ cnn_learner <- function(dls, arch, loss_func = NULL, pretrained = TRUE, cut = NU
 #' @param callbacks callbacks
 #'
 #' @export
-fit.fastai.learner.Learner <- function(object, n_epoch, lr = 1e-2, wd = NULL, callbacks = NULL) {
+fit.fastai.learner.Learner <- function(object, ...) {
 
   args <- list(
-    n_epoch = as.integer(n_epoch),
-    lr = lr,
-    wd = wd,
-    callbacks = callbacks
+    ...
   )
+  if(!is.null(args[[1]]) & is.null(names(args[[1]]))) {
+    args[[1]] = as.integer(args[[1]])
+  }
+
+  find_epoch = which(names(args)=='n_epoch')
+
+  if(length(find_epoch)>0) {
+    args[[find_epoch]] = as.integer(args[[find_epoch]])
+  }
 
   # fit the model
   do.call(object$fit, args)

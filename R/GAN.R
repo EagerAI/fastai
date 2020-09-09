@@ -362,14 +362,20 @@ GANLearner_wgan <- function(dls, generator, critic, switcher = NULL, clip = 0.01
 #' @param callbacks callbacks
 #'
 #' @export
-fit.fastai.vision.gan.GANLearner <- function(object, n_epoch, lr = 1e-2, wd = NULL, callbacks = NULL) {
+fit.fastai.vision.gan.GANLearner <- function(object, ...) {
 
   args <- list(
-    n_epoch = as.integer(n_epoch),
-    lr = lr,
-    wd = wd,
-    callbacks = callbacks
+    ...
   )
+  if(!is.null(args[[1]]) & is.null(names(args[[1]]))) {
+    args[[1]] = as.integer(args[[1]])
+  }
+
+  find_epoch = which(names(args)=='n_epoch')
+
+  if(length(find_epoch)>0) {
+    args[[find_epoch]] = as.integer(args[[find_epoch]])
+  }
 
   # fit the model
   do.call(object$fit, args)
@@ -436,6 +442,293 @@ MaskBlock <- function(codes = NULL) {
   }
 
 }
+
+
+#' @title AddChannels
+#'
+#' @description Add `n_dim` channels at the end of the input.
+#'
+#'
+#' @param n_dim n_dim
+#'
+#' @export
+AddChannels <- function(n_dim) {
+
+  vision$gan$AddChannels(
+    n_dim = as.integer(n_dim)
+  )
+
+}
+
+
+
+
+#' @title DenseResBlock
+#'
+#' @description Resnet block of `nf` features. `conv_kwargs` are passed to `conv_layer`.
+#'
+#' @details
+#'
+#' @param nf nf
+#' @param norm_type norm_type
+#' @param ks ks
+#' @param stride stride
+#' @param padding padding
+#' @param bias bias
+#' @param ndim ndim
+#' @param bn_1st bn_1st
+#' @param act_cls act_cls
+#' @param transpose transpose
+#' @param init init
+#' @param xtra xtra
+#' @param bias_std bias_std
+#' @param dilation dilation
+#' @param groups groups
+#' @param padding_mode padding_mode
+#'
+#' @export
+DenseResBlock <- function(nf, norm_type = 1,
+                          ks = 3, stride = 1, padding = NULL,
+                          bias = NULL, ndim = 2, bn_1st = TRUE,
+                          act_cls = nn$ReLU, transpose = FALSE, init = "auto", xtra = NULL,
+                          bias_std = 0.01, dilation = 1, groups = 1,
+                          padding_mode = "zeros") {
+
+  args <- list(
+    nf = nf,
+    norm_type = as.integer(norm_type),
+    ks = as.integer(ks),
+    stride = as.integer(stride),
+    padding = padding,
+    bias = bias,
+    ndim = as.integer(ndim),
+    bn_1st = bn_1st,
+    act_cls = act_cls,
+    transpose = transpose,
+    init = init,
+    xtra = xtra,
+    bias_std = bias_std,
+    dilation = as.integer(dilation),
+    groups = as.integer(groups),
+    padding_mode = padding_mode
+  )
+
+  do.call(vision$gan$DenseResBlock, args)
+
+}
+
+#' @title gan_critic
+#'
+#' @description Critic to train a `GAN`.
+#'
+#'
+#' @param n_channels n_channels
+#' @param nf nf
+#' @param n_blocks n_blocks
+#' @param p p
+#'
+#' @export
+gan_critic <- function(n_channels = 3, nf = 128, n_blocks = 3, p = 0.15) {
+
+  vision$gan$gan_critic(
+    n_channels = as.integer(n_channels),
+    nf = as.integer(nf),
+    n_blocks = as.integer(n_blocks),
+    p = p
+  )
+
+}
+
+
+#' @title GANLoss
+#'
+#' @description Wrapper around `crit_loss_func` and `gen_loss_func`
+#'
+#'
+#' @param gen_loss_func gen_loss_func
+#' @param crit_loss_func crit_loss_func
+#' @param gan_model gan_model
+#'
+#' @export
+GANLoss <- function(gen_loss_func, crit_loss_func, gan_model) {
+
+  vision$gan$GANLoss(
+    gen_loss_func = gen_loss_func,
+    crit_loss_func = crit_loss_func,
+    gan_model = gan_model
+  )
+
+}
+
+#' @title AdaptiveLoss
+#'
+#' @description Expand the `target` to match the `output` size before applying `crit`.
+#'
+#'
+#' @param crit crit
+#'
+#' @export
+AdaptiveLoss <- function(crit) {
+
+  vision$gan$AdaptiveLoss(
+    crit = crit
+  )
+
+}
+
+
+#' @title accuracy_thresh_expand
+#'
+#' @description Compute accuracy after expanding `y_true` to the size of `y_pred`.
+#'
+#'
+#' @param y_pred y_pred
+#' @param y_true y_true
+#' @param thresh thresh
+#' @param sigmoid sigmoid
+#'
+#' @export
+accuracy_thresh_expand <- function(y_pred, y_true, thresh = 0.5, sigmoid = TRUE) {
+
+  vision$gan$accuracy_thresh_expand(
+    y_pred = y_pred,
+    y_true = y_true,
+    thresh = thresh,
+    sigmoid = sigmoid
+  )
+
+}
+
+#' @title set_freeze_model
+#'
+#'
+#' @param m m
+#' @param rg rg
+#'
+#' @export
+set_freeze_model <- function(m, rg) {
+
+  vision$gan$set_freeze_model(
+    m = m,
+    rg = rg
+  )
+
+}
+
+#' @title GANTrainer
+#'
+#' @description Handles GAN Training.
+#'
+#'
+#' @param switch_eval switch_eval
+#' @param clip clip
+#' @param beta beta
+#' @param gen_first gen_first
+#' @param show_img show_img
+#'
+#' @export
+GANTrainer <- function(switch_eval = FALSE, clip = NULL, beta = 0.98,
+                       gen_first = FALSE, show_img = TRUE) {
+
+  vision$gan$GANTrainer(
+    switch_eval = switch_eval,
+    clip = clip,
+    beta = beta,
+    gen_first = gen_first,
+    show_img = show_img
+  )
+
+}
+
+
+#' @title FixedGANSwitcher
+#'
+#' @description Switcher to do `n_crit` iterations of the critic then `n_gen` iterations of the generator.
+#'
+#' @details
+#'
+#' @param n_crit n_crit
+#' @param n_gen n_gen
+#'
+#' @export
+FixedGANSwitcher <- function(n_crit = 1, n_gen = 1) {
+
+  vision$gan$FixedGANSwitcher(
+    n_crit = as.integer(n_crit),
+    n_gen = as.integer(n_gen)
+  )
+
+}
+
+#' @title AdaptiveGANSwitcher
+#'
+#' @description Switcher that goes back to generator/critic when the loss goes below `gen_thresh`/`crit_thresh`.
+#'
+#'
+#' @param gen_thresh gen_thresh
+#' @param critic_thresh critic_thresh
+#'
+#' @export
+AdaptiveGANSwitcher <- function(gen_thresh = NULL, critic_thresh = NULL) {
+
+  vision$gan$AdaptiveGANSwitcher(
+    gen_thresh = gen_thresh,
+    critic_thresh = critic_thresh
+  )
+
+}
+
+#' @title GANDiscriminativeLR
+#'
+#' @description `Callback` that handles multiplying the learning rate by `mult_lr` for the critic.
+#'
+#'
+#' @param mult_lr mult_lr
+#'
+#' @export
+GANDiscriminativeLR <- function(mult_lr = 5.0) {
+
+  vision$gan$GANDiscriminativeLR(
+    mult_lr = mult_lr
+  )
+
+}
+
+#' @title InvisibleTensor
+#'
+#' @param x x
+#'
+#' @export
+InvisibleTensor <- function(x) {
+
+  vision$gan$InvisibleTensor(
+    x = x
+  )
+
+}
+
+#' @title gan_loss_from_func
+#'
+#' @description Define loss functions for a GAN from `loss_gen` and `loss_crit`.
+#'
+#'
+#' @param loss_gen loss_gen
+#' @param loss_crit loss_crit
+#' @param weights_gen weights_gen
+#'
+#' @export
+gan_loss_from_func <- function(loss_gen, loss_crit, weights_gen = NULL) {
+
+  vision$gan$gan_loss_from_func(
+    loss_gen = loss_gen,
+    loss_crit = loss_crit,
+    weights_gen = weights_gen
+  )
+
+}
+
+
+
 
 
 

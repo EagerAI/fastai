@@ -4,16 +4,16 @@
 \alias{fit.fastai.learner.Learner}
 \title{Fit}
 \usage{
-\method{fit}{fastai.learner.Learner}(object, n_epoch, lr = 0.01, wd = NULL, callbacks = NULL)
+\method{fit}{fastai.learner.Learner}(object, ...)
 }
 \arguments{
+\item{epochs}{epochs}
+
 \item{lr}{lr}
 
 \item{wd}{wd}
 
 \item{callbacks}{callbacks}
-
-\item{epochs}{epochs}
 }
 \description{
 Fit the model on this learner with `lr` learning rate, `wd` weight decay for `epochs` with `callbacks`.
