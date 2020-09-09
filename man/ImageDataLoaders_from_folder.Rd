@@ -22,7 +22,7 @@ ImageDataLoaders_from_folder(
 )
 }
 \arguments{
-\item{path}{path}
+\item{path}{The folder where to work}
 
 \item{train}{train}
 
@@ -34,15 +34,15 @@ ImageDataLoaders_from_folder(
 
 \item{vocab}{vocab}
 
-\item{item_tfms}{item_tfms}
+\item{item_tfms}{One or several transforms applied to the items before batching them}
 
-\item{batch_tfms}{batch_tfms}
+\item{batch_tfms}{One or several transforms applied to the batches once they are formed}
 
 \item{bs}{bs}
 
-\item{val_bs}{val_bs}
+\item{val_bs}{The batch size for the validation DataLoader (defaults to bs)}
 
-\item{shuffle_train}{shuffle_train}
+\item{shuffle_train}{If we shuffle the training DataLoader or not}
 
 \item{device}{device}
 }

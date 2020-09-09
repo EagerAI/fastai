@@ -13,11 +13,11 @@ FillMissing(
 )
 }
 \arguments{
-\item{cat_names}{cat_names}
+\item{cat_names}{The names of the categorical variables}
 
-\item{cont_names}{cont_names}
+\item{cont_names}{The names of the continuous variables}
 
-\item{fill_strategy}{fill_strategy}
+\item{fill_strategy}{The strategy of filling}
 
 \item{add_col}{add_col}
 

@@ -7,11 +7,11 @@
 error_rate(inp, targ, axis = -1)
 }
 \arguments{
-\item{inp}{inp}
+\item{inp}{The predictions of the model}
 
-\item{targ}{targ}
+\item{targ}{The corresponding labels}
 
-\item{axis}{axis}
+\item{axis}{Axis}
 }
 \description{
 1 - `accuracy`

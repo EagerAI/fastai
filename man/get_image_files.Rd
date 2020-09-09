@@ -7,7 +7,7 @@
 get_image_files(path, recurse = TRUE, folders = NULL)
 }
 \arguments{
-\item{path}{path}
+\item{path}{The folder where to work}
 
 \item{recurse}{recurse}
 

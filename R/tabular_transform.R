@@ -3,9 +3,9 @@
 #'
 #' @description Fill the missing values in continuous columns.
 #'
-#' @param cat_names cat_names
-#' @param cont_names cont_names
-#' @param fill_strategy fill_strategy
+#' @param cat_names The names of the categorical variables
+#' @param cont_names The names of the continuous variables
+#' @param fill_strategy The strategy of filling
 #' @param add_col add_col
 #' @param fill_val fill_val
 #'
@@ -62,8 +62,8 @@ Normalize <- function(cat_names, cont_names) {
 #' @description Transform the categorical variables to that type.
 #'
 #'
-#' @param cat_names cat_names
-#' @param cont_names cont_names
+#' @param cat_names The names of the categorical variables
+#' @param cont_names The names of the continuous variables
 #'
 #' @export
 Categorify <- function(cat_names, cont_names) {
@@ -262,8 +262,3 @@ predict.fastai.tabular.learner.TabularLearner <- function(object, row) {
   object$predict(reticulate::r_to_py(row)$iloc[0])[[3]]$numpy()
 
 }
-
-
-
-
-

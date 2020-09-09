@@ -7,9 +7,9 @@
 Categorify(cat_names, cont_names)
 }
 \arguments{
-\item{cat_names}{cat_names}
+\item{cat_names}{The names of the categorical variables}
 
-\item{cont_names}{cont_names}
+\item{cont_names}{The names of the continuous variables}
 }
 \description{
 Transform the categorical variables to that type.
