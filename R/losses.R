@@ -24,6 +24,3 @@ error_rate <- function(inp, targ, axis = -1) {
 }
 
 attr(error_rate ,"py_function_name") <- "error_rate"
-
-
-

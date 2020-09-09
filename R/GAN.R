@@ -726,11 +726,3 @@ gan_loss_from_func <- function(loss_gen, loss_crit, weights_gen = NULL) {
   )
 
 }
-
-
-
-
-
-
-
-

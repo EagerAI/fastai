@@ -268,7 +268,3 @@ UnetBlock <- function(up_in_c, x_in_c, hook, final_div = TRUE,
   do.call(vision$all$UnetBlock, args)
 
 }
-
-
-
-
