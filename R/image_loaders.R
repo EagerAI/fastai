@@ -446,8 +446,3 @@ ImageDataLoaders_from_path_re <- function(path, fnames, pat, valid_pct = 0.2,
 
   do.call(vision$all$ImageDataLoaders$from_path_re, argss)
 }
-
-
-
-
-

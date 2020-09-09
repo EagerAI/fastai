@@ -262,8 +262,3 @@ predict.fastai.tabular.learner.TabularLearner <- function(object, row) {
   object$predict(reticulate::r_to_py(row)$iloc[0])[[3]]$numpy()
 
 }
-
-
-
-
-
