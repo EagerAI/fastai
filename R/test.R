@@ -30,10 +30,24 @@
 
 
 
+#' @title Get history
+#'
+#'
+#' @export
+to_fastai_training_history <- function(history) {
+  structure(class = "fastai_training_history", list(
+    history = history
+  ))
+}
 
 
-
-
+#' @title Plot history
+#'
+#'
+#' @export
+plot.to_fastai_training_history <- function(history) {
+  plot.ts(history)
+}
 
 
 

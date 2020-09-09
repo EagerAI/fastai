@@ -86,6 +86,14 @@ fit.fastai.learner.Learner <- function(object, ...) {
   # fit the model
   do.call(object$fit, args)
 
+  history = data.frame(values = t(do.call(rbind,lapply(1:length(object$recorder$values[[1]]$items),
+                                                       function(x) object$recorder$values[[x]]$items)))
+  )
+  nm = object$recorder$metric_names$items
+  colnames(history) = nm[!nm %in% c('epoch','time')]
+
+  invisible(history)
+
 }
 
 #' @title Cnn_config
