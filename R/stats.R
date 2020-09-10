@@ -32,7 +32,7 @@ plot_confusion_matrix <- function(object, dataloader) {
 #' @param dataloader dataloaders object
 #' @export
 get_confusion_matrix <- function(object, dataloader) {
-  if(inherits(object,"fastai.learner.Learner")) {
+  if(class(object)[1]=="fastai.learner.Learner") {
     interp = vision$all$ClassificationInterpretation$from_learner(object)
 
     conf=interp$confusion_matrix()
@@ -41,7 +41,7 @@ get_confusion_matrix <- function(object, dataloader) {
     colnames(conf)=itms
     rownames(conf)=itms
     conf
-  } else if (inherits(object,"fastai.tabular.learner.TabularLearner")) {
+  } else if (class(object)[1]=="fastai.tabular.learner.TabularLearner") {
     tabular$ClassificationInterpretation$from_learner(model)$confusion_matrix()
   }
 }
