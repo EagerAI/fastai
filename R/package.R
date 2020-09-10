@@ -31,6 +31,9 @@ medical<-NULL
     # Torch module
     nn <<- fastai2$torch_core$nn
 
+    # Metrics
+    metrics <<- fastai2$metrics
+
     # Module
     Module <<- fastai2$vision$all$Module
 

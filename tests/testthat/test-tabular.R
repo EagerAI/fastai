@@ -50,4 +50,19 @@ test_succeeds('tabular ops get optimal lr', {
 })
 
 
+test_succeeds('tabular ops confusion matrix', {
+  conf = model %>% get_confusion_matrix() %>% as.data.frame()
+  expect_equal(names(conf),rownames(conf))
+  expect_equal(length(names(conf)),2)
+  expect_equal(length(rownames(conf)),2)
+})
+
+
+
+
+
+
+
+
+
 
