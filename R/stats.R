@@ -31,7 +31,7 @@ plot_confusion_matrix <- function(object, dataloader) {
 #' @param object model
 #' @param dataloader dataloaders object
 #' @export
-get_confusion_matrix <- function(object, dataloader) {
+get_confusion_matrix <- function(object) {
   if(class(object)[1]=="fastai.learner.Learner") {
     interp = vision$all$ClassificationInterpretation$from_learner(object)
 
@@ -42,7 +42,7 @@ get_confusion_matrix <- function(object, dataloader) {
     rownames(conf)=itms
     conf
   } else if (class(object)[1]=="fastai.tabular.learner.TabularLearner") {
-    tabular$ClassificationInterpretation$from_learner(model)$confusion_matrix()
+    tabular$ClassificationInterpretation$from_learner(object)$confusion_matrix()
   }
 }
 
