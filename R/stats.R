@@ -37,7 +37,7 @@ get_confusion_matrix <- function(object, dataloader) {
 
     conf=interp$confusion_matrix()
     conf=apply(conf, 2, as.integer)
-    itms = dls$vocab$items$items
+    itms = object$vocab$items$items
     colnames(conf)=itms
     rownames(conf)=itms
     conf
