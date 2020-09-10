@@ -78,6 +78,7 @@
 <a href="#r-interface-to-fastai" class="anchor"></a>R interface to fastai</h2>
 <p>The fastai package provides R wrappers to <a href="https://github.com/fastai/fastai">fastai</a>.</p>
 <p>The fastai library simplifies training fast and accurate neural nets using modern best practices. See the fastai website to get started. The library is based on research into deep learning best practices undertaken at <code>fast.ai</code>, and includes “out of the box” support for <code>vision</code>, <code>text</code>, <code>tabular</code>, and <code>collab</code> (collaborative filtering) models.</p>
+<p><img src="files/fastai.png" width="200" align="right" style="margin-left: 15px;" alt="fastai"></p>
 <p><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a> <a href="https://CRAN.R-project.org/package=fastai"><img src="https://www.r-pkg.org/badges/version/fastai" alt="CRAN status"></a></p>
 </div>
 <div id="continuous-build-status" class="section level2">
@@ -128,10 +129,10 @@
 <div id="tabular-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#tabular-data" class="anchor"></a>Tabular data</h2>
-<pre><code><a href="https://rdrr.io/pkg/magrittr/man">library(magrittr)
+<pre><code>library(magrittr)
 library(fastai)
 
-df = data.table::fread('https://github.com/henry090/fastai/raw/master/files/adult.csv')</a></code></pre>
+df = data.table::fread('https://github.com/henry090/fastai/raw/master/files/adult.csv')</code></pre>
 <p>Variables:</p>
 <pre><code>dep_var = 'salary'
 cat_names = c('workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race')
@@ -321,7 +322,7 @@ learn %&gt;% fit(1, 2e-4, wd = 0)</code></pre>
 <h2 class="hasAnchor">
 <a href="#unet-example" class="anchor"></a>UNET example</h2>
 <p>Call libraries:</p>
-<pre><code><a href="https://rdrr.io/pkg/fastai/man">library(fastai)
+<pre><code><a href="https://github.com/henry090/fastai">library(fastai)
 library(magrittr)</a></code></pre>
 <p>Get data</p>
 <pre><code><a href="reference/URLs_CAMVID.html">URLs_CAMVID()</a></code></pre>
@@ -796,7 +797,7 @@ learn %&gt;% fit_one_cycle(2, lr, pct_start = 0.9, wd = wd)</code></pre>
 <h2 class="hasAnchor">
 <a href="#collab-collaborative-filtering" class="anchor"></a>Collab (Collaborative filtering)</h2>
 <p>Call libraries:</p>
-<pre><code><a href="https://rdrr.io/pkg/zeallot/man">library(zeallot)
+<pre><code><a href="https://github.com/nteetor/zeallot">library(zeallot)
 library(magrittr)</a></code></pre>
 <p>Get data:</p>
 <pre><code><a href="reference/URLs_MOVIE_LENS_ML_100k.html">URLs_MOVIE_LENS_ML_100k()</a></code></pre>
@@ -903,7 +904,7 @@ ggpubr::ggarrange(p_[[1]], p_[[2]], p_[[3]], p_[[4]], labels = types)</code></pr
 <p align="center">
 <img src="files/dcm.png" height="500" align="center" alt="dicom"></p>
 <p>Let’s try a relatively complex example:</p>
-<pre><code><a href="https://ggplot2.tidyverse.org/reference">library(ggplot2)
+<pre><code><a href="http://ggplot2.tidyverse.org">library(ggplot2)
 
 # crop parameters
 img = dcmread('hemorrhage.dcm')
@@ -980,7 +981,7 @@ data = model %&gt;% lr_find_() </code></pre>
 5 0.0000002089296 5.043181
 6 0.0000002511886 5.023340</code></pre>
 <p>Visualize:</p>
-<pre><code><a href="https://rdrr.io/pkg/highcharter/man/hchart.html">highcharter::hchart(data, "line", highcharter::hcaes(y = losses, x = lr_rates ))</a></code></pre>
+<pre><code>highcharter::hchart(data, "line", highcharter::hcaes(y = losses, x = lr_rates ))</code></pre>
 <p align="center">
 <img src="files/lr.png" height="500" align="center" alt="Learning_rates"></p>
 </div>
@@ -1000,7 +1001,7 @@ magick::image_read(batch[[1]][[9]])</code></pre>
 <h3 class="hasAnchor">
 <a href="#mask" class="anchor"></a>Mask</h3>
 <p>Visualize mask:</p>
-<pre><code><a href="https://rdrr.io/pkg/magrittr/man">library(magrittr)
+<pre><code>library(magrittr)
 library(fastai)
 
 # original image
@@ -1017,7 +1018,7 @@ mask = tmask(mask_fn)
 
 # visualize
 mask %&gt;% to_matrix() %&gt;%
-  nandb::matrix_raster_plot(colours = viridis::plasma(3)) + theme(legend.position = "none")</a></code></pre>
+  nandb::matrix_raster_plot(colours = viridis::plasma(3)) + theme(legend.position = "none")</code></pre>
 <p align="center">
 <img src="files/mask.png" height="500" align="center" alt="Mask"></p>
 </div>
@@ -1051,7 +1052,7 @@ pnt_img %&gt;% to_matrix() %&gt;% nandb::matrix_raster_plot(colours = c('white',
 <div id="annotations-on-tiny-coco" class="section level3">
 <h3 class="hasAnchor">
 <a href="#annotations-on-tiny-coco" class="anchor"></a>Annotations on Tiny COCO</h3>
-<pre><code><a href="https://rdrr.io/pkg/magrittr/man">library(magrittr)
+<pre><code>library(magrittr)
 library(zeallot)
 library(fastai)
 
@@ -1065,11 +1066,11 @@ c(coco_fn,bbox) %&lt;-% list(paste('coco_tiny/train',images[[idx]],sep = '/'),
 coco_img = timg(coco_fn)
 
 tbbox = LabeledBBox(TensorBBox(bbox[[1]]), bbox[[2]])
-</a></code></pre>
+</code></pre>
 <pre><code>(#2) [TensorBBox([[ 91.3000,  77.9400, 102.4300,  82.4700],
         [ 27.5800,  77.6500,  40.7600,  82.3400]]),['tv', 'tv']]</code></pre>
 <p>Visualize:</p>
-<pre><code><a href="https://rdrr.io/pkg/imager/man">library(imager)
+<pre><code><a href="http://dahtah.github.io/imager">library(imager)
 coco = imager::load.image(coco_fn)
 plot(coco,axes=F)
 
@@ -1164,7 +1165,7 @@ for ( i in 1:length(bbox[[1]])) {
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

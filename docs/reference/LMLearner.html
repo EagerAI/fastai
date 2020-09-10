@@ -120,41 +120,41 @@ Add functionality to `TextLearner` when dealing with a language model" />
     </div>
 
     <pre class="usage"><span class='fu'>LMLearner</span>(
-  <span class='no'>dls</span>,
-  <span class='no'>model</span>,
-  <span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>2</span>,
-  <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>moms</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fl'>0.8</span>, <span class='fl'>0.7</span>, <span class='fl'>0.8</span>),
-  <span class='kw'>loss_func</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>opt_func</span> <span class='kw'>=</span> <span class='fu'><a href='Adam.html'>Adam</a></span>(),
-  <span class='kw'>lr</span> <span class='kw'>=</span> <span class='fl'>0.001</span>,
-  <span class='kw'>splitter</span> <span class='kw'>=</span> <span class='fu'><a href='trainable_params.html'>trainable_params</a></span>(),
-  <span class='kw'>cbs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>metrics</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>path</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>model_dir</span> <span class='kw'>=</span> <span class='st'>"models"</span>,
-  <span class='kw'>wd</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>wd_bn_bias</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>train_bn</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+  <span class='kw'>dls</span>,
+  <span class='kw'>model</span>,
+  alpha = <span class='fl'>2</span>,
+  beta = <span class='fl'>1</span>,
+  moms = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fl'>0.8</span>, <span class='fl'>0.7</span>, <span class='fl'>0.8</span>),
+  loss_func = <span class='kw'>NULL</span>,
+  opt_func = <span class='fu'><a href='Adam.html'>Adam</a></span>(),
+  lr = <span class='fl'>0.001</span>,
+  splitter = <span class='fu'><a href='trainable_params.html'>trainable_params</a></span>(),
+  cbs = <span class='kw'>NULL</span>,
+  metrics = <span class='kw'>NULL</span>,
+  path = <span class='kw'>NULL</span>,
+  model_dir = <span class='st'>"models"</span>,
+  wd = <span class='kw'>NULL</span>,
+  wd_bn_bias = <span class='fl'>FALSE</span>,
+  train_bn = <span class='fl'>TRUE</span>
 )
 
 <span class='fu'>LMLearner</span>(
-  <span class='no'>dls</span>,
-  <span class='no'>model</span>,
-  <span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>2</span>,
-  <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>moms</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fl'>0.8</span>, <span class='fl'>0.7</span>, <span class='fl'>0.8</span>),
-  <span class='kw'>loss_func</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>opt_func</span> <span class='kw'>=</span> <span class='fu'><a href='Adam.html'>Adam</a></span>(),
-  <span class='kw'>lr</span> <span class='kw'>=</span> <span class='fl'>0.001</span>,
-  <span class='kw'>splitter</span> <span class='kw'>=</span> <span class='fu'><a href='trainable_params.html'>trainable_params</a></span>(),
-  <span class='kw'>cbs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>metrics</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>path</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>model_dir</span> <span class='kw'>=</span> <span class='st'>"models"</span>,
-  <span class='kw'>wd</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>wd_bn_bias</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>train_bn</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+  <span class='kw'>dls</span>,
+  <span class='kw'>model</span>,
+  alpha = <span class='fl'>2</span>,
+  beta = <span class='fl'>1</span>,
+  moms = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fl'>0.8</span>, <span class='fl'>0.7</span>, <span class='fl'>0.8</span>),
+  loss_func = <span class='kw'>NULL</span>,
+  opt_func = <span class='fu'><a href='Adam.html'>Adam</a></span>(),
+  lr = <span class='fl'>0.001</span>,
+  splitter = <span class='fu'><a href='trainable_params.html'>trainable_params</a></span>(),
+  cbs = <span class='kw'>NULL</span>,
+  metrics = <span class='kw'>NULL</span>,
+  path = <span class='kw'>NULL</span>,
+  model_dir = <span class='st'>"models"</span>,
+  wd = <span class='kw'>NULL</span>,
+  wd_bn_bias = <span class='fl'>FALSE</span>,
+  train_bn = <span class='fl'>TRUE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -247,7 +247,7 @@ Add functionality to `TextLearner` when dealing with a language model" />
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>
