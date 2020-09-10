@@ -30,13 +30,6 @@ test_succeeds('mnist_sample cnn_learner', {
 })
 
 
-test_succeeds('mnist_sample fit', {
-  res = learn %>% fit(1)
-  expect_true(is.data.frame(res))
-  expect_equal(nrow(res),1)
-  expect_equal(ncol(res),4)
-})
-
 
 
 

@@ -26,7 +26,7 @@ test_succeeds('tabular ops dataloader', {
   dls = TabularDataTable(df, procs, cat_names, cont_names,
                          y_names="salary", splits = list(c(1:32000),c(32001:32561))) %>%
     dataloaders(bs=10)
-  expect_length(dls$one_batch(), 3)
+  expect_length(one_batch(dls, convert = FALSE), 3)
 })
 
 
