@@ -160,7 +160,7 @@ Perplexity <- function(...) {
 one_batch <- function(object, convert = TRUE) {
   obj = object$one_batch()
 
-  if(inherits(dls,'fastai.tabular.data.TabularDataLoaders')) {
+  if(inherits(obj,'fastai.tabular.data.TabularDataLoaders')) {
     obj
   } else {
     if(convert) {
