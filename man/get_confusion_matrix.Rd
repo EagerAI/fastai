@@ -4,7 +4,7 @@
 \alias{get_confusion_matrix}
 \title{Extract confusion matrix}
 \usage{
-get_confusion_matrix(object, dataloader)
+get_confusion_matrix(object)
 }
 \arguments{
 \item{object}{model}
