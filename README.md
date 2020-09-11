@@ -371,6 +371,8 @@ Dataloader object and list of labels:
 ```
 dls = camvid %>% dataloaders(source = "camvid/images", bs = bs, path = path)
 
+dls %>% show_batch()
+
 void_code = which(codes == "Void")
 
 dls$vocab = codes
@@ -378,6 +380,12 @@ dls$vocab = codes
 name2id = as.list(1:(length(codes)))
 names(name2id) = codes
 ```
+
+<center>
+
+<img src="files/unet.png" height=600 align=center alt="Mnist"/>
+
+</center>
 
 ```
 str(name2id)
