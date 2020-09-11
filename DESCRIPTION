@@ -23,7 +23,9 @@ RoxygenNote: 7.1.1
 Imports:
     reticulate,
     generics,
-    data.table
+    data.table,
+    png,
+    graphics
 Suggests:
     knitr,
     testthat,
