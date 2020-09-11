@@ -154,6 +154,16 @@ model %>% get_confusion_matrix()
 >=50k   68    64
 ```
 
+Plot it:
+
+```
+interp = ClassificationInterpretation_from_learner(model)
+
+interp %>% plot_confusion_matrix(dpi = 300,figsize = c(16,15))
+```
+
+<img src="files/conf_.png" width=500 align=center alt="Pets"/>
+
 Get predictions on new data:
 
 ```
@@ -200,14 +210,10 @@ dls = ImageDataLoaders_from_name_re(
 )
 ```
 
-Random batch for visualization:
+Show batch for visualization:
 
 ```
-par(mar=c(0.5, 0.5, 1, 1))
-
-imager::map_il(dls %>% random_batch(regex = '[A-z]+_',
-               folder_name = 'oxford-iiit-pet/images'),
-               imager::load.image) %>% plot(axes = FALSE)
+dls %>% show_batch(dpi = 150)
 ```
 
 <img src="files/pets.png" height=500 align=center alt="Pets"/>
@@ -259,11 +265,7 @@ bs = 20
 data = ImageDataLoaders_from_folder(path, batch_tfms = tfms, size = 26, bs = bs)
 
 # Visualize and train 
-par(mar = c(0.5, 0.5, 1, 1))
-
-imager::map_il(dls %>% random_batch(regex = '[0-9]+',
-               folder_name = 'mnist_sample'),
-               imager::load.image) %>% plot(axes = FALSE)
+data %>% show_batch(dpi = 150)
                
 learn = cnn_learner(data, resnet18, metrics = accuracy)
 learn %>% fit(2)
