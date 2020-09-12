@@ -159,10 +159,10 @@ Plot it:
 ```
 interp = ClassificationInterpretation_from_learner(model)
 
-interp %>% plot_confusion_matrix(dpi = 90,figsize = c(9,9))
+interp %>% plot_confusion_matrix(dpi = 90,figsize = c(6,6))
 ```
 
-<img src="files/conf_.png" width=500 align=center alt="Pets"/>
+<img src="files/conf_.png" height=400 align=center alt="Pets"/>
 
 Get predictions on new data:
 
