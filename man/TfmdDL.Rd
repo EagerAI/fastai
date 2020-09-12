@@ -17,7 +17,9 @@ TfmdDL(
   drop_last = FALSE,
   indexed = NULL,
   n = NULL,
-  device = NULL
+  device = NULL,
+  after_batch = NULL,
+  ...
 )
 }
 \arguments{

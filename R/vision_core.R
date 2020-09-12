@@ -236,9 +236,13 @@ image2tensor <- function(img) {
 #' @export
 Image_create <- function(fn) {
 
-  vision$all$PILImage$create(
-    fn = fn
-  )
+  if(missing(fn)) {
+    invisible(vision$all$PILImage$create)
+  } else {
+    vision$all$PILImage$create(
+      fn = fn
+    )
+  }
 
 }
 
@@ -469,6 +473,10 @@ Datasets <- function(items = NULL, tfms = NULL, tls = NULL, n_inp = NULL,
                      split_idx = NULL, train_setup = TRUE, splits = NULL,
                      types = NULL, verbose = FALSE) {
 
+  if(!is.null(n_inp)) {
+    n_inp = as.integer(n_inp)
+  }
+
   vision$all$Datasets(
     items = items,
     tfms = tfms,
@@ -525,9 +533,11 @@ Image = function(...) {
 TfmdDL <- function(dataset, bs = 64, shuffle = FALSE, num_workers = NULL,
                    verbose = FALSE, do_setup = TRUE, pin_memory = FALSE,
                    timeout = 0, batch_size = NULL, drop_last = FALSE,
-                   indexed = NULL, n = NULL, device = NULL) {
+                   indexed = NULL, n = NULL, device = NULL,
+                   after_batch = NULL,
+                   ...) {
 
-  vision$all$TfmdDL(
+  args = list(
     dataset = dataset,
     bs = as.integer(bs),
     shuffle = shuffle,
@@ -540,8 +550,16 @@ TfmdDL <- function(dataset, bs = 64, shuffle = FALSE, num_workers = NULL,
     drop_last = drop_last,
     indexed = indexed,
     n = n,
-    device = device
+    device = device,
+    after_batch = after_batch,
+    ...
   )
+
+  if(!is.null(args$after_batch)) {
+    args$after_batch <- unlist(args$after_batch)
+  }
+
+  do.call(vision$all$TfmdDL, args)
 
 }
 
@@ -606,10 +624,12 @@ TensorPoint <- function(x) {
 #' @export
 TensorBBox_create <- function(x, img_size = NULL) {
 
-  if(is.list(img_size)) {
-    img_size = as.list(as.integer(unlist(img_size)))
-  } else {
-    img_size = as.integer(img_size)
+  if(!is.null(img_size)) {
+    if(is.list(img_size)) {
+      img_size = as.list(as.integer(unlist(img_size)))
+    } else {
+      img_size = as.integer(img_size)
+    }
   }
 
   vision$all$TensorBBox$create(

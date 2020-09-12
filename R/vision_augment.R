@@ -837,9 +837,41 @@ get_annotations <- function(fname, prefix = NULL) {
 }
 
 
+#' @title MultiCategorize
+#'
+#' @description Reversible transform of multi-category strings to `vocab` id
+#'
+#'
+#' @param vocab vocab
+#' @param add_na add_na
+#'
+#' @export
+MultiCategorize <- function(vocab = NULL, add_na = FALSE) {
 
+  vision$all$MultiCategorize(
+    vocab = vocab,
+    add_na = add_na
+  )
 
+}
 
+#' @title IntToFloatTensor
+#'
+#' @description Transform image to float tensor, optionally dividing by 255 (e.g. for images).
+#'
+#'
+#' @param div div
+#' @param div_mask div_mask
+#'
+#' @export
+IntToFloatTensor <- function(div = 255.0, div_mask = 1) {
+
+  vision$all$IntToFloatTensor(
+    div = div,
+    div_mask = as.integer(div_mask)
+  )
+
+}
 
 
 

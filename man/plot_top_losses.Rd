@@ -10,7 +10,7 @@ plot_top_losses(
   largest = TRUE,
   figsize = c(19.2, 10.8),
   ...,
-  dpi = 90
+  dpi = NULL
 )
 }
 \arguments{

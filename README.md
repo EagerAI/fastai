@@ -159,7 +159,7 @@ Plot it:
 ```
 interp = ClassificationInterpretation_from_learner(model)
 
-interp %>% plot_confusion_matrix(dpi = 300,figsize = c(16,15))
+interp %>% plot_confusion_matrix(dpi = 90,figsize = c(9,9))
 ```
 
 <img src="files/conf_.png" width=500 align=center alt="Pets"/>
@@ -250,6 +250,17 @@ hchart(conf, label = TRUE) %>%
 
 > Note that the plot is built with highcharter.
 
+
+Plot top losses:
+
+```
+interp = ClassificationInterpretation_from_learner(learn)
+
+interp %>% plot_top_losses(k = 9, figsize = c(15,11))
+```
+
+<img src="files/top_loss.png" height=500 align=center alt="Pets"/>
+
 Alternatively, load images from folders:
 
 ```
@@ -323,7 +334,7 @@ learn$recorder$valid_metrics = FALSE
 learn %>% fit(1, 2e-4, wd = 0)
 ```
 
-## UNET example
+## Unet example
 
 Call libraries:
 
@@ -1294,6 +1305,38 @@ for ( i in 1:length(bbox[[1]])) {
 <img src="files/annotate.png" height=500 align=center alt="Annotation"/>
 </p>
 
+Alternatively, we could see batch via dataloader:
+
+```
+idx = 3
+c(coco_fn,bbox) %<-% list(paste('coco_tiny/train',images[[idx]],sep = '/'),
+                          lbl_bbox[[idx]])
+                          
+coco_bb = function(x) {
+ TensorBBox_create(bbox[[1]])
+}
+
+coco_lbl = function(x) {
+  bbox[[2]]
+}
+
+coco_dsrc = Datasets(c(rep(coco_fn,10)), 
+                     list(Image_create(), list(coco_bb), 
+                     list( coco_lbl, MultiCategorize(add_na = TRUE) )
+                          ), n_inp = 1)
+
+coco_tdl = TfmdDL(coco_dsrc, bs = 9, 
+                  after_item = list(BBoxLabeler(), PointScaler(), 
+                                 ToTensor()),
+                  after_batch = list(IntToFloatTensor(), aug_transforms())
+                  )
+                  
+coco_tdl %>% show_batch(dpi = 200)
+```
+
+<p align="center">
+<img src="files/annotate_.png" height=500 align=center alt="Annotation_"/>
+</p>
 
 ### NN module
 

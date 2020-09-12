@@ -60,7 +60,6 @@ plot.to_fastai_training_history <- function(history) {
 #' @param ctxs ctxs
 #' @param show show
 #' @param unique unique
-#' @importFrom graphics rasterImage
 #' @export
 show_batch <- function(dls, b = NULL, max_n = 9, ctxs = NULL,
                        figsize = c(19.2,10.8),
@@ -79,10 +78,8 @@ show_batch <- function(dls, b = NULL, max_n = 9, ctxs = NULL,
   fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi))
 
   img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
-  lim <- par()
-  plot.new()
-  rasterImage(img, lim$usr[1], lim$usr[3], lim$usr[2], lim$usr[4])
-  invisible(file.remove(paste(tmp_d, 'test.png', sep = '/')))
+  try(dev.off(),TRUE)
+  grid::grid.raster(img)
 }
 
 
@@ -114,25 +111,28 @@ ClassificationInterpretation_from_learner <- function(learn, ds_idx = 1, dl = NU
 #' @param interp interpretation object
 #' @param k k
 #' @param largest largest
-#' @importFrom graphics rasterImage
 #' @export
 plot_top_losses <- function(interp, k, largest = TRUE, figsize = c(19.2,10.8),
-                            ..., dpi = 90) {
+                            ..., dpi = NULL) {
 
   interp$plot_top_losses(
     k = as.integer(k),
     largest = largest,
+    figsize = figsize,
     ...
   )
 
   tmp_d = proj_name = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
-  fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi))
+
+  if(is.null(dpi)) {
+    fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'))
+  } else {
+    fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi))
+  }
 
   img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
-  lim <- par()
-  plot.new()
-  rasterImage(img, lim$usr[1], lim$usr[3], lim$usr[2], lim$usr[4])
-  invisible(file.remove(paste(tmp_d, 'test.png', sep = '/')))
+  try(dev.off(),TRUE)
+  grid::grid.raster(img)
 }
 
 
@@ -157,17 +157,17 @@ plot_confusion_matrix <- function(interp, normalize = FALSE, title = "Confusion 
     title = title,
     cmap = cmap,
     norm_dec = as.integer(norm_dec),
-    plot_txt = plot_txt
+    plot_txt = plot_txt,
+    figsize = figsize,
+    dpi = dpi
   )
 
   tmp_d = proj_name = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
   fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi))
 
   img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
-  lim <- par()
-  plot.new()
-  rasterImage(img, lim$usr[1], lim$usr[3], lim$usr[2], lim$usr[4])
-  invisible(file.remove(paste(tmp_d, 'test.png', sep = '/')))
+  try(dev.off(),TRUE)
+  grid::grid.raster(img)
 
 }
 
