@@ -4,7 +4,18 @@
 \alias{subplots}
 \title{subplots}
 \usage{
-subplots(nrows = 2, ncols = 2)
+subplots(nrows = 2, ncols = 2, figsize = NULL, imsize = 4, add_vert = 0)
+}
+\arguments{
+\item{nrows}{nrows}
+
+\item{ncols}{ncols}
+
+\item{figsize}{figsize}
+
+\item{imsize}{imsize}
+
+\item{add_vert}{add_vert}
 }
 \description{
 subplots

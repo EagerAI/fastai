@@ -1085,16 +1085,16 @@ img = dcmread('hemorrhage.dcm')
 Visualize data with different [window effects](https://radiopaedia.org/articles/windowing-ct):
 
 ```
-scales = list(FALSE, TRUE, dicom_windows$brain, dicom_windows$subdural)
+scale = list(FALSE, TRUE, dicom_windows$brain, dicom_windows$subdural)
 titles = c('raw','normalized','brain windowed','subdural windowed')
 
 library(zeallot)
 c(fig, axs) %<-% subplots()
 
 for (i in 1:4) {
-  img %>% show(scale = ifelse(is.list(scales[i]),
-                                      unlist(scales[i]), scales[i]), 
-                                      ax = axs[[i]], title = titles[i])
+  img %>% show(scale = scale[[i]], 
+               ax = axs[[i]], 
+               title=titles[i])
 }
 
 img %>% plot(dpi = 250)

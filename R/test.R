@@ -252,13 +252,25 @@ most_confused <- function(interp, min_val = 1) {
 
 #' @title subplots
 #'
+#'
+#' @param nrows nrows
+#' @param ncols ncols
+#' @param figsize figsize
+#' @param imsize imsize
+#' @param add_vert add_vert
+#'
 #' @export
-subplots <- function(nrows = 2, ncols = 2) {
+subplots <- function(nrows = 2, ncols = 2, figsize = NULL, imsize = 4, add_vert = 0) {
   fastai2$vision$all$plt$close()
-  fastai2$vision$all$plt$subplots(
+  args <- list(
     nrows = as.integer(nrows),
-    ncols = as.integer(ncols)
+    ncols = as.integer(ncols),
+    figsize = figsize,
+    imsize = as.integer(imsize),
+    add_vert = as.integer(add_vert)
   )
+
+  do.call(fastai2$medical$imaging$subplots, args)
 
 }
 
@@ -278,6 +290,10 @@ show <- function(img, frames = 1, scale = TRUE, ...) {
     scale = scale,
     ...
   )
+
+  if (is.list(scale)) {
+    args$scale = reticulate::tuple(scale)
+  }
 
   do.call(img$show, args)
 
