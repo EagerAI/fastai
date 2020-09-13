@@ -127,6 +127,16 @@ Callbacks:
   - ProgressCallback
 ```
 
+Before fitting try to find optimal learning rate:
+
+```
+model %>% lr_find()
+
+model %>% plot_lr_find(dpi = 200)
+```
+
+<img src="files/plot_lr.png" height=500 align=center alt="lr"/>
+
 Run:
 
 ```
@@ -135,12 +145,21 @@ model %>% fit(5, 1e-2)
 
 ```
 epoch     train_loss  valid_loss  accuracy  time    
-0         0.354821    0.375355    0.825871  00:02     
-1         0.366040    0.369802    0.830846  00:02     
-2         0.356449    0.354734    0.830846  00:02     
-3         0.356077    0.355024    0.825871  00:02     
-4         0.357948    0.361930    0.835821  00:02     
+0         0.360149    0.329587    0.846702  00:04     
+1         0.352106    0.345761    0.828877  00:04     
+2         0.368743    0.340913    0.844920  00:05     
+3         0.347277    0.333084    0.852050  00:04     
+4         0.348969    0.350707    0.830660  00:04 
 ```
+
+Plot loss history:
+
+```
+model %>% plot_loss(dpi = 200)
+```
+
+<img src="files/plot_loss.png" height=500 align=center alt="lr"/>
+
 
 Get confusion matrix:
 
