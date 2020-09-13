@@ -1085,6 +1085,39 @@ img = dcmread('hemorrhage.dcm')
 Visualize data with different [window effects](https://radiopaedia.org/articles/windowing-ct):
 
 ```
+scales = list(FALSE, TRUE, dicom_windows$brain, dicom_windows$subdural)
+titles = c('raw','normalized','brain windowed','subdural windowed')
+
+library(zeallot)
+c(fig, axs) %<-% subplots()
+
+for (i in 1:4) {
+  img %>% show(scale = ifelse(is.list(scales[i]),
+                                      unlist(scales[i]), scales[i]), 
+                                      ax = axs[[i]], title = titles[i])
+}
+
+img %>% plot(dpi = 250)
+```
+
+<p align="center">
+<img src="files/brain.png" height=500 align=center alt="dicom"/>
+</p>
+
+Apply different cmaps:
+
+```
+img %>% show(cmap = cm$gist_ncar, figsize = c(6,6))
+img %>% plot()
+```
+
+<p align="center">
+<img src="files/cmap.png" height=500 align=center alt="dicom"/>
+</p>
+
+Or get dcm matrix and plot with ggplot:
+
+```
 types = c('raw', 'normalized', 'brain', 'subdural')
 p_ = list()
 for ( i in 1:length(types)) {

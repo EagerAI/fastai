@@ -250,5 +250,56 @@ most_confused <- function(interp, min_val = 1) {
 }
 
 
+#' @title subplots
+#'
+#' @export
+subplots <- function(nrows = 2, ncols = 2) {
+  fastai2$vision$all$plt$close()
+  fastai2$vision$all$plt$subplots(
+    nrows = as.integer(nrows),
+    ncols = as.integer(ncols)
+  )
+
+}
+
+#' @title show
+#'
+#' @description Adds functionality to view dicom images where each file may have more than 1 frame
+#'
+#' @details
+#'
+#' @param frames frames
+#' @param scale scale
+#'
+#' @export
+show <- function(img, frames = 1, scale = TRUE, ...) {
+  args <- list(
+    frames = as.integer(frames),
+    scale = scale,
+    ...
+  )
+
+  do.call(img$show, args)
+
+}
+
+#' @title Plot dicom
+#'
+#'
+#'
+#' @export
+plot.pydicom.dataset.FileDataset = function(x, y, ..., dpi = 100) {
+  tmp_d = proj_name = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
+  fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi))
+
+  img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
+  try(dev.off(),TRUE)
+  grid::grid.raster(img)
+  fastai2$vision$all$plt$close()
+}
+
+
+
+
 
 

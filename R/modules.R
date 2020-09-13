@@ -10,3 +10,18 @@ nn <- NULL
 #'
 #' @export
 Module <- NULL
+
+
+#' Window effect
+#'
+#' @export
+dicom_windows <- NULL
+
+
+#' Cmap
+#'
+#' @export
+cm <- NULL
+
+
+

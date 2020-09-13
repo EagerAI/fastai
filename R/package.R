@@ -39,6 +39,12 @@ medical<-NULL
 
     # Medical
     medical <<- fastai2$medical$imaging
+
+    # windows
+    dicom_windows <<- fastai2$medical$imaging$dicom_windows
+
+    # cmap
+    cm <<- fastai2$vision$all$plt$cm
   }
 
 }
