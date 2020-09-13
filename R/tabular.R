@@ -291,4 +291,22 @@ get_emb_sz <- function(to, sz_dict = NULL) {
 
 
 
+#' @title Print model
+#'
+#'
+#' @export
+print.fastai.tabular.learner.TabularLearner = function(x, ...) {
+  print(x$model)
+}
+
+
+
+
+
+
+
+
+
+
+
 

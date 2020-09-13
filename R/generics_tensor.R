@@ -54,5 +54,12 @@ to_matrix = function(obj) {
   fastai2$basics$tensor(obj)$cpu()$numpy()
 }
 
+#' @title Print model
+#'
+#'
+#' @export
+print.fastai.learner.Learner = function(x, ...) {
+  print(x$model)
+}
 
 
