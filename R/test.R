@@ -65,6 +65,7 @@ show_batch <- function(dls, b = NULL, max_n = 9, ctxs = NULL,
                        figsize = c(19.2,10.8),
                        show = TRUE, unique = FALSE, dpi = 90) {
 
+  fastai2$vision$all$plt$close()
   dls$show_batch(
     b = b,
     max_n = as.integer(max_n),
@@ -115,6 +116,7 @@ ClassificationInterpretation_from_learner <- function(learn, ds_idx = 1, dl = NU
 plot_top_losses <- function(interp, k, largest = TRUE, figsize = c(19.2,10.8),
                             ..., dpi = NULL) {
 
+  fastai2$vision$all$plt$close()
   interp$plot_top_losses(
     k = as.integer(k),
     largest = largest,
@@ -152,6 +154,7 @@ plot_confusion_matrix <- function(interp, normalize = FALSE, title = "Confusion 
                                   figsize = c(19.2,10.8),
                                   ..., dpi = 90) {
 
+  fastai2$vision$all$plt$close()
   interp$plot_confusion_matrix(
     normalize = normalize,
     title = title,
@@ -172,6 +175,79 @@ plot_confusion_matrix <- function(interp, normalize = FALSE, title = "Confusion 
 }
 
 
+#' @title plot_loss
+#'
+#' @description Plot the losses from `skip_start` and onward
+#'
+#'
+#' @param skip_start skip_start
+#' @param with_valid with_valid
+#'
+#' @export
+plot_loss <- function(object, skip_start = 5, with_valid = TRUE, dpi = 100) {
+
+  fastai2$vision$all$plt$close()
+  object$recorder$plot_loss(
+    skip_start = as.integer(skip_start),
+    with_valid = with_valid
+  )
+
+  tmp_d = proj_name = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
+  fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi))
+
+  img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
+  try(dev.off(),TRUE)
+  grid::grid.raster(img)
+
+}
+
+#' @title plot_lr_find
+#'
+#' @description Plot the result of an LR Finder test (won't work if you didn't do `learn.lr_find()` before)
+#'
+#'
+#' @param skip_end skip_end
+#'
+#' @export
+plot_lr_find <- function(object, skip_end = 5, dpi = 100) {
+
+  fastai2$vision$all$plt$close()
+  object$recorder$plot_lr_find(
+    skip_end = as.integer(skip_end)
+  )
+
+  tmp_d = proj_name = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
+  fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi))
+
+  img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
+  try(dev.off(),TRUE)
+  grid::grid.raster(img)
+
+}
+
+
+
+#' @title most_confused
+#'
+#' @description Sorted descending list of largest non-diagonal entries of confusion matrix, presented as actual, predicted, number of occurrences.
+#'
+#'
+#' @param min_val min_val
+#'
+#' @export
+most_confused <- function(interp, min_val = 1) {
+
+  res = interp$most_confused(
+    min_val = as.integer(min_val)
+  )
+
+  res = lapply(1:length(res), function(x) rbind(res[[x]]))
+
+  res = as.data.frame(do.call(rbind,res))
+
+  res
+
+}
 
 
 
