@@ -140,7 +140,7 @@ model %>% plot_lr_find(dpi = 200)
 Run:
 
 ```
-model %>% fit(5, 1e-2)
+model %>% fit(5, 1e-2, lr = 10^-1)
 ```
 
 ```
@@ -186,9 +186,15 @@ interp %>% plot_confusion_matrix(dpi = 90,figsize = c(6,6))
 Get predictions on new data:
 
 ```
-model %>% predict(df[4,])
+> model %>% predict(df[10:15,])
 
-[1] 0.09785532 0.90214473
+       <50k     >=50k classes
+1 0.5108562 0.4891439       0
+2 0.4827824 0.5172176       1
+3 0.4873166 0.5126833       1
+4 0.5013804 0.4986197       0
+5 0.4964157 0.5035844       1
+6 0.5111378 0.4888622       0
 ```
 
 ## Image data
