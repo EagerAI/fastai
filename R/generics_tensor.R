@@ -51,7 +51,12 @@ float <- function(tensor) {
 #'
 #' @export
 to_matrix = function(obj) {
-  fastai2$basics$tensor(obj)$cpu()$numpy()
+  if(inherits(obj,'pydicom.dataset.FileDataset')) {
+    res = obj$as_dict()
+    do.call(cbind,res)
+  } else {
+    fastai2$basics$tensor(obj)$cpu()$numpy()
+  }
 }
 
 #' @title Print model

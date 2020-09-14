@@ -48,6 +48,9 @@ medical<-NULL
 
     # cmap
     cm <<- fastai2$vision$all$plt$cm
+
+    # colors
+    colors <<- fastai2$vision$all$matplotlib$colors
   }
 
 }

@@ -4,8 +4,6 @@
 nn <- NULL
 
 
-
-
 #' Core Pytorch module
 #'
 #' @export
@@ -22,6 +20,11 @@ dicom_windows <- NULL
 #'
 #' @export
 cm <- NULL
+
+#' Colors
+#'
+#' @export
+colors <- NULL
 
 
 

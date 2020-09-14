@@ -316,6 +316,102 @@ plot.pydicom.dataset.FileDataset = function(x, y, ..., dpi = 100) {
 
 
 
+#' @title show_images
+#'
+#' @description Show all images `ims` as subplots with `rows` using `titles`
+#'
+#'
+#' @param ims ims
+#' @param nrows nrows
+#' @param ncols ncols
+#' @param titles titles
+#' @param figsize figsize
+#' @param imsize imsize
+#' @param add_vert add_vert
+#'
+#' @export
+show_images <- function(ims, nrows = 1, ncols = NULL,
+                        titles = NULL, figsize = NULL, imsize = 3, add_vert = 0) {
+
+  args <- list(
+    ims = ims,
+    nrows = as.integer(nrows),
+    ncols = ncols,
+    titles = titles,
+    figsize = figsize,
+    imsize = as.integer(imsize),
+    add_vert = as.integer(add_vert)
+  )
+
+  if(!is.null(ncols)) {
+    args$ncols = as.integer(args$ncols)
+  }
+
+
+  do.call(medical$show_images, args)
+
+}
+
+#' @title Plot tensor
+#'
+#'
+#'
+#' @export
+plot.list = function(x, y, ..., dpi = 100) {
+  tmp_d = proj_name = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
+  fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi))
+
+  img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
+  try(dev.off(),TRUE)
+  grid::grid.raster(img)
+  fastai2$vision$all$plt$close()
+}
+
+#' @title uniform_blur2d
+#'
+#' @description Uniformly apply blurring
+#'
+#'
+#' @param x x
+#' @param s s
+#'
+#' @export
+uniform_blur2d <- function(x, s) {
+
+  medical$uniform_blur2d(
+    x = x,
+    s = as.integer(s)
+  )
+
+}
+
+
+
+#' @title gauss_blur2d
+#'
+#' @description Apply gaussian_blur2d kornia filter
+#'
+#' @details
+#'
+#' @param x x
+#' @param s s
+#'
+#' @export
+gauss_blur2d <- function(x, s) {
+
+   medical$gauss_blur2d(
+    x = x,
+    s = as.integer(s)
+  )
+
+}
+
+
+
+
+
+
+
 
 
 
