@@ -15,7 +15,10 @@ medical<-NULL
     environment = "r-fastai"
   ))
 
-  if(reticulate::py_module_available('fastai')) {
+  if(reticulate::py_module_available('IPython') &
+     reticulate::py_module_available('torch') &
+     reticulate::py_module_available('torchvision') &
+     reticulate::py_module_available('fastai')) {
     # tabular module
     tabular <<- fastai2$tabular$all
 
