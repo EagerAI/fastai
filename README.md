@@ -140,7 +140,7 @@ model %>% plot_lr_find(dpi = 200)
 Run:
 
 ```
-model %>% fit(5, 1e-2, lr = 10^-1)
+model %>% fit(5, lr = 10^-1)
 ```
 
 ```
