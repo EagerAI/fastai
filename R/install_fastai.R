@@ -78,7 +78,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
         } else if (os %in% 'windows' & gpu & cuda_version %in% '10.2') {
           py_install(packages = c(required_py_pkgs, cuda_windows[3]), pip = TRUE)
         } else {
-          py_install(packages = c(required_py_pkgs), pip = TRUE)
+          py_install(packages = c(cpu_windows, required_py_pkgs), pip = TRUE)
         }
       } else if (os %in% 'windows' & length(required_py_pkgs) == 0){
         print('Fastai is installed!')
