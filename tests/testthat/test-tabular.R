@@ -40,7 +40,7 @@ test_succeeds('tabular ops train model', {
 
 test_succeeds('tabular ops predict', {
   res = model %>% predict(df[4,])
-  expect_length(res, 2)
+  expect_length(res, 3)
 })
 
 test_succeeds('tabular ops get optimal lr', {
