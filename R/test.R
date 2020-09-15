@@ -408,7 +408,39 @@ gauss_blur2d <- function(x, s) {
 
 
 
+#' @title show_results
+#'
+#' @description Show some predictions on `ds_idx`-th dataset or `dl`
+#'
+#' @details
+#'
+#' @param ds_idx ds_idx
+#' @param dl dl
+#' @param max_n max_n
+#' @param shuffle shuffle
+#'
+#' @export
+show_results <- function(object, ds_idx = 1, dl = NULL, max_n = 9, shuffle = TRUE, dpi = 90, ...) {
+  fastai2$vision$all$plt$close()
 
+  args <- list(
+    ds_idx = as.integer(ds_idx),
+    dl = dl,
+    max_n = as.integer(max_n),
+    shuffle = shuffle,
+    ...
+  )
+
+  do.call(object$show_results, args)
+
+  tmp_d = proj_name = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
+  fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi))
+
+  img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
+  try(dev.off(),TRUE)
+  grid::grid.raster(img)
+  fastai2$vision$all$plt$close()
+}
 
 
 
