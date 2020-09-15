@@ -203,33 +203,34 @@ dataloaders <- function(object, ...) {
 #' @param groups groups
 #'
 #' @export
-basic_generator <- function(out_size, n_channels, in_sz = 100,
-                            n_features = 64, n_extra_layers = 0,
-                            bias = NULL, ndim = 2,
-                            norm_type = 1, bn_1st = TRUE,
-                            act_cls = nn$ReLU, init = "auto",
-                            xtra = NULL, bias_std = 0.01, dilation = 1,
-                            groups = 1,
+basic_generator <- function(out_size, n_channels,
                             ...) {
 
   args <- list(
     out_size = out_size,
     n_channels = as.integer(n_channels),
-    in_sz = as.integer(in_sz),
-    n_features = as.integer(n_features),
-    n_extra_layers = as.integer(n_extra_layers),
-    bias = bias,
-    ndim = as.integer(ndim),
-    norm_type = as.integer(norm_type),
-    bn_1st = bn_1st,
-    act_cls = act_cls,
-    init = init,
-    xtra = xtra,
-    bias_std = bias_std,
-    dilation = as.integer(dilation),
-    groups = as.integer(groups),
     ...
   )
+
+  strings = c('in_size',
+              'in_sz',
+              'out_size',
+              'n_channels',
+              'n_features',
+              'n_extra_layers',
+              'norm_type',
+              'ks',
+              'stride',
+              'ndim',
+              'dilation',
+              'groups')
+
+  for (i in 1:length(strings)) {
+    if(!is.null(args[[strings[i]]])) {
+      args[[strings[i]]] = as.integer(args[[strings[i]]])
+    }
+  }
+
 
   do.call(vision$gan$basic_generator, args)
 }
@@ -258,33 +259,33 @@ basic_generator <- function(out_size, n_channels, in_sz = 100,
 #' @param ... additional parameters to pass
 #'
 #' @export
-basic_critic <- function(in_size, n_channels, n_features = 64,
-                         n_extra_layers = 0, norm_type = 1,
-                         bias = NULL,
-                         ndim = 2, bn_1st = TRUE, act_cls = nn$ReLU,
-                         transpose = FALSE,
-                         xtra = NULL, bias_std = 0.01, dilation = 1,
-                         groups = 1, padding_mode = "zeros",
+basic_critic <- function(in_size, n_channels,
                          ...) {
 
   args <- list(
     in_size = in_size,
     n_channels = as.integer(n_channels),
-    n_features = as.integer(n_features),
-    n_extra_layers = as.integer(n_extra_layers),
-    norm_type = as.integer(norm_type),
-    bias = bias,
-    ndim = as.integer(ndim),
-    bn_1st = bn_1st,
-    act_cls = act_cls,
-    transpose = transpose,
-    xtra = xtra,
-    bias_std = bias_std,
-    dilation = as.integer(dilation),
-    groups = as.integer(groups),
-    padding_mode = padding_mode,
     ...
   )
+
+  strings = c('in_size',
+              'in_sz',
+              'out_size',
+              'n_channels',
+              'n_features',
+              'n_extra_layers',
+              'norm_type',
+              'ks',
+              'stride',
+              'ndim',
+              'dilation',
+              'groups')
+
+  for (i in 1:length(strings)) {
+    if(!is.null(args[[strings[i]]])) {
+      args[[strings[i]]] = as.integer(args[[strings[i]]])
+    }
+  }
 
   do.call(vision$gan$basic_critic, args)
 

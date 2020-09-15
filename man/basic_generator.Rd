@@ -4,29 +4,14 @@
 \alias{basic_generator}
 \title{Basic_generator}
 \usage{
-basic_generator(
-  out_size,
-  n_channels,
-  in_sz = 100,
-  n_features = 64,
-  n_extra_layers = 0,
-  bias = NULL,
-  ndim = 2,
-  norm_type = 1,
-  bn_1st = TRUE,
-  act_cls = nn$ReLU,
-  init = "auto",
-  xtra = NULL,
-  bias_std = 0.01,
-  dilation = 1,
-  groups = 1,
-  ...
-)
+basic_generator(out_size, n_channels, ...)
 }
 \arguments{
 \item{out_size}{out_size}
 
 \item{n_channels}{n_channels}
+
+\item{...}{additional params to pass}
 
 \item{in_sz}{in_sz}
 
@@ -44,6 +29,8 @@ basic_generator(
 
 \item{act_cls}{act_cls}
 
+\item{transpose}{transpose}
+
 \item{init}{init}
 
 \item{xtra}{xtra}
@@ -53,10 +40,6 @@ basic_generator(
 \item{dilation}{dilation}
 
 \item{groups}{groups}
-
-\item{...}{additional params to pass}
-
-\item{transpose}{transpose}
 }
 \description{
 A basic generator from `in_sz` to images `n_channels` x `out_size` x `out_size`.

@@ -51,6 +51,11 @@ medical<-NULL
 
     # colors
     colors <<- fastai2$vision$all$matplotlib$colors
+
+    # remove fill
+    fastaip <<- reticulate::import('fastprogress')
+
+    fastaip$progress_bar$fill = ''
   }
 
 }

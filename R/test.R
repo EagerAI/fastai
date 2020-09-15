@@ -444,6 +444,22 @@ show_results <- function(object, ds_idx = 1, dl = NULL, max_n = 9, shuffle = TRU
 
 
 
+#' @title partial
+#'
+#' @description partial(func, *args, **keywords) - new function with partial application
+#'
+#' @details of the given arguments and keywords.
+#'
+#' @export
+partial <- function(...) {
+
+  vision$gan$partial(...)
+
+}
+
+
+
+
 
 
 

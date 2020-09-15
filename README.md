@@ -340,14 +340,14 @@ Generator and discriminator:
 ```
 generator = basic_generator(out_size = 64, n_channels = 3, n_extra_layers = 1)
 critic    = basic_critic(in_size = 64, n_channels = 3, n_extra_layers = 1,
-                                    act_cls = pryr::partial(nn$LeakyReLU, negative_slope = 0.2))
+                                    act_cls = partial(nn$LeakyReLU, negative_slope = 0.2))
 
 ```
 
 Model:
 
 ```
-learn = GANLearner_wgan(dls, generator, critic, opt_func = pryr::partial(Adam(), mom=0.))
+learn = GANLearner_wgan(dls, generator, critic, opt_func = partial(Adam(), mom=0.))
 ```
 
 And fit:
@@ -358,6 +358,23 @@ learn$recorder$valid_metrics = FALSE
 
 learn %>% fit(1, 2e-4, wd = 0)
 ```
+
+```
+epoch     train_loss  gen_loss  crit_loss  time    
+0         -0.555554   0.516327  -0.967604  05:06 
+```
+
+This is the result for 1 epoch.
+
+```
+learn %>% show_results(max_n = 16, figsize = c(8,8), ds_idx=0)
+```
+
+<center>
+
+<img src="files/gan.png" height=600 align=center alt="Mnist"/>
+
+</center>
 
 ## Unet example
 

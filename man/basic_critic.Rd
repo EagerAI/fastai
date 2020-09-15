@@ -4,29 +4,14 @@
 \alias{basic_critic}
 \title{Basic_critic}
 \usage{
-basic_critic(
-  in_size,
-  n_channels,
-  n_features = 64,
-  n_extra_layers = 0,
-  norm_type = 1,
-  bias = NULL,
-  ndim = 2,
-  bn_1st = TRUE,
-  act_cls = nn$ReLU,
-  transpose = FALSE,
-  xtra = NULL,
-  bias_std = 0.01,
-  dilation = 1,
-  groups = 1,
-  padding_mode = "zeros",
-  ...
-)
+basic_critic(in_size, n_channels, ...)
 }
 \arguments{
 \item{in_size}{in_size}
 
 \item{n_channels}{The number of channels}
+
+\item{...}{additional parameters to pass}
 
 \item{n_features}{The number of features}
 
@@ -53,8 +38,6 @@ basic_critic(
 \item{groups}{groups}
 
 \item{padding_mode}{Mode of padding}
-
-\item{...}{additional parameters to pass}
 }
 \description{
 A basic critic for images `n_channels` x `in_size` x `in_size`.
