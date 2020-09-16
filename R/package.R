@@ -56,6 +56,9 @@ medical<-NULL
     fastaip <<- reticulate::import('fastprogress')
 
     fastaip$progress_bar$fill = ''
+
+    # callback class
+    Callback <<- fastai2$callback$all$Callback
   }
 
 }
