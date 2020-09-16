@@ -2,6 +2,7 @@
 
 language: R
 cache: packages
+warnings_are_errors: false
 
 before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
 deploy:
