@@ -18,6 +18,7 @@ The fastai library simplifies training fast and accurate neural nets using moder
 | **Focal**   | ![ubuntu_20](https://github.com/henry090/fastai/workflows/ubuntu_20/badge.svg)|
 | **Mac OS**   | ![mac_os](https://github.com/henry090/fastai/workflows/mac_os/badge.svg) |
 | **Windows**   | ![windows](https://github.com/henry090/fastai/workflows/windows/badge.svg)|
+| **Documentation**   | ![docs](https://github.com/henry090/fastai/workflows/docs/badge.svg)|
 
 ## Installation
 
