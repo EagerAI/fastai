@@ -26,5 +26,10 @@ cm <- NULL
 #' @export
 colors <- NULL
 
+#' Callback
+#'
+#' @export
+Callback <- NULL
+
 
 
