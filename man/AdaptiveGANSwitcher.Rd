@@ -5,6 +5,8 @@
 \title{AdaptiveGANSwitcher}
 \usage{
 AdaptiveGANSwitcher(gen_thresh = NULL, critic_thresh = NULL)
+
+AdaptiveGANSwitcher(gen_thresh = NULL, critic_thresh = NULL)
 }
 \arguments{
 \item{gen_thresh}{gen_thresh}
@@ -12,5 +14,7 @@ AdaptiveGANSwitcher(gen_thresh = NULL, critic_thresh = NULL)
 \item{critic_thresh}{critic_thresh}
 }
 \description{
+Switcher that goes back to generator/critic when the loss goes below `gen_thresh`/`crit_thresh`.
+
 Switcher that goes back to generator/critic when the loss goes below `gen_thresh`/`crit_thresh`.
 }

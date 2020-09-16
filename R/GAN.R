@@ -749,3 +749,126 @@ gan_loss_from_func <- function(loss_gen, loss_crit, weights_gen = NULL) {
   )
 
 }
+
+
+
+#' @title AdaptiveGANSwitcher
+#'
+#' @description Switcher that goes back to generator/critic when the loss goes below `gen_thresh`/`crit_thresh`.
+#'
+#'
+#' @param gen_thresh gen_thresh
+#' @param critic_thresh critic_thresh
+#'
+#' @export
+AdaptiveGANSwitcher <- function(gen_thresh = NULL, critic_thresh = NULL) {
+
+  vision$gan$AdaptiveGANSwitcher(
+    gen_thresh = gen_thresh,
+    critic_thresh = critic_thresh
+  )
+
+}
+
+
+
+
+#' @title GANLearner_from_learners
+#'
+#' @description Create a GAN from `learn_gen` and `learn_crit`.
+#'
+#' @param gen_learn gen_learn
+#' @param crit_learn crit_learn
+#' @param switcher switcher
+#' @param weights_gen weights_gen
+#' @param gen_first gen_first
+#' @param switch_eval switch_eval
+#' @param show_img show_img
+#' @param clip clip
+#' @param cbs cbs
+#' @param metrics metrics
+#' @param loss_func loss_func
+#' @param opt_func opt_func
+#' @param lr lr
+#' @param splitter splitter
+#' @param path path
+#' @param model_dir model_dir
+#' @param wd wd
+#' @param wd_bn_bias wd_bn_bias
+#' @param train_bn train_bn
+#' @param moms moms
+#'
+#' @export
+GANLearner_from_learners <- function(gen_learn, crit_learn, switcher = NULL, weights_gen = NULL,
+                          gen_first = FALSE, switch_eval = TRUE, show_img = TRUE,
+                          clip = NULL, cbs = NULL, metrics = NULL, loss_func = NULL,
+                          opt_func = Adam(), lr = 0.001, splitter = trainable_params(),
+                          path = NULL, model_dir = "models", wd = NULL,
+                          wd_bn_bias = FALSE, train_bn = TRUE, moms = list(0.95, 0.85, 0.95)) {
+
+  args <- list(
+    gen_learn = gen_learn,
+    crit_learn = crit_learn,
+    switcher = switcher,
+    weights_gen = weights_gen,
+    gen_first = gen_first,
+    switch_eval = switch_eval,
+    show_img = show_img,
+    clip = clip,
+    cbs = cbs,
+    metrics = metrics,
+    loss_func = loss_func,
+    opt_func = opt_func,
+    lr = lr,
+    splitter = splitter,
+    path = path,
+    model_dir = model_dir,
+    wd = wd,
+    wd_bn_bias = wd_bn_bias,
+    train_bn = train_bn,
+    moms = moms
+  )
+
+  do.call(vision$gan$GANLearner$from_learners, args)
+
+}
+
+
+#' @title GANDiscriminativeLR
+#'
+#' @description `Callback` that handles multiplying the learning rate by `mult_lr` for the critic.
+#'
+#'
+#' @param mult_lr mult_lr
+#'
+#' @export
+GANDiscriminativeLR <- function(mult_lr = 5.0) {
+
+  vision$gan$GANDiscriminativeLR(
+    mult_lr = mult_lr
+  )
+
+}
+
+
+#' @title Learner
+#'
+#'
+#'
+#'
+#' @export
+Learner = function(...) {
+  vision$gan$Learner(...)
+}
+
+
+
+
+
+
+
+
+
+
+
+
