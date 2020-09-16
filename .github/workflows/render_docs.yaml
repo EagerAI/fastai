@@ -7,7 +7,6 @@ name: docs
 
 jobs:
   R-CMD:
-    if: (github.actor == 'henry090')
     runs-on: ${{ matrix.config.os }}
 
     name: ${{ matrix.config.os }}
