@@ -1,0 +1,52 @@
+on:
+  page_build:
+  schedule:
+      # * is a special character in YAML so you have to quote this string
+      - cron:  '0 15 * * *'
+
+name: docs
+
+jobs:
+  R-CMD:
+    if: (github.actor == 'henry090')
+    runs-on: ${{ matrix.config.os }}
+
+    name: ${{ matrix.config.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+        - { os: windows-latest }
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - uses: r-lib/actions/setup-r@master
+
+      - uses: r-lib/actions/setup-pandoc@master
+
+      - name: Install dependencies
+        run: |
+          Rscript -e "install.packages('pkgdown')"
+
+      - name: Render site
+        run: |
+          Rscript -e "pkgdown::build_site()"
+      - name: Commit files
+        run: |
+          git config --global user.email ${{ github.EMAIL }}
+          git config --global user.name ${{ github.actor }}
+          git add ./docs
+          git commit -m "docs are updated"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
