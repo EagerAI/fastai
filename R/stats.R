@@ -180,3 +180,31 @@ summary.fastai.learner.Learner <- function(object) {
 
 
 
+#' @title get_files
+#'
+#' @description Get all the files in `path` with optional `extensions`, optionally with `recurse`, only in `folders`, if specified.
+#'
+#'
+#' @param path path
+#' @param extensions extensions
+#' @param recurse recurse
+#' @param folders folders
+#' @param followlinks followlinks
+#'
+#' @export
+get_files <- function(path, extensions = NULL, recurse = TRUE, folders = NULL, followlinks = TRUE) {
+
+  vision$all$get_files(
+    path = path,
+    extensions = extensions,
+    recurse = recurse,
+    folders = folders,
+    followlinks = followlinks
+  )
+
+}
+
+
+
+
+
