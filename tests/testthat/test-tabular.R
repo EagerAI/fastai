@@ -34,6 +34,13 @@ test_succeeds('tabular ops create model', {
   model = dls %>% tabular_learner(layers=c(200,100), metrics=accuracy)
 })
 
+test_succeeds('tabular ops dims==batch', {
+  dls %>% one_batch(TRUE) -> list_1
+  expect_equal(dim(list_1[[1]]), c(10,7))
+  expect_equal(dim(list_1[[2]]), c(10,3))
+  expect_equal(dim(list_1[[3]]), c(10,1))
+})
+
 test_succeeds('tabular ops train model', {
   model %>% fit(1,1e-2)
 })
