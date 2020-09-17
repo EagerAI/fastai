@@ -30,26 +30,6 @@
 
 
 
-#' @title Get history
-#'
-#'
-#' @export
-to_fastai_training_history <- function(history) {
-  structure(class = "fastai_training_history", list(
-    history = history
-  ))
-}
-
-
-#' @title Plot history
-#'
-#'
-#' @export
-plot.to_fastai_training_history <- function(history) {
-  plot.ts(history)
-}
-
-
 #' @title show_batch
 #'
 #' @description
@@ -66,21 +46,27 @@ show_batch <- function(dls, b = NULL, max_n = 9, ctxs = NULL,
                        show = TRUE, unique = FALSE, dpi = 90) {
 
   fastai2$vision$all$plt$close()
-  dls$show_batch(
-    b = b,
-    max_n = as.integer(max_n),
-    ctxs = ctxs,
-    show = show,
-    unique = unique,
-    figsize = figsize
-  )
 
-  tmp_d = proj_name = gsub(tempdir(), replacement = '/', pattern = '\\', fixed=TRUE)
-  fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi))
+  if(class(dls)[1]=="fastai.tabular.data.TabularDataLoaders") {
+    dls$dataset$train$items[sample(nrow(dls$dataset$train$items),dls$bs),]
+  } else {
+    dls$show_batch(
+      b = b,
+      max_n = as.integer(max_n),
+      ctxs = ctxs,
+      show = show,
+      unique = unique,
+      figsize = figsize
+    )
 
-  img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
-  try(dev.off(),TRUE)
-  grid::grid.raster(img)
+    tmp_d = proj_name = gsub(tempdir(), replacement = '/', pattern = '\\', fixed=TRUE)
+    fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi))
+
+    img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
+    try(dev.off(),TRUE)
+    grid::grid.raster(img)
+  }
+
 }
 
 

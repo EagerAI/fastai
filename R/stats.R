@@ -153,17 +153,22 @@ Perplexity <- function(...) {
 #' @param object dataloader
 #'
 #' @export
-one_batch <- function(object, convert = TRUE) {
+one_batch <- function(object, convert = FALSE) {
   obj = object$one_batch()
 
   if(inherits(obj,'fastai.tabular.data.TabularDataLoaders')) {
     obj
   } else {
     if(convert) {
-      bs = object$bs - 1
-      obj[[1]] = lapply(0:bs, function(x) aperm(obj[[1]][[x]]$cpu()$numpy(), c(2,3,1)))
-      indices = obj[[2]]$cpu()$numpy()
-      list(obj[[1]],indices)
+      if(length(dim(obj[[1]]$cpu()$numpy()))>2) {
+        bs = object$bs - 1
+        obj[[1]] = lapply(0:bs, function(x) aperm(obj[[1]][[x]]$cpu()$numpy(), c(2,3,1)))
+        indices = obj[[2]]$cpu()$numpy()
+        list(obj[[1]],indices)
+      } else {
+        res = lapply(1:length(obj), function(x) obj[[x]]$cpu()$numpy())
+        res
+      }
     } else {
       obj
     }

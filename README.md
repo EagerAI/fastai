@@ -1079,7 +1079,7 @@ Create datablock and iterator:
 
 ```
 imdb_lm = DataBlock(blocks=list(TextBlock_from_folder(path, is_lm = TRUE)),
-                    get_items = pryr::partial(get_text_files(), 
+                    get_items = partial(get_text_files(), 
                     folders = c('train', 'test', 'unsup')),
                     splitter = RandomSplitter(0.1))
 
