@@ -4,7 +4,7 @@
 \alias{one_batch}
 \title{One batch}
 \usage{
-one_batch(object, convert = TRUE)
+one_batch(object, convert = FALSE)
 }
 \arguments{
 \item{object}{dataloader}
