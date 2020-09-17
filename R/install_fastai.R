@@ -31,7 +31,12 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
 
   required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="cv2", "opencv-python")
   required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="skimage", "scikit-image")
-  required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastai", paste("fastai",version,sep = "=="))
+
+  if(missing(version)) {
+    required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastai", "fastai")
+  } else {
+    required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastai", paste("fastai",version,sep = "=="))
+  }
 
   # get os
   os = switch(Sys.info()[['sysname']],
@@ -66,11 +71,11 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
     if(reticulate:::condaenv_exists()) {
 
       if (os %in% 'linux' & !length(required_py_pkgs) == 0) {
-        if(os %in% 'linux' & gpu & cuda_version %in% '9.2') {
+        if(os %in% 'linux' & isTRUE(gpu) & cuda_version %in% '9.2') {
           py_install(packages = c(required_py_pkgs, cuda_linux[1]), pip = TRUE)
-        } else if (os %in% 'linux' & gpu & cuda_version %in% '10.1') {
+        } else if (os %in% 'linux' & isTRUE(gpu) & cuda_version %in% '10.1') {
           py_install(packages = c(required_py_pkgs, cuda_linux[2]), pip = TRUE)
-        } else if (os %in% 'linux' & gpu & cuda_version %in% '10.2') {
+        } else if (os %in% 'linux' & isTRUE(gpu) & cuda_version %in% '10.2') {
           py_install(packages = c(required_py_pkgs, cuda_linux[3]), pip = TRUE)
         } else {
           py_install(packages = c(required_py_pkgs), pip = TRUE)
@@ -80,11 +85,11 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
       }
 
       if (os %in% 'windows' & !length(required_py_pkgs) == 0) {
-        if(os %in% 'windows' & gpu & cuda_version %in% '9.2') {
+        if(os %in% 'windows' & isTRUE(gpu) & cuda_version %in% '9.2') {
           print(cuda_windows[1])
-        } else if (os %in% 'windows' & gpu & cuda_version %in% '10.1') {
+        } else if (os %in% 'windows' & isTRUE(gpu) & cuda_version %in% '10.1') {
           py_install(packages = c(required_py_pkgs, cuda_windows[2]), pip = TRUE)
-        } else if (os %in% 'windows' & gpu & cuda_version %in% '10.2') {
+        } else if (os %in% 'windows' & isTRUE(gpu) & cuda_version %in% '10.2') {
           py_install(packages = c(required_py_pkgs, cuda_windows[3]), pip = TRUE)
         } else {
           py_install(packages = c(cpu_windows, required_py_pkgs), pip = TRUE)
