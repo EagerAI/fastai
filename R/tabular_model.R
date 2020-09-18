@@ -69,6 +69,49 @@ tabular_config <- function(ps = NULL, embed_p = 0.0, y_range = NULL,
 }
 
 
+#' @title TabularModel
+#'
+#' @description Basic model for tabular data.
+#'
+#' @details
+#'
+#' @param emb_szs emb_szs
+#' @param n_cont n_cont
+#' @param out_sz out_sz
+#' @param layers layers
+#' @param ps ps
+#' @param embed_p embed_p
+#' @param y_range y_range
+#' @param use_bn use_bn
+#' @param bn_final bn_final
+#' @param bn_cont bn_cont
+#' @param act_cls act_cls
+#'
+#' @export
+TabularModel <- function(emb_szs, n_cont, out_sz, layers, ps = NULL,
+                         embed_p = 0.0, y_range = NULL, use_bn = TRUE, bn_final = FALSE,
+                         bn_cont = TRUE, act_cls = nn$ReLU(inplace = TRUE)) {
 
+  if(missing(emb_szs) & missing(n_cont) & missing(out_sz) & layers) {
+    invisible(tabular$TabularModel)
+  } else {
+    args <- list(
+      emb_szs = emb_szs,
+      n_cont = n_cont,
+      out_sz = out_sz,
+      layers = layers,
+      ps = ps,
+      embed_p = embed_p,
+      y_range = y_range,
+      use_bn = use_bn,
+      bn_final = bn_final,
+      bn_cont = bn_cont,
+      act_cls = act_cls
+    )
+
+    do.call(tabular$TabularModel, args)
+  }
+
+}
 
 

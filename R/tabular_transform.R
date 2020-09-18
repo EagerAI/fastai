@@ -260,6 +260,9 @@ tabular_TabularList_show_xyzs <- function(xs, ys, zs) {
 predict.fastai.tabular.learner.TabularLearner <- function(object, row) {
 
   #object$predict(reticulate::r_to_py(row)$iloc[0])[[3]]$numpy()
+  # remove metric to obtain prediction
+  object$metrics = object$metrics[0]
+
   test_dl = object$dls$test_dl(row)
   predictions = object$get_preds(dl = test_dl, with_decoded = TRUE)
   res = as.data.frame(predictions[[1]]$cpu()$numpy())
