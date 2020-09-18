@@ -1,0 +1,9 @@
+destination: docs
+
+template:
+  params:
+    bootswatch: cosmo
+
+authors:
+  Turgut Abdullayev:
+    href: https://github.com/henry090
