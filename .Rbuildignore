@@ -3,8 +3,6 @@
 ^codecov\.yml$
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^docs$
-^images$
 ^pkgdown$
 ^\.github/workflows$
 ^cran-comments\.md$

@@ -4,6 +4,7 @@ output:
   rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Basic Tabular}
+  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
