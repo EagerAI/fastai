@@ -84,6 +84,8 @@ In addition, filling missing values can be done in different ways:
 - filling value by default is 0
 - or it can be set to median 
 
+## Dataloaders
+
 Define data loaders and specify ```batch_size```, ```cat_names```, ```cont_names``` and etc:
 
 ```
@@ -147,11 +149,11 @@ model %>% plot_lr_find()
 
 <center>
 
-```{r eval=T, echo=F, fig.height=1,fig.width=1}
-knitr::include_graphics('loss_vig_tab.png',dpi=300)
-```
+<img src="images/loss_vig_tab.png" alt="stacked LSTM" style="width: 600px;"/>
 
 </center>
+
+## Fit
 
 And finally, fit the model:
 
@@ -178,13 +180,11 @@ interp %>% plot_confusion_matrix(dpi = 90,figsize = c(6,6))
 
 <center>
 
-```{r eval=T, echo=F}
-knitr::include_graphics('conf_tab.png')
-```
-
+<img src="images/conf_tab.png" alt="stacked LSTM" style="width: 350px;"/>
 
 </center>
 
+## Conclusion
 
 Let's make predictions:
 

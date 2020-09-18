@@ -1,12 +1,11 @@
-
+resource_files:
+  - files/loss_vig_tab.png
+  - files/conf_tab.png
 
 template:
   path: docs
   params:
     bootswatch: lumen
-
-development:
-  mode: release
 
 
 authors:

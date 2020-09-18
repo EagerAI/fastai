@@ -52,6 +52,18 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/Basic%20Tabular.html">Basic Tabular</a>
+    </li>
+  </ul>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -110,6 +122,10 @@
 <td><strong>Windows</strong></td>
 <td><img src="https://github.com/henry090/fastai/workflows/windows/badge.svg" alt="windows"></td>
 </tr>
+<tr class="even">
+<td><strong>Documentation</strong></td>
+<td><img src="https://github.com/henry090/fastai/workflows/docs/badge.svg" alt="docs"></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -129,10 +145,10 @@
 <div id="tabular-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#tabular-data" class="anchor"></a>Tabular data</h2>
-<pre><code>library(magrittr)
+<pre><code><a href="https://rdrr.io/pkg/magrittr/man">library(magrittr)
 library(fastai)
 
-df = data.table::fread('https://github.com/henry090/fastai/raw/master/files/adult.csv')</code></pre>
+df = data.table::fread('https://github.com/henry090/fastai/raw/master/files/adult.csv')</a></code></pre>
 <p>Variables:</p>
 <pre><code>dep_var = 'salary'
 cat_names = c('workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race')
@@ -194,23 +210,42 @@ Callbacks:
   - TrainEvalCallback
   - Recorder
   - ProgressCallback</code></pre>
+<p>Before fitting try to find optimal learning rate:</p>
+<pre><code>model %&gt;% lr_find()
+
+model %&gt;% plot_lr_find(dpi = 200)</code></pre>
+<p><img src="files/plot_lr.png" height="500" align="center" alt="lr"></p>
 <p>Run:</p>
-<pre><code>model %&gt;% fit(5, 1e-2)</code></pre>
+<pre><code>model %&gt;% fit(5, lr = 10^-1)</code></pre>
 <pre><code>epoch     train_loss  valid_loss  accuracy  time    
-0         0.354821    0.375355    0.825871  00:02     
-1         0.366040    0.369802    0.830846  00:02     
-2         0.356449    0.354734    0.830846  00:02     
-3         0.356077    0.355024    0.825871  00:02     
-4         0.357948    0.361930    0.835821  00:02     </code></pre>
+0         0.360149    0.329587    0.846702  00:04     
+1         0.352106    0.345761    0.828877  00:04     
+2         0.368743    0.340913    0.844920  00:05     
+3         0.347277    0.333084    0.852050  00:04     
+4         0.348969    0.350707    0.830660  00:04 </code></pre>
+<p>Plot loss history:</p>
+<pre><code>model %&gt;% plot_loss(dpi = 200)</code></pre>
+<p><img src="files/plot_loss.png" height="500" align="center" alt="lr"></p>
 <p>Get confusion matrix:</p>
 <pre><code>model %&gt;% get_confusion_matrix()</code></pre>
 <pre><code>       &lt;50k  &gt;=50k
 &lt;50k   407    22
 &gt;=50k   68    64</code></pre>
-<p>Get predictions on new data:</p>
-<pre><code>model %&gt;% predict(df[4,])
+<p>Plot it:</p>
+<pre><code>interp = ClassificationInterpretation_from_learner(model)
 
-[1] 0.09785532 0.90214473</code></pre>
+interp %&gt;% plot_confusion_matrix(dpi = 90,figsize = c(6,6))</code></pre>
+<p><img src="files/conf_.png" height="500" align="center" alt="Pets"></p>
+<p>Get predictions on new data:</p>
+<pre><code>&gt; model %&gt;% predict(df[10:15,])
+
+       &lt;50k     &gt;=50k classes
+1 0.5108562 0.4891439       0
+2 0.4827824 0.5172176       1
+3 0.4873166 0.5126833       1
+4 0.5013804 0.4986197       0
+5 0.4964157 0.5035844       1
+6 0.5111378 0.4888622       0</code></pre>
 </div>
 <div id="image-data" class="section level2">
 <h2 class="hasAnchor">
@@ -235,12 +270,8 @@ oxford-iiit-pet/images/american_pit_bull_terrier_129.jpg</code></pre>
                   ),
   device = 'cuda'
 )</code></pre>
-<p>Random batch for visualization:</p>
-<pre><code><a href="https://rdrr.io/r/graphics/par.html">par(mar=c(0.5, 0.5, 1, 1))
-
-imager::map_il(dls %&gt;% random_batch(regex = '[A-z]+_',
-               folder_name = 'oxford-iiit-pet/images'),
-               imager::load.image) %&gt;% plot(axes = FALSE)</a></code></pre>
+<p>Show batch for visualization:</p>
+<pre><code>dls %&gt;% show_batch(dpi = 150)</code></pre>
 <p><img src="files/pets.png" height="500" align="center" alt="Pets"></p>
 <p>Model architecture:</p>
 <pre><code>learn = cnn_learner(dls, resnet34, metrics = error_rate)</code></pre>
@@ -262,6 +293,11 @@ hchart(conf, label = TRUE) %&gt;%
 <blockquote>
 <p>Note that the plot is built with highcharter.</p>
 </blockquote>
+<p>Plot top losses:</p>
+<pre><code>interp = ClassificationInterpretation_from_learner(learn)
+
+interp %&gt;% plot_top_losses(k = 9, figsize = c(15,11))</code></pre>
+<p><img src="files/top_loss.png" height="500" align="center" alt="Pets"></p>
 <p>Alternatively, load images from folders:</p>
 <pre><code><a href="reference/URLs_MNIST_SAMPLE.html"># get sample data
 URLs_MNIST_SAMPLE()
@@ -275,11 +311,7 @@ bs = 20
 data = ImageDataLoaders_from_folder(path, batch_tfms = tfms, size = 26, bs = bs)
 
 # Visualize and train 
-par(mar = c(0.5, 0.5, 1, 1))
-
-imager::map_il(dls %&gt;% random_batch(regex = '[0-9]+',
-               folder_name = 'mnist_sample'),
-               imager::load.image) %&gt;% plot(axes = FALSE)
+data %&gt;% show_batch(dpi = 150)
                
 learn = cnn_learner(data, resnet18, metrics = accuracy)
 learn %&gt;% fit(2)</a></code></pre>
@@ -307,22 +339,29 @@ dls = get_dls(128, 64)</code></pre>
 <p>Generator and discriminator:</p>
 <pre><code>generator = basic_generator(out_size = 64, n_channels = 3, n_extra_layers = 1)
 critic    = basic_critic(in_size = 64, n_channels = 3, n_extra_layers = 1,
-                                    act_cls = pryr::partial(nn$LeakyReLU, negative_slope = 0.2))
+                                    act_cls = partial(nn$LeakyReLU, negative_slope = 0.2))
 </code></pre>
 <p>Model:</p>
-<pre><code>learn = GANLearner_wgan(dls, generator, critic, opt_func = pryr::partial(Adam(), mom=0.))</code></pre>
+<pre><code>learn = GANLearner_wgan(dls, generator, critic, opt_func = partial(Adam(), mom=0.))</code></pre>
 <p>And fit:</p>
 <pre><code>learn$recorder$train_metrics = TRUE
 learn$recorder$valid_metrics = FALSE
 
 learn %&gt;% fit(1, 2e-4, wd = 0)</code></pre>
+<pre><code>epoch     train_loss  gen_loss  crit_loss  time    
+0         -0.555554   0.516327  -0.967604  05:06 </code></pre>
+<p>This is the result for 1 epoch.</p>
+<pre><code>learn %&gt;% show_results(max_n = 16, figsize = c(8,8), ds_idx=0)</code></pre>
+<center>
+<p><img src="files/gan.png" height="600" align="center" alt="Mnist"></p>
+</center>
 </div>
 </div>
 <div id="unet-example" class="section level2">
 <h2 class="hasAnchor">
-<a href="#unet-example" class="anchor"></a>UNET example</h2>
+<a href="#unet-example" class="anchor"></a>Unet example</h2>
 <p>Call libraries:</p>
-<pre><code><a href="https://github.com/henry090/fastai">library(fastai)
+<pre><code><a href="https://rdrr.io/pkg/fastai/man">library(fastai)
 library(magrittr)</a></code></pre>
 <p>Get data</p>
 <pre><code><a href="reference/URLs_CAMVID.html">URLs_CAMVID()</a></code></pre>
@@ -349,12 +388,17 @@ x$stem; x$suffix</code></pre>
 <p>Dataloader object and list of labels:</p>
 <pre><code>dls = camvid %&gt;% dataloaders(source = "camvid/images", bs = bs, path = path)
 
+dls %&gt;% show_batch()
+
 void_code = which(codes == "Void")
 
 dls$vocab = codes
 
 name2id = as.list(1:(length(codes)))
 names(name2id) = codes</code></pre>
+<center>
+<p><img src="files/unet.png" height="600" align="center" alt="Mnist"></p>
+</center>
 <pre><code>str(name2id)
 List of 32
  $ Animal           : int 1
@@ -797,7 +841,7 @@ learn %&gt;% fit_one_cycle(2, lr, pct_start = 0.9, wd = wd)</code></pre>
 <h2 class="hasAnchor">
 <a href="#collab-collaborative-filtering" class="anchor"></a>Collab (Collaborative filtering)</h2>
 <p>Call libraries:</p>
-<pre><code><a href="https://github.com/nteetor/zeallot">library(zeallot)
+<pre><code><a href="https://rdrr.io/pkg/zeallot/man">library(zeallot)
 library(magrittr)</a></code></pre>
 <p>Get data:</p>
 <pre><code><a href="reference/URLs_MOVIE_LENS_ML_100k.html">URLs_MOVIE_LENS_ML_100k()</a></code></pre>
@@ -873,7 +917,7 @@ highcharter::hchart(princomp(movie_w, cor = TRUE)) %&gt;% highcharter::hc_legend
 bs = 20</code></pre>
 <p>Create datablock and iterator:</p>
 <pre><code>imdb_lm = DataBlock(blocks=list(TextBlock_from_folder(path, is_lm = TRUE)),
-                    get_items = pryr::partial(get_text_files(), 
+                    get_items = partial(get_text_files(), 
                     folders = c('train', 'test', 'unsup')),
                     splitter = RandomSplitter(0.1))
 
@@ -893,6 +937,27 @@ learn %&gt;% fit_one_cycle(1, 2e-2, moms = c(0.8, 0.7, 0.8))</code></pre>
 <p><a href="https://www.kaggle.com/c/rsna-intracranial-hemorrhage-detection/overview">Import dicom data</a>:</p>
 <pre><code>img = dcmread('hemorrhage.dcm')</code></pre>
 <p>Visualize data with different <a href="https://radiopaedia.org/articles/windowing-ct">window effects</a>:</p>
+<pre><code>scale = list(FALSE, TRUE, dicom_windows$brain, dicom_windows$subdural)
+titles = c('raw','normalized','brain windowed','subdural windowed')
+
+library(zeallot)
+c(fig, axs) %&lt;-% subplots()
+
+for (i in 1:4) {
+  img %&gt;% show(scale = scale[[i]], 
+               ax = axs[[i]], 
+               title=titles[i])
+}
+
+img %&gt;% plot(dpi = 250)</code></pre>
+<p align="center">
+<img src="files/brain.png" height="500" align="center" alt="dicom"></p>
+<p>Apply different cmaps:</p>
+<pre><code>img %&gt;% show(cmap = cm$gist_ncar, figsize = c(6,6))
+img %&gt;% plot()</code></pre>
+<p align="center">
+<img src="files/cmap.png" height="500" align="center" alt="dicom"></p>
+<p>Or get dcm matrix and plot with ggplot:</p>
 <pre><code>types = c('raw', 'normalized', 'brain', 'subdural')
 p_ = list()
 for ( i in 1:length(types)) {
@@ -904,7 +969,7 @@ ggpubr::ggarrange(p_[[1]], p_[[2]], p_[[3]], p_[[4]], labels = types)</code></pr
 <p align="center">
 <img src="files/dcm.png" height="500" align="center" alt="dicom"></p>
 <p>Let’s try a relatively complex example:</p>
-<pre><code><a href="http://ggplot2.tidyverse.org">library(ggplot2)
+<pre><code><a href="https://ggplot2.tidyverse.org/reference">library(ggplot2)
 
 # crop parameters
 img = dcmread('hemorrhage.dcm')
@@ -981,7 +1046,7 @@ data = model %&gt;% lr_find_() </code></pre>
 5 0.0000002089296 5.043181
 6 0.0000002511886 5.023340</code></pre>
 <p>Visualize:</p>
-<pre><code>highcharter::hchart(data, "line", highcharter::hcaes(y = losses, x = lr_rates ))</code></pre>
+<pre><code><a href="https://rdrr.io/pkg/highcharter/man/hchart.html">highcharter::hchart(data, "line", highcharter::hcaes(y = losses, x = lr_rates ))</a></code></pre>
 <p align="center">
 <img src="files/lr.png" height="500" align="center" alt="Learning_rates"></p>
 </div>
@@ -1001,7 +1066,7 @@ magick::image_read(batch[[1]][[9]])</code></pre>
 <h3 class="hasAnchor">
 <a href="#mask" class="anchor"></a>Mask</h3>
 <p>Visualize mask:</p>
-<pre><code>library(magrittr)
+<pre><code><a href="https://rdrr.io/pkg/magrittr/man">library(magrittr)
 library(fastai)
 
 # original image
@@ -1018,7 +1083,7 @@ mask = tmask(mask_fn)
 
 # visualize
 mask %&gt;% to_matrix() %&gt;%
-  nandb::matrix_raster_plot(colours = viridis::plasma(3)) + theme(legend.position = "none")</code></pre>
+  nandb::matrix_raster_plot(colours = viridis::plasma(3)) + theme(legend.position = "none")</a></code></pre>
 <p align="center">
 <img src="files/mask.png" height="500" align="center" alt="Mask"></p>
 </div>
@@ -1052,7 +1117,7 @@ pnt_img %&gt;% to_matrix() %&gt;% nandb::matrix_raster_plot(colours = c('white',
 <div id="annotations-on-tiny-coco" class="section level3">
 <h3 class="hasAnchor">
 <a href="#annotations-on-tiny-coco" class="anchor"></a>Annotations on Tiny COCO</h3>
-<pre><code>library(magrittr)
+<pre><code><a href="https://rdrr.io/pkg/magrittr/man">library(magrittr)
 library(zeallot)
 library(fastai)
 
@@ -1066,11 +1131,11 @@ c(coco_fn,bbox) %&lt;-% list(paste('coco_tiny/train',images[[idx]],sep = '/'),
 coco_img = timg(coco_fn)
 
 tbbox = LabeledBBox(TensorBBox(bbox[[1]]), bbox[[2]])
-</code></pre>
+</a></code></pre>
 <pre><code>(#2) [TensorBBox([[ 91.3000,  77.9400, 102.4300,  82.4700],
         [ 27.5800,  77.6500,  40.7600,  82.3400]]),['tv', 'tv']]</code></pre>
 <p>Visualize:</p>
-<pre><code><a href="http://dahtah.github.io/imager">library(imager)
+<pre><code><a href="https://rdrr.io/pkg/imager/man">library(imager)
 coco = imager::load.image(coco_fn)
 plot(coco,axes=F)
 
@@ -1089,6 +1154,33 @@ for ( i in 1:length(bbox[[1]])) {
 </a></code></pre>
 <p align="center">
 <img src="files/annotate.png" height="500" align="center" alt="Annotation"></p>
+<p>Alternatively, we could see batch via dataloader:</p>
+<pre><code>idx = 3
+c(coco_fn,bbox) %&lt;-% list(paste('coco_tiny/train',images[[idx]],sep = '/'),
+                          lbl_bbox[[idx]])
+                          
+coco_bb = function(x) {
+ TensorBBox_create(bbox[[1]])
+}
+
+coco_lbl = function(x) {
+  bbox[[2]]
+}
+
+coco_dsrc = Datasets(c(rep(coco_fn,10)), 
+                     list(Image_create(), list(coco_bb), 
+                     list( coco_lbl, MultiCategorize(add_na = TRUE) )
+                          ), n_inp = 1)
+
+coco_tdl = TfmdDL(coco_dsrc, bs = 9, 
+                  after_item = list(BBoxLabeler(), PointScaler(), 
+                                 ToTensor()),
+                  after_batch = list(IntToFloatTensor(), aug_transforms())
+                  )
+                  
+coco_tdl %&gt;% show_batch(dpi = 200)</code></pre>
+<p align="center">
+<img src="files/annotate_.png" height="500" align="center" alt="Annotation_"></p>
 </div>
 <div id="nn-module" class="section level3">
 <h3 class="hasAnchor">
@@ -1165,7 +1257,7 @@ for ( i in 1:length(bbox[[1]])) {
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
