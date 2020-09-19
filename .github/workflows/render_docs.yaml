@@ -1,7 +1,5 @@
 on:
-  schedule:
-      # * is a special character in YAML so you have to quote this string
-      - cron:  '0 15 * * *'
+  pull_request
 
 name: docs
 
@@ -53,7 +51,7 @@ jobs:
           Rscript -e "pkgdown::build_site()"
       - name: Commit files
         run: |
-          git config --global user.email ${{ github.EMAIL }}
+          git config --global user.email turqut.a.314@gmail.com
           git config --global user.name ${{ github.actor }}
           git add ./docs
           git commit -m "docs are updated"
