@@ -138,7 +138,7 @@ plot_top_losses <- function(interp, k, largest = TRUE, figsize = c(19.2,10.8),
 plot_confusion_matrix <- function(interp, normalize = FALSE, title = "Confusion matrix",
                                   cmap = "Blues", norm_dec = 2, plot_txt = TRUE,
                                   figsize = c(19.2,10.8),
-                                  ..., dpi = 90) {
+                                  ..., dpi = 250) {
 
   fastai2$vision$all$plt$close()
   interp$plot_confusion_matrix(
@@ -151,7 +151,7 @@ plot_confusion_matrix <- function(interp, normalize = FALSE, title = "Confusion 
     dpi = dpi
   )
 
-  tmp_d = proj_name = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
+  tmp_d = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
   fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi))
 
   img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
@@ -170,7 +170,8 @@ plot_confusion_matrix <- function(interp, normalize = FALSE, title = "Confusion 
 #' @param with_valid with_valid
 #'
 #' @export
-plot_loss <- function(object, skip_start = 5, with_valid = TRUE, dpi = 100) {
+plot_loss <- function(object, skip_start = 5, with_valid = TRUE, dpi = 200) {
+
 
   fastai2$vision$all$plt$close()
   object$recorder$plot_loss(
