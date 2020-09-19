@@ -15,14 +15,272 @@
   a$eq(b)
 }
 
+
+#' Pow
+#'
+#'
+#' @name pow
+#' @export
+"^.torch.Tensor" <- function(a, b) {
+  a$pow(b)
+}
+
 #' Not equal
 #'
 #'
 #' @name not_equal_to
 #' @export
-"!=.fastai.torch_core.TensorMask" <- function(a, b) {
+"!=.torch.Tensor" <- function(a, b) {
   a$ne(b)
 }
+
+
+#' Greater or equal
+#'
+#'
+#' @name greater_or_equal
+#' @export
+">=.torch.Tensor" <- function(a, b) {
+  a$ge(b)
+}
+
+#' Greater
+#'
+#'
+#' @name greater
+#' @export
+">.torch.Tensor" <- function(a, b) {
+  a$gt(b)
+}
+
+
+#' Less or equal
+#'
+#'
+#' @name less_or_equal
+#' @export
+"<=.torch.Tensor" <- function(a, b) {
+  a$le(b)
+}
+
+#' Less
+#'
+#'
+#' @name greater
+#' @export
+"<.torch.Tensor" <- function(a, b) {
+  a$lt(b)
+}
+
+
+#' Max
+#'
+#'
+#' @name max
+#' @export
+"max.torch.Tensor" <- function(a) {
+  a$max()
+}
+
+#' Min
+#'
+#'
+#' @name min
+#' @export
+"min.torch.Tensor" <- function(a) {
+  a$min()
+}
+
+
+#' Sort
+#'
+#'
+#' @name sort
+#' @export
+"sort.torch.Tensor" <- function(x, decreasing = FALSE, ...) {
+  x$sort(...)
+}
+
+
+
+#' Abs
+#'
+#'
+#' @name abs
+#' @export
+"abs.torch.Tensor" <- function(a) {
+  a$abs()
+}
+
+
+#' Add
+#'
+#'
+#' @name add
+#' @export
+"+.torch.Tensor" <- function(a, b) {
+  a$add(b)
+}
+
+#' Sub
+#'
+#'
+#' @name sub
+#' @export
+"-.torch.Tensor" <- function(a, b) {
+  a$sub(b)
+}
+
+#' Div
+#'
+#'
+#' @name div
+#' @export
+"/.torch.Tensor" <- function(a, b) {
+  a$div(b)
+}
+
+#' Multiply
+#'
+#'
+#' @name div
+#' @export
+"*.torch.Tensor" <- function(a, b) {
+  a$mul(b)
+}
+
+
+#' Exp
+#'
+#'
+#' @name exp
+#' @export
+"exp.torch.Tensor" <- function(a, b) {
+  a$exp(b)
+}
+
+
+#' Expm1
+#'
+#'
+#' @name expm1
+#' @export
+"expm1.torch.Tensor" <- function(a, b) {
+  a$expm1(b)
+}
+
+#' Log
+#'
+#'
+#' @name log
+#' @export
+"log.torch.Tensor" <- function(a, b) {
+  a$log(b)
+}
+
+#' Log10
+#'
+#'
+#' @name log10
+#' @export
+"log10.torch.Tensor" <- function(a, b) {
+  a$log10(b)
+}
+
+#' Log1p
+#'
+#'
+#' @name log1p
+#' @export
+"log1p.torch.Tensor" <- function(a, b) {
+  a$log1p(b)
+}
+
+#' Log2
+#'
+#'
+#' @name log2
+#' @export
+"log2.torch.Tensor" <- function(a, b) {
+  a$log2(b)
+}
+
+#' Round
+#'
+#'
+#' @name round
+#' @export
+"round.torch.Tensor" <- function(a) {
+  a$round()
+}
+
+
+#' Sqrt
+#'
+#'
+#' @name sqrd
+#' @export
+"sqrt.torch.Tensor" <- function(a) {
+  a$sqrt()
+}
+
+
+#' Floor
+#'
+#'
+#' @name add
+#' @export
+"floor.torch.Tensor" <- function(a) {
+  a$floor()
+}
+
+#' Ceil
+#'
+#'
+#' @name add
+#' @export
+"ceiling.torch.Tensor" <- function(a) {
+  a$ceil()
+}
+
+#' Cos
+#'
+#'
+#' @name add
+#' @export
+"cos.torch.Tensor" <- function(a) {
+  a$cos()
+}
+
+#' Cosh
+#'
+#'
+#' @name add
+#' @export
+"cosh.torch.Tensor" <- function(a) {
+  a$cosh()
+}
+
+
+
+#' Sin
+#'
+#'
+#' @name add
+#' @export
+"sin.torch.Tensor" <- function(a) {
+  a$sin()
+}
+
+#' Sinh
+#'
+#'
+#' @name add
+#' @export
+"sinh.torch.Tensor" <- function(a) {
+  a$sinh()
+}
+
 
 
 #' Mean of tensor
@@ -33,6 +291,55 @@
 "mean.torch.Tensor" <- function(a) {
   a$mean()
 }
+
+
+#' Median of tensor
+#'
+#'
+#'
+#' @export
+"median.torch.Tensor" <- function(a) {
+  a$median()
+}
+
+#' Mode of tensor
+#'
+#'
+#'
+#' @export
+"mode.torch.Tensor" <- function(a) {
+  a$mode()
+}
+
+
+#' Std of tensor
+#'
+#'
+#'
+#' @export
+"std.torch.Tensor" <- function(a) {
+  a$std()
+}
+
+#' Unique of tensor
+#'
+#'
+#'
+#' @export
+"unique.torch.Tensor" <- function(a) {
+  a$unique()
+}
+
+
+#' Equals of tensor
+#'
+#'
+#'
+#' @export
+"equals.torch.Tensor" <- function(a, b) {
+  a$equal(b)
+}
+
 
 
 #' @title Tensor to float

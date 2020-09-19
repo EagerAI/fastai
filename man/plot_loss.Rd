@@ -4,7 +4,7 @@
 \alias{plot_loss}
 \title{plot_loss}
 \usage{
-plot_loss(object, skip_start = 5, with_valid = TRUE, dpi = 100)
+plot_loss(object, skip_start = 5, with_valid = TRUE, dpi = 200)
 }
 \arguments{
 \item{skip_start}{skip_start}

@@ -13,7 +13,7 @@ plot_confusion_matrix(
   plot_txt = TRUE,
   figsize = c(19.2, 10.8),
   ...,
-  dpi = 90
+  dpi = 250
 )
 }
 \arguments{
