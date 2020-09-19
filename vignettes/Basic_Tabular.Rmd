@@ -150,7 +150,7 @@ model %>% plot_lr_find()
 
 <center>
 
-<img src="images/loss_vig_tab.png" alt="stacked LSTM" style="width: 600px;"/>
+<img src="images/loss_vig_tab.png" alt="_" style="width: 600px;"/>
 
 </center>
 
@@ -181,7 +181,7 @@ interp %>% plot_confusion_matrix(dpi = 90,figsize = c(6,6))
 
 <center>
 
-<img src="images/conf_tab.png" alt="stacked LSTM" style="width: 350px;"/>
+<img src="images/conf_tab.png" alt="_" style="width: 350px;"/>
 
 </center>
 
@@ -191,7 +191,6 @@ Let's make predictions:
 
 ```
 > model %>% predict(df[1000:1010,])
-             0          1     class
 1  0.004488660 0.99551141       1
 2  0.819206953 0.18079305       0
 3  0.051526461 0.94847351       1
