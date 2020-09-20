@@ -29,6 +29,10 @@ DataBlock <- function(blocks = NULL, dl_type = NULL, getters = NULL,
     args$batch_tfms <- unlist(args$batch_tfms)
   }
 
+  if(!is.null(args$n_inp)) {
+    args$n_inp <- as.integer(args$n_inp)
+  }
+
   do.call(vision$gan$DataBlock, args)
 
 }
@@ -159,19 +163,22 @@ FileSplitter <- function(fname) {
 #' @param ... additional parameters to pass
 #'
 #' @export
-dataloaders <- function(object, ...) {
+dataloaders <- function(object, source, ...) {
 
   my_list <- list(
     source = source,
     ...
   )
-  for (i in 1:length(my_list)) {
-    if(names(my_list)[[i]]=='bs') {
-      my_list[['bs']] = as.integer(my_list[['bs']])
-    } else if (names(my_list)[[i]]=='batch_size') {
-      my_list[['batch_size']] = as.integer(my_list[['batch_size']])
-    } else if (names(my_list)[[i]]=='seq_len') {
-      my_list[['seq_len']] = as.integer(my_list[['seq_len']])
+
+  if(length(my_list) > 0) {
+    for (i in 1:length(my_list)) {
+      if(names(my_list)[[i]]=='bs') {
+        my_list[['bs']] = as.integer(my_list[['bs']])
+      } else if (names(my_list)[[i]]=='batch_size') {
+        my_list[['batch_size']] = as.integer(my_list[['batch_size']])
+      } else if (names(my_list)[[i]]=='seq_len') {
+        my_list[['seq_len']] = as.integer(my_list[['seq_len']])
+      }
     }
   }
 

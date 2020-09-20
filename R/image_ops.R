@@ -142,6 +142,103 @@ Normalize_from_stats <- function(mean, std, dim = 1, ndim = 4, cuda = TRUE) {
 
 
 
+#' @title Rotate
+#'
+#' @description Apply a random rotation of at most `max_deg` with probability `p` to a batch of images
+#'
+#' @details
+#'
+#' @param max_deg max_deg
+#' @param p p
+#' @param draw draw
+#' @param size size
+#' @param mode mode
+#' @param pad_mode pad_mode
+#' @param align_corners align_corners
+#' @param batch batch
+#'
+#' @export
+Rotate <- function(max_deg = 10, p = 0.5, draw = NULL, size = NULL,
+                   mode = "bilinear", pad_mode = "reflection",
+                   align_corners = TRUE, batch = FALSE) {
+
+  vision$all$Rotate(
+    max_deg = as.integer(max_deg),
+    p = p,
+    draw = draw,
+    size = size,
+    mode = mode,
+    pad_mode = pad_mode,
+    align_corners = align_corners,
+    batch = batch
+  )
+
+}
+
+#' @title Flip
+#'
+#' @description Randomly flip a batch of images with a probability `p`
+#'
+#'
+#' @param p p
+#' @param draw draw
+#' @param size size
+#' @param mode mode
+#' @param pad_mode pad_mode
+#' @param align_corners align_corners
+#' @param batch batch
+#'
+#' @export
+Flip <- function(p = 0.5, draw = NULL, size = NULL, mode = "bilinear",
+                 pad_mode = "reflection", align_corners = TRUE,
+                 batch = FALSE) {
+
+  vision$all$Flip(
+    p = p,
+    draw = draw,
+    size = size,
+    mode = mode,
+    pad_mode = pad_mode,
+    align_corners = align_corners,
+    batch = batch
+  )
+
+}
+
+
+#' @title Dihedral
+#'
+#' @description Apply a random dihedral transformation to a batch of images with a probability `p`
+#'
+#'
+#' @param p p
+#' @param draw draw
+#' @param size size
+#' @param mode mode
+#' @param pad_mode pad_mode
+#' @param align_corners align_corners
+#' @param batch batch
+#'
+#' @export
+Dihedral <- function(p = 0.5, draw = NULL, size = NULL,
+                     mode = "bilinear", pad_mode = "reflection",
+                     align_corners = NULL, batch = FALSE) {
+
+  vision$all$Dihedral(
+    p = p,
+    draw = draw,
+    size = size,
+    mode = mode,
+    pad_mode = pad_mode,
+    align_corners = align_corners,
+    batch = batch
+  )
+
+}
+
+
+
+
 
 
 
