@@ -150,7 +150,7 @@ model %>% plot_lr_find()
 
 <center>
 
-<img src="images/loss_vig_tab.png" alt="_" style="width: 600px;"/>
+<img src="images/loss_vig_tab.png" alt="_" style="width: 700px;"/>
 
 </center>
 
@@ -174,14 +174,15 @@ epoch     train_loss  valid_loss  accuracy  roc_auc_score  precision_score  reca
 Plot confusion matrix:
 
 ```
-interp = ClassificationInterpretation_from_learner(model)
-
-interp %>% plot_confusion_matrix(dpi = 90,figsize = c(6,6))
+model %>% get_confusion_matrix() %>% 
+  fourfoldplot(conf.level = 0, color = c("#ed3b3b", "#0099ff"),
+             margin = 1,main = paste("Confusion Matrix",
+                                     round(sum(diag(.))/sum(.)*100,0),"%",sep = ' '))
 ```
 
 <center>
 
-<img src="images/conf_tab.png" alt="_" style="width: 350px;"/>
+<img src="images/conf_tab.png" alt="_" style="width: 700px;"/>
 
 </center>
 

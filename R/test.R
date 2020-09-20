@@ -196,7 +196,7 @@ plot_loss <- function(object, skip_start = 5, with_valid = TRUE, dpi = 200) {
 #' @param skip_end skip_end
 #'
 #' @export
-plot_lr_find <- function(object, skip_end = 5, dpi = 100) {
+plot_lr_find <- function(object, skip_end = 5, dpi = 250) {
 
   fastai2$vision$all$plt$close()
   object$recorder$plot_lr_find(
