@@ -5,7 +5,7 @@
 \alias{min.torch.Tensor}
 \title{Min}
 \usage{
-\method{min}{torch.Tensor}(a)
+\method{min}{torch.Tensor}(a, ..., na.rm = FALSE)
 }
 \description{
 Min

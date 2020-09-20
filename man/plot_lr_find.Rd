@@ -4,7 +4,7 @@
 \alias{plot_lr_find}
 \title{plot_lr_find}
 \usage{
-plot_lr_find(object, skip_end = 5, dpi = 100)
+plot_lr_find(object, skip_end = 5, dpi = 250)
 }
 \arguments{
 \item{skip_end}{skip_end}

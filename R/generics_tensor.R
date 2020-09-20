@@ -78,7 +78,7 @@
 #'
 #' @name max
 #' @export
-"max.torch.Tensor" <- function(a) {
+"max.torch.Tensor" <- function(a, ..., na.rm = FALSE) {
   a$max()
 }
 
@@ -87,8 +87,82 @@
 #'
 #' @name min
 #' @export
-"min.torch.Tensor" <- function(a) {
+"min.torch.Tensor" <- function(a, ..., na.rm = FALSE) {
   a$min()
+}
+
+#' Dim
+#'
+#'
+#' @name dim
+#' @export
+"dim.torch.Tensor" <- function(x) {
+  x$dim()
+}
+
+#' Length
+#'
+#'
+#' @name length
+#' @export
+"length.torch.Tensor" <- function(x) {
+  x$nelement()
+}
+
+#' Floor divide
+#'
+#'
+#' @name floor_div
+#' @export
+"%/%.torch.Tensor" <- function(x,y) {
+  x$floor_divide(y)
+}
+
+
+#' Floor mod
+#'
+#'
+#' @name floor_mod
+#' @export
+"%%.torch.Tensor" <- function(x,y) {
+  x$fmod(y)
+}
+
+#' Logical_and
+#'
+#'
+#' @name logical_and
+#' @export
+"&.torch.Tensor" <- function(a, b) {
+  a$logical_and(b)
+}
+
+#' Logical_or
+#'
+#'
+#' @name logical_or
+#' @export
+"|.torch.Tensor" <- function(a, b) {
+  a$logical_and(b)
+}
+
+#' Logical_not
+#'
+#'
+#' @name logical_or
+#' @export
+"!.torch.Tensor" <- function(a) {
+  a$logical_not()
+}
+
+
+#' Matmul
+#'
+#'
+#' @name matmul
+#' @export
+"%*%.torch.Tensor" <- function(a, b) {
+  a$matmul(b)
 }
 
 
@@ -330,15 +404,6 @@
   a$unique()
 }
 
-
-#' Equals of tensor
-#'
-#'
-#'
-#' @export
-"equals.torch.Tensor" <- function(a, b) {
-  a$equal(b)
-}
 
 
 
