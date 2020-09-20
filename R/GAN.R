@@ -163,23 +163,22 @@ FileSplitter <- function(fname) {
 #' @param ... additional parameters to pass
 #'
 #' @export
-dataloaders <- function(object, source, ...) {
+dataloaders <- function(object, ...) {
 
   my_list <- list(
-    source = source,
     ...
   )
 
-  if(length(my_list) > 0) {
-    for (i in 1:length(my_list)) {
-      if(names(my_list)[[i]]=='bs') {
-        my_list[['bs']] = as.integer(my_list[['bs']])
-      } else if (names(my_list)[[i]]=='batch_size') {
-        my_list[['batch_size']] = as.integer(my_list[['batch_size']])
-      } else if (names(my_list)[[i]]=='seq_len') {
-        my_list[['seq_len']] = as.integer(my_list[['seq_len']])
-      }
-    }
+  if(!is.null(my_list[['bs']])) {
+    my_list[['bs']] = as.integer(my_list[['bs']])
+  }
+
+  if(!is.null(my_list[['batch_size']])) {
+    my_list[['batch_size']] = as.integer(my_list[['batch_size']])
+  }
+
+  if(!is.null(my_list[['seq_len']])) {
+    my_list[['seq_len']] = as.integer(my_list[['seq_len']])
   }
 
   do.call(object$dataloaders,my_list)
