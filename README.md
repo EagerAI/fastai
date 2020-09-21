@@ -921,17 +921,23 @@ learn = unet_learner(dls, resnet34, metrics = acc_camvid)
 And finally, fit:
 
 ```
-lr=3e-3
-wd=1e-2
+lr = 3e-3
+wd = 1e-2
 
 learn %>% fit_one_cycle(2, lr, pct_start = 0.9, wd = wd)
 ```
 
 ```
 epoch     train_loss  valid_loss  acc_camvid  time    
-0         1.413350    0.899934    0.793837    00:27     
-1         0.963663    0.761936    0.824238    00:27  
+0         1.367869    1.239496    0.666145    00:25     
+1         0.929434    0.661407    0.839969    00:23 
 ```
+
+```
+learn %>% show_results(max_n = 1, figsize = c(20,10), vmin = 1, vmax = 30)
+```
+
+<img src="files/unetres.png" height=500 align=center alt="lr"/>
 
 ## Collab (Collaborative filtering)
 

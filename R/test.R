@@ -418,6 +418,15 @@ show_results <- function(object, ds_idx = 1, dl = NULL, max_n = 9, shuffle = TRU
     ...
   )
 
+  if(!is.null(args[['vmin']])) {
+    args[['vmin']] = as.integer(args[['vmin']])
+  }
+
+  if(!is.null(args[['vmax']])) {
+    args[['vmax']] = as.integer(args[['vmax']])
+  }
+
+
   do.call(object$show_results, args)
 
   tmp_d = proj_name = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
