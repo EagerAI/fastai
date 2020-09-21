@@ -869,7 +869,19 @@ Learner = function(...) {
 
 
 
+#' @title get_c
+#'
+#'
+#' @param dls dls
+#'
+#' @export
+get_c <- function(dls) {
 
+  vision$all$get_c(
+    dls = dls
+  )
+
+}
 
 
 
