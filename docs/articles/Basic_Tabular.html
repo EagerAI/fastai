@@ -98,10 +98,10 @@
 <h2 class="hasAnchor">
 <a href="#tabular" class="anchor"></a>Tabular</h2>
 <p>Tabular data can be downloaded from <a href="https://www.kaggle.com/jacksonchou/hr-data-for-analytics">Kaggle</a>. It is a basic binary classification case which contains both categorical and coninuous columns. Below one can see the structure of the dataset.</p>
-<pre><code><a href="https://rdrr.io/pkg/magrittr/man">library(magrittr)
+<pre><code>library(magrittr)
 library(fastai)
 df = data.table::fread('datasets_236694_503227_HR_comma_sep.csv')
-str(df)</a></code></pre>
+str(df)</code></pre>
 <pre><code>&gt; str(df)
 Classes ‘data.table’ and 'data.frame':  14999 obs. of  10 variables:
  $ satisfaction_level   : num  0.38 0.8 0.11 0.72 0.37 0.41 0.1 0.92 0.89 0.42 ...
@@ -127,7 +127,7 @@ cat_names = c('sales', 'salary')
 cont_names = c("satisfaction_level", "last_evaluation", "number_project",
                "average_montly_hours", "time_spend_company",
                "Work_accident", "promotion_last_5years")</code></pre>
-<p>Alternatively, it is easier to differentiate 2 types of columns (<code>integer/numeric</code> vs. <code>character/factor</code>) with <code><a href="https://dplyr.tidyverse.org/reference/select_all.html">dplyr::select_if(is.character)</a></code>.</p>
+<p>Alternatively, it is easier to differentiate 2 types of columns (<code>integer/numeric</code> vs. <code>character/factor</code>) with <code>dplyr::select_if(is.character)</code>.</p>
 <p>Next step is to split data into 2 parts. However, we need to randomly select indices not rows because the latter will be done by <code>tabular_learner</code>.</p>
 <pre><code>tot = 1:nrow(df)
 tr_idx = sample(nrow(df), 0.8 * nrow(df))
@@ -247,7 +247,7 @@ model %&gt;% plot_lr_find()</code></pre>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
