@@ -4,7 +4,13 @@
 \alias{install_fastai}
 \title{Install fastai}
 \usage{
-install_fastai(version, gpu = FALSE, cuda_version = "10.1", overwrite = FALSE)
+install_fastai(
+  version,
+  gpu = FALSE,
+  cuda_version = "10.1",
+  overwrite = FALSE,
+  extra_pkgs = c("kaggle")
+)
 }
 \arguments{
 \item{version}{specify version}

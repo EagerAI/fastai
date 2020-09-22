@@ -7,6 +7,13 @@ vision<-NULL
 text<-NULL
 Module<-NULL
 medical<-NULL
+collab <- NULL
+kg <- NULL
+metrics <- NULL
+cm <- NULL
+colors <- NULL
+fastaip <- NULL
+Callback <- NULL
 
 .onLoad <- function(libname, pkgname) {
 
@@ -59,7 +66,14 @@ medical<-NULL
 
     # callback class
     Callback <<- fastai2$callback$all$Callback
+
   }
+
+  if(reticulate::py_module_available('kaggle')) {
+    kg <<- reticulate::import('kaggle')
+  }
+
+
 
 }
 
