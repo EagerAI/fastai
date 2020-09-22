@@ -32,4 +32,7 @@ colors <- NULL
 Callback <- NULL
 
 
-
+#' Kaggle API
+#'
+#' @export
+kg <- NULL

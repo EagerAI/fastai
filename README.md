@@ -1459,9 +1459,147 @@ Sequential(
 )
 ```
 
+## Kaggle
+
+Kaggle API is fantastic because it simplifies all the necessary steps for participating in a competition!
+Using the API it is possible to directly download/submit files, check leader board and etc. 
+If you want to use this functionality, then it is important to place your ```kaggle.json``` to ```.kaggle``` folder:
+
+<p align="center">
+<img src="files/kaggle.png" height=400 align=center alt="Annotation"/>
+</p>
+
+Let's participate in a ```Titanic``` competition:
+
+```
+library(fastai)
+library(magrittr)
+
+com_nm = 'titanic'
+
+titanic_files = competition_list_files(com_nm)
+titanic_files = lapply(1:length(titanic_files), 
+                      function(x) as.character(titanic_files[[x]]))
+
+str(titanic_files)
+
+if(!dir.exists(com_nm)) {
+  dir.create(com_nm)
+}
+
+# download via api
+competition_download_files(competition = com_nm, path = com_nm, unzip = TRUE)
+
+train = data.table::fread(paste(com_nm, 'train.csv', sep = '/'))
+
+train[['Survived']] = as.factor(train[['Survived']])
+train[['Name']] <- NULL
+train[['PassengerId']] <- NULL
+
+str(train)
+```
+
+```
+Classes ‘data.table’ and 'data.frame':	595 obs. of  10 variables:
+ $ Survived: Factor w/ 2 levels "0","1": 1 2 2 2 1 1 1 1 2 2 ...
+ $ Pclass  : int  3 1 3 1 3 3 1 3 3 2 ...
+ $ Sex     : chr  "male" "female" "female" "female" ...
+ $ Age     : num  22 38 26 35 35 NA 54 2 27 14 ...
+ $ SibSp   : int  1 1 0 1 0 0 0 3 0 1 ...
+ $ Parch   : int  0 0 0 0 0 0 0 1 2 0 ...
+ $ Ticket  : chr  "A/5 21171" "PC 17599" "STON/O2. 3101282" "113803" ...
+ $ Fare    : num  7.25 71.28 7.92 53.1 8.05 ...
+ $ Cabin   : chr  "" "C85" "" "C123" ...
+ $ Embarked: chr  "S" "C" "S" "S" ...
+ - attr(*, ".internal.selfref")=<externalptr> 
+```
+
+Preprocess:
+
+```
+dep_var = 'Survived'
+cont_names = c('Fare','Parch', 'SibSp', 'Pclass')
+cat_names = setdiff(names(train),c(cont_names,dep_var))
 
 
+tot = 1:nrow(train)
+tr_idx = sample(nrow(train), 0.8 * nrow(train))
+ts_idx = tot[!tot %in% tr_idx]
+```
 
+Dataloader:
+
+```
+procs = list(FillMissing(),Categorify(),Normalize())
+
+dls = TabularDataTable(train, procs, cat_names, cont_names,
+                       y_names = dep_var, splits = list(tr_idx, ts_idx) ) %>%
+  dataloaders(bs = 30)
+
+
+model = dls %>% tabular_learner(layers=c(200,100),
+                                config = tabular_config(embed_p = 0.3, use_bn = FALSE),
+                                metrics = list(accuracy, RocAucBinary(),
+                                               Precision(), Recall()))
+```
+
+Fit:
+
+```
+model %>% lr_find()
+
+model %>% plot_lr_find()
+
+res = model %>% fit(4, lr = 1e-3)
+```
+
+Prepare test dataset and submit:
+
+```
+test = data.table::fread(paste(com_nm, 'test.csv', sep = '/'))
+
+test$Fare[is.na(test$Fare)] = median(test$Fare, na.rm = TRUE)
+
+submission = model %>% predict(test)
+
+head(submission)
+```
+
+```
+          0         1 class
+1 0.7636479 0.2363522     0
+2 0.7594652 0.2405347     0
+3 0.6516959 0.3483041     0
+4 0.7734003 0.2265998     0
+5 0.5761551 0.4238448     0
+6 0.7645358 0.2354642     0
+```
+
+```
+# add col names
+submission = data.frame(PassengerId = test$PassengerId,
+                        Survived = submission$class)
+
+dest = paste(com_nm, 'submission.csv',sep = '/')
+
+# write
+data.table::fwrite(submission, dest)
+
+# submit via api
+competition_submit(dest, 'sumbission from R!', competition = com_nm)
+```
+
+```
+100%|██████████| 9.27k/9.27k [00:04<00:00, 2.02kB/s]
+Successfully submitted to Titanic: Machine Learning from Disaster
+```
+
+Enter ```Kaggle.com``` and see if everything works fine:
+
+
+<p align="center">
+<img src="files/result.png" height=400 align=center alt="Annotation"/>
+</p>
 
 
 ## Code of Conduct
