@@ -97,6 +97,9 @@
     <li>
       <a href="../articles/Basic_Tabular.html">Basic Tabular</a>
     </li>
+    <li>
+      <a href="../articles/basic_img_class.html">Basic Image Classification</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -130,17 +133,17 @@
     </div>
 
     <pre class="usage"><span class='fu'>TabularModel</span>(
-  <span class='kw'>emb_szs</span>,
-  <span class='kw'>n_cont</span>,
-  <span class='kw'>out_sz</span>,
-  <span class='kw'>layers</span>,
-  ps = <span class='kw'>NULL</span>,
-  embed_p = <span class='fl'>0</span>,
-  y_range = <span class='kw'>NULL</span>,
-  use_bn = <span class='fl'>TRUE</span>,
-  bn_final = <span class='fl'>FALSE</span>,
-  bn_cont = <span class='fl'>TRUE</span>,
-  act_cls = <span class='kw'>nn</span><span class='op'>$</span><span class='fu'>ReLU</span>(inplace = <span class='fl'>TRUE</span>)
+  <span class='no'>emb_szs</span>,
+  <span class='no'>n_cont</span>,
+  <span class='no'>out_sz</span>,
+  <span class='no'>layers</span>,
+  <span class='kw'>ps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>embed_p</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>y_range</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>use_bn</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>bn_final</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>bn_cont</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>act_cls</span> <span class='kw'>=</span> <span class='no'>nn</span>$<span class='fu'>ReLU</span>(<span class='kw'>inplace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -213,7 +216,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
