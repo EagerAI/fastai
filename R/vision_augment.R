@@ -134,7 +134,7 @@ RandomResizedCrop <- function(size, min_scale = 0.08, ratio = list(0.75, 1.33333
                               resamples = list(2, 0), val_xtra = 0.14) {
 
   vision$all$RandomResizedCrop(
-    size = size,
+    size = as.integer(size),
     min_scale = min_scale,
     ratio = ratio,
     resamples = as.list(as.integer(unlist(resamples))),

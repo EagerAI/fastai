@@ -1,0 +1,237 @@
+---
+title: "Basic Image Classification"
+output:
+  rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Basic Image Classification}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
+```
+
+## Intro
+
+The [fastai](https://github.com/fastai/fastai) library simplifies training fast and accurate neural nets using modern best practices. See the fastai website to get started. The library is based on research into deep learning best practices undertaken at ```fast.ai```, and includes "out of the box" support for ```vision```, ```text```, ```tabular```, and ```collab``` (collaborative filtering) models. 
+
+
+## Image data
+
+Image dataset can be downloaded and extracted directly via the following function:
+
+```
+URLs_PETS()
+```
+
+Later, we need to specify image folders and build a data loader object:
+
+```
+path = 'oxford-iiit-pet'
+path_anno = 'oxford-iiit-pet/annotations'
+path_img = 'oxford-iiit-pet/images'
+fnames = get_image_files(path_img)
+```
+
+
+## Dataloader
+
+Data loader is one of the most important parts of the image classification part. Because here we apply different image transformations which can drastically improve the accuracy of the model.
+
+```
+dls = ImageDataLoaders_from_name_re(
+  path, fnames, pat='(.+)_\\d+.jpg$',
+  item_tfms = RandomResizedCrop(460, min_scale=0.75), bs = 10,
+  batch_tfms = list(aug_transforms(size = 299, max_warp = 0),
+                  Normalize_from_stats( imagenet_stats() )
+  ),
+  device = 'cuda'
+)
+```
+
+See batch:
+
+```
+dls %>% show_batch()
+```
+
+
+<center>
+
+<img src="images/img_batch.png" alt="_" style="width: 700px;"/>
+
+</center>
+
+
+## ResNet50
+
+Let's load a pretrained ResNet50 model and construct a ```cnn_learner```:
+
+```
+learn = cnn_learner(dls, resnet50, metrics = error_rate)
+```
+
+```
+Downloading: "https://download.pytorch.org/models/resnet50-19c8e357.pth" to /home/turgut/.cache/torch/hub/checkpoints/resnet50-19c8e357.pth
+100%|██████████| 97.8M/97.8M [00:43<00:00, 2.36MB/s]
+```
+
+## Fit
+
+It is time to fit the ResNet model:
+
+```
+learn %>% fit_one_cycle(n_epoch = 8)
+```
+
+```
+epoch     train_loss  valid_loss  error_rate  time    
+0         0.741927    0.342162    0.103518    01:15     
+1         0.713688    0.286085    0.100812    01:15     
+2         0.594913    0.282628    0.088633    01:15     
+3         0.441623    0.263180    0.085250    01:18     
+4         0.354634    0.230228    0.077808    01:17     
+5         0.200607    0.224293    0.071719    01:15     
+6         0.154269    0.213939    0.062246    01:16     
+7         0.127354    0.211825    0.064953    01:16 
+```
+
+Unfreeze the blocks and train again:
+
+```
+learn$unfreeze()
+
+learn %>% fit_one_cycle(3, lr_max = c(1e-6,1e-4))
+```
+
+```
+epoch     train_loss  valid_loss  error_rate  time    
+0         0.162769    0.204167    0.061570    01:42     
+1         0.168877    0.211312    0.071042    01:42     
+2         0.178176    0.202088    0.062923    01:43 
+```
+
+Extraction of most confused:
+
+```
+interp = ClassificationInterpretation_from_learner(learn)
+interp %>% most_confused()
+```
+
+```
+                           V1                         V2 V3
+1   american_pit_bull_terrier staffordshire_bull_terrier 10
+2                     Ragdoll                     Birman  6
+3  staffordshire_bull_terrier  american_pit_bull_terrier  6
+4                      Bengal                 Abyssinian  4
+5                      Bengal               Egyptian_Mau  4
+6                      Birman                    Ragdoll  4
+7                Egyptian_Mau                     Bengal  3
+8                       boxer           american_bulldog  3
+9          miniature_pinscher  american_pit_bull_terrier  3
+10 staffordshire_bull_terrier           american_bulldog  3
+11          British_Shorthair               Russian_Blue  2
+12                 Maine_Coon                    Ragdoll  2
+13           american_bulldog staffordshire_bull_terrier  2
+14                  chihuahua         miniature_pinscher  2
+15                 Abyssinian               Russian_Blue  1
+16                     Bengal                 Maine_Coon  1
+17                     Birman                    Siamese  1
+18                 Maine_Coon                     Bombay  1
+19                    Persian                     Birman  1
+20               Russian_Blue                 Abyssinian  1
+21               Russian_Blue                     Bombay  1
+22               Russian_Blue          British_Shorthair  1
+23                    Siamese                     Birman  1
+24           american_bulldog  american_pit_bull_terrier  1
+25           american_bulldog                      boxer  1
+26  american_pit_bull_terrier           american_bulldog  1
+27  american_pit_bull_terrier         miniature_pinscher  1
+28               basset_hound                     beagle  1
+29               basset_hound         german_shorthaired  1
+30               basset_hound                  shiba_inu  1
+31                     beagle               basset_hound  1
+32                      boxer         miniature_pinscher  1
+33                  chihuahua                        pug  1
+34                  chihuahua                    samoyed  1
+35     english_cocker_spaniel             english_setter  1
+36     english_cocker_spaniel                   havanese  1
+37             english_setter                     beagle  1
+38         german_shorthaired           american_bulldog  1
+39             great_pyrenees                     beagle  1
+40             great_pyrenees                    samoyed  1
+41                   havanese           scottish_terrier  1
+42              japanese_chin                    Ragdoll  1
+43                   keeshond                 leonberger  1
+44                 leonberger             great_pyrenees  1
+45              saint_bernard           american_bulldog  1
+46              saint_bernard                  chihuahua  1
+47              saint_bernard             great_pyrenees  1
+48              saint_bernard staffordshire_bull_terrier  1
+49                    samoyed             great_pyrenees  1
+50 staffordshire_bull_terrier               basset_hound  1
+51 staffordshire_bull_terrier                     beagle  1
+52            wheaten_terrier                   havanese  1
+53          yorkshire_terrier           scottish_terrier  1
+```
+
+## Conclusion
+
+And get predictions on new data. For this purpose, specify the name of the files:
+
+```
+fls = list.files(paste(path,'images',sep = '/'),full.names = TRUE, recursive = TRUE)[c(250,500,700)]
+fls
+
+#[1] "oxford-iiit-pet/images/american_bulldog_142.jpg"          "oxford-iiit-pet/images/american_pit_bull_terrier_188.jpg"
+#[3] "oxford-iiit-pet/images/basset_hound_188.jpg"      
+
+result = learn %>% predict(fls)
+
+str(result)
+```
+
+```
+List of 2
+ $ probabilities:'data.frame':	3 obs. of  37 variables:
+  ..$ Abyssinian                : num [1:3] 1.89e-09 2.28e-05 9.32e-09
+  ..$ Bengal                    : num [1:3] 1.30e-09 3.57e-06 1.08e-08
+  ..$ Birman                    : num [1:3] 5.88e-08 1.23e-06 1.63e-08
+  ..$ Bombay                    : num [1:3] 5.42e-09 6.11e-07 2.62e-09
+  ..$ British_Shorthair         : num [1:3] 2.37e-07 1.68e-07 1.12e-09
+  ..$ Egyptian_Mau              : num [1:3] 3.59e-09 2.68e-07 4.43e-09
+  ..$ Maine_Coon                : num [1:3] 3.38e-09 3.68e-08 1.95e-09
+  ..$ Persian                   : num [1:3] 3.96e-07 1.95e-06 1.93e-09
+  ..$ Ragdoll                   : num [1:3] 1.95e-08 2.41e-07 4.72e-10
+  ..$ Russian_Blue              : num [1:3] 1.60e-08 3.48e-06 5.75e-08
+  ..$ Siamese                   : num [1:3] 9.99e-09 5.58e-06 1.09e-09
+  ..$ Sphynx                    : num [1:3] 6.68e-08 4.98e-07 1.81e-08
+  ..$ american_bulldog          : num [1:3] 9.99e-01 3.80e-07 2.25e-09
+  ..$ american_pit_bull_terrier : num [1:3] 2.32e-04 9.58e-01 3.52e-08
+  ..$ basset_hound              : num [1:3] 1.40e-07 1.97e-05 1.00
+  ..$ beagle                    : num [1:3] 7.31e-08 1.82e-06 1.24e-05
+  ..$ boxer                     : num [1:3] 3.32e-04 8.66e-06 7.02e-08
+  ..$ chihuahua                 : num [1:3] 5.99e-09 6.24e-05 5.57e-09
+  ..$ english_cocker_spaniel    : num [1:3] 1.20e-09 5.11e-07 6.06e-08
+  ..$ english_setter            : num [1:3] 3.78e-07 3.96e-07 1.72e-08
+  ..$ german_shorthaired        : num [1:3] 1.77e-07 2.56e-06 7.36e-09
+  ..$ great_pyrenees            : num [1:3] 2.60e-07 2.27e-07 3.36e-09
+  ..$ havanese                  : num [1:3] 1.96e-07 5.83e-07 8.13e-08
+  ..$ japanese_chin             : num [1:3] 1.30e-07 8.14e-08 1.32e-09
+  ..$ keeshond                  : num [1:3] 5.31e-09 2.34e-06 9.65e-08
+  ..$ leonberger                : num [1:3] 1.05e-07 1.01e-06 3.06e-09
+  ..$ miniature_pinscher        : num [1:3] 3.03e-07 4.07e-02 2.48e-08
+  ..$ newfoundland              : num [1:3] 1.94e-06 1.49e-07 1.30e-09
+  ..$ pomeranian                : num [1:3] 5.04e-09 3.38e-06 3.74e-09
+  ..$ pug                       : num [1:3] 8.24e-08 2.53e-06 1.53e-09
+  ..$ saint_bernard             : num [1:3] 1.15e-06 2.44e-07 9.88e-08
+  ..$ samoyed                   : num [1:3] 2.63e-07 4.01e-07 1.79e-08
+  ..$ scottish_terrier          : num [1:3] 2.33e-09 2.40e-06 1.73e-08
+  ..$ shiba_inu                 : num [1:3] 9.08e-09 1.87e-05 2.95e-07
+  ..$ staffordshire_bull_terrier: num [1:3] 2.22e-05 7.53e-04 1.67e-08
+  ..$ wheaten_terrier           : num [1:3] 7.98e-08 1.46e-06 4.33e-09
+  ..$ yorkshire_terrier         : num [1:3] 6.60e-08 6.73e-06 4.17e-09
+ $ labels       : chr [1:3] "american_bulldog" "american_pit_bull_terrier" "basset_hound"
+```
+
