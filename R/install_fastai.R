@@ -7,7 +7,8 @@
 #' @param overwrite will install all the dependencies
 #' @importFrom reticulate py_install
 #' @export
-install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrite = FALSE) {
+install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrite = FALSE,
+                           extra_pkgs = c('kaggle')) {
 
   required_py_pkgs <- c('IPython', 'torch', 'torchvision', 'fastai',
                        'pydicom', 'kornia', 'cv2',
@@ -25,6 +26,10 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
     required_py_pkgs
   else
     required_py_pkgs <- required_py_pkgs[which_pkgs]
+
+  if(length(extra_pkgs) > 0) {
+    required_py_pkgs = c(required_py_pkgs, extra_pkgs)
+  }
 
   #required_py_pkgs <- required_py_pkgs[!required_py_pkgs %in% c('torch','torchvision')]
 
