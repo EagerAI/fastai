@@ -282,7 +282,13 @@ show <- function(img, frames = 1, scale = TRUE, ...) {
     args$scale = reticulate::tuple(scale)
   }
 
-  do.call(img$show, args)
+  if(class(img)[1]=="pydicom.dataset.FileDataset") {
+    do.call(img$show, args)
+  } else {
+
+    args <- list(...)
+    do.call(img$show, args)
+  }
 
 }
 
@@ -291,9 +297,9 @@ show <- function(img, frames = 1, scale = TRUE, ...) {
 #'
 #'
 #' @export
-plot.pydicom.dataset.FileDataset = function(x, y, ..., dpi = 100) {
-  tmp_d = proj_name = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
-  fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi))
+plot <- function(object, ..., dpi = 100) {
+  tmp_d = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
+  fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi), ...)
 
   img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
   try(dev.off(),TRUE)
@@ -345,7 +351,7 @@ show_images <- function(ims, nrows = 1, ncols = NULL,
 #'
 #' @export
 plot.list = function(x, y, ..., dpi = 100) {
-  tmp_d = proj_name = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
+  tmp_d = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
   fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi))
 
   img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
@@ -353,6 +359,8 @@ plot.list = function(x, y, ..., dpi = 100) {
   grid::grid.raster(img)
   fastai2$vision$all$plt$close()
 }
+
+
 
 #' @title uniform_blur2d
 #'

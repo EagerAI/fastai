@@ -14,6 +14,7 @@ cm <- NULL
 colors <- NULL
 fastaip <- NULL
 Callback <- NULL
+bt <- NULL
 
 .onLoad <- function(libname, pkgname) {
 
@@ -66,6 +67,9 @@ Callback <- NULL
 
     # callback class
     Callback <<- fastai2$callback$all$Callback
+
+    #builtins
+    bt <<- reticulate::import_builtins()
 
   }
 

@@ -36,3 +36,29 @@ Callback <- NULL
 #'
 #' @export
 kg <- NULL
+
+
+#' Built ins
+#'
+#' @export
+bt <- NULL
+
+
+#' @title slice
+#'
+#' @description slice(stop)
+#'
+#' @details slice(start, stop[, step]) Create a slice object. This is used for extended slicing (e.g. a[0:10:2]).
+#'
+#'
+#' @export
+slice <- function(...) {
+
+  bt$slice(...)
+
+}
+
+
+
+
+

@@ -102,7 +102,7 @@ Unfreeze the blocks and train again:
 ```
 learn$unfreeze()
 
-learn %>% fit_one_cycle(3, lr_max = c(1e-6,1e-4))
+learn %>% fit_one_cycle(3, lr_max = slice(1e-6,1e-4))
 ```
 
 ```
