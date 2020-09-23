@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot tensor — plot.list • fastai</title>
+<title>competition_submit — competition_submit • fastai</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Plot tensor — plot.list" />
-<meta property="og:description" content="Plot tensor" />
+<meta property="og:title" content="competition_submit — competition_submit" />
+<meta property="og:description" content="submit a competition!" />
 
 
 
@@ -123,18 +123,58 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot tensor</h1>
-    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/test.R'><code>R/test.R</code></a></small>
-    <div class="hidden name"><code>plot.list.Rd</code></div>
+    <h1>competition_submit</h1>
+    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/kaggle_wrappers.R'><code>R/kaggle_wrappers.R</code></a></small>
+    <div class="hidden name"><code>competition_submit.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Plot tensor</p>
+    <p>submit a competition!</p>
     </div>
 
-    <pre class="usage"><span class='fu'>plot.list</span>(<span class='kw'>x</span>, <span class='kw'>y</span>, <span class='kw'>...</span>, dpi = <span class='fl'>100</span>)</pre>
+    <pre class="usage"><span class='fu'>competition_submit</span>(<span class='kw'>file_name</span>, <span class='kw'>message</span>, <span class='kw'>competition</span>, quiet = <span class='fl'>FALSE</span>)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>file_name</th>
+      <td><p>file_name</p></td>
+    </tr>
+    <tr>
+      <th>message</th>
+      <td><p>message</p></td>
+    </tr>
+    <tr>
+      <th>competition</th>
+      <td><p>competition</p></td>
+    </tr>
+    <tr>
+      <th>quiet</th>
+      <td><p>quiet</p></td>
+    </tr>
+    </table>
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Parameters
+==========
+file_name: the competition metadata file
+message: the submission description
+competition: the competition name
+quiet: suppress verbose output (default is FALSE)</p>
+    <h2 class="hasAnchor" id="file-name"><a class="anchor" href="#file-name"></a>file_name</h2>
+
+    <p>the competition metadata file:
+message: the submission description competition: the competition name quiet: suppress verbose output (default is FALSE)</p>
+    <h2 class="hasAnchor" id="message"><a class="anchor" href="#message"></a>message</h2>
+
+    <p>the submission description:
+competition: the competition name quiet: suppress verbose output (default is FALSE)</p>
+    <h2 class="hasAnchor" id="competition"><a class="anchor" href="#competition"></a>competition</h2>
+
+    <p>the competition name:
+quiet: suppress verbose output (default is FALSE)</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -151,7 +151,7 @@ fnames = get_image_files(path_img)</code></pre>
 <p>Unfreeze the blocks and train again:</p>
 <pre><code>learn$unfreeze()
 
-learn %&gt;% fit_one_cycle(3, lr_max = c(1e-6,1e-4))</code></pre>
+learn %&gt;% fit_one_cycle(3, lr_max = slice(1e-6,1e-4))</code></pre>
 <pre><code>epoch     train_loss  valid_loss  error_rate  time    
 0         0.162769    0.204167    0.061570    01:42     
 1         0.168877    0.211312    0.071042    01:42     
