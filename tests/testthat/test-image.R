@@ -29,7 +29,12 @@ test_succeeds('mnist_sample cnn_learner', {
   learn = cnn_learner(data, resnet18, metrics = accuracy)
 })
 
-
+test_succeeds('mnist_sample predict', {
+  result = learn %>% predict(list.files('mnist_sample',recursive = TRUE, full.names = TRUE)[10])
+  expect_length(result, 2)
+  expect_equal(result[[2]], "3")
+  expect_equal(names(result[[1]]), c('3','7'))
+})
 
 
 
