@@ -1,9 +1,9 @@
 ---
-title: "Basic Image Classification"
+title: "Head pose"
 output:
   rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Basic Image Classification}
+  %\VignetteIndexEntry{Head pose}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -75,8 +75,9 @@ get_ip <- function(img, pts) {
 ```
 
 ```
-ctr = readr::read_lines(img2txt_name(paste(path,fname,sep = '/')),skip = 4, n_max = 1) %>% trimws() %>%
-  strsplit('\\s') %>% unlist() %>% as.numeric()
+ctr = readr::read_lines(img2txt_name(paste(path,fname,sep = '/')),
+                        skip = 4, n_max = 1) %>% trimws() %>%
+      strsplit('\\s') %>% unlist() %>% as.numeric()
 ```
 
 Now, it is easier to add red points:

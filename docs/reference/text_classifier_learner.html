@@ -100,6 +100,9 @@
     <li>
       <a href="../articles/basic_img_class.html">Basic Image Classification</a>
     </li>
+    <li>
+      <a href="../articles/head_pose.html">Head pose</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -133,30 +136,30 @@
     </div>
 
     <pre class="usage"><span class='fu'>text_classifier_learner</span>(
-  <span class='kw'>dls</span>,
-  <span class='kw'>arch</span>,
-  seq_len = <span class='fl'>72</span>,
-  config = <span class='kw'>NULL</span>,
-  backwards = <span class='fl'>FALSE</span>,
-  pretrained = <span class='fl'>TRUE</span>,
-  drop_mult = <span class='fl'>0.5</span>,
-  n_out = <span class='kw'>NULL</span>,
-  lin_ftrs = <span class='kw'>NULL</span>,
-  ps = <span class='kw'>NULL</span>,
-  max_len = <span class='fl'>1440</span>,
-  y_range = <span class='kw'>NULL</span>,
-  loss_func = <span class='kw'>NULL</span>,
-  opt_func = <span class='kw'>Adam</span>,
-  lr = <span class='fl'>0.001</span>,
-  splitter = <span class='kw'>trainable_params</span>,
-  cbs = <span class='kw'>NULL</span>,
-  metrics = <span class='kw'>NULL</span>,
-  path = <span class='kw'>NULL</span>,
-  model_dir = <span class='st'>"models"</span>,
-  wd = <span class='kw'>NULL</span>,
-  wd_bn_bias = <span class='fl'>FALSE</span>,
-  train_bn = <span class='fl'>TRUE</span>,
-  moms = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fl'>0.95</span>, <span class='fl'>0.85</span>, <span class='fl'>0.95</span>)
+  <span class='no'>dls</span>,
+  <span class='no'>arch</span>,
+  <span class='kw'>seq_len</span> <span class='kw'>=</span> <span class='fl'>72</span>,
+  <span class='kw'>config</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>backwards</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>pretrained</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>drop_mult</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
+  <span class='kw'>n_out</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>lin_ftrs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>ps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>max_len</span> <span class='kw'>=</span> <span class='fl'>1440</span>,
+  <span class='kw'>y_range</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>loss_func</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>opt_func</span> <span class='kw'>=</span> <span class='no'>Adam</span>,
+  <span class='kw'>lr</span> <span class='kw'>=</span> <span class='fl'>0.001</span>,
+  <span class='kw'>splitter</span> <span class='kw'>=</span> <span class='no'>trainable_params</span>,
+  <span class='kw'>cbs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>metrics</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>path</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>model_dir</span> <span class='kw'>=</span> <span class='st'>"models"</span>,
+  <span class='kw'>wd</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>wd_bn_bias</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>train_bn</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>moms</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fl'>0.95</span>, <span class='fl'>0.85</span>, <span class='fl'>0.95</span>)
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -276,7 +279,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
