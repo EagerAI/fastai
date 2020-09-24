@@ -120,6 +120,8 @@ dls %>% show_batch(max_n = 9, figsize = c(9,6))
 
 </center>
 
+## Fit
+
 Run for 5 epochs and see results:
 
 ```
