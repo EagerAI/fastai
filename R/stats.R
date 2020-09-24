@@ -211,5 +211,23 @@ get_files <- function(path, extensions = NULL, recurse = TRUE, folders = NULL, f
 
 
 
+#' @title parallel
+#'
+#' @description Applies `func` in parallel to `items`, using `n_workers`
+#'
+#' @details
+#'
+#' @param f f
+#' @param items items
+#'
+#' @export
+parallel <- function(f, items, ...) {
 
+  tabular$parallel(
+    f = f,
+    items = items,
+    ...
+  )
+
+}
 

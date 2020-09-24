@@ -1,12 +1,12 @@
 
 
 nn <- NULL
-fastai2<-NULL
-tabular<-NULL
-vision<-NULL
-text<-NULL
-Module<-NULL
-medical<-NULL
+fastai2 <-NULL
+tabular <-NULL
+vision <-NULL
+text <-NULL
+Module <-NULL
+medical <-NULL
 collab <- NULL
 kg <- NULL
 metrics <- NULL
@@ -15,6 +15,7 @@ colors <- NULL
 fastaip <- NULL
 Callback <- NULL
 bt <- NULL
+crap <- NULL
 
 .onLoad <- function(libname, pkgname) {
 
@@ -77,7 +78,9 @@ bt <- NULL
     kg <<- reticulate::import('kaggle')
   }
 
-
+  if(file.exists('fastaibuilt/crappify.py')) {
+    crap <<- reticulate::import_from_path('crappify', path = 'fastaibuilt')
+  }
 
 }
 
