@@ -14,6 +14,10 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
                        'pydicom', 'kornia', 'cv2',
                        'skimage')
 
+  if(length(extra_pkgs) > 0) {
+    required_py_pkgs = c(required_py_pkgs, extra_pkgs)
+  }
+
   res_ = list()
   for (i in 1:length(required_py_pkgs)) {
     result <- reticulate::py_module_available(required_py_pkgs[i])
@@ -23,13 +27,10 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   which_pkgs <- which(res_ == FALSE)
 
   if(overwrite)
-    required_py_pkgs
+    required_py_pkgs = c(required_py_pkgs, extra_pkgs)
   else
     required_py_pkgs <- required_py_pkgs[which_pkgs]
 
-  if(length(extra_pkgs) > 0) {
-    required_py_pkgs = c(required_py_pkgs, extra_pkgs)
-  }
 
   #required_py_pkgs <- required_py_pkgs[!required_py_pkgs %in% c('torch','torchvision')]
 
