@@ -338,19 +338,17 @@ ImageBW_create <- function(fn) {
 #' @param order order
 #'
 #' @export
-TensorPoint_create <- function(enc = NULL, dec = NULL, split_idx = NULL, order = NULL) {
+TensorPoint_create <- function( ...) {
 
-  if(is.null(enc) & is.null(dec) & is.null(split_idx) & is.null(order)) {
+  args = list(
+    ...
+  )
+
+  if(length(args)==0) {
     invisible(vision$all$TensorPoint$create)
   } else {
-    args = list(
-      enc = enc,
-      dec = dec,
-      split_idx = split_idx,
-      order = order
-    )
 
-    if(!is.null(split_idx)) {
+    if(!is.null(args$split_idx)) {
       args$split_idx = as.integer(args$split_idx)
     }
 

@@ -80,9 +80,9 @@ TransformBlock <- function(type_tfms = NULL, item_tfms = NULL,
 #'
 #'
 #' @export
-ImageBlock <- function() {
+ImageBlock <- function(...) {
 
-  invisible(vision$gan$ImageBlock)
+  invisible(vision$gan$ImageBlock(...))
 
 }
 

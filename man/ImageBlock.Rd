@@ -4,7 +4,7 @@
 \alias{ImageBlock}
 \title{ImageBlock}
 \usage{
-ImageBlock()
+ImageBlock(...)
 }
 \description{
 A `TransformBlock` for images of `cls`

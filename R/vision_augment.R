@@ -874,4 +874,18 @@ IntToFloatTensor <- function(div = 255.0, div_mask = 1) {
 }
 
 
+#' @title FuncSplitter
+#'
+#' @description Split `items` by result of `func` (`TRUE` for validation, `FALSE` for training set).
+#'
+#'
+#' @param func func
+#'
+#' @export
+FuncSplitter <- function(func) {
 
+  vision$all$FuncSplitter(
+    func = func
+  )
+
+}

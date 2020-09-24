@@ -4,7 +4,7 @@
 \alias{TensorPoint_create}
 \title{create}
 \usage{
-TensorPoint_create(enc = NULL, dec = NULL, split_idx = NULL, order = NULL)
+TensorPoint_create(...)
 }
 \arguments{
 \item{enc}{enc}
