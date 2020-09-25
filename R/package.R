@@ -16,6 +16,9 @@ fastaip <- NULL
 Callback <- NULL
 bt <- NULL
 crap <- NULL
+migrating_pytorch <- NULL
+migrating_lightning <- NULL
+migrating_ignite <- NULL
 
 .onLoad <- function(libname, pkgname) {
 
@@ -78,9 +81,28 @@ crap <- NULL
     kg <<- reticulate::import('kaggle')
   }
 
-  if(file.exists('fastaibuilt/crappify.py')) {
-    crap <<- reticulate::import_from_path('crappify', path = 'fastaibuilt')
+  if(reticulate::py_module_available('migrating_ignite') &
+     reticulate::py_module_available('migrating_lightning') &
+     reticulate::py_module_available('migrating_pytorch')) {
+
+    if(file.exists('fastaibuilt/crappify.py')) {
+      crap <<- reticulate::import_from_path('crappify', path = 'fastaibuilt')
+    }
+
+    if(file.exists('fastaibuilt/migrating_ignite.py')) {
+      migrating_ignite <<- reticulate::import_from_path('migrating_ignite', path = 'fastaibuilt')
+    }
+
+    if(file.exists('fastaibuilt/migrating_lightning.py')) {
+      migrating_lightning <<- reticulate::import_from_path('migrating_lightning', path = 'fastaibuilt')
+    }
+
+    if(file.exists('fastaibuilt/migrating_pytorch.py')) {
+      migrating_pytorch <<- reticulate::import_from_path('migrating_pytorch', path = 'fastaibuilt')
+    }
+
   }
+
 
 }
 
