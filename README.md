@@ -1265,7 +1265,7 @@ Visualize tensor(s):
 
 ```
 # get batch
-batch = dls %>% one_batch()
+batch = dls %>% one_batch(convert = TRUE)
 
 # visualize img 9 with transformations
 magick::image_read(batch[[1]][[9]])
