@@ -44,6 +44,12 @@ kg <- NULL
 bt <- NULL
 
 
+#' Functional interface
+#'
+#' @export
+F <- NULL
+
+
 #' @title slice
 #'
 #' @description slice(stop)

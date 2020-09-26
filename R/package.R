@@ -19,6 +19,7 @@ crap <- NULL
 migrating_pytorch <- NULL
 migrating_lightning <- NULL
 migrating_ignite <- NULL
+F <- NULL
 
 .onLoad <- function(libname, pkgname) {
 
@@ -75,15 +76,18 @@ migrating_ignite <- NULL
     #builtins
     bt <<- reticulate::import_builtins()
 
+    # Functional interface
+    F <<- fastai2$torch_core$F
+
   }
 
   if(reticulate::py_module_available('kaggle')) {
     kg <<- reticulate::import('kaggle')
   }
 
-  if(reticulate::py_module_available('migrating_ignite') &
-     reticulate::py_module_available('migrating_lightning') &
-     reticulate::py_module_available('migrating_pytorch')) {
+  if(reticulate::py_module_available('ignite') &
+     reticulate::py_module_available('pytorch_lightning') &
+     reticulate::py_module_available('catalyst')) {
 
     if(file.exists('fastaibuilt/crappify.py')) {
       crap <<- reticulate::import_from_path('crappify', path = 'fastaibuilt')

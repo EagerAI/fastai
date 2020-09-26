@@ -9,7 +9,7 @@
 #' @export
 install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrite = FALSE,
                            extra_pkgs = c('kaggle', 'transformers', 'pytorch_lightning',
-                                          'catalyst', 'pytorch_ignite')) {
+                                          'catalyst', 'ignite')) {
 
   required_py_pkgs <- c('IPython', 'torch', 'torchvision', 'fastai',
                        'pydicom', 'kornia', 'cv2',
@@ -38,7 +38,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="cv2", "opencv-python")
   required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="skimage", "scikit-image")
   required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="pytorch_lightning", "pytorch-lightning")
-  required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="pytorch_ignite", "pytorch-ignite")
+  required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="ignite", "pytorch-ignite")
 
   if(missing(version)) {
     required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastai", "fastai")
