@@ -267,6 +267,13 @@ predict.fastai.tabular.learner.TabularLearner <- function(object, row) {
   predictions = object$get_preds(dl = test_dl, with_decoded = TRUE)
   res = as.data.frame(predictions[[1]]$cpu()$numpy())
   class = predictions[[3]]$cpu()$numpy()
-  names(res) = object$dls$vocab$items$items
-  cbind(res,class)
+  output = try(object$dls$vocab$items$items, silent = TRUE)
+
+  if(inherits(output,'try-error')) {
+    names(res) = object$dl$y_names$items
+  } else {
+    names(res) = object$dls$vocab$items$items
+    res = cbind(res,class)
+  }
+  res
 }
