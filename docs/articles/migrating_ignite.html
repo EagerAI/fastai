@@ -121,10 +121,10 @@
 <div id="ignite-with-fastai" class="section level2">
 <h2 class="hasAnchor">
 <a href="#ignite-with-fastai" class="anchor"></a>Ignite with fastai</h2>
-<pre><code><a href="https://rdrr.io/pkg/fastai/man">library(fastai)
+<pre><code><a href="https://github.com/henry090/fastai">library(fastai)
 library(magrittr)
 
-data = DataLoaders(get_data_loaders(64, 128))$cuda()
+data = DataLoaders_(get_data_loaders(64, 128))$cuda()
 
 opt_func = partial(SGD, momentum=0.5)
 learn = Learner(data, Net(), loss_func = nn$NLLLoss(), opt_func = opt_func, metrics = accuracy)
@@ -149,7 +149,7 @@ learn %&gt;% fit_one_cycle(1, 0.01)</a></code></pre>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

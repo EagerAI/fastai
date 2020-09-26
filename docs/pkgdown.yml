@@ -1,5 +1,5 @@
 pandoc: 2.7.3
-pkgdown: 1.5.1
+pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   Basic_Tabular: Basic_Tabular.html
@@ -8,5 +8,5 @@ articles:
   migrating_ignite: migrating_ignite.html
   migrating_pytorch: migrating_pytorch.html
   super_res_gan: super_res_gan.html
-last_built: 2020-09-26T07:38Z
+last_built: 2020-09-26T11:08Z
 
