@@ -9,8 +9,7 @@ install_fastai(
   gpu = FALSE,
   cuda_version = "10.1",
   overwrite = FALSE,
-  extra_pkgs = c("kaggle", "transformers", "pytorch_lightning", "catalyst",
-    "pytorch_ignite")
+  extra_pkgs = c("kaggle", "transformers", "pytorch_lightning", "catalyst", "ignite")
 )
 }
 \arguments{

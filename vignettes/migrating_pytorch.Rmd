@@ -1,0 +1,44 @@
+---
+title: "Migrating from Pytorch"
+output:
+  rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Migrating from Pytorch}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
+```
+
+
+<center>
+
+<img src="images/pytorch.png" alt="_" style="width: 200px;"/>
+
+</center>
+
+
+## Plain Pytorch with fastai
+
+```
+library(fastai)
+library(magrittr)
+
+data = DataLoaders(train_loader, test_loader)
+
+learn = Learner(data, Net(), loss_func = F$nll_loss, 
+                opt_func = Adam(), metrics = accuracy, cbs = CudaCallback())
+
+learn %>% fit_one_cycle(1, 1e-2)
+```
+
+
+
+
+
+
+
+
+

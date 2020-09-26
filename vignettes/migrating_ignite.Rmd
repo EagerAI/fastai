@@ -1,0 +1,45 @@
+---
+title: "Migrating from Ignite"
+output:
+  rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Migrating from Ignite}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
+```
+
+
+<center>
+
+<img src="images/ignite.jpg" alt="_" style="width: 600px;"/>
+
+</center>
+
+
+## Intro
+
+Ignite is a high-level library to help with training and evaluating neural networks in PyTorch flexibly and transparently.
+
+## Ignite with fastai
+
+```
+library(fastai)
+library(magrittr)
+
+data = DataLoaders(get_data_loaders(64, 128))$cuda()
+
+opt_func = partial(SGD, momentum=0.5)
+learn = Learner(data, Net(), loss_func = nn$NLLLoss(), opt_func = opt_func, metrics = accuracy)
+learn %>% fit_one_cycle(1, 0.01)
+```
+
+```
+epoch     train_loss  valid_loss  accuracy  time    
+0         1.084753    0.908347    0.826600  00:13  
+```
+
+

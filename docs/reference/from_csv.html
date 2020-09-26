@@ -61,7 +61,7 @@
   <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -79,17 +79,11 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../index.html">Home</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+    Tutorials
      
     <span class="caret"></span>
   </a>
@@ -107,6 +101,24 @@
       <a href="../articles/super_res_gan.html">Super-Resolution GAN</a>
     </li>
   </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Migrating
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/migrating_pytorch.html">Plain Pytorch</a>
+    </li>
+    <li>
+      <a href="../articles/migrating_ignite.html\">Ignite</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -138,28 +150,28 @@
     <p>Create from `csv` file in `path/csv_fname`</p>
     </div>
 
-    <pre class="usage"><span class='fu'>from_csv</span><span class='op'>(</span>
-  <span class='va'>path</span>,
-  csv_fname <span class='op'>=</span> <span class='st'>"labels.csv"</span>,
-  header <span class='op'>=</span> <span class='st'>"infer"</span>,
-  delimiter <span class='op'>=</span> <span class='cn'>NULL</span>,
-  valid_pct <span class='op'>=</span> <span class='fl'>0.2</span>,
-  seed <span class='op'>=</span> <span class='cn'>NULL</span>,
-  text_col <span class='op'>=</span> <span class='fl'>0</span>,
-  label_col <span class='op'>=</span> <span class='fl'>1</span>,
-  label_delim <span class='op'>=</span> <span class='cn'>NULL</span>,
-  y_block <span class='op'>=</span> <span class='cn'>NULL</span>,
-  text_vocab <span class='op'>=</span> <span class='cn'>NULL</span>,
-  is_lm <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  valid_col <span class='op'>=</span> <span class='cn'>NULL</span>,
-  tok_tfm <span class='op'>=</span> <span class='cn'>NULL</span>,
-  seq_len <span class='op'>=</span> <span class='fl'>72</span>,
-  backwards <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  bs <span class='op'>=</span> <span class='fl'>64</span>,
-  val_bs <span class='op'>=</span> <span class='cn'>NULL</span>,
-  shuffle_train <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  device <span class='op'>=</span> <span class='cn'>NULL</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>from_csv</span>(
+  <span class='no'>path</span>,
+  <span class='kw'>csv_fname</span> <span class='kw'>=</span> <span class='st'>"labels.csv"</span>,
+  <span class='kw'>header</span> <span class='kw'>=</span> <span class='st'>"infer"</span>,
+  <span class='kw'>delimiter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>valid_pct</span> <span class='kw'>=</span> <span class='fl'>0.2</span>,
+  <span class='kw'>seed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>text_col</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>label_col</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>label_delim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>y_block</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>text_vocab</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>is_lm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>valid_col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>tok_tfm</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>seq_len</span> <span class='kw'>=</span> <span class='fl'>72</span>,
+  <span class='kw'>backwards</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>bs</span> <span class='kw'>=</span> <span class='fl'>64</span>,
+  <span class='kw'>val_bs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>shuffle_train</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>device</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -271,7 +283,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

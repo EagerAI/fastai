@@ -63,7 +63,7 @@
   <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -81,17 +81,11 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../index.html">Home</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+    Tutorials
      
     <span class="caret"></span>
   </a>
@@ -109,6 +103,24 @@
       <a href="../articles/super_res_gan.html">Super-Resolution GAN</a>
     </li>
   </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Migrating
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/migrating_pytorch.html">Plain Pytorch</a>
+    </li>
+    <li>
+      <a href="../articles/migrating_ignite.html\">Ignite</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -142,16 +154,16 @@
 
     </div>
 
-    <pre class="usage"><span class='fu'>show_batch</span><span class='op'>(</span>
-  <span class='va'>dls</span>,
-  b <span class='op'>=</span> <span class='cn'>NULL</span>,
-  max_n <span class='op'>=</span> <span class='fl'>9</span>,
-  ctxs <span class='op'>=</span> <span class='cn'>NULL</span>,
-  figsize <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>19.2</span>, <span class='fl'>10.8</span><span class='op'>)</span>,
-  show <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  unique <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  dpi <span class='op'>=</span> <span class='fl'>90</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>show_batch</span>(
+  <span class='no'>dls</span>,
+  <span class='kw'>b</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>max_n</span> <span class='kw'>=</span> <span class='fl'>9</span>,
+  <span class='kw'>ctxs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>figsize</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>19.2</span>, <span class='fl'>10.8</span>),
+  <span class='kw'>show</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>dpi</span> <span class='kw'>=</span> <span class='fl'>90</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -198,7 +210,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

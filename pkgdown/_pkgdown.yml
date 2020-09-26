@@ -7,3 +7,32 @@ template:
 authors:
   Turgut Abdullayev:
     href: https://github.com/henry090
+
+navbar:
+  title: "fastai for R"
+  type: inverse
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Tutorials"
+      menu:
+        - text: "Basic Tabular"
+          href: articles/Basic_Tabular.html
+        - text: "Basic Image Classification"
+          href: articles/basic_img_class.html
+        - text: "Head pose"
+          href: articles/head_pose.html
+        - text: "Super-Resolution GAN"
+          href: articles/super_res_gan.html
+    - text: "Migrating"
+      menu:
+        - text: "Plain Pytorch"
+          href: articles/migrating_pytorch.html
+        - text: "Ignite"
+          href: articles/migrating_ignite.html\
+    - text: "Reference"
+      href: reference/index.html
+
+
+
+
