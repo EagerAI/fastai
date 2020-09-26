@@ -6,4 +6,6 @@ generics::fit
 #' @export
 stats::predict
 
-
+#' @importFrom stats median
+#' @export
+stats::median

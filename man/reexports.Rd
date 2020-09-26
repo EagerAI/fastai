@@ -5,6 +5,7 @@
 \alias{reexports}
 \alias{fit}
 \alias{predict}
+\alias{median}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -14,6 +15,6 @@ below to see their documentation.
 \describe{
   \item{generics}{\code{\link[generics]{fit}}}
 
-  \item{stats}{\code{\link[stats]{predict}}}
+  \item{stats}{\code{\link[stats]{median}}, \code{\link[stats]{predict}}}
 }}
 

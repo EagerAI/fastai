@@ -25,7 +25,8 @@ Imports:
     generics,
     data.table,
     png,
-    grid
+    grid,
+    stats
 Suggests:
     knitr,
     testthat,
