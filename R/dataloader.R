@@ -8,7 +8,7 @@
 #'
 #'
 #' @export
-DataLoaders = function(...) {
+DataLoaders_ = function(...) {
 
   args = list(...)
   args = unlist(args)

@@ -239,7 +239,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <pre><code>library(fastai)
 library(magrittr)
 
-data = DataLoaders(train_loader, test_loader)
+data = DataLoaders_(train_loader, test_loader)
 
 learn = Learner(data, Net(), loss_func = F$nll_loss, 
                 opt_func = Adam(), metrics = accuracy, cbs = CudaCallback())
