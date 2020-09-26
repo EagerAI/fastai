@@ -29,7 +29,7 @@ navbar:
         - text: "Plain Pytorch"
           href: articles/migrating_pytorch.html
         - text: "Ignite"
-          href: articles/migrating_ignite.html\
+          href: articles/migrating_ignite.html
     - text: "Reference"
       href: reference/index.html
 
