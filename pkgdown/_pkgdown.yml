@@ -32,6 +32,8 @@ navbar:
           href: articles/migrating_ignite.html
         - text: "Lightning"
           href: articles/lightning.html
+        - text: "Catalyst"
+          href: articles/catalyst.html
     - text: "Reference"
       href: reference/index.html
 

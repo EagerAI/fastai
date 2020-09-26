@@ -1,0 +1,65 @@
+---
+title: "Migrating from Catalyst"
+output:
+  rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Migrating from Catalyst}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
+```
+
+
+<center>
+
+<img src="images/catalyst.png" alt="_" style="width: 600px;"/>
+
+</center>
+
+
+## Intro
+
+PyTorch framework for Deep Learning research and development. It focuses on reproducibility, rapid experimentation, and codebase reuse so you can create something new rather than write another regular train loop.
+Break the cycle - use the Catalyst!
+
+## Catalyst with fastai
+
+```
+library(fastai)
+library(magrittr)
+
+loaders = loaders()
+
+data = DataLoaders_(loaders['train'], loaders['valid'])$cuda()
+
+model = nn$Sequential() +
+  nn$Flatten() +
+  nn$Linear(28L * 28L, 10L)
+```
+
+```
+Sequential(
+  (0): Flatten()
+  (1): Linear(in_features=784, out_features=10, bias=True)
+)
+```
+
+## Fit
+
+```
+metrics = list(accuracy,top_k_accuracy)
+learn = Learner(data, model, loss_func = F$cross_entropy, opt_func = Adam,
+                metrics = metrics)
+
+learn %>% fit_one_cycle(1, 0.02)
+```
+
+```
+epoch     train_loss  valid_loss  accuracy  top_k_accuracy  time    
+0         0.269411    0.336529    0.910200  0.993700        00:08   
+```
+
+

@@ -19,6 +19,7 @@ crap <- NULL
 migrating_pytorch <- NULL
 migrating_lightning <- NULL
 migrating_ignite <- NULL
+catalyst <- NULL
 F <- NULL
 
 .onLoad <- function(libname, pkgname) {
@@ -103,6 +104,10 @@ F <- NULL
 
     if(file.exists('fastaibuilt/migrating_pytorch.py')) {
       migrating_pytorch <<- reticulate::import_from_path('migrating_pytorch', path = 'fastaibuilt')
+    }
+
+    if(file.exists('fastaibuilt/migrating_catalyst.py')) {
+      catalyst <<- reticulate::import_from_path('migrating_catalyst', path = 'fastaibuilt')
     }
 
   }

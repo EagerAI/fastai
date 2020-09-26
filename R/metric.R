@@ -174,6 +174,8 @@ top_k_accuracy <- function(inp, targ, k = 5L, axis = -1) {
 
 }
 
+attr(top_k_accuracy, "py_function_name") <- 'top_k_accuracy'
+
 #' @title APScoreBinary
 #'
 #' @description Average Precision for single-label binary classification problems
