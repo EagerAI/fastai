@@ -30,6 +30,8 @@ navbar:
           href: articles/migrating_pytorch.html
         - text: "Ignite"
           href: articles/migrating_ignite.html
+        - text: "Lightning"
+          href: articles/lightning.html
     - text: "Reference"
       href: reference/index.html
 

@@ -17,3 +17,4 @@ imports/
 models/
 human_numbers/
 biwi_head_pose/
+MNIST/

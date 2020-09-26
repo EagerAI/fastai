@@ -66,7 +66,13 @@ get_data_loaders <- function(train_batch_size, val_batch_size) {
 }
 
 
-
+#' @title Lit Model
+#'
+#'
+#' @export
+LitModel = function() {
+  migrating_lightning$LitModel()
+}
 
 
 
