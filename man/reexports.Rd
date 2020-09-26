@@ -6,6 +6,10 @@
 \alias{fit}
 \alias{predict}
 \alias{median}
+\alias{dev.off}
+\alias{sd}
+\alias{capture.output}
+\alias{download.file}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -15,6 +19,10 @@ below to see their documentation.
 \describe{
   \item{generics}{\code{\link[generics]{fit}}}
 
-  \item{stats}{\code{\link[stats]{median}}, \code{\link[stats]{predict}}}
+  \item{grDevices}{\code{\link[grDevices:dev]{dev.off}}}
+
+  \item{stats}{\code{\link[stats]{median}}, \code{\link[stats]{predict}}, \code{\link[stats]{sd}}}
+
+  \item{utils}{\code{\link[utils]{capture.output}}, \code{\link[utils]{download.file}}}
 }}
 
