@@ -154,7 +154,7 @@ cat_names = c('sales', 'salary')
 cont_names = c("satisfaction_level", "last_evaluation", "number_project",
                "average_montly_hours", "time_spend_company",
                "Work_accident", "promotion_last_5years")</code></pre>
-<p>Alternatively, it is easier to differentiate 2 types of columns (<code>integer/numeric</code> vs. <code>character/factor</code>) with <code><a href="https://dplyr.tidyverse.org/reference/select_all.html">dplyr::select_if(is.character)</a></code>.</p>
+<p>Alternatively, it is easier to differentiate 2 types of columns (<code>integer/numeric</code> vs. <code>character/factor</code>) with <code>dplyr::select_if(is.character)</code>.</p>
 <p>Next step is to split data into 2 parts. However, we need to randomly select indices not rows because the latter will be done by <code>tabular_learner</code>.</p>
 <pre><code>tot = 1:nrow(df)
 tr_idx = sample(nrow(df), 0.8 * nrow(df))
