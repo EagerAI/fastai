@@ -9,7 +9,7 @@ vignette: >
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
+knitr::opts_chunk$set(echo = TRUE,eval = FALSE,echo = T)
 ```
 
 ## Intro
@@ -22,7 +22,7 @@ The [fastai](https://github.com/fastai/fastai) library simplifies training fast 
 Tabular data can be downloaded from [Kaggle](https://www.kaggle.com/jacksonchou/hr-data-for-analytics).
 It is a basic binary classification case which contains both categorical and coninuous columns. Below one can see the structure of the dataset.
 
-```
+```{r}
 library(magrittr)
 library(fastai)
 df = data.table::fread('datasets_236694_503227_HR_comma_sep.csv')
@@ -47,7 +47,7 @@ Classes ‘data.table’ and 'data.frame':	14999 obs. of  10 variables:
 
 Output column is ```left``` which is integer. Output has to be converted to character/factor.
 
-```
+```{r}
 df[['left']] = as.factor(df[['left']])
 ```
 
@@ -56,7 +56,7 @@ Later, we need to divide column names into 2 groups:
 - Categorical columns
 - Continuous columns
 
-```
+```{r}
 dep_var = 'left'
 cat_names = c('sales', 'salary')
 cont_names = c("satisfaction_level", "last_evaluation", "number_project",
@@ -68,7 +68,7 @@ Alternatively, it is easier to differentiate 2 types of columns (```integer/nume
 
 Next step is to split data into 2 parts. However, we need to randomly select indices not rows because the latter will be done by ```tabular_learner```.
 
-```
+```{r}
 tot = 1:nrow(df)
 tr_idx = sample(nrow(df), 0.8 * nrow(df))
 ts_idx = tot[!tot %in% tr_idx]
@@ -76,7 +76,7 @@ ts_idx = tot[!tot %in% tr_idx]
 
 The dataset can contain missing/large values. Therefore, ```fill missing``` and ```normalize``` functions from ```fastai``` can quickly handle these situations. 
 
-```
+```{r}
 procs = list(FillMissing(),Categorify(),Normalize())
 ```
 
@@ -89,7 +89,7 @@ In addition, filling missing values can be done in different ways:
 
 Define data loaders and specify ```batch_size```, ```cat_names```, ```cont_names``` and etc:
 
-```
+```{r}
 dls = TabularDataTable(df, procs, cat_names, cont_names,
                        y_names = dep_var, splits = list(tr_idx, ts_idx) ) %>%
   dataloaders(bs = 50)
@@ -97,7 +97,7 @@ dls = TabularDataTable(df, procs, cat_names, cont_names,
 
 A deep learning model which contains embedding layers for categorical columns and linear for continuous ones. At the same time, define metrics:
 
-```
+```{r}
 model = dls %>% tabular_learner(layers=c(200,100,100,200),
                                 config = tabular_config(embed_p = 0.3, use_bn = FALSE),
                                 metrics = list(accuracy, RocAucBinary(),
@@ -141,7 +141,7 @@ TabularModel(
 
 Before fitting model find optimal learning rate:
 
-```
+```{r}
 model %>% lr_find()
 # SuggestedLRs(lr_min=0.002754228748381138, lr_steep=1.5848931980144698e-06)
 
@@ -158,7 +158,7 @@ model %>% plot_lr_find()
 
 And finally, fit the model:
 
-```
+```{r}
 res = model %>% fit(5, lr = 0.005)
 ```
 
@@ -173,7 +173,7 @@ epoch     train_loss  valid_loss  accuracy  roc_auc_score  precision_score  reca
 
 Plot confusion matrix:
 
-```
+```{r}
 model %>% get_confusion_matrix() %>% 
   fourfoldplot(conf.level = 0, color = c("#ed3b3b", "#0099ff"),
              margin = 1,main = paste("Confusion Matrix",
@@ -190,8 +190,11 @@ model %>% get_confusion_matrix() %>%
 
 Let's make predictions:
 
+```{r}
+model %>% predict(df[1000:1010,])
 ```
-> model %>% predict(df[1000:1010,])
+
+```
         0           1         class
 1  0.004488660 0.99551141       1
 2  0.819206953 0.18079305       0

@@ -9,7 +9,7 @@ vignette: >
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
+knitr::opts_chunk$set(echo = TRUE,eval = FALSE,echo = T)
 ```
 
 ## Intro
@@ -26,7 +26,7 @@ To achieve the goal, we need to do the following:
 
 Upload an example:
 
-```
+```{r}
 library(fastai)
 library(magrittr)
 
@@ -46,7 +46,7 @@ img %>% show() %>% plot()
 
 To add the points, we need to write simple functions:
 
-```
+```{r}
 img2txt_name <- function(f) {
   paste(
     substr(f, 1, nchar(f)-7), 'pose.txt',
@@ -74,7 +74,7 @@ get_ip <- function(img, pts) {
 }
 ```
 
-```
+```{r}
 ctr = readr::read_lines(img2txt_name(paste(path,fname,sep = '/')),
                         skip = 4, n_max = 1) %>% trimws() %>%
       strsplit('\\s') %>% unlist() %>% as.numeric()
@@ -82,7 +82,7 @@ ctr = readr::read_lines(img2txt_name(paste(path,fname,sep = '/')),
 
 Now, it is easier to add red points:
 
-```
+```{r}
 ctr = get_ctr(paste(path,fname,sep = '/'))
 ax = img %>% show(figsize = c(6, 6))
 img %>% get_ip(ctr) %>% show(ctx = ax) %>% plot()
@@ -98,7 +98,7 @@ img %>% get_ip(ctr) %>% show(ctx = ax) %>% plot()
 
 Prepare data laoder object and see batch:
 
-```
+```{r}
 dblock = DataBlock(blocks = list(ImageBlock(), PointBlock()),
                    get_items = get_image_files(),
                    splitter = FuncSplitter(function(x) x$parent$name == '13'),
@@ -124,7 +124,7 @@ dls %>% show_batch(max_n = 9, figsize = c(9,6))
 
 Run for 5 epochs and see results:
 
-```
+```{r}
 learn = cnn_learner(dls, resnet34)
 
 learn %>% lr_find()
@@ -136,7 +136,7 @@ lr = 2e-2
 learn %>% fit_one_cycle(5, slice(lr))
 ```
 
-```
+```{r}
 learn %>% show_results(dpi = 200)
 ```
 

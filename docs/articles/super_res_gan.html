@@ -125,41 +125,45 @@
 <h2 class="hasAnchor">
 <a href="#dataset" class="anchor"></a>Dataset</h2>
 <p>Grab the pets dataset and Specify folders:</p>
-<pre><code><a href="../reference/URLs_PETS.html">URLs_PETS()
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu"><a href="../reference/URLs_PETS.html">URLs_PETS</a></span><span class="op">(</span><span class="op">)</span>
 
-path = 'oxford-iiit-pet'
-path_hr = paste(path, 'images', sep = '/')
-path_lr = paste(path, 'crappy', sep = '/')</a></code></pre>
+<span class="va">path</span> <span class="op">=</span> <span class="st">'oxford-iiit-pet'</span>
+<span class="va">path_hr</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">path</span>, <span class="st">'images'</span>, sep <span class="op">=</span> <span class="st">'/'</span><span class="op">)</span>
+<span class="va">path_lr</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">path</span>, <span class="st">'crappy'</span>, sep <span class="op">=</span> <span class="st">'/'</span><span class="op">)</span></pre></div>
 <p>Prepare the input data by crappifying images:</p>
-<pre><code># run this only for the first time, then skip
-items = get_image_files(path_hr)
-parallel(crappifier(path_lr, path_hr), items)</code></pre>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="co"># run this only for the first time, then skip</span>
+<span class="va">items</span> <span class="op">=</span> <span class="fu"><a href="../reference/get_image_files.html">get_image_files</a></span><span class="op">(</span><span class="va">path_hr</span><span class="op">)</span>
+<span class="fu"><a href="../reference/parallel.html">parallel</a></span><span class="op">(</span><span class="fu"><a href="../reference/crappifier.html">crappifier</a></span><span class="op">(</span><span class="va">path_lr</span>, <span class="va">path_hr</span><span class="op">)</span>, <span class="va">items</span><span class="op">)</span></pre></div>
 </div>
 <div id="parameters-and-dataloader" class="section level2">
 <h2 class="hasAnchor">
 <a href="#parameters-and-dataloader" class="anchor"></a>Parameters and dataloader</h2>
-<pre><code>bs = 10
-size = 64
-arch = resnet34
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="va">bs</span> <span class="op">=</span> <span class="fl">10</span>
+<span class="va">size</span> <span class="op">=</span> <span class="fl">64</span>
+<span class="va">arch</span> <span class="op">=</span> <span class="va">resnet34</span>
 
-get_dls = function(bs, size) {
-  dblock = DataBlock(blocks = list(ImageBlock, ImageBlock),
-                     get_items = get_image_files,
-                     get_y = function(x) {paste(path_hr, as.character(x$name), sep = '/')},
-                     splitter = RandomSplitter(),
-                     item_tfms = Resize(size),
-                     batch_tfms = list(
-                       aug_transforms(max_zoom = 2.),
-                       Normalize_from_stats( imagenet_stats() )
-                     ))
-  dls = dblock %&gt;% dataloaders(path_lr, bs = bs, path = path)
-  dls$c = 3L
-  dls
-}
+<span class="va">get_dls</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">bs</span>, <span class="va">size</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">dblock</span> <span class="op">=</span> <span class="fu"><a href="../reference/DataBlock.html">DataBlock</a></span><span class="op">(</span>blocks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">ImageBlock</span>, <span class="va">ImageBlock</span><span class="op">)</span>,
+                     get_items <span class="op">=</span> <span class="va">get_image_files</span>,
+                     get_y <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">path_hr</span>, <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">name</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">'/'</span><span class="op">)</span><span class="op">}</span>,
+                     splitter <span class="op">=</span> <span class="fu"><a href="../reference/RandomSplitter.html">RandomSplitter</a></span><span class="op">(</span><span class="op">)</span>,
+                     item_tfms <span class="op">=</span> <span class="fu"><a href="../reference/Resize.html">Resize</a></span><span class="op">(</span><span class="va">size</span><span class="op">)</span>,
+                     batch_tfms <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+                       <span class="fu"><a href="../reference/aug_transforms.html">aug_transforms</a></span><span class="op">(</span>max_zoom <span class="op">=</span> <span class="fl">2.</span><span class="op">)</span>,
+                       <span class="fu"><a href="../reference/Normalize_from_stats.html">Normalize_from_stats</a></span><span class="op">(</span> <span class="fu"><a href="../reference/imagenet_stats.html">imagenet_stats</a></span><span class="op">(</span><span class="op">)</span> <span class="op">)</span>
+                     <span class="op">)</span><span class="op">)</span>
+  <span class="va">dls</span> <span class="op">=</span> <span class="va">dblock</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/dataloaders.html">dataloaders</a></span><span class="op">(</span><span class="va">path_lr</span>, bs <span class="op">=</span> <span class="va">bs</span>, path <span class="op">=</span> <span class="va">path</span><span class="op">)</span>
+  <span class="va">dls</span><span class="op">$</span><span class="va">c</span> <span class="op">=</span> <span class="fl">3L</span>
+  <span class="va">dls</span>
+<span class="op">}</span>
 
-dls_gen = get_dls(bs, size)</code></pre>
+<span class="va">dls_gen</span> <span class="op">=</span> <span class="fu">get_dls</span><span class="op">(</span><span class="va">bs</span>, <span class="va">size</span><span class="op">)</span></pre></div>
 <p>See batch:</p>
-<pre><code>dls_gen %&gt;% show_batch(max_n = 4, dpi = 150)</code></pre>
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="va">dls_gen</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/show_batch.html">show_batch</a></span><span class="op">(</span>max_n <span class="op">=</span> <span class="fl">4</span>, dpi <span class="op">=</span> <span class="fl">150</span><span class="op">)</span></pre></div>
 <center>
 <p><img src="images/superresgan1.png" alt="_" style="width: 600px;"></p>
 </center>
@@ -168,22 +172,23 @@ dls_gen = get_dls(bs, size)</code></pre>
 <h2 class="hasAnchor">
 <a href="#fit" class="anchor"></a>Fit</h2>
 <p>Define loss function and create <code>unet_learner</code>:</p>
-<pre><code>wd = 1e-3
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="va">wd</span> <span class="op">=</span> <span class="fl">1e-3</span>
 
-y_range = c(-3.,3.)
+<span class="va">y_range</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3.</span>,<span class="fl">3.</span><span class="op">)</span>
 
-loss_gen = MSELossFlat()
+<span class="va">loss_gen</span> <span class="op">=</span> <span class="fu"><a href="../reference/MSELossFlat.html">MSELossFlat</a></span><span class="op">(</span><span class="op">)</span>
 
-create_gen_learner = function() {
-  unet_learner(dls_gen, arch, loss_func = loss_gen,
-               config = unet_config(blur=TRUE, norm_type = "Weight", 
-               self_attention = TRUE, y_range = y_range))
-}
+<span class="va">create_gen_learner</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="../reference/unet_learner.html">unet_learner</a></span><span class="op">(</span><span class="va">dls_gen</span>, <span class="va">arch</span>, loss_func <span class="op">=</span> <span class="va">loss_gen</span>,
+               config <span class="op">=</span> <span class="fu"><a href="../reference/unet_config.html">unet_config</a></span><span class="op">(</span>blur<span class="op">=</span><span class="cn">TRUE</span>, norm_type <span class="op">=</span> <span class="st">"Weight"</span>, 
+               self_attention <span class="op">=</span> <span class="cn">TRUE</span>, y_range <span class="op">=</span> <span class="va">y_range</span><span class="op">)</span><span class="op">)</span>
+<span class="op">}</span>
 
 
-learn_gen = create_gen_learner()
+<span class="va">learn_gen</span> <span class="op">=</span> <span class="fu">create_gen_learner</span><span class="op">(</span><span class="op">)</span>
 
-learn_gen %&gt;% fit_one_cycle(2, pct_start = 0.8, wd = wd)</code></pre>
+<span class="va">learn_gen</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">2</span>, pct_start <span class="op">=</span> <span class="fl">0.8</span>, wd <span class="op">=</span> <span class="va">wd</span><span class="op">)</span></pre></div>
 <pre><code>epoch     train_loss  valid_loss  time
 0         0.025911    0.035153    00:42
 1         0.019524    0.019408    00:39</code></pre>
@@ -192,7 +197,8 @@ learn_gen %&gt;% fit_one_cycle(2, pct_start = 0.8, wd = wd)</code></pre>
 <h2 class="hasAnchor">
 <a href="#conclusion" class="anchor"></a>Conclusion</h2>
 <p>Plot results:</p>
-<pre><code>learn_gen %&gt;% show_results(max_n = 6, dpi = 200)</code></pre>
+<div class="sourceCode" id="cb7"><pre class="downlit">
+<span class="va">learn_gen</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/show_results.html">show_results</a></span><span class="op">(</span>max_n <span class="op">=</span> <span class="fl">6</span>, dpi <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></pre></div>
 <center>
 <p><img src="images/superresgan.png" alt="_" style="width: 600px;"></p>
 </center>

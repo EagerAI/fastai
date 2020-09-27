@@ -9,7 +9,7 @@ vignette: >
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
+knitr::opts_chunk$set(echo = TRUE,eval = FALSE,echo = T)
 ```
 
 ## Intro
@@ -21,13 +21,13 @@ The [fastai](https://github.com/fastai/fastai) library simplifies training fast 
 
 Image dataset can be downloaded and extracted directly via the following function:
 
-```
+```{r}
 URLs_PETS()
 ```
 
 Later, we need to specify image folders and build a data loader object:
 
-```
+```{r}
 path = 'oxford-iiit-pet'
 path_anno = 'oxford-iiit-pet/annotations'
 path_img = 'oxford-iiit-pet/images'
@@ -39,7 +39,7 @@ fnames = get_image_files(path_img)
 
 Data loader is one of the most important parts of the image classification part. Because here we apply different image transformations which can drastically improve the accuracy of the model.
 
-```
+```{r}
 dls = ImageDataLoaders_from_name_re(
   path, fnames, pat='(.+)_\\d+.jpg$',
   item_tfms = RandomResizedCrop(460, min_scale=0.75), bs = 10,
@@ -52,7 +52,7 @@ dls = ImageDataLoaders_from_name_re(
 
 See batch:
 
-```
+```{r}
 dls %>% show_batch()
 ```
 
@@ -68,7 +68,7 @@ dls %>% show_batch()
 
 Let's load a pretrained ResNet50 model and construct a ```cnn_learner```:
 
-```
+```{r}
 learn = cnn_learner(dls, resnet50, metrics = error_rate)
 ```
 
@@ -81,7 +81,7 @@ Downloading: "https://download.pytorch.org/models/resnet50-19c8e357.pth" to /hom
 
 It is time to fit the ResNet model:
 
-```
+```{r}
 learn %>% fit_one_cycle(n_epoch = 8)
 ```
 
@@ -99,7 +99,7 @@ epoch     train_loss  valid_loss  error_rate  time
 
 Unfreeze the blocks and train again:
 
-```
+```{r}
 learn$unfreeze()
 
 learn %>% fit_one_cycle(3, lr_max = slice(1e-6,1e-4))
@@ -114,7 +114,7 @@ epoch     train_loss  valid_loss  error_rate  time
 
 Extraction of most confused:
 
-```
+```{r}
 interp = ClassificationInterpretation_from_learner(learn)
 interp %>% most_confused()
 ```
@@ -180,7 +180,7 @@ interp %>% most_confused()
 
 And get predictions on new data. For this purpose, specify the name of the files:
 
-```
+```{r}
 fls = list.files(paste(path,'images',sep = '/'),full.names = TRUE, recursive = TRUE)[c(250,500,700)]
 fls
 

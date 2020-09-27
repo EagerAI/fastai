@@ -9,7 +9,7 @@ vignette: >
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
+knitr::opts_chunk$set(echo = TRUE,eval = FALSE,echo = T)
 ```
 
 
@@ -26,7 +26,7 @@ Lightning disentangles PyTorch code to decouple the science from the engineering
 
 ## Lightning with fastai
 
-```
+```{r}
 library(fastai)
 library(magrittr)
 
