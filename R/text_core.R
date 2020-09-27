@@ -542,7 +542,44 @@ fa_convert <- function(t) {
 }
 
 
+#' @title TfmdLists
+#'
+#' @description A `Pipeline` of `tfms` applied to a collection of `items`
+#'
+#'
+#' @param items items
+#' @param tfms tfms
+#' @param use_list use_list
+#' @param do_setup do_setup
+#' @param split_idx split_idx
+#' @param train_setup train_setup
+#' @param splits splits
+#' @param types types
+#' @param verbose verbose
+#' @param dl_type dl_type
+#'
+#' @export
+TfmdLists <- function(items, tfms, use_list = NULL, do_setup = TRUE, split_idx = NULL,
+                      train_setup = TRUE, splits = NULL, types = NULL,
+                      verbose = FALSE, dl_type = NULL, ...) {
 
+  args = list(
+    items = items,
+    tfms = tfms,
+    use_list = use_list,
+    do_setup = do_setup,
+    split_idx = split_idx,
+    train_setup = train_setup,
+    splits = splits,
+    types = types,
+    verbose = verbose,
+    dl_type = dl_type,
+    ...
+  )
+
+  do.call(text$TfmdLists, args)
+
+}
 
 
 

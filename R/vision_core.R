@@ -305,7 +305,11 @@ Transform <- function(enc = NULL, dec = NULL, split_idx = NULL, order = NULL) {
     args$split_idx = as.integer(args$split_idx)
   }
 
-  do.call(vision$all$Transform, args)
+  if(is.null(enc) & is.null(dec) & is.null(split_idx) & is.null(order)) {
+    vision$all$Transform
+  } else {
+    do.call(vision$all$Transform, args)
+  }
 
 }
 

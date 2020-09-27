@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Migrating from Catalyst</title>
+
+<script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
+// v0.0.1
+// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
+
+document.addEventListener('DOMContentLoaded', function() {
+  const codeList = document.getElementsByClassName("sourceCode");
+  for (var i = 0; i < codeList.length; i++) {
+    var linkList = codeList[i].getElementsByTagName('a');
+    for (var j = 0; j < linkList.length; j++) {
+      if (linkList[j].innerHTML === "") {
+        linkList[j].setAttribute('aria-hidden', 'true');
+      }
+    }
+  }
+});
+</script>
+
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Migrating from Catalyst</h1>
+
+
+
+<center>
+<p><img src="data:image/png;base64,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" alt="_" style="width: 600px;" /></p>
+</center>
+<div id="intro" class="section level2">
+<h2>Intro</h2>
+<p>PyTorch framework for Deep Learning research and development. It focuses on reproducibility, rapid experimentation, and codebase reuse so you can create something new rather than write another regular train loop. Break the cycle - use the Catalyst!</p>
+</div>
+<div id="catalyst-with-fastai" class="section level2">
+<h2>Catalyst with fastai</h2>
+<pre><code>library(fastai)
+library(magrittr)
+
+loaders = loaders()
+
+data = DataLoaders_(loaders[&#39;train&#39;], loaders[&#39;valid&#39;])$cuda()
+
+model = nn$Sequential() +
+  nn$Flatten() +
+  nn$Linear(28L * 28L, 10L)</code></pre>
+<pre><code>Sequential(
+  (0): Flatten()
+  (1): Linear(in_features=784, out_features=10, bias=True)
+)</code></pre>
+</div>
+<div id="fit" class="section level2">
+<h2>Fit</h2>
+<pre><code>metrics = list(accuracy,top_k_accuracy)
+learn = Learner(data, model, loss_func = F$cross_entropy, opt_func = Adam,
+                metrics = metrics)
+
+learn %&gt;% fit_one_cycle(1, 0.02)</code></pre>
+<pre><code>epoch     train_loss  valid_loss  accuracy  top_k_accuracy  time    
+0         0.269411    0.336529    0.910200  0.993700        00:08   </code></pre>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
