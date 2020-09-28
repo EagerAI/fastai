@@ -1243,10 +1243,10 @@ ggpubr::ggarrange(p_[[1]],
 Get optimal learning rate and then fit:
 
 ```
-model %>% lr_find()
+data = model %>% lr_find() 
+data
 
-# grab data
-data = model %>% lr_find_() 
+# SuggestedLRs(lr_min=0.017378008365631102, lr_steep=0.0020892962347716093)
 ```
 
 ```

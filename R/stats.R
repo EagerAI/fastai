@@ -87,18 +87,7 @@ lr_find <- function(object, start_lr = 1e-07, end_lr = 10, num_it = 100,
     suggestions = suggestions
   )
 
-  do.call(object$lr_find, args)
-
-}
-
-#' @title lr_find
-#'
-#' @description Launch a mock training to find a good learning rate, return lr_min, lr_steep if `suggestions` is TRUE
-#'
-#' @param object learner
-#'
-#' @export
-lr_find_ <- function(object) {
+  print(do.call(object$lr_find, args))
 
   losses = object$recorder$losses
   losses = unlist(lapply(1:length(losses),function(x) losses[[x]]$numpy()))
@@ -108,6 +97,7 @@ lr_find_ <- function(object) {
              losses = losses)
 
 }
+
 
 
 #' @title Accuracy
