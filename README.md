@@ -76,8 +76,8 @@ Prepare:
 
 ```
 dls = TabularDataTable(df, procs, cat_names, cont_names, 
-      y_names="salary", splits = list(c(1:32000),c(32001:32561))) %>% 
-      dataloaders(bs=64)
+      y_names = dep_var, splits = list(c(1:32000),c(32001:32561))) %>% 
+      dataloaders(bs = 64)
 ```
 
 Summary:
@@ -1122,7 +1122,7 @@ learn %>% fit_one_cycle(1, 2e-2, moms = c(0.8, 0.7, 0.8))
 img = dcmread('hemorrhage.dcm')
 ```
 
-Visualize data with different [window effects](https://radiopaedia.org/articles/windowing-ct):
+Visualize data with different [windowing effects](https://radiopaedia.org/articles/windowing-ct):
 
 ```
 scale = list(FALSE, TRUE, dicom_windows$brain, dicom_windows$subdural)
