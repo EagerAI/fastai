@@ -51,8 +51,7 @@ test_succeeds('tabular ops predict', {
 })
 
 test_succeeds('tabular ops get optimal lr', {
-  model %>% lr_find()
-  df = model %>% lr_find_()
+  df = model %>% lr_find()
   expect_true(is.data.frame(df))
 })
 
