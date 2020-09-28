@@ -1075,10 +1075,10 @@ ggpubr::ggarrange(p_[[1]],
 <h3 class="hasAnchor">
 <a href="#find-optimal-learning-rate" class="anchor"></a>Find optimal learning rate</h3>
 <p>Get optimal learning rate and then fit:</p>
-<pre><code>model %&gt;% lr_find()
+<pre><code>data = model %&gt;% lr_find() 
+data
 
-# grab data
-data = model %&gt;% lr_find_() </code></pre>
+# SuggestedLRs(lr_min=0.017378008365631102, lr_steep=0.0020892962347716093)</code></pre>
 <pre><code>         lr_rates   losses
 1 0.0000001000000 5.349157
 2 0.0000001202264 5.231493
