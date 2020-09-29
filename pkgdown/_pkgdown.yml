@@ -34,6 +34,10 @@ navbar:
           href: articles/lightning.html
         - text: "Catalyst"
           href: articles/catalyst.html
+    - text: "Experiments"
+      menu:
+        - text: "Image Classification"
+          href: articles/custom_img.html
     - text: "Reference"
       href: reference/index.html
 

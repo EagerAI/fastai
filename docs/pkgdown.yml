@@ -5,11 +5,11 @@ articles:
   Basic_Tabular: Basic_Tabular.html
   basic_img_class: basic_img_class.html
   catalyst: catalyst.html
+  custom_img: custom_img.html
   head_pose: head_pose.html
   lightning: lightning.html
   migrating_ignite: migrating_ignite.html
   migrating_pytorch: migrating_pytorch.html
   super_res_gan: super_res_gan.html
-last_built: 2020-09-27T15:15Z
-
+last_built: 2020-09-29T13:47Z
 
