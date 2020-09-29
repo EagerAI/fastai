@@ -577,6 +577,9 @@ TfmdLists <- function(items, tfms, use_list = NULL, do_setup = TRUE, split_idx =
     ...
   )
 
+  if(!is.null(splits) & length(splits) == 2)
+    args$splits = list(as.integer(splits[[1]]-1),as.integer(splits[[2]]-1))
+
   do.call(text$TfmdLists, args)
 
 }
