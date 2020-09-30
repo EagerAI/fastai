@@ -49,6 +49,11 @@ bt <- NULL
 #' @export
 F <- NULL
 
+#' Dicom
+#'
+#' @export
+Dicom <- NULL
+
 
 #' @title slice
 #'

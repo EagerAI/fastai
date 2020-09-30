@@ -21,6 +21,7 @@ migrating_lightning <- NULL
 migrating_ignite <- NULL
 catalyst <- NULL
 F <- NULL
+Dicom <- NULL
 
 .onLoad <- function(libname, pkgname) {
 
@@ -79,6 +80,9 @@ F <- NULL
 
     # Functional interface
     F <<- fastai2$torch_core$F
+
+    # Dicom
+    Dicom <<- medical$PILDicom
 
   }
 

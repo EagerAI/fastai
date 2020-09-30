@@ -969,4 +969,19 @@ URLs_MOVIE_LENS_ML_100k <- function(filename = 'ml-100k', unzip = TRUE) {
 
 }
 
+#' @title SIIM_SMALL
+#'
+#' @param filename the name of the file
+#' @param untar logical, whether to untar the '.tgz' file
+#'
+#' @description download YELP_REVIEWS_POLARITY dataset
+#' @export
+URLs_SIIM_SMALL <- function(filename = 'SIIM_SMALL', untar = TRUE) {
 
+  download.file(paste(tabular$URLs$SIIM_SMALL, sep = ''),
+                destfile = paste(filename,'.tgz',sep = ''))
+
+  if(untar)
+    untar(paste(filename,'.tgz',sep = ''))
+
+}

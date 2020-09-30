@@ -422,12 +422,36 @@ float <- function(tensor) {
 #'
 #'
 #' @export
-to_matrix = function(obj) {
+to_matrix = function(obj, matrix = TRUE) {
   if(inherits(obj,'pydicom.dataset.FileDataset')) {
     res = obj$as_dict()
-    do.call(cbind,res)
+
+    get_names = names(res)
+
+    res = lapply(1:length(res), function(x) ifelse(inherits(res[[x]], "python.builtin.object"),
+                                                   as.character(res[[x]]), res[[x]]))
+    names(res) = get_names
+
+    res = as.data.frame(do.call(cbind, res))
+
+    tmp = gsub(tempdir(), replacement = '/',pattern = '\\', fixed = TRUE)
+
+    write.csv(res, paste(tmp,'temp.csv',sep = '/'), row.names = FALSE)
+
+    res = read.csv(paste(tmp,'temp.csv',sep = '/'))
+
+    if(matrix) {
+      as.matrix(res)
+    } else {
+      res
+    }
+
   } else {
-    fastai2$basics$tensor(obj)$cpu()$numpy()
+    if(matrix) {
+      fastai2$basics$tensor(obj)$cpu()$numpy()
+    } else {
+      as.data.frame(fastai2$basics$tensor(obj)$cpu()$numpy())
+    }
   }
 }
 

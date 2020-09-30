@@ -4,7 +4,7 @@
 \alias{to_matrix}
 \title{To matrix}
 \usage{
-to_matrix(obj)
+to_matrix(obj, matrix = TRUE)
 }
 \description{
 To matrix
