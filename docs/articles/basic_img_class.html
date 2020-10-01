@@ -171,7 +171,7 @@
 <a href="#resnet50" class="anchor"></a>ResNet50</h2>
 <p>Let’s load a pretrained ResNet50 model and construct a <code>cnn_learner</code>:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/cnn_learner.html">cnn_learner</a></span><span class="op">(</span><span class="va">dls</span>, <span class="va">resnet50</span>, metrics <span class="op">=</span> <span class="va">error_rate</span><span class="op">)</span></pre></div>
+<span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/cnn_learner.html">cnn_learner</a></span><span class="op">(</span><span class="va">dls</span>, <span class="fu"><a href="../reference/resnet50.html">resnet50</a></span><span class="op">(</span><span class="op">)</span>, metrics <span class="op">=</span> <span class="va">error_rate</span><span class="op">)</span></pre></div>
 <pre><code>Downloading: "https://download.pytorch.org/models/resnet50-19c8e357.pth" to /home/turgut/.cache/torch/hub/checkpoints/resnet50-19c8e357.pth
 100%|██████████| 97.8M/97.8M [00:43&lt;00:00, 2.36MB/s]</code></pre>
 </div>

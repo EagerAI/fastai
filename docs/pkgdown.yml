@@ -8,8 +8,9 @@ articles:
   custom_img: custom_img.html
   head_pose: head_pose.html
   lightning: lightning.html
+  medical_dcm: medical_dcm.html
   migrating_ignite: migrating_ignite.html
   migrating_pytorch: migrating_pytorch.html
   super_res_gan: super_res_gan.html
-last_built: 2020-09-29T15:18Z
+last_built: 2020-10-01T11:04Z
 
