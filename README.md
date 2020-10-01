@@ -257,7 +257,7 @@ dls %>% show_batch(dpi = 150)
 Model architecture:
 
 ```
-learn = cnn_learner(dls, resnet34, metrics = error_rate)
+learn = cnn_learner(dls, resnet34(), metrics = error_rate)
 ```
 
 And fit:
@@ -314,7 +314,7 @@ data = ImageDataLoaders_from_folder(path, batch_tfms = tfms, size = 26, bs = bs)
 # Visualize and train 
 data %>% show_batch(dpi = 150)
                
-learn = cnn_learner(data, resnet18, metrics = accuracy)
+learn = cnn_learner(data, resnet18(), metrics = accuracy)
 learn %>% fit(2)
 ```
 
@@ -925,7 +925,7 @@ tensor(0.0011, device='cuda:0')
 Resnet34 model architecture for unet:
 
 ```
-learn = unet_learner(dls, resnet34, metrics = acc_camvid)
+learn = unet_learner(dls, resnet34(), metrics = acc_camvid)
 ```
 
 And finally, fit:
