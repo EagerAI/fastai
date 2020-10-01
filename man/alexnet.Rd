@@ -4,7 +4,7 @@
 \alias{alexnet}
 \title{alexnet}
 \usage{
-alexnet(pretrained = FALSE, progress = TRUE)
+alexnet(pretrained = FALSE, progress)
 }
 \arguments{
 \item{pretrained}{pretrained}

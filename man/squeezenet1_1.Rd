@@ -4,7 +4,7 @@
 \alias{squeezenet1_1}
 \title{squeezenet1_1}
 \usage{
-squeezenet1_1(pretrained = FALSE, progress = TRUE)
+squeezenet1_1(pretrained = FALSE, progress)
 }
 \arguments{
 \item{pretrained}{pretrained}

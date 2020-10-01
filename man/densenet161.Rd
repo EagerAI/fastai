@@ -4,7 +4,7 @@
 \alias{densenet161}
 \title{densenet161}
 \usage{
-densenet161(pretrained = FALSE, progress = TRUE)
+densenet161(pretrained = FALSE, progress)
 }
 \arguments{
 \item{pretrained}{pretrained}
