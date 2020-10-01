@@ -124,7 +124,7 @@ dls %>% show_batch(dpi = 200)
 Define ```cnn_learner``` and fit. But before that it is better to see the train metrics as well.
 
 ```{r}
-learn = cnn_learner(dls, resnet50, metrics = list(accuracy, error_rate))
+learn = cnn_learner(dls, resnet50(), metrics = list(accuracy, error_rate))
 
 learn$recorder$train_metrics = TRUE
 
