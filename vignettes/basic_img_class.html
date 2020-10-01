@@ -353,7 +353,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div id="resnet50" class="section level2">
 <h2>ResNet50</h2>
 <p>Let’s load a pretrained ResNet50 model and construct a <code>cnn_learner</code>:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>learn =<span class="st"> </span><span class="kw">cnn_learner</span>(dls, resnet50, <span class="dt">metrics =</span> error_rate)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>learn =<span class="st"> </span><span class="kw">cnn_learner</span>(dls, <span class="kw">resnet50</span>(), <span class="dt">metrics =</span> error_rate)</span></code></pre></div>
 <pre><code>Downloading: &quot;https://download.pytorch.org/models/resnet50-19c8e357.pth&quot; to /home/turgut/.cache/torch/hub/checkpoints/resnet50-19c8e357.pth
 100%|██████████| 97.8M/97.8M [00:43&lt;00:00, 2.36MB/s]</code></pre>
 </div>

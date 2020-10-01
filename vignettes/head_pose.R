@@ -64,7 +64,7 @@ knitr::opts_chunk$set(echo = TRUE,eval = FALSE,echo = T)
 #  dls %>% show_batch(max_n = 9, figsize = c(9,6))
 
 ## -----------------------------------------------------------------------------
-#  learn = cnn_learner(dls, resnet34)
+#  learn = cnn_learner(dls, resnet34())
 #  
 #  learn %>% lr_find()
 #  
