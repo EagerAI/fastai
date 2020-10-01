@@ -172,7 +172,7 @@ Classes ‘data.table’ and 'data.frame':  14999 obs. of  10 variables:
 <span class="va">cont_names</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"satisfaction_level"</span>, <span class="st">"last_evaluation"</span>, <span class="st">"number_project"</span>,
                <span class="st">"average_montly_hours"</span>, <span class="st">"time_spend_company"</span>,
                <span class="st">"Work_accident"</span>, <span class="st">"promotion_last_5years"</span><span class="op">)</span></pre></div>
-<p>Alternatively, it is easier to differentiate 2 types of columns (<code>integer/numeric</code> vs. <code>character/factor</code>) with <code><a href="https://dplyr.tidyverse.org/reference/select_all.html">dplyr::select_if(is.character)</a></code>.</p>
+<p>Alternatively, it is easier to differentiate 2 types of columns (<code>integer/numeric</code> vs. <code>character/factor</code>) with <code>dplyr::select_if(is.character)</code>.</p>
 <p>Next step is to split data into 2 parts. However, we need to randomly select indices not rows because the latter will be done by <code>tabular_learner</code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit">
 <span class="va">tot</span> <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span>
