@@ -24,6 +24,8 @@ navbar:
           href: articles/head_pose.html
         - text: "Super-Resolution GAN"
           href: articles/super_res_gan.html
+        - text: "Medical image classification"
+          href: articles/medical_dcm.html
     - text: "Migrating"
       menu:
         - text: "Plain Pytorch"
