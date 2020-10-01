@@ -26,7 +26,7 @@ test_succeeds('mnist_sample load into memory', {
 })
 
 test_succeeds('mnist_sample cnn_learner', {
-  learn = cnn_learner(data, resnet18, metrics = accuracy)
+  learn = cnn_learner(data, resnet18(), metrics = accuracy)
 })
 
 #test_succeeds('mnist_sample predict', {
