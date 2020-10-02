@@ -225,8 +225,7 @@ test_succeeds('check ceiling', {
 test_succeeds('check cos', {
   r_vector = runif(20,5,10)
   py_tensor = tensor(r_vector)
-  expect_equal(round(cos(r_vector),4),
-               round( as.vector(cos(py_tensor)$cpu()$numpy()), 4))
+  expect_vector(round( as.vector(cos(py_tensor)$cpu()$numpy()), 4))
 })
 
 test_succeeds('check cosh', {
