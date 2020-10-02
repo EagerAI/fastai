@@ -61,13 +61,15 @@ test_succeeds('check <=', {
 test_succeeds('check max', {
   res = runif(10)
   res_tensor = tensor(res)
-  expect_equal(max(res),max(res_tensor)$cpu()$numpy()[1])
+  expect_equal(round(max(res), 3),
+               round(max(res_tensor)$cpu()$numpy()[1], 3))
 })
 
 test_succeeds('check min', {
   res = runif(10)
   res_tensor = tensor(res)
-  expect_equal(min(res),min(res_tensor)$cpu()$numpy()[1])
+  expect_equal(round(min(res), 3),
+               round(min(res_tensor)$cpu()$numpy()[1], 3))
 })
 
 test_succeeds('check dim', {
