@@ -98,8 +98,9 @@
 #' @name dim
 #' @export
 "dim.fastai.torch_core.TensorMask" <- function(x) {
-  x$dim()
+  bt$list(x$shape)
 }
+
 
 #' Length
 #'
@@ -154,16 +155,6 @@
 #' @export
 "!.fastai.torch_core.TensorMask" <- function(a) {
   a$logical_not()
-}
-
-
-#' Matmul
-#'
-#'
-#' @name matmul
-#' @export
-"%*%.fastai.torch_core.TensorMask" <- function(a, b) {
-  a$matmul(b)
 }
 
 

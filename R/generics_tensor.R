@@ -97,8 +97,10 @@
 #' @name dim
 #' @export
 "dim.torch.Tensor" <- function(x) {
-  x$dim()
+  bt$list(x$shape)
 }
+
+
 
 #' Length
 #'
@@ -155,15 +157,6 @@
   a$logical_not()
 }
 
-
-#' Matmul
-#'
-#'
-#' @name matmul
-#' @export
-"%*%.torch.Tensor" <- function(a, b) {
-  a$matmul(b)
-}
 
 
 #' Sort
