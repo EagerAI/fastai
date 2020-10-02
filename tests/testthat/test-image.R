@@ -16,7 +16,7 @@ test_succeeds('mnist_sample transformations', {
   expect_length(tfms, 2)
 })
 
-test_succeeds('mnist_sample load into memory', {
+test_succeeds('mnist_sample load into memory from folder', {
   data = ImageDataLoaders_from_folder(path, batch_tfms = tfms, size = 26, bs = bs)
   expect_length(one_batch(data, convert = FALSE),2)
   expect_length(one_batch(data, TRUE),2)
