@@ -349,26 +349,6 @@
 }
 
 
-#' Median of tensor
-#'
-#'
-#'
-#' @export
-"median.torch.Tensor" <- function(a, ...) {
-  a$median()
-}
-
-
-
-#' Unique of tensor
-#'
-#'
-#'
-#' @export
-"unique.torch.Tensor" <- function(a, ...) {
-  a$unique()
-}
-
 
 
 

@@ -313,25 +313,3 @@
   a$mean()
 }
 
-
-#' Median of tensor
-#'
-#'
-#'
-#' @export
-"median.fastai.torch_core.TensorMask" <- function(a, ...) {
-  a$median()
-}
-
-
-
-#' Unique of tensor
-#'
-#'
-#'
-#' @export
-"unique.fastai.torch_core.TensorMask" <- function(a, ...) {
-  a$unique()
-}
-
-

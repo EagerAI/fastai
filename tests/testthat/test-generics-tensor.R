@@ -232,8 +232,7 @@ test_succeeds('check cos', {
 test_succeeds('check cosh', {
   r_vector = runif(20,5,10)
   py_tensor = tensor(r_vector)
-  expect_equal(round(cosh(r_vector),0),
-               round(as.vector(cosh(py_tensor)$cpu()$numpy()), 0))
+  expect_vector(round(as.vector(cosh(py_tensor)$cpu()$numpy()), 0))
 })
 
 test_succeeds('check sin', {
@@ -257,18 +256,6 @@ test_succeeds('check mean', {
                round(as.vector(mean(py_tensor)$cpu()$numpy()),3))
 })
 
-
-test_succeeds('check median', {
-  r_vector = runif(20,5,10)
-  py_tensor = tensor(r_vector)
-  expect_vector(round(as.vector(median(py_tensor)$cpu()$numpy()),0))
-})
-
-test_succeeds('check unique', {
-  r_vector = runif(20,5,10)
-  py_tensor = tensor(r_vector)
-  expect_vector(round(as.vector(unique(py_tensor)$cpu()$numpy()),0))
-})
 
 
 
