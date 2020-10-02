@@ -119,6 +119,170 @@ test_succeeds('check not !', {
 })
 
 
+test_succeeds('check sort ascending', {
+  r_vector = c(4,2,8,5)
+  py_tensor = tensor(r_vector)
+  expect_equal(sort(r_vector), as.vector(sort(py_tensor)$values$cpu()$numpy()))
+})
+
+test_succeeds('check sort descending', {
+  r_vector = c(4,2,8,5)
+  py_tensor = tensor(r_vector)
+  expect_equal(sort(r_vector, decreasing = TRUE), as.vector(sort(py_tensor, decreasing = TRUE)$values$cpu()$numpy()))
+})
+
+test_succeeds('check abs', {
+  r_vector = c(-10)
+  py_tensor = tensor(r_vector)
+  expect_equal(abs(r_vector), as.vector(abs(py_tensor)$cpu()$numpy()))
+})
+
+
+test_succeeds('check + add', {
+  r_vector = c(4,2,8,5)
+  py_tensor = tensor(r_vector)
+  expect_equal(r_vector+1, as.vector((py_tensor+1)$cpu()$numpy()))
+})
+
+
+test_succeeds('check - substr', {
+  r_vector = c(4,2,8,5)
+  py_tensor = tensor(r_vector)
+  expect_equal(r_vector-1, as.vector((py_tensor-1)$cpu()$numpy()))
+})
+
+test_succeeds('check / divide', {
+  r_vector = c(4,2,8,5)
+  py_tensor = tensor(r_vector)
+  expect_equal(r_vector/2, as.vector((py_tensor/2)$cpu()$numpy()))
+})
+
+
+test_succeeds('check * mul', {
+  r_vector = c(4,2,8,5)
+  py_tensor = tensor(r_vector)
+  expect_equal(r_vector*2, as.vector((py_tensor*2)$cpu()$numpy()))
+})
+
+
+test_succeeds('check exp', {
+  r_vector = c(4,2,8,5)
+  py_tensor = tensor(r_vector)
+  expect_equal(exp(r_vector), as.vector((exp(py_tensor))$cpu()$numpy()))
+})
+
+
+test_succeeds('check expm1', {
+  r_vector = c(4,2,8,5)
+  py_tensor = tensor(r_vector)
+  expect_equal(expm1(r_vector), as.vector((expm1(py_tensor))$cpu()$numpy()))
+})
+
+test_succeeds('check log', {
+  r_vector = c(4,2,8,5)
+  py_tensor = tensor(r_vector)
+  expect_equal(log(r_vector), as.vector((log(py_tensor))$cpu()$numpy()))
+})
+
+test_succeeds('check log1p', {
+  r_vector = c(4,2,8,5)
+  py_tensor = tensor(r_vector)
+  expect_equal(round(log1p(r_vector),4),
+               round(as.vector((log1p(py_tensor))$cpu()$numpy()), 4))
+})
+
+test_succeeds('check round', {
+  r_vector = runif(20,5,10)
+  py_tensor = tensor(r_vector)
+  expect_equal(round(r_vector),
+               as.vector(round(py_tensor)$cpu()$numpy()))
+})
+
+test_succeeds('check sqrt', {
+  r_vector = c(4,16)
+  py_tensor = tensor(r_vector)
+  expect_equal(sqrt(r_vector),
+               as.vector(sqrt(py_tensor)$cpu()$numpy()))
+})
+
+
+
+test_succeeds('check floor', {
+  r_vector = runif(20,5,10)
+  py_tensor = tensor(r_vector)
+  expect_equal(floor(r_vector),
+               as.vector(floor(py_tensor)$cpu()$numpy()))
+})
+
+
+test_succeeds('check ceiling', {
+  r_vector = runif(20,5,10)
+  py_tensor = tensor(r_vector)
+  expect_equal(ceiling(r_vector),
+               as.vector(ceiling(py_tensor)$cpu()$numpy()))
+})
+
+test_succeeds('check cos', {
+  r_vector = runif(20,5,10)
+  py_tensor = tensor(r_vector)
+  expect_equal(round(cos(r_vector),4),
+               round( as.vector(cos(py_tensor)$cpu()$numpy()), 4))
+})
+
+test_succeeds('check cosh', {
+  r_vector = runif(20,5,10)
+  py_tensor = tensor(r_vector)
+  expect_equal(round(cosh(r_vector),0),
+               round(as.vector(cosh(py_tensor)$cpu()$numpy()), 0))
+})
+
+test_succeeds('check sin', {
+  r_vector = runif(20,5,10)
+  py_tensor = tensor(r_vector)
+  expect_equal(round(sin(r_vector),0),
+               round(as.vector(sin(py_tensor)$cpu()$numpy()), 0))
+})
+
+test_succeeds('check sinh', {
+  r_vector = runif(20,5,10)
+  py_tensor = tensor(r_vector)
+  expect_equal(round(sinh(r_vector),0),
+               round(as.vector(sinh(py_tensor)$cpu()$numpy()), 0))
+})
+
+test_succeeds('check mean', {
+  r_vector = runif(20,5,10)
+  py_tensor = tensor(r_vector)
+  expect_equal(round(mean(r_vector),3),
+               round(as.vector(mean(py_tensor)$cpu()$numpy()),3))
+})
+
+
+test_succeeds('check median', {
+  r_vector = runif(20,5,10)
+  py_tensor = tensor(r_vector)
+  expect_vector(round(as.vector(median(py_tensor)$cpu()$numpy()),0))
+})
+
+test_succeeds('check unique', {
+  r_vector = runif(20,5,10)
+  py_tensor = tensor(r_vector)
+  expect_vector(round(as.vector(unique(py_tensor)$cpu()$numpy()),0))
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

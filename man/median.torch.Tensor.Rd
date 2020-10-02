@@ -4,7 +4,7 @@
 \alias{median.torch.Tensor}
 \title{Median of tensor}
 \usage{
-\method{median}{torch.Tensor}(a)
+\method{median}{torch.Tensor}(a, ...)
 }
 \description{
 Median of tensor

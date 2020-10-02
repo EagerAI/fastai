@@ -4,7 +4,7 @@
 \alias{mean.fastai.torch_core.TensorMask}
 \title{Mean of tensor}
 \usage{
-\method{mean}{fastai.torch_core.TensorMask}(a)
+\method{mean}{fastai.torch_core.TensorMask}(a, ...)
 }
 \description{
 Mean of tensor

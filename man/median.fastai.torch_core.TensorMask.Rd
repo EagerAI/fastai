@@ -4,7 +4,7 @@
 \alias{median.fastai.torch_core.TensorMask}
 \title{Median of tensor}
 \usage{
-\method{median}{fastai.torch_core.TensorMask}(a)
+\method{median}{fastai.torch_core.TensorMask}(a, ...)
 }
 \description{
 Median of tensor

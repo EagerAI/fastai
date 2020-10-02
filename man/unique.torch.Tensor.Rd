@@ -4,7 +4,7 @@
 \alias{unique.torch.Tensor}
 \title{Unique of tensor}
 \usage{
-\method{unique}{torch.Tensor}(a)
+\method{unique}{torch.Tensor}(a, ...)
 }
 \description{
 Unique of tensor

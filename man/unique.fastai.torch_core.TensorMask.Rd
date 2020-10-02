@@ -4,7 +4,7 @@
 \alias{unique.fastai.torch_core.TensorMask}
 \title{Unique of tensor}
 \usage{
-\method{unique}{fastai.torch_core.TensorMask}(a)
+\method{unique}{fastai.torch_core.TensorMask}(a, ...)
 }
 \description{
 Unique of tensor

@@ -4,7 +4,7 @@
 \alias{mean.torch.Tensor}
 \title{Mean of tensor}
 \usage{
-\method{mean}{torch.Tensor}(a)
+\method{mean}{torch.Tensor}(a, ...)
 }
 \description{
 Mean of tensor
