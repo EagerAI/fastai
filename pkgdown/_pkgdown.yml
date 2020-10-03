@@ -1,8 +1,13 @@
+url: https://henry090.github.io/fastai/
+
 destination: docs
 
 template:
   params:
     bootswatch: readable
+    docsearch:
+        api_key: 6a624258596123d42fd1f24a82ab617a
+        index_name: henry090
 
 authors:
   Turgut Abdullayev:
