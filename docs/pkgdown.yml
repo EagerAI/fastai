@@ -1,8 +1,18 @@
 pandoc: 2.7.3
-pkgdown: 1.6.0
+pkgdown: 1.6.1
 pkgdown_sha: ~
-articles: []
-last_built: 2020-10-03T13:39Z
+articles:
+  Basic_Tabular: Basic_Tabular.html
+  basic_img_class: basic_img_class.html
+  catalyst: catalyst.html
+  custom_img: custom_img.html
+  head_pose: head_pose.html
+  lightning: lightning.html
+  medical_dcm: medical_dcm.html
+  migrating_ignite: migrating_ignite.html
+  migrating_pytorch: migrating_pytorch.html
+  super_res_gan: super_res_gan.html
+last_built: 2020-10-03T15:15Z
 urls:
   reference: https://henry090.github.io/fastai//reference
   article: https://henry090.github.io/fastai//articles
