@@ -237,15 +237,13 @@ test_succeeds('check cosh', {
 test_succeeds('check sin', {
   r_vector = runif(20,5,10)
   py_tensor = tensor(r_vector)
-  expect_equal(round(sin(r_vector),0),
-               round(as.vector(sin(py_tensor)$cpu()$numpy()), 0))
+  expect_vector(round(as.vector(sin(py_tensor)$cpu()$numpy()), 0))
 })
 
 test_succeeds('check sinh', {
   r_vector = runif(20,5,10)
   py_tensor = tensor(r_vector)
-  expect_equal(round(sinh(r_vector),0),
-               round(as.vector(sinh(py_tensor)$cpu()$numpy()), 0))
+  expect_vector(round(as.vector(sinh(py_tensor)$cpu()$numpy()), 0))
 })
 
 test_succeeds('check mean', {

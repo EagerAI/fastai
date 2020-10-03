@@ -63,7 +63,7 @@ knitr::opts_chunk$set(echo = TRUE,eval = FALSE,echo = T)
 #    batch_tfms = list(aug_transforms(size = 224, min_scale = 0.75),
 #                    Normalize_from_stats( imagenet_stats() )
 #    ),
-#    device = 'cuda', num_workers = 0L
+#    device = 'cuda'
 #  )
 #  
 #  
