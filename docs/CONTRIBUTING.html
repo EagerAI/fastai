@@ -37,6 +37,12 @@
 <script src="pkgdown.js"></script>
 
 
+<!-- docsearch -->
+<script src="docsearch.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
+<link href="docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
 
 
 <meta property="og:title" content="Contributing to fastai" />
@@ -99,6 +105,9 @@
     <li>
       <a href="articles/super_res_gan.html">Super-Resolution GAN</a>
     </li>
+    <li>
+      <a href="articles/medical_dcm.html">Medical image classification</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -147,6 +156,12 @@
 </li>
       </ul>
       
+      <form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -177,10 +192,10 @@
 <h3 class="hasAnchor">
 <a href="#pull-request-process" class="anchor"></a>Pull request process</h3>
 <ul>
-<li><p>Fork the package and clone onto your computer. If you haven’t done this before, we recommend using <code>usethis::create_from_github("henry090/fastai", fork = TRUE)</code>.</p></li>
-<li><p>Install all development dependences with <code>devtools::install_dev_deps()</code>, and then make sure the package passes R CMD check by running <code>devtools::check()</code>. If R CMD check doesn’t pass cleanly, it’s a good idea to ask for help before continuing.</p></li>
-<li><p>Create a Git branch for your pull request (PR). We recommend using <code>usethis::pr_init("brief-description-of-change")</code>.</p></li>
-<li><p>Make your changes, commit to git, and then create a PR by running <code>usethis::pr_push()</code>, and following the prompts in your browser. The title of your PR should briefly describe the change. The body of your PR should contain <code>Fixes #issue-number</code>.</p></li>
+<li><p>Fork the package and clone onto your computer. If you haven’t done this before, we recommend using <code><a href="https://usethis.r-lib.org/reference/create_from_github.html">usethis::create_from_github("henry090/fastai", fork = TRUE)</a></code>.</p></li>
+<li><p>Install all development dependences with <code><a href="https://devtools.r-lib.org//reference/install_deps.html">devtools::install_dev_deps()</a></code>, and then make sure the package passes R CMD check by running <code><a href="https://devtools.r-lib.org//reference/check.html">devtools::check()</a></code>. If R CMD check doesn’t pass cleanly, it’s a good idea to ask for help before continuing.</p></li>
+<li><p>Create a Git branch for your pull request (PR). We recommend using <code><a href="https://usethis.r-lib.org/reference/pr_init.html">usethis::pr_init("brief-description-of-change")</a></code>.</p></li>
+<li><p>Make your changes, commit to git, and then create a PR by running <code><a href="https://usethis.r-lib.org/reference/pr_init.html">usethis::pr_push()</a></code>, and following the prompts in your browser. The title of your PR should briefly describe the change. The body of your PR should contain <code>Fixes #issue-number</code>.</p></li>
 <li><p>For user-facing changes, add a bullet to the top of <code>NEWS.md</code> (i.e. just below the first header). Follow the style described in <a href="https://style.tidyverse.org/news.html" class="uri">https://style.tidyverse.org/news.html</a>.</p></li>
 </ul>
 </div>
@@ -226,6 +241,23 @@
    </div>
 
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '6a624258596123d42fd1f24a82ab617a',
+    indexName: 'henry090',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
 
 
   </body>

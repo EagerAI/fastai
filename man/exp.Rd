@@ -5,7 +5,7 @@
 \alias{exp.torch.Tensor}
 \title{Exp}
 \usage{
-\method{exp}{torch.Tensor}(a, b)
+\method{exp}{torch.Tensor}(a)
 }
 \description{
 Exp

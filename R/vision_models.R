@@ -6,7 +6,13 @@
 #' @description Load model architecture
 #' @export
 xresnet50_deep <- function(...) {
-  vision$models$xresnet50_deep(...)
+
+  args = list(...)
+  if(length(args)>0) {
+    do.call(vision$models$xresnet50_deep, args)
+  } else {
+    vision$models$xresnet50_deep
+  }
 }
 
 #' @title Model
@@ -14,7 +20,12 @@ xresnet50_deep <- function(...) {
 #' @description Load model architecture
 #' @export
 xresnet50 <- function(...) {
-  vision$models$xresnet50(...)
+  args = list(...)
+  if(length(args)>0) {
+    do.call(vision$models$xresnet50, args)
+  } else {
+    vision$models$xresnet50
+  }
 }
 
 #' @title Model
@@ -22,7 +33,12 @@ xresnet50 <- function(...) {
 #' @description Load model architecture
 #' @export
 xresnet34_deep <- function(...) {
-  vision$models$xresnet34_deep(...)
+  args = list(...)
+  if(length(args)>0) {
+    do.call(vision$models$xresnet34_deep, args)
+  } else {
+    vision$models$xresnet34_deep
+  }
 }
 
 #' @title Model
@@ -30,7 +46,12 @@ xresnet34_deep <- function(...) {
 #' @description Load model architecture
 #' @export
 xresnet34<- function(...) {
-  vision$models$xresnet34(...)
+  args = list(...)
+  if(length(args)>0) {
+    do.call(vision$models$xresnet34, args)
+  } else {
+    vision$models$xresnet34
+  }
 }
 
 #' @title Model
@@ -38,7 +59,12 @@ xresnet34<- function(...) {
 #' @description Load model architecture
 #' @export
 xresnet18_deep <- function(...) {
-  vision$models$xresnet18_deep(...)
+  args = list(...)
+  if(length(args)>0) {
+    do.call(vision$models$xresnet18_deep, args)
+  } else {
+    vision$models$xresnet18_deep
+  }
 }
 
 #' @title Model
@@ -46,7 +72,12 @@ xresnet18_deep <- function(...) {
 #' @description Load model architecture
 #' @export
 xresnet18 <- function(...) {
-  vision$models$xresnet18(...)
+  args = list(...)
+  if(length(args)>0) {
+    do.call(vision$models$xresnet18, args)
+  } else {
+    vision$models$xresnet18
+  }
 }
 
 #' @title Model
@@ -54,7 +85,12 @@ xresnet18 <- function(...) {
 #' @description Load model architecture
 #' @export
 xresnet152 <- function(...) {
-  vision$models$xresnet152(...)
+  args = list(...)
+  if(length(args)>0) {
+    do.call(vision$models$xresnet152, args)
+  } else {
+    vision$models$xresnet152
+  }
 }
 
 #' @title Model
@@ -62,7 +98,12 @@ xresnet152 <- function(...) {
 #' @description Load model architecture
 #' @export
 xresnet101 <- function(...) {
-  vision$models$xresnet101(...)
+  args = list(...)
+  if(length(args)>0) {
+    do.call(vision$models$xresnet101, args)
+  } else {
+    vision$models$xresnet101
+  }
 }
 
 #' @title Model
@@ -70,7 +111,12 @@ xresnet101 <- function(...) {
 #' @description Load model architecture
 #' @export
 wrn_22 <- function(...) {
-  vision$models$wrn_22(...)
+  args = list(...)
+  if(length(args)>0) {
+    do.call(vision$models$wrn_22, args)
+  } else {
+    vision$models$wrn_22
+  }
 }
 
 #' @title Model
@@ -78,7 +124,12 @@ wrn_22 <- function(...) {
 #' @description Load model architecture
 #' @export
 WideResNet <- function(...) {
-  vision$models$WideResNet(...)
+  args = list(...)
+  if(length(args)>0) {
+    do.call(vision$models$WideResNet, args)
+  } else {
+    vision$models$WideResNet
+  }
 }
 
 #' @title Model
@@ -86,7 +137,12 @@ WideResNet <- function(...) {
 #' @description Load model architecture
 #' @export
 UnetBlock <- function(...) {
-  vision$models$UnetBlock(...)
+  args = list(...)
+  if(length(args)>0) {
+    do.call(vision$models$UnetBlock, args)
+  } else {
+    vision$models$UnetBlock
+  }
 }
 
 #' @title Model
@@ -94,7 +150,12 @@ UnetBlock <- function(...) {
 #' @description Load model architecture
 #' @export
 ResLayer <- function(...) {
-  vision$models$ResLayer(...)
+  args = list(...)
+  if(length(args)>0) {
+    do.call(vision$models$ResLayer, args)
+  } else {
+    vision$models$ResLayer
+  }
 }
 
 #' @title Model
@@ -102,7 +163,12 @@ ResLayer <- function(...) {
 #' @description Load model architecture
 #' @export
 xresnet50_deep <- function(...) {
-  vision$models$xresnet50_deep(...)
+  args = list(...)
+  if(length(args)>0) {
+    do.call(vision$models$xresnet50_deep, args)
+  } else {
+    vision$models$xresnet50_deep
+  }
 }
 
 #' @title Model
@@ -110,7 +176,12 @@ xresnet50_deep <- function(...) {
 #' @description Load model architecture
 #' @export
 DynamicUnet <- function(...) {
-  vision$models$DynamicUnet(...)
+  args = list(...)
+  if(length(args)>0) {
+    do.call(vision$models$DynamicUnet, args)
+  } else {
+    vision$models$DynamicUnet
+  }
 }
 
 
@@ -124,12 +195,16 @@ DynamicUnet <- function(...) {
 #' @param progress progress
 #'
 #' @export
-alexnet <- function(pretrained = FALSE, progress = TRUE) {
+alexnet <- function(pretrained = FALSE, progress) {
 
-  vision$models$alexnet(
-    pretrained = pretrained,
-    progress = progress
-  )
+  if(missing(progress)) {
+    vision$models$alexnet
+  } else {
+    vision$models$alexnet(
+      pretrained = pretrained,
+      progress = progress
+    )
+  }
 
 }
 
@@ -188,12 +263,16 @@ xception <- function(c, k = 8, n_middle = 8) {
 #' @param progress progress
 #'
 #' @export
-vgg19_bn <- function(pretrained = FALSE, progress = TRUE) {
+vgg19_bn <- function(pretrained = FALSE, progress) {
 
-  vision$models$vgg19_bn(
-    pretrained = pretrained,
-    progress = progress
-  )
+  if(missing(progress)) {
+    vision$models$vgg19_bn
+  } else {
+    vision$models$vgg19_bn(
+      pretrained = pretrained,
+      progress = progress
+    )
+  }
 
 }
 
@@ -207,12 +286,16 @@ vgg19_bn <- function(pretrained = FALSE, progress = TRUE) {
 #' @param progress progress
 #'
 #' @export
-vgg16_bn <- function(pretrained = FALSE, progress = TRUE) {
+vgg16_bn <- function(pretrained = FALSE, progress) {
 
-  vision$models$vgg16_bn(
-    pretrained = pretrained,
-    progress = progress
-  )
+  if(missing(progress)) {
+    vision$models$vgg16_bn
+  } else {
+    vision$models$vgg16_bn(
+      pretrained = pretrained,
+      progress = progress
+    )
+  }
 
 }
 
@@ -226,12 +309,16 @@ vgg16_bn <- function(pretrained = FALSE, progress = TRUE) {
 #' @param progress progress
 #'
 #' @export
-vgg13_bn <- function(pretrained = FALSE, progress = TRUE) {
+vgg13_bn <- function(pretrained = FALSE, progress) {
 
-  vision$models$vgg13_bn(
-    pretrained = pretrained,
-    progress = progress
-  )
+  if(missing(progress)) {
+    vision$models$vgg13_bn
+  } else {
+    vision$models$vgg13_bn(
+      pretrained = pretrained,
+      progress = progress
+    )
+  }
 
 }
 
@@ -245,12 +332,16 @@ vgg13_bn <- function(pretrained = FALSE, progress = TRUE) {
 #' @param progress progress
 #'
 #' @export
-vgg11_bn <- function(pretrained = FALSE, progress = TRUE) {
+vgg11_bn <- function(pretrained = FALSE, progress) {
 
-  vision$models$vgg11_bn(
-    pretrained = pretrained,
-    progress = progress
-  )
+  if(missing(progress)) {
+    vision$models$vgg11_bn
+  } else {
+    vision$models$vgg11_bn(
+      pretrained = pretrained,
+      progress = progress
+    )
+  }
 
 }
 
@@ -266,12 +357,16 @@ vgg11_bn <- function(pretrained = FALSE, progress = TRUE) {
 #' @param progress progress
 #'
 #' @export
-squeezenet1_1 <- function(pretrained = FALSE, progress = TRUE) {
+squeezenet1_1 <- function(pretrained = FALSE, progress) {
 
-  vision$models$squeezenet1_1(
-    pretrained = pretrained,
-    progress = progress
-  )
+  if(missing(progress)) {
+    vision$models$squeezenet1_1
+  } else {
+    vision$models$squeezenet1_1(
+      pretrained = pretrained,
+      progress = progress
+    )
+  }
 
 }
 
@@ -286,12 +381,16 @@ squeezenet1_1 <- function(pretrained = FALSE, progress = TRUE) {
 #' @param progress progress
 #'
 #' @export
-squeezenet1_0 <- function(pretrained = FALSE, progress = TRUE) {
+squeezenet1_0 <- function(pretrained = FALSE, progress) {
 
-  vision$models$squeezenet1_0(
-    pretrained = pretrained,
-    progress = progress
-  )
+  if(missing(progress)) {
+    vision$models$squeezenet1_0
+  } else {
+    vision$models$squeezenet1_0(
+      pretrained = pretrained,
+      progress = progress
+    )
+  }
 
 }
 
@@ -309,7 +408,7 @@ squeezenet1_0 <- function(pretrained = FALSE, progress = TRUE) {
 #' @export
 SqueezeNet <- function(version = "1_0", num_classes = 1000) {
 
-  python_function_result <- vision$models$SqueezeNet(
+  vision$models$SqueezeNet(
     version = version,
     num_classes = as.integer(num_classes)
   )
@@ -327,12 +426,16 @@ SqueezeNet <- function(version = "1_0", num_classes = 1000) {
 #' @param progress progress
 #'
 #' @export
-resnet50 <- function(pretrained = FALSE, progress = TRUE) {
+resnet50 <- function(pretrained = FALSE, progress) {
 
-  vision$models$resnet50(
-    pretrained = pretrained,
-    progress = progress
-  )
+  if(missing(progress)) {
+    vision$models$resnet50
+  } else {
+    vision$models$resnet50(
+      pretrained = pretrained,
+      progress = progress
+    )
+  }
 
 }
 
@@ -346,12 +449,16 @@ resnet50 <- function(pretrained = FALSE, progress = TRUE) {
 #' @param progress progress
 #'
 #' @export
-resnet34 <- function(pretrained = FALSE, progress = TRUE) {
+resnet34 <- function(pretrained = FALSE, progress) {
 
-  vision$models$resnet34(
-    pretrained = pretrained,
-    progress = progress
-  )
+  if(missing(progress)) {
+    vision$models$resnet34
+  } else {
+    vision$models$resnet34(
+      pretrained = pretrained,
+      progress = progress
+    )
+  }
 
 }
 
@@ -365,12 +472,16 @@ resnet34 <- function(pretrained = FALSE, progress = TRUE) {
 #' @param progress progress
 #'
 #' @export
-resnet18 <- function(pretrained = FALSE, progress = TRUE) {
+resnet18 <- function(pretrained = FALSE, progress) {
 
-  vision$models$resnet18(
-    pretrained = pretrained,
-    progress = progress
-  )
+  if(missing(progress)) {
+    vision$models$resnet18
+  } else {
+    vision$models$resnet18(
+      pretrained = pretrained,
+      progress = progress
+    )
+  }
 
 }
 
@@ -384,12 +495,16 @@ resnet18 <- function(pretrained = FALSE, progress = TRUE) {
 #' @param progress progress
 #'
 #' @export
-resnet152 <- function(pretrained = FALSE, progress = TRUE) {
+resnet152 <- function(pretrained = FALSE, progress) {
 
-  vision$models$resnet152(
-    pretrained = pretrained,
-    progress = progress
-  )
+  if(missing(progress)) {
+    vision$models$resnet152
+  } else {
+    vision$models$resnet152(
+      pretrained = pretrained,
+      progress = progress
+    )
+  }
 
 }
 
@@ -403,12 +518,16 @@ resnet152 <- function(pretrained = FALSE, progress = TRUE) {
 #' @param progress progress
 #'
 #' @export
-resnet101 <- function(pretrained = FALSE, progress = TRUE) {
+resnet101 <- function(pretrained = FALSE, progress) {
 
-  vision$models$resnet101(
-    pretrained = pretrained,
-    progress = progress
-  )
+  if(missing(progress)) {
+    vision$models$resnet101
+  } else {
+    vision$models$resnet101(
+      pretrained = pretrained,
+      progress = progress
+    )
+  }
 
 }
 
@@ -458,12 +577,16 @@ ResNet <- function(block, layers, num_classes = 1000, zero_init_residual = FALSE
 #' @param progress progress
 #'
 #' @export
-densenet121 <- function(pretrained = FALSE, progress = TRUE) {
+densenet121 <- function(pretrained = FALSE, progress) {
 
-  vision$models$densenet121(
-    pretrained = pretrained,
-    progress = progress
-  )
+  if(missing(progress)) {
+    vision$models$densenet121
+  } else {
+    vision$models$densenet121(
+      pretrained = pretrained,
+      progress = progress
+    )
+  }
 
 }
 
@@ -477,12 +600,16 @@ densenet121 <- function(pretrained = FALSE, progress = TRUE) {
 #' @param progress progress
 #'
 #' @export
-densenet161 <- function(pretrained = FALSE, progress = TRUE) {
+densenet161 <- function(pretrained = FALSE, progress) {
 
-  vision$models$densenet161(
-    pretrained = pretrained,
-    progress = progress
-  )
+  if(missing(progress)) {
+    vision$models$densenet161
+  } else {
+    vision$models$densenet161(
+      pretrained = pretrained,
+      progress = progress
+    )
+  }
 
 }
 
@@ -496,12 +623,16 @@ densenet161 <- function(pretrained = FALSE, progress = TRUE) {
 #' @param progress progress
 #'
 #' @export
-densenet169 <- function(pretrained = FALSE, progress = TRUE) {
+densenet169 <- function(pretrained = FALSE, progress) {
 
-  vision$models$densenet169(
-    pretrained = pretrained,
-    progress = progress
-  )
+  if(missing(progress)) {
+    vision$models$densenet169
+  } else {
+    vision$models$densenet169(
+      pretrained = pretrained,
+      progress = progress
+    )
+  }
 
 }
 
@@ -515,12 +646,16 @@ densenet169 <- function(pretrained = FALSE, progress = TRUE) {
 #' @param progress progress
 #'
 #' @export
-densenet201 <- function(pretrained = FALSE, progress = TRUE) {
+densenet201 <- function(pretrained = FALSE, progress) {
 
-  vision$models$densenet201(
-    pretrained = pretrained,
-    progress = progress
-  )
+  if(missing(progress)) {
+    vision$models$densenet201
+  } else {
+    vision$models$densenet201(
+      pretrained = pretrained,
+      progress = progress
+    )
+  }
 
 }
 
@@ -534,13 +669,16 @@ densenet201 <- function(pretrained = FALSE, progress = TRUE) {
 #' @param progress progress
 #'
 #' @export
-mobilenet_v2 <- function(pretrained = FALSE, progress = TRUE) {
+mobilenet_v2 <- function(pretrained = FALSE, progress) {
 
- vision$models$mobilenet_v2(
-    pretrained = pretrained,
-    progress = progress
-  )
-
+  if(missing(progress)) {
+    vision$models$mobilenet_v2
+  } else {
+    vision$models$mobilenet_v2(
+      pretrained = pretrained,
+      progress = progress
+    )
+  }
 }
 
 

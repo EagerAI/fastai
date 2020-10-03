@@ -41,7 +41,7 @@ parallel(crappifier(path_lr, path_hr), items)
 ```{r}
 bs = 10
 size = 64
-arch = resnet34
+arch = resnet34()
 
 get_dls = function(bs, size) {
   dblock = DataBlock(blocks = list(ImageBlock, ImageBlock),

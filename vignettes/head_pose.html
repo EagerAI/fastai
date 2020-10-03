@@ -403,7 +403,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div id="fit" class="section level2">
 <h2>Fit</h2>
 <p>Run for 5 epochs and see results:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>learn =<span class="st"> </span><span class="kw">cnn_learner</span>(dls, resnet34)</span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>learn =<span class="st"> </span><span class="kw">cnn_learner</span>(dls, <span class="kw">resnet34</span>())</span>
 <span id="cb6-2"><a href="#cb6-2"></a></span>
 <span id="cb6-3"><a href="#cb6-3"></a>learn <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">lr_find</span>()</span>
 <span id="cb6-4"><a href="#cb6-4"></a></span>

@@ -26,7 +26,8 @@ Imports:
     data.table,
     png,
     grid,
-    stats
+    stats,
+    vctrs
 Suggests:
     knitr,
     testthat,

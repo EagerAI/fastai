@@ -5,7 +5,7 @@
 \alias{log.torch.Tensor}
 \title{Log}
 \usage{
-\method{log}{torch.Tensor}(a, b)
+\method{log}{torch.Tensor}(a)
 }
 \description{
 Log

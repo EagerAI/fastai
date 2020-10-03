@@ -400,7 +400,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div id="fit-model" class="section level2">
 <h2>Fit model</h2>
 <p>Define <code>cnn_learner</code> and fit. But before that it is better to see the train metrics as well.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>learn =<span class="st"> </span><span class="kw">cnn_learner</span>(dls, resnet50, <span class="dt">metrics =</span> <span class="kw">list</span>(accuracy, error_rate))</span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>learn =<span class="st"> </span><span class="kw">cnn_learner</span>(dls, <span class="kw">resnet50</span>(), <span class="dt">metrics =</span> <span class="kw">list</span>(accuracy, error_rate))</span>
 <span id="cb7-2"><a href="#cb7-2"></a></span>
 <span id="cb7-3"><a href="#cb7-3"></a>learn<span class="op">$</span>recorder<span class="op">$</span>train_metrics =<span class="st"> </span><span class="ot">TRUE</span></span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>learn <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fit_one_cycle</span>(<span class="dt">n_epoch =</span> <span class="dv">5</span>, <span class="fl">1e-3</span>)</span></code></pre></div>

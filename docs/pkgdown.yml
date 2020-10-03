@@ -8,8 +8,12 @@ articles:
   custom_img: custom_img.html
   head_pose: head_pose.html
   lightning: lightning.html
+  medical_dcm: medical_dcm.html
   migrating_ignite: migrating_ignite.html
   migrating_pytorch: migrating_pytorch.html
   super_res_gan: super_res_gan.html
-last_built: 2020-09-30T15:23Z
+last_built: 2020-10-03T13:05Z
+urls:
+  reference: https://henry090.github.io/fastai//reference
+  article: https://henry090.github.io/fastai//articles
 

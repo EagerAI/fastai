@@ -97,8 +97,10 @@
 #' @name dim
 #' @export
 "dim.torch.Tensor" <- function(x) {
-  x$dim()
+  bt$list(x$shape)
 }
+
+
 
 #' Length
 #'
@@ -156,15 +158,6 @@
 }
 
 
-#' Matmul
-#'
-#'
-#' @name matmul
-#' @export
-"%*%.torch.Tensor" <- function(a, b) {
-  a$matmul(b)
-}
-
 
 #' Sort
 #'
@@ -172,7 +165,12 @@
 #' @name sort
 #' @export
 "sort.torch.Tensor" <- function(x, decreasing = FALSE, ...) {
-  x$sort(...)
+  if(decreasing) {
+    x$sort(descending = TRUE, ...)
+  } else {
+    x$sort(...)
+  }
+
 }
 
 
@@ -229,8 +227,8 @@
 #'
 #' @name exp
 #' @export
-"exp.torch.Tensor" <- function(a, b) {
-  a$exp(b)
+"exp.torch.Tensor" <- function(a) {
+  a$exp()
 }
 
 
@@ -239,8 +237,8 @@
 #'
 #' @name expm1
 #' @export
-"expm1.torch.Tensor" <- function(a, b) {
-  a$expm1(b)
+"expm1.torch.Tensor" <- function(a) {
+  a$expm1()
 }
 
 #' Log
@@ -248,36 +246,20 @@
 #'
 #' @name log
 #' @export
-"log.torch.Tensor" <- function(a, b) {
-  a$log(b)
+"log.torch.Tensor" <- function(a) {
+  a$log()
 }
 
-#' Log10
-#'
-#'
-#' @name log10
-#' @export
-"log10.torch.Tensor" <- function(a, b) {
-  a$log10(b)
-}
 
 #' Log1p
 #'
 #'
 #' @name log1p
 #' @export
-"log1p.torch.Tensor" <- function(a, b) {
-  a$log1p(b)
+"log1p.torch.Tensor" <- function(a) {
+  a$log1p()
 }
 
-#' Log2
-#'
-#'
-#' @name log2
-#' @export
-"log2.torch.Tensor" <- function(a, b) {
-  a$log2(b)
-}
 
 #' Round
 #'
@@ -362,47 +344,10 @@
 #'
 #'
 #' @export
-"mean.torch.Tensor" <- function(a) {
+"mean.torch.Tensor" <- function(a, ...) {
   a$mean()
 }
 
-
-#' Median of tensor
-#'
-#'
-#'
-#' @export
-"median.torch.Tensor" <- function(a) {
-  a$median()
-}
-
-#' Mode of tensor
-#'
-#'
-#'
-#' @export
-"mode.torch.Tensor" <- function(a) {
-  a$mode()
-}
-
-
-#' Std of tensor
-#'
-#'
-#'
-#' @export
-"std.torch.Tensor" <- function(a) {
-  a$std()
-}
-
-#' Unique of tensor
-#'
-#'
-#'
-#' @export
-"unique.torch.Tensor" <- function(a) {
-  a$unique()
-}
 
 
 

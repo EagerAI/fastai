@@ -37,11 +37,16 @@
 <script src="../pkgdown.js"></script>
 
 
+<!-- docsearch -->
+<script src="../docsearch.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
 
 
 <meta property="og:title" content="Not equal — not_equal_to" />
-<meta property="og:description" content="Not equal
-Not equal" />
+<meta property="og:description" content="Not equal" />
 
 
 
@@ -101,6 +106,9 @@ Not equal" />
     <li>
       <a href="../articles/super_res_gan.html">Super-Resolution GAN</a>
     </li>
+    <li>
+      <a href="../articles/medical_dcm.html">Medical image classification</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -149,6 +157,12 @@ Not equal" />
 </li>
       </ul>
       
+      <form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -161,19 +175,15 @@ Not equal" />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Not equal</h1>
-    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/generics_mask.R'><code>R/generics_mask.R</code></a>, <a href='https://github.com/henry090/fastai/blob/master/R/generics_tensor.R'><code>R/generics_tensor.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/generics_tensor.R'><code>R/generics_tensor.R</code></a></small>
     <div class="hidden name"><code>not_equal_to.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>Not equal</p>
-<p>Not equal</p>
     </div>
 
-    <pre class="usage"># S3 method for fastai.torch_core.TensorMask
-!=(a, b)
-
-# S3 method for torch.Tensor
+    <pre class="usage"># S3 method for torch.Tensor
 !=(a, b)</pre>
 
 
@@ -200,6 +210,23 @@ Not equal" />
    </div>
 
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '6a624258596123d42fd1f24a82ab617a',
+    indexName: 'henry090',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
 
 
   </body>

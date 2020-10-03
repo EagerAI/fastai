@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo = TRUE,eval = FALSE,echo = T)
 ## -----------------------------------------------------------------------------
 #  bs = 10
 #  size = 64
-#  arch = resnet34
+#  arch = resnet34()
 #  
 #  get_dls = function(bs, size) {
 #    dblock = DataBlock(blocks = list(ImageBlock, ImageBlock),

@@ -70,7 +70,7 @@ knitr::opts_chunk$set(echo = TRUE,eval = FALSE,echo = T)
 #  dls %>% show_batch(dpi = 200)
 
 ## -----------------------------------------------------------------------------
-#  learn = cnn_learner(dls, resnet50, metrics = list(accuracy, error_rate))
+#  learn = cnn_learner(dls, resnet50(), metrics = list(accuracy, error_rate))
 #  
 #  learn$recorder$train_metrics = TRUE
 #  

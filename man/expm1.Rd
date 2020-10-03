@@ -5,7 +5,7 @@
 \alias{expm1.torch.Tensor}
 \title{Expm1}
 \usage{
-\method{expm1}{torch.Tensor}(a, b)
+\method{expm1}{torch.Tensor}(a)
 }
 \description{
 Expm1

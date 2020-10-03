@@ -4,7 +4,7 @@
 \alias{vgg19_bn}
 \title{vgg19_bn}
 \usage{
-vgg19_bn(pretrained = FALSE, progress = TRUE)
+vgg19_bn(pretrained = FALSE, progress)
 }
 \arguments{
 \item{pretrained}{pretrained}

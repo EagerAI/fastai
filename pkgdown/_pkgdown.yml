@@ -1,8 +1,13 @@
+url: https://henry090.github.io/fastai/
+
 destination: docs
 
 template:
   params:
     bootswatch: readable
+    docsearch:
+        api_key: 6a624258596123d42fd1f24a82ab617a
+        index_name: henry090
 
 authors:
   Turgut Abdullayev:
@@ -24,6 +29,8 @@ navbar:
           href: articles/head_pose.html
         - text: "Super-Resolution GAN"
           href: articles/super_res_gan.html
+        - text: "Medical image classification"
+          href: articles/medical_dcm.html
     - text: "Migrating"
       menu:
         - text: "Plain Pytorch"

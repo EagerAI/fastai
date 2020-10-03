@@ -340,7 +340,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <h2>Parameters and dataloader</h2>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>bs =<span class="st"> </span><span class="dv">10</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>size =<span class="st"> </span><span class="dv">64</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a>arch =<span class="st"> </span>resnet34</span>
+<span id="cb3-3"><a href="#cb3-3"></a>arch =<span class="st"> </span><span class="kw">resnet34</span>()</span>
 <span id="cb3-4"><a href="#cb3-4"></a></span>
 <span id="cb3-5"><a href="#cb3-5"></a>get_dls =<span class="st"> </span><span class="cf">function</span>(bs, size) {</span>
 <span id="cb3-6"><a href="#cb3-6"></a>  dblock =<span class="st"> </span><span class="kw">DataBlock</span>(<span class="dt">blocks =</span> <span class="kw">list</span>(ImageBlock, ImageBlock),</span>

@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = TRUE,eval = FALSE,echo = T)
 #  dls %>% show_batch()
 
 ## -----------------------------------------------------------------------------
-#  learn = cnn_learner(dls, resnet50, metrics = error_rate)
+#  learn = cnn_learner(dls, resnet50(), metrics = error_rate)
 
 ## -----------------------------------------------------------------------------
 #  learn %>% fit_one_cycle(n_epoch = 8)

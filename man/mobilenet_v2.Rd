@@ -4,7 +4,7 @@
 \alias{mobilenet_v2}
 \title{mobilenet_v2}
 \usage{
-mobilenet_v2(pretrained = FALSE, progress = TRUE)
+mobilenet_v2(pretrained = FALSE, progress)
 }
 \arguments{
 \item{pretrained}{pretrained}

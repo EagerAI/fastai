@@ -4,7 +4,7 @@
 \alias{resnet34}
 \title{resnet34}
 \usage{
-resnet34(pretrained = FALSE, progress = TRUE)
+resnet34(pretrained = FALSE, progress)
 }
 \arguments{
 \item{pretrained}{pretrained}

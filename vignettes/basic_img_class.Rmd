@@ -69,7 +69,7 @@ dls %>% show_batch()
 Let's load a pretrained ResNet50 model and construct a ```cnn_learner```:
 
 ```{r}
-learn = cnn_learner(dls, resnet50, metrics = error_rate)
+learn = cnn_learner(dls, resnet50(), metrics = error_rate)
 ```
 
 ```
