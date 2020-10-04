@@ -13,7 +13,11 @@ articles:
   migrating_ignite: migrating_ignite.html
   migrating_pytorch: migrating_pytorch.html
   super_res_gan: super_res_gan.html
+<<<<<<< HEAD
 last_built: 2020-10-04T10:51Z
+=======
+last_built: 2020-10-03T15:15Z
+>>>>>>> 1a7d8e4825f5bdc739075f26445698a65d35762e
 urls:
   reference: https://henry090.github.io/fastai//reference
   article: https://henry090.github.io/fastai//articles
