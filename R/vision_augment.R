@@ -91,7 +91,7 @@ CropPad <- function(size, pad_mode = "zeros",
 RandomCrop <- function(size, ...) {
 
   vision$all$RandomCrop(
-    size = size,
+    size = as.integer(size),
     ...
   )
 
@@ -361,13 +361,15 @@ DeterministicDraw <- function(vals) {
 #'
 #' @export
 DeterministicFlip <- function(size = NULL, mode = "bilinear",
-                              pad_mode = "reflection", align_corners = TRUE) {
+                              pad_mode = "reflection", align_corners = TRUE,
+                              ...) {
 
   vision$all$DeterministicFlip(
     size = size,
     mode = mode,
     pad_mode = pad_mode,
-    align_corners = align_corners
+    align_corners = align_corners,
+    ...
   )
 
 }
@@ -889,3 +891,64 @@ FuncSplitter <- function(func) {
   )
 
 }
+
+
+
+#' @title show_image
+#'
+#' @description Show a PIL or PyTorch image on `ax`.
+#'
+#' @details
+#'
+#' @param im im
+#' @param ax ax
+#' @param figsize figsize
+#' @param title title
+#' @param ctx ctx
+#' @param cmap cmap
+#' @param norm norm
+#' @param aspect aspect
+#' @param interpolation interpolation
+#' @param alpha alpha
+#' @param vmin vmin
+#' @param vmax vmax
+#' @param origin origin
+#' @param extent extent
+#'
+#' @export
+show_image <- function(im, ax = NULL, figsize = NULL, title = NULL, ctx = NULL,
+                       cmap = NULL, norm = NULL, aspect = NULL, interpolation = NULL,
+                       alpha = NULL, vmin = NULL, vmax = NULL, origin = NULL, extent = NULL) {
+
+  args <- list(
+    im = im,
+    ax = ax,
+    figsize = figsize,
+    title = title,
+    ctx = ctx,
+    cmap = cmap,
+    norm = norm,
+    aspect = aspect,
+    interpolation = interpolation,
+    alpha = alpha,
+    vmin = vmin,
+    vmax = vmax,
+    origin = origin,
+    extent = extent
+  )
+
+  do.call(vision$all$show_image, args)
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

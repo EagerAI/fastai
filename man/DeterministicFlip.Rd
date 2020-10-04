@@ -8,7 +8,8 @@ DeterministicFlip(
   size = NULL,
   mode = "bilinear",
   pad_mode = "reflection",
-  align_corners = TRUE
+  align_corners = TRUE,
+  ...
 )
 }
 \arguments{
