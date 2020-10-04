@@ -1492,6 +1492,9 @@
     <loc>https://henry090.github.io/fastai//reference/show_batch.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/show_image.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/show_images.html</loc>
   </url>
   <url>
@@ -1724,6 +1727,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//articles/custom_img.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//articles/data_aug.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//articles/head_pose.html</loc>

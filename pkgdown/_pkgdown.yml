@@ -31,6 +31,8 @@ navbar:
           href: articles/super_res_gan.html
         - text: "Medical image classification"
           href: articles/medical_dcm.html
+        - text: "Data augmentation"
+          href: articles/data_aug.html
     - text: "Migrating"
       menu:
         - text: "Plain Pytorch"
