@@ -4,12 +4,12 @@
 \alias{fit_one_cycle}
 \title{Fit one cycle}
 \usage{
-fit_one_cycle(object, n_epoch, lr, ...)
+fit_one_cycle(object, ...)
 }
 \arguments{
-\item{n_epoch}{The number of epochs}
-
 \item{...}{parameters to pass}
+
+\item{n_epoch}{The number of epochs}
 }
 \description{
 Fit one cycle
