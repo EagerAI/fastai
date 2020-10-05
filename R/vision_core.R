@@ -681,10 +681,43 @@ TensorMultiCategory <- function(x) {
 
 
 
+#' @title L
+#'
+#' @description Behaves like a list of `items` but can also index with list of indices or masks
+#'
+#' @details
+#'
+#' @param items items
+#'
+#' @export
+L <- function(...) {
+
+  fastai2$vision$all$L(
+    ...
+  )
+
+}
 
 
+#' @title params
+#'
+#' @description Return all parameters of `m`
+#'
+#'
+#' @param m m
+#'
+#' @export
+params <- function(m) {
 
+  if(missing(m)) {
+    fastai2$vision$all$params
+  } else {
+    fastai2$vision$all$params(
+      m = m
+    )
+  }
 
+}
 
 
 

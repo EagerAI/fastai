@@ -22,6 +22,7 @@ migrating_ignite <- NULL
 catalyst <- NULL
 F <- NULL
 Dicom <- NULL
+retinanet <- NULL
 
 .onLoad <- function(libname, pkgname) {
 
@@ -83,6 +84,10 @@ Dicom <- NULL
 
     # Dicom
     Dicom <<- medical$PILDicom
+
+    if(dir.exists('fastaibuilt/retinanet')) {
+      retinanet <<- reticulate::import_from_path('retinanet', path = 'fastaibuilt')
+    }
 
   }
 
