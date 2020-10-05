@@ -4,14 +4,7 @@
 \alias{RetinaNetFocalLoss}
 \title{RetinaNetFocalLoss}
 \usage{
-RetinaNetFocalLoss(
-  gamma = 2,
-  alpha = 0.25,
-  pad_idx = 0,
-  scales = NULL,
-  ratios = NULL,
-  reg_loss = nn$functional$smooth_l1_loss
-)
+RetinaNetFocalLoss(...)
 }
 \arguments{
 \item{gamma}{gamma}

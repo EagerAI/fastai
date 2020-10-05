@@ -864,7 +864,9 @@ GANDiscriminativeLR <- function(mult_lr = 5.0) {
 #'
 #' @export
 Learner = function(...) {
-  vision$gan$Learner(...)
+  args = list(...)
+
+  do.call(fastai2$vision$all$Learner, args)
 }
 
 

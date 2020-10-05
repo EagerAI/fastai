@@ -64,7 +64,50 @@ dls %>% show_batch(max_n = 12)
 
 </center>
 
+## RetinaNet
+
+Build a model with RetinaNet components:
+
+```{r}
+encoder = create_body(resnet34(), pretrained = TRUE)
+
+arch = RetinaNet(encoder, get_c(dls), final_bias=-4)
+
+ratios = c(1/2,1,2)
+scales = c(1,2**(-1/3), 2**(-2/3))
+
+crit = RetinaNetFocalLoss(scales = scales, ratios = ratios)
+
+retinanet_split = function(m) {
+  L(m$encoder,nn$Sequential(m$c5top6, m$p6top7, m$merges,
+                       m$smoothers, m$classifier, m$box_regressor))$map(params())
+}
+```
 
 
+## Fit
 
+Unfreeze and train model:
+
+```{r}
+learn = Learner(dls, arch, loss_func = crit, splitter = retinanet_split)
+
+learn$freeze()
+
+learn %>% fit_one_cycle(10, slice(1e-5, 1e-4))
+```
+
+```
+epoch     train_loss  valid_loss  time    
+0         3.377425    3.352676    00:06     
+1         3.304372    2.941969    00:03     
+2         3.400184    2.811601    00:03     
+3         3.239992    2.896531    00:03     
+4         3.159638    3.090069    00:03     
+5         3.117127    2.978687    00:03     
+6         3.079744    2.832738    00:03     
+7         3.035829    2.801513    00:03     
+8         2.996779    2.798598    00:03     
+9         2.962824    2.798002    00:03  
+```
 

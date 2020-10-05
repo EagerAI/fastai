@@ -4,7 +4,7 @@
 \alias{create_body}
 \title{create_body}
 \usage{
-create_body(arch, n_in = 3, pretrained = TRUE, cut = NULL)
+create_body(...)
 }
 \arguments{
 \item{arch}{arch}

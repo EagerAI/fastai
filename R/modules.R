@@ -65,7 +65,9 @@ Dicom <- NULL
 #' @export
 slice <- function(...) {
 
-  bt$slice(...)
+  args = list(...)
+
+  do.call(bt$slice, args)
 
 }
 

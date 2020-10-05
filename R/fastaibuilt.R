@@ -33,17 +33,25 @@ crappifier <- function(path_lr, path_hr) {
 #' @param flatten flatten
 #'
 #' @export
-RetinaNet <- function(encoder, n_classes, final_bias = 0.0, chs = 256, n_anchors = 9, flatten = TRUE) {
+RetinaNet <- function(...) {
 
-  retinanet$RetinaNet(
-    encoder = encoder,
-    n_classes = n_classes,
-    final_bias = final_bias,
-    chs = as.integer(chs),
-    n_anchors = as.integer(n_anchors),
-    flatten = flatten
+  args = list(
+    ...
   )
 
+  if(!is.null(args[['n_classes']])) {
+    args[['n_classes']] = as.integer(args[['n_classes']])
+  }
+
+  if(!is.null(args[['chs']])) {
+    args[['chs']] = as.integer(args[['chs']])
+  }
+
+  if(!is.null(args[['n_anchors']])) {
+    args[['n_anchors']] = as.integer(args[['n_anchors']])
+  }
+
+  do.call(retinanet$RetinaNet, args)
 }
 
 
@@ -63,18 +71,17 @@ RetinaNet <- function(encoder, n_classes, final_bias = 0.0, chs = 256, n_anchors
 #' @param reg_loss reg_loss
 #'
 #' @export
-RetinaNetFocalLoss <- function(gamma = 2.0, alpha = 0.25, pad_idx = 0,
-                               scales = NULL, ratios = NULL,
-                               reg_loss = nn$functional$smooth_l1_loss) {
+RetinaNetFocalLoss <- function(...) {
 
-  retinanet$RetinaNetFocalLoss(
-    gamma = gamma,
-    alpha = alpha,
-    pad_idx = as.integer(pad_idx),
-    scales = scales,
-    ratios = ratios,
-    reg_loss = reg_loss
+  args = list(
+    ...
   )
+
+  if(!is.null(args[['pad_idx']])) {
+    args[['pad_idx']] = as.integer(args[['pad_idx']])
+  }
+
+  do.call(retinanet$RetinaNetFocalLoss, args)
 
 }
 

@@ -692,9 +692,9 @@ TensorMultiCategory <- function(x) {
 #' @export
 L <- function(...) {
 
-  fastai2$vision$all$L(
-    ...
-  )
+  args = list(...)
+
+  do.call(fastai2$vision$all$L, args)
 
 }
 

@@ -25,14 +25,11 @@ has_pool_type <- function(m) {
 #' @param cut cut
 #'
 #' @export
-create_body <- function(arch, n_in = 3, pretrained = TRUE, cut = NULL) {
+create_body <- function(...) {
 
-  vision$all$create_body(
-    arch = arch,
-    n_in = as.integer(n_in),
-    pretrained = pretrained,
-    cut = cut
-  )
+  args = list(...)
+
+  do.call(fastai2$vision$all$create_body, args)
 
 }
 

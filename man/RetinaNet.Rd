@@ -4,14 +4,7 @@
 \alias{RetinaNet}
 \title{RetinaNet}
 \usage{
-RetinaNet(
-  encoder,
-  n_classes,
-  final_bias = 0,
-  chs = 256,
-  n_anchors = 9,
-  flatten = TRUE
-)
+RetinaNet(...)
 }
 \arguments{
 \item{encoder}{encoder}

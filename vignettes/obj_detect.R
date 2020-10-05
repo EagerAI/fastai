@@ -26,3 +26,25 @@ knitr::opts_chunk$set(echo = TRUE,eval = FALSE,echo = T)
 #  dls = coco %>% dataloaders('coco_tiny/train')
 #  dls %>% show_batch(max_n = 12)
 
+## -----------------------------------------------------------------------------
+#  encoder = create_body(resnet34(), pretrained = TRUE)
+#  
+#  arch = RetinaNet(encoder, get_c(dls), final_bias=-4)
+#  
+#  ratios = c(1/2,1,2)
+#  scales = c(1,2**(-1/3), 2**(-2/3))
+#  
+#  crit = RetinaNetFocalLoss(scales = scales, ratios = ratios)
+#  
+#  retinanet_split = function(m) {
+#    L(m$encoder,nn$Sequential(m$c5top6, m$p6top7, m$merges,
+#                         m$smoothers, m$classifier, m$box_regressor))$map(params())
+#  }
+
+## -----------------------------------------------------------------------------
+#  learn = Learner(dls, arch, loss_func = crit, splitter = retinanet_split)
+#  
+#  learn$freeze()
+#  
+#  learn %>% fit_one_cycle(10, slice(1e-5, 1e-4))
+
