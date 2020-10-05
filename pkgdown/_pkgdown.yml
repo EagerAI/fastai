@@ -33,6 +33,8 @@ navbar:
           href: articles/medical_dcm.html
         - text: "Data augmentation"
           href: articles/data_aug.html
+        - text: "Object detection"
+          href: articles/obj_detect.html
     - text: "Migrating"
       menu:
         - text: "Plain Pytorch"
