@@ -310,6 +310,9 @@
     <loc>https://henry090.github.io/fastai//reference/JaccardMulti.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/L.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/L1LossFlat.html</loc>
   </url>
   <url>
@@ -485,6 +488,12 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/Resize.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/RetinaNet.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/RetinaNetFocalLoss.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/RocAuc.html</loc>
@@ -1346,6 +1355,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/parallel_tokenize.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/params.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/partial.html</loc>

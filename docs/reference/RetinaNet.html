@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Fit one cycle — fit_one_cycle • fastai</title>
+<title>RetinaNet — RetinaNet • fastai</title>
 
 
 <!-- jquery -->
@@ -45,8 +45,8 @@
 
 
 
-<meta property="og:title" content="Fit one cycle — fit_one_cycle" />
-<meta property="og:description" content="Fit one cycle" />
+<meta property="og:title" content="RetinaNet — RetinaNet" />
+<meta property="og:description" content="Implements RetinaNet from https://arxiv.org/abs/1708.02002" />
 
 
 
@@ -180,29 +180,50 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Fit one cycle</h1>
-    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/image_loaders.R'><code>R/image_loaders.R</code></a></small>
-    <div class="hidden name"><code>fit_one_cycle.Rd</code></div>
+    <h1>RetinaNet</h1>
+    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/fastaibuilt.R'><code>R/fastaibuilt.R</code></a></small>
+    <div class="hidden name"><code>RetinaNet.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Fit one cycle</p>
+    <p>Implements RetinaNet from https://arxiv.org/abs/1708.02002</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fit_one_cycle</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>RetinaNet</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>...</th>
-      <td><p>parameters to pass</p></td>
+      <th>encoder</th>
+      <td><p>encoder</p></td>
     </tr>
     <tr>
-      <th>n_epoch</th>
-      <td><p>The number of epochs</p></td>
+      <th>n_classes</th>
+      <td><p>n_classes</p></td>
+    </tr>
+    <tr>
+      <th>final_bias</th>
+      <td><p>final_bias</p></td>
+    </tr>
+    <tr>
+      <th>chs</th>
+      <td><p>chs</p></td>
+    </tr>
+    <tr>
+      <th>n_anchors</th>
+      <td><p>n_anchors</p></td>
+    </tr>
+    <tr>
+      <th>flatten</th>
+      <td><p>flatten</p></td>
     </tr>
     </table>
+
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    
+
 
 
   </div>
