@@ -7,7 +7,7 @@ knitr::opts_chunk$set(echo = TRUE,eval = FALSE,echo = T)
 #  
 #  loaders = loaders()
 #  
-#  data = DataLoaders_(loaders['train'], loaders['valid'])$cuda()
+#  data = Data_Loaders(loaders['train'], loaders['valid'])$cuda()
 #  
 #  model = nn$Sequential() +
 #    nn$Flatten() +

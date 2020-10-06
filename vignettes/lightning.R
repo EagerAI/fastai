@@ -7,7 +7,7 @@ knitr::opts_chunk$set(echo = TRUE,eval = FALSE,echo = T)
 #  
 #  model = LitModel()
 #  
-#  data = DataLoaders_(model$train_dataloader(), model$val_dataloader())$cuda()
+#  data = Data_Loaders(model$train_dataloader(), model$val_dataloader())$cuda()
 #  
 #  learn = Learner(data, model, loss_func = F$cross_entropy, opt_func = Adam,
 #                  metrics = accuracy)

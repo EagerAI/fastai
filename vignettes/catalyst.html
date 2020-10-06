@@ -334,7 +334,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <span id="cb1-3"><a href="#cb1-3"></a></span>
 <span id="cb1-4"><a href="#cb1-4"></a>loaders =<span class="st"> </span><span class="kw">loaders</span>()</span>
 <span id="cb1-5"><a href="#cb1-5"></a></span>
-<span id="cb1-6"><a href="#cb1-6"></a>data =<span class="st"> </span><span class="kw">DataLoaders_</span>(loaders[<span class="st">&#39;train&#39;</span>], loaders[<span class="st">&#39;valid&#39;</span>])<span class="op">$</span><span class="kw">cuda</span>()</span>
+<span id="cb1-6"><a href="#cb1-6"></a>data =<span class="st"> </span><span class="kw">Data_Loaders</span>(loaders[<span class="st">&#39;train&#39;</span>], loaders[<span class="st">&#39;valid&#39;</span>])<span class="op">$</span><span class="kw">cuda</span>()</span>
 <span id="cb1-7"><a href="#cb1-7"></a></span>
 <span id="cb1-8"><a href="#cb1-8"></a>model =<span class="st"> </span>nn<span class="op">$</span><span class="kw">Sequential</span>() <span class="op">+</span></span>
 <span id="cb1-9"><a href="#cb1-9"></a><span class="st">  </span>nn<span class="op">$</span><span class="kw">Flatten</span>() <span class="op">+</span></span>

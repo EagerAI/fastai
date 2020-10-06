@@ -333,7 +333,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <span id="cb1-3"><a href="#cb1-3"></a></span>
 <span id="cb1-4"><a href="#cb1-4"></a>model =<span class="st"> </span><span class="kw">LitModel</span>()</span>
 <span id="cb1-5"><a href="#cb1-5"></a></span>
-<span id="cb1-6"><a href="#cb1-6"></a>data =<span class="st"> </span><span class="kw">DataLoaders_</span>(model<span class="op">$</span><span class="kw">train_dataloader</span>(), model<span class="op">$</span><span class="kw">val_dataloader</span>())<span class="op">$</span><span class="kw">cuda</span>()</span>
+<span id="cb1-6"><a href="#cb1-6"></a>data =<span class="st"> </span><span class="kw">Data_Loaders</span>(model<span class="op">$</span><span class="kw">train_dataloader</span>(), model<span class="op">$</span><span class="kw">val_dataloader</span>())<span class="op">$</span><span class="kw">cuda</span>()</span>
 <span id="cb1-7"><a href="#cb1-7"></a></span>
 <span id="cb1-8"><a href="#cb1-8"></a>learn =<span class="st"> </span><span class="kw">Learner</span>(data, model, <span class="dt">loss_func =</span> F<span class="op">$</span>cross_entropy, <span class="dt">opt_func =</span> Adam,</span>
 <span id="cb1-9"><a href="#cb1-9"></a>                <span class="dt">metrics =</span> accuracy)</span>

@@ -5,7 +5,7 @@ knitr::opts_chunk$set(echo = TRUE,eval = FALSE,echo = T)
 #  library(fastai)
 #  library(magrittr)
 #  
-#  data = DataLoaders_(train_loader, test_loader)
+#  data = Data_Loaders(train_loader, test_loader)
 #  
 #  learn = Learner(data, Net(), loss_func = F$nll_loss,
 #                  opt_func = Adam(), metrics = accuracy, cbs = CudaCallback())

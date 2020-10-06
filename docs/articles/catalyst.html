@@ -163,7 +163,7 @@
 
 <span class="va">loaders</span> <span class="op">=</span> <span class="fu"><a href="../reference/loaders.html">loaders</a></span><span class="op">(</span><span class="op">)</span>
 
-<span class="va">data</span> <span class="op">=</span> <span class="fu"><a href="../reference/DataLoaders_.html">DataLoaders_</a></span><span class="op">(</span><span class="va">loaders</span><span class="op">[</span><span class="st">'train'</span><span class="op">]</span>, <span class="va">loaders</span><span class="op">[</span><span class="st">'valid'</span><span class="op">]</span><span class="op">)</span><span class="op">$</span><span class="fu">cuda</span><span class="op">(</span><span class="op">)</span>
+<span class="va">data</span> <span class="op">=</span> <span class="fu"><a href="../reference/Data_Loaders.html">Data_Loaders</a></span><span class="op">(</span><span class="va">loaders</span><span class="op">[</span><span class="st">'train'</span><span class="op">]</span>, <span class="va">loaders</span><span class="op">[</span><span class="st">'valid'</span><span class="op">]</span><span class="op">)</span><span class="op">$</span><span class="fu">cuda</span><span class="op">(</span><span class="op">)</span>
 
 <span class="va">model</span> <span class="op">=</span> <span class="va">nn</span><span class="op">$</span><span class="fu">Sequential</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="va">nn</span><span class="op">$</span><span class="fu">Flatten</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>

@@ -8,7 +8,7 @@
 #'
 #'
 #' @export
-DataLoaders_ = function(...) {
+Data_Loaders = function(...) {
 
   args = list(...)
   args = unlist(args)
@@ -20,7 +20,6 @@ DataLoaders_ = function(...) {
     args = unlist(args)
     fastai2$vision$all$DataLoaders(args[[1]], args[[2]])
   } else {
-    #print('Something wrong')
     do.call(fastai2$vision$all$DataLoaders, args)
   }
 
