@@ -81,8 +81,7 @@ test_succeeds('download PETS', {
     item_tfms=Resize(size = 460), bs = 10,
     batch_tfms=list(aug_transforms(size = 224, min_scale = 0.75),
                     Normalize_from_stats( imagenet_stats() )
-    ),
-    device = 'cuda'
+    )
   )
 })
 
