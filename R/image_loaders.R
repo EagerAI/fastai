@@ -81,7 +81,7 @@ fit_one_cycle <- function(object, ...) {
     args[['n_epoch']] = as.integer(args[['n_epoch']])
   }
 
-  if(length(args)>0) {
+  if(length(args)>0 & is.null(names(ll)[[1]])) {
     args[[1]] = as.integer(args[[1]])
   }
 
