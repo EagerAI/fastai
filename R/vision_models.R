@@ -73,11 +73,7 @@ xresnet18_deep <- function(...) {
 #' @export
 xresnet18 <- function(...) {
   args = list(...)
-  if(length(args)>0) {
-    do.call(vision$models$xresnet18, args)
-  } else {
-    vision$models$xresnet18
-  }
+  do.call(vision$all$xresnet18, args)
 }
 
 #' @title Model
