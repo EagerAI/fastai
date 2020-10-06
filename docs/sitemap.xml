@@ -124,7 +124,7 @@
     <loc>https://henry090.github.io/fastai//reference/DataBlock.html</loc>
   </url>
   <url>
-    <loc>https://henry090.github.io/fastai//reference/DataLoaders_.html</loc>
+    <loc>https://henry090.github.io/fastai//reference/Data_Loaders.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/Datasets.html</loc>
@@ -481,9 +481,6 @@
     <loc>https://henry090.github.io/fastai//reference/ResBlock.html</loc>
   </url>
   <url>
-    <loc>https://henry090.github.io/fastai//reference/ResLayer.html</loc>
-  </url>
-  <url>
     <loc>https://henry090.github.io/fastai//reference/ResNet.html</loc>
   </url>
   <url>
@@ -812,9 +809,6 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/WeightDropout.html</loc>
-  </url>
-  <url>
-    <loc>https://henry090.github.io/fastai//reference/WideResNet.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/XResNet.html</loc>
@@ -1294,9 +1288,6 @@
     <loc>https://henry090.github.io/fastai//reference/min.fastai.torch_core.TensorMask.html</loc>
   </url>
   <url>
-    <loc>https://henry090.github.io/fastai//reference/mobilenet_v2.html</loc>
-  </url>
-  <url>
     <loc>https://henry090.github.io/fastai//reference/momentum_step.html</loc>
   </url>
   <url>
@@ -1691,12 +1682,6 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/win_subdural.html</loc>
-  </url>
-  <url>
-    <loc>https://henry090.github.io/fastai//reference/wrn_22.html</loc>
-  </url>
-  <url>
-    <loc>https://henry090.github.io/fastai//reference/xception.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/xresnet101.html</loc>

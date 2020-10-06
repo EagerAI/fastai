@@ -205,31 +205,31 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>block</th>
-      <td><p>block</p></td>
+      <td><p>the blocks that need to passed to ResNet</p></td>
     </tr>
     <tr>
       <th>layers</th>
-      <td><p>layers</p></td>
+      <td><p>the layers to pass to ResNet</p></td>
     </tr>
     <tr>
       <th>num_classes</th>
-      <td><p>num_classes</p></td>
+      <td><p>the number of classes</p></td>
     </tr>
     <tr>
       <th>zero_init_residual</th>
-      <td><p>zero_init_residual</p></td>
+      <td><p>logical, initializer</p></td>
     </tr>
     <tr>
       <th>groups</th>
-      <td><p>groups</p></td>
+      <td><p>the groups</p></td>
     </tr>
     <tr>
       <th>width_per_group</th>
-      <td><p>width_per_group</p></td>
+      <td><p>the width per group</p></td>
     </tr>
     <tr>
       <th>replace_stride_with_dilation</th>
-      <td><p>replace_stride_with_dilation</p></td>
+      <td><p>logical, replace stride with dilation</p></td>
     </tr>
     <tr>
       <th>norm_layer</th>
@@ -237,11 +237,6 @@
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Your models should also subclass this class. Modules can also contain other Modules, allowing to nest them in
-a tree structure. You can assign the submodules as regular attributes:: import torch.nn as nn import torch.nn.functional as F class Model(nn.Module): def __init__(self): super(Model, self).__init__() self.conv1 = nn.Conv2d(1, 20, 5) self.conv2 = nn.Conv2d(20, 20, 5) def forward(self, x): x = F.relu(self.conv1(x)) return F.relu(self.conv2(x)) Submodules assigned in this way will be registered, and will have their
-parameters converted too when you call :meth:`to`, etc.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
