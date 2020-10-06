@@ -2,14 +2,17 @@
 % Please edit documentation in R/vision_models.R
 \name{squeezenet1_1}
 \alias{squeezenet1_1}
-\title{squeezenet1_1}
+\title{Squeezenet1_1}
 \usage{
 squeezenet1_1(pretrained = FALSE, progress)
 }
 \arguments{
-\item{pretrained}{pretrained}
+\item{pretrained}{pretrained or not}
 
-\item{progress}{progress}
+\item{progress}{to see progress bar or not}
+}
+\value{
+model
 }
 \description{
 SqueezeNet 1.1 model from the `official SqueezeNet repo

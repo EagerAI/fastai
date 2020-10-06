@@ -16,27 +16,22 @@ ResNet(
 )
 }
 \arguments{
-\item{block}{block}
+\item{block}{the blocks that need to passed to ResNet}
 
-\item{layers}{layers}
+\item{layers}{the layers to pass to ResNet}
 
-\item{num_classes}{num_classes}
+\item{num_classes}{the number of classes}
 
-\item{zero_init_residual}{zero_init_residual}
+\item{zero_init_residual}{logical, initializer}
 
-\item{groups}{groups}
+\item{groups}{the groups}
 
-\item{width_per_group}{width_per_group}
+\item{width_per_group}{the width per group}
 
-\item{replace_stride_with_dilation}{replace_stride_with_dilation}
+\item{replace_stride_with_dilation}{logical, replace stride with dilation}
 
 \item{norm_layer}{norm_layer}
 }
 \description{
 Base class for all neural network modules.
-}
-\details{
-Your models should also subclass this class. Modules can also contain other Modules, allowing to nest them in
-a tree structure. You can assign the submodules as regular attributes:: import torch.nn as nn import torch.nn.functional as F class Model(nn.Module): def __init__(self): super(Model, self).__init__() self.conv1 = nn.Conv2d(1, 20, 5) self.conv2 = nn.Conv2d(20, 20, 5) def forward(self, x): x = F.relu(self.conv1(x)) return F.relu(self.conv2(x)) Submodules assigned in this way will be registered, and will have their
-parameters converted too when you call :meth:`to`, etc.
 }

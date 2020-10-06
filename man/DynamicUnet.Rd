@@ -9,6 +9,8 @@ DynamicUnet(...)
 DynamicUnet(...)
 }
 \arguments{
+\item{...}{parameters to pass}
+
 \item{encoder}{encoder}
 
 \item{n_classes}{n_classes}
@@ -33,8 +35,9 @@ DynamicUnet(...)
 
 \item{norm_type}{norm_type}
 }
+\value{
+model
+}
 \description{
 Create a U-Net from a given architecture.
-
-Load model architecture
 }

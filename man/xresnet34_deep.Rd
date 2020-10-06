@@ -2,9 +2,15 @@
 % Please edit documentation in R/vision_models.R
 \name{xresnet34_deep}
 \alias{xresnet34_deep}
-\title{Model}
+\title{Xresnet34_deep}
 \usage{
 xresnet34_deep(...)
+}
+\arguments{
+\item{...}{parameters to pass}
+}
+\value{
+model
 }
 \description{
 Load model architecture

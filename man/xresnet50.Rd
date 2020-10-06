@@ -2,9 +2,15 @@
 % Please edit documentation in R/vision_models.R
 \name{xresnet50}
 \alias{xresnet50}
-\title{Model}
+\title{Xresnet50}
 \usage{
 xresnet50(...)
+}
+\arguments{
+\item{...}{parameters to pass}
+}
+\value{
+model
 }
 \description{
 Load model architecture

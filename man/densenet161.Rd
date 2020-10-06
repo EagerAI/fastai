@@ -2,18 +2,21 @@
 % Please edit documentation in R/vision_models.R
 \name{densenet161}
 \alias{densenet161}
-\title{densenet161}
+\title{Densenet161}
 \usage{
 densenet161(pretrained = FALSE, progress)
 }
 \arguments{
-\item{pretrained}{pretrained}
+\item{pretrained}{pretrained or not}
 
-\item{progress}{progress}
+\item{progress}{to see progress bar or not}
+}
+\value{
+model
 }
 \description{
-Densenet-161 model from
+Densenet161
 }
 \details{
-`"Densely Connected Convolutional Networks" <https://arxiv.org/pdf/1608.06993.pdf>`_
+"Densely Connected Convolutional Networks" <https://arxiv.org/pdf/1608.06993.pdf>
 }

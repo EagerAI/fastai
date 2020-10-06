@@ -11,6 +11,8 @@ UnetBlock(...)
 UnetBlock(...)
 }
 \arguments{
+\item{...}{parameters to pass}
+
 \item{up_in_c}{up_in_c}
 
 \item{x_in_c}{x_in_c}
@@ -53,10 +55,13 @@ UnetBlock(...)
 
 \item{padding_mode}{padding_mode}
 }
+\value{
+model
+}
 \description{
 A quasi-UNet block, using `PixelShuffle_ICNR upsampling`.
 
 A quasi-UNet block, using `PixelShuffle_ICNR upsampling`.
 
-Load model architecture
+Load Unet block
 }

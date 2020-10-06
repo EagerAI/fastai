@@ -2,18 +2,21 @@
 % Please edit documentation in R/vision_models.R
 \name{vgg16_bn}
 \alias{vgg16_bn}
-\title{vgg16_bn}
+\title{Vgg16_bn}
 \usage{
 vgg16_bn(pretrained = FALSE, progress)
 }
 \arguments{
-\item{pretrained}{pretrained}
+\item{pretrained}{pretrained or not}
 
-\item{progress}{progress}
+\item{progress}{to see progress bar or not}
+}
+\value{
+model
 }
 \description{
 VGG 16-layer model (configuration "D") with batch normalization
 }
 \details{
-`"Very Deep Convolutional Networks For Large-Scale Image Recognition" <https://arxiv.org/pdf/1409.1556.pdf>`_
+"Very Deep Convolutional Networks For Large-Scale Image Recognition" <https://arxiv.org/pdf/1409.1556.pdf>
 }

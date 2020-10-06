@@ -2,18 +2,21 @@
 % Please edit documentation in R/vision_models.R
 \name{alexnet}
 \alias{alexnet}
-\title{alexnet}
+\title{Alexnet}
 \usage{
 alexnet(pretrained = FALSE, progress)
 }
 \arguments{
-\item{pretrained}{pretrained}
+\item{pretrained}{pretrained or not}
 
-\item{progress}{progress}
+\item{progress}{to see progress bar or not}
+}
+\value{
+model
 }
 \description{
-AlexNet model architecture from the
+AlexNet model architecture
 }
 \details{
-`"One weird trick..." <https://arxiv.org/abs/1404.5997>`_ paper.
+"One weird trick..." <https://arxiv.org/abs/1404.5997>
 }

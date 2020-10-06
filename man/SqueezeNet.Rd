@@ -7,9 +7,12 @@
 SqueezeNet(version = "1_0", num_classes = 1000)
 }
 \arguments{
-\item{version}{version}
+\item{version}{version of SqueezeNet}
 
-\item{num_classes}{num_classes}
+\item{num_classes}{the number of classes}
+}
+\value{
+model
 }
 \description{
 Base class for all neural network modules.

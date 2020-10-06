@@ -2,9 +2,15 @@
 % Please edit documentation in R/vision_models.R
 \name{xresnet18}
 \alias{xresnet18}
-\title{Model}
+\title{Xresnet18}
 \usage{
 xresnet18(...)
+}
+\arguments{
+\item{...}{parameters to pass}
+}
+\value{
+model
 }
 \description{
 Load model architecture

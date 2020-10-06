@@ -2,18 +2,21 @@
 % Please edit documentation in R/vision_models.R
 \name{resnet34}
 \alias{resnet34}
-\title{resnet34}
+\title{Resnet34}
 \usage{
 resnet34(pretrained = FALSE, progress)
 }
 \arguments{
-\item{pretrained}{pretrained}
+\item{pretrained}{pretrained or not}
 
-\item{progress}{progress}
+\item{progress}{to see progress bar or not}
+}
+\value{
+model
 }
 \description{
 ResNet-34 model from
 }
 \details{
-`"Deep Residual Learning for Image Recognition" <https://arxiv.org/pdf/1512.03385.pdf>`_
+"Deep Residual Learning for Image Recognition" <https://arxiv.org/pdf/1512.03385.pdf>
 }

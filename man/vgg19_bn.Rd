@@ -2,18 +2,21 @@
 % Please edit documentation in R/vision_models.R
 \name{vgg19_bn}
 \alias{vgg19_bn}
-\title{vgg19_bn}
+\title{Vgg19_bn}
 \usage{
 vgg19_bn(pretrained = FALSE, progress)
 }
 \arguments{
-\item{pretrained}{pretrained}
+\item{pretrained}{pretrained or not}
 
-\item{progress}{progress}
+\item{progress}{to see progress bar or not}
+}
+\value{
+model
 }
 \description{
 VGG 19-layer model (configuration 'E') with batch normalization
 }
 \details{
-`"Very Deep Convolutional Networks For Large-Scale Image Recognition" <https://arxiv.org/pdf/1409.1556.pdf>`_
+"Very Deep Convolutional Networks For Large-Scale Image Recognition" <https://arxiv.org/pdf/1409.1556.pdf>
 }

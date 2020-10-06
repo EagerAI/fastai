@@ -7,18 +7,16 @@
 XResNet(block, expansion, layers, c_in = 3, c_out = 1000, ...)
 }
 \arguments{
-\item{expansion}{expansion}
+\item{block}{the blocks to pass to XResNet}
 
-\item{layers}{layers}
+\item{expansion}{argument for inputs and filters}
 
-\item{c_in}{c_in}
+\item{layers}{the layers to pass to XResNet}
 
-\item{c_out}{c_out}
+\item{c_in}{number of inputs}
+
+\item{c_out}{number of outputs}
 }
 \description{
 A sequential container.
-}
-\details{
-Modules will be added to it in the order they are passed in the constructor.
-Alternatively, an ordered dict of modules can also be passed in. To make it easier to understand, here is a small example:: # Example of using Sequential model = nn.Sequential( nn.Conv2d(1,20,5), nn.ReLU(), nn.Conv2d(20,64,5), nn.ReLU() ) # Example of using Sequential with OrderedDict model = nn.Sequential(OrderedDict([ ('conv1', nn.Conv2d(1,20,5)), ('relu1', nn.ReLU()), ('conv2', nn.Conv2d(20,64,5)), ('relu2', nn.ReLU()) ]))
 }

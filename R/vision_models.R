@@ -1,9 +1,11 @@
 
 
 
-#' @title Model
+#' @title Xresnet50_deep
 #'
 #' @description Load model architecture
+#' @param ... parameters to pass
+#' @return model
 #' @export
 xresnet50_deep <- function(...) {
 
@@ -15,9 +17,11 @@ xresnet50_deep <- function(...) {
   }
 }
 
-#' @title Model
+#' @title Xresnet50
 #'
 #' @description Load model architecture
+#' @param ... parameters to pass
+#' @return model
 #' @export
 xresnet50 <- function(...) {
   args = list(...)
@@ -28,9 +32,11 @@ xresnet50 <- function(...) {
   }
 }
 
-#' @title Model
+#' @title Xresnet34_deep
 #'
 #' @description Load model architecture
+#' @param ... parameters to pass
+#' @return model
 #' @export
 xresnet34_deep <- function(...) {
   args = list(...)
@@ -41,9 +47,11 @@ xresnet34_deep <- function(...) {
   }
 }
 
-#' @title Model
+#' @title Xresnet34
 #'
 #' @description Load model architecture
+#' @param ... parameters to pass
+#' @return model
 #' @export
 xresnet34 <- function(...) {
   args = list(...)
@@ -54,9 +62,11 @@ xresnet34 <- function(...) {
   }
 }
 
-#' @title Model
+#' @title Xresnet18_deep
 #'
 #' @description Load model architecture
+#' @param ... parameters to pass
+#' @return model
 #' @export
 xresnet18_deep <- function(...) {
   args = list(...)
@@ -67,9 +77,11 @@ xresnet18_deep <- function(...) {
   }
 }
 
-#' @title Model
+#' @title Xresnet18
 #'
 #' @description Load model architecture
+#' @param ... parameters to pass
+#' @return model
 #' @export
 xresnet18 <- function(...) {
   args = list(...)
@@ -80,9 +92,11 @@ xresnet18 <- function(...) {
   }
 }
 
-#' @title Model
+#' @title Xresnet152
 #'
 #' @description Load model architecture
+#' @param ... parameters to pass
+#' @return model
 #' @export
 xresnet152 <- function(...) {
   args = list(...)
@@ -93,9 +107,11 @@ xresnet152 <- function(...) {
   }
 }
 
-#' @title Model
+#' @title Xresnet101
 #'
 #' @description Load model architecture
+#' @param ... parameters to pass
+#' @return model
 #' @export
 xresnet101 <- function(...) {
   args = list(...)
@@ -106,9 +122,11 @@ xresnet101 <- function(...) {
   }
 }
 
-#' @title Model
+#' @title UnetBlock
 #'
-#' @description Load model architecture
+#' @description Load Unet block
+#' @param ... parameters to pass
+#' @return model
 #' @export
 UnetBlock <- function(...) {
   args = list(...)
@@ -116,9 +134,11 @@ UnetBlock <- function(...) {
 }
 
 
-#' @title Model
+#' @title Xresnet50_deep
 #'
 #' @description Load model architecture
+#' @param ... parameters to pass
+#' @return model
 #' @export
 xresnet50_deep <- function(...) {
   args = list(...)
@@ -129,9 +149,10 @@ xresnet50_deep <- function(...) {
   }
 }
 
-#' @title Model
+#' @title Dynamic Unet
 #'
-#' @description Load model architecture
+#' @param ... parameters to pass
+#' @return model
 #' @export
 DynamicUnet <- function(...) {
   args = list(...)
@@ -139,15 +160,15 @@ DynamicUnet <- function(...) {
 }
 
 
-#' @title alexnet
+#' @title Alexnet
 #'
-#' @description AlexNet model architecture from the
+#' @description AlexNet model architecture
 #'
-#' @details `"One weird trick..." <https://arxiv.org/abs/1404.5997>`_ paper.
+#' @details "One weird trick..." <https://arxiv.org/abs/1404.5997>
 #'
-#' @param pretrained pretrained
-#' @param progress progress
-#'
+#' @param pretrained pretrained or not
+#' @param progress to see progress bar or not
+#' @return model
 #' @export
 alexnet <- function(pretrained = FALSE, progress) {
 
@@ -166,13 +187,11 @@ alexnet <- function(pretrained = FALSE, progress) {
 #'
 #' @description A sequential container.
 #'
-#' @details Modules will be added to it in the order they are passed in the constructor.
-#' Alternatively, an ordered dict of modules can also be passed in. To make it easier to understand, here is a small example:: # Example of using Sequential model = nn.Sequential( nn.Conv2d(1,20,5), nn.ReLU(), nn.Conv2d(20,64,5), nn.ReLU() ) # Example of using Sequential with OrderedDict model = nn.Sequential(OrderedDict([ ('conv1', nn.Conv2d(1,20,5)), ('relu1', nn.ReLU()), ('conv2', nn.Conv2d(20,64,5)), ('relu2', nn.ReLU()) ]))
-#'
-#' @param expansion expansion
-#' @param layers layers
-#' @param c_in c_in
-#' @param c_out c_out
+#' @param block the blocks to pass to XResNet
+#' @param expansion argument for inputs and filters
+#' @param layers the layers to pass to XResNet
+#' @param c_in number of inputs
+#' @param c_out number of outputs
 #'
 #' @export
 XResNet <- function(block, expansion, layers, c_in = 3, c_out = 1000,
@@ -192,15 +211,15 @@ XResNet <- function(block, expansion, layers, c_in = 3, c_out = 1000,
 }
 
 
-#' @title vgg19_bn
+#' @title Vgg19_bn
 #'
 #' @description VGG 19-layer model (configuration 'E') with batch normalization
 #'
-#' @details `"Very Deep Convolutional Networks For Large-Scale Image Recognition" <https://arxiv.org/pdf/1409.1556.pdf>`_
+#' @details "Very Deep Convolutional Networks For Large-Scale Image Recognition" <https://arxiv.org/pdf/1409.1556.pdf>
 #'
-#' @param pretrained pretrained
-#' @param progress progress
-#'
+#' @param pretrained pretrained or not
+#' @param progress to see progress bar or not
+#' @return model
 #' @export
 vgg19_bn <- function(pretrained = FALSE, progress) {
 
@@ -215,14 +234,15 @@ vgg19_bn <- function(pretrained = FALSE, progress) {
 
 }
 
-#' @title vgg16_bn
+#' @title Vgg16_bn
 #'
 #' @description VGG 16-layer model (configuration "D") with batch normalization
 #'
-#' @details `"Very Deep Convolutional Networks For Large-Scale Image Recognition" <https://arxiv.org/pdf/1409.1556.pdf>`_
+#' @details "Very Deep Convolutional Networks For Large-Scale Image Recognition" <https://arxiv.org/pdf/1409.1556.pdf>
 #'
-#' @param pretrained pretrained
-#' @param progress progress
+#' @param pretrained pretrained or not
+#' @param progress to see progress bar or not
+#' @return model
 #'
 #' @export
 vgg16_bn <- function(pretrained = FALSE, progress) {
@@ -238,14 +258,15 @@ vgg16_bn <- function(pretrained = FALSE, progress) {
 
 }
 
-#' @title vgg13_bn
+#' @title Vgg13_bn
 #'
 #' @description VGG 13-layer model (configuration "B") with batch normalization
 #'
-#' @details `"Very Deep Convolutional Networks For Large-Scale Image Recognition" <https://arxiv.org/pdf/1409.1556.pdf>`_
+#' @details "Very Deep Convolutional Networks For Large-Scale Image Recognition" <https://arxiv.org/pdf/1409.1556.pdf>
 #'
-#' @param pretrained pretrained
-#' @param progress progress
+#' @param pretrained pretrained or not
+#' @param progress to see progress bar or not
+#' @return model
 #'
 #' @export
 vgg13_bn <- function(pretrained = FALSE, progress) {
@@ -261,14 +282,15 @@ vgg13_bn <- function(pretrained = FALSE, progress) {
 
 }
 
-#' @title vgg11_bn
+#' @title Vgg11_bn
 #'
 #' @description VGG 11-layer model (configuration "A") with batch normalization
 #'
-#' @details `"Very Deep Convolutional Networks For Large-Scale Image Recognition" <https://arxiv.org/pdf/1409.1556.pdf>`_
+#' @details "Very Deep Convolutional Networks For Large-Scale Image Recognition" <https://arxiv.org/pdf/1409.1556.pdf>
 #'
-#' @param pretrained pretrained
-#' @param progress progress
+#' @param pretrained pretrained or not
+#' @param progress to see progress bar or not
+#' @return model
 #'
 #' @export
 vgg11_bn <- function(pretrained = FALSE, progress) {
@@ -284,7 +306,7 @@ vgg11_bn <- function(pretrained = FALSE, progress) {
 
 }
 
-#' @title squeezenet1_1
+#' @title Squeezenet1_1
 #'
 #' @description SqueezeNet 1.1 model from the `official SqueezeNet repo
 #'
@@ -292,8 +314,9 @@ vgg11_bn <- function(pretrained = FALSE, progress) {
 #' SqueezeNet 1.1 has 2.4x less computation and slightly fewer parameters
 #' than SqueezeNet 1.0, without sacrificing accuracy.
 #'
-#' @param pretrained pretrained
-#' @param progress progress
+#' @param pretrained pretrained or not
+#' @param progress to see progress bar or not
+#' @return model
 #'
 #' @export
 squeezenet1_1 <- function(pretrained = FALSE, progress) {
@@ -309,15 +332,16 @@ squeezenet1_1 <- function(pretrained = FALSE, progress) {
 
 }
 
-#' @title squeezenet1_0
+#' @title Squeezenet1_0
 #'
 #' @description SqueezeNet model architecture from the `"SqueezeNet: AlexNet-level
 #'
 #' @details accuracy with 50x fewer parameters and <0.5MB model size"
 #' <https://arxiv.org/abs/1602.07360>`_ paper.
 #'
-#' @param pretrained pretrained
-#' @param progress progress
+#' @param pretrained pretrained or not
+#' @param progress to see progress bar or not
+#' @return model
 #'
 #' @export
 squeezenet1_0 <- function(pretrained = FALSE, progress) {
@@ -341,9 +365,9 @@ squeezenet1_0 <- function(pretrained = FALSE, progress) {
 #' a tree structure. You can assign the submodules as regular attributes:: import torch.nn as nn import torch.nn.functional as F class Model(nn.Module): def __init__(self): super(Model, self).__init__() self.conv1 = nn.Conv2d(1, 20, 5) self.conv2 = nn.Conv2d(20, 20, 5) def forward(self, x): x = F.relu(self.conv1(x)) return F.relu(self.conv2(x)) Submodules assigned in this way will be registered, and will have their
 #' parameters converted too when you call :meth:`to`, etc.
 #'
-#' @param version version
-#' @param num_classes num_classes
-#'
+#' @param version version of SqueezeNet
+#' @param num_classes the number of classes
+#' @return model
 #' @export
 SqueezeNet <- function(version = "1_0", num_classes = 1000) {
 
@@ -355,14 +379,14 @@ SqueezeNet <- function(version = "1_0", num_classes = 1000) {
 }
 
 
-#' @title resnet50
+#' @title Resnet50
 #'
-#' @description ResNet-50 model from
 #'
-#' @details `"Deep Residual Learning for Image Recognition" <https://arxiv.org/pdf/1512.03385.pdf>`_
+#' @details "Deep Residual Learning for Image Recognition" <https://arxiv.org/pdf/1512.03385.pdf>
 #'
-#' @param pretrained pretrained
-#' @param progress progress
+#' @param pretrained pretrained or not
+#' @param progress to see progress bar or not
+#' @return model
 #'
 #' @export
 resnet50 <- function(pretrained = FALSE, progress) {
@@ -378,14 +402,15 @@ resnet50 <- function(pretrained = FALSE, progress) {
 
 }
 
-#' @title resnet34
+#' @title Resnet34
 #'
 #' @description ResNet-34 model from
 #'
-#' @details `"Deep Residual Learning for Image Recognition" <https://arxiv.org/pdf/1512.03385.pdf>`_
+#' @details "Deep Residual Learning for Image Recognition" <https://arxiv.org/pdf/1512.03385.pdf>
 #'
-#' @param pretrained pretrained
-#' @param progress progress
+#' @param pretrained pretrained or not
+#' @param progress to see progress bar or not
+#' @return model
 #'
 #' @export
 resnet34 <- function(pretrained = FALSE, progress) {
@@ -401,14 +426,14 @@ resnet34 <- function(pretrained = FALSE, progress) {
 
 }
 
-#' @title resnet18
+#' @title Resnet18
 #'
-#' @description ResNet-18 model from
 #'
-#' @details `"Deep Residual Learning for Image Recognition" <https://arxiv.org/pdf/1512.03385.pdf>`_
+#' @details "Deep Residual Learning for Image Recognition" <https://arxiv.org/pdf/1512.03385.pdf>
 #'
-#' @param pretrained pretrained
-#' @param progress progress
+#' @param pretrained pretrained or not
+#' @param progress to see progress bar or not
+#' @return model
 #'
 #' @export
 resnet18 <- function(pretrained = FALSE, progress) {
@@ -424,14 +449,14 @@ resnet18 <- function(pretrained = FALSE, progress) {
 
 }
 
-#' @title resnet152
+#' @title Resnet152
 #'
-#' @description ResNet-152 model from
 #'
-#' @details `"Deep Residual Learning for Image Recognition" <https://arxiv.org/pdf/1512.03385.pdf>`_
+#' @details "Deep Residual Learning for Image Recognition" <https://arxiv.org/pdf/1512.03385.pdf>
 #'
-#' @param pretrained pretrained
-#' @param progress progress
+#' @param pretrained pretrained or not
+#' @param progress to see progress bar or not
+#' @return model
 #'
 #' @export
 resnet152 <- function(pretrained = FALSE, progress) {
@@ -447,14 +472,14 @@ resnet152 <- function(pretrained = FALSE, progress) {
 
 }
 
-#' @title resnet101
+#' @title Resnet101
 #'
 #' @description ResNet-101 model from
 #'
-#' @details `"Deep Residual Learning for Image Recognition" <https://arxiv.org/pdf/1512.03385.pdf>`_
-#'
-#' @param pretrained pretrained
-#' @param progress progress
+#' @details "Deep Residual Learning for Image Recognition" <https://arxiv.org/pdf/1512.03385.pdf>
+#' @param pretrained pretrained or not
+#' @param progress to see progress bar or not
+#' @return model
 #'
 #' @export
 resnet101 <- function(pretrained = FALSE, progress) {
@@ -474,18 +499,13 @@ resnet101 <- function(pretrained = FALSE, progress) {
 #' @title ResNet
 #'
 #' @description Base class for all neural network modules.
-#'
-#' @details Your models should also subclass this class. Modules can also contain other Modules, allowing to nest them in
-#' a tree structure. You can assign the submodules as regular attributes:: import torch.nn as nn import torch.nn.functional as F class Model(nn.Module): def __init__(self): super(Model, self).__init__() self.conv1 = nn.Conv2d(1, 20, 5) self.conv2 = nn.Conv2d(20, 20, 5) def forward(self, x): x = F.relu(self.conv1(x)) return F.relu(self.conv2(x)) Submodules assigned in this way will be registered, and will have their
-#' parameters converted too when you call :meth:`to`, etc.
-#'
-#' @param block block
-#' @param layers layers
-#' @param num_classes num_classes
-#' @param zero_init_residual zero_init_residual
-#' @param groups groups
-#' @param width_per_group width_per_group
-#' @param replace_stride_with_dilation replace_stride_with_dilation
+#' @param block the blocks that need to passed to ResNet
+#' @param layers the layers to pass to ResNet
+#' @param num_classes the number of classes
+#' @param zero_init_residual logical, initializer
+#' @param groups the groups
+#' @param width_per_group the width per group
+#' @param replace_stride_with_dilation logical, replace stride with dilation
 #' @param norm_layer norm_layer
 #'
 #' @export
@@ -508,14 +528,14 @@ ResNet <- function(block, layers, num_classes = 1000, zero_init_residual = FALSE
 
 }
 
-#' @title densenet121
+#' @title Densenet121
 #'
-#' @description Densenet-121 model from
 #'
-#' @details `"Densely Connected Convolutional Networks" <https://arxiv.org/pdf/1608.06993.pdf>`_
+#' @details "Densely Connected Convolutional Networks" <https://arxiv.org/pdf/1608.06993.pdf>
 #'
-#' @param pretrained pretrained
-#' @param progress progress
+#' @param pretrained pretrained or not
+#' @param progress to see progress bar or not
+#' @return model
 #'
 #' @export
 densenet121 <- function(pretrained = FALSE, progress) {
@@ -531,14 +551,14 @@ densenet121 <- function(pretrained = FALSE, progress) {
 
 }
 
-#' @title densenet161
+#' @title Densenet161
 #'
-#' @description Densenet-161 model from
 #'
-#' @details `"Densely Connected Convolutional Networks" <https://arxiv.org/pdf/1608.06993.pdf>`_
+#' @details "Densely Connected Convolutional Networks" <https://arxiv.org/pdf/1608.06993.pdf>
 #'
-#' @param pretrained pretrained
-#' @param progress progress
+#' @param pretrained pretrained or not
+#' @param progress to see progress bar or not
+#' @return model
 #'
 #' @export
 densenet161 <- function(pretrained = FALSE, progress) {
@@ -554,14 +574,14 @@ densenet161 <- function(pretrained = FALSE, progress) {
 
 }
 
-#' @title densenet169
+#' @title Densenet169
 #'
-#' @description Densenet-169 model from
 #'
-#' @details `"Densely Connected Convolutional Networks" <https://arxiv.org/pdf/1608.06993.pdf>`_
+#' @details "Densely Connected Convolutional Networks" <https://arxiv.org/pdf/1608.06993.pdf>
 #'
-#' @param pretrained pretrained
-#' @param progress progress
+#' @param pretrained pretrained or not
+#' @param progress to see progress bar or not
+#' @return model
 #'
 #' @export
 densenet169 <- function(pretrained = FALSE, progress) {
@@ -577,14 +597,14 @@ densenet169 <- function(pretrained = FALSE, progress) {
 
 }
 
-#' @title densenet201
+#' @title Densenet201
 #'
-#' @description Densenet-201 model from
 #'
-#' @details `"Densely Connected Convolutional Networks" <https://arxiv.org/pdf/1608.06993.pdf>`_
+#' @details "Densely Connected Convolutional Networks" <https://arxiv.org/pdf/1608.06993.pdf>
 #'
-#' @param pretrained pretrained
-#' @param progress progress
+#' @param pretrained pretrained or not
+#' @param progress to see progress bar or not
+#' @return model
 #'
 #' @export
 densenet201 <- function(pretrained = FALSE, progress) {
