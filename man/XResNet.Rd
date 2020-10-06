@@ -4,7 +4,7 @@
 \alias{XResNet}
 \title{XResNet}
 \usage{
-XResNet(expansion, layers, c_in = 3, c_out = 1000)
+XResNet(block, expansion, layers, c_in = 3, c_out = 1000, ...)
 }
 \arguments{
 \item{expansion}{expansion}
