@@ -8,7 +8,11 @@
 xresnet50_deep <- function(...) {
 
   args = list(...)
-  do.call(vision$all$xresnet50_deep, args)
+  if(length(args)>0) {
+    do.call(vision$all$xresnet50_deep, args)
+  } else {
+    vision$all$xresnet50_deep
+  }
 }
 
 #' @title Model
@@ -17,7 +21,11 @@ xresnet50_deep <- function(...) {
 #' @export
 xresnet50 <- function(...) {
   args = list(...)
-  do.call(vision$all$xresnet50, args)
+  if(length(args)>0) {
+    do.call(vision$all$xresnet50, args)
+  } else {
+    vision$all$xresnet50
+  }
 }
 
 #' @title Model
@@ -26,7 +34,11 @@ xresnet50 <- function(...) {
 #' @export
 xresnet34_deep <- function(...) {
   args = list(...)
-  do.call(vision$all$xresnet34_deep, args)
+  if(length(args)>0){
+    do.call(vision$all$xresnet34_deep, args)
+  } else {
+    vision$all$xresnet34_deep
+  }
 }
 
 #' @title Model
@@ -35,7 +47,11 @@ xresnet34_deep <- function(...) {
 #' @export
 xresnet34 <- function(...) {
   args = list(...)
-  do.call(vision$all$xresnet34, args)
+  if(length(args)>0){
+    do.call(vision$all$xresnet34, args)
+  } else {
+    vision$all$xresnet34
+  }
 }
 
 #' @title Model
@@ -44,7 +60,11 @@ xresnet34 <- function(...) {
 #' @export
 xresnet18_deep <- function(...) {
   args = list(...)
-  do.call(vision$all$xresnet18_deep, args)
+  if(length(args)>0){
+    do.call(vision$all$xresnet18_deep, args)
+  } else {
+    vision$all$xresnet18_deep
+  }
 }
 
 #' @title Model
@@ -53,7 +73,11 @@ xresnet18_deep <- function(...) {
 #' @export
 xresnet18 <- function(...) {
   args = list(...)
-  do.call(vision$all$xresnet18, args)
+  if(length(args)>0){
+    do.call(vision$all$xresnet18, args)
+  } else {
+    vision$all$xresnet18
+  }
 }
 
 #' @title Model
@@ -62,7 +86,11 @@ xresnet18 <- function(...) {
 #' @export
 xresnet152 <- function(...) {
   args = list(...)
-  do.call(vision$all$xresnet152, args)
+  if(length(args)>0){
+    do.call(vision$all$xresnet152, args)
+  } else {
+    vision$all$xresnet152
+  }
 }
 
 #' @title Model
@@ -71,7 +99,11 @@ xresnet152 <- function(...) {
 #' @export
 xresnet101 <- function(...) {
   args = list(...)
-  do.call(vision$all$xresnet101, args)
+  if(length(args)>0){
+    do.call(vision$all$xresnet101, args)
+  } else {
+    vision$all$xresnet101
+  }
 }
 
 #' @title Model
@@ -90,7 +122,11 @@ UnetBlock <- function(...) {
 #' @export
 xresnet50_deep <- function(...) {
   args = list(...)
-  do.call(vision$all$xresnet50_deep, args)
+  if(length(args)>0) {
+    do.call(vision$all$xresnet50_deep, args)
+  } else {
+    vision$all$xresnet50_deep
+  }
 }
 
 #' @title Model
