@@ -7,6 +7,13 @@
 \usage{
 \method{sort}{torch.Tensor}(x, decreasing = FALSE, ...)
 }
+\arguments{
+\item{x}{tensor}
+
+\item{decreasing}{the order}
+
+\item{...}{additional parameters to pass}
+}
 \description{
 Sort
 }

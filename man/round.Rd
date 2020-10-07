@@ -5,7 +5,15 @@
 \alias{round.torch.Tensor}
 \title{Round}
 \usage{
-\method{round}{torch.Tensor}(a)
+\method{round}{torch.Tensor}(x, digits = 0)
+}
+\arguments{
+\item{x}{tensor}
+
+\item{digits}{decimal}
+}
+\value{
+tensor
 }
 \description{
 Round

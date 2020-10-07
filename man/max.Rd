@@ -7,6 +7,16 @@
 \usage{
 \method{max}{torch.Tensor}(a, ..., na.rm = FALSE)
 }
+\arguments{
+\item{a}{tensor}
+
+\item{...}{additional parameters}
+
+\item{na.rm}{remove NAs}
+}
+\value{
+tensor
+}
 \description{
 Max
 }

@@ -6,6 +6,12 @@
 \usage{
 float(tensor)
 }
+\arguments{
+\item{tensor}{tensor}
+}
+\value{
+tensor
+}
 \description{
 Tensor to float
 }

@@ -7,6 +7,14 @@
 \usage{
 \method{&}{torch.Tensor}(a, b)
 }
+\arguments{
+\item{x}{tensor}
+
+\item{y}{tensor}
+}
+\value{
+tensor
+}
 \description{
 Logical_and
 }

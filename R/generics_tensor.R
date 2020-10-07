@@ -1,33 +1,30 @@
-#' Compares two tensors if equal
-#'
-#' This generic is approximately similar to \code{torch$eq(a, b)}, with the
-#' difference that the generic returns a tensor of booleans instead of
-#' a tensor of data type \code{torch$uint8}.
+#' @title Equal
 #'
 #' @param a tensor
 #' @param b tensor
-#' @return A tensor of booleans, where False corresponds to 0, and 1 to True
-#' in a tensor of data type \code{torch$bool}.
-#'
-#'
+#' @return tensor
 #' @export
 "==.torch.Tensor" <- function(a, b) {
   a$eq(b)
 }
 
 
-#' Pow
+#' @title Pow
 #'
-#'
+#' @param a tensor
+#' @param b tensor
+#' @return tensor
 #' @name pow
 #' @export
 "^.torch.Tensor" <- function(a, b) {
   a$pow(b)
 }
 
-#' Not equal
+#' @title Not equal
 #'
-#'
+#' @param a tensor
+#' @param b tensor
+#' @return tensor
 #' @name not_equal_to
 #' @export
 "!=.torch.Tensor" <- function(a, b) {
@@ -35,18 +32,22 @@
 }
 
 
-#' Greater or equal
+#' @title Greater or equal
 #'
-#'
+#' @param a tensor
+#' @param b tensor
+#' @return tensor
 #' @name greater_or_equal
 #' @export
 ">=.torch.Tensor" <- function(a, b) {
   a$ge(b)
 }
 
-#' Greater
+#' @title Greater
 #'
-#'
+#' @param a tensor
+#' @param b tensor
+#' @return tensor
 #' @name greater
 #' @export
 ">.torch.Tensor" <- function(a, b) {
@@ -54,18 +55,21 @@
 }
 
 
-#' Less or equal
-#'
-#'
+#' @title Less or equal
+#' @param a tensor
+#' @param b tensor
+#' @return tensor
 #' @name less_or_equal
 #' @export
 "<=.torch.Tensor" <- function(a, b) {
   a$le(b)
 }
 
-#' Less
+#' @title Less
 #'
-#'
+#' @param a tensor
+#' @param b tensor
+#' @return tensor
 #' @name greater
 #' @export
 "<.torch.Tensor" <- function(a, b) {
@@ -73,26 +77,34 @@
 }
 
 
-#' Max
+#' @title Max
 #'
-#'
+#' @param a tensor
+#' @param ... additional parameters
+#' @param na.rm remove NAs
+#' @return tensor
 #' @name max
 #' @export
 "max.torch.Tensor" <- function(a, ..., na.rm = FALSE) {
   a$max()
 }
 
-#' Min
+#' @title Min
 #'
-#'
+#' @param a tensor
+#' @param ... additional parameters
+#' @param na.rm remove NAs
+#' @return tensor
 #' @name min
 #' @export
 "min.torch.Tensor" <- function(a, ..., na.rm = FALSE) {
   a$min()
 }
 
-#' Dim
+#' @title Dim
 #'
+#' @param x tensor
+#' @return tensor
 #'
 #' @name dim
 #' @export
@@ -102,8 +114,11 @@
 
 
 
-#' Length
+
+#' @title Length
 #'
+#' @param x tensor
+#' @return tensor
 #'
 #' @name length
 #' @export
@@ -111,27 +126,34 @@
   x$nelement()
 }
 
-#' Floor divide
+#' @title Floor divide
 #'
-#'
+#' @param x tensor
+#' @param y tensor
+#' @return tensor
 #' @name floor_div
 #' @export
-"%/%.torch.Tensor" <- function(x,y) {
+"%/%.torch.Tensor" <- function(x, y) {
   x$floor_divide(y)
 }
 
 
-#' Floor mod
+#' @title Floor mod
 #'
-#'
+#' @param x tensor
+#' @param y tensor
+#' @return tensor
 #' @name floor_mod
 #' @export
-"%%.torch.Tensor" <- function(x,y) {
+"%%.torch.Tensor" <- function(x, y) {
   x$fmod(y)
 }
 
-#' Logical_and
+#' @title Logical_and
 #'
+#' @param x tensor
+#' @param y tensor
+#' @return tensor
 #'
 #' @name logical_and
 #' @export
@@ -139,19 +161,20 @@
   a$logical_and(b)
 }
 
-#' Logical_or
-#'
-#'
+#' @title Logical_or
+#' @param x tensor
+#' @param y tensor
+#' @return tensor
 #' @name logical_or
 #' @export
 "|.torch.Tensor" <- function(a, b) {
-  a$logical_and(b)
+  a$logical_or(b)
 }
 
-#' Logical_not
-#'
-#'
-#' @name logical_or
+#' @title Logical_not
+#' @param x tensor
+#' @return tensor
+#' @name logical_not_
 #' @export
 "!.torch.Tensor" <- function(a) {
   a$logical_not()
@@ -159,9 +182,11 @@
 
 
 
-#' Sort
+#' @title Sort
 #'
-#'
+#' @param x tensor
+#' @param decreasing the order
+#' @param ... additional parameters to pass
 #' @name sort
 #' @export
 "sort.torch.Tensor" <- function(x, decreasing = FALSE, ...) {
@@ -170,51 +195,58 @@
   } else {
     x$sort(...)
   }
-
 }
 
 
 
-#' Abs
+#' @title Abs
 #'
-#'
+#' @param x tensor
+#' @return tensor
 #' @name abs
 #' @export
-"abs.torch.Tensor" <- function(a) {
-  a$abs()
+"abs.torch.Tensor" <- function(x) {
+  x$abs()
 }
 
 
-#' Add
+#' @title Add
 #'
-#'
+#' @param a tensor
+#' @param b tensor
+#' @return tensor
 #' @name add
 #' @export
 "+.torch.Tensor" <- function(a, b) {
   a$add(b)
 }
 
-#' Sub
-#'
-#'
+#' @title Sub
+#' @param a tensor
+#' @param b tensor
+#' @return tensor
 #' @name sub
 #' @export
 "-.torch.Tensor" <- function(a, b) {
   a$sub(b)
 }
 
-#' Div
+#' @title Div
 #'
-#'
+#' @param a tensor
+#' @param b tensor
+#' @return tensor
 #' @name div
 #' @export
 "/.torch.Tensor" <- function(a, b) {
   a$div(b)
 }
 
-#' Multiply
+#' @title Multiply
 #'
-#'
+#' @param a tensor
+#' @param b tensor
+#' @return tensor
 #' @name div
 #' @export
 "*.torch.Tensor" <- function(a, b) {
@@ -222,130 +254,144 @@
 }
 
 
-#' Exp
+#' @title Exp
 #'
-#'
+#' @param x tensor
+#' @return tensor
 #' @name exp
 #' @export
-"exp.torch.Tensor" <- function(a) {
-  a$exp()
+"exp.torch.Tensor" <- function(x) {
+  x$exp()
 }
 
 
-#' Expm1
+#' @title Expm1
 #'
-#'
+#' @param x tensor
+#' @return tensor
 #' @name expm1
 #' @export
-"expm1.torch.Tensor" <- function(a) {
-  a$expm1()
+"expm1.torch.Tensor" <- function(x) {
+  x$expm1()
 }
 
-#' Log
+#' @title Log
 #'
-#'
+#' @param x tensor
+#' @param base base parameter
+#' @return tensor
 #' @name log
 #' @export
-"log.torch.Tensor" <- function(a) {
-  a$log()
+"log.torch.Tensor" <- function(x, base = exp(1)) {
+  x$log()
 }
 
 
-#' Log1p
-#'
-#'
+#' @title Log1p
+#' @param x tensor
+#' @return tensor
 #' @name log1p
 #' @export
-"log1p.torch.Tensor" <- function(a) {
-  a$log1p()
+"log1p.torch.Tensor" <- function(x) {
+  x$log1p()
 }
 
 
-#' Round
+#' @title Round
 #'
-#'
+#' @param x tensor
+#' @param digits decimal
+#' @return tensor
 #' @name round
 #' @export
-"round.torch.Tensor" <- function(a) {
-  a$round()
+"round.torch.Tensor" <- function(x, digits = 0) {
+  x$round()
 }
 
 
-#' Sqrt
+#' @title Sqrt
 #'
-#'
+#' @param x tensor
+#' @return tensor
 #' @name sqrd
 #' @export
-"sqrt.torch.Tensor" <- function(a) {
-  a$sqrt()
+"sqrt.torch.Tensor" <- function(x) {
+  x$sqrt()
 }
 
 
-#' Floor
+#' @title Floor
 #'
+#' @param x tensor
+#' @return tensor
+#' @name floor_
+#' @export
+"floor.torch.Tensor" <- function(x) {
+  x$floor()
+}
+
+#' @title Ceil
+#' @param x tensor
+#' @return tensor
+#' @name ceiling_
+#' @export
+"ceiling.torch.Tensor" <- function(x) {
+  x$ceil()
+}
+
+#' @title Cos
 #'
+#' @param x tensor
+#' @return tensor
+#' @name cos_
+#' @export
+"cos.torch.Tensor" <- function(x) {
+  x$cos()
+}
+
+#' @title Cosh
+#' @param x tensor
+#' @return tensor
+#' @name cosh_
+#' @export
+"cosh.torch.Tensor" <- function(x) {
+  x$cosh()
+}
+
+
+
+#' @title Sin
+#'
+#' @param x tensor
+#' @return tensor
+#' @name sin_
+#' @export
+"sin.torch.Tensor" <- function(x) {
+  x$sin()
+}
+
+#' @title Sinh
+#'
+#' @param x tensor
+#' @return tensor
 #' @name add
 #' @export
-"floor.torch.Tensor" <- function(a) {
-  a$floor()
-}
-
-#' Ceil
-#'
-#'
-#' @name add
-#' @export
-"ceiling.torch.Tensor" <- function(a) {
-  a$ceil()
-}
-
-#' Cos
-#'
-#'
-#' @name add
-#' @export
-"cos.torch.Tensor" <- function(a) {
-  a$cos()
-}
-
-#' Cosh
-#'
-#'
-#' @name add
-#' @export
-"cosh.torch.Tensor" <- function(a) {
-  a$cosh()
+"sinh.torch.Tensor" <- function(x) {
+  x$sinh()
 }
 
 
 
-#' Sin
+#' @title Mean of tensor
 #'
-#'
-#' @name add
-#' @export
-"sin.torch.Tensor" <- function(a) {
-  a$sin()
-}
-
-#' Sinh
-#'
-#'
-#' @name add
-#' @export
-"sinh.torch.Tensor" <- function(a) {
-  a$sinh()
-}
-
-
-
-#' Mean of tensor
-#'
+#' @param x tensor
+#' @param ... additional parameters to pass
+#' @return tensor
 #'
 #'
 #' @export
-"mean.torch.Tensor" <- function(a, ...) {
-  a$mean()
+"mean.torch.Tensor" <- function(x, ...) {
+  x$mean()
 }
 
 
@@ -354,8 +400,8 @@
 
 #' @title Tensor to float
 #'
-#'
-#'
+#' @param tensor tensor
+#' @return tensor
 #' @export
 float <- function(tensor) {
   tensor$float()
@@ -364,8 +410,8 @@ float <- function(tensor) {
 
 
 #' @title To matrix
-#'
-#'
+#' @param obj learner/model
+#' @param matrix bool, to R matrix
 #' @export
 to_matrix = function(obj, matrix = TRUE) {
   if(inherits(obj,'pydicom.dataset.FileDataset')) {
@@ -402,7 +448,9 @@ to_matrix = function(obj, matrix = TRUE) {
 
 #' @title Print model
 #'
-#'
+#' @param x object
+#' @param ... additional parameters to pass
+#' @return None
 #' @export
 print.fastai.learner.Learner = function(x, ...) {
   print(x$model)

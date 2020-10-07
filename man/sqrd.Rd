@@ -5,7 +5,13 @@
 \alias{sqrt.torch.Tensor}
 \title{Sqrt}
 \usage{
-\method{sqrt}{torch.Tensor}(a)
+\method{sqrt}{torch.Tensor}(x)
+}
+\arguments{
+\item{x}{tensor}
+}
+\value{
+tensor
 }
 \description{
 Sqrt

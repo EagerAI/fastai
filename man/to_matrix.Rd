@@ -6,6 +6,11 @@
 \usage{
 to_matrix(obj, matrix = TRUE)
 }
+\arguments{
+\item{obj}{learner/model}
+
+\item{matrix}{bool, to R matrix}
+}
 \description{
 To matrix
 }

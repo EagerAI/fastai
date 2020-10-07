@@ -3,15 +3,18 @@
 \name{logical_or}
 \alias{logical_or}
 \alias{|.torch.Tensor}
-\alias{!.torch.Tensor}
 \title{Logical_or}
 \usage{
 \method{|}{torch.Tensor}(a, b)
+}
+\arguments{
+\item{x}{tensor}
 
-\method{!}{torch.Tensor}(a)
+\item{y}{tensor}
+}
+\value{
+tensor
 }
 \description{
 Logical_or
-
-Logical_not
 }

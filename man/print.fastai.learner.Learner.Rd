@@ -6,6 +6,14 @@
 \usage{
 \method{print}{fastai.learner.Learner}(x, ...)
 }
+\arguments{
+\item{x}{object}
+
+\item{...}{additional parameters to pass}
+}
+\value{
+None
+}
 \description{
 Print model
 }

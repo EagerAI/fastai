@@ -7,6 +7,14 @@
 \usage{
 \method{\%\%}{torch.Tensor}(x, y)
 }
+\arguments{
+\item{x}{tensor}
+
+\item{y}{tensor}
+}
+\value{
+tensor
+}
 \description{
 Floor mod
 }

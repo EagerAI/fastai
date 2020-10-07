@@ -4,7 +4,15 @@
 \alias{mean.torch.Tensor}
 \title{Mean of tensor}
 \usage{
-\method{mean}{torch.Tensor}(a, ...)
+\method{mean}{torch.Tensor}(x, ...)
+}
+\arguments{
+\item{x}{tensor}
+
+\item{...}{additional parameters to pass}
+}
+\value{
+tensor
 }
 \description{
 Mean of tensor

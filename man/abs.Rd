@@ -5,7 +5,13 @@
 \alias{abs.torch.Tensor}
 \title{Abs}
 \usage{
-\method{abs}{torch.Tensor}(a)
+\method{abs}{torch.Tensor}(x)
+}
+\arguments{
+\item{x}{tensor}
+}
+\value{
+tensor
 }
 \description{
 Abs

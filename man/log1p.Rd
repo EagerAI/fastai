@@ -5,7 +5,13 @@
 \alias{log1p.torch.Tensor}
 \title{Log1p}
 \usage{
-\method{log1p}{torch.Tensor}(a)
+\method{log1p}{torch.Tensor}(x)
+}
+\arguments{
+\item{x}{tensor}
+}
+\value{
+tensor
 }
 \description{
 Log1p

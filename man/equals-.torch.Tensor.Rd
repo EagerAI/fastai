@@ -2,7 +2,7 @@
 % Please edit documentation in R/generics_tensor.R
 \name{==.torch.Tensor}
 \alias{==.torch.Tensor}
-\title{Compares two tensors if equal}
+\title{Equal}
 \usage{
 \method{==}{torch.Tensor}(a, b)
 }
@@ -12,11 +12,8 @@
 \item{b}{tensor}
 }
 \value{
-A tensor of booleans, where False corresponds to 0, and 1 to True
-in a tensor of data type \code{torch$bool}.
+tensor
 }
 \description{
-This generic is approximately similar to \code{torch$eq(a, b)}, with the
-difference that the generic returns a tensor of booleans instead of
-a tensor of data type \code{torch$uint8}.
+Equal
 }

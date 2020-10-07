@@ -10,6 +10,16 @@
 
 \method{<}{torch.Tensor}(a, b)
 }
+\arguments{
+\item{a}{tensor}
+
+\item{b}{tensor}
+}
+\value{
+tensor
+
+tensor
+}
 \description{
 Greater
 

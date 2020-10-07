@@ -152,7 +152,7 @@
 #' @name or_mask
 #' @export
 "|.fastai.torch_core.TensorMask" <- function(a, b) {
-  a$logical_and(b)
+  a$logical_or(b)
 }
 
 #' @title Logical_not

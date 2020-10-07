@@ -7,6 +7,12 @@
 \usage{
 \method{dim}{torch.Tensor}(x)
 }
+\arguments{
+\item{x}{tensor}
+}
+\value{
+tensor
+}
 \description{
 Dim
 }

@@ -5,7 +5,13 @@
 \alias{expm1.torch.Tensor}
 \title{Expm1}
 \usage{
-\method{expm1}{torch.Tensor}(a)
+\method{expm1}{torch.Tensor}(x)
+}
+\arguments{
+\item{x}{tensor}
+}
+\value{
+tensor
 }
 \description{
 Expm1

@@ -5,7 +5,15 @@
 \alias{log.torch.Tensor}
 \title{Log}
 \usage{
-\method{log}{torch.Tensor}(a)
+\method{log}{torch.Tensor}(x, base = exp(1))
+}
+\arguments{
+\item{x}{tensor}
+
+\item{base}{base parameter}
+}
+\value{
+tensor
 }
 \description{
 Log

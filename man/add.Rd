@@ -3,40 +3,27 @@
 \name{add}
 \alias{add}
 \alias{+.torch.Tensor}
-\alias{floor.torch.Tensor}
-\alias{ceiling.torch.Tensor}
-\alias{cos.torch.Tensor}
-\alias{cosh.torch.Tensor}
-\alias{sin.torch.Tensor}
 \alias{sinh.torch.Tensor}
 \title{Add}
 \usage{
 \method{+}{torch.Tensor}(a, b)
 
-\method{floor}{torch.Tensor}(a)
+\method{sinh}{torch.Tensor}(x)
+}
+\arguments{
+\item{a}{tensor}
 
-\method{ceiling}{torch.Tensor}(a)
+\item{b}{tensor}
 
-\method{cos}{torch.Tensor}(a)
+\item{x}{tensor}
+}
+\value{
+tensor
 
-\method{cosh}{torch.Tensor}(a)
-
-\method{sin}{torch.Tensor}(a)
-
-\method{sinh}{torch.Tensor}(a)
+tensor
 }
 \description{
 Add
-
-Floor
-
-Ceil
-
-Cos
-
-Cosh
-
-Sin
 
 Sinh
 }
