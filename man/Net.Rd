@@ -6,6 +6,9 @@
 \usage{
 Net()
 }
+\value{
+model
+}
 \description{
 Net model from Migrating_Pytorch
 }

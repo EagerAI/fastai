@@ -11,6 +11,9 @@ URLs_PLANET_SAMPLE(filename = "PLANET_SAMPLE", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download PLANET_SAMPLE dataset
 }

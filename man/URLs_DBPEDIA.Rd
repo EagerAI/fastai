@@ -11,6 +11,9 @@ URLs_DBPEDIA(filename = "DBPEDIA", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download DBPEDIA dataset
 }

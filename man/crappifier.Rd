@@ -2,15 +2,18 @@
 % Please edit documentation in R/fastaibuilt.R
 \name{crappifier}
 \alias{crappifier}
-\title{crappifier}
+\title{Crappifier}
 \usage{
 crappifier(path_lr, path_hr)
 }
 \arguments{
-\item{path_lr}{path_lr}
+\item{path_lr}{path from (origin)}
 
-\item{path_hr}{path_hr}
+\item{path_hr}{path to (destination)}
+}
+\value{
+None
 }
 \description{
-crappifier
+Crappifier
 }

@@ -11,6 +11,9 @@ URLs_S3_IMAGELOC(filename = "S3_IMAGELOC", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download S3_IMAGELOC dataset
 }

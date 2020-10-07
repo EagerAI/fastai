@@ -11,6 +11,9 @@ URLs_S3_IMAGE(filename = "S3_IMAGE", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download S3_IMAGE dataset
 }

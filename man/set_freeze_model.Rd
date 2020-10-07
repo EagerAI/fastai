@@ -2,15 +2,18 @@
 % Please edit documentation in R/GAN.R
 \name{set_freeze_model}
 \alias{set_freeze_model}
-\title{set_freeze_model}
+\title{Set freeze model}
 \usage{
 set_freeze_model(m, rg)
 }
 \arguments{
-\item{m}{m}
+\item{m}{parameters}
 
 \item{rg}{rg}
 }
+\value{
+None
+}
 \description{
-set_freeze_model
+Set freeze model
 }

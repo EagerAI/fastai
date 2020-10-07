@@ -1,97 +1,10 @@
-#' @title DataBlock
-#'
-#' @description Generic container to quickly build `Datasets` and `DataLoaders`
-#'
-#'
-#' @param blocks blocks
-#' @param dl_type dl_type
-#' @param getters getters
-#' @param n_inp n_inp is the number of elements in the tuples that should be considered part of the input and will default to 1 if tfms consists of one set of transforms
-#' @param item_tfms One or several transforms applied to the items before batching them
-#' @param batch_tfms One or several transforms applied to the batches once they are formed
-#'
-#' @export
-DataBlock <- function(blocks = NULL, dl_type = NULL, getters = NULL,
-                      n_inp = NULL, item_tfms = NULL, batch_tfms = NULL,
-                      ...) {
 
-  args <- list(
-    blocks = blocks,
-    dl_type = dl_type,
-    getters = getters,
-    n_inp = n_inp,
-    item_tfms = item_tfms,
-    batch_tfms = batch_tfms,
-    ...
-  )
-
-  if(!is.null(args$batch_tfms)) {
-    args$batch_tfms <- unlist(args$batch_tfms)
-  }
-
-  if(!is.null(args$n_inp)) {
-    args$n_inp <- as.integer(args$n_inp)
-  }
-
-  do.call(vision$gan$DataBlock, args)
-
-}
-
-
-
-#' @title TransformBlock
-#'
-#' @description A basic wrapper that links defaults transforms for the data block API
+#' @title Generate noise
 #'
 #'
-#' @param type_tfms type_tfms
-#' @param item_tfms item_tfms
-#' @param batch_tfms one or several transforms applied to the batches once they are formed
-#' @param dl_type dl_type
-#' @param dls_kwargs dls_kwargs
-#'
-#' @export
-TransformBlock <- function(type_tfms = NULL, item_tfms = NULL,
-                           batch_tfms = NULL, dl_type = NULL,
-                           dls_kwargs = NULL) {
-
-
-
-  if(missing(type_tfms) & missing(item_tfms) & missing(batch_tfms) & missing(dl_type) & missing(dls_kwargs)) {
-    invisible(vision$gan$TransformBlock)
-  } else {
-    args <- list(
-      type_tfms = type_tfms,
-      item_tfms = item_tfms,
-      batch_tfms = batch_tfms,
-      dl_type = dl_type,
-      dls_kwargs = dls_kwargs
-    )
-    do.call(vision$gan$TransformBlock, args)
-  }
-
-
-}
-
-
-#' @title ImageBlock
-#'
-#' @description A `TransformBlock` for images of `cls`
-#'
-#'
-#' @export
-ImageBlock <- function(...) {
-
-  invisible(vision$gan$ImageBlock(...))
-
-}
-
-#' @title Generate_noise
-#'
-#'
-#' @param fn fn
-#' @param size size
-#'
+#' @param fn path
+#' @param size the size
+#' @return None
 #' @export
 generate_noise <- function(fn, size = 100) {
 
@@ -110,13 +23,13 @@ generate_noise <- function(fn, size = 100) {
 
 }
 
-#' @title IndexSplitter
+#' @title Index Splitter
 #'
 #' @description Split `items` so that `val_idx` are in the validation set and the others in the training set
 #'
 #'
 #' @param valid_idx The indices to use for the validation set (defaults to a random split otherwise)
-#'
+#' @return None
 #' @export
 IndexSplitter <- function(valid_idx) {
 
@@ -133,13 +46,13 @@ IndexSplitter <- function(valid_idx) {
 }
 
 
-#' @title FileSplitter
+#' @title File Splitter
 #'
 #' @description Split `items` by providing file `fname` (contains names of valid items separated by newline).
 #'
 #'
-#' @param fname fname
-#'
+#' @param fname file name
+#' @return None
 #' @export
 FileSplitter <- function(fname) {
 
@@ -154,12 +67,11 @@ FileSplitter <- function(fname) {
 }
 
 
-#' @title dataloaders
+#' @title Dataloaders from dls object
 #'
 #' @description Create a `DataLoaders` object from `source`
 #'
 #'
-#' @param source source
 #' @param ... additional parameters to pass
 #'
 #' @export
@@ -185,29 +97,15 @@ dataloaders <- function(object, ...) {
 }
 
 
-#' @title Basic_generator
+#' @title Basic generator
 #'
 #' @description A basic generator from `in_sz` to images `n_channels` x `out_size` x `out_size`.
 #'
 #'
 #' @param out_size out_size
 #' @param n_channels n_channels
-#' @param in_sz in_sz
-#' @param n_features The number of features
-#' @param n_extra_layers The number of extra layers
 #' @param ... additional params to pass
-#' @param bias bias
-#' @param ndim ndim
-#' @param norm_type norm_type
-#' @param bn_1st bn_1st
-#' @param act_cls act_cls
-#' @param transpose transpose
-#' @param init init
-#' @param xtra xtra
-#' @param bias_std bias_std
-#' @param dilation dilation
-#' @param groups groups
-#'
+#' @return generator object
 #' @export
 basic_generator <- function(out_size, n_channels,
                             ...) {
@@ -242,28 +140,14 @@ basic_generator <- function(out_size, n_channels,
 }
 
 
-#' @title Basic_critic
+#' @title Basic critic
 #'
 #' @description A basic critic for images `n_channels` x `in_size` x `in_size`.
 #'
 #'
 #' @param in_size in_size
 #' @param n_channels The number of channels
-#' @param n_features The number of features
-#' @param n_extra_layers The number of extra layers
-#' @param norm_type norm_type
-#' @param bias bias
-#' @param ndim ndim
-#' @param bn_1st bn_1st
-#' @param act_cls act_cls
-#' @param transpose transpose
-#' @param xtra xtra
-#' @param bias_std bias_std
-#' @param dilation dilation
-#' @param groups groups
-#' @param padding_mode Mode of padding
-#' @param ... additional parameters to pass
-#'
+#' @return None
 #' @export
 basic_critic <- function(in_size, n_channels,
                          ...) {
@@ -322,7 +206,7 @@ basic_critic <- function(in_size, n_channels,
 #' @param wd_bn_bias wd_bn_bias
 #' @param train_bn train_bn
 #' @param moms moms
-#'
+#' @return None
 #' @export
 GANLearner_wgan <- function(dls, generator, critic, switcher = NULL, clip = 0.01,
                  switch_eval = FALSE, gen_first = FALSE, show_img = TRUE,
@@ -363,11 +247,9 @@ GANLearner_wgan <- function(dls, generator, critic, switcher = NULL, clip = 0.01
 #' @title Fit
 #' @description Fit the model on this learner with `lr` learning rate, `wd` weight decay for `epochs` with `callbacks`.
 #'
-#' @param epochs epochs
-#' @param lr lr
-#' @param wd wd
-#' @param callbacks callbacks
-#'
+#' @param object model
+#' @param .. additonal parameters to pass
+#' @return train history
 #' @export
 fit.fastai.vision.gan.GANLearner <- function(object, ...) {
 
@@ -413,7 +295,7 @@ fit.fastai.vision.gan.GANLearner <- function(object, ...) {
 
 
 
-#' @title GANModule
+#' @title GAN Module
 #'
 #' @description Wrapper around a `generator` and a `critic` to create a GAN.
 #'
@@ -421,7 +303,7 @@ fit.fastai.vision.gan.GANLearner <- function(object, ...) {
 #' @param generator generator
 #' @param critic critic
 #' @param gen_mode gen_mode
-#'
+#' @return None
 #' @export
 GANModule <- function(generator = NULL, critic = NULL, gen_mode = FALSE) {
 
@@ -436,12 +318,12 @@ GANModule <- function(generator = NULL, critic = NULL, gen_mode = FALSE) {
 }
 
 
-#' @title GANDiscriminativeLR
+#' @title GAN Discriminative LR
 #'
 #' @description `Callback` that handles multiplying the learning rate by `mult_lr` for the critic.
 #'
 #'
-#' @param mult_lr mult_lr
+#' @param mult_lr mult learning rate
 #'
 #' @export
 GANDiscriminativeLR <- function(mult_lr = 5.0) {
@@ -458,7 +340,7 @@ GANDiscriminativeLR <- function(mult_lr = 5.0) {
 #'
 #'
 #' @param codes codes
-#'
+#' @return block
 #' @export
 MaskBlock <- function(codes = NULL) {
 
@@ -473,12 +355,12 @@ MaskBlock <- function(codes = NULL) {
 }
 
 
-#' @title AddChannels
+#' @title Add Channels
 #'
 #' @description Add `n_dim` channels at the end of the input.
 #'
 #'
-#' @param n_dim n_dim
+#' @param n_dim number of dimensions
 #'
 #' @export
 AddChannels <- function(n_dim) {
@@ -492,11 +374,10 @@ AddChannels <- function(n_dim) {
 
 
 
-#' @title DenseResBlock
+#' @title Dense Res Block
 #'
 #' @description Resnet block of `nf` features. `conv_kwargs` are passed to `conv_layer`.
 #'
-#' @details
 #'
 #' @param nf nf
 #' @param norm_type norm_type
@@ -514,7 +395,7 @@ AddChannels <- function(n_dim) {
 #' @param dilation dilation
 #' @param groups groups
 #' @param padding_mode padding_mode
-#'
+#' @return block
 #' @export
 DenseResBlock <- function(nf, norm_type = 1,
                           ks = 3, stride = 1, padding = NULL,
@@ -546,16 +427,16 @@ DenseResBlock <- function(nf, norm_type = 1,
 
 }
 
-#' @title gan_critic
+#' @title Gan critic
 #'
 #' @description Critic to train a `GAN`.
 #'
 #'
-#' @param n_channels n_channels
+#' @param n_channels number of channels
 #' @param nf nf
-#' @param n_blocks n_blocks
-#' @param p p
-#'
+#' @param n_blocks number of blocks
+#' @param p probability
+#' @return GAN object
 #' @export
 gan_critic <- function(n_channels = 3, nf = 128, n_blocks = 3, p = 0.15) {
 
@@ -569,15 +450,15 @@ gan_critic <- function(n_channels = 3, nf = 128, n_blocks = 3, p = 0.15) {
 }
 
 
-#' @title GANLoss
+#' @title GAN Loss
 #'
 #' @description Wrapper around `crit_loss_func` and `gen_loss_func`
 #'
 #'
-#' @param gen_loss_func gen_loss_func
-#' @param crit_loss_func crit_loss_func
-#' @param gan_model gan_model
-#'
+#' @param gen_loss_func generator loss funcion
+#' @param crit_loss_func discriminator loss function
+#' @param gan_model GAN model
+#' @return None
 #' @export
 GANLoss <- function(gen_loss_func, crit_loss_func, gan_model) {
 
@@ -589,13 +470,13 @@ GANLoss <- function(gen_loss_func, crit_loss_func, gan_model) {
 
 }
 
-#' @title AdaptiveLoss
+#' @title Adaptive Loss
 #'
 #' @description Expand the `target` to match the `output` size before applying `crit`.
 #'
 #'
-#' @param crit crit
-#'
+#' @param crit discriminator loss
+#' @return None
 #' @export
 AdaptiveLoss <- function(crit) {
 
@@ -606,16 +487,16 @@ AdaptiveLoss <- function(crit) {
 }
 
 
-#' @title accuracy_thresh_expand
+#' @title Accuracy threshold expand
 #'
 #' @description Compute accuracy after expanding `y_true` to the size of `y_pred`.
 #'
 #'
-#' @param y_pred y_pred
-#' @param y_true y_true
-#' @param thresh thresh
-#' @param sigmoid sigmoid
-#'
+#' @param y_pred predictions
+#' @param y_true actuals
+#' @param thresh threshold point
+#' @param sigmoid sigmoid function
+#' @return None
 #' @export
 accuracy_thresh_expand <- function(y_pred, y_true, thresh = 0.5, sigmoid = TRUE) {
 
@@ -628,12 +509,12 @@ accuracy_thresh_expand <- function(y_pred, y_true, thresh = 0.5, sigmoid = TRUE)
 
 }
 
-#' @title set_freeze_model
+#' @title Set freeze model
 #'
 #'
-#' @param m m
+#' @param m parameters
 #' @param rg rg
-#'
+#' @return None
 #' @export
 set_freeze_model <- function(m, rg) {
 
@@ -644,7 +525,7 @@ set_freeze_model <- function(m, rg) {
 
 }
 
-#' @title GANTrainer
+#' @title GAN Trainer
 #'
 #' @description Handles GAN Training.
 #'
@@ -654,7 +535,7 @@ set_freeze_model <- function(m, rg) {
 #' @param beta beta
 #' @param gen_first gen_first
 #' @param show_img show_img
-#'
+#' @return None
 #' @export
 GANTrainer <- function(switch_eval = FALSE, clip = NULL, beta = 0.98,
                        gen_first = FALSE, show_img = TRUE) {
@@ -670,15 +551,14 @@ GANTrainer <- function(switch_eval = FALSE, clip = NULL, beta = 0.98,
 }
 
 
-#' @title FixedGANSwitcher
+#' @title Fixed GAN Switcher
 #'
 #' @description Switcher to do `n_crit` iterations of the critic then `n_gen` iterations of the generator.
 #'
-#' @details
 #'
-#' @param n_crit n_crit
-#' @param n_gen n_gen
-#'
+#' @param n_crit number of discriminator
+#' @param n_gen number of generator
+#' @return None
 #' @export
 FixedGANSwitcher <- function(n_crit = 1, n_gen = 1) {
 
@@ -689,14 +569,14 @@ FixedGANSwitcher <- function(n_crit = 1, n_gen = 1) {
 
 }
 
-#' @title AdaptiveGANSwitcher
+#' @title Adaptive GAN Switcher
 #'
 #' @description Switcher that goes back to generator/critic when the loss goes below `gen_thresh`/`crit_thresh`.
 #'
 #'
 #' @param gen_thresh gen_thresh
 #' @param critic_thresh critic_thresh
-#'
+#' @return None
 #' @export
 AdaptiveGANSwitcher <- function(gen_thresh = NULL, critic_thresh = NULL) {
 
@@ -707,26 +587,11 @@ AdaptiveGANSwitcher <- function(gen_thresh = NULL, critic_thresh = NULL) {
 
 }
 
-#' @title GANDiscriminativeLR
-#'
-#' @description `Callback` that handles multiplying the learning rate by `mult_lr` for the critic.
-#'
-#'
-#' @param mult_lr mult_lr
-#'
-#' @export
-GANDiscriminativeLR <- function(mult_lr = 5.0) {
 
-  vision$gan$GANDiscriminativeLR(
-    mult_lr = mult_lr
-  )
-
-}
-
-#' @title InvisibleTensor
+#' @title Invisible Tensor
 #'
-#' @param x x
-#'
+#' @param x tensor
+#' @return None
 #' @export
 InvisibleTensor <- function(x) {
 
@@ -736,15 +601,15 @@ InvisibleTensor <- function(x) {
 
 }
 
-#' @title gan_loss_from_func
+#' @title GAN loss from function
 #'
 #' @description Define loss functions for a GAN from `loss_gen` and `loss_crit`.
 #'
 #'
-#' @param loss_gen loss_gen
-#' @param loss_crit loss_crit
-#' @param weights_gen weights_gen
-#'
+#' @param loss_gen generator loss
+#' @param loss_crit discriminator loss
+#' @param weights_gen weight generator
+#' @return None
 #' @export
 gan_loss_from_func <- function(loss_gen, loss_crit, weights_gen = NULL) {
 
@@ -758,14 +623,14 @@ gan_loss_from_func <- function(loss_gen, loss_crit, weights_gen = NULL) {
 
 
 
-#' @title AdaptiveGANSwitcher
+#' @title Adaptive GAN Switcher
 #'
 #' @description Switcher that goes back to generator/critic when the loss goes below `gen_thresh`/`crit_thresh`.
 #'
 #'
-#' @param gen_thresh gen_thresh
-#' @param critic_thresh critic_thresh
-#'
+#' @param gen_thresh generator threshold
+#' @param critic_thresh discriminator threshold
+#' @return None
 #' @export
 AdaptiveGANSwitcher <- function(gen_thresh = NULL, critic_thresh = NULL) {
 
@@ -779,31 +644,31 @@ AdaptiveGANSwitcher <- function(gen_thresh = NULL, critic_thresh = NULL) {
 
 
 
-#' @title GANLearner_from_learners
+#' @title GAN Learner from learners
 #'
 #' @description Create a GAN from `learn_gen` and `learn_crit`.
 #'
-#' @param gen_learn gen_learn
-#' @param crit_learn crit_learn
+#' @param gen_learn generator learner
+#' @param crit_learn discriminator learner
 #' @param switcher switcher
-#' @param weights_gen weights_gen
+#' @param weights_gen weights generator
 #' @param gen_first gen_first
 #' @param switch_eval switch_eval
 #' @param show_img show_img
 #' @param clip clip
-#' @param cbs cbs
-#' @param metrics metrics
-#' @param loss_func loss_func
-#' @param opt_func opt_func
-#' @param lr lr
-#' @param splitter splitter
-#' @param path path
-#' @param model_dir model_dir
-#' @param wd wd
-#' @param wd_bn_bias wd_bn_bias
-#' @param train_bn train_bn
-#' @param moms moms
-#'
+#' @param cbs Cbs is one or a list of Callbacks to pass to the Learner.
+#' @param metrics It is an optional list of metrics, that can be either functions or Metrics.
+#' @param loss_func loss function
+#' @param opt_func The function used to create the optimizer
+#' @param lr learning rate
+#' @param splitter It is a function that takes self.model and returns a list of parameter groups (or just one parameter group if there are no different parameter groups).
+#' @param path The folder where to work
+#' @param model_dir Path and model_dir are used to save and/or load models.
+#' @param wd It is the default weight decay used when training the model.
+#' @param wd_bn_bias It controls if weight decay is applied to BatchNorm layers and bias.
+#' @param train_bn It controls if BatchNorm layers are trained even when they are supposed to be frozen according to the splitter.
+#' @param moms The default momentums used in Learner.fit_one_cycle.
+#' @return None
 #' @export
 GANLearner_from_learners <- function(gen_learn, crit_learn, switcher = NULL, weights_gen = NULL,
                           gen_first = FALSE, switch_eval = TRUE, show_img = TRUE,
@@ -840,28 +705,13 @@ GANLearner_from_learners <- function(gen_learn, crit_learn, switcher = NULL, wei
 }
 
 
-#' @title GANDiscriminativeLR
-#'
-#' @description `Callback` that handles multiplying the learning rate by `mult_lr` for the critic.
-#'
-#'
-#' @param mult_lr mult_lr
-#'
-#' @export
-GANDiscriminativeLR <- function(mult_lr = 5.0) {
-
-  vision$gan$GANDiscriminativeLR(
-    mult_lr = mult_lr
-  )
-
-}
 
 
 #' @title Learner
 #'
 #'
-#'
-#'
+#' @param ... parameters to pass
+#' @return None
 #' @export
 Learner = function(...) {
   args = list(...)
@@ -871,11 +721,11 @@ Learner = function(...) {
 
 
 
-#' @title get_c
+#' @title Get_c
 #'
 #'
-#' @param dls dls
-#'
+#' @param dls dataloader object
+#' @return number of layers
 #' @export
 get_c <- function(dls) {
 

@@ -11,6 +11,9 @@ URLs_S3_COCO(filename = "S3_COCO", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download S3_COCO dataset
 }

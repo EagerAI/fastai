@@ -11,6 +11,9 @@ URLs_CAMVID_TINY(filename = "CAMVID_TINY", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download CAMVID_TINY dataset
 }

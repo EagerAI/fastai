@@ -2,16 +2,19 @@
 % Please edit documentation in R/GAN.R
 \name{GANLoss}
 \alias{GANLoss}
-\title{GANLoss}
+\title{GAN Loss}
 \usage{
 GANLoss(gen_loss_func, crit_loss_func, gan_model)
 }
 \arguments{
-\item{gen_loss_func}{gen_loss_func}
+\item{gen_loss_func}{generator loss funcion}
 
-\item{crit_loss_func}{crit_loss_func}
+\item{crit_loss_func}{discriminator loss function}
 
-\item{gan_model}{gan_model}
+\item{gan_model}{GAN model}
+}
+\value{
+None
 }
 \description{
 Wrapper around `crit_loss_func` and `gen_loss_func`

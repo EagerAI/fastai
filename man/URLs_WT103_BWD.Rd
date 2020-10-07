@@ -11,6 +11,9 @@ URLs_WT103_BWD(filename = "WT103_BWD", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download WT103_BWD dataset
 }

@@ -11,6 +11,9 @@ URLs_SKIN_LESION(filename = "SKIN_LESION", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download SKIN_LESION dataset
 }

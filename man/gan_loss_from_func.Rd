@@ -2,16 +2,19 @@
 % Please edit documentation in R/GAN.R
 \name{gan_loss_from_func}
 \alias{gan_loss_from_func}
-\title{gan_loss_from_func}
+\title{GAN loss from function}
 \usage{
 gan_loss_from_func(loss_gen, loss_crit, weights_gen = NULL)
 }
 \arguments{
-\item{loss_gen}{loss_gen}
+\item{loss_gen}{generator loss}
 
-\item{loss_crit}{loss_crit}
+\item{loss_crit}{discriminator loss}
 
-\item{weights_gen}{weights_gen}
+\item{weights_gen}{weight generator}
+}
+\value{
+None
 }
 \description{
 Define loss functions for a GAN from `loss_gen` and `loss_crit`.

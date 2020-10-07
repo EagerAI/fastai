@@ -2,9 +2,12 @@
 % Please edit documentation in R/custom_modules.R
 \name{test_loader}
 \alias{test_loader}
-\title{test_loader}
+\title{Test_loader}
 \usage{
 test_loader()
+}
+\value{
+loader
 }
 \description{
 Data loader. Combines a dataset and a sampler, and provides an iterable over
@@ -14,8 +17,3 @@ the given dataset. The :class:`~torch.utils.data.DataLoader` supports both map-s
 iterable-style datasets with single- or multi-process loading, customizing
 loading order and optional automatic batching (collation) and memory pinning. See :py:mod:`torch.utils.data` documentation page for more details.
 }
-\section{The }{
-class:`~torch.utils.data.DataLoader` supports both map-style and:
-iterable-style datasets with single- or multi-process loading, customizing loading order and optional automatic batching (collation) and memory pinning.
-}
-

@@ -1,12 +1,12 @@
 
 #crap <- reticulate::import_from_path('crappify', path = 'fastaibuilt')
 
-#' @title crappifier
+#' @title Crappifier
 #'
 #'
-#' @param path_lr path_lr
-#' @param path_hr path_hr
-#'
+#' @param path_lr path from (origin)
+#' @param path_hr path to (destination)
+#' @return None
 #' @export
 crappifier <- function(path_lr, path_hr) {
 

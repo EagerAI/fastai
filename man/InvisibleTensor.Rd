@@ -2,13 +2,16 @@
 % Please edit documentation in R/GAN.R
 \name{InvisibleTensor}
 \alias{InvisibleTensor}
-\title{InvisibleTensor}
+\title{Invisible Tensor}
 \usage{
 InvisibleTensor(x)
 }
 \arguments{
-\item{x}{x}
+\item{x}{tensor}
+}
+\value{
+None
 }
 \description{
-InvisibleTensor
+Invisible Tensor
 }

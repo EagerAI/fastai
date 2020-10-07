@@ -2,7 +2,7 @@
 % Please edit documentation in R/GAN.R
 \name{GANLearner_from_learners}
 \alias{GANLearner_from_learners}
-\title{GANLearner_from_learners}
+\title{GAN Learner from learners}
 \usage{
 GANLearner_from_learners(
   gen_learn,
@@ -28,13 +28,13 @@ GANLearner_from_learners(
 )
 }
 \arguments{
-\item{gen_learn}{gen_learn}
+\item{gen_learn}{generator learner}
 
-\item{crit_learn}{crit_learn}
+\item{crit_learn}{discriminator learner}
 
 \item{switcher}{switcher}
 
-\item{weights_gen}{weights_gen}
+\item{weights_gen}{weights generator}
 
 \item{gen_first}{gen_first}
 
@@ -44,29 +44,32 @@ GANLearner_from_learners(
 
 \item{clip}{clip}
 
-\item{cbs}{cbs}
+\item{cbs}{Cbs is one or a list of Callbacks to pass to the Learner.}
 
-\item{metrics}{metrics}
+\item{metrics}{It is an optional list of metrics, that can be either functions or Metrics.}
 
-\item{loss_func}{loss_func}
+\item{loss_func}{loss function}
 
-\item{opt_func}{opt_func}
+\item{opt_func}{The function used to create the optimizer}
 
-\item{lr}{lr}
+\item{lr}{learning rate}
 
-\item{splitter}{splitter}
+\item{splitter}{It is a function that takes self.model and returns a list of parameter groups (or just one parameter group if there are no different parameter groups).}
 
-\item{path}{path}
+\item{path}{The folder where to work}
 
-\item{model_dir}{model_dir}
+\item{model_dir}{Path and model_dir are used to save and/or load models.}
 
-\item{wd}{wd}
+\item{wd}{It is the default weight decay used when training the model.}
 
-\item{wd_bn_bias}{wd_bn_bias}
+\item{wd_bn_bias}{It controls if weight decay is applied to BatchNorm layers and bias.}
 
-\item{train_bn}{train_bn}
+\item{train_bn}{It controls if BatchNorm layers are trained even when they are supposed to be frozen according to the splitter.}
 
-\item{moms}{moms}
+\item{moms}{The default momentums used in Learner.fit_one_cycle.}
+}
+\value{
+None
 }
 \description{
 Create a GAN from `learn_gen` and `learn_crit`.

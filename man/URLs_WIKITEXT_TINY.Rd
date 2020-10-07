@@ -11,6 +11,9 @@ URLs_WIKITEXT_TINY(filename = "WIKITEXT_TINY", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download WIKITEXT_TINY dataset
 }

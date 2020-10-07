@@ -2,16 +2,21 @@
 % Please edit documentation in R/GAN.R
 \name{AdaptiveGANSwitcher}
 \alias{AdaptiveGANSwitcher}
-\title{AdaptiveGANSwitcher}
+\title{Adaptive GAN Switcher}
 \usage{
 AdaptiveGANSwitcher(gen_thresh = NULL, critic_thresh = NULL)
 
 AdaptiveGANSwitcher(gen_thresh = NULL, critic_thresh = NULL)
 }
 \arguments{
-\item{gen_thresh}{gen_thresh}
+\item{gen_thresh}{generator threshold}
 
-\item{critic_thresh}{critic_thresh}
+\item{critic_thresh}{discriminator threshold}
+}
+\value{
+None
+
+None
 }
 \description{
 Switcher that goes back to generator/critic when the loss goes below `gen_thresh`/`crit_thresh`.

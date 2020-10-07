@@ -235,7 +235,94 @@ MultiCategoryBlock <- function(encoded = FALSE, vocab = NULL, add_na = FALSE) {
 
 
 
+#' @title DataBlock
+#'
+#' @description Generic container to quickly build `Datasets` and `DataLoaders`
+#'
+#'
+#' @param blocks blocks
+#' @param dl_type dl_type
+#' @param getters how to get dataet
+#' @param n_inp n_inp is the number of elements in the tuples that should be considered part of the input and will default to 1 if tfms consists of one set of transforms
+#' @param item_tfms One or several transforms applied to the items before batching them
+#' @param batch_tfms One or several transforms applied to the batches once they are formed
+#' @param ... additional parameters to pass
+#' @return block
+#' @export
+DataBlock <- function(blocks = NULL, dl_type = NULL, getters = NULL,
+                      n_inp = NULL, item_tfms = NULL, batch_tfms = NULL,
+                      ...) {
 
+  args <- list(
+    blocks = blocks,
+    dl_type = dl_type,
+    getters = getters,
+    n_inp = n_inp,
+    item_tfms = item_tfms,
+    batch_tfms = batch_tfms,
+    ...
+  )
+
+  if(!is.null(args$batch_tfms)) {
+    args$batch_tfms <- unlist(args$batch_tfms)
+  }
+
+  if(!is.null(args$n_inp)) {
+    args$n_inp <- as.integer(args$n_inp)
+  }
+
+  do.call(vision$gan$DataBlock, args)
+
+}
+
+
+
+#' @title TransformBlock
+#'
+#' @description A basic wrapper that links defaults transforms for the data block API
+#'
+#'
+#' @param type_tfms type_tfms
+#' @param item_tfms item_tfms
+#' @param batch_tfms one or several transforms applied to the batches once they are formed
+#' @param dl_type dl_type
+#' @param dls_kwargs dls_kwargs
+#' @return block
+#' @export
+TransformBlock <- function(type_tfms = NULL, item_tfms = NULL,
+                           batch_tfms = NULL, dl_type = NULL,
+                           dls_kwargs = NULL) {
+
+
+
+  if(missing(type_tfms) & missing(item_tfms) & missing(batch_tfms) & missing(dl_type) & missing(dls_kwargs)) {
+    invisible(vision$gan$TransformBlock)
+  } else {
+    args <- list(
+      type_tfms = type_tfms,
+      item_tfms = item_tfms,
+      batch_tfms = batch_tfms,
+      dl_type = dl_type,
+      dls_kwargs = dls_kwargs
+    )
+    do.call(vision$gan$TransformBlock, args)
+  }
+
+
+}
+
+
+#' @title ImageBlock
+#'
+#' @description A `TransformBlock` for images of `cls`
+#' @param ... parameters to pass
+#' @return block
+#' @export
+ImageBlock <- function(...) {
+
+  invisible(vision$gan$ImageBlock(...))
+
+}
 
 
 

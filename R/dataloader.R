@@ -1,12 +1,12 @@
 
 
 
-#' @title Dataloader
+#' @title Data Loaders
 #'
 #'
 #' @param ... parameters to pass
 #'
-#'
+#' @return loader object
 #' @export
 Data_Loaders = function(...) {
 

@@ -14,6 +14,9 @@ URLs_AMAZON_REVIEWSAMAZON_REVIEWS(
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download AMAZON_REVIEWSAMAZON_REVIEWS dataset
 }

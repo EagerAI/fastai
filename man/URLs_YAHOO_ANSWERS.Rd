@@ -11,6 +11,9 @@ URLs_YAHOO_ANSWERS(filename = "YAHOO_ANSWERS", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download YAHOO_ANSWERS dataset
 }

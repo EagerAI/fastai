@@ -2,12 +2,12 @@
 % Please edit documentation in R/GAN.R
 \name{AddChannels}
 \alias{AddChannels}
-\title{AddChannels}
+\title{Add Channels}
 \usage{
 AddChannels(n_dim)
 }
 \arguments{
-\item{n_dim}{n_dim}
+\item{n_dim}{number of dimensions}
 }
 \description{
 Add `n_dim` channels at the end of the input.

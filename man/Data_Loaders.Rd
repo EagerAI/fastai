@@ -2,13 +2,16 @@
 % Please edit documentation in R/dataloader.R
 \name{Data_Loaders}
 \alias{Data_Loaders}
-\title{Dataloader}
+\title{Data Loaders}
 \usage{
 Data_Loaders(...)
 }
 \arguments{
 \item{...}{parameters to pass}
 }
+\value{
+loader object
+}
 \description{
-Dataloader
+Data Loaders
 }

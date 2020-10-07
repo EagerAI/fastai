@@ -2,15 +2,18 @@
 % Please edit documentation in R/GAN.R
 \name{generate_noise}
 \alias{generate_noise}
-\title{Generate_noise}
+\title{Generate noise}
 \usage{
 generate_noise(fn, size = 100)
 }
 \arguments{
-\item{fn}{fn}
+\item{fn}{path}
 
-\item{size}{size}
+\item{size}{the size}
+}
+\value{
+None
 }
 \description{
-Generate_noise
+Generate noise
 }

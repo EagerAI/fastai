@@ -11,6 +11,9 @@ URLs_CIFAR_100(filename = "CIFAR_100", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download CIFAR_100 dataset
 }

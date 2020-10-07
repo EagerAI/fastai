@@ -11,6 +11,9 @@ URLs_COCO_TINY(filename = "COCO_TINY", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download COCO_TINY dataset
 }

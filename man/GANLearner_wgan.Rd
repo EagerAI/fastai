@@ -65,6 +65,9 @@ GANLearner_wgan(
 
 \item{moms}{moms}
 }
+\value{
+None
+}
 \description{
 Create a WGAN from `data`, `generator` and `critic`.
 }

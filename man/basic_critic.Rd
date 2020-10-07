@@ -2,7 +2,7 @@
 % Please edit documentation in R/GAN.R
 \name{basic_critic}
 \alias{basic_critic}
-\title{Basic_critic}
+\title{Basic critic}
 \usage{
 basic_critic(in_size, n_channels, ...)
 }
@@ -10,34 +10,9 @@ basic_critic(in_size, n_channels, ...)
 \item{in_size}{in_size}
 
 \item{n_channels}{The number of channels}
-
-\item{...}{additional parameters to pass}
-
-\item{n_features}{The number of features}
-
-\item{n_extra_layers}{The number of extra layers}
-
-\item{norm_type}{norm_type}
-
-\item{bias}{bias}
-
-\item{ndim}{ndim}
-
-\item{bn_1st}{bn_1st}
-
-\item{act_cls}{act_cls}
-
-\item{transpose}{transpose}
-
-\item{xtra}{xtra}
-
-\item{bias_std}{bias_std}
-
-\item{dilation}{dilation}
-
-\item{groups}{groups}
-
-\item{padding_mode}{Mode of padding}
+}
+\value{
+None
 }
 \description{
 A basic critic for images `n_channels` x `in_size` x `in_size`.

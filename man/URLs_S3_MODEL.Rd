@@ -11,6 +11,9 @@ URLs_S3_MODEL(filename = "S3_MODEL", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download S3_MODEL dataset
 }

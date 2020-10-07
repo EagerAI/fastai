@@ -11,6 +11,9 @@ URLs_IMDB_SAMPLE(filename = "IMDB_SAMPLE", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download IMDB_SAMPLE dataset
 }

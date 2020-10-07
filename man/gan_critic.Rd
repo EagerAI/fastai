@@ -2,18 +2,21 @@
 % Please edit documentation in R/GAN.R
 \name{gan_critic}
 \alias{gan_critic}
-\title{gan_critic}
+\title{Gan critic}
 \usage{
 gan_critic(n_channels = 3, nf = 128, n_blocks = 3, p = 0.15)
 }
 \arguments{
-\item{n_channels}{n_channels}
+\item{n_channels}{number of channels}
 
 \item{nf}{nf}
 
-\item{n_blocks}{n_blocks}
+\item{n_blocks}{number of blocks}
 
-\item{p}{p}
+\item{p}{probability}
+}
+\value{
+GAN object
 }
 \description{
 Critic to train a `GAN`.

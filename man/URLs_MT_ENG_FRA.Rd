@@ -11,6 +11,9 @@ URLs_MT_ENG_FRA(filename = "MT_ENG_FRA", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download MT_ENG_FRA dataset
 }

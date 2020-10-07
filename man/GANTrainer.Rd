@@ -2,7 +2,7 @@
 % Please edit documentation in R/GAN.R
 \name{GANTrainer}
 \alias{GANTrainer}
-\title{GANTrainer}
+\title{GAN Trainer}
 \usage{
 GANTrainer(
   switch_eval = FALSE,
@@ -22,6 +22,9 @@ GANTrainer(
 \item{gen_first}{gen_first}
 
 \item{show_img}{show_img}
+}
+\value{
+None
 }
 \description{
 Handles GAN Training.

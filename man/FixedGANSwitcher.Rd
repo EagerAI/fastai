@@ -2,18 +2,18 @@
 % Please edit documentation in R/GAN.R
 \name{FixedGANSwitcher}
 \alias{FixedGANSwitcher}
-\title{FixedGANSwitcher}
+\title{Fixed GAN Switcher}
 \usage{
 FixedGANSwitcher(n_crit = 1, n_gen = 1)
 }
 \arguments{
-\item{n_crit}{n_crit}
+\item{n_crit}{number of discriminator}
 
-\item{n_gen}{n_gen}
+\item{n_gen}{number of generator}
+}
+\value{
+None
 }
 \description{
 Switcher to do `n_crit` iterations of the critic then `n_gen` iterations of the generator.
-}
-\details{
-
 }

@@ -11,6 +11,9 @@ URLs_YELP_REVIEWS_POLARITY(filename = "YELP_REVIEWS_POLARITY", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download YELP_REVIEWS_POLARITY dataset
 }

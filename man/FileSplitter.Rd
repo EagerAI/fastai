@@ -2,12 +2,15 @@
 % Please edit documentation in R/GAN.R
 \name{FileSplitter}
 \alias{FileSplitter}
-\title{FileSplitter}
+\title{File Splitter}
 \usage{
 FileSplitter(fname)
 }
 \arguments{
-\item{fname}{fname}
+\item{fname}{file name}
+}
+\value{
+None
 }
 \description{
 Split `items` by providing file `fname` (contains names of valid items separated by newline).

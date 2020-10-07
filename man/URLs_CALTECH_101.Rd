@@ -11,6 +11,9 @@ URLs_CALTECH_101(filename = "CALTECH_101", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download CALTECH_101 dataset
 }

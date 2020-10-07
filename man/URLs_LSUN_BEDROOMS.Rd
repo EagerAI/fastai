@@ -11,6 +11,9 @@ URLs_LSUN_BEDROOMS(filename = "LSUN_BEDROOMS", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download LSUN_BEDROOMS dataset
 }

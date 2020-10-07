@@ -11,6 +11,9 @@ URLs_SIIM_SMALL(filename = "SIIM_SMALL", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download YELP_REVIEWS_POLARITY dataset
 }

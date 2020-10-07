@@ -2,7 +2,7 @@
 % Please edit documentation in R/GAN.R
 \name{DenseResBlock}
 \alias{DenseResBlock}
-\title{DenseResBlock}
+\title{Dense Res Block}
 \usage{
 DenseResBlock(
   nf,
@@ -56,9 +56,9 @@ DenseResBlock(
 
 \item{padding_mode}{padding_mode}
 }
+\value{
+block
+}
 \description{
 Resnet block of `nf` features. `conv_kwargs` are passed to `conv_layer`.
-}
-\details{
-
 }

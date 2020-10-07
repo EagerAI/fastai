@@ -2,14 +2,12 @@
 % Please edit documentation in R/GAN.R
 \name{dataloaders}
 \alias{dataloaders}
-\title{dataloaders}
+\title{Dataloaders from dls object}
 \usage{
 dataloaders(object, ...)
 }
 \arguments{
 \item{...}{additional parameters to pass}
-
-\item{source}{source}
 }
 \description{
 Create a `DataLoaders` object from `source`

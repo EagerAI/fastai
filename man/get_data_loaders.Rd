@@ -2,15 +2,18 @@
 % Please edit documentation in R/custom_modules.R
 \name{get_data_loaders}
 \alias{get_data_loaders}
-\title{get_data_loaders}
+\title{Get data loaders}
 \usage{
 get_data_loaders(train_batch_size, val_batch_size)
 }
 \arguments{
-\item{train_batch_size}{train_batch_size}
+\item{train_batch_size}{train dataset batch size}
 
-\item{val_batch_size}{val_batch_size}
+\item{val_batch_size}{validation dataset batch size}
+}
+\value{
+None
 }
 \description{
-get_data_loaders
+Get data loaders
 }

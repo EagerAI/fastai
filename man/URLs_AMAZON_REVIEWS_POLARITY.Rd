@@ -14,6 +14,9 @@ URLs_AMAZON_REVIEWS_POLARITY(
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download AMAZON_REVIEWS_POLARITY dataset
 }

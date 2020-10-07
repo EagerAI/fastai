@@ -11,6 +11,9 @@ URLs_AG_NEWS(filename = "AG_NEWS", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download AG_NEWS dataset
 }

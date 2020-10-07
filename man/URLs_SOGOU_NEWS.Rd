@@ -11,6 +11,9 @@ URLs_SOGOU_NEWS(filename = "SOGOU_NEWS", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download SOGOU_NEWS dataset
 }

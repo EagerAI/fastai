@@ -6,6 +6,9 @@
 \usage{
 catalyst_model()
 }
+\value{
+model
+}
 \description{
 Catalyst model
 }

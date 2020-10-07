@@ -11,6 +11,9 @@ URLs_FOOD(filename = "FOOD", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download FOOD dataset
 }

@@ -6,6 +6,9 @@
 \usage{
 LitModel()
 }
+\value{
+model
+}
 \description{
 Lit Model
 }

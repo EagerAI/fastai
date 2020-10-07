@@ -11,6 +11,9 @@ URLs_MNIST_SAMPLE(filename = "MNIST_SAMPLE", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download MNIST_SAMPLE dataset
 }

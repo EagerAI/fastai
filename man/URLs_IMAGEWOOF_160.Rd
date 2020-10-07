@@ -11,6 +11,9 @@ URLs_IMAGEWOOF_160(filename = "IMAGEWOOF_160", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download IMAGEWOOF_160 dataset
 }

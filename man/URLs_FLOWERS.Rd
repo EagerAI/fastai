@@ -11,6 +11,9 @@ URLs_FLOWERS(filename = "FLOWERS", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download FLOWERS dataset
 }

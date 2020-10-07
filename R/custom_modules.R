@@ -4,7 +4,7 @@
 #'
 #'
 #' @description Net model from Migrating_Pytorch
-#'
+#' @return model
 #' @export
 Net = function() {
   migrating_pytorch$Net()
@@ -12,25 +12,22 @@ Net = function() {
 
 
 
-#' @title train_loader
+#' @title Train_loader
 #'
 #' @description Data loader. Combines a dataset and a sampler, and provides an iterable over
 #'
 #' @details the given dataset. The :class:`~torch.utils.data.DataLoader` supports both map-style and
 #' iterable-style datasets with single- or multi-process loading, customizing
-#' loading order and optional automatic batching (collation) and memory pinning. See :py:mod:`torch.utils.data` documentation page for more details.
+#' loading order and optional automatic batching (collation) and memory pinning.
 #'
-#'
-#' @section The :class:`~torch.utils.data.DataLoader` supports both map-style and:
-#' iterable-style datasets with single- or multi-process loading, customizing loading order and optional automatic batching (collation) and memory pinning.
-#'
+#' @return loader
 #' @export
 train_loader = function() {
   invisible(migrating_pytorch$train_loader)
 }
 
 
-#' @title test_loader
+#' @title Test_loader
 #'
 #' @description Data loader. Combines a dataset and a sampler, and provides an iterable over
 #'
@@ -38,22 +35,19 @@ train_loader = function() {
 #' iterable-style datasets with single- or multi-process loading, customizing
 #' loading order and optional automatic batching (collation) and memory pinning. See :py:mod:`torch.utils.data` documentation page for more details.
 #'
-#'
-#' @section The :class:`~torch.utils.data.DataLoader` supports both map-style and:
-#' iterable-style datasets with single- or multi-process loading, customizing loading order and optional automatic batching (collation) and memory pinning.
-#'
+#' @return loader
 #' @export
 test_loader = function() {
   migrating_pytorch$test_loader
 }
 
 
-#' @title get_data_loaders
+#' @title Get data loaders
 #'
 #'
-#' @param train_batch_size train_batch_size
-#' @param val_batch_size val_batch_size
-#'
+#' @param train_batch_size train dataset batch size
+#' @param val_batch_size validation dataset batch size
+#' @return None
 #' @export
 get_data_loaders <- function(train_batch_size, val_batch_size) {
 
@@ -68,22 +62,15 @@ get_data_loaders <- function(train_batch_size, val_batch_size) {
 
 #' @title Lit Model
 #'
-#'
+#' @return model
 #' @export
 LitModel = function() {
   migrating_lightning$LitModel()
 }
 
 
-#' @title loaders
-#'
-#' @description dict() -> new empty dictionary
-#'
-#' @details dict(mapping) -> new dictionary initialized from a mapping object's (key, value) pairs
-#' dict(iterable) -> new dictionary initialized as if via: d = {} for k, v in iterable: d[k] = v
-#' dict(**kwargs) -> new dictionary initialized with the name=value pairs in the keyword argument list. For example: dict(one=1, two=2)
-#'
-#'
+#' @title Loaders
+#' @description a loader from Catalyst
 #' @export
 loaders = function() {
   catalyst$loaders
@@ -92,7 +79,7 @@ loaders = function() {
 
 #' @title Catalyst model
 #'
-#'
+#' @return model
 #' @export
 catalyst_model = function() {
   catalyst$model

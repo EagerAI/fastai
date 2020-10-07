@@ -11,6 +11,9 @@ URLs_ML_SAMPLE(filename = "ML_SAMPLE", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download ML_SAMPLE dataset
 }

@@ -11,6 +11,9 @@ URLs_PLANET_TINY(filename = "PLANET_TINY", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download PLANET_TINY dataset
 }

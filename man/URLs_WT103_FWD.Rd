@@ -11,6 +11,9 @@ URLs_WT103_FWD(filename = "WT103_FWD", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download WT103_FWD dataset
 }

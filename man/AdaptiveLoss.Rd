@@ -2,7 +2,7 @@
 % Please edit documentation in R/GAN.R, R/Loss.R
 \name{AdaptiveLoss}
 \alias{AdaptiveLoss}
-\title{AdaptiveLoss}
+\title{Adaptive Loss}
 \usage{
 AdaptiveLoss(crit)
 
@@ -10,6 +10,9 @@ AdaptiveLoss(crit)
 }
 \arguments{
 \item{crit}{crit}
+}
+\value{
+None
 }
 \description{
 Expand the `target` to match the `output` size before applying `crit`.

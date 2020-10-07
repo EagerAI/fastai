@@ -7,13 +7,12 @@
 \method{fit}{fastai.vision.gan.GANLearner}(object, ...)
 }
 \arguments{
-\item{epochs}{epochs}
+\item{object}{model}
 
-\item{lr}{lr}
-
-\item{wd}{wd}
-
-\item{callbacks}{callbacks}
+\item{..}{additonal parameters to pass}
+}
+\value{
+train history
 }
 \description{
 Fit the model on this learner with `lr` learning rate, `wd` weight decay for `epochs` with `callbacks`.

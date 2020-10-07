@@ -11,6 +11,9 @@ URLs_IMAGENETTE_160(filename = "IMAGENETTE_160", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download IMAGENETTE_160 dataset
 }

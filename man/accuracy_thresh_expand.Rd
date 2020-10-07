@@ -2,18 +2,21 @@
 % Please edit documentation in R/GAN.R
 \name{accuracy_thresh_expand}
 \alias{accuracy_thresh_expand}
-\title{accuracy_thresh_expand}
+\title{Accuracy threshold expand}
 \usage{
 accuracy_thresh_expand(y_pred, y_true, thresh = 0.5, sigmoid = TRUE)
 }
 \arguments{
-\item{y_pred}{y_pred}
+\item{y_pred}{predictions}
 
-\item{y_true}{y_true}
+\item{y_true}{actuals}
 
-\item{thresh}{thresh}
+\item{thresh}{threshold point}
 
-\item{sigmoid}{sigmoid}
+\item{sigmoid}{sigmoid function}
+}
+\value{
+None
 }
 \description{
 Compute accuracy after expanding `y_true` to the size of `y_pred`.

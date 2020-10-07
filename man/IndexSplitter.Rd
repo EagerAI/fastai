@@ -2,12 +2,15 @@
 % Please edit documentation in R/GAN.R
 \name{IndexSplitter}
 \alias{IndexSplitter}
-\title{IndexSplitter}
+\title{Index Splitter}
 \usage{
 IndexSplitter(valid_idx)
 }
 \arguments{
 \item{valid_idx}{The indices to use for the validation set (defaults to a random split otherwise)}
+}
+\value{
+None
 }
 \description{
 Split `items` so that `val_idx` are in the validation set and the others in the training set

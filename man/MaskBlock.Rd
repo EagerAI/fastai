@@ -9,6 +9,9 @@ MaskBlock(codes = NULL)
 \arguments{
 \item{codes}{codes}
 }
+\value{
+block
+}
 \description{
 A `TransformBlock` for segmentation masks, potentially with `codes`
 }

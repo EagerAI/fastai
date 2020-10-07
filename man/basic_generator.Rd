@@ -2,7 +2,7 @@
 % Please edit documentation in R/GAN.R
 \name{basic_generator}
 \alias{basic_generator}
-\title{Basic_generator}
+\title{Basic generator}
 \usage{
 basic_generator(out_size, n_channels, ...)
 }
@@ -12,34 +12,9 @@ basic_generator(out_size, n_channels, ...)
 \item{n_channels}{n_channels}
 
 \item{...}{additional params to pass}
-
-\item{in_sz}{in_sz}
-
-\item{n_features}{The number of features}
-
-\item{n_extra_layers}{The number of extra layers}
-
-\item{bias}{bias}
-
-\item{ndim}{ndim}
-
-\item{norm_type}{norm_type}
-
-\item{bn_1st}{bn_1st}
-
-\item{act_cls}{act_cls}
-
-\item{transpose}{transpose}
-
-\item{init}{init}
-
-\item{xtra}{xtra}
-
-\item{bias_std}{bias_std}
-
-\item{dilation}{dilation}
-
-\item{groups}{groups}
+}
+\value{
+generator object
 }
 \description{
 A basic generator from `in_sz` to images `n_channels` x `out_size` x `out_size`.

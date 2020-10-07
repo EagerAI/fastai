@@ -11,6 +11,9 @@ URLs_S3_NLP(filename = "S3_NLP", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download S3_NLP dataset
 }

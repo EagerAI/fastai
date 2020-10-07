@@ -2,21 +2,13 @@
 % Please edit documentation in R/GAN.R
 \name{GANDiscriminativeLR}
 \alias{GANDiscriminativeLR}
-\title{GANDiscriminativeLR}
+\title{GAN Discriminative LR}
 \usage{
-GANDiscriminativeLR(mult_lr = 5)
-
-GANDiscriminativeLR(mult_lr = 5)
-
 GANDiscriminativeLR(mult_lr = 5)
 }
 \arguments{
-\item{mult_lr}{mult_lr}
+\item{mult_lr}{mult learning rate}
 }
 \description{
-`Callback` that handles multiplying the learning rate by `mult_lr` for the critic.
-
-`Callback` that handles multiplying the learning rate by `mult_lr` for the critic.
-
 `Callback` that handles multiplying the learning rate by `mult_lr` for the critic.
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/GAN.R
 \name{GANModule}
 \alias{GANModule}
-\title{GANModule}
+\title{GAN Module}
 \usage{
 GANModule(generator = NULL, critic = NULL, gen_mode = FALSE)
 }
@@ -12,6 +12,9 @@ GANModule(generator = NULL, critic = NULL, gen_mode = FALSE)
 \item{critic}{critic}
 
 \item{gen_mode}{gen_mode}
+}
+\value{
+None
 }
 \description{
 Wrapper around a `generator` and a `critic` to create a GAN.

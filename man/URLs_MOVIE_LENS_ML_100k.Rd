@@ -11,6 +11,9 @@ URLs_MOVIE_LENS_ML_100k(filename = "ml-100k", unzip = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download YELP_REVIEWS_POLARITY dataset
 }

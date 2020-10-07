@@ -11,6 +11,9 @@ URLs_CUB_200_2011(filename = "CUB_200_2011", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download CUB_200_2011 dataset
 }

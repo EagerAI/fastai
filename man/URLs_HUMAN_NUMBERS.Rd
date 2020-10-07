@@ -11,6 +11,9 @@ URLs_HUMAN_NUMBERS(filename = "HUMAN_NUMBERS", untar = TRUE)
 
 \item{untar}{logical, whether to untar the '.tgz' file}
 }
+\value{
+None
+}
 \description{
 download HUMAN_NUMBERS dataset
 }

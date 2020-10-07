@@ -2,13 +2,16 @@
 % Please edit documentation in R/GAN.R
 \name{get_c}
 \alias{get_c}
-\title{get_c}
+\title{Get_c}
 \usage{
 get_c(dls)
 }
 \arguments{
-\item{dls}{dls}
+\item{dls}{dataloader object}
+}
+\value{
+number of layers
 }
 \description{
-get_c
+Get_c
 }
