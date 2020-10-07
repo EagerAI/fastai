@@ -4,7 +4,13 @@
 \alias{expm1.fastai.torch_core.TensorMask}
 \title{Expm1}
 \usage{
-\method{expm1}{fastai.torch_core.TensorMask}(a)
+\method{expm1}{fastai.torch_core.TensorMask}(x)
+}
+\arguments{
+\item{x}{tensor}
+}
+\value{
+tensor
 }
 \description{
 Expm1

@@ -4,7 +4,13 @@
 \alias{log1p.fastai.torch_core.TensorMask}
 \title{Log1p}
 \usage{
-\method{log1p}{fastai.torch_core.TensorMask}(a)
+\method{log1p}{fastai.torch_core.TensorMask}(x)
+}
+\arguments{
+\item{x}{tensor}
+}
+\value{
+tensor
 }
 \description{
 Log1p

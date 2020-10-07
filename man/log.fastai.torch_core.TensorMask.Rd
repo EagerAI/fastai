@@ -4,7 +4,15 @@
 \alias{log.fastai.torch_core.TensorMask}
 \title{Log}
 \usage{
-\method{log}{fastai.torch_core.TensorMask}(a)
+\method{log}{fastai.torch_core.TensorMask}(x, base = exp(1))
+}
+\arguments{
+\item{x}{tensor}
+
+\item{base}{base parameter}
+}
+\value{
+tensor
 }
 \description{
 Log

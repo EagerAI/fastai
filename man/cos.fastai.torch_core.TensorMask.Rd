@@ -4,7 +4,13 @@
 \alias{cos.fastai.torch_core.TensorMask}
 \title{Cos}
 \usage{
-\method{cos}{fastai.torch_core.TensorMask}(a)
+\method{cos}{fastai.torch_core.TensorMask}(x)
+}
+\arguments{
+\item{x}{tensor}
+}
+\value{
+tensor
 }
 \description{
 Cos

@@ -4,7 +4,15 @@
 \alias{round.fastai.torch_core.TensorMask}
 \title{Round}
 \usage{
-\method{round}{fastai.torch_core.TensorMask}(a)
+\method{round}{fastai.torch_core.TensorMask}(x, digits = 0)
+}
+\arguments{
+\item{x}{tensor}
+
+\item{digits}{decimal}
+}
+\value{
+tensor
 }
 \description{
 Round

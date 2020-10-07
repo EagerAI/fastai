@@ -6,6 +6,14 @@
 \usage{
 \method{&}{fastai.torch_core.TensorMask}(a, b)
 }
+\arguments{
+\item{x}{tensor}
+
+\item{y}{tensor}
+}
+\value{
+tensor
+}
 \description{
 Logical_and
 }

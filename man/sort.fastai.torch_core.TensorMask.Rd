@@ -6,6 +6,16 @@
 \usage{
 \method{sort}{fastai.torch_core.TensorMask}(x, decreasing = FALSE, ...)
 }
+\arguments{
+\item{x}{tensor}
+
+\item{decreasing}{the order}
+
+\item{...}{additional parameters to pass}
+}
+\value{
+tensor
+}
 \description{
 Sort
 }

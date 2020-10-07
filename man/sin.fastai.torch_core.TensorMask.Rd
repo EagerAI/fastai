@@ -4,7 +4,13 @@
 \alias{sin.fastai.torch_core.TensorMask}
 \title{Sin}
 \usage{
-\method{sin}{fastai.torch_core.TensorMask}(a)
+\method{sin}{fastai.torch_core.TensorMask}(x)
+}
+\arguments{
+\item{x}{tensor}
+}
+\value{
+tensor
 }
 \description{
 Sin

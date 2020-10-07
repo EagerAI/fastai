@@ -4,7 +4,13 @@
 \alias{cosh.fastai.torch_core.TensorMask}
 \title{Cosh}
 \usage{
-\method{cosh}{fastai.torch_core.TensorMask}(a)
+\method{cosh}{fastai.torch_core.TensorMask}(x)
+}
+\arguments{
+\item{x}{tensor}
+}
+\value{
+tensor
 }
 \description{
 Cosh

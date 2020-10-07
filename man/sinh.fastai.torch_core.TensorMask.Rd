@@ -4,7 +4,13 @@
 \alias{sinh.fastai.torch_core.TensorMask}
 \title{Sinh}
 \usage{
-\method{sinh}{fastai.torch_core.TensorMask}(a)
+\method{sinh}{fastai.torch_core.TensorMask}(x)
+}
+\arguments{
+\item{x}{tensor}
+}
+\value{
+tensor
 }
 \description{
 Sinh

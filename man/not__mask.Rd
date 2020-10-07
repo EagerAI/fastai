@@ -7,6 +7,12 @@
 \usage{
 \method{!}{fastai.torch_core.TensorMask}(a)
 }
+\arguments{
+\item{x}{tensor}
+}
+\value{
+tensor
+}
 \description{
 Logical_not
 }

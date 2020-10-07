@@ -6,6 +6,14 @@
 \usage{
 \method{\%/\%}{fastai.torch_core.TensorMask}(x, y)
 }
+\arguments{
+\item{x}{tensor}
+
+\item{y}{tensor}
+}
+\value{
+tensor
+}
 \description{
 Floor divide
 }

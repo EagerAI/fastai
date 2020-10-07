@@ -1,33 +1,30 @@
 
-#' Compares two tensors if equal
-#'
-#' This generic is approximately similar to \code{torch$eq(a, b)}, with the
-#' difference that the generic returns a tensor of booleans instead of
-#' a tensor of data type \code{torch$uint8}.
+#' @title Equal
 #'
 #' @param a tensor
 #' @param b tensor
-#' @return A tensor of booleans, where False corresponds to 0, and 1 to True
-#' in a tensor of data type \code{torch$bool}.
-#'
-#'
+#' @return tensor
 #' @export
 "==.fastai.torch_core.TensorMask" <- function(a, b) {
   a$eq(b)
 }
 
 
-#' Pow
+#' @title Pow
 #'
-#'
+#' @param a tensor
+#' @param b tensor
+#' @return tensor
 #' @export
 "^.fastai.torch_core.TensorMask" <- function(a, b) {
   a$pow(b)
 }
 
-#' Not equal
+#' @title Not equal
 #'
-#'
+#' @param a tensor
+#' @param b tensor
+#' @return tensor
 #' @name not_equal_to_mask_
 #' @export
 "!=.fastai.torch_core.TensorMask" <- function(a, b) {
@@ -35,107 +32,132 @@
 }
 
 
-#' Greater or equal
+#' @title Greater or equal
 #'
-#'
+#' @param a tensor
+#' @param b tensor
+#' @return tensor
 #' @export
 ">=.fastai.torch_core.TensorMask" <- function(a, b) {
   a$ge(b)
 }
 
-#' Greater
+#' @title Greater
 #'
-#'
+#' @param a tensor
+#' @param b tensor
+#' @return tensor
 #' @export
 ">.fastai.torch_core.TensorMask" <- function(a, b) {
   a$gt(b)
 }
 
 
-#' Less or equal
-#'
+#' @title Less or equal
+#' @param a tensor
+#' @param b tensor
+#' @return tensor
 #' @export
 "<=.fastai.torch_core.TensorMask" <- function(a, b) {
   a$le(b)
 }
 
-#' Less
+#' @title Less
 #'
-#'
+#' @param a tensor
+#' @param b tensor
+#' @return tensor
 #' @export
 "<.fastai.torch_core.TensorMask" <- function(a, b) {
   a$lt(b)
 }
 
 
-#' Max
+#' @title Max
 #'
-#'
+#' @param a tensor
+#' @param ... additional parameters
+#' @param na.rm remove NAs
+#' @return tensor
 #' @export
 "max.fastai.torch_core.TensorMask" <- function(a, ..., na.rm = FALSE) {
   a$max()
 }
 
-#' Min
+#' @title Min
 #'
-#'
+#' @param a tensor
+#' @param ... additional parameters
+#' @param na.rm remove NAs
+#' @return tensor
 #' @export
 "min.fastai.torch_core.TensorMask" <- function(a, ..., na.rm = FALSE) {
   a$min()
 }
 
-#' Dim
+#' @title Dim
 #'
-#'
+#' @param x tensor
+#' @return tensor
 #' @export
 "dim.fastai.torch_core.TensorMask" <- function(x) {
   bt$list(x$shape)
 }
 
 
-#' Length
+#' @title Length
 #'
-#'
+#' @param x tensor
+#' @return tensor
 #' @export
 "length.fastai.torch_core.TensorMask" <- function(x) {
   x$nelement()
 }
 
-#' Floor divide
+#' @title Floor divide
 #'
-#'
+#' @param x tensor
+#' @param y tensor
+#' @return tensor
 #' @export
 "%/%.fastai.torch_core.TensorMask" <- function(x,y) {
   x$floor_divide(y)
 }
 
 
-#' Floor mod
+#' @title Floor mod
 #'
-#'
+#' @param x tensor
+#' @param y tensor
+#' @return tensor
 #' @export
 "%%.fastai.torch_core.TensorMask" <- function(x,y) {
   x$fmod(y)
 }
 
-#' Logical_and
+#' @title Logical_and
 #'
-#'
+#' @param x tensor
+#' @param y tensor
+#' @return tensor
 #' @export
 "&.fastai.torch_core.TensorMask" <- function(a, b) {
   a$logical_and(b)
 }
 
-#' Logical_or
-#'
+#' @title Logical_or
+#' @param x tensor
+#' @param y tensor
+#' @return tensor
 #' @name or_mask
 #' @export
 "|.fastai.torch_core.TensorMask" <- function(a, b) {
   a$logical_and(b)
 }
 
-#' Logical_not
-#'
+#' @title Logical_not
+#' @param x tensor
+#' @return tensor
 #' @name not__mask
 #' @export
 "!.fastai.torch_core.TensorMask" <- function(a) {
@@ -143,9 +165,12 @@
 }
 
 
-#' Sort
+#' @title Sort
 #'
-#'
+#' @param x tensor
+#' @param decreasing the order
+#' @param ... additional parameters to pass
+#' @return tensor
 #' @export
 "sort.fastai.torch_core.TensorMask" <- function(x, decreasing = FALSE, ...) {
   if(decreasing) {
@@ -158,158 +183,182 @@
 
 
 
-#' Abs
+#' @title Abs
 #'
-#'
+#' @param x tensor
+#' @return tensor
 #' @export
-"abs.fastai.torch_core.TensorMask" <- function(a) {
-  a$abs()
+"abs.fastai.torch_core.TensorMask" <- function(x) {
+  x$abs()
 }
 
 
-#' Add
+#' @title Add
 #'
-#'
+#' @param a tensor
+#' @param b tensor
+#' @return tensor
 #' @export
 "+.fastai.torch_core.TensorMask" <- function(a, b) {
   a$add(b)
 }
 
-#' Sub
-#'
+#' @title Sub
+#' @param a tensor
+#' @param b tensor
+#' @return tensor
 #' @name sub_mask
 #' @export
 "-.fastai.torch_core.TensorMask" <- function(a, b) {
   a$sub(b)
 }
 
-#' Div
+#' @title Div
 #'
-#'
+#' @param a tensor
+#' @param b tensor
+#' @return tensor
 #' @export
 "/.fastai.torch_core.TensorMask" <- function(a, b) {
   a$div(b)
 }
 
-#' Multiply
+#' @title Multiply
 #'
-#'
+#' @param a tensor
+#' @param b tensor
+#' @return tensor
 #' @export
 "*.fastai.torch_core.TensorMask" <- function(a, b) {
   a$mul(b)
 }
 
 
-#' Exp
+#' @title Exp
 #'
-#'
+#' @param x tensor
+#' @return tensor
 #' @export
-"exp.fastai.torch_core.TensorMask" <- function(a) {
-  a$exp()
+"exp.fastai.torch_core.TensorMask" <- function(x) {
+  x$exp()
 }
 
 
-#' Expm1
+#' @title Expm1
 #'
-#'
+#' @param x tensor
+#' @return tensor
 #' @export
-"expm1.fastai.torch_core.TensorMask" <- function(a) {
-  a$expm1()
+"expm1.fastai.torch_core.TensorMask" <- function(x) {
+  x$expm1()
 }
 
-#' Log
+#' @title Log
 #'
-#'
+#' @param x tensor
+#' @param base base parameter
+#' @return tensor
 #' @export
-"log.fastai.torch_core.TensorMask" <- function(a) {
-  a$log()
-}
-
-
-
-#' Log1p
-#'
-#'
-#' @export
-"log1p.fastai.torch_core.TensorMask" <- function(a) {
-  a$log1p()
-}
-
-
-#' Round
-#'
-#'
-#' @export
-"round.fastai.torch_core.TensorMask" <- function(a) {
-  a$round()
-}
-
-
-#' Sqrt
-#'
-#'
-#' @export
-"sqrt.fastai.torch_core.TensorMask" <- function(a) {
-  a$sqrt()
-}
-
-
-#' Floor
-#'
-#'
-#' @export
-"floor.fastai.torch_core.TensorMask" <- function(a) {
-  a$floor()
-}
-
-#' Ceil
-#'
-#' @export
-"ceiling.fastai.torch_core.TensorMask" <- function(a) {
-  a$ceil()
-}
-
-#' Cos
-#'
-#'
-#' @export
-"cos.fastai.torch_core.TensorMask" <- function(a) {
-  a$cos()
-}
-
-#' Cosh
-#'
-#' @export
-"cosh.fastai.torch_core.TensorMask" <- function(a) {
-  a$cosh()
+"log.fastai.torch_core.TensorMask" <- function(x, base = exp(1)) {
+  x$log()
 }
 
 
 
-#' Sin
-#'
-#'
+#' @title Log1p
+#' @param x tensor
+#' @return tensor
 #' @export
-"sin.fastai.torch_core.TensorMask" <- function(a) {
-  a$sin()
-}
-
-#' Sinh
-#'
-#'
-#' @export
-"sinh.fastai.torch_core.TensorMask" <- function(a) {
-  a$sinh()
+"log1p.fastai.torch_core.TensorMask" <- function(x) {
+  x$log1p()
 }
 
 
+#' @title Round
+#'
+#' @param x tensor
+#' @param digits decimal
+#' @return tensor
+#' @export
+"round.fastai.torch_core.TensorMask" <- function(x, digits = 0) {
+  x$round()
+}
 
-#' Mean of tensor
+
+#' @title Sqrt
 #'
+#' @param x tensor
+#' @return tensor
+#' @export
+"sqrt.fastai.torch_core.TensorMask" <- function(x) {
+  x$sqrt()
+}
+
+
+#' @title Floor
 #'
+#' @param x tensor
+#' @return tensor
+#' @export
+"floor.fastai.torch_core.TensorMask" <- function(x) {
+  x$floor()
+}
+
+#' @title Ceil
+#' @param x tensor
+#' @return tensor
+#' @export
+"ceiling.fastai.torch_core.TensorMask" <- function(x) {
+  x$ceil()
+}
+
+#' @title Cos
+#'
+#' @param x tensor
+#' @return tensor
+#' @export
+"cos.fastai.torch_core.TensorMask" <- function(x) {
+  x$cos()
+}
+
+#' @title Cosh
+#' @param x tensor
+#' @return tensor
+#' @export
+"cosh.fastai.torch_core.TensorMask" <- function(x) {
+  x$cosh()
+}
+
+
+
+#' @title Sin
+#'
+#' @param x tensor
+#' @return tensor
+#' @export
+"sin.fastai.torch_core.TensorMask" <- function(x) {
+  x$sin()
+}
+
+#' @title Sinh
+#'
+#' @param x tensor
+#' @return tensor
+#' @export
+"sinh.fastai.torch_core.TensorMask" <- function(x) {
+  x$sinh()
+}
+
+
+
+#' @title Mean of tensor
+#'
+#' @param x tensor
+#' @param ... additional parameters to pass
+#' @return tensor
 #'
 #' @export
-"mean.fastai.torch_core.TensorMask" <- function(a, ...) {
-  a$mean()
+"mean.fastai.torch_core.TensorMask" <- function(x, ...) {
+  x$mean()
 }
 

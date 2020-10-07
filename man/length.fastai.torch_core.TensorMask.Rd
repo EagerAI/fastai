@@ -6,6 +6,12 @@
 \usage{
 \method{length}{fastai.torch_core.TensorMask}(x)
 }
+\arguments{
+\item{x}{tensor}
+}
+\value{
+tensor
+}
 \description{
 Length
 }

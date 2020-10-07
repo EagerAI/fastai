@@ -4,7 +4,13 @@
 \alias{sqrt.fastai.torch_core.TensorMask}
 \title{Sqrt}
 \usage{
-\method{sqrt}{fastai.torch_core.TensorMask}(a)
+\method{sqrt}{fastai.torch_core.TensorMask}(x)
+}
+\arguments{
+\item{x}{tensor}
+}
+\value{
+tensor
 }
 \description{
 Sqrt

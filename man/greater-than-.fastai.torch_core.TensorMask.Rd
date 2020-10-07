@@ -6,6 +6,14 @@
 \usage{
 \method{>}{fastai.torch_core.TensorMask}(a, b)
 }
+\arguments{
+\item{a}{tensor}
+
+\item{b}{tensor}
+}
+\value{
+tensor
+}
 \description{
 Greater
 }

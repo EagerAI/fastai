@@ -6,6 +6,16 @@
 \usage{
 \method{max}{fastai.torch_core.TensorMask}(a, ..., na.rm = FALSE)
 }
+\arguments{
+\item{a}{tensor}
+
+\item{...}{additional parameters}
+
+\item{na.rm}{remove NAs}
+}
+\value{
+tensor
+}
 \description{
 Max
 }

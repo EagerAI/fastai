@@ -4,7 +4,13 @@
 \alias{ceiling.fastai.torch_core.TensorMask}
 \title{Ceil}
 \usage{
-\method{ceiling}{fastai.torch_core.TensorMask}(a)
+\method{ceiling}{fastai.torch_core.TensorMask}(x)
+}
+\arguments{
+\item{x}{tensor}
+}
+\value{
+tensor
 }
 \description{
 Ceil
