@@ -14,21 +14,21 @@ HookCallback(
 )
 }
 \arguments{
-\item{modules}{modules}
+\item{modules}{the modules}
 
-\item{every}{every}
+\item{every}{int, every epoch}
 
-\item{remove_end}{remove_end}
+\item{remove_end}{logical, remove_end}
 
-\item{is_forward}{is_forward}
+\item{is_forward}{logical, is_forward}
 
 \item{detach}{detach}
 
-\item{cpu}{cpu}
+\item{cpu}{to cpu or not}
+}
+\value{
+None
 }
 \description{
 `Callback` that can be used to register hooks on `modules`
-}
-\details{
-
 }

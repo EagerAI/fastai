@@ -2,16 +2,19 @@
 % Please edit documentation in R/collab.R
 \name{pca}
 \alias{pca}
-\title{Pca}
+\title{PCA}
 \usage{
 pca(object, k = 3, convert = TRUE)
 }
 \arguments{
-\item{object}{object}
+\item{object}{an object to apply PCA}
 
-\item{k}{k}
+\item{k}{number of dimensions}
 
-\item{convert}{to matrix}
+\item{convert}{to R matrix}
+}
+\value{
+tensor
 }
 \description{
 Compute PCA of `x` with `k` dimensions.

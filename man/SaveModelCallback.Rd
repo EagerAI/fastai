@@ -6,6 +6,12 @@
 \usage{
 SaveModelCallback(...)
 }
+\arguments{
+\item{...}{parameters to pass}
+}
+\value{
+None
+}
 \description{
 SaveModelCallback
 }

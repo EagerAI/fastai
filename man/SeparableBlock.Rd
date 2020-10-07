@@ -19,6 +19,9 @@ SeparableBlock(expansion, ni, nf, reduction = 16, stride = 1, base_width = 4)
 
 \item{base_width}{base_width}
 }
+\value{
+Block object
+}
 \description{
 SeparableBlock
 }

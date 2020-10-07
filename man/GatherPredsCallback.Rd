@@ -23,9 +23,9 @@ GatherPredsCallback(
 
 \item{concat_dim}{concat_dim}
 }
+\value{
+None
+}
 \description{
 `Callback` that saves the predictions and targets, optionally `with_loss`
-}
-\details{
-
 }

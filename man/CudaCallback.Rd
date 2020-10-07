@@ -7,7 +7,10 @@
 CudaCallback(device = NULL)
 }
 \arguments{
-\item{device}{device}
+\item{device}{device name}
+}
+\value{
+None
 }
 \description{
 Move data to CUDA device

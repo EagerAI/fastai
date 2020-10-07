@@ -6,6 +6,12 @@
 \usage{
 TrainEvalCallback(...)
 }
+\arguments{
+\item{...}{parameters to pass}
+}
+\value{
+None
+}
 \description{
 TrainEvalCallback
 }

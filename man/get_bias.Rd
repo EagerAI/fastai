@@ -7,13 +7,16 @@
 get_bias(object, arr, is_item = TRUE, convert = TRUE)
 }
 \arguments{
-\item{object}{object}
+\item{object}{object to extract bias}
 
-\item{arr}{arr}
+\item{arr}{R data frame}
 
-\item{is_item}{is_item}
+\item{is_item}{logical, is item}
 
-\item{convert}{to matrix}
+\item{convert}{to R matrix}
+}
+\value{
+tensor
 }
 \description{
 Bias for item or user (based on `is_item`) for all in `arr`

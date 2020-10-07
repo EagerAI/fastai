@@ -3,27 +3,27 @@
 #' @description Build a convnet style learner from `dls` and `arch`
 #'
 #'
-#' @param dls dls
-#' @param arch arch
-#' @param loss_func loss_func
-#' @param pretrained pretrained
+#' @param dls data loader object
+#' @param arch a model architecture
+#' @param loss_func loss function
+#' @param pretrained pre-trained or not
 #' @param cut cut
-#' @param splitter splitter
+#' @param splitter It is a function that takes self.model and returns a list of parameter groups (or just one parameter group if there are no different parameter groups).
 #' @param y_range y_range
-#' @param config config
-#' @param n_out n_out
+#' @param config configuration
+#' @param n_out the number of out
 #' @param normalize normalize
-#' @param opt_func opt_func
-#' @param lr lr
-#' @param cbs cbs
-#' @param metrics metrics
-#' @param path path
-#' @param model_dir model_dir
-#' @param wd wd
-#' @param wd_bn_bias wd_bn_bias
-#' @param train_bn train_bn
-#' @param moms moms
-#'
+#' @param opt_func The function used to create the optimizer
+#' @param lr learning rate
+#' @param cbs Cbs is one or a list of Callbacks to pass to the Learner.
+#' @param metrics It is an optional list of metrics, that can be either functions or Metrics.
+#' @param path The folder where to work
+#' @param model_dir Path and model_dir are used to save and/or load models.
+#' @param wd It is the default weight decay used when training the model.
+#' @param wd_bn_bias It controls if weight decay is applied to BatchNorm layers and bias.
+#' @param train_bn It controls if BatchNorm layers are trained even when they are supposed to be frozen according to the splitter.
+#' @param moms The default momentums used in Learner.fit_one_cycle.
+#' @return learner object
 #' @export
 cnn_learner <- function(dls, arch, loss_func = NULL, pretrained = TRUE, cut = NULL,
                         splitter = NULL, y_range = NULL, config = NULL, n_out = NULL,
@@ -60,13 +60,12 @@ cnn_learner <- function(dls, arch, loss_func = NULL, pretrained = TRUE, cut = NU
 }
 
 #' @title Fit
-#' @description Fit the model on this learner with `lr` learning rate, `wd` weight decay for `epochs` with `callbacks`.
-#'
-#' @param epochs epochs
-#' @param lr lr
-#' @param wd wd
-#' @param callbacks callbacks
-#'
+#' @description Fit the model on this learner with `lr` learning rate,
+#' `wd` weight decay for `epochs` with `callbacks` as cbs argument.
+#' @param object a learner object
+#' @param ... parameters to pass
+#' @importFrom generics fit
+#' @return train history
 #' @export
 fit.fastai.learner.Learner <- function(object, ...) {
 
@@ -117,7 +116,7 @@ fit.fastai.learner.Learner <- function(object, ...) {
 #'
 #' @param cut cut
 #' @param pretrained pretrained
-#' @param n_in n_in
+#' @param n_in number of in
 #' @param init init
 #' @param custom_head custom_head
 #' @param concat_pool concat_pool
@@ -126,7 +125,7 @@ fit.fastai.learner.Learner <- function(object, ...) {
 #' @param bn_final bn_final
 #' @param lin_first lin_first
 #' @param y_range y_range
-#'
+#' @return None
 #' @export
 cnn_config <- function(cut = NULL, pretrained = TRUE, n_in = 3,
                        init = kaiming_normal_, custom_head = NULL,
@@ -156,24 +155,23 @@ cnn_config <- function(cut = NULL, pretrained = TRUE, n_in = 3,
 #'
 #' @description Create custom convnet architecture using `arch`, `n_in` and `n_out`
 #'
-#'
-#' @param arch arch
-#' @param n_out n_out
+#' @param arch a model architecture
+#' @param n_out number of out
 #' @param cut cut
-#' @param pretrained pretrained
-#' @param n_in n_in
-#' @param init init
-#' @param custom_head custom_head
-#' @param concat_pool concat_pool
+#' @param pretrained pretrained model or not
+#' @param n_in number of in
+#' @param init initializer
+#' @param custom_head custom head
+#' @param concat_pool concatenate pooling
 #' @param lin_ftrs lin_ftrs
 #' @param ps ps
 #' @param bn_final bn_final
 #' @param lin_first lin_first
 #' @param y_range y_range
-#'
+#' @return None
 #' @export
 create_cnn_model <- function(arch, n_out, cut = NULL, pretrained = TRUE,
-                             n_in = 3, init = kaiming_normal_,
+                             n_in = 3, init = nn$init$kaiming_normal_,
                              custom_head = NULL, concat_pool = TRUE,
                              lin_ftrs = NULL, ps = 0.5, bn_final = FALSE,
                              lin_first = FALSE, y_range = NULL) {

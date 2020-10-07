@@ -7,14 +7,14 @@
 \method{fit}{fastai.learner.Learner}(object, ...)
 }
 \arguments{
-\item{epochs}{epochs}
+\item{object}{a learner object}
 
-\item{lr}{lr}
-
-\item{wd}{wd}
-
-\item{callbacks}{callbacks}
+\item{...}{parameters to pass}
+}
+\value{
+train history
 }
 \description{
-Fit the model on this learner with `lr` learning rate, `wd` weight decay for `epochs` with `callbacks`.
+Fit the model on this learner with `lr` learning rate,
+`wd` weight decay for `epochs` with `callbacks` as cbs argument.
 }

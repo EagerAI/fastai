@@ -19,9 +19,9 @@ SEBlock(expansion, ni, nf, groups = 1, reduction = 16, stride = 1)
 
 \item{stride}{stride}
 }
-\description{
-
+\value{
+Block object
 }
-\details{
-
+\description{
+SEBlock
 }

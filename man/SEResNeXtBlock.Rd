@@ -29,9 +29,9 @@ SEResNeXtBlock(
 
 \item{base_width}{base_width}
 }
-\description{
-
+\value{
+Block object
 }
-\details{
-
+\description{
+SEResNeXtBlock
 }

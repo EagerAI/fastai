@@ -7,15 +7,15 @@
 TrackerCallback(monitor = "valid_loss", comp = NULL, min_delta = 0)
 }
 \arguments{
-\item{monitor}{monitor}
+\item{monitor}{monitor the loss}
 
 \item{comp}{comp}
 
-\item{min_delta}{min_delta}
+\item{min_delta}{minimum delta}
+}
+\value{
+None
 }
 \description{
 A `Callback` that keeps track of the best value in `monitor`.
-}
-\details{
-
 }

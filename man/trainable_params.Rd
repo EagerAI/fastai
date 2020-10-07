@@ -2,7 +2,7 @@
 % Please edit documentation in R/collab.R, R/tabular.R
 \name{trainable_params}
 \alias{trainable_params}
-\title{trainable_params}
+\title{Trainable_params}
 \usage{
 trainable_params(m)
 
@@ -10,6 +10,9 @@ trainable_params(m)
 }
 \arguments{
 \item{m}{m}
+}
+\value{
+None
 }
 \description{
 Return all trainable parameters of `m`

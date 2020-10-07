@@ -6,6 +6,12 @@
 \usage{
 CollectDataCallback(...)
 }
+\arguments{
+\item{...}{parameters to pass}
+}
+\value{
+None
+}
 \description{
 CollectDataCallback
 }

@@ -26,6 +26,9 @@ FetchPredsCallback(
 
 \item{reorder}{reorder}
 }
+\value{
+None
+}
 \description{
 A callback to fetch predictions during the training loop
 }

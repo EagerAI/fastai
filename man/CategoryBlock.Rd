@@ -15,6 +15,9 @@ CategoryBlock(vocab = NULL, sort = TRUE, add_na = FALSE)
 
 \item{add_na}{add_na}
 }
+\value{
+Block object
+}
 \description{
 `TransformBlock` for single-label categorical targets
 

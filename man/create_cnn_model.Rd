@@ -10,7 +10,7 @@ create_cnn_model(
   cut = NULL,
   pretrained = TRUE,
   n_in = 3,
-  init = kaiming_normal_,
+  init = nn$init$kaiming_normal_,
   custom_head = NULL,
   concat_pool = TRUE,
   lin_ftrs = NULL,
@@ -21,21 +21,21 @@ create_cnn_model(
 )
 }
 \arguments{
-\item{arch}{arch}
+\item{arch}{a model architecture}
 
-\item{n_out}{n_out}
+\item{n_out}{number of out}
 
 \item{cut}{cut}
 
-\item{pretrained}{pretrained}
+\item{pretrained}{pretrained model or not}
 
-\item{n_in}{n_in}
+\item{n_in}{number of in}
 
-\item{init}{init}
+\item{init}{initializer}
 
-\item{custom_head}{custom_head}
+\item{custom_head}{custom head}
 
-\item{concat_pool}{concat_pool}
+\item{concat_pool}{concatenate pooling}
 
 \item{lin_ftrs}{lin_ftrs}
 
@@ -46,6 +46,9 @@ create_cnn_model(
 \item{lin_first}{lin_first}
 
 \item{y_range}{y_range}
+}
+\value{
+None
 }
 \description{
 Create custom convnet architecture using `arch`, `n_in` and `n_out`

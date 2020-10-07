@@ -6,6 +6,12 @@
 \usage{
 TerminateOnNaNCallback(...)
 }
+\arguments{
+\item{...}{parameters to pass}
+}
+\value{
+None
+}
 \description{
 TerminateOnNaNCallback
 }

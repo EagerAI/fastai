@@ -27,17 +27,17 @@ collab_learner(
 )
 }
 \arguments{
-\item{dls}{dls}
+\item{dls}{a data loader object}
 
 \item{n_factors}{The number of factors}
 
 \item{use_nn}{use_nn}
 
-\item{emb_szs}{emb_szs}
+\item{emb_szs}{embedding size}
 
-\item{layers}{layers}
+\item{layers}{list of layers}
 
-\item{config}{config}
+\item{config}{configuration}
 
 \item{y_range}{y_range}
 
@@ -45,7 +45,7 @@ collab_learner(
 
 \item{opt_func}{The function used to create the optimizer}
 
-\item{lr}{lr}
+\item{lr}{learning rate}
 
 \item{splitter}{It is a function that takes self.model and returns a list of parameter groups (or just one parameter group if there are no different parameter groups).}
 
@@ -64,6 +64,9 @@ collab_learner(
 \item{train_bn}{It controls if BatchNorm layers are trained even when they are supposed to be frozen according to the splitter.}
 
 \item{moms}{The default momentums used in Learner.fit_one_cycle.}
+}
+\value{
+learner object
 }
 \description{
 Create a Learner for collaborative filtering on `dls`.

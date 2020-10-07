@@ -2,17 +2,13 @@
 
 #' @title SEBlock
 #'
-#' @description
-#'
-#' @details
-#'
 #' @param expansion expansion
 #' @param ni ni
 #' @param nf nf
 #' @param groups groups
 #' @param reduction reduction
 #' @param stride stride
-#'
+#' @return Block object
 #' @export
 SEBlock <- function(expansion, ni, nf, groups = 1, reduction = 16, stride = 1) {
 
@@ -59,7 +55,7 @@ SEBlock <- function(expansion, ni, nf, groups = 1, reduction = 16, stride = 1) {
 #' @param bias_std bias_std
 #' @param dilation dilation
 #' @param padding_mode padding_mode
-#'
+#' @return Block object
 #' @export
 ResBlock <- function(expansion, ni, nf, stride = 1, groups = 1,
                      reduction = NULL, nh1 = NULL, nh2 = NULL, dw = FALSE,
@@ -110,7 +106,7 @@ ResBlock <- function(expansion, ni, nf, stride = 1, groups = 1,
 #' @param padding padding
 #' @param ndim ndim
 #' @param ceil_mode ceil_mode
-#'
+#' @return None
 #' @export
 AvgPool <- function(ks = 2, stride = NULL, padding = 0, ndim = 2, ceil_mode = FALSE) {
 
@@ -134,7 +130,7 @@ AvgPool <- function(ks = 2, stride = NULL, padding = 0, ndim = 2, ceil_mode = FA
 #' @param reduction reduction
 #' @param stride stride
 #' @param base_width base_width
-#'
+#' @return Block object
 #' @export
 SeparableBlock <- function(expansion, ni, nf, reduction = 16, stride = 1, base_width = 4) {
 
@@ -158,7 +154,7 @@ SeparableBlock <- function(expansion, ni, nf, reduction = 16, stride = 1, base_w
 #' @param vocab vocab
 #' @param sort sort
 #' @param add_na add_na
-#'
+#' @return Block object
 #' @export
 CategoryBlock <- function(vocab = NULL, sort = TRUE, add_na = FALSE) {
 
@@ -174,9 +170,6 @@ CategoryBlock <- function(vocab = NULL, sort = TRUE, add_na = FALSE) {
 
 #' @title SEResNeXtBlock
 #'
-#' @description
-#'
-#' @details
 #'
 #' @param expansion expansion
 #' @param ni ni
@@ -185,7 +178,7 @@ CategoryBlock <- function(vocab = NULL, sort = TRUE, add_na = FALSE) {
 #' @param reduction reduction
 #' @param stride stride
 #' @param base_width base_width
-#'
+#' @return Block object
 #' @export
 SEResNeXtBlock <- function(expansion, ni, nf, groups = 32, reduction = 16, stride = 1, base_width = 4) {
 
@@ -209,7 +202,7 @@ SEResNeXtBlock <- function(expansion, ni, nf, groups = 32, reduction = 16, strid
 #'
 #'
 #' @param n_out n_out
-#'
+#' @return Block object
 #' @export
 RegressionBlock <- function(n_out = NULL) {
 
@@ -227,7 +220,7 @@ RegressionBlock <- function(n_out = NULL) {
 #' @param encoded encoded
 #' @param vocab vocab
 #' @param add_na add_na
-#'
+#' @return Block object
 #' @export
 MultiCategoryBlock <- function(encoded = FALSE, vocab = NULL, add_na = FALSE) {
 

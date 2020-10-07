@@ -13,6 +13,9 @@ MultiCategoryBlock(encoded = FALSE, vocab = NULL, add_na = FALSE)
 
 \item{add_na}{add_na}
 }
+\value{
+Block object
+}
 \description{
 `TransformBlock` for multi-label categorical targets
 }

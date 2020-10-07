@@ -29,7 +29,7 @@ CollabDataLoaders_from_df(
 
 \item{rating_name}{The name of the column containing the rating (defaults to the third column)}
 
-\item{seed}{seed}
+\item{seed}{random seed}
 
 \item{path}{The folder where to work}
 
@@ -39,7 +39,10 @@ CollabDataLoaders_from_df(
 
 \item{shuffle_train}{If we shuffle the training DataLoader or not}
 
-\item{device}{device}
+\item{device}{the device, e.g. cpu, cuda, and etc.}
+}
+\value{
+None
 }
 \description{
 Create a `DataLoaders` suitable for collaborative filtering from `ratings`.

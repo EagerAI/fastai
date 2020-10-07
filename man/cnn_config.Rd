@@ -23,7 +23,7 @@ cnn_config(
 
 \item{pretrained}{pretrained}
 
-\item{n_in}{n_in}
+\item{n_in}{number of in}
 
 \item{init}{init}
 
@@ -40,6 +40,9 @@ cnn_config(
 \item{lin_first}{lin_first}
 
 \item{y_range}{y_range}
+}
+\value{
+None
 }
 \description{
 Convenience function to easily create a config for `create_cnn_model`

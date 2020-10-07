@@ -29,6 +29,9 @@ CollabDataLoaders_from_dblock(
 
 \item{device}{device}
 }
+\value{
+None
+}
 \description{
 Create a dataloaders from a given `dblock`
 }

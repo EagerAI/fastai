@@ -17,6 +17,9 @@ AvgPool(ks = 2, stride = NULL, padding = 0, ndim = 2, ceil_mode = FALSE)
 
 \item{ceil_mode}{ceil_mode}
 }
+\value{
+None
+}
 \description{
 nn$AvgPool layer for `ndim`
 }

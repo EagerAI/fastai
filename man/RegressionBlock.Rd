@@ -9,6 +9,9 @@ RegressionBlock(n_out = NULL)
 \arguments{
 \item{n_out}{n_out}
 }
+\value{
+Block object
+}
 \description{
 `TransformBlock` for float targets
 }

@@ -7,13 +7,16 @@
 get_weights(object, arr, is_item = TRUE, convert = FALSE)
 }
 \arguments{
-\item{object}{object}
+\item{object}{object to extract weights}
 
-\item{arr}{arr}
+\item{arr}{R data frame}
 
-\item{is_item}{is_item}
+\item{is_item}{logical, is item}
 
-\item{convert}{to matrix}
+\item{convert}{to R matrix}
+}
+\value{
+tensor
 }
 \description{
 Weight for item or user (based on `is_item`) for all in `arr`

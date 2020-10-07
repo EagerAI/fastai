@@ -89,6 +89,9 @@ ResBlock(
 
 \item{padding_mode}{padding_mode}
 }
+\value{
+Block object
+}
 \description{
 Resnet block from `ni` to `nh` with `stride`
 }
