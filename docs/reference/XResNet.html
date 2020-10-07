@@ -189,33 +189,33 @@
     <p>A sequential container.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>XResNet</span><span class='op'>(</span><span class='va'>expansion</span>, <span class='va'>layers</span>, c_in <span class='op'>=</span> <span class='fl'>3</span>, c_out <span class='op'>=</span> <span class='fl'>1000</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>XResNet</span><span class='op'>(</span><span class='va'>block</span>, <span class='va'>expansion</span>, <span class='va'>layers</span>, c_in <span class='op'>=</span> <span class='fl'>3</span>, c_out <span class='op'>=</span> <span class='fl'>1000</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>block</th>
+      <td><p>the blocks to pass to XResNet</p></td>
+    </tr>
+    <tr>
       <th>expansion</th>
-      <td><p>expansion</p></td>
+      <td><p>argument for inputs and filters</p></td>
     </tr>
     <tr>
       <th>layers</th>
-      <td><p>layers</p></td>
+      <td><p>the layers to pass to XResNet</p></td>
     </tr>
     <tr>
       <th>c_in</th>
-      <td><p>c_in</p></td>
+      <td><p>number of inputs</p></td>
     </tr>
     <tr>
       <th>c_out</th>
-      <td><p>c_out</p></td>
+      <td><p>number of outputs</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Modules will be added to it in the order they are passed in the constructor.
-Alternatively, an ordered dict of modules can also be passed in. To make it easier to understand, here is a small example:: # Example of using Sequential model = nn.Sequential( nn.Conv2d(1,20,5), nn.ReLU(), nn.Conv2d(20,64,5), nn.ReLU() ) # Example of using Sequential with OrderedDict model = nn.Sequential(OrderedDict([ ('conv1', nn.Conv2d(1,20,5)), ('relu1', nn.ReLU()), ('conv2', nn.Conv2d(20,64,5)), ('relu2', nn.ReLU()) ]))</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
