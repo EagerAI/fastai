@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>GANLearner_from_learners — GANLearner_from_learners • fastai</title>
+<title>GAN Learner from learners — GANLearner_from_learners • fastai</title>
 
 
 <!-- jquery -->
@@ -45,7 +45,7 @@
 
 
 
-<meta property="og:title" content="GANLearner_from_learners — GANLearner_from_learners" />
+<meta property="og:title" content="GAN Learner from learners — GANLearner_from_learners" />
 <meta property="og:description" content="Create a GAN from `learn_gen` and `learn_crit`." />
 
 
@@ -180,7 +180,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>GANLearner_from_learners</h1>
+    <h1>GAN Learner from learners</h1>
     <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/GAN.R'><code>R/GAN.R</code></a></small>
     <div class="hidden name"><code>GANLearner_from_learners.Rd</code></div>
     </div>
@@ -217,11 +217,11 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>gen_learn</th>
-      <td><p>gen_learn</p></td>
+      <td><p>generator learner</p></td>
     </tr>
     <tr>
       <th>crit_learn</th>
-      <td><p>crit_learn</p></td>
+      <td><p>discriminator learner</p></td>
     </tr>
     <tr>
       <th>switcher</th>
@@ -229,7 +229,7 @@
     </tr>
     <tr>
       <th>weights_gen</th>
-      <td><p>weights_gen</p></td>
+      <td><p>weights generator</p></td>
     </tr>
     <tr>
       <th>gen_first</th>
@@ -249,54 +249,57 @@
     </tr>
     <tr>
       <th>cbs</th>
-      <td><p>cbs</p></td>
+      <td><p>Cbs is one or a list of Callbacks to pass to the Learner.</p></td>
     </tr>
     <tr>
       <th>metrics</th>
-      <td><p>metrics</p></td>
+      <td><p>It is an optional list of metrics, that can be either functions or Metrics.</p></td>
     </tr>
     <tr>
       <th>loss_func</th>
-      <td><p>loss_func</p></td>
+      <td><p>loss function</p></td>
     </tr>
     <tr>
       <th>opt_func</th>
-      <td><p>opt_func</p></td>
+      <td><p>The function used to create the optimizer</p></td>
     </tr>
     <tr>
       <th>lr</th>
-      <td><p>lr</p></td>
+      <td><p>learning rate</p></td>
     </tr>
     <tr>
       <th>splitter</th>
-      <td><p>splitter</p></td>
+      <td><p>It is a function that takes self.model and returns a list of parameter groups (or just one parameter group if there are no different parameter groups).</p></td>
     </tr>
     <tr>
       <th>path</th>
-      <td><p>path</p></td>
+      <td><p>The folder where to work</p></td>
     </tr>
     <tr>
       <th>model_dir</th>
-      <td><p>model_dir</p></td>
+      <td><p>Path and model_dir are used to save and/or load models.</p></td>
     </tr>
     <tr>
       <th>wd</th>
-      <td><p>wd</p></td>
+      <td><p>It is the default weight decay used when training the model.</p></td>
     </tr>
     <tr>
       <th>wd_bn_bias</th>
-      <td><p>wd_bn_bias</p></td>
+      <td><p>It controls if weight decay is applied to BatchNorm layers and bias.</p></td>
     </tr>
     <tr>
       <th>train_bn</th>
-      <td><p>train_bn</p></td>
+      <td><p>It controls if BatchNorm layers are trained even when they are supposed to be frozen according to the splitter.</p></td>
     </tr>
     <tr>
       <th>moms</th>
-      <td><p>moms</p></td>
+      <td><p>The default momentums used in Learner.fit_one_cycle.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>None</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -46,7 +46,8 @@
 
 
 <meta property="og:title" content="Fit — fit.fastai.learner.Learner" />
-<meta property="og:description" content="Fit the model on this learner with `lr` learning rate, `wd` weight decay for `epochs` with `callbacks`." />
+<meta property="og:description" content="Fit the model on this learner with `lr` learning rate,
+`wd` weight decay for `epochs` with `callbacks` as cbs argument." />
 
 
 
@@ -186,7 +187,8 @@
     </div>
 
     <div class="ref-description">
-    <p>Fit the model on this learner with `lr` learning rate, `wd` weight decay for `epochs` with `callbacks`.</p>
+    <p>Fit the model on this learner with `lr` learning rate,
+`wd` weight decay for `epochs` with `callbacks` as cbs argument.</p>
     </div>
 
     <pre class="usage"><span class='co'># S3 method for fastai.learner.Learner</span>
@@ -196,23 +198,18 @@
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>epochs</th>
-      <td><p>epochs</p></td>
+      <th>object</th>
+      <td><p>a learner object</p></td>
     </tr>
     <tr>
-      <th>lr</th>
-      <td><p>lr</p></td>
-    </tr>
-    <tr>
-      <th>wd</th>
-      <td><p>wd</p></td>
-    </tr>
-    <tr>
-      <th>callbacks</th>
-      <td><p>callbacks</p></td>
+      <th>...</th>
+      <td><p>parameters to pass</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>train history</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

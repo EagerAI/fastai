@@ -195,7 +195,7 @@
   cut <span class='op'>=</span> <span class='cn'>NULL</span>,
   pretrained <span class='op'>=</span> <span class='cn'>TRUE</span>,
   n_in <span class='op'>=</span> <span class='fl'>3</span>,
-  init <span class='op'>=</span> <span class='va'>kaiming_normal_</span>,
+  init <span class='op'>=</span> <span class='va'>nn</span><span class='op'>$</span><span class='va'>init</span><span class='op'>$</span><span class='va'>kaiming_normal_</span>,
   custom_head <span class='op'>=</span> <span class='cn'>NULL</span>,
   concat_pool <span class='op'>=</span> <span class='cn'>TRUE</span>,
   lin_ftrs <span class='op'>=</span> <span class='cn'>NULL</span>,
@@ -210,11 +210,11 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>arch</th>
-      <td><p>arch</p></td>
+      <td><p>a model architecture</p></td>
     </tr>
     <tr>
       <th>n_out</th>
-      <td><p>n_out</p></td>
+      <td><p>number of out</p></td>
     </tr>
     <tr>
       <th>cut</th>
@@ -222,23 +222,23 @@
     </tr>
     <tr>
       <th>pretrained</th>
-      <td><p>pretrained</p></td>
+      <td><p>pretrained model or not</p></td>
     </tr>
     <tr>
       <th>n_in</th>
-      <td><p>n_in</p></td>
+      <td><p>number of in</p></td>
     </tr>
     <tr>
       <th>init</th>
-      <td><p>init</p></td>
+      <td><p>initializer</p></td>
     </tr>
     <tr>
       <th>custom_head</th>
-      <td><p>custom_head</p></td>
+      <td><p>custom head</p></td>
     </tr>
     <tr>
       <th>concat_pool</th>
-      <td><p>concat_pool</p></td>
+      <td><p>concatenate pooling</p></td>
     </tr>
     <tr>
       <th>lin_ftrs</th>
@@ -262,6 +262,9 @@
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>None</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

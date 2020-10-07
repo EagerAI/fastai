@@ -217,19 +217,19 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>dls</th>
-      <td><p>dls</p></td>
+      <td><p>data loader object</p></td>
     </tr>
     <tr>
       <th>arch</th>
-      <td><p>arch</p></td>
+      <td><p>a model architecture</p></td>
     </tr>
     <tr>
       <th>loss_func</th>
-      <td><p>loss_func</p></td>
+      <td><p>loss function</p></td>
     </tr>
     <tr>
       <th>pretrained</th>
-      <td><p>pretrained</p></td>
+      <td><p>pre-trained or not</p></td>
     </tr>
     <tr>
       <th>cut</th>
@@ -237,7 +237,7 @@
     </tr>
     <tr>
       <th>splitter</th>
-      <td><p>splitter</p></td>
+      <td><p>It is a function that takes self.model and returns a list of parameter groups (or just one parameter group if there are no different parameter groups).</p></td>
     </tr>
     <tr>
       <th>y_range</th>
@@ -245,11 +245,11 @@
     </tr>
     <tr>
       <th>config</th>
-      <td><p>config</p></td>
+      <td><p>configuration</p></td>
     </tr>
     <tr>
       <th>n_out</th>
-      <td><p>n_out</p></td>
+      <td><p>the number of out</p></td>
     </tr>
     <tr>
       <th>normalize</th>
@@ -257,46 +257,49 @@
     </tr>
     <tr>
       <th>opt_func</th>
-      <td><p>opt_func</p></td>
+      <td><p>The function used to create the optimizer</p></td>
     </tr>
     <tr>
       <th>lr</th>
-      <td><p>lr</p></td>
+      <td><p>learning rate</p></td>
     </tr>
     <tr>
       <th>cbs</th>
-      <td><p>cbs</p></td>
+      <td><p>Cbs is one or a list of Callbacks to pass to the Learner.</p></td>
     </tr>
     <tr>
       <th>metrics</th>
-      <td><p>metrics</p></td>
+      <td><p>It is an optional list of metrics, that can be either functions or Metrics.</p></td>
     </tr>
     <tr>
       <th>path</th>
-      <td><p>path</p></td>
+      <td><p>The folder where to work</p></td>
     </tr>
     <tr>
       <th>model_dir</th>
-      <td><p>model_dir</p></td>
+      <td><p>Path and model_dir are used to save and/or load models.</p></td>
     </tr>
     <tr>
       <th>wd</th>
-      <td><p>wd</p></td>
+      <td><p>It is the default weight decay used when training the model.</p></td>
     </tr>
     <tr>
       <th>wd_bn_bias</th>
-      <td><p>wd_bn_bias</p></td>
+      <td><p>It controls if weight decay is applied to BatchNorm layers and bias.</p></td>
     </tr>
     <tr>
       <th>train_bn</th>
-      <td><p>train_bn</p></td>
+      <td><p>It controls if BatchNorm layers are trained even when they are supposed to be frozen according to the splitter.</p></td>
     </tr>
     <tr>
       <th>moms</th>
-      <td><p>moms</p></td>
+      <td><p>The default momentums used in Learner.fit_one_cycle.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>learner object</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
