@@ -2,16 +2,19 @@
 % Please edit documentation in R/image_loaders.R
 \name{get_image_files}
 \alias{get_image_files}
-\title{Get_image_files}
+\title{Get image files}
 \usage{
 get_image_files(path, recurse = TRUE, folders = NULL)
 }
 \arguments{
 \item{path}{The folder where to work}
 
-\item{recurse}{recurse}
+\item{recurse}{recursive path}
 
-\item{folders}{folders}
+\item{folders}{folder names}
+}
+\value{
+None
 }
 \description{
 Get image files in `path` recursively, only in `folders`, if specified.

@@ -7,9 +7,12 @@
 fit_one_cycle(object, ...)
 }
 \arguments{
-\item{...}{parameters to pass}
+\item{...}{parameters to pass, e.g. lr, n_epoch, wd, and etc.}
 
 \item{n_epoch}{The number of epochs}
+}
+\value{
+None
 }
 \description{
 Fit one cycle

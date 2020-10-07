@@ -2,7 +2,7 @@
 % Please edit documentation in R/image_loaders.R
 \name{ImageDataLoaders_from_folder}
 \alias{ImageDataLoaders_from_folder}
-\title{From_folder}
+\title{From folder}
 \usage{
 ImageDataLoaders_from_folder(
   path,
@@ -24,27 +24,29 @@ ImageDataLoaders_from_folder(
 \arguments{
 \item{path}{The folder where to work}
 
-\item{train}{train}
+\item{train}{train data}
 
-\item{valid}{valid}
+\item{valid}{validation data}
 
 \item{valid_pct}{valid_pct}
 
-\item{seed}{seed}
+\item{seed}{random seed}
 
-\item{vocab}{vocab}
+\item{vocab}{vocabulary}
 
 \item{item_tfms}{One or several transforms applied to the items before batching them}
 
 \item{batch_tfms}{One or several transforms applied to the batches once they are formed}
 
-\item{bs}{bs}
+\item{bs}{batch size}
 
 \item{val_bs}{The batch size for the validation DataLoader (defaults to bs)}
 
 \item{shuffle_train}{If we shuffle the training DataLoader or not}
 
 \item{device}{device}
+
+\item{...}{additional parameters to pass}
 }
 \description{
 Create from imagenet style dataset in `path` with `train` and `valid` subfolders (or provide `valid_pct`)

@@ -16,19 +16,20 @@ ImageDataLoaders_from_lists(
   bs = 64,
   val_bs = NULL,
   shuffle_train = TRUE,
-  device = NULL
+  device = NULL,
+  ...
 )
 }
 \arguments{
 \item{path}{The folder where to work}
 
-\item{fnames}{fnames}
+\item{fnames}{file names}
 
 \item{labels}{labels}
 
-\item{valid_pct}{valid_pct}
+\item{valid_pct}{validation percentage}
 
-\item{seed}{seed}
+\item{seed}{random seed}
 
 \item{y_block}{y_block}
 
@@ -36,13 +37,18 @@ ImageDataLoaders_from_lists(
 
 \item{batch_tfms}{One or several transforms applied to the batches once they are formed}
 
-\item{bs}{The batch size}
+\item{bs}{batch size}
 
 \item{val_bs}{The batch size for the validation DataLoader (defaults to bs)}
 
 \item{shuffle_train}{If we shuffle the training DataLoader or not}
 
 \item{device}{device}
+
+\item{...}{additional parameters to pass}
+}
+\value{
+None
 }
 \description{
 Create from list of `fnames` and `labels` in `path`

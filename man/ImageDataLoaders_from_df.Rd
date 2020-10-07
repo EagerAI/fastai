@@ -5,7 +5,6 @@
 \title{ImageDataLoaders_from_df}
 \usage{
 ImageDataLoaders_from_df(
-  cls,
   df,
   path = ".",
   valid_pct = 0.2,
@@ -22,49 +21,50 @@ ImageDataLoaders_from_df(
   bs = 64,
   val_bs = NULL,
   shuffle_train = TRUE,
-  device = NULL
+  device = NULL,
+  ...
 )
 }
 \arguments{
-\item{cls}{cls}
-
-\item{df}{df}
+\item{df}{data frame}
 
 \item{path}{The folder where to work}
 
 \item{valid_pct}{valid_pct}
 
-\item{seed}{seed}
+\item{seed}{random seed}
 
 \item{fn_col}{fn_col}
 
-\item{folder}{folder}
+\item{folder}{folder name}
 
 \item{suff}{suff}
 
-\item{label_col}{label_col}
+\item{label_col}{label column}
 
-\item{label_delim}{label_delim}
+\item{label_delim}{label separator}
 
 \item{y_block}{y_block}
 
-\item{valid_col}{valid_col}
+\item{valid_col}{validation column}
 
 \item{item_tfms}{One or several transforms applied to the items before batching them}
 
 \item{batch_tfms}{One or several transforms applied to the batches once they are formed}
 
-\item{bs}{The batch size}
+\item{bs}{batch size}
 
 \item{val_bs}{The batch size for the validation DataLoader (defaults to bs)}
 
 \item{shuffle_train}{shuffle_train}
 
 \item{device}{device}
+
+\item{...}{additional parameters to pass}
+}
+\value{
+None
 }
 \description{
 Create from `df` using `fn_col` and `label_col`
-}
-\details{
-
 }

@@ -1,17 +1,18 @@
-#' @title From_name_re
+#' @title From name regex
 #'
 #' @description Create from the name attrs of `fnames` in `path`s with re expression `pat`
 #'
 #' @param path The folder where to work
 #' @param fnames fnames
-#' @param pat pat
+#' @param pat an argument that requires regex
 #' @param bs The batch size
 #' @param val_bs The batch size for the validation DataLoader (defaults to bs)
 #' @param shuffle_train If we shuffle the training DataLoader or not
 #' @param device device
 #' @param item_tfms One or several transforms applied to the items before batching them
 #' @param batch_tfms One or several transforms applied to the batches once they are formed
-#'
+#' @param ... additional parameters to pass
+#' @return None
 #' @export
 ImageDataLoaders_from_name_re <- function(path, fnames, pat, bs = 64,
                                           val_bs = NULL, shuffle_train = TRUE,
@@ -35,19 +36,24 @@ ImageDataLoaders_from_name_re <- function(path, fnames, pat, bs = 64,
   if(!is.null(args$batch_tfms)) {
     args$batch_tfms <- unlist(args$batch_tfms)
   }
+
+  if(!is.null(args$val_bs)) {
+    args$val_bs <- as.integer(args$val_bs)
+  }
+
   do.call(vision$all$ImageDataLoaders$from_name_re,args)
 
 }
 
-#' @title Get_image_files
+#' @title Get image files
 #'
 #' @description Get image files in `path` recursively, only in `folders`, if specified.
 #'
 #'
 #' @param path The folder where to work
-#' @param recurse recurse
-#' @param folders folders
-#'
+#' @param recurse recursive path
+#' @param folders folder names
+#' @return None
 #' @export
 get_image_files <- function(path, recurse = TRUE, folders = NULL) {
 
@@ -70,8 +76,8 @@ get_image_files <- function(path, recurse = TRUE, folders = NULL) {
 #' @title Fit one cycle
 #'
 #' @param n_epoch The number of epochs
-#' @param ... parameters to pass
-#'
+#' @param ... parameters to pass, e.g. lr, n_epoch, wd, and etc.
+#' @return None
 #' @export
 fit_one_cycle <- function(object, ...) {
 
@@ -89,46 +95,23 @@ fit_one_cycle <- function(object, ...) {
 }
 
 
-#' @title Random image batch
-#'
-#' @description for visualization
-#' @param object dataloaders object
-#' @param regex for img titles
-#' @param label if dataloader from csv, then colname should be provided for viz-n
-#' @param folder_name if dataloader from csv, then colname should be provided for viz-n
-#' @export
-random_batch <- function(object, regex = "[0-9]+", label = 'label', folder_name = NULL,
-                         img_patter = "jpg|jpeg|png") {
-
-
-  if(is.null(folder_name))
-    folder_name = capture.output(dls$path)
-  bs = object$bs
-  fls = sample(list.files(folder_name,pattern = img_patter, recursive = TRUE,full.names = TRUE))[1:bs]
-  fls = as.list(fls)
-  names(fls) = unlist(fls)
-  names(fls) = trimws(gsub(pattern="_",replacement=' ', regmatches(fls,regexpr(regex, names(fls))) ))
-  fls
-}
-
-
-#' @title From_folder
+#' @title From folder
 #'
 #' @description Create from imagenet style dataset in `path` with `train` and `valid` subfolders (or provide `valid_pct`)
 #'
 #' @param path The folder where to work
-#' @param train train
-#' @param valid valid
+#' @param train train data
+#' @param valid validation data
 #' @param valid_pct valid_pct
-#' @param seed seed
-#' @param vocab vocab
+#' @param seed random seed
+#' @param vocab vocabulary
 #' @param item_tfms One or several transforms applied to the items before batching them
 #' @param batch_tfms One or several transforms applied to the batches once they are formed
-#' @param bs bs
+#' @param bs batch size
 #' @param val_bs The batch size for the validation DataLoader (defaults to bs)
 #' @param shuffle_train If we shuffle the training DataLoader or not
 #' @param device device
-#'
+#' @param ... additional parameters to pass
 #' @export
 ImageDataLoaders_from_folder <- function(path, train = "train", valid = "valid",
                         valid_pct = NULL, seed = NULL, vocab = NULL,
@@ -161,6 +144,10 @@ ImageDataLoaders_from_folder <- function(path, train = "train", valid = "valid",
     args$size = as.integer(args$size)
   }
 
+  if(!is.null(args$val_bs)) {
+    args$val_bs <- as.integer(args$val_bs)
+  }
+
   do.call(vision$all$ImageDataLoaders$from_folder, args)
 
 }
@@ -170,29 +157,27 @@ ImageDataLoaders_from_folder <- function(path, train = "train", valid = "valid",
 #'
 #' @description Create from `path/csv_fname` using `fn_col` and `label_col`
 #'
-#' @details
-#'
-#' @param cls cls
 #' @param path The folder where to work
-#' @param csv_fname csv_fname
+#' @param csv_fname csv file name
 #' @param header header
 #' @param delimiter delimiter
-#' @param valid_pct valid_pct
-#' @param seed seed
+#' @param valid_pct validation percentage
+#' @param seed random seed
 #' @param fn_col fn_col
-#' @param folder folder
+#' @param folder folder name
 #' @param suff suff
-#' @param label_col label_col
+#' @param label_col label column
 #' @param label_delim label_delim
 #' @param y_block y_block
-#' @param valid_col valid_col
+#' @param valid_col validation column
 #' @param item_tfms One or several transforms applied to the items before batching them
 #' @param batch_tfms One or several transforms applied to the batches once they are formed
-#' @param bs bs
+#' @param bs batch size
 #' @param val_bs The batch size for the validation DataLoader (defaults to bs)
 #' @param shuffle_train If we shuffle the training DataLoader or not
 #' @param device device
-#'
+#' @param ... additional parameters to pass
+#' @return None
 #' @export
 ImageDataLoaders_from_csv <- function(path, csv_fname = "labels.csv", header = "infer",
                      delimiter = NULL, valid_pct = 0.2, seed = NULL, fn_col = 0,
@@ -227,8 +212,16 @@ ImageDataLoaders_from_csv <- function(path, csv_fname = "labels.csv", header = "
     ...
   )
 
+  if(!is.null(args$batch_tfms)) {
+    args$batch_tfms <- unlist(args$batch_tfms)
+  }
+
   if(!is.null(size)) {
     args$size = as.integer(args$size)
+  }
+
+  if(!is.null(args$val_bs)) {
+    args$args$val_bs = as.integer(args$args$val_bs)
   }
 
   do.call(vision$all$ImageDataLoaders$from_csv, args)
@@ -240,17 +233,20 @@ ImageDataLoaders_from_csv <- function(path, csv_fname = "labels.csv", header = "
 #' @description Create a dataloaders from a given `dblock`
 #'
 #' @param dblock dblock
-#' @param source source
+#' @param source source folder
 #' @param path The folder where to work
-#' @param bs The batch size
+#' @param bs batch size
 #' @param val_bs The batch size for the validation DataLoader (defaults to bs)
 #' @param shuffle_train If we shuffle the training DataLoader or not
 #' @param device device
+#' @param ... additional parameters to pass
+#' @return None
 #'
 #' @export
 ImageDataLoaders_from_dblock <- function(dblock, source, path = ".",
                                          bs = 64, val_bs = NULL,
-                                         shuffle_train = TRUE, device = NULL) {
+                                         shuffle_train = TRUE, device = NULL,
+                                         ...) {
 
   args <- list(
     dblock = dblock,
@@ -259,8 +255,21 @@ ImageDataLoaders_from_dblock <- function(dblock, source, path = ".",
     bs = as.integer(bs),
     val_bs = val_bs,
     shuffle_train = shuffle_train,
-    device = device
+    device = device,
+    ...
   )
+
+  if(!is.null(args$batch_tfms)) {
+    args$batch_tfms <- unlist(args$batch_tfms)
+  }
+
+  if(!is.null(size)) {
+    args$size = as.integer(args$size)
+  }
+
+  if(!is.null(args$val_bs)) {
+    args$args$val_bs = as.integer(args$args$val_bs)
+  }
 
   do.call(vision$all$ImageDataLoaders$from_dblock, args)
 
@@ -271,33 +280,32 @@ ImageDataLoaders_from_dblock <- function(dblock, source, path = ".",
 #'
 #' @description Create from `df` using `fn_col` and `label_col`
 #'
-#' @details
-#'
-#' @param cls cls
-#' @param df df
+#' @param df data frame
 #' @param path The folder where to work
 #' @param valid_pct valid_pct
-#' @param seed seed
+#' @param seed random seed
 #' @param fn_col fn_col
-#' @param folder folder
+#' @param folder folder name
 #' @param suff suff
-#' @param label_col label_col
-#' @param label_delim label_delim
+#' @param label_col label column
+#' @param label_delim label separator
 #' @param y_block y_block
-#' @param valid_col valid_col
+#' @param valid_col validation column
 #' @param item_tfms One or several transforms applied to the items before batching them
 #' @param batch_tfms One or several transforms applied to the batches once they are formed
-#' @param bs The batch size
+#' @param bs batch size
 #' @param val_bs The batch size for the validation DataLoader (defaults to bs)
 #' @param shuffle_train shuffle_train
 #' @param device device
-#'
+#' @param ... additional parameters to pass
+#' @return None
 #' @export
-ImageDataLoaders_from_df <- function(cls, df, path = ".", valid_pct = 0.2, seed = NULL,
+ImageDataLoaders_from_df <- function(df, path = ".", valid_pct = 0.2, seed = NULL,
                     fn_col = 0, folder = NULL, suff = "", label_col = 1,
                     label_delim = NULL, y_block = NULL, valid_col = NULL,
                     item_tfms = NULL, batch_tfms = NULL, bs = 64,
-                    val_bs = NULL, shuffle_train = TRUE, device = NULL) {
+                    val_bs = NULL, shuffle_train = TRUE, device = NULL,
+                    ...) {
 
   args <- list(
     df = df,
@@ -316,8 +324,21 @@ ImageDataLoaders_from_df <- function(cls, df, path = ".", valid_pct = 0.2, seed 
     bs = as.integer(bs),
     val_bs = val_bs,
     shuffle_train = shuffle_train,
-    device = device
+    device = device,
+    ...
   )
+
+  if(!is.null(args$batch_tfms)) {
+    args$batch_tfms <- unlist(args$batch_tfms)
+  }
+
+  if(!is.null(size)) {
+    args$size = as.integer(args$size)
+  }
+
+  if(!is.null(args$val_bs)) {
+    args$args$val_bs = as.integer(args$args$val_bs)
+  }
 
   do.call(vision$all$ImageDataLoaders$from_df, args)
 
@@ -329,23 +350,25 @@ ImageDataLoaders_from_df <- function(cls, df, path = ".", valid_pct = 0.2, seed 
 #' @description Create from list of `fnames` and `labels` in `path`
 #'
 #' @param path The folder where to work
-#' @param fnames fnames
+#' @param fnames file names
 #' @param labels labels
-#' @param valid_pct valid_pct
-#' @param seed seed
+#' @param valid_pct validation percentage
+#' @param seed random seed
 #' @param y_block y_block
 #' @param item_tfms One or several transforms applied to the items before batching them
 #' @param batch_tfms One or several transforms applied to the batches once they are formed
-#' @param bs The batch size
+#' @param bs batch size
 #' @param val_bs The batch size for the validation DataLoader (defaults to bs)
 #' @param shuffle_train If we shuffle the training DataLoader or not
 #' @param device device
-#'
+#' @param ... additional parameters to pass
+#' @return None
 #' @export
 ImageDataLoaders_from_lists <- function(path, fnames, labels, valid_pct = 0.2,
                        seed = NULL, y_block = NULL, item_tfms = NULL,
                        batch_tfms = NULL, bs = 64, val_bs = NULL,
-                       shuffle_train = TRUE, device = NULL) {
+                       shuffle_train = TRUE, device = NULL,
+                       ...) {
 
   args <- list(
     path = path,
@@ -359,8 +382,21 @@ ImageDataLoaders_from_lists <- function(path, fnames, labels, valid_pct = 0.2,
     bs = as.integer(bs),
     val_bs = val_bs,
     shuffle_train = shuffle_train,
-    device = device
+    device = device,
+    ...
   )
+
+  if(!is.null(args$batch_tfms)) {
+    args$batch_tfms <- unlist(args$batch_tfms)
+  }
+
+  if(!is.null(size)) {
+    args$size = as.integer(args$size)
+  }
+
+  if(!is.null(args$val_bs)) {
+    args$args$val_bs = as.integer(args$args$val_bs)
+  }
 
   do.call(vision$all$ImageDataLoaders$from_lists, args)
 
@@ -372,23 +408,25 @@ ImageDataLoaders_from_lists <- function(path, fnames, labels, valid_pct = 0.2,
 #'
 #' @description Create from list of `fnames` in `path`s with `label_func`
 #' @param path The folder where to work
-#' @param fnames fnames
-#' @param label_func label_func
+#' @param fnames file names
+#' @param label_func label function
 #' @param valid_pct The random percentage of the dataset to set aside for validation (with an optional seed)
-#' @param seed seed
+#' @param seed random seed
 #' @param item_tfms One or several transforms applied to the items before batching them
 #' @param batch_tfms One or several transforms applied to the batches once they are formed
-#' @param bs The batch size
+#' @param bs batch size
 #' @param val_bs The batch size for the validation DataLoader (defaults to bs)
 #' @param shuffle_train If we shuffle the training DataLoader or not
 #' @param device device
-#'
+#' @param ... additional parameters to pass
+#' @return None
 #' @export
 ImageDataLoaders_from_path_func <- function(path, fnames, label_func,
                                             valid_pct = 0.2, seed = NULL,
                                             item_tfms = NULL, batch_tfms = NULL,
                                             bs = 64, val_bs = NULL, shuffle_train = TRUE,
-                                            device = NULL) {
+                                            device = NULL,
+                                            ...) {
 
   args <- list(
     path = path,
@@ -401,8 +439,21 @@ ImageDataLoaders_from_path_func <- function(path, fnames, label_func,
     bs = as.integer(bs),
     val_bs = val_bs,
     shuffle_train = shuffle_train,
-    device = device
+    device = device,
+    ...
   )
+
+  if(!is.null(args$batch_tfms)) {
+    args$batch_tfms <- unlist(args$batch_tfms)
+  }
+
+  if(!is.null(size)) {
+    args$size = as.integer(args$size)
+  }
+
+  if(!is.null(args$val_bs)) {
+    args$args$val_bs = as.integer(args$args$val_bs)
+  }
 
   do.call(vision$all$ImageDataLoaders$from_path_func, args)
 
@@ -414,23 +465,24 @@ ImageDataLoaders_from_path_func <- function(path, fnames, label_func,
 #' @description Create from list of `fnames` in `path`s with re expression `pat`
 #'
 #' @param path The folder where to work
-#' @param fnames fnames
-#' @param pat pat
+#' @param fnames file names
+#' @param pat an argument that requires regex
 #' @param valid_pct The random percentage of the dataset to set aside for validation (with an optional seed)
-#' @param seed seed
+#' @param seed random seed
 #' @param item_tfms One or several transforms applied to the items before batching them
 #' @param batch_tfms One or several transforms applied to the batches once they are formed
-#' @param bs The batch size
+#' @param bs batch size
 #' @param val_bs The batch size for the validation DataLoader (defaults to bs)
 #' @param shuffle_train If we shuffle the training DataLoader or not
 #' @param device device
-#'
+#' @param ... additional parameters to pass
+#' @return None
 #' @export
 ImageDataLoaders_from_path_re <- function(path, fnames, pat, valid_pct = 0.2,
                                           seed = NULL, item_tfms = NULL,
                                           batch_tfms = NULL, bs = 64,
                                           val_bs = NULL, shuffle_train = TRUE,
-                                          device = NULL) {
+                                          device = NULL, ...) {
 
   args <- list(
     path = path,
@@ -443,8 +495,21 @@ ImageDataLoaders_from_path_re <- function(path, fnames, pat, valid_pct = 0.2,
     bs = as.integer(bs),
     val_bs = val_bs,
     shuffle_train = shuffle_train,
-    device = device
+    device = device,
+    ...
   )
+
+  if(!is.null(args$batch_tfms)) {
+    args$batch_tfms <- unlist(args$batch_tfms)
+  }
+
+  if(!is.null(size)) {
+    args$size = as.integer(args$size)
+  }
+
+  if(!is.null(args$val_bs)) {
+    args$args$val_bs = as.integer(args$args$val_bs)
+  }
 
   do.call(vision$all$ImageDataLoaders$from_path_re, argss)
 }

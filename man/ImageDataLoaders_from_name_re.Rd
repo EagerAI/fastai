@@ -2,7 +2,7 @@
 % Please edit documentation in R/image_loaders.R
 \name{ImageDataLoaders_from_name_re}
 \alias{ImageDataLoaders_from_name_re}
-\title{From_name_re}
+\title{From name regex}
 \usage{
 ImageDataLoaders_from_name_re(
   path,
@@ -22,7 +22,7 @@ ImageDataLoaders_from_name_re(
 
 \item{fnames}{fnames}
 
-\item{pat}{pat}
+\item{pat}{an argument that requires regex}
 
 \item{bs}{The batch size}
 
@@ -35,6 +35,11 @@ ImageDataLoaders_from_name_re(
 \item{item_tfms}{One or several transforms applied to the items before batching them}
 
 \item{batch_tfms}{One or several transforms applied to the batches once they are formed}
+
+\item{...}{additional parameters to pass}
+}
+\value{
+None
 }
 \description{
 Create from the name attrs of `fnames` in `path`s with re expression `pat`

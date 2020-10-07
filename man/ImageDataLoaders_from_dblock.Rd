@@ -11,23 +11,29 @@ ImageDataLoaders_from_dblock(
   bs = 64,
   val_bs = NULL,
   shuffle_train = TRUE,
-  device = NULL
+  device = NULL,
+  ...
 )
 }
 \arguments{
 \item{dblock}{dblock}
 
-\item{source}{source}
+\item{source}{source folder}
 
 \item{path}{The folder where to work}
 
-\item{bs}{The batch size}
+\item{bs}{batch size}
 
 \item{val_bs}{The batch size for the validation DataLoader (defaults to bs)}
 
 \item{shuffle_train}{If we shuffle the training DataLoader or not}
 
 \item{device}{device}
+
+\item{...}{additional parameters to pass}
+}
+\value{
+None
 }
 \description{
 Create a dataloaders from a given `dblock`

@@ -31,35 +31,35 @@ ImageDataLoaders_from_csv(
 \arguments{
 \item{path}{The folder where to work}
 
-\item{csv_fname}{csv_fname}
+\item{csv_fname}{csv file name}
 
 \item{header}{header}
 
 \item{delimiter}{delimiter}
 
-\item{valid_pct}{valid_pct}
+\item{valid_pct}{validation percentage}
 
-\item{seed}{seed}
+\item{seed}{random seed}
 
 \item{fn_col}{fn_col}
 
-\item{folder}{folder}
+\item{folder}{folder name}
 
 \item{suff}{suff}
 
-\item{label_col}{label_col}
+\item{label_col}{label column}
 
 \item{label_delim}{label_delim}
 
 \item{y_block}{y_block}
 
-\item{valid_col}{valid_col}
+\item{valid_col}{validation column}
 
 \item{item_tfms}{One or several transforms applied to the items before batching them}
 
 \item{batch_tfms}{One or several transforms applied to the batches once they are formed}
 
-\item{bs}{bs}
+\item{bs}{batch size}
 
 \item{val_bs}{The batch size for the validation DataLoader (defaults to bs)}
 
@@ -67,11 +67,11 @@ ImageDataLoaders_from_csv(
 
 \item{device}{device}
 
-\item{cls}{cls}
+\item{...}{additional parameters to pass}
+}
+\value{
+None
 }
 \description{
 Create from `path/csv_fname` using `fn_col` and `label_col`
-}
-\details{
-
 }
