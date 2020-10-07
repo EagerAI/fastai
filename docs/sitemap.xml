@@ -898,6 +898,9 @@
     <loc>https://henry090.github.io/fastai//reference/ceiling.fastai.torch_core.TensorMask.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/ceiling_.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/clean_raw_keys.html</loc>
   </url>
   <url>
@@ -940,7 +943,13 @@
     <loc>https://henry090.github.io/fastai//reference/cos.fastai.torch_core.TensorMask.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/cos_.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/cosh.fastai.torch_core.TensorMask.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/cosh_.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/crappifier.html</loc>
@@ -1070,6 +1079,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/floor.fastai.torch_core.TensorMask.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/floor_.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/floor_div.html</loc>
@@ -1243,6 +1255,9 @@
     <loc>https://henry090.github.io/fastai//reference/logical_and.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/logical_not_.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/logical_or.html</loc>
   </url>
   <url>
@@ -1408,9 +1423,6 @@
     <loc>https://henry090.github.io/fastai//reference/radam_step.html</loc>
   </url>
   <url>
-    <loc>https://henry090.github.io/fastai//reference/random_batch.html</loc>
-  </url>
-  <url>
     <loc>https://henry090.github.io/fastai//reference/ranger.html</loc>
   </url>
   <url>
@@ -1505,6 +1517,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/sin.fastai.torch_core.TensorMask.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/sin_.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/sinh.fastai.torch_core.TensorMask.html</loc>

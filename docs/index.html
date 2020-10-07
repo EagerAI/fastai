@@ -201,7 +201,7 @@ reticulate::py_config()</a></code></pre>
 <ol>
 <li><strong>The dev version:</strong></li>
 </ol>
-<pre><code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">devtools::install_github('henry090/fastai')</a></code></pre>
+<pre><code>devtools::install_github('henry090/fastai')</code></pre>
 <ol>
 <li><strong>Later, you need to install the python module <code>fastai</code>:</strong></li>
 </ol>
@@ -911,8 +911,8 @@ learn %&gt;% fit_one_cycle(2, lr, pct_start = 0.9, wd = wd)</code></pre>
 <h2 class="hasAnchor">
 <a href="#collab-collaborative-filtering" class="anchor"></a>Collab (Collaborative filtering)</h2>
 <p>Call libraries:</p>
-<pre><code><a href="https://github.com/nteetor/zeallot">library(zeallot)
-library(magrittr)</a></code></pre>
+<pre><code>library(zeallot)
+library(magrittr)</code></pre>
 <p>Get data:</p>
 <pre><code><a href="reference/URLs_MOVIE_LENS_ML_100k.html">URLs_MOVIE_LENS_ML_100k()</a></code></pre>
 <p>Specify column names:</p>
@@ -1039,7 +1039,7 @@ ggpubr::ggarrange(p_[[1]], p_[[2]], p_[[3]], p_[[4]], labels = types)</code></pr
 <p align="center">
 <img src="files/dcm.png" height="500" align="center" alt="dicom"></p>
 <p>Let’s try a relatively complex example:</p>
-<pre><code><a href="http://ggplot2.tidyverse.org">library(ggplot2)
+<pre><code>library(ggplot2)
 
 # crop parameters
 img = dcmread('hemorrhage.dcm')
@@ -1093,7 +1093,7 @@ ggpubr::ggarrange(p_[[1]],
                   p_[[4]],
                   labels = paste(types[1:4],
                                  paste(c('','',scan_))[1:4])
-                  )</a></code></pre>
+                  )</code></pre>
 <p align="center">
 <img src="files/dcm2.png" height="500" align="center" alt="dicom2"></p>
 </div>
@@ -1116,7 +1116,7 @@ data
 5 0.0000002089296 5.043181
 6 0.0000002511886 5.023340</code></pre>
 <p>Visualize:</p>
-<pre><code><a href="http://jkunst.com/highcharter/reference/hchart.html">highcharter::hchart(data, "line", highcharter::hcaes(y = losses, x = lr_rates ))</a></code></pre>
+<pre><code>highcharter::hchart(data, "line", highcharter::hcaes(y = losses, x = lr_rates ))</code></pre>
 <p align="center">
 <img src="files/lr.png" height="500" align="center" alt="Learning_rates"></p>
 </div>
@@ -1205,7 +1205,7 @@ tbbox = LabeledBBox(TensorBBox(bbox[[1]]), bbox[[2]])
 <pre><code>(#2) [TensorBBox([[ 91.3000,  77.9400, 102.4300,  82.4700],
         [ 27.5800,  77.6500,  40.7600,  82.3400]]),['tv', 'tv']]</code></pre>
 <p>Visualize:</p>
-<pre><code><a href="http://dahtah.github.io/imager">library(imager)
+<pre><code>library(imager)
 coco = imager::load.image(coco_fn)
 plot(coco,axes=F)
 
@@ -1221,7 +1221,7 @@ for ( i in 1:length(bbox[[1]])) {
        col = "white"
   )
 }
-</a></code></pre>
+</code></pre>
 <p align="center">
 <img src="files/annotate.png" height="500" align="center" alt="Annotation"></p>
 <p>Alternatively, we could see batch via dataloader:</p>

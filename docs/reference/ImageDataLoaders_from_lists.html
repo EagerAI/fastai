@@ -201,7 +201,8 @@
   bs <span class='op'>=</span> <span class='fl'>64</span>,
   val_bs <span class='op'>=</span> <span class='cn'>NULL</span>,
   shuffle_train <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  device <span class='op'>=</span> <span class='cn'>NULL</span>
+  device <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -213,7 +214,7 @@
     </tr>
     <tr>
       <th>fnames</th>
-      <td><p>fnames</p></td>
+      <td><p>file names</p></td>
     </tr>
     <tr>
       <th>labels</th>
@@ -221,11 +222,11 @@
     </tr>
     <tr>
       <th>valid_pct</th>
-      <td><p>valid_pct</p></td>
+      <td><p>validation percentage</p></td>
     </tr>
     <tr>
       <th>seed</th>
-      <td><p>seed</p></td>
+      <td><p>random seed</p></td>
     </tr>
     <tr>
       <th>y_block</th>
@@ -241,7 +242,7 @@
     </tr>
     <tr>
       <th>bs</th>
-      <td><p>The batch size</p></td>
+      <td><p>batch size</p></td>
     </tr>
     <tr>
       <th>val_bs</th>
@@ -255,8 +256,15 @@
       <th>device</th>
       <td><p>device</p></td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td><p>additional parameters to pass</p></td>
+    </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>None</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
