@@ -2,12 +2,15 @@
 % Please edit documentation in R/modules.R
 \name{slice}
 \alias{slice}
-\title{slice}
+\title{Slice}
 \usage{
 slice(...)
 }
+\value{
+sliced object
+}
 \description{
-slice(stop)
+Slice
 }
 \details{
 slice(start, stop[, step]) Create a slice object. This is used for extended slicing (e.g. a[0:10:2]).

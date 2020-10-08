@@ -10,6 +10,9 @@ An object of class \code{types.SimpleNamespace} (inherits from \code{python.buil
 \usage{
 dicom_windows
 }
+\value{
+module
+}
 \description{
 Window effect
 }

@@ -6,6 +6,9 @@
 \usage{
 Callback(...)
 }
+\value{
+module
+}
 \description{
 Callback
 }

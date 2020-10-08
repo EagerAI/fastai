@@ -6,6 +6,9 @@
 \usage{
 Module(...)
 }
+\value{
+module
+}
 \description{
 Core Pytorch module
 }

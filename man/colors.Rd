@@ -10,6 +10,9 @@ An object of class \code{python.builtin.module} (inherits from \code{python.buil
 \usage{
 colors
 }
+\value{
+module
+}
 \description{
 Colors
 }

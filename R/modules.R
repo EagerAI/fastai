@@ -1,67 +1,66 @@
 #' Core Pytorch module
-#'
+#' @return module
 #' @export
 nn <- NULL
 
 
 #' Core Pytorch module
-#'
+#' @return module
 #' @export
 Module <- NULL
 
 
 #' Window effect
-#'
+#' @return module
 #' @export
 dicom_windows <- NULL
 
 
 #' Cmap
-#'
+#' @return module
 #' @export
 cm <- NULL
 
 #' Colors
-#'
+#' @return module
 #' @export
 colors <- NULL
 
 #' Callback
-#'
+#' @return module
 #' @export
 Callback <- NULL
 
 
 #' Kaggle API
-#'
+#' @return module
 #' @export
 kg <- NULL
 
 
 #' Built ins
-#'
+#' @return module
 #' @export
 bt <- NULL
 
 
 #' Functional interface
-#'
+#' @return module
 #' @export
 F <- NULL
 
 #' Dicom
-#'
+#' @return module
 #' @export
 Dicom <- NULL
 
 
-#' @title slice
+#' @title Slice
 #'
-#' @description slice(stop)
 #'
 #' @details slice(start, stop[, step]) Create a slice object. This is used for extended slicing (e.g. a[0:10:2]).
 #'
-#'
+#' @return sliced object
 #' @export
 slice <- function(...) {
 

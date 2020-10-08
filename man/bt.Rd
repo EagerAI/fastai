@@ -10,6 +10,9 @@ An object of class \code{python.builtin.module} (inherits from \code{python.buil
 \usage{
 bt
 }
+\value{
+module
+}
 \description{
 Built ins
 }

@@ -6,6 +6,9 @@
 \usage{
 Dicom(...)
 }
+\value{
+module
+}
 \description{
 Dicom
 }
