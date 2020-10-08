@@ -29,5 +29,6 @@ Suggests:
     knitr,
     testthat,
     rmarkdown,
-    curl
+    curl,
+    magrittr
 VignetteBuilder: knitr
