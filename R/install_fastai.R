@@ -75,10 +75,11 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   }
 
 
+  py_av = reticulate::py_available(T)
 
   if (!length(required_py_pkgs) == 0) {
 
-    if(reticulate:::condaenv_exists()) {
+    if(py_av) {
 
       if (os %in% 'linux' & !length(required_py_pkgs) == 0) {
         if(os %in% 'linux' & gpu & cuda_version %in% '9.2') {

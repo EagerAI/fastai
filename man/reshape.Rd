@@ -19,8 +19,5 @@ reshape(x, h, w, resample = 0)
 None
 }
 \description{
-`resize` `x` to `(w,h)`
-}
-\details{
-
+resize x to (w,h)
 }

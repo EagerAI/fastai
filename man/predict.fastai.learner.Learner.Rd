@@ -4,14 +4,14 @@
 \alias{predict.fastai.learner.Learner}
 \title{Predict}
 \usage{
-\method{predict}{fastai.learner.Learner}(object, ..., row)
+\method{predict}{fastai.learner.Learner}(object, row, ...)
 }
 \arguments{
 \item{object}{the model}
 
-\item{...}{additional arguments to pass}
-
 \item{row}{row}
+
+\item{...}{additional arguments to pass}
 }
 \value{
 data frame

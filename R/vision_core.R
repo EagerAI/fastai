@@ -85,9 +85,8 @@ aspect = function(img) {
 
 #' @title Reshape
 #'
-#' @description `resize` `x` to `(w,h)`
+#' @description resize x to (w,h)
 #'
-#' @details
 #'
 #' @param x x
 #' @param h h
