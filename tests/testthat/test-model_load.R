@@ -40,10 +40,6 @@ test_succeeds('can load xresnet50_deep', {
   xresnet50_deep()
 })
 
-test_succeeds('can load DynamicUnet', {
-  expect_error(DynamicUnet(),
-                "TypeError: __init__()")
-})
 
 test_succeeds('can load alexnet', {
   alexnet(progress = TRUE)
