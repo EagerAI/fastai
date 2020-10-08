@@ -6,6 +6,12 @@
 \usage{
 BaseLoss(...)
 }
+\arguments{
+\item{...}{parameters to pass}
+}
+\value{
+Loss object
+}
 \description{
 Flattens input and output, same as nn$BaseLoss
 }

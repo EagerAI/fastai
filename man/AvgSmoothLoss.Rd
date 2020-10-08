@@ -7,7 +7,10 @@
 AvgSmoothLoss(beta = 0.98)
 }
 \arguments{
-\item{beta}{beta}
+\item{beta}{beta, defaults to 0.98}
+}
+\value{
+Loss object
 }
 \description{
 Smooth average of the losses (exponentially weighted with `beta`)

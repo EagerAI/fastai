@@ -9,10 +9,12 @@ AdaptiveLoss(crit)
 AdaptiveLoss(crit)
 }
 \arguments{
-\item{crit}{crit}
+\item{crit}{critic}
 }
 \value{
 None
+
+Loss object
 }
 \description{
 Expand the `target` to match the `output` size before applying `crit`.

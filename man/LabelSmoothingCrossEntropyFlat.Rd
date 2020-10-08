@@ -7,8 +7,11 @@
 LabelSmoothingCrossEntropyFlat(...)
 }
 \arguments{
-\item{...}{additional parameters to pass}
+\item{...}{parameters to pass}
+}
+\value{
+Loss object
 }
 \description{
-Same as `nn.Module`, but no need for subclasses to call `super().__init__`
+Same as `nn$Module`, but no need for subclasses to call `super().__init__`
 }

@@ -27,6 +27,9 @@ HammingLossMulti(
 
 \item{sample_weight}{sample_weight}
 }
+\value{
+Loss object
+}
 \description{
 Hamming loss for multi-label classification problems
 

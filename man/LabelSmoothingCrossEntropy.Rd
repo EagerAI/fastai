@@ -7,10 +7,15 @@
 LabelSmoothingCrossEntropy(eps = 0.1, reduction = "mean")
 }
 \arguments{
-\item{eps}{eps}
+\item{eps}{epsilon}
 
-\item{reduction}{reduction}
+\item{reduction}{reduction, defaults to mean}
+
+\item{...}{parameters to pass}
+}
+\value{
+Loss object
 }
 \description{
-Same as `nn.Module`, but no need for subclasses to call `super().__init__`
+Same as `nn$Module`, but no need for subclasses to call `super()$__init__`
 }

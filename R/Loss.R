@@ -3,7 +3,9 @@
 #'
 #' @description Flattens input and output, same as nn$MSELoss
 #'
+#' @param ... parameters to pass
 #'
+#' @return Loss object
 #' @export
 MSELossFlat = function(...) {
   args = list(...)
@@ -15,7 +17,9 @@ MSELossFlat = function(...) {
 #' @title L1LossFlat
 #'
 #' @description Flattens input and output, same as nn$L1LossFlat
+#' @param ... parameters to pass
 #'
+#' @return Loss object
 #'
 #' @export
 L1LossFlat = function(...) {
@@ -28,7 +32,9 @@ L1LossFlat = function(...) {
 #' @title BCELossFlat
 #'
 #' @description Flattens input and output, same as nn$BCELoss
+#' @param ... parameters to pass
 #'
+#' @return Loss object
 #'
 #' @export
 BCELossFlat = function(...) {
@@ -42,7 +48,9 @@ BCELossFlat = function(...) {
 #' @title AvgLoss
 #'
 #' @description Flattens input and output, same as nn$AvgLoss
+#' @param ... parameters to pass
 #'
+#' @return Loss object
 #'
 #' @export
 AvgLoss = function(...) {
@@ -56,8 +64,8 @@ AvgLoss = function(...) {
 #' @title BaseLoss
 #'
 #' @description Flattens input and output, same as nn$BaseLoss
-#'
-#'
+#' @param ... parameters to pass
+#' @return Loss object
 #' @export
 BaseLoss = function(...) {
   args = list(...)
@@ -72,10 +80,12 @@ BaseLoss = function(...) {
 #'
 #' @description Hamming loss for single-label classification problems
 #'
-#' @details
+#' @param ... parameters to pass
+#'
+#' @return Loss object
 #'
 #' @param axis axis
-#' @param sample_weight sample_weight
+#' @param sample_weight sample weight
 #'
 #' @export
 HammingLoss <- function(axis = -1, sample_weight = NULL) {
@@ -93,7 +103,8 @@ HammingLoss <- function(axis = -1, sample_weight = NULL) {
 #' @description Expand the `target` to match the `output` size before applying `crit`.
 #'
 #'
-#' @param crit crit
+#' @return Loss object
+#' @param crit critic
 #'
 #' @export
 AdaptiveLoss <- function(crit) {
@@ -109,8 +120,8 @@ AdaptiveLoss <- function(crit) {
 #'
 #' @description Hamming loss for multi-label classification problems
 #'
-#'
-#' @param thresh thresh
+#' @return Loss object
+#' @param thresh threshold
 #' @param sigmoid sigmoid
 #' @param labels labels
 #' @param sample_weight sample_weight
@@ -134,7 +145,8 @@ HammingLossMulti <- function(thresh = 0.5, sigmoid = TRUE, labels = NULL, sample
 #' @description Smooth average of the losses (exponentially weighted with `beta`)
 #'
 #'
-#' @param beta beta
+#' @return Loss object
+#' @param beta beta, defaults to 0.98
 #'
 #' @export
 AvgSmoothLoss <- function(beta = 0.98) {
@@ -146,8 +158,10 @@ AvgSmoothLoss <- function(beta = 0.98) {
 }
 
 
-#' BCEWithLogitsLossFlat
+#' @title BCEWithLogitsLossFlat
+#' @param ... parameters to pass
 #'
+#' @return Loss object
 #' @export
 BCEWithLogitsLossFlat = function(...) {
   args = list(...)
@@ -158,11 +172,13 @@ BCEWithLogitsLossFlat = function(...) {
 
 #' @title LabelSmoothingCrossEntropy
 #'
-#' @description Same as `nn.Module`, but no need for subclasses to call `super().__init__`
+#' @description Same as `nn$Module`, but no need for subclasses to call `super()$__init__`
+#' @param ... parameters to pass
 #'
+#' @return Loss object
 #'
-#' @param eps eps
-#' @param reduction reduction
+#' @param eps epsilon
+#' @param reduction reduction, defaults to mean
 #'
 #' @export
 LabelSmoothingCrossEntropy <- function(eps = 0.1, reduction = "mean") {
@@ -177,10 +193,12 @@ LabelSmoothingCrossEntropy <- function(eps = 0.1, reduction = "mean") {
 
 #' @title LabelSmoothingCrossEntropyFlat
 #'
-#' @description Same as `nn.Module`, but no need for subclasses to call `super().__init__`
+#' @description Same as `nn$Module`, but no need for subclasses to call `super().__init__`
 #'
 #'
-#' @param ... additional parameters to pass
+#' @param ... parameters to pass
+#'
+#' @return Loss object
 #'
 #' @export
 LabelSmoothingCrossEntropyFlat <- function(...) {
@@ -194,10 +212,12 @@ LabelSmoothingCrossEntropyFlat <- function(...) {
 
 #' @title CrossEntropyLossFlat
 #'
-#' @description Same as `nn.Module`, but no need for subclasses to call `super().__init__`
+#' @description Same as `nn$Module`, but no need for subclasses to call `super().__init__`
 #'
 #'
-#' @param ... additional parameters to pass
+#' @param ... parameters to pass
+#'
+#' @return Loss object
 #'
 #' @export
 CrossEntropyLossFlat <- function(...) {

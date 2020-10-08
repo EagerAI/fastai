@@ -6,6 +6,12 @@
 \usage{
 BCEWithLogitsLossFlat(...)
 }
+\arguments{
+\item{...}{parameters to pass}
+}
+\value{
+Loss object
+}
 \description{
 BCEWithLogitsLossFlat
 }
