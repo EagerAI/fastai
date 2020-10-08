@@ -6,6 +6,9 @@
 \usage{
 win_spine_soft()
 }
+\value{
+list
+}
 \description{
 Spine soft
 }

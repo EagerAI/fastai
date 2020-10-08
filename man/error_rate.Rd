@@ -2,7 +2,7 @@
 % Please edit documentation in R/losses.R
 \name{error_rate}
 \alias{error_rate}
-\title{Error_rate}
+\title{Error rate}
 \usage{
 error_rate(inp, targ, axis = -1)
 }
@@ -12,6 +12,9 @@ error_rate(inp, targ, axis = -1)
 \item{targ}{The corresponding labels}
 
 \item{axis}{Axis}
+}
+\value{
+tensor
 }
 \description{
 1 - `accuracy`

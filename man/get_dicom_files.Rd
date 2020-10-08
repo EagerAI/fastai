@@ -7,11 +7,14 @@
 get_dicom_files(path, recurse = TRUE, folders = NULL)
 }
 \arguments{
-\item{path}{path}
+\item{path}{path to files}
 
-\item{recurse}{recurse}
+\item{recurse}{recursive or not}
 
-\item{folders}{folders}
+\item{folders}{folder names}
+}
+\value{
+lsit of files
 }
 \description{
 Get dicom files in `path` recursively, only in `folders`, if specified.

@@ -6,6 +6,9 @@
 \usage{
 win_brain_bone()
 }
+\value{
+list
+}
 \description{
 Brain bone
 }

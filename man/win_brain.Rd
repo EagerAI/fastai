@@ -6,6 +6,9 @@
 \usage{
 win_brain()
 }
+\value{
+list
+}
 \description{
 Brain
 }

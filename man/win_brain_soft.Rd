@@ -6,6 +6,9 @@
 \usage{
 win_brain_soft()
 }
+\value{
+list
+}
 \description{
 Brain soft
 }

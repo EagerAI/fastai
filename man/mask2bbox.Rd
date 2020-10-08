@@ -8,6 +8,11 @@ mask2bbox(mask, convert = TRUE)
 }
 \arguments{
 \item{mask}{mask}
+
+\item{convert}{to R matrix}
+}
+\value{
+tensor
 }
 \description{
 Mask2bbox

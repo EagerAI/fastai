@@ -6,6 +6,9 @@
 \usage{
 win_mediastinum()
 }
+\value{
+list
+}
 \description{
 Mediastinum
 }

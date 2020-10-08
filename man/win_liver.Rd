@@ -6,6 +6,9 @@
 \usage{
 win_liver()
 }
+\value{
+list
+}
 \description{
 Liver
 }

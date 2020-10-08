@@ -6,6 +6,9 @@
 \usage{
 win_lungs()
 }
+\value{
+list
+}
 \description{
 Lungs
 }

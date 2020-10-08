@@ -6,6 +6,9 @@
 \usage{
 win_abdoment_soft()
 }
+\value{
+list
+}
 \description{
 Abdomen soft
 }

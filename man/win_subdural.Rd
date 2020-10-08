@@ -6,6 +6,9 @@
 \usage{
 win_subdural()
 }
+\value{
+list
+}
 \description{
 Subdural
 }

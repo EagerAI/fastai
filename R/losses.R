@@ -1,11 +1,11 @@
-#' @title Error_rate
+#' @title Error rate
 #'
 #' @description 1 - `accuracy`
 #'
 #' @param inp The predictions of the model
 #' @param targ The corresponding labels
 #' @param axis Axis
-#'
+#' @return tensor
 #' @export
 error_rate <- function(inp, targ, axis = -1) {
 

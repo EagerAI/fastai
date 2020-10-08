@@ -6,6 +6,9 @@
 \usage{
 win_stroke()
 }
+\value{
+list
+}
 \description{
 Stroke
 }

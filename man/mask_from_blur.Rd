@@ -2,21 +2,21 @@
 % Please edit documentation in R/medical.R
 \name{mask_from_blur}
 \alias{mask_from_blur}
-\title{mask_from_blur}
+\title{Mask from blur}
 \usage{
 mask_from_blur(img, window, sigma = 0.3, thresh = 0.05, remove_max = TRUE)
 }
 \arguments{
-\item{window}{window}
+\item{img}{image}
+
+\item{window}{windowing effect}
 
 \item{sigma}{sigma}
 
-\item{thresh}{thresh}
+\item{thresh}{thresholf point}
 
-\item{remove_max}{remove_max}
-
-\item{x}{x}
+\item{remove_max}{remove maximum or not}
 }
 \description{
-mask_from_blur
+Mask from blur
 }

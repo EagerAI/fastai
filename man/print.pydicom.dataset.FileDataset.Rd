@@ -9,6 +9,9 @@
 \arguments{
 \item{img}{dicom file}
 }
+\value{
+None
+}
 \description{
-Dicom
+prints dicom file
 }

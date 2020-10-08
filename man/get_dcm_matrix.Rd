@@ -10,6 +10,15 @@ get_dcm_matrix(img, type = "raw", scan = "", size = 50, convert = TRUE)
 \item{img}{dicom file}
 
 \item{type}{img transformation}
+
+\item{scan}{apply uniform or gaussian blur effects}
+
+\item{size}{size of image}
+
+\item{convert}{to R matrix or keep tensor}
+}
+\value{
+tensor
 }
 \description{
 Get image matrix

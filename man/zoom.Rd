@@ -7,7 +7,12 @@
 zoom(img, ratio)
 }
 \arguments{
+\item{img}{image files}
+
 \item{ratio}{ratio}
+}
+\value{
+image
 }
 \description{
 Zoom

@@ -6,6 +6,9 @@
 \usage{
 win_spine_bone()
 }
+\value{
+list
+}
 \description{
 Spine bone
 }

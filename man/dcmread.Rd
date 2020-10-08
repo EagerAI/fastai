@@ -2,14 +2,17 @@
 % Please edit documentation in R/medical.R
 \name{dcmread}
 \alias{dcmread}
-\title{dcmread}
+\title{Read dicom}
 \usage{
 dcmread(fn, force = FALSE)
 }
 \arguments{
-\item{fn}{fn}
+\item{fn}{file name}
 
-\item{force}{force}
+\item{force}{logical, force}
+}
+\value{
+dicom object
 }
 \description{
 Open a `DICOM` file
