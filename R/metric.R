@@ -1,13 +1,13 @@
 
 
-#' @title flatten_check
+#' @title Flatten check
 #'
 #' @description Check that `out` and `targ` have the same number of elements and flatten them.
 #'
 #'
-#' @param inp inp
-#' @param targ targ
-#'
+#' @param inp predictions
+#' @param targ targets
+#' @return tensor
 #' @export
 flatten_check <- function(inp, targ) {
 
@@ -28,14 +28,14 @@ flatten_check <- function(inp, targ) {
 #' @description Stores predictions and targets on CPU in accumulate to perform final calculations with `func`.
 #'
 #'
-#' @param func func
-#' @param dim_argmax dim_argmax
+#' @param func function
+#' @param dim_argmax dimension argmax
 #' @param activation activation
-#' @param thresh thresh
-#' @param to_np to_np
-#' @param invert_arg invert_arg
+#' @param thresh threshold point
+#' @param to_np to matrix or not
+#' @param invert_arg invert arguments
 #' @param flatten flatten
-#'
+#' @return None
 #' @export
 AccumMetric <- function(func, dim_argmax = NULL, activation = "no",
                         thresh = NULL, to_np = FALSE,
@@ -57,18 +57,17 @@ AccumMetric <- function(func, dim_argmax = NULL, activation = "no",
 
 }
 
-#' @title skm_to_fastai
+#' @title Skm to fastai
 #'
-#' @description Convert `func` from sklearn.metrics to a fastai metric
+#' @description Convert `func` from sklearn$metrics to a fastai metric
 #'
-#' @details
 #'
-#' @param func func
-#' @param is_class is_class
-#' @param thresh thresh
+#' @param func function
+#' @param is_class is classification or not
+#' @param thresh threshold point
 #' @param axis axis
 #' @param activation activation
-#'
+#' @return None
 #' @export
 skm_to_fastai <- function(func, is_class = TRUE, thresh = NULL,
                           axis = -1, activation = NULL,
@@ -88,7 +87,7 @@ skm_to_fastai <- function(func, is_class = TRUE, thresh = NULL,
 }
 
 
-#' @title optim_metric
+#' @title Optim metric
 #'
 #' @description Replace metric `f` with a version that optimizes argument `argname`
 #'
@@ -99,7 +98,7 @@ skm_to_fastai <- function(func, is_class = TRUE, thresh = NULL,
 #' @param tol tol
 #' @param do_neg do_neg
 #' @param get_x get_x
-#'
+#' @return None
 #' @export
 optim_metric <- function(f, argname, bounds,
                          tol = 0.01, do_neg = TRUE, get_x = FALSE) {
@@ -118,15 +117,15 @@ optim_metric <- function(f, argname, bounds,
 }
 
 
-#' @title accuracy
+#' @title Accuracy
 #'
 #' @description Compute accuracy with `targ` when `pred` is bs * n_classes
 #'
 #'
-#' @param inp inp
-#' @param targ targ
+#' @param inp predictions
+#' @param targ targets
 #' @param axis axis
-#'
+#' @return None
 #' @export
 accuracy <- function(inp, targ, axis = -1) {
 
@@ -144,19 +143,18 @@ accuracy <- function(inp, targ, axis = -1) {
 }
 
 
-#' @title top_k_accuracy
+#' @title Top_k_accuracy
 #'
 #' @description Computes the Top-k accuracy (`targ` is in the top `k` predictions of `inp`)
 #'
-#' @details
 #'
-#' @param inp inp
-#' @param targ targ
+#' @param inp predictions
+#' @param targ targets
 #' @param k k
 #' @param axis axis
-#'
+#' @return None
 #' @export
-top_k_accuracy <- function(inp, targ, k = 5L, axis = -1) {
+top_k_accuracy <- function(inp, targ, k = 5, axis = -1) {
 
 
   if(missing(inp) & missing(targ)) {
@@ -185,7 +183,7 @@ attr(top_k_accuracy, "py_function_name") <- 'top_k_accuracy'
 #' @param average average
 #' @param pos_label pos_label
 #' @param sample_weight sample_weight
-#'
+#' @return None
 #' @export
 APScoreBinary <- function(axis = -1, average = "macro", pos_label = 1, sample_weight = NULL) {
 
@@ -208,7 +206,7 @@ APScoreBinary <- function(axis = -1, average = "macro", pos_label = 1, sample_we
 #' @param axis axis
 #' @param sample_weight sample_weight
 #' @param adjusted adjusted
-#'
+#' @references None
 #' @export
 BalancedAccuracy <- function(axis = -1, sample_weight = NULL, adjusted = FALSE) {
 
@@ -231,7 +229,7 @@ BalancedAccuracy <- function(axis = -1, sample_weight = NULL, adjusted = FALSE) 
 #' @param axis axis
 #' @param sample_weight sample_weight
 #' @param pos_label pos_label
-#'
+#' @return None
 #' @export
 BrierScore <- function(axis = -1, sample_weight = NULL, pos_label = NULL) {
 
@@ -255,7 +253,7 @@ BrierScore <- function(axis = -1, sample_weight = NULL, pos_label = NULL) {
 #' @param labels labels
 #' @param weights weights
 #' @param sample_weight sample_weight
-#'
+#' @return None
 #' @export
 CohenKappa <- function(axis = -1, labels = NULL, weights = NULL, sample_weight = NULL) {
 
@@ -282,7 +280,7 @@ CohenKappa <- function(axis = -1, labels = NULL, weights = NULL, sample_weight =
 #' @param pos_label pos_label
 #' @param average average
 #' @param sample_weight sample_weight
-#'
+#' @return None
 #' @export
 F1Score <- function(axis = -1, labels = NULL, pos_label = 1, average = "binary", sample_weight = NULL) {
 
@@ -302,7 +300,6 @@ F1Score <- function(axis = -1, labels = NULL, pos_label = 1, average = "binary",
 #'
 #' @description FBeta score with `beta` for single-label classification problems
 #'
-#' @details
 #'
 #' @param beta beta
 #' @param axis axis
@@ -310,7 +307,7 @@ F1Score <- function(axis = -1, labels = NULL, pos_label = 1, average = "binary",
 #' @param pos_label pos_label
 #' @param average average
 #' @param sample_weight sample_weight
-#'
+#' @return None
 #' @export
 FBeta <- function(beta, axis = -1, labels = NULL, pos_label = 1, average = "binary", sample_weight = NULL) {
 
@@ -339,7 +336,7 @@ FBeta <- function(beta, axis = -1, labels = NULL, pos_label = 1, average = "bina
 #'
 #' @param axis axis
 #' @param sample_weight sample_weight
-#'
+#' @return None
 #' @export
 HammingLoss <- function(axis = -1, sample_weight = NULL) {
 
@@ -363,7 +360,7 @@ HammingLoss <- function(axis = -1, sample_weight = NULL) {
 #' @param pos_label pos_label
 #' @param average average
 #' @param sample_weight sample_weight
-#'
+#' @return None
 #' @export
 Jaccard <- function(axis = -1, labels = NULL, pos_label = 1,
                     average = "binary", sample_weight = NULL) {
@@ -391,7 +388,7 @@ Jaccard <- function(axis = -1, labels = NULL, pos_label = 1,
 #' @param pos_label pos_label
 #' @param average average
 #' @param sample_weight sample_weight
-#'
+#' @return None
 #' @export
 Precision <- function(axis = -1, labels = NULL, pos_label = 1,
                       average = "binary", sample_weight = NULL) {
@@ -419,7 +416,7 @@ Precision <- function(axis = -1, labels = NULL, pos_label = 1,
 #' @param pos_label pos_label
 #' @param average average
 #' @param sample_weight sample_weight
-#'
+#' @return None
 #' @export
 Recall <- function(axis = -1, labels = NULL, pos_label = 1,
                    average = "binary", sample_weight = NULL) {
@@ -448,7 +445,7 @@ Recall <- function(axis = -1, labels = NULL, pos_label = 1,
 #' @param sample_weight sample_weight
 #' @param max_fpr max_fpr
 #' @param multi_class multi_class
-#'
+#' @return None
 #' @export
 RocAuc <- function(axis = -1, average = "macro",
                    sample_weight = NULL, max_fpr = NULL, multi_class = "ovr") {
@@ -476,7 +473,7 @@ RocAuc <- function(axis = -1, average = "macro",
 #' @param sample_weight sample_weight
 #' @param max_fpr max_fpr
 #' @param multi_class multi_class
-#'
+#' @return None
 #' @export
 RocAucBinary <- function(axis = -1, average = "macro",
                          sample_weight = NULL, max_fpr = NULL, multi_class = "raise") {
@@ -498,7 +495,7 @@ RocAucBinary <- function(axis = -1, average = "macro",
 #'
 #' @description Matthews correlation coefficient for single-label classification problems
 #'
-#'
+#' @return None
 #' @export
 MatthewsCorrCoef <- function( ...) {
 
@@ -513,12 +510,12 @@ MatthewsCorrCoef <- function( ...) {
 }
 
 
-#' @title perplexity
+#' @title Perplexity
 #'
 #' @description Perplexity (exponential of cross-entropy loss) for Language Models
 #'
-#'
-#'
+#' @param ... parameters to pass
+#' @return None
 #' @export
 preplexity = function(...) {
 
@@ -532,17 +529,16 @@ preplexity = function(...) {
 
 }
 
-#' @title accuracy_multi
+#' @title Accuracy_multi
 #'
 #' @description Compute accuracy when `inp` and `targ` are the same size.
 #'
-#' @details
 #'
-#' @param inp inp
-#' @param targ targ
-#' @param thresh thresh
+#' @param inp predictions
+#' @param targ targets
+#' @param thresh threshold point
 #' @param sigmoid sigmoid
-#'
+#' @return None
 #' @export
 accuracy_multi <- function(inp, targ, thresh = 0.5, sigmoid = TRUE) {
 
@@ -570,7 +566,7 @@ accuracy_multi <- function(inp, targ, thresh = 0.5, sigmoid = TRUE) {
 #' @param average average
 #' @param pos_label pos_label
 #' @param sample_weight sample_weight
-#'
+#' @return None
 #' @export
 APScoreMulti <- function(sigmoid = TRUE, average = "macro",
                          pos_label = 1, sample_weight = NULL) {
@@ -596,7 +592,7 @@ APScoreMulti <- function(sigmoid = TRUE, average = "macro",
 #' @param sigmoid sigmoid
 #' @param sample_weight sample_weight
 #' @param pos_label pos_label
-#'
+#' @return None
 #' @export
 BrierScoreMulti <- function(thresh = 0.5, sigmoid = TRUE,
                             sample_weight = NULL, pos_label = NULL) {
@@ -622,7 +618,7 @@ BrierScoreMulti <- function(thresh = 0.5, sigmoid = TRUE,
 #' @param pos_label pos_label
 #' @param average average
 #' @param sample_weight sample_weight
-#'
+#' @return None
 #' @export
 F1ScoreMulti <- function(thresh = 0.5, sigmoid = TRUE, labels = NULL,
                          pos_label = 1, average = "macro",
@@ -652,7 +648,7 @@ F1ScoreMulti <- function(thresh = 0.5, sigmoid = TRUE, labels = NULL,
 #' @param pos_label pos_label
 #' @param average average
 #' @param sample_weight sample_weight
-#'
+#' @return None
 #' @export
 FBetaMulti <- function(beta, thresh = 0.5, sigmoid = TRUE, labels = NULL,
                        pos_label = 1, average = "macro", sample_weight = NULL) {
@@ -671,28 +667,7 @@ FBetaMulti <- function(beta, thresh = 0.5, sigmoid = TRUE, labels = NULL,
 
 
 
-#' @title HammingLossMulti
-#'
-#' @description Hamming loss for multi-label classification problems
-#'
-#'
-#' @param thresh thresh
-#' @param sigmoid sigmoid
-#' @param labels labels
-#' @param sample_weight sample_weight
-#'
-#' @export
-HammingLossMulti <- function(thresh = 0.5, sigmoid = TRUE,
-                             labels = NULL, sample_weight = NULL) {
 
-  metrics$HammingLossMulti(
-    thresh = thresh,
-    sigmoid = sigmoid,
-    labels = labels,
-    sample_weight = sample_weight
-  )
-
-}
 
 #' @title JaccardMulti
 #'
@@ -704,7 +679,7 @@ HammingLossMulti <- function(thresh = 0.5, sigmoid = TRUE,
 #' @param pos_label pos_label
 #' @param average average
 #' @param sample_weight sample_weight
-#'
+#' @return None
 #' @export
 JaccardMulti <- function(thresh = 0.5, sigmoid = TRUE,
                          labels = NULL, pos_label = 1,
@@ -730,7 +705,7 @@ JaccardMulti <- function(thresh = 0.5, sigmoid = TRUE,
 #' @param thresh thresh
 #' @param sigmoid sigmoid
 #' @param sample_weight sample_weight
-#'
+#' @return None
 #' @export
 MatthewsCorrCoefMulti <- function(thresh = 0.5, sigmoid = TRUE, sample_weight = NULL) {
 
@@ -753,7 +728,7 @@ MatthewsCorrCoefMulti <- function(thresh = 0.5, sigmoid = TRUE, sample_weight = 
 #' @param pos_label pos_label
 #' @param average average
 #' @param sample_weight sample_weight
-#'
+#' @return None
 #' @export
 PrecisionMulti <- function(thresh = 0.5, sigmoid = TRUE, labels = NULL,
                            pos_label = 1, average = "macro",
@@ -781,7 +756,7 @@ PrecisionMulti <- function(thresh = 0.5, sigmoid = TRUE, labels = NULL,
 #' @param pos_label pos_label
 #' @param average average
 #' @param sample_weight sample_weight
-#'
+#' @return None
 #' @export
 RecallMulti <- function(thresh = 0.5, sigmoid = TRUE, labels = NULL,
                         pos_label = 1, average = "macro",
@@ -807,7 +782,7 @@ RecallMulti <- function(thresh = 0.5, sigmoid = TRUE, labels = NULL,
 #' @param average average
 #' @param sample_weight sample_weight
 #' @param max_fpr max_fpr
-#'
+#' @return None
 #' @export
 RocAucMulti <- function(sigmoid = TRUE, average = "macro",
                         sample_weight = NULL, max_fpr = NULL) {
@@ -821,15 +796,14 @@ RocAucMulti <- function(sigmoid = TRUE, average = "macro",
 
 }
 
-#' @title mse
+#' @title MSE
 #'
 #' @description Mean squared error between `inp` and `targ`.
 #'
-#' @details
 #'
-#' @param inp inp
-#' @param targ targ
-#'
+#' @param inp predictions
+#' @param targ targets
+#' @return None
 #' @export
 mse <- function(inp, targ) {
 
@@ -845,15 +819,14 @@ mse <- function(inp, targ) {
 }
 
 
-#' @title rmse
+#' @title RMSE
 #'
 #' @description Root mean squared error
 #'
-#' @details
 #'
-#' @param preds preds
-#' @param targs targs
-#'
+#' @param preds predictions
+#' @param targs targets
+#' @return None
 #' @export
 rmse <- function(preds, targs) {
 
@@ -868,15 +841,14 @@ rmse <- function(preds, targs) {
 
 }
 
-#' @title mae
+#' @title MAE
 #'
 #' @description Mean absolute error between `inp` and `targ`.
 #'
-#' @details
 #'
-#' @param inp inp
-#' @param targ targ
-#'
+#' @param inp predictions
+#' @param targ targets
+#' @return None
 #' @export
 mae <- function(inp, targ) {
 
@@ -892,15 +864,13 @@ mae <- function(inp, targ) {
 }
 
 
-#' @title msle
+#' @title MSLE
 #'
 #' @description Mean squared logarithmic error between `inp` and `targ`.
 #'
-#' @details
-#'
-#' @param inp inp
-#' @param targ targ
-#'
+#' @param inp predictions
+#' @param targ targets
+#' @return None
 #' @export
 msle <- function(inp, targ) {
 
@@ -915,14 +885,14 @@ msle <- function(inp, targ) {
 }
 
 
-#' @title exp_rmspe
+#' @title Exp_rmspe
 #'
 #' @description Root mean square percentage error of the exponential of predictions and targets
 #'
 #'
-#' @param preds preds
-#' @param targs targs
-#'
+#' @param preds predicitons
+#' @param targs targets
+#' @return None
 #' @export
 exp_rmspe <- function(preds, targs) {
 
@@ -938,13 +908,13 @@ exp_rmspe <- function(preds, targs) {
 }
 
 
-#' @title ExplainedVariance
+#' @title Explained Variance
 #'
 #' @description Explained variance between predictions and targets
 #'
 #'
 #' @param sample_weight sample_weight
-#'
+#' @return None
 #' @export
 ExplainedVariance <- function(sample_weight = NULL) {
 
@@ -960,7 +930,7 @@ ExplainedVariance <- function(sample_weight = NULL) {
 #'
 #'
 #' @param sample_weight sample_weight
-#'
+#' @return None
 #' @export
 R2Score <- function(sample_weight = NULL) {
 
@@ -982,7 +952,7 @@ R2Score <- function(sample_weight = NULL) {
 #' @param to_np to_np
 #' @param invert_arg invert_arg
 #' @param flatten flatten
-#'
+#' @return None
 #' @export
 PearsonCorrCoef <- function(dim_argmax = NULL, activation = "no",
                             thresh = NULL, to_np = FALSE, invert_arg = FALSE, flatten = TRUE) {
@@ -1012,7 +982,7 @@ PearsonCorrCoef <- function(dim_argmax = NULL, activation = "no",
 #' @param to_np to_np
 #' @param invert_arg invert_arg
 #' @param flatten flatten
-#'
+#' @return None
 #' @export
 SpearmanCorrCoef <- function(dim_argmax = NULL, axis = 0, nan_policy = "propagate",
                              activation = "no", thresh = NULL, to_np = FALSE,
@@ -1033,17 +1003,16 @@ SpearmanCorrCoef <- function(dim_argmax = NULL, axis = 0, nan_policy = "propagat
 
 
 
-#' @title foreground_acc
+#' @title Foreground accuracy
 #'
 #' @description Computes non-background accuracy for multiclass segmentation
 #'
-#' @details
 #'
-#' @param inp inp
-#' @param targ targ
+#' @param inp predictions
+#' @param targ targets
 #' @param bkg_idx bkg_idx
 #' @param axis axis
-#'
+#' @return None
 #' @export
 foreground_acc <- function(inp, targ, bkg_idx = 0, axis = 1) {
 
@@ -1061,13 +1030,13 @@ foreground_acc <- function(inp, targ, bkg_idx = 0, axis = 1) {
 
 }
 
-#' @title Dice
+#' @title Dice coefficient
 #'
 #' @description Dice coefficient metric for binary target in segmentation
 #'
 #'
 #' @param axis axis
-#'
+#' @return None
 #' @export
 Dice <- function(axis = 1) {
 
@@ -1083,7 +1052,7 @@ Dice <- function(axis = 1) {
 #'
 #'
 #' @param axis axis
-#'
+#' @return None
 #' @export
 JaccardCoeff <- function(axis = 1) {
 
@@ -1100,7 +1069,7 @@ JaccardCoeff <- function(axis = 1) {
 #'
 #' @param vocab_sz vocab_sz
 #' @param axis axis
-#'
+#' @return None
 #' @export
 CorpusBLEUMetric <- function(vocab_sz = 5000, axis = -1) {
 
@@ -1118,7 +1087,7 @@ CorpusBLEUMetric <- function(vocab_sz = 5000, axis = -1) {
 #'
 #' @param attr attr
 #' @param nm nm
-#'
+#' @return None
 #' @export
 LossMetric <- function(attr, nm = NULL) {
 

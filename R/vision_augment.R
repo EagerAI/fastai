@@ -725,7 +725,7 @@ Hue <- function(max_hue = 0.1, p = 0.75, draw = NULL, batch = FALSE) {
 #' @param max_count max_count
 #'
 #' @export
-RandomErasing <- function(p = 0.5, sl = 0.0, sh = 0.3, min_aspect = 0.3, max_count = 1L) {
+RandomErasing <- function(p = 0.5, sl = 0.0, sh = 0.3, min_aspect = 0.3, max_count = 1) {
 
   vision$all$RandomErasing(
     p = p,
@@ -779,29 +779,6 @@ norm_apply_denorm <- function(x, f, nrm) {
 }
 
 
-#' @title RandomErasing
-#'
-#' @description Randomly selects a rectangle region in an image and randomizes its pixels.
-#'
-#'
-#' @param p p
-#' @param sl sl
-#' @param sh sh
-#' @param min_aspect min_aspect
-#' @param max_count max_count
-#'
-#' @export
-RandomErasing <- function(p = 0.5, sl = 0.0, sh = 0.3, min_aspect = 0.3, max_count = 1L) {
-
-  vision$all$RandomErasing(
-    p = p,
-    sl = sl,
-    sh = sh,
-    min_aspect = min_aspect,
-    max_count = max_count
-  )
-
-}
 
 #' @title setup_aug_tfms
 #'

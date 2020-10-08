@@ -2,18 +2,18 @@
 % Please edit documentation in R/metric.R
 \name{msle}
 \alias{msle}
-\title{msle}
+\title{MSLE}
 \usage{
 msle(inp, targ)
 }
 \arguments{
-\item{inp}{inp}
+\item{inp}{predictions}
 
-\item{targ}{targ}
+\item{targ}{targets}
+}
+\value{
+None
 }
 \description{
 Mean squared logarithmic error between `inp` and `targ`.
-}
-\details{
-
 }

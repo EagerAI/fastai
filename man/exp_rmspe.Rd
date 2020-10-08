@@ -2,14 +2,17 @@
 % Please edit documentation in R/metric.R
 \name{exp_rmspe}
 \alias{exp_rmspe}
-\title{exp_rmspe}
+\title{Exp_rmspe}
 \usage{
 exp_rmspe(preds, targs)
 }
 \arguments{
-\item{preds}{preds}
+\item{preds}{predicitons}
 
-\item{targs}{targs}
+\item{targs}{targets}
+}
+\value{
+None
 }
 \description{
 Root mean square percentage error of the exponential of predictions and targets

@@ -26,6 +26,9 @@ RecallMulti(
 
 \item{sample_weight}{sample_weight}
 }
+\value{
+None
+}
 \description{
 Recall for multi-label classification problems
 }

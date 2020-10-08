@@ -2,7 +2,7 @@
 % Please edit documentation in R/metric.R, R/stats.R
 \name{accuracy}
 \alias{accuracy}
-\title{accuracy}
+\title{Accuracy}
 \usage{
 accuracy(inp, targ, axis = -1)
 
@@ -14,6 +14,9 @@ accuracy(inp, targ, axis = -1)
 \item{targ}{targ}
 
 \item{axis}{axis}
+}
+\value{
+None
 }
 \description{
 Compute accuracy with `targ` when `pred` is bs * n_classes

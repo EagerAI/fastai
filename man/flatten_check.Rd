@@ -2,14 +2,17 @@
 % Please edit documentation in R/metric.R
 \name{flatten_check}
 \alias{flatten_check}
-\title{flatten_check}
+\title{Flatten check}
 \usage{
 flatten_check(inp, targ)
 }
 \arguments{
-\item{inp}{inp}
+\item{inp}{predictions}
 
-\item{targ}{targ}
+\item{targ}{targets}
+}
+\value{
+tensor
 }
 \description{
 Check that `out` and `targ` have the same number of elements and flatten them.

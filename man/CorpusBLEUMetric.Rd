@@ -11,6 +11,9 @@ CorpusBLEUMetric(vocab_sz = 5000, axis = -1)
 
 \item{axis}{axis}
 }
+\value{
+None
+}
 \description{
 Blueprint for defining a metric
 }

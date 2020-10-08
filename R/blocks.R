@@ -158,11 +158,15 @@ SeparableBlock <- function(expansion, ni, nf, reduction = 16, stride = 1, base_w
 #' @export
 CategoryBlock <- function(vocab = NULL, sort = TRUE, add_na = FALSE) {
 
-  vision$all$CategoryBlock(
-    vocab = vocab,
-    sort = sort,
-    add_na = add_na
-  )
+  if(is.null(vocab)) {
+    text$CategoryBlock
+  } else {
+    text$CategoryBlock(
+      vocab = vocab,
+      sort = sort,
+      add_na = add_na
+    )
+  }
 
 }
 

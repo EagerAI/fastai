@@ -26,9 +26,9 @@ FBeta(
 
 \item{sample_weight}{sample_weight}
 }
+\value{
+None
+}
 \description{
 FBeta score with `beta` for single-label classification problems
-}
-\details{
-
 }

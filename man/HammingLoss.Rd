@@ -17,6 +17,8 @@ HammingLoss(axis = -1, sample_weight = NULL)
 }
 \value{
 Loss object
+
+None
 }
 \description{
 Hamming loss for single-label classification problems

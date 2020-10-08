@@ -2,18 +2,18 @@
 % Please edit documentation in R/metric.R
 \name{rmse}
 \alias{rmse}
-\title{rmse}
+\title{RMSE}
 \usage{
 rmse(preds, targs)
 }
 \arguments{
-\item{preds}{preds}
+\item{preds}{predictions}
 
-\item{targs}{targs}
+\item{targs}{targets}
+}
+\value{
+None
 }
 \description{
 Root mean squared error
-}
-\details{
-
 }

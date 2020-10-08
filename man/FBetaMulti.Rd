@@ -29,6 +29,9 @@ FBetaMulti(
 
 \item{sample_weight}{sample_weight}
 }
+\value{
+None
+}
 \description{
 FBeta score with `beta` for multi-label classification problems
 }

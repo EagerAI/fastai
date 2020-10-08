@@ -26,6 +26,9 @@ F1ScoreMulti(
 
 \item{sample_weight}{sample_weight}
 }
+\value{
+None
+}
 \description{
 F1 score for multi-label classification problems
 }

@@ -422,30 +422,6 @@ TextBlock_from_folder <- function(path, vocab = NULL, is_lm = FALSE, seq_len = 7
 
 
 
-#' @title CategoryBlock
-#'
-#' @description `TransformBlock` for single-label categorical targets
-#'
-#'
-#' @param vocab vocab
-#' @param sort sort
-#' @param add_na add_na
-#'
-#' @export
-CategoryBlock <- function(vocab = NULL, sort = TRUE, add_na = FALSE) {
-
-  if(is.null(vocab)) {
-    text$CategoryBlock
-  } else {
-    text$CategoryBlock(
-      vocab = vocab,
-      sort = sort,
-      add_na = add_na
-    )
-  }
-
-}
-
 
 #' @title ColReader
 #'

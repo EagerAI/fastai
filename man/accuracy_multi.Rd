@@ -2,22 +2,22 @@
 % Please edit documentation in R/metric.R
 \name{accuracy_multi}
 \alias{accuracy_multi}
-\title{accuracy_multi}
+\title{Accuracy_multi}
 \usage{
 accuracy_multi(inp, targ, thresh = 0.5, sigmoid = TRUE)
 }
 \arguments{
-\item{inp}{inp}
+\item{inp}{predictions}
 
-\item{targ}{targ}
+\item{targ}{targets}
 
-\item{thresh}{thresh}
+\item{thresh}{threshold point}
 
 \item{sigmoid}{sigmoid}
 }
+\value{
+None
+}
 \description{
 Compute accuracy when `inp` and `targ` are the same size.
-}
-\details{
-
 }

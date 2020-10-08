@@ -11,6 +11,9 @@ LossMetric(attr, nm = NULL)
 
 \item{nm}{nm}
 }
+\value{
+None
+}
 \description{
 Create a metric from `loss_func.attr` named `nm`
 }

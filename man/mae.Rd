@@ -2,18 +2,18 @@
 % Please edit documentation in R/metric.R
 \name{mae}
 \alias{mae}
-\title{mae}
+\title{MAE}
 \usage{
 mae(inp, targ)
 }
 \arguments{
-\item{inp}{inp}
+\item{inp}{predictions}
 
-\item{targ}{targ}
+\item{targ}{targets}
+}
+\value{
+None
 }
 \description{
 Mean absolute error between `inp` and `targ`.
-}
-\details{
-
 }

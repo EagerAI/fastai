@@ -15,6 +15,9 @@ CohenKappa(axis = -1, labels = NULL, weights = NULL, sample_weight = NULL)
 
 \item{sample_weight}{sample_weight}
 }
+\value{
+None
+}
 \description{
 Cohen kappa for single-label classification problems
 }

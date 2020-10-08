@@ -2,12 +2,15 @@
 % Please edit documentation in R/metric.R
 \name{Dice}
 \alias{Dice}
-\title{Dice}
+\title{Dice coefficient}
 \usage{
 Dice(axis = 1)
 }
 \arguments{
 \item{axis}{axis}
+}
+\value{
+None
 }
 \description{
 Dice coefficient metric for binary target in segmentation

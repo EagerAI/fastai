@@ -470,21 +470,6 @@ GANLoss <- function(gen_loss_func, crit_loss_func, gan_model) {
 
 }
 
-#' @title Adaptive Loss
-#'
-#' @description Expand the `target` to match the `output` size before applying `crit`.
-#'
-#'
-#' @param crit discriminator loss
-#' @return None
-#' @export
-AdaptiveLoss <- function(crit) {
-
-  vision$gan$AdaptiveLoss(
-    crit = crit
-  )
-
-}
 
 
 #' @title Accuracy threshold expand
@@ -620,28 +605,6 @@ gan_loss_from_func <- function(loss_gen, loss_crit, weights_gen = NULL) {
   )
 
 }
-
-
-
-#' @title Adaptive GAN Switcher
-#'
-#' @description Switcher that goes back to generator/critic when the loss goes below `gen_thresh`/`crit_thresh`.
-#'
-#'
-#' @param gen_thresh generator threshold
-#' @param critic_thresh discriminator threshold
-#' @return None
-#' @export
-AdaptiveGANSwitcher <- function(gen_thresh = NULL, critic_thresh = NULL) {
-
-  vision$gan$AdaptiveGANSwitcher(
-    gen_thresh = gen_thresh,
-    critic_thresh = critic_thresh
-  )
-
-}
-
-
 
 
 #' @title GAN Learner from learners

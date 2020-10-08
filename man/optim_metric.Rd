@@ -2,7 +2,7 @@
 % Please edit documentation in R/metric.R
 \name{optim_metric}
 \alias{optim_metric}
-\title{optim_metric}
+\title{Optim metric}
 \usage{
 optim_metric(f, argname, bounds, tol = 0.01, do_neg = TRUE, get_x = FALSE)
 }
@@ -18,6 +18,9 @@ optim_metric(f, argname, bounds, tol = 0.01, do_neg = TRUE, get_x = FALSE)
 \item{do_neg}{do_neg}
 
 \item{get_x}{get_x}
+}
+\value{
+None
 }
 \description{
 Replace metric `f` with a version that optimizes argument `argname`

@@ -2,18 +2,18 @@
 % Please edit documentation in R/metric.R
 \name{mse}
 \alias{mse}
-\title{mse}
+\title{MSE}
 \usage{
 mse(inp, targ)
 }
 \arguments{
-\item{inp}{inp}
+\item{inp}{predictions}
 
-\item{targ}{targ}
+\item{targ}{targets}
+}
+\value{
+None
 }
 \description{
 Mean squared error between `inp` and `targ`.
-}
-\details{
-
 }

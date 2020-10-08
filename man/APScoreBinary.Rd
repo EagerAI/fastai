@@ -20,6 +20,9 @@ APScoreBinary(
 
 \item{sample_weight}{sample_weight}
 }
+\value{
+None
+}
 \description{
 Average Precision for single-label binary classification problems
 }

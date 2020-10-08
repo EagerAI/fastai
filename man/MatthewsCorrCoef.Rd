@@ -6,6 +6,9 @@
 \usage{
 MatthewsCorrCoef(...)
 }
+\value{
+None
+}
 \description{
 Matthews correlation coefficient for single-label classification problems
 }

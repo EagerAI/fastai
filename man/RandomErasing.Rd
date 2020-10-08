@@ -4,9 +4,7 @@
 \alias{RandomErasing}
 \title{RandomErasing}
 \usage{
-RandomErasing(p = 0.5, sl = 0, sh = 0.3, min_aspect = 0.3, max_count = 1L)
-
-RandomErasing(p = 0.5, sl = 0, sh = 0.3, min_aspect = 0.3, max_count = 1L)
+RandomErasing(p = 0.5, sl = 0, sh = 0.3, min_aspect = 0.3, max_count = 1)
 }
 \arguments{
 \item{p}{p}
@@ -20,7 +18,5 @@ RandomErasing(p = 0.5, sl = 0, sh = 0.3, min_aspect = 0.3, max_count = 1L)
 \item{max_count}{max_count}
 }
 \description{
-Randomly selects a rectangle region in an image and randomizes its pixels.
-
 Randomly selects a rectangle region in an image and randomizes its pixels.
 }

@@ -2,22 +2,22 @@
 % Please edit documentation in R/metric.R
 \name{foreground_acc}
 \alias{foreground_acc}
-\title{foreground_acc}
+\title{Foreground accuracy}
 \usage{
 foreground_acc(inp, targ, bkg_idx = 0, axis = 1)
 }
 \arguments{
-\item{inp}{inp}
+\item{inp}{predictions}
 
-\item{targ}{targ}
+\item{targ}{targets}
 
 \item{bkg_idx}{bkg_idx}
 
 \item{axis}{axis}
 }
+\value{
+None
+}
 \description{
 Computes non-background accuracy for multiclass segmentation
-}
-\details{
-
 }

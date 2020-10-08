@@ -2,9 +2,15 @@
 % Please edit documentation in R/metric.R
 \name{preplexity}
 \alias{preplexity}
-\title{perplexity}
+\title{Perplexity}
 \usage{
 preplexity(...)
+}
+\arguments{
+\item{...}{parameters to pass}
+}
+\value{
+None
 }
 \description{
 Perplexity (exponential of cross-entropy loss) for Language Models

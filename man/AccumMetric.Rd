@@ -16,19 +16,22 @@ AccumMetric(
 )
 }
 \arguments{
-\item{func}{func}
+\item{func}{function}
 
-\item{dim_argmax}{dim_argmax}
+\item{dim_argmax}{dimension argmax}
 
 \item{activation}{activation}
 
-\item{thresh}{thresh}
+\item{thresh}{threshold point}
 
-\item{to_np}{to_np}
+\item{to_np}{to matrix or not}
 
-\item{invert_arg}{invert_arg}
+\item{invert_arg}{invert arguments}
 
 \item{flatten}{flatten}
+}
+\value{
+None
 }
 \description{
 Stores predictions and targets on CPU in accumulate to perform final calculations with `func`.

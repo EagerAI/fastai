@@ -16,3 +16,6 @@ BalancedAccuracy(axis = -1, sample_weight = NULL, adjusted = FALSE)
 \description{
 Balanced Accuracy for single-label binary classification problems
 }
+\references{
+None
+}

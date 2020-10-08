@@ -149,15 +149,6 @@ xresnet50_deep <- function(...) {
   }
 }
 
-#' @title Dynamic Unet
-#'
-#' @param ... parameters to pass
-#' @return model
-#' @export
-DynamicUnet <- function(...) {
-  args = list(...)
-  do.call(vision$all$DynamicUnet, args)
-}
 
 
 #' @title Alexnet

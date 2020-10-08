@@ -20,6 +20,9 @@ RocAucMulti(
 
 \item{max_fpr}{max_fpr}
 }
+\value{
+None
+}
 \description{
 Area Under the Receiver Operating Characteristic Curve for multi-label binary classification problems
 }

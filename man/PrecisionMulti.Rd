@@ -26,6 +26,9 @@ PrecisionMulti(
 
 \item{sample_weight}{sample_weight}
 }
+\value{
+None
+}
 \description{
 Precision for multi-label classification problems
 }

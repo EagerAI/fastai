@@ -2,12 +2,15 @@
 % Please edit documentation in R/metric.R
 \name{ExplainedVariance}
 \alias{ExplainedVariance}
-\title{ExplainedVariance}
+\title{Explained Variance}
 \usage{
 ExplainedVariance(sample_weight = NULL)
 }
 \arguments{
 \item{sample_weight}{sample_weight}
+}
+\value{
+None
 }
 \description{
 Explained variance between predictions and targets

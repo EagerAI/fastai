@@ -13,6 +13,9 @@ MatthewsCorrCoefMulti(thresh = 0.5, sigmoid = TRUE, sample_weight = NULL)
 
 \item{sample_weight}{sample_weight}
 }
+\value{
+None
+}
 \description{
 Matthews correlation coefficient for multi-label classification problems
 }

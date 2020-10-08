@@ -9,6 +9,9 @@ R2Score(sample_weight = NULL)
 \arguments{
 \item{sample_weight}{sample_weight}
 }
+\value{
+None
+}
 \description{
 R2 score between predictions and targets
 }

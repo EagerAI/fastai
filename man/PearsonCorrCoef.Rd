@@ -26,6 +26,9 @@ PearsonCorrCoef(
 
 \item{flatten}{flatten}
 }
+\value{
+None
+}
 \description{
 Pearson correlation coefficient for regression problem
 }

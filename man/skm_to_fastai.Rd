@@ -2,7 +2,7 @@
 % Please edit documentation in R/metric.R
 \name{skm_to_fastai}
 \alias{skm_to_fastai}
-\title{skm_to_fastai}
+\title{Skm to fastai}
 \usage{
 skm_to_fastai(
   func,
@@ -14,19 +14,19 @@ skm_to_fastai(
 )
 }
 \arguments{
-\item{func}{func}
+\item{func}{function}
 
-\item{is_class}{is_class}
+\item{is_class}{is classification or not}
 
-\item{thresh}{thresh}
+\item{thresh}{threshold point}
 
 \item{axis}{axis}
 
 \item{activation}{activation}
 }
-\description{
-Convert `func` from sklearn.metrics to a fastai metric
+\value{
+None
 }
-\details{
-
+\description{
+Convert `func` from sklearn$metrics to a fastai metric
 }

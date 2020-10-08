@@ -20,6 +20,9 @@ BrierScoreMulti(
 
 \item{pos_label}{pos_label}
 }
+\value{
+None
+}
 \description{
 Brier score for multi-label classification problems
 }

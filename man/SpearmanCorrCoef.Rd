@@ -32,6 +32,9 @@ SpearmanCorrCoef(
 
 \item{flatten}{flatten}
 }
+\value{
+None
+}
 \description{
 Spearman correlation coefficient for regression problem
 }

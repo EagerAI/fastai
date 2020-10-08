@@ -13,6 +13,9 @@ BrierScore(axis = -1, sample_weight = NULL, pos_label = NULL)
 
 \item{pos_label}{pos_label}
 }
+\value{
+None
+}
 \description{
 Brier score for single-label classification problems
 }

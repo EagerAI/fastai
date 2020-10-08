@@ -9,6 +9,9 @@ JaccardCoeff(axis = 1)
 \arguments{
 \item{axis}{axis}
 }
+\value{
+None
+}
 \description{
 Implementation of the Jaccard coefficient that is lighter in RAM
 }

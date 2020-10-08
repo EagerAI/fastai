@@ -2,22 +2,22 @@
 % Please edit documentation in R/metric.R
 \name{top_k_accuracy}
 \alias{top_k_accuracy}
-\title{top_k_accuracy}
+\title{Top_k_accuracy}
 \usage{
-top_k_accuracy(inp, targ, k = 5L, axis = -1)
+top_k_accuracy(inp, targ, k = 5, axis = -1)
 }
 \arguments{
-\item{inp}{inp}
+\item{inp}{predictions}
 
-\item{targ}{targ}
+\item{targ}{targets}
 
 \item{k}{k}
 
 \item{axis}{axis}
 }
+\value{
+None
+}
 \description{
 Computes the Top-k accuracy (`targ` is in the top `k` predictions of `inp`)
-}
-\details{
-
 }

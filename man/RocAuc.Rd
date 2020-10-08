@@ -23,6 +23,9 @@ RocAuc(
 
 \item{multi_class}{multi_class}
 }
+\value{
+None
+}
 \description{
 Area Under the Receiver Operating Characteristic
 Curve for single-label multiclass classification problems
