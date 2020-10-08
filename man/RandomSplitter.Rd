@@ -7,9 +7,12 @@
 RandomSplitter(valid_pct = 0.2, seed = NULL)
 }
 \arguments{
-\item{valid_pct}{valid_pct}
+\item{valid_pct}{validation percenatge split}
 
-\item{seed}{seed}
+\item{seed}{random seed}
+}
+\value{
+None
 }
 \description{
 Create function that splits `items` between train/val with `valid_pct` randomly.

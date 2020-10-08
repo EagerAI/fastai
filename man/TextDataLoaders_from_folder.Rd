@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_data.R
 \name{TextDataLoaders_from_folder}
 \alias{TextDataLoaders_from_folder}
-\title{from_folder}
+\title{TextDataLoaders_from_folder}
 \usage{
 TextDataLoaders_from_folder(
   path,
@@ -25,15 +25,15 @@ TextDataLoaders_from_folder(
 \arguments{
 \item{path}{path}
 
-\item{train}{train}
+\item{train}{train data}
 
-\item{valid}{valid}
+\item{valid}{validation data}
 
-\item{valid_pct}{valid_pct}
+\item{valid_pct}{validation percentage}
 
-\item{seed}{seed}
+\item{seed}{random seed}
 
-\item{vocab}{vocab}
+\item{vocab}{vocabulary}
 
 \item{text_vocab}{text_vocab}
 
@@ -45,19 +45,17 @@ TextDataLoaders_from_folder(
 
 \item{backwards}{backwards}
 
-\item{bs}{bs}
+\item{bs}{batch size}
 
-\item{val_bs}{val_bs}
+\item{val_bs}{validation batch size}
 
-\item{shuffle_train}{shuffle_train}
+\item{shuffle_train}{shuffle train data}
 
 \item{device}{device}
-
-\item{cls}{cls}
+}
+\value{
+text loader
 }
 \description{
 Create from imagenet style dataset in `path` with `train` and `valid` subfolders (or provide `valid_pct`)
-}
-\details{
-
 }

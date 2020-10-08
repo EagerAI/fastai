@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_data.R
 \name{TextBlock_from_folder}
 \alias{TextBlock_from_folder}
-\title{from_folder}
+\title{TextBlock_from_folder}
 \usage{
 TextBlock_from_folder(
   path,
@@ -26,19 +26,19 @@ TextBlock_from_folder(
 \arguments{
 \item{path}{path}
 
-\item{vocab}{vocab}
+\item{vocab}{vocabualry}
 
 \item{is_lm}{is_lm}
 
-\item{seq_len}{seq_len}
+\item{seq_len}{sequence length}
 
 \item{backwards}{backwards}
 
-\item{min_freq}{min_freq}
+\item{min_freq}{minimum frequency}
 
-\item{max_vocab}{max_vocab}
+\item{max_vocab}{max vocabulary}
 
-\item{tok}{tok}
+\item{tok}{tokenizer}
 
 \item{rules}{rules}
 
@@ -52,9 +52,12 @@ TextBlock_from_folder(
 
 \item{output_names}{output_names}
 
-\item{n_workers}{n_workers}
+\item{n_workers}{number of workers}
 
 \item{encoding}{encoding}
+}
+\value{
+None
 }
 \description{
 Build a `TextBlock` from a `path`

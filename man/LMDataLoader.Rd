@@ -56,9 +56,9 @@ LMDataLoader(
 
 \item{device}{device}
 }
+\value{
+text loader
+}
 \description{
 A `DataLoader` suitable for language modeling
-}
-\details{
-
 }

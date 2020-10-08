@@ -53,9 +53,9 @@ SortedDL(
 
 \item{device}{device}
 }
+\value{
+None
+}
 \description{
 A `DataLoader` that goes throught the item in the order given by `sort_func`
-}
-\details{
-
 }

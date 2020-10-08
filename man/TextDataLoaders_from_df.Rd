@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_data.R
 \name{TextDataLoaders_from_df}
 \alias{TextDataLoaders_from_df}
-\title{from_df}
+\title{TextDataLoaders_from_df}
 \usage{
 TextDataLoaders_from_df(
   df,
@@ -30,7 +30,7 @@ TextDataLoaders_from_df(
 
 \item{path}{path}
 
-\item{valid_pct}{valid_pct}
+\item{valid_pct}{validation percentage}
 
 \item{seed}{seed}
 
@@ -54,13 +54,16 @@ TextDataLoaders_from_df(
 
 \item{backwards}{backwards}
 
-\item{bs}{bs}
+\item{bs}{batch size}
 
-\item{val_bs}{val_bs}
+\item{val_bs}{validation batch size, if not specified then val_bs is the same as bs.}
 
 \item{shuffle_train}{shuffle_train}
 
 \item{device}{device}
+}
+\value{
+text loader
 }
 \description{
 Create from `df` in `path` with `valid_pct`

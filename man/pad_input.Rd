@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_data.R
 \name{pad_input}
 \alias{pad_input}
-\title{pad_input}
+\title{Pad_input}
 \usage{
 pad_input(
   samples,
@@ -22,6 +22,9 @@ pad_input(
 \item{pad_first}{pad_first}
 
 \item{backwards}{backwards}
+}
+\value{
+None
 }
 \description{
 Function that collect `samples` and adds padding

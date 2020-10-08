@@ -2,13 +2,16 @@
 % Please edit documentation in R/text_data.R
 \name{reverse_text}
 \alias{reverse_text}
-\title{reverse_text}
+\title{Reverse_text}
 \usage{
 reverse_text(x)
 }
 \arguments{
-\item{x}{x}
+\item{x}{text}
+}
+\value{
+string
 }
 \description{
-reverse_text
+Reverse_text
 }

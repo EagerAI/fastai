@@ -2,9 +2,9 @@
 % Please edit documentation in R/text_data.R
 \name{pad_input_chunk}
 \alias{pad_input_chunk}
-\title{pad_input_chunk}
+\title{Pad_input_chunk}
 \usage{
-pad_input_chunk(samples, pad_idx = 1L, pad_first = TRUE, seq_len = 72L)
+pad_input_chunk(samples, pad_idx = 1, pad_first = TRUE, seq_len = 72)
 }
 \arguments{
 \item{samples}{samples}
@@ -15,9 +15,9 @@ pad_input_chunk(samples, pad_idx = 1L, pad_first = TRUE, seq_len = 72L)
 
 \item{seq_len}{seq_len}
 }
+\value{
+None
+}
 \description{
 Pad `samples` by adding padding by chunks of size `seq_len`
-}
-\details{
-
 }

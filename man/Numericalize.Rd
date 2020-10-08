@@ -23,9 +23,9 @@ Numericalize(
 
 \item{pad_tok}{pad_tok}
 }
+\value{
+None
+}
 \description{
 Reversible transform of tokenized texts to numericalized ids
-}
-\details{
-
 }

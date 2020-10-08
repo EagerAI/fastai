@@ -1,5 +1,5 @@
 
-#' @title match_embeds
+#' @title Match_embeds
 #'
 #' @description Convert the embedding in `old_wgts` to go from `old_vocab` to `new_vocab`.
 #'

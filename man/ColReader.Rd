@@ -7,17 +7,17 @@
 ColReader(cols, pref = "", suff = "", label_delim = NULL)
 }
 \arguments{
-\item{cols}{cols}
+\item{cols}{columns}
 
 \item{pref}{pref}
 
-\item{suff}{suff}
+\item{suff}{suffix}
 
-\item{label_delim}{label_delim}
+\item{label_delim}{label separator}
+}
+\value{
+None
 }
 \description{
 Read `cols` in `row` with potential `pref` and `suff`
-}
-\details{
-
 }

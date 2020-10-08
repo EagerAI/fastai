@@ -75,11 +75,11 @@ LMLearner(
 
 \item{train_bn}{train_bn}
 }
+\value{
+text loader
+}
 \description{
 Add functionality to `TextLearner` when dealingwith a language model
 
 Add functionality to `TextLearner` when dealing with a language model
-}
-\details{
-
 }

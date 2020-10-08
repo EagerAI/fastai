@@ -7,7 +7,10 @@
 ColSplitter(col = "is_valid")
 }
 \arguments{
-\item{col}{col}
+\item{col}{column}
+}
+\value{
+None
 }
 \description{
 Split `items` (supposed to be a dataframe) by value in `col`

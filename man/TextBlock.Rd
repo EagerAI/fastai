@@ -35,9 +35,9 @@ TextBlock(
 
 \item{pad_tok}{pad_tok}
 }
+\value{
+block object
+}
 \description{
 A `TransformBlock` for texts
-}
-\details{
-
 }

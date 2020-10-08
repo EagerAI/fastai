@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_data.R
 \name{make_vocab}
 \alias{make_vocab}
-\title{make_vocab}
+\title{Make_vocab}
 \usage{
 make_vocab(count, min_freq = 3, max_vocab = 60000, special_toks = NULL)
 }
@@ -14,6 +14,9 @@ make_vocab(count, min_freq = 3, max_vocab = 60000, special_toks = NULL)
 \item{max_vocab}{max_vocab}
 
 \item{special_toks}{special_toks}
+}
+\value{
+None
 }
 \description{
 Create a vocab of `max_vocab` size from `Counter` `count` with items present more than `min_freq`

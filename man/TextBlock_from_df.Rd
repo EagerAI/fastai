@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_data.R
 \name{TextBlock_from_df}
 \alias{TextBlock_from_df}
-\title{from_df}
+\title{TextBlock_from_df}
 \usage{
 TextBlock_from_df(
   text_cols,
@@ -21,37 +21,35 @@ TextBlock_from_df(
 )
 }
 \arguments{
-\item{text_cols}{text_cols}
+\item{text_cols}{text columns}
 
-\item{vocab}{vocab}
+\item{vocab}{vocabulary}
 
 \item{is_lm}{is_lm}
 
-\item{seq_len}{seq_len}
+\item{seq_len}{sequence length}
 
 \item{backwards}{backwards}
 
-\item{min_freq}{min_freq}
+\item{min_freq}{minimum frequency}
 
-\item{max_vocab}{max_vocab}
+\item{max_vocab}{max vocabulary}
 
-\item{tok}{tok}
+\item{tok}{tokenizer}
 
 \item{rules}{rules}
 
-\item{sep}{sep}
+\item{sep}{separator}
 
-\item{n_workers}{n_workers}
+\item{n_workers}{number workers}
 
 \item{mark_fields}{mark_fields}
 
-\item{res_col_name}{res_col_name}
-
-\item{cls}{cls}
+\item{res_col_name}{result column name}
+}
+\value{
+None
 }
 \description{
 Build a `TextBlock` from a dataframe using `text_cols`
-}
-\details{
-
 }

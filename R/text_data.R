@@ -1,9 +1,9 @@
 
-#' @title reverse_text
+#' @title Reverse_text
 #'
 #'
-#' @param x x
-#'
+#' @param x text
+#' @return string
 #' @export
 reverse_text <- function(x) {
 
@@ -18,7 +18,7 @@ reverse_text <- function(x) {
 
 }
 
-#' @title make_vocab
+#' @title Make_vocab
 #'
 #' @description Create a vocab of `max_vocab` size from `Counter` `count` with items present more than `min_freq`
 #'
@@ -26,7 +26,7 @@ reverse_text <- function(x) {
 #' @param min_freq min_freq
 #' @param max_vocab max_vocab
 #' @param special_toks special_toks
-#'
+#' @return None
 #' @export
 make_vocab <- function(count, min_freq = 3, max_vocab = 60000, special_toks = NULL) {
 
@@ -46,14 +46,13 @@ make_vocab <- function(count, min_freq = 3, max_vocab = 60000, special_toks = NU
 #'
 #' @description Reversible transform of tokenized texts to numericalized ids
 #'
-#' @details
 #'
 #' @param vocab vocab
 #' @param min_freq min_freq
 #' @param max_vocab max_vocab
 #' @param special_toks special_toks
 #' @param pad_tok pad_tok
-#'
+#' @return None
 #' @export
 Numericalize <- function(vocab = NULL, min_freq = 3, max_vocab = 60000, special_toks = NULL, pad_tok = NULL) {
 
@@ -73,7 +72,6 @@ Numericalize <- function(vocab = NULL, min_freq = 3, max_vocab = 60000, special_
 #'
 #' @description A `DataLoader` suitable for language modeling
 #'
-#' @details
 #'
 #' @param dataset dataset
 #' @param lens lens
@@ -91,7 +89,7 @@ Numericalize <- function(vocab = NULL, min_freq = 3, max_vocab = 60000, special_
 #' @param indexed indexed
 #' @param n n
 #' @param device device
-#'
+#' @return text loader
 #' @export
 LMDataLoader <- function(dataset, lens = NULL, cache = 2, bs = 64,
                          seq_len = 72, num_workers = 0, shuffle = FALSE,
@@ -127,7 +125,6 @@ LMDataLoader <- function(dataset, lens = NULL, cache = 2, bs = 64,
 #'
 #' @description Add functionality to `TextLearner` when dealingwith a language model
 #'
-#' @details
 #'
 #' @param dls dls
 #' @param model model
@@ -145,7 +142,7 @@ LMDataLoader <- function(dataset, lens = NULL, cache = 2, bs = 64,
 #' @param wd wd
 #' @param wd_bn_bias wd_bn_bias
 #' @param train_bn train_bn
-#'
+#' @return text loader
 #' @export
 LMLearner <- function(dls, model, alpha = 2.0, beta = 1.0,
                       moms = list(0.8, 0.7, 0.8), loss_func = NULL,
@@ -176,7 +173,7 @@ LMLearner <- function(dls, model, alpha = 2.0, beta = 1.0,
 
 }
 
-#' @title pad_input
+#' @title Pad_input
 #'
 #' @description Function that collect `samples` and adds padding
 #'
@@ -186,7 +183,7 @@ LMLearner <- function(dls, model, alpha = 2.0, beta = 1.0,
 #' @param pad_fields pad_fields
 #' @param pad_first pad_first
 #' @param backwards backwards
-#'
+#' @return None
 #' @export
 pad_input <- function(samples, pad_idx = 1, pad_fields = 0, pad_first = FALSE, backwards = FALSE) {
 
@@ -203,25 +200,24 @@ pad_input <- function(samples, pad_idx = 1, pad_fields = 0, pad_first = FALSE, b
 }
 
 
-#' @title pad_input_chunk
+#' @title Pad_input_chunk
 #'
 #' @description Pad `samples` by adding padding by chunks of size `seq_len`
 #'
-#' @details
 #'
 #' @param samples samples
 #' @param pad_idx pad_idx
 #' @param pad_first pad_first
 #' @param seq_len seq_len
-#'
+#' @return None
 #' @export
-pad_input_chunk <- function(samples, pad_idx = 1L, pad_first = TRUE, seq_len = 72L) {
+pad_input_chunk <- function(samples, pad_idx = 1, pad_first = TRUE, seq_len = 72) {
 
   args <- list(
     samples = samples,
-    pad_idx = pad_idx,
+    pad_idx = as.integer(pad_idx),
     pad_first = pad_first,
-    seq_len = seq_len
+    seq_len = as.integer(seq_len)
   )
 
   do.call(text$pad_input_chunk, args)
@@ -233,7 +229,6 @@ pad_input_chunk <- function(samples, pad_idx = 1L, pad_first = TRUE, seq_len = 7
 #'
 #' @description A `DataLoader` that goes throught the item in the order given by `sort_func`
 #'
-#' @details
 #'
 #' @param dataset dataset
 #' @param sort_func sort_func
@@ -250,7 +245,7 @@ pad_input_chunk <- function(samples, pad_idx = 1L, pad_first = TRUE, seq_len = 7
 #' @param indexed indexed
 #' @param n n
 #' @param device device
-#'
+#' @return None
 #' @export
 SortedDL <- function(dataset, sort_func = NULL, res = NULL, bs = 64,
                      shuffle = FALSE, num_workers = NULL, verbose = FALSE,
@@ -276,6 +271,10 @@ SortedDL <- function(dataset, sort_func = NULL, res = NULL, bs = 64,
     device = device
   )
 
+  if(!is.null(args$batch_size)) {
+    args$batch_size = as.integer(args$batch_size)
+  }
+
   do.call(text$SortedDL, args)
 
 }
@@ -285,7 +284,6 @@ SortedDL <- function(dataset, sort_func = NULL, res = NULL, bs = 64,
 #'
 #' @description A `TransformBlock` for texts
 #'
-#' @details
 #'
 #' @param tok_tfm tok_tfm
 #' @param vocab vocab
@@ -296,7 +294,7 @@ SortedDL <- function(dataset, sort_func = NULL, res = NULL, bs = 64,
 #' @param max_vocab max_vocab
 #' @param special_toks special_toks
 #' @param pad_tok pad_tok
-#'
+#' @return block object
 #' @export
 TextBlock <- function(tok_tfm, vocab = NULL, is_lm = FALSE, seq_len = 72,
                       backwards = FALSE, min_freq = 3, max_vocab = 60000,
@@ -318,27 +316,24 @@ TextBlock <- function(tok_tfm, vocab = NULL, is_lm = FALSE, seq_len = 72,
 
 }
 
-#' @title from_df
+#' @title TextBlock_from_df
 #'
 #' @description Build a `TextBlock` from a dataframe using `text_cols`
 #'
-#' @details
-#'
-#' @param cls cls
-#' @param text_cols text_cols
-#' @param vocab vocab
+#' @param text_cols text columns
+#' @param vocab vocabulary
 #' @param is_lm is_lm
-#' @param seq_len seq_len
+#' @param seq_len sequence length
 #' @param backwards backwards
-#' @param min_freq min_freq
-#' @param max_vocab max_vocab
-#' @param tok tok
+#' @param min_freq minimum frequency
+#' @param max_vocab max vocabulary
+#' @param tok tokenizer
 #' @param rules rules
-#' @param sep sep
-#' @param n_workers n_workers
+#' @param sep separator
+#' @param n_workers number workers
 #' @param mark_fields mark_fields
-#' @param res_col_name res_col_name
-#'
+#' @param res_col_name result column name
+#' @return None
 #' @export
 TextBlock_from_df <- function(text_cols, vocab = NULL, is_lm = FALSE,
                               seq_len = 72, backwards = FALSE, min_freq = 3,
@@ -367,28 +362,28 @@ TextBlock_from_df <- function(text_cols, vocab = NULL, is_lm = FALSE,
 }
 
 
-#' @title from_folder
+#' @title TextBlock_from_folder
 #'
 #' @description Build a `TextBlock` from a `path`
 #'
 #'
 #' @param path path
-#' @param vocab vocab
+#' @param vocab vocabualry
 #' @param is_lm is_lm
-#' @param seq_len seq_len
+#' @param seq_len sequence length
 #' @param backwards backwards
-#' @param min_freq min_freq
-#' @param max_vocab max_vocab
-#' @param tok tok
+#' @param min_freq minimum frequency
+#' @param max_vocab max vocabulary
+#' @param tok tokenizer
 #' @param rules rules
 #' @param extensions extensions
 #' @param folders folders
 #' @param output_dir output_dir
 #' @param skip_if_exists skip_if_exists
 #' @param output_names output_names
-#' @param n_workers n_workers
+#' @param n_workers number of workers
 #' @param encoding encoding
-#'
+#' @return None
 #' @export
 TextBlock_from_folder <- function(path, vocab = NULL, is_lm = FALSE, seq_len = 72,
                                   backwards = FALSE, min_freq = 3, max_vocab = 60000,
@@ -427,13 +422,12 @@ TextBlock_from_folder <- function(path, vocab = NULL, is_lm = FALSE, seq_len = 7
 #'
 #' @description Read `cols` in `row` with potential `pref` and `suff`
 #'
-#' @details
 #'
-#' @param cols cols
+#' @param cols columns
 #' @param pref pref
-#' @param suff suff
-#' @param label_delim label_delim
-#'
+#' @param suff suffix
+#' @param label_delim label separator
+#' @return None
 #' @export
 ColReader <- function(cols, pref = "", suff = "", label_delim = NULL) {
 
@@ -457,7 +451,8 @@ ColReader <- function(cols, pref = "", suff = "", label_delim = NULL) {
 #' @description Split `items` (supposed to be a dataframe) by value in `col`
 #'
 #'
-#' @param col col
+#' @param col column
+#' @return None
 #'
 #' @export
 ColSplitter <- function(col = "is_valid") {
@@ -469,13 +464,13 @@ ColSplitter <- function(col = "is_valid") {
 }
 
 
-#' @title from_df
+#' @title TextDataLoaders_from_df
 #'
 #' @description Create from `df` in `path` with `valid_pct`
 #''
 #' @param df df
 #' @param path path
-#' @param valid_pct valid_pct
+#' @param valid_pct validation percentage
 #' @param seed seed
 #' @param text_col text_col
 #' @param label_col label_col
@@ -487,11 +482,11 @@ ColSplitter <- function(col = "is_valid") {
 #' @param tok_tfm tok_tfm
 #' @param seq_len seq_len
 #' @param backwards backwards
-#' @param bs bs
-#' @param val_bs val_bs
+#' @param bs batch size
+#' @param val_bs validation batch size, if not specified then val_bs is the same as bs.
 #' @param shuffle_train shuffle_train
 #' @param device device
-#'
+#' @return text loader
 #' @export
 TextDataLoaders_from_df <- function(df, path = ".", valid_pct = 0.2, seed = NULL,
                     text_col = 0, label_col = 1, label_delim = NULL,
@@ -525,35 +520,35 @@ TextDataLoaders_from_df <- function(df, path = ".", valid_pct = 0.2, seed = NULL
     args$text_col <- as.integer(args$text_col)
   if(is.numeric(label_col))
     args$label_col <- as.integer(args$label_col)
+  if(!is.null(args$val_bs))
+    args$val_bs = as.integer(args$val_bs)
 
   do.call(text$TextDataLoaders$from_df, args)
 
 }
 
 
-#' @title from_folder
+#' @title TextDataLoaders_from_folder
 #'
 #' @description Create from imagenet style dataset in `path` with `train` and `valid` subfolders (or provide `valid_pct`)
 #'
-#' @details
 #'
-#' @param cls cls
 #' @param path path
-#' @param train train
-#' @param valid valid
-#' @param valid_pct valid_pct
-#' @param seed seed
-#' @param vocab vocab
+#' @param train train data
+#' @param valid validation data
+#' @param valid_pct validation percentage
+#' @param seed random seed
+#' @param vocab vocabulary
 #' @param text_vocab text_vocab
 #' @param is_lm is_lm
 #' @param tok_tfm tok_tfm
 #' @param seq_len seq_len
 #' @param backwards backwards
-#' @param bs bs
-#' @param val_bs val_bs
-#' @param shuffle_train shuffle_train
+#' @param bs batch size
+#' @param val_bs validation batch size
+#' @param shuffle_train shuffle train data
 #' @param device device
-#'
+#' @return text loader
 #' @export
 TextDataLoaders_from_folder <- function(path, train = "train", valid = "valid",
                         valid_pct = NULL, seed = NULL, vocab = NULL,
@@ -579,41 +574,41 @@ TextDataLoaders_from_folder <- function(path, train = "train", valid = "valid",
     device = device
   )
 
+  if(!is.null(args$val_bs))
+    args$val_bs = as.integer(args$val_bs)
+
   do.call(text$TextDataLoaders$from_folder, args)
 
 }
 
 
-#' @title from_csv
+#' @title TextDataLoaders_from_csv
 #'
 #' @description Create from `csv` file in `path/csv_fname`
 #'
-#' @details
-#'
-#' @param cls cls
 #' @param path path
-#' @param csv_fname csv_fname
+#' @param csv_fname csv file name
 #' @param header header
 #' @param delimiter delimiter
-#' @param valid_pct valid_pct
-#' @param seed seed
-#' @param text_col text_col
-#' @param label_col label_col
-#' @param label_delim label_delim
+#' @param valid_pct valid_ation percentage
+#' @param seed random seed
+#' @param text_col text column
+#' @param label_col label column
+#' @param label_delim label separator
 #' @param y_block y_block
-#' @param text_vocab text_vocab
+#' @param text_vocab text vocabulary
 #' @param is_lm is_lm
-#' @param valid_col valid_col
+#' @param valid_col valid column
 #' @param tok_tfm tok_tfm
 #' @param seq_len seq_len
 #' @param backwards backwards
-#' @param bs bs
-#' @param val_bs val_bs
-#' @param shuffle_train shuffle_train
+#' @param bs batch size
+#' @param val_bs validation batch size
+#' @param shuffle_train shuffle train data
 #' @param device device
-#'
+#' @return text loader
 #' @export
-from_csv <- function(path, csv_fname = "labels.csv",
+TextDataLoaders_from_csv <- function(path, csv_fname = "labels.csv",
                      header = "infer", delimiter = NULL, valid_pct = 0.2,
                      seed = NULL, text_col = 0, label_col = 1,
                      label_delim = NULL, y_block = NULL, text_vocab = NULL,
@@ -644,6 +639,9 @@ from_csv <- function(path, csv_fname = "labels.csv",
     device = device
   )
 
+  if(!is.null(args$val_bs))
+    args$val_bs = as.integer(args$val_bs)
+
   do.call(text$TextDataLoaders$from_csv, args)
 
 }
@@ -655,9 +653,9 @@ from_csv <- function(path, csv_fname = "labels.csv",
 #' @description Create function that splits `items` between train/val with `valid_pct` randomly.
 #'
 #'
-#' @param valid_pct valid_pct
-#' @param seed seed
-#'
+#' @param valid_pct validation percenatge split
+#' @param seed random seed
+#' @return None
 #' @export
 RandomSplitter <- function(valid_pct = 0.2, seed = NULL) {
 
