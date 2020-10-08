@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_learner.R
 \name{TextLearner_load_pretrained}
 \alias{TextLearner_load_pretrained}
-\title{load_pretrained}
+\title{Load_pretrained}
 \usage{
 TextLearner_load_pretrained(wgts_fname, vocab_fname, model = NULL)
 }
@@ -12,6 +12,9 @@ TextLearner_load_pretrained(wgts_fname, vocab_fname, model = NULL)
 \item{vocab_fname}{vocab_fname}
 
 \item{model}{model}
+}
+\value{
+None
 }
 \description{
 Load a pretrained model and adapt it to the data vocabulary.

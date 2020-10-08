@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_learner.R
 \name{text_classifier_learner}
 \alias{text_classifier_learner}
-\title{text_classifier_learner}
+\title{Text_classifier_learner}
 \usage{
 text_classifier_learner(
   dls,
@@ -79,6 +79,9 @@ text_classifier_learner(
 \item{train_bn}{train_bn}
 
 \item{moms}{moms}
+}
+\value{
+None
 }
 \description{
 Create a `Learner` with a text classifier from `dls` and `arch`.

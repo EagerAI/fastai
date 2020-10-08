@@ -15,6 +15,9 @@ SentenceEncoder(bptt, module, pad_idx = 1, max_len = NULL)
 
 \item{max_len}{max_len}
 }
+\value{
+None
+}
 \description{
 Create an encoder over `module` that can process a full sentence.
 }

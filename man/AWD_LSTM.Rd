@@ -38,9 +38,9 @@ AWD_LSTM(
 
 \item{bidir}{bidir}
 }
+\value{
+None
+}
 \description{
 AWD-LSTM inspired by https://arxiv.org/abs/1708.02182
-}
-\details{
-
 }

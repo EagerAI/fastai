@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_models.R
 \name{language_model_learner}
 \alias{language_model_learner}
-\title{language_model_learner}
+\title{Language_model_learner}
 \usage{
 language_model_learner(
   dls,
@@ -64,9 +64,9 @@ language_model_learner(
 
 \item{splitter}{splitter}
 }
+\value{
+None
+}
 \description{
 Create a `Learner` with a language model from `dls` and `arch`.
-}
-\details{
-
 }

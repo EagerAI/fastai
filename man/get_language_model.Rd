@@ -15,6 +15,9 @@ get_language_model(arch, vocab_sz, config = NULL, drop_mult = 1)
 
 \item{drop_mult}{drop_mult}
 }
+\value{
+model
+}
 \description{
 Create a language model from `arch` and its `config`.
 }

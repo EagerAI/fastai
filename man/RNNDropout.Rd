@@ -9,6 +9,9 @@ RNNDropout(p = 0.5)
 \arguments{
 \item{p}{p}
 }
+\value{
+None
+}
 \description{
 Dropout with probability `p` that is consistent on the seq_len dimension.
 }

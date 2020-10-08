@@ -32,9 +32,9 @@ QRNNLayer(
 
 \item{backward}{backward}
 }
+\value{
+None
+}
 \description{
 Apply a single layer Quasi-Recurrent Neural Network (QRNN) to an input sequence.
-}
-\details{
-
 }

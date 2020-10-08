@@ -38,9 +38,9 @@ AWD_QRNN(
 
 \item{bidir}{bidir}
 }
+\value{
+None
+}
 \description{
 Same as an AWD-LSTM, but using QRNNs instead of LSTMs
-}
-\details{
-
 }

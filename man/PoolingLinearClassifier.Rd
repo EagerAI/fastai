@@ -15,6 +15,9 @@ PoolingLinearClassifier(dims, ps, bptt, y_range = NULL)
 
 \item{y_range}{y_range}
 }
+\value{
+None
+}
 \description{
 Create a linear classifier with pooling
 }

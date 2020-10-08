@@ -77,6 +77,8 @@ LMLearner(
 }
 \value{
 text loader
+
+None
 }
 \description{
 Add functionality to `TextLearner` when dealingwith a language model

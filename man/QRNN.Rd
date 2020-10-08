@@ -38,6 +38,9 @@ QRNN(
 
 \item{output_gate}{output_gate}
 }
+\value{
+None
+}
 \description{
 Apply a multiple layer Quasi-Recurrent Neural Network (QRNN) to an input sequence.
 }

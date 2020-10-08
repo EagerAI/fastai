@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_models.R
 \name{get_text_files}
 \alias{get_text_files}
-\title{get_text_files}
+\title{Get_text_files}
 \usage{
 get_text_files(path, recurse = TRUE, folders = NULL)
 }
@@ -13,9 +13,9 @@ get_text_files(path, recurse = TRUE, folders = NULL)
 
 \item{folders}{folders}
 }
+\value{
+None
+}
 \description{
 Get text files in `path` recursively, only in `folders`, if specified.
-}
-\details{
-
 }

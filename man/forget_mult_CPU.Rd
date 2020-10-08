@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_models.R
 \name{forget_mult_CPU}
 \alias{forget_mult_CPU}
-\title{forget_mult_CPU}
+\title{Forget_mult_CPU}
 \usage{
 forget_mult_CPU(x, f, first_h = NULL, batch_first = TRUE, backward = FALSE)
 }
@@ -16,6 +16,9 @@ forget_mult_CPU(x, f, first_h = NULL, batch_first = TRUE, backward = FALSE)
 \item{batch_first}{batch_first}
 
 \item{backward}{backward}
+}
+\value{
+None
 }
 \description{
 ForgetMult gate applied to `x` and `f` on the CPU.

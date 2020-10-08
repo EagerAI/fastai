@@ -56,9 +56,9 @@ TextLearner(
 
 \item{train_bn}{train_bn}
 }
+\value{
+None
+}
 \description{
 Basic class for a `Learner` in NLP.
-}
-\details{
-
 }

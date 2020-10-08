@@ -30,5 +30,6 @@ Suggests:
     testthat,
     rmarkdown,
     curl,
-    magrittr
+    magrittr,
+    data.table
 VignetteBuilder: knitr

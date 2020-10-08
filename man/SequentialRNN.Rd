@@ -9,6 +9,9 @@ SequentialRNN(...)
 \arguments{
 \item{...}{parameters to pass}
 }
+\value{
+layer
+}
 \description{
 Sequential RNN
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_learner.R
 \name{LMLearner_predict}
 \alias{LMLearner_predict}
-\title{predict}
+\title{LMLearner_predict}
 \usage{
 LMLearner_predict(
   text,
@@ -31,6 +31,9 @@ LMLearner_predict(
 \item{decoder}{decoder}
 
 \item{only_last_word}{only_last_word}
+}
+\value{
+None
 }
 \description{
 Return `text` and the `n_words` that come after

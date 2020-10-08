@@ -2,7 +2,6 @@
 #'
 #' @description AWD-LSTM inspired by https://arxiv.org/abs/1708.02182
 #'
-#' @details
 #'
 #' @param vocab_sz vocab_sz
 #' @param emb_sz emb_sz
@@ -14,7 +13,7 @@
 #' @param embed_p embed_p
 #' @param weight_p weight_p
 #' @param bidir bidir
-#'
+#' @return None
 #' @export
 AWD_LSTM <- function(vocab_sz, emb_sz, n_hid, n_layers, pad_token = 1,
                      hidden_p = 0.2, input_p = 0.6, embed_p = 0.1,
@@ -42,11 +41,10 @@ AWD_LSTM <- function(vocab_sz, emb_sz, n_hid, n_layers, pad_token = 1,
 }
 
 
-#' @title language_model_learner
+#' @title Language_model_learner
 #'
 #' @description Create a `Learner` with a language model from `dls` and `arch`.
 #'
-#' @details
 #'
 #' @param dls dls
 #' @param arch arch
@@ -67,7 +65,7 @@ AWD_LSTM <- function(vocab_sz, emb_sz, n_hid, n_layers, pad_token = 1,
 #' @param wd_bn_bias wd_bn_bias
 #' @param train_bn train_bn
 #' @param moms moms
-#'
+#' @return None
 #' @export
 language_model_learner <- function(dls, arch, config = NULL, drop_mult = 1.0,
                                    backwards = FALSE, pretrained = TRUE,
@@ -103,16 +101,15 @@ language_model_learner <- function(dls, arch, config = NULL, drop_mult = 1.0,
 
 }
 
-#' @title get_text_files
+#' @title Get_text_files
 #'
 #' @description Get text files in `path` recursively, only in `folders`, if specified.
 #'
-#' @details
 #'
 #' @param path path
 #' @param recurse recurse
 #' @param folders folders
-#'
+#' @return None
 #' @export
 get_text_files <- function(path, recurse = TRUE, folders = NULL) {
 
@@ -139,7 +136,7 @@ get_text_files <- function(path, recurse = TRUE, folders = NULL) {
 #' @param output_p output_p
 #' @param tie_encoder tie_encoder
 #' @param bias bias
-#'
+#' @return None
 #' @export
 LinearDecoder <- function(n_out, n_hid, output_p = 0.1, tie_encoder = NULL, bias = TRUE) {
 
@@ -158,7 +155,7 @@ LinearDecoder <- function(n_out, n_hid, output_p = 0.1, tie_encoder = NULL, bias
 #'
 #'
 #' @param ... parameters to pass
-#'
+#' @return layer
 #' @export
 SequentialRNN <- function(...) {
   args = list(...)
@@ -176,7 +173,7 @@ SequentialRNN <- function(...) {
 #' @param vocab_sz vocab_sz
 #' @param config config
 #' @param drop_mult drop_mult
-#'
+#' @return model
 #' @export
 get_language_model <- function(arch, vocab_sz, config = NULL, drop_mult = 1.0) {
 
@@ -199,7 +196,7 @@ get_language_model <- function(arch, vocab_sz, config = NULL, drop_mult = 1.0) {
 #' @param module module
 #' @param pad_idx pad_idx
 #' @param max_len max_len
-#'
+#' @return None
 #' @export
 SentenceEncoder <- function(bptt, module, pad_idx = 1, max_len = NULL) {
 
@@ -213,7 +210,7 @@ SentenceEncoder <- function(bptt, module, pad_idx = 1, max_len = NULL) {
 }
 
 
-#' @title masked_concat_pool
+#' @title Masked_concat_pool
 #'
 #' @description Pool `MultiBatchEncoder` outputs into one vector [last_hidden, max_pool, avg_pool]
 #'
@@ -221,7 +218,7 @@ SentenceEncoder <- function(bptt, module, pad_idx = 1, max_len = NULL) {
 #' @param output output
 #' @param mask mask
 #' @param bptt bptt
-#'
+#' @return None
 #' @export
 masked_concat_pool <- function(output, mask, bptt) {
 
@@ -242,7 +239,7 @@ masked_concat_pool <- function(output, mask, bptt) {
 #' @param ps ps
 #' @param bptt bptt
 #' @param y_range y_range
-#'
+#' @return None
 #' @export
 PoolingLinearClassifier <- function(dims, ps, bptt, y_range = NULL) {
 
@@ -255,7 +252,7 @@ PoolingLinearClassifier <- function(dims, ps, bptt, y_range = NULL) {
 
 }
 
-#' @title get_text_classifier
+#' @title Get_text_classifier
 #'
 #' @description Create a text classifier from `arch` and its `config`, maybe `pretrained`
 #'
@@ -271,7 +268,7 @@ PoolingLinearClassifier <- function(dims, ps, bptt, y_range = NULL) {
 #' @param pad_idx pad_idx
 #' @param max_len max_len
 #' @param y_range y_range
-#'
+#' @return None
 #' @export
 get_text_classifier <- function(arch, vocab_sz, n_class, seq_len = 72,
                                 config = NULL, drop_mult = 1.0,
@@ -296,7 +293,7 @@ get_text_classifier <- function(arch, vocab_sz, n_class, seq_len = 72,
 }
 
 
-#' @title dropout_mask
+#' @title Dropout_mask
 #'
 #' @description Return a dropout mask of the same type as `x`, size `sz`, with probability `p` to cancel an element.
 #'
@@ -304,7 +301,7 @@ get_text_classifier <- function(arch, vocab_sz, n_class, seq_len = 72,
 #' @param x x
 #' @param sz sz
 #' @param p p
-#'
+#' @return None
 #' @export
 dropout_mask <- function(x, sz, p) {
 
@@ -324,11 +321,11 @@ dropout_mask <- function(x, sz, p) {
 #'
 #'
 #' @param p p
-#'
+#' @return None
 #' @export
 RNNDropout <- function(p = 0.5) {
 
-text$RNNDropout(
+  text$RNNDropout(
     p = p
   )
 
@@ -343,7 +340,7 @@ text$RNNDropout(
 #' @param module module
 #' @param weight_p weight_p
 #' @param layer_names layer_names
-#'
+#' @return None
 #' @export
 WeightDropout <- function(module, weight_p, layer_names = "weight_hh_l0") {
 
@@ -364,7 +361,7 @@ WeightDropout <- function(module, weight_p, layer_names = "weight_hh_l0") {
 #'
 #' @param emb emb
 #' @param embed_p embed_p
-#'
+#' @return None
 #' @export
 EmbeddingDropout <- function(emb, embed_p) {
 
@@ -375,13 +372,13 @@ EmbeddingDropout <- function(emb, embed_p) {
 
 }
 
-#' @title awd_lstm_lm_split
+#' @title Awd_lstm_lm_split
 #'
 #' @description Split a RNN `model` in groups for differential learning rates.
 #'
 #'
 #' @param model model
-#'
+#' @return None
 #' @export
 awd_lstm_lm_split <- function(model) {
 
@@ -392,13 +389,13 @@ awd_lstm_lm_split <- function(model) {
 }
 
 
-#' @title awd_lstm_clas_split
+#' @title Awd_lstm_clas_split
 #'
 #' @description Split a RNN `model` in groups for differential learning rates.
 #'
 #'
 #' @param model model
-#'
+#' @return None
 #' @export
 awd_lstm_clas_split <- function(model) {
 
@@ -413,7 +410,6 @@ awd_lstm_clas_split <- function(model) {
 #'
 #' @description Same as an AWD-LSTM, but using QRNNs instead of LSTMs
 #'
-#' @details
 #'
 #' @param vocab_sz vocab_sz
 #' @param emb_sz emb_sz
@@ -425,7 +421,7 @@ awd_lstm_clas_split <- function(model) {
 #' @param embed_p embed_p
 #' @param weight_p weight_p
 #' @param bidir bidir
-#'
+#' @return None
 #' @export
 AWD_QRNN <- function(vocab_sz, emb_sz, n_hid, n_layers, pad_token = 1,
                      hidden_p = 0.2, input_p = 0.6, embed_p = 0.1,
@@ -449,7 +445,7 @@ AWD_QRNN <- function(vocab_sz, emb_sz, n_hid, n_layers, pad_token = 1,
 
 
 
-#' @title forget_mult_CPU
+#' @title Forget_mult_CPU
 #'
 #' @description ForgetMult gate applied to `x` and `f` on the CPU.
 #'
@@ -459,7 +455,7 @@ AWD_QRNN <- function(vocab_sz, emb_sz, n_hid, n_layers, pad_token = 1,
 #' @param first_h first_h
 #' @param batch_first batch_first
 #' @param backward backward
-#'
+#' @return None
 #' @export
 forget_mult_CPU <- function(x, f, first_h = NULL, batch_first = TRUE, backward = FALSE) {
 
@@ -479,7 +475,7 @@ forget_mult_CPU <- function(x, f, first_h = NULL, batch_first = TRUE, backward =
 #' @description Wrapper around the CUDA kernels for the ForgetMult gate.
 #'
 #'
-#'
+#' @return None
 #' @export
 ForgetMultGPU <- function(...) {
 
@@ -492,7 +488,6 @@ ForgetMultGPU <- function(...) {
 #'
 #' @description Apply a single layer Quasi-Recurrent Neural Network (QRNN) to an input sequence.
 #'
-#' @details
 #'
 #' @param input_size input_size
 #' @param hidden_size hidden_size
@@ -502,7 +497,7 @@ ForgetMultGPU <- function(...) {
 #' @param output_gate output_gate
 #' @param batch_first batch_first
 #' @param backward backward
-#'
+#' @return None
 #' @export
 QRNNLayer <- function(input_size, hidden_size = NULL, save_prev_x = FALSE,
                       zoneout = 0, window = 1, output_gate = TRUE,
@@ -537,7 +532,7 @@ QRNNLayer <- function(input_size, hidden_size = NULL, save_prev_x = FALSE,
 #' @param zoneout zoneout
 #' @param window window
 #' @param output_gate output_gate
-#'
+#' @return None
 #' @export
 QRNN <- function(input_size, hidden_size, n_layers = 1, batch_first = TRUE,
                  dropout = 0, bidirectional = FALSE, save_prev_x = FALSE,

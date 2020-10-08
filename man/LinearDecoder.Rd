@@ -17,6 +17,9 @@ LinearDecoder(n_out, n_hid, output_p = 0.1, tie_encoder = NULL, bias = TRUE)
 
 \item{bias}{bias}
 }
+\value{
+None
+}
 \description{
 To go on top of a RNNCore module and create a Language Model.
 }

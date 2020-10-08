@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_learner.R
 \name{TextLearner_load_encoder}
 \alias{TextLearner_load_encoder}
-\title{load_encoder}
+\title{Load_encoder}
 \usage{
 TextLearner_load_encoder(file, device = NULL)
 }
@@ -10,6 +10,9 @@ TextLearner_load_encoder(file, device = NULL)
 \item{file}{file}
 
 \item{device}{device}
+}
+\value{
+None
 }
 \description{
 Load the encoder `file` from the model directory, optionally ensuring it's on `device`

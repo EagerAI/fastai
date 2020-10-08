@@ -2,12 +2,15 @@
 % Please edit documentation in R/text_learner.R
 \name{decode_spec_tokens}
 \alias{decode_spec_tokens}
-\title{decode_spec_tokens}
+\title{Decode_spec_tokens}
 \usage{
 decode_spec_tokens(tokens)
 }
 \arguments{
 \item{tokens}{tokens}
+}
+\value{
+None
 }
 \description{
 Decode the special tokens in `tokens`

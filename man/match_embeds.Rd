@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_learner.R
 \name{match_embeds}
 \alias{match_embeds}
-\title{match_embeds}
+\title{Match_embeds}
 \usage{
 match_embeds(old_wgts, old_vocab, new_vocab)
 }
@@ -12,6 +12,9 @@ match_embeds(old_wgts, old_vocab, new_vocab)
 \item{old_vocab}{old_vocab}
 
 \item{new_vocab}{new_vocab}
+}
+\value{
+None
 }
 \description{
 Convert the embedding in `old_wgts` to go from `old_vocab` to `new_vocab`.

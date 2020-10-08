@@ -2,13 +2,16 @@
 % Please edit documentation in R/text_learner.R
 \name{clean_raw_keys}
 \alias{clean_raw_keys}
-\title{clean_raw_keys}
+\title{Clean_raw_keys}
 \usage{
 clean_raw_keys(wgts)
 }
 \arguments{
 \item{wgts}{wgts}
 }
+\value{
+None
+}
 \description{
-clean_raw_keys
+Clean_raw_keys
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_models.R
 \name{dropout_mask}
 \alias{dropout_mask}
-\title{dropout_mask}
+\title{Dropout_mask}
 \usage{
 dropout_mask(x, sz, p)
 }
@@ -12,6 +12,9 @@ dropout_mask(x, sz, p)
 \item{sz}{sz}
 
 \item{p}{p}
+}
+\value{
+None
 }
 \description{
 Return a dropout mask of the same type as `x`, size `sz`, with probability `p` to cancel an element.

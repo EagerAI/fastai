@@ -2,12 +2,15 @@
 % Please edit documentation in R/text_models.R
 \name{awd_lstm_lm_split}
 \alias{awd_lstm_lm_split}
-\title{awd_lstm_lm_split}
+\title{Awd_lstm_lm_split}
 \usage{
 awd_lstm_lm_split(model)
 }
 \arguments{
 \item{model}{model}
+}
+\value{
+None
 }
 \description{
 Split a RNN `model` in groups for differential learning rates.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_learner.R
 \name{load_ignore_keys}
 \alias{load_ignore_keys}
-\title{load_ignore_keys}
+\title{Load_ignore_keys}
 \usage{
 load_ignore_keys(model, wgts)
 }
@@ -10,6 +10,9 @@ load_ignore_keys(model, wgts)
 \item{model}{model}
 
 \item{wgts}{wgts}
+}
+\value{
+None
 }
 \description{
 Load `wgts` in `model` ignoring the names of the keys, just taking parameters in order

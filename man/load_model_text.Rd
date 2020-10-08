@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_learner.R
 \name{load_model_text}
 \alias{load_model_text}
-\title{load_model_text}
+\title{Load_model_text}
 \usage{
 load_model_text(
   file,
@@ -25,6 +25,9 @@ load_model_text(
 \item{device}{device}
 
 \item{strict}{strict}
+}
+\value{
+None
 }
 \description{
 Load `model` from `file` along with `opt` (if available, and if `with_opt`)

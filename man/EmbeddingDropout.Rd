@@ -11,6 +11,9 @@ EmbeddingDropout(emb, embed_p)
 
 \item{embed_p}{embed_p}
 }
+\value{
+None
+}
 \description{
 Apply dropout with probability `embed_p` to an embedding layer `emb`.
 }

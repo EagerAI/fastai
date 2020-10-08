@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_models.R
 \name{masked_concat_pool}
 \alias{masked_concat_pool}
-\title{masked_concat_pool}
+\title{Masked_concat_pool}
 \usage{
 masked_concat_pool(output, mask, bptt)
 }
@@ -12,6 +12,9 @@ masked_concat_pool(output, mask, bptt)
 \item{mask}{mask}
 
 \item{bptt}{bptt}
+}
+\value{
+None
 }
 \description{
 Pool `MultiBatchEncoder` outputs into one vector [last_hidden, max_pool, avg_pool]

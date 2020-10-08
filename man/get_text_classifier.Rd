@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_models.R
 \name{get_text_classifier}
 \alias{get_text_classifier}
-\title{get_text_classifier}
+\title{Get_text_classifier}
 \usage{
 get_text_classifier(
   arch,
@@ -40,6 +40,9 @@ get_text_classifier(
 \item{max_len}{max_len}
 
 \item{y_range}{y_range}
+}
+\value{
+None
 }
 \description{
 Create a text classifier from `arch` and its `config`, maybe `pretrained`

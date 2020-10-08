@@ -2,12 +2,15 @@
 % Please edit documentation in R/text_learner.R
 \name{TextLearner_save_encoder}
 \alias{TextLearner_save_encoder}
-\title{save_encoder}
+\title{Save_encoder}
 \usage{
 TextLearner_save_encoder(file)
 }
 \arguments{
 \item{file}{file}
+}
+\value{
+None
 }
 \description{
 Save the encoder to `file` in the model directory

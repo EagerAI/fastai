@@ -6,6 +6,9 @@
 \usage{
 ForgetMultGPU(...)
 }
+\value{
+None
+}
 \description{
 Wrapper around the CUDA kernels for the ForgetMult gate.
 }

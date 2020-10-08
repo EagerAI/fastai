@@ -13,6 +13,9 @@ WeightDropout(module, weight_p, layer_names = "weight_hh_l0")
 
 \item{layer_names}{layer_names}
 }
+\value{
+None
+}
 \description{
 A module that wraps another layer in which some weights will be replaced by 0 during training.
 }
