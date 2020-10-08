@@ -2,21 +2,24 @@
 % Please edit documentation in R/test.R
 \name{subplots}
 \alias{subplots}
-\title{subplots}
+\title{Subplots}
 \usage{
 subplots(nrows = 2, ncols = 2, figsize = NULL, imsize = 4, add_vert = 0)
 }
 \arguments{
-\item{nrows}{nrows}
+\item{nrows}{number of rows}
 
-\item{ncols}{ncols}
+\item{ncols}{number of columns}
 
-\item{figsize}{figsize}
+\item{figsize}{figure size}
 
-\item{imsize}{imsize}
+\item{imsize}{image size}
 
-\item{add_vert}{add_vert}
+\item{add_vert}{add vertical}
+}
+\value{
+plot object
 }
 \description{
-subplots
+Subplots
 }

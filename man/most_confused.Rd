@@ -9,16 +9,21 @@ most_confused(interp, min_val = 1)
 most_confused(interp, min_val = 1)
 }
 \arguments{
+\item{interp}{interpretation object}
+
 \item{min_val}{min_val}
 
 \item{object}{interpret object}
 }
 \value{
 data.frame
+
+data frame
 }
 \description{
 Sorted descending list of largest non-diagonal entries of confusion matrix,
 presented as actual, predicted, number of occurrences.
 
-Sorted descending list of largest non-diagonal entries of confusion matrix, presented as actual, predicted, number of occurrences.
+Sorted descending list of largest non-diagonal entries of confusion matrix,
+presented as actual, predicted, number of occurrences.
 }

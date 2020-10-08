@@ -6,6 +6,16 @@
 \usage{
 plot(object, ..., dpi = 100)
 }
+\arguments{
+\item{object}{model}
+
+\item{...}{parameters to pass}
+
+\item{dpi}{dots per inch}
+}
+\value{
+None
+}
 \description{
 Plot dicom
 }

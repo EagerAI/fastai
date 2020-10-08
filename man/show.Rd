@@ -2,18 +2,20 @@
 % Please edit documentation in R/test.R
 \name{show}
 \alias{show}
-\title{show}
+\title{Show}
 \usage{
 show(img, frames = 1, scale = TRUE, ...)
 }
 \arguments{
-\item{frames}{frames}
+\item{frames}{file rames}
 
 \item{scale}{scale}
+
+\item{additional}{parameters to pass}
+}
+\value{
+None
 }
 \description{
 Adds functionality to view dicom images where each file may have more than 1 frame
-}
-\details{
-
 }

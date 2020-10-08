@@ -20,6 +20,9 @@ ClassificationInterpretation_from_learner(
 
 \item{act}{act}
 }
+\value{
+interpretation object
+}
 \description{
 Construct interpretation object from a learner
 }

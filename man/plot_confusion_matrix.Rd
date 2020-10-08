@@ -2,7 +2,7 @@
 % Please edit documentation in R/test.R
 \name{plot_confusion_matrix}
 \alias{plot_confusion_matrix}
-\title{plot_confusion_matrix}
+\title{Plot_confusion_matrix}
 \usage{
 plot_confusion_matrix(
   interp,
@@ -28,6 +28,15 @@ plot_confusion_matrix(
 \item{norm_dec}{norm_dec}
 
 \item{plot_txt}{plot_txt}
+
+\item{figsize}{plot size}
+
+\item{...}{additional parameters to pass}
+
+\item{dpi}{dots per inch}
+}
+\value{
+None
 }
 \description{
 Plot the confusion matrix, with `title` and using `cmap`.

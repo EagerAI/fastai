@@ -6,6 +6,18 @@
 \usage{
 plot.list(x, y, ..., dpi = 100)
 }
+\arguments{
+\item{x}{x axis}
+
+\item{y}{y axis}
+
+\item{...}{additional arguments}
+
+\item{dpi}{dots per inch}
+}
+\value{
+None
+}
 \description{
 Plot tensor
 }

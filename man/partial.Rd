@@ -2,13 +2,16 @@
 % Please edit documentation in R/test.R
 \name{partial}
 \alias{partial}
-\title{partial}
+\title{Partial}
 \usage{
 partial(...)
 }
+\arguments{
+\item{...}{additional arguments}
+}
+\value{
+None
+}
 \description{
 partial(func, *args, **keywords) - new function with partial application
-}
-\details{
-of the given arguments and keywords.
 }

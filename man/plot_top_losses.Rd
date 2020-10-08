@@ -2,7 +2,7 @@
 % Please edit documentation in R/test.R
 \name{plot_top_losses}
 \alias{plot_top_losses}
-\title{plot_top_losses}
+\title{Plot_top_losses}
 \usage{
 plot_top_losses(
   interp,
@@ -19,7 +19,16 @@ plot_top_losses(
 \item{k}{k}
 
 \item{largest}{largest}
+
+\item{figsize}{plot size}
+
+\item{...}{additional parameters to pass}
+
+\item{dpi}{dots per inch}
+}
+\value{
+None
 }
 \description{
-plot_top_losses
+Plot_top_losses
 }

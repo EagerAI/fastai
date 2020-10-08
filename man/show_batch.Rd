@@ -2,7 +2,7 @@
 % Please edit documentation in R/test.R
 \name{show_batch}
 \alias{show_batch}
-\title{show_batch}
+\title{Show_batch}
 \usage{
 show_batch(
   dls,
@@ -28,6 +28,9 @@ show_batch(
 
 \item{unique}{unique}
 }
+\value{
+None
+}
 \description{
-
+Show_batch
 }

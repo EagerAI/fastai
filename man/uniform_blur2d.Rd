@@ -2,7 +2,7 @@
 % Please edit documentation in R/test.R
 \name{uniform_blur2d}
 \alias{uniform_blur2d}
-\title{uniform_blur2d}
+\title{Uniform_blur2d}
 \usage{
 uniform_blur2d(x, s)
 }
@@ -10,6 +10,9 @@ uniform_blur2d(x, s)
 \item{x}{x}
 
 \item{s}{s}
+}
+\value{
+None
 }
 \description{
 Uniformly apply blurring

@@ -1,5 +1,9 @@
 
-
+#' Add layers to Sequential
+#'
+#'
+#' @return model
+#'
 #' @export
 "+.torch.nn.modules.container.Sequential" <- function(a, b) {
 
@@ -30,9 +34,8 @@
 
 
 
-#' @title show_batch
+#' @title Show_batch
 #'
-#' @description
 #'
 #' @param dls dataloader object
 #' @param b b
@@ -40,6 +43,7 @@
 #' @param ctxs ctxs
 #' @param show show
 #' @param unique unique
+#' @return None
 #' @export
 show_batch <- function(dls, b = NULL, max_n = 9, ctxs = NULL,
                        figsize = c(19.2,10.8),
@@ -79,7 +83,7 @@ show_batch <- function(dls, b = NULL, max_n = 9, ctxs = NULL,
 #' @param ds_idx ds_idx
 #' @param dl dl
 #' @param act act
-#'
+#' @return interpretation object
 #' @export
 ClassificationInterpretation_from_learner <- function(learn, ds_idx = 1, dl = NULL, act = NULL) {
 
@@ -93,11 +97,15 @@ ClassificationInterpretation_from_learner <- function(learn, ds_idx = 1, dl = NU
 }
 
 
-#' @title plot_top_losses
+#' @title Plot_top_losses
 #'
 #' @param interp interpretation object
 #' @param k k
 #' @param largest largest
+#' @param figsize plot size
+#' @param dpi dots per inch
+#' @param ... additional parameters to pass
+#' @return None
 #' @export
 plot_top_losses <- function(interp, k, largest = TRUE, figsize = c(19.2,10.8),
                             ..., dpi = NULL) {
@@ -124,7 +132,7 @@ plot_top_losses <- function(interp, k, largest = TRUE, figsize = c(19.2,10.8),
 }
 
 
-#' @title plot_confusion_matrix
+#' @title Plot_confusion_matrix
 #'
 #' @description Plot the confusion matrix, with `title` and using `cmap`.
 #' @param interp interpretation object
@@ -134,6 +142,10 @@ plot_top_losses <- function(interp, k, largest = TRUE, figsize = c(19.2,10.8),
 #' @param norm_dec norm_dec
 #' @param plot_txt plot_txt
 #' @importFrom graphics rasterImage
+#' @param figsize plot size
+#' @param dpi dots per inch
+#' @param ... additional parameters to pass
+#' @return None
 #' @export
 plot_confusion_matrix <- function(interp, normalize = FALSE, title = "Confusion matrix",
                                   cmap = "Blues", norm_dec = 2, plot_txt = TRUE,
@@ -161,14 +173,15 @@ plot_confusion_matrix <- function(interp, normalize = FALSE, title = "Confusion 
 }
 
 
-#' @title plot_loss
+#' @title Plot_loss
 #'
 #' @description Plot the losses from `skip_start` and onward
 #'
-#'
+#' @param object model
 #' @param skip_start skip_start
 #' @param with_valid with_valid
-#'
+#' @param dpi dots per inch
+#' @return None
 #' @export
 plot_loss <- function(object, skip_start = 5, with_valid = TRUE, dpi = 200) {
 
@@ -188,12 +201,15 @@ plot_loss <- function(object, skip_start = 5, with_valid = TRUE, dpi = 200) {
 
 }
 
-#' @title plot_lr_find
+#' @title Plot_lr_find
 #'
-#' @description Plot the result of an LR Finder test (won't work if you didn't do `learn.lr_find()` before)
+#' @description Plot the result of an LR Finder test
+#' (won't work if you didn't do `lr_find(learn)` before)
 #'
-#'
+#' @param object model
 #' @param skip_end skip_end
+#' @param dpi dots per inch
+#' @return None
 #'
 #' @export
 plot_lr_find <- function(object, skip_end = 5, dpi = 250) {
@@ -214,13 +230,14 @@ plot_lr_find <- function(object, skip_end = 5, dpi = 250) {
 
 
 
-#' @title most_confused
+#' @title Most_confused
 #'
-#' @description Sorted descending list of largest non-diagonal entries of confusion matrix, presented as actual, predicted, number of occurrences.
+#' @description Sorted descending list of largest non-diagonal entries of confusion matrix,
+#' presented as actual, predicted, number of occurrences.
 #'
-#'
+#' @param interp interpretation object
 #' @param min_val min_val
-#'
+#' @return data frame
 #' @export
 most_confused <- function(interp, min_val = 1) {
 
@@ -237,15 +254,15 @@ most_confused <- function(interp, min_val = 1) {
 }
 
 
-#' @title subplots
+#' @title Subplots
 #'
 #'
-#' @param nrows nrows
-#' @param ncols ncols
-#' @param figsize figsize
-#' @param imsize imsize
-#' @param add_vert add_vert
-#'
+#' @param nrows number of rows
+#' @param ncols number of columns
+#' @param figsize figure size
+#' @param imsize image size
+#' @param add_vert add vertical
+#' @return plot object
 #' @export
 subplots <- function(nrows = 2, ncols = 2, figsize = NULL, imsize = 4, add_vert = 0) {
   fastai2$vision$all$plt$close()
@@ -261,15 +278,15 @@ subplots <- function(nrows = 2, ncols = 2, figsize = NULL, imsize = 4, add_vert 
 
 }
 
-#' @title show
+#' @title Show
 #'
 #' @description Adds functionality to view dicom images where each file may have more than 1 frame
 #'
-#' @details
 #'
-#' @param frames frames
+#' @param frames file rames
 #' @param scale scale
-#'
+#' @param additional parameters to pass
+#' @return None
 #' @export
 show <- function(img, frames = 1, scale = TRUE, ...) {
   args <- list(
@@ -294,8 +311,10 @@ show <- function(img, frames = 1, scale = TRUE, ...) {
 
 #' @title Plot dicom
 #'
-#'
-#'
+#' @param object model
+#' @param ... parameters to pass
+#' @param dpi dots per inch
+#' @return None
 #' @export
 plot <- function(object, ..., dpi = 100) {
   tmp_d = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
@@ -309,19 +328,19 @@ plot <- function(object, ..., dpi = 100) {
 
 
 
-#' @title show_images
+#' @title Show_images
 #'
 #' @description Show all images `ims` as subplots with `rows` using `titles`
 #'
 #'
 #' @param ims ims
-#' @param nrows nrows
-#' @param ncols ncols
+#' @param nrows number of rows
+#' @param ncols number of columns
 #' @param titles titles
-#' @param figsize figsize
-#' @param imsize imsize
-#' @param add_vert add_vert
-#'
+#' @param figsize figure size
+#' @param imsize image size
+#' @param add_vert add vertical
+#' @return None
 #' @export
 show_images <- function(ims, nrows = 1, ncols = NULL,
                         titles = NULL, figsize = NULL, imsize = 3, add_vert = 0) {
@@ -346,9 +365,11 @@ show_images <- function(ims, nrows = 1, ncols = NULL,
 }
 
 #' @title Plot tensor
-#'
-#'
-#'
+#' @param x x axis
+#' @param y y axis
+#' @param ... additional arguments
+#' @param dpi dots per inch
+#' @return None
 #' @export
 plot.list = function(x, y, ..., dpi = 100) {
   tmp_d = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
@@ -362,14 +383,14 @@ plot.list = function(x, y, ..., dpi = 100) {
 
 
 
-#' @title uniform_blur2d
+#' @title Uniform_blur2d
 #'
 #' @description Uniformly apply blurring
 #'
 #'
 #' @param x x
 #' @param s s
-#'
+#' @return None
 #' @export
 uniform_blur2d <- function(x, s) {
 
@@ -382,15 +403,14 @@ uniform_blur2d <- function(x, s) {
 
 
 
-#' @title gauss_blur2d
+#' @title Gauss_blur2d
 #'
 #' @description Apply gaussian_blur2d kornia filter
 #'
-#' @details
 #'
 #' @param x x
 #' @param s s
-#'
+#' @return None
 #' @export
 gauss_blur2d <- function(x, s) {
 
@@ -403,17 +423,18 @@ gauss_blur2d <- function(x, s) {
 
 
 
-#' @title show_results
+#' @title Show_results
 #'
 #' @description Show some predictions on `ds_idx`-th dataset or `dl`
 #'
-#' @details
 #'
 #' @param ds_idx ds_idx
 #' @param dl dl
 #' @param max_n max_n
 #' @param shuffle shuffle
-#'
+#' @return None
+#' @param dpi dots per inch
+#' @param ... additional arguments
 #' @export
 show_results <- function(object, ds_idx = 1, dl = NULL, max_n = 9, shuffle = TRUE, dpi = 90, ...) {
   fastai2$vision$all$plt$close()
@@ -448,12 +469,12 @@ show_results <- function(object, ds_idx = 1, dl = NULL, max_n = 9, shuffle = TRU
 
 
 
-#' @title partial
+#' @title Partial
 #'
 #' @description partial(func, *args, **keywords) - new function with partial application
 #'
-#' @details of the given arguments and keywords.
-#'
+#' @param ... additional arguments
+#' @return None
 #' @export
 partial <- function(...) {
 

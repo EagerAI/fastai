@@ -2,13 +2,21 @@
 % Please edit documentation in R/test.R
 \name{plot_lr_find}
 \alias{plot_lr_find}
-\title{plot_lr_find}
+\title{Plot_lr_find}
 \usage{
 plot_lr_find(object, skip_end = 5, dpi = 250)
 }
 \arguments{
+\item{object}{model}
+
 \item{skip_end}{skip_end}
+
+\item{dpi}{dots per inch}
+}
+\value{
+None
 }
 \description{
-Plot the result of an LR Finder test (won't work if you didn't do `learn.lr_find()` before)
+Plot the result of an LR Finder test
+(won't work if you didn't do `lr_find(learn)` before)
 }

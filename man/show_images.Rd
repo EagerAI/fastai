@@ -2,7 +2,7 @@
 % Please edit documentation in R/test.R
 \name{show_images}
 \alias{show_images}
-\title{show_images}
+\title{Show_images}
 \usage{
 show_images(
   ims,
@@ -17,17 +17,20 @@ show_images(
 \arguments{
 \item{ims}{ims}
 
-\item{nrows}{nrows}
+\item{nrows}{number of rows}
 
-\item{ncols}{ncols}
+\item{ncols}{number of columns}
 
 \item{titles}{titles}
 
-\item{figsize}{figsize}
+\item{figsize}{figure size}
 
-\item{imsize}{imsize}
+\item{imsize}{image size}
 
-\item{add_vert}{add_vert}
+\item{add_vert}{add vertical}
+}
+\value{
+None
 }
 \description{
 Show all images `ims` as subplots with `rows` using `titles`

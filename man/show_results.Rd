@@ -2,7 +2,7 @@
 % Please edit documentation in R/test.R
 \name{show_results}
 \alias{show_results}
-\title{show_results}
+\title{Show_results}
 \usage{
 show_results(
   object,
@@ -22,10 +22,14 @@ show_results(
 \item{max_n}{max_n}
 
 \item{shuffle}{shuffle}
+
+\item{dpi}{dots per inch}
+
+\item{...}{additional arguments}
+}
+\value{
+None
 }
 \description{
 Show some predictions on `ds_idx`-th dataset or `dl`
-}
-\details{
-
 }

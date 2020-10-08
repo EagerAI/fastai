@@ -2,7 +2,7 @@
 % Please edit documentation in R/test.R
 \name{gauss_blur2d}
 \alias{gauss_blur2d}
-\title{gauss_blur2d}
+\title{Gauss_blur2d}
 \usage{
 gauss_blur2d(x, s)
 }
@@ -11,9 +11,9 @@ gauss_blur2d(x, s)
 
 \item{s}{s}
 }
+\value{
+None
+}
 \description{
 Apply gaussian_blur2d kornia filter
-}
-\details{
-
 }
