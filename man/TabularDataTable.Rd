@@ -15,13 +15,14 @@ TabularDataTable(
   do_setup = TRUE,
   device = NULL,
   inplace = FALSE,
-  reduce_memory = TRUE
+  reduce_memory = TRUE,
+  ...
 )
 }
 \arguments{
 \item{df}{A DataFrame of your data}
 
-\item{procs}{procs}
+\item{procs}{list of preprocess functions}
 
 \item{cat_names}{the names of the categorical variables}
 
@@ -40,6 +41,11 @@ TabularDataTable(
 \item{inplace}{If True, Tabular will not keep a separate copy of your original DataFrame in memory}
 
 \item{reduce_memory}{fastai will attempt to reduce the overall memory usage}
+
+\item{...}{additional parameters to pass}
+}
+\value{
+None
 }
 \description{
 A `Tabular` object with transforms

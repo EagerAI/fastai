@@ -6,6 +6,9 @@
 \usage{
 FillStrategy_COMMON()
 }
+\value{
+None
+}
 \description{
 An enumeration.
 }

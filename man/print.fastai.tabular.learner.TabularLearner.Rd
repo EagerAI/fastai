@@ -2,10 +2,18 @@
 % Please edit documentation in R/tabular.R
 \name{print.fastai.tabular.learner.TabularLearner}
 \alias{print.fastai.tabular.learner.TabularLearner}
-\title{Print model}
+\title{Print tabular model}
 \usage{
 \method{print}{fastai.tabular.learner.TabularLearner}(x, ...)
 }
+\arguments{
+\item{x}{model}
+
+\item{...}{additional parameters to pass}
+}
+\value{
+None
+}
 \description{
-Print model
+Print tabular model
 }

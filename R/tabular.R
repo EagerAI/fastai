@@ -9,7 +9,7 @@
 #'
 #'
 #' @param df A DataFrame of your data
-#' @param procs procs
+#' @param procs list of preprocess functions
 #' @param cat_names the names of the categorical variables
 #' @param cont_names the names of the continuous variables
 #' @param y_names the names of the dependent variables
@@ -19,11 +19,13 @@
 #' @param device cuda or cpu
 #' @param inplace If True, Tabular will not keep a separate copy of your original DataFrame in memory
 #' @param reduce_memory fastai will attempt to reduce the overall memory usage
-#'
+#' @param ... additional parameters to pass
+#' @return None
 #' @export
 TabularDataTable <- function(df, procs = NULL, cat_names = NULL, cont_names = NULL,
                              y_names = NULL, y_block = NULL, splits = NULL,
-                             do_setup = TRUE, device = NULL, inplace = FALSE, reduce_memory = TRUE) {
+                             do_setup = TRUE, device = NULL, inplace = FALSE, reduce_memory = TRUE,
+                             ...) {
 
   args <- list(
     df = df,
@@ -36,7 +38,8 @@ TabularDataTable <- function(df, procs = NULL, cat_names = NULL, cont_names = NU
     do_setup = do_setup,
     device = device,
     inplace = inplace,
-    reduce_memory = reduce_memory
+    reduce_memory = reduce_memory,
+    ...
   )
 
   if(!is.null(splits))
@@ -52,8 +55,8 @@ TabularDataTable <- function(df, procs = NULL, cat_names = NULL, cont_names = NU
 #' @description Return all trainable parameters of `m`
 #'
 #'
-#' @param m m
-#'
+#' @param m parameters
+#' @return None
 #' @export
 trainable_params <- function(m) {
 
@@ -67,7 +70,7 @@ trainable_params <- function(m) {
 
 }
 
-#' @title Tabular_learner
+#' @title Tabular learner
 #'
 #' @description Get a `Learner` using `dls`, with `metrics`, including a `TabularModel` created using the remaining params.
 #'
@@ -90,7 +93,7 @@ trainable_params <- function(m) {
 #' @param wd_bn_bias It controls if weight decay is applied to BatchNorm layers and bias.
 #' @param train_bn It controls if BatchNorm layers are trained even when they are supposed to be frozen according to the splitter.
 #' @param moms The default momentums used in Learner.fit_one_cycle.
-#'
+#' @return learner object
 #' @export
 tabular_learner <- function(dls, layers = NULL, emb_szs = NULL, config = NULL,
                             n_out = NULL, y_range = NULL, loss_func = NULL,
@@ -139,10 +142,10 @@ tabular_learner <- function(dls, layers = NULL, emb_szs = NULL, config = NULL,
 #' @description Fit the model on this learner with `lr` learning rate, `wd` weight decay for `epochs` with `callbacks`.
 #'
 #' @param epochs epochs
-#' @param lr lr
-#' @param wd wd
+#' @param lr learning rate
+#' @param wd weight decay
 #' @param callbacks callbacks
-#'
+#' @return data frame
 #' @export
 fit.fastai.tabular.learner.TabularLearner <- function(object, ...) {
 
@@ -191,8 +194,8 @@ fit.fastai.tabular.learner.TabularLearner <- function(object, ...) {
 #' @description Print a summary of `m` using a output text width of `n` chars
 #'
 #'
-#' @param m m
-#'
+#' @param object model
+#' @return None
 #' @export
 summary.fastai.tabular.learner.TabularLearner <- function(object) {
 
@@ -201,99 +204,12 @@ summary.fastai.tabular.learner.TabularLearner <- function(object) {
 }
 
 
-#' @title Split by idx
+
+#' @title Print tabular model
 #'
-#' @description Split the data according to the indexes in `valid_idx`.
-#'
-#'
-#' @param valid_idx valid_idx
-#'
-#' @export
-split_by_idx <- function(object, valid_idx) {
-
-  if(is.list(valid_idx)) {
-    stop("Only vectors can be passed", call. = FALSE)
-  } else if(is.vector(valid_idx)) {
-    object$split_by_idx(as.integer(valid_idx))
-  } else {
-    stop("Pass the sequence of indices")
-  }
-
-}
-
-
-
-
-#' @title Add test
-#'
-#' @description Add test set containing `items` with an arbitrary `label`.
-#'
-#'
-#' @param items items
-#' @param label label
-#' @param tfms tfms
-#' @param tfm_y tfm_y
-#'
-#' @export
-add_test <- function(object, items, label = NULL, tfms = NULL, tfm_y = NULL) {
-
-  args <- list(
-    items = items,
-    label = label,
-    tfms = tfms,
-    tfm_y = tfm_y
-  )
-
-  do.call(object$add_test, args)
-
-}
-
-#' @title Data collate
-#'
-#' @description Convert `batch` items to tensor data.
-#'
-#'
-#' @param batch batch
-#'
-#' @export
-data_collate <- function(object, batch) {
-
-  if(missing(object) & missing(batch)) {
-    vision$data_collate
-  } else {
-    object$data_collate(
-      batch = as.integer(batch)
-    )
-  }
-
-}
-
-
-
-#' @title get_emb_sz
-#'
-#' @description Get default embedding size from `TabularPreprocessor` `proc` or the ones in `sz_dict`
-#'
-#' @details
-#'
-#' @param to to
-#' @param sz_dict sz_dict
-#'
-#' @export
-get_emb_sz <- function(to, sz_dict = NULL) {
-
-  tabular$get_emb_sz(
-    to = to,
-    sz_dict = sz_dict
-  )
-
-}
-
-
-
-#' @title Print model
-#'
-#'
+#' @param x model
+#' @param ... additional parameters to pass
+#' @return None
 #' @export
 print.fastai.tabular.learner.TabularLearner = function(x, ...) {
   print(x$model)

@@ -6,6 +6,9 @@
 \usage{
 FillStrategy_CONSTANT()
 }
+\value{
+None
+}
 \description{
 An enumeration.
 }

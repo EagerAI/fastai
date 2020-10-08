@@ -6,6 +6,9 @@
 \usage{
 FillStrategy_MEDIAN()
 }
+\value{
+None
+}
 \description{
 An enumeration.
 }

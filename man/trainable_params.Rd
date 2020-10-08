@@ -9,9 +9,11 @@ trainable_params(m)
 trainable_params(m)
 }
 \arguments{
-\item{m}{m}
+\item{m}{parameters}
 }
 \value{
+None
+
 None
 }
 \description{

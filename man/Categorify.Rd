@@ -11,6 +11,9 @@ Categorify(cat_names, cont_names)
 
 \item{cont_names}{The names of the continuous variables}
 }
+\value{
+None
+}
 \description{
 Transform the categorical variables to that type.
 }

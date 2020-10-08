@@ -7,7 +7,10 @@
 \method{summary}{fastai.tabular.learner.TabularLearner}(object)
 }
 \arguments{
-\item{m}{m}
+\item{object}{model}
+}
+\value{
+None
 }
 \description{
 Print a summary of `m` using a output text width of `n` chars

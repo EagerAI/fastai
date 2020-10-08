@@ -26,6 +26,9 @@ add_cyclic_datepart(
 
 \item{add_linear}{add_linear}
 }
+\value{
+data frame
+}
 \description{
 Helper function that adds trigonometric date/time features to a date in the column `field_name` of `df`.
 }

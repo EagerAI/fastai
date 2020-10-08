@@ -11,6 +11,9 @@ Normalize(cat_names, cont_names)
 
 \item{cont_names}{cont_names}
 }
+\value{
+None
+}
 \description{
 Normalize the continuous variables.
 }

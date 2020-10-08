@@ -8,7 +8,7 @@
 #' @param fill_strategy The strategy of filling
 #' @param add_col add_col
 #' @param fill_val fill_val
-#'
+#' @return None
 #' @export
 FillMissing <- function(cat_names, cont_names, fill_strategy = FillStrategy_MEDIAN(), add_col = TRUE, fill_val = 0.0) {
 
@@ -39,7 +39,7 @@ FillMissing <- function(cat_names, cont_names, fill_strategy = FillStrategy_MEDI
 #'
 #' @param cat_names cat_names
 #' @param cont_names cont_names
-#'
+#' @return None
 #' @export
 Normalize <- function(cat_names, cont_names) {
 
@@ -64,7 +64,7 @@ Normalize <- function(cat_names, cont_names) {
 #'
 #' @param cat_names The names of the categorical variables
 #' @param cont_names The names of the continuous variables
-#'
+#' @return None
 #' @export
 Categorify <- function(cat_names, cont_names) {
 
@@ -85,7 +85,7 @@ Categorify <- function(cat_names, cont_names) {
 #' @title MEDIAN
 #'
 #' @description An enumeration.
-#'
+#' @return None
 #' @export
 FillStrategy_MEDIAN <- function() {
   tabular$FillStrategy$MEDIAN
@@ -96,7 +96,7 @@ FillStrategy_MEDIAN <- function() {
 #' @title COMMON
 #'
 #' @description An enumeration.
-#'
+#' @return None
 #' @export
 FillStrategy_COMMON <- function() {
   tabular$FillStrategy$COMMON
@@ -106,7 +106,7 @@ FillStrategy_COMMON <- function() {
 #' @title CONSTANT
 #'
 #' @description An enumeration.
-#'
+#' @return None
 #' @export
 FillStrategy_CONSTANT <- function() {
   tabular$FillStrategy$CONSTANT
@@ -117,11 +117,7 @@ FillStrategy_CONSTANT <- function() {
 
 
 
-#' @title Apply tabular transformation
-#' @importFrom data.table := set
-#' @description An enumeration.
-#'
-#' @export
+
 tabular_apply <- function(object, DT) {
 
   # fill
@@ -163,7 +159,7 @@ tabular_apply <- function(object, DT) {
 #' @param prefix prefix
 #' @param drop drop
 #' @param time time
-#'
+#' @return data frame
 #' @export
 add_datepart <- function(df, field_name, prefix = NULL, drop = TRUE, time = FALSE) {
 
@@ -190,7 +186,7 @@ add_datepart <- function(df, field_name, prefix = NULL, drop = TRUE, time = FALS
 #' @param drop drop
 #' @param time time
 #' @param add_linear add_linear
-#'
+#' @return data frame
 #' @export
 add_cyclic_datepart <- function(df, field_name, prefix = NULL, drop = TRUE, time = FALSE, add_linear = FALSE) {
 
@@ -207,46 +203,6 @@ add_cyclic_datepart <- function(df, field_name, prefix = NULL, drop = TRUE, time
 
 }
 
-#' @title Show_xys
-#'
-#' @description Show the `xs` (inputs) and `ys` (targets).
-#'
-#' @details
-#'
-#' @param xs xs
-#' @param ys ys
-#'
-#' @export
-tabular_TabularList_show_xys <- function(xs, ys) {
-
-  tabular$TabularList$show_xys(
-    xs = xs,
-    ys = ys
-  )
-
-}
-
-#' @title show_xyzs
-#'
-#' @description Show `xs` (inputs), `ys` (targets) and `zs` (predictions).
-#'
-#' @details
-#'
-#' @param xs xs
-#' @param ys ys
-#' @param zs zs
-#'
-#' @export
-tabular_TabularList_show_xyzs <- function(xs, ys, zs) {
-
-  tabular$TabularList$show_xyzs(
-    xs = xs,
-    ys = ys,
-    zs = zs
-  )
-
-}
-
 
 #' @title Predict
 #'
@@ -255,7 +211,7 @@ tabular_TabularList_show_xyzs <- function(xs, ys, zs) {
 #'
 #' @param object the model
 #' @param row row
-#'
+#' @return data frame
 #' @export
 predict.fastai.tabular.learner.TabularLearner <- function(object, row) {
 

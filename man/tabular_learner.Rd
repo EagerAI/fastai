@@ -2,7 +2,7 @@
 % Please edit documentation in R/tabular.R
 \name{tabular_learner}
 \alias{tabular_learner}
-\title{Tabular_learner}
+\title{Tabular learner}
 \usage{
 tabular_learner(
   dls,
@@ -61,6 +61,9 @@ tabular_learner(
 \item{train_bn}{It controls if BatchNorm layers are trained even when they are supposed to be frozen according to the splitter.}
 
 \item{moms}{The default momentums used in Learner.fit_one_cycle.}
+}
+\value{
+learner object
 }
 \description{
 Get a `Learner` using `dls`, with `metrics`, including a `TabularModel` created using the remaining params.

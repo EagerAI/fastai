@@ -17,6 +17,9 @@ add_datepart(df, field_name, prefix = NULL, drop = TRUE, time = FALSE)
 
 \item{time}{time}
 }
+\value{
+data frame
+}
 \description{
 Helper function that adds columns relevant to a date in the column `field_name` of `df`.
 }

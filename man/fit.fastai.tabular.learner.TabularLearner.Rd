@@ -9,11 +9,14 @@
 \arguments{
 \item{epochs}{epochs}
 
-\item{lr}{lr}
+\item{lr}{learning rate}
 
-\item{wd}{wd}
+\item{wd}{weight decay}
 
 \item{callbacks}{callbacks}
+}
+\value{
+data frame
 }
 \description{
 Fit the model on this learner with `lr` learning rate, `wd` weight decay for `epochs` with `callbacks`.
