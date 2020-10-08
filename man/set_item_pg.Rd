@@ -2,7 +2,7 @@
 % Please edit documentation in R/optimizers.R
 \name{set_item_pg}
 \alias{set_item_pg}
-\title{set_item_pg}
+\title{Set_item_pg}
 \usage{
 set_item_pg(pg, k, v)
 }
@@ -13,6 +13,9 @@ set_item_pg(pg, k, v)
 
 \item{v}{v}
 }
+\value{
+None
+}
 \description{
-set_item_pg
+Set_item_pg
 }

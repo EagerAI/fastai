@@ -2,7 +2,7 @@
 #'
 #'
 #' @param ... parameters to pass
-#'
+#' @return None
 #' @export
 Adam <- function(...) {
   args = list(...)
@@ -15,14 +15,14 @@ Adam <- function(...) {
 
 }
 
-attr(Adam ,"py_function_name") <- "Adam"
+#attr(Adam ,"py_function_name") <- "Adam"
 
 
 #' @title RAdam
 #'
 #'
 #' @param ... parameters to pass
-#'
+#' @return None
 #' @export
 RAdam <- function(...) {
   args = list(...)
@@ -35,13 +35,13 @@ RAdam <- function(...) {
 
 }
 
-attr(RAdam ,"py_function_name") <- "RAdam"
+#attr(RAdam ,"py_function_name") <- "RAdam"
 
 #' @title SGD
 #'
 #'
 #' @param ... parameters to pass
-#'
+#' @return None
 #' @export
 SGD <- function(...) {
   args = list(...)
@@ -54,14 +54,14 @@ SGD <- function(...) {
 
 }
 
-attr(SGD ,"py_function_name") <- "SGD"
+#attr(SGD ,"py_function_name") <- "SGD"
 
 
 #' @title RMSProp
 #'
 #'
 #' @param ... parameters to pass
-#'
+#' @return None
 #' @export
 RMSProp <- function(...) {
   args = list(...)
@@ -74,14 +74,14 @@ RMSProp <- function(...) {
 
 }
 
-attr(RMSProp ,"py_function_name") <- "RMSProp"
+#attr(RMSProp ,"py_function_name") <- "RMSProp"
 
 
 #' @title QHAdam
 #'
 #'
 #' @param ... parameters to pass
-#'
+#' @return None
 #' @export
 QHAdam <- function(...) {
   args = list(...)
@@ -94,14 +94,14 @@ QHAdam <- function(...) {
 
 }
 
-attr(QHAdam ,"py_function_name") <- "QHAdam"
+#attr(QHAdam ,"py_function_name") <- "QHAdam"
 
 
 #' @title Larc
 #'
 #'
 #' @param ... parameters to pass
-#'
+#' @return None
 #' @export
 Larc <- function(...) {
   args = list(...)
@@ -118,7 +118,7 @@ Larc <- function(...) {
 #'
 #'
 #' @param ... parameters to pass
-#'
+#' @return None
 #' @export
 Lamb <- function(...) {
   args = list(...)
@@ -137,7 +137,7 @@ Lamb <- function(...) {
 #'
 #'
 #' @param ... parameters to pass
-#'
+#' @return None
 #' @export
 Lookahead <- function(...) {
   args = list(...)
@@ -155,7 +155,7 @@ Lookahead <- function(...) {
 #'
 #'
 #' @param ... parameters to pass
-#'
+#' @return None
 #' @export
 OptimWrapper <- function(...) {
   args = list(...)
@@ -173,7 +173,7 @@ OptimWrapper <- function(...) {
 #'
 #'
 #' @param ... parameters to pass
-#'
+#' @return None
 #' @export
 Optimizer <- function(...) {
   args = list(...)
@@ -187,14 +187,11 @@ Optimizer <- function(...) {
 }
 
 
-#' @title noop
+#' @title Noop
 #'
-#' @description Do nothing
 #'
-#' @details
-#'
-#' @param x x
-#'
+#' @param .. parameters to pass
+#' @return None
 #' @export
 noop <- function(...) {
 
@@ -210,12 +207,12 @@ noop <- function(...) {
 }
 
 
-#' @title sgd_step
+#' @title Sgd_step
 #'
-#'
+#' @return None
 #' @param p p
-#' @param lr lr
-#' @param ... additional args to pass
+#' @param lr learning rate
+#' @param ... additional arguments to pass
 #' @export
 sgd_step <- function(p, lr, ...) {
 
@@ -229,16 +226,17 @@ sgd_step <- function(p, lr, ...) {
 
 }
 
-#' @title weight_decay
+#' @title Weight_decay
 #'
 #' @description Weight decay as decaying `p` with `lr*wd`
 #'
 #'
 #' @param p p
-#' @param lr lr
-#' @param wd wd
+#' @param lr learning rate
+#' @param wd weight decay
 #' @param do_wd do_wd
 #' @param ... additional args to pass
+#' @return None
 #' @export
 weight_decay <- function(p, lr, wd, do_wd = TRUE, ...) {
 
@@ -255,16 +253,17 @@ weight_decay <- function(p, lr, wd, do_wd = TRUE, ...) {
 }
 
 
-#' @title l2_reg
+#' @title L2_reg
 #'
-#' @description L2 regularization as adding `wd*p` to `p.grad`
+#' @description L2 regularization as adding `wd*p` to `p$grad`
 #'
 #'
 #' @param p p
-#' @param lr lr
-#' @param wd wd
+#' @param lr learning rate
+#' @param wd weight decay
 #' @param do_wd do_wd
-#' @param ... additional args to pass
+#' @param ... additional arguments to pass
+#' @return None
 #' @export
 l2_reg <- function(p, lr, wd, do_wd = TRUE, ...) {
 
@@ -281,16 +280,17 @@ l2_reg <- function(p, lr, wd, do_wd = TRUE, ...) {
 }
 
 
-#' @title average_grad
+#' @title Average_grad
 #'
 #' @description Keeps track of the avg grads of `p` in `state` with `mom`.
 #'
 #'
 #' @param p p
-#' @param mom mom
+#' @param mom momentum
 #' @param dampening dampening
-#' @param grad_avg grad_avg
+#' @param grad_avg grad average
 #' @param ... additional args to pass
+#' @return None
 #' @export
 average_grad <- function(p, mom, dampening = FALSE, grad_avg = NULL, ...) {
 
@@ -307,14 +307,15 @@ average_grad <- function(p, mom, dampening = FALSE, grad_avg = NULL, ...) {
 }
 
 
-#' @title average_sqr_grad
+#' @title Average_sqr_grad
 #'
 #'
 #' @param p p
-#' @param sqr_mom sqr_mom
+#' @param sqr_mom sqr momentum
 #' @param dampening dampening
-#' @param sqr_avg sqr_avg
+#' @param sqr_avg sqr average
 #' @param ... additional args to pass
+#' @return None
 #' @export
 average_sqr_grad <- function(p, sqr_mom, dampening = TRUE, sqr_avg = NULL, ...) {
 
@@ -331,15 +332,16 @@ average_sqr_grad <- function(p, sqr_mom, dampening = TRUE, sqr_avg = NULL, ...) 
 }
 
 
-#' @title momentum_step
+#' @title Momentum_step
 #'
 #' @description Step for SGD with momentum with `lr`
 #'
 #'
 #' @param p p
-#' @param lr lr
-#' @param grad_avg grad_avg
-#' @param ... additional args to pass
+#' @param lr learning rate
+#' @param grad_avg grad average
+#' @param ... additional arguments to pass
+#' @return None
 #' @export
 momentum_step <- function(p, lr, grad_avg, ...) {
 
@@ -355,17 +357,18 @@ momentum_step <- function(p, lr, grad_avg, ...) {
 }
 
 
-#' @title rms_prop_step
+#' @title Rms_prop_step
 #'
 #' @description Step for SGD with momentum with `lr`
 #'
 #'
 #' @param p p
-#' @param lr lr
-#' @param sqr_avg sqr_avg
-#' @param eps eps
-#' @param grad_avg grad_avg
-#' @param ... additional args to pass
+#' @param lr learning rate
+#' @param sqr_avg sqr average
+#' @param eps epsilon
+#' @param grad_avg grad average
+#' @param ... additional arguments to pass
+#' @return None
 #' @export
 rms_prop_step <- function(p, lr, sqr_avg, eps, grad_avg = NULL, ...) {
 
@@ -384,14 +387,14 @@ rms_prop_step <- function(p, lr, sqr_avg, eps, grad_avg = NULL, ...) {
 
 
 
-#' @title step_stat
+#' @title Step_stat
 #'
 #' @description Register the number of steps done in `state` for `p`
 #'
 #' @param ... additional args to pass
 #' @param p p
 #' @param step step
-#'
+#' @return None
 #' @export
 step_stat <- function(p, step = 0, ...) {
 
@@ -405,13 +408,13 @@ step_stat <- function(p, step = 0, ...) {
 
 }
 
-#' @title debias
+#' @title Debias
 #'
 #'
 #' @param mom mom
 #' @param damp damp
 #' @param step step
-#'
+#' @return None
 #' @export
 debias <- function(mom, damp, step) {
 
@@ -426,21 +429,21 @@ debias <- function(mom, damp, step) {
 }
 
 
-#' @title adam_step
+#' @title Adam_step
 #'
 #' @description Step for Adam with `lr` on `p`
 #'
-#' @details
 #'
 #' @param p p
-#' @param lr lr
-#' @param mom mom
+#' @param lr learning rate
+#' @param mom momentum
 #' @param step step
-#' @param sqr_mom sqr_mom
-#' @param grad_avg grad_avg
-#' @param sqr_avg sqr_avg
-#' @param eps eps
-#' @param ... additional args to pass
+#' @param sqr_mom sqr momentum
+#' @param grad_avg grad average
+#' @param sqr_avg sqr average
+#' @param eps epsilon
+#' @param ... additional arguments to pass
+#' @return None
 #' @export
 adam_step <- function(p, lr, mom, step, sqr_mom, grad_avg, sqr_avg, eps, ...) {
 
@@ -461,21 +464,22 @@ adam_step <- function(p, lr, mom, step, sqr_mom, grad_avg, sqr_avg, eps, ...) {
 }
 
 
-#' @title radam_step
+#' @title Radam_step
 #'
 #' @description Step for RAdam with `lr` on `p`
 #'
 #'
 #' @param p p
-#' @param lr lr
-#' @param mom mom
+#' @param lr learning rate
+#' @param mom momentum
 #' @param step step
-#' @param sqr_mom sqr_mom
-#' @param grad_avg grad_avg
-#' @param sqr_avg sqr_avg
-#' @param eps eps
+#' @param sqr_mom sqr momentum
+#' @param grad_avg grad average
+#' @param sqr_avg sqr average
+#' @param eps epsilon
 #' @param beta beta
-#' @param ... additional args to pass
+#' @param ... additional arguments to pass
+#' @return None
 #' @export
 radam_step <- function(p, lr, mom, step, sqr_mom, grad_avg, sqr_avg, eps, beta, ...) {
 
@@ -496,20 +500,21 @@ radam_step <- function(p, lr, mom, step, sqr_mom, grad_avg, sqr_avg, eps, beta, 
 
 }
 
-#' @title qhadam_step
+#' @title Qhadam_step
 #'
 #'
 #' @param p p
-#' @param lr lr
-#' @param mom mom
-#' @param sqr_mom sqr_mom
-#' @param sqr_avg sqr_avg
+#' @param lr learning rate
+#' @param mom momentum
+#' @param sqr_mom sqr momentum
+#' @param sqr_avg sqr average
 #' @param nu_1 nu_1
 #' @param nu_2 nu_2
 #' @param step step
-#' @param grad_avg grad_avg
-#' @param eps eps
-#' @param ... additional args to pass
+#' @param grad_avg gradient average
+#' @param eps epsilon
+#' @param ... additional arguments to pass
+#' @return None
 #' @export
 qhadam_step <- function(p, lr, mom, sqr_mom, sqr_avg, nu_1, nu_2, step, grad_avg, eps, ...) {
 
@@ -532,18 +537,19 @@ qhadam_step <- function(p, lr, mom, sqr_mom, sqr_avg, nu_1, nu_2, step, grad_avg
 }
 
 
-#' @title larc_layer_lr
+#' @title Larc_layer_lr
 #'
 #' @description Computes the local lr before weight decay is applied
 #'
 #'
 #' @param p p
-#' @param lr lr
+#' @param lr learning rate
 #' @param trust_coeff trust_coeff
-#' @param wd wd
-#' @param eps eps
+#' @param wd weight decay
+#' @param eps epsilon
 #' @param clip clip
-#' @param ... additional args to pass
+#' @param ... additional arguments to pass
+#' @return None
 #' @export
 larc_layer_lr <- function(p, lr, trust_coeff, wd, eps, clip = TRUE, ...) {
 
@@ -562,15 +568,16 @@ larc_layer_lr <- function(p, lr, trust_coeff, wd, eps, clip = TRUE, ...) {
 }
 
 
-#' @title larc_step
+#' @title Larc_step
 #'
 #' @description Step for LARC `local_lr` on `p`
 #'
 #'
 #' @param p p
-#' @param local_lr local_lr
-#' @param grad_avg grad_avg
+#' @param local_lr local learning rate
+#' @param grad_avg gradient average
 #' @param ... additional args to pass
+#' @return None
 #' @export
 larc_step <- function(p, local_lr, grad_avg = NULL, ...) {
 
@@ -585,20 +592,21 @@ larc_step <- function(p, local_lr, grad_avg = NULL, ...) {
 
 }
 
-#' @title lamb_step
+#' @title Lamb_step
 #'
 #' @description Step for LAMB with `lr` on `p`
 #'
 #'
 #' @param p p
-#' @param lr lr
-#' @param mom mom
+#' @param lr learning rate
+#' @param mom momentum
 #' @param step step
-#' @param sqr_mom sqr_mom
-#' @param grad_avg grad_avg
-#' @param sqr_avg sqr_avg
-#' @param eps eps
-#' @param ... additional args to pass
+#' @param sqr_mom sqr momentum
+#' @param grad_avg gradient average
+#' @param sqr_avg sqr average
+#' @param eps epsilon
+#' @param ... additional arguments to pass
+#' @return None
 #' @export
 lamb_step <- function(p, lr, mom, step, sqr_mom, grad_avg, sqr_avg, eps, ...) {
 
@@ -619,20 +627,20 @@ lamb_step <- function(p, lr, mom, step, sqr_mom, grad_avg, sqr_avg, eps, ...) {
 }
 
 
-#' @title ranger
+#' @title Ranger
 #'
 #' @description Convenience method for `Lookahead` with `RAdam`
 #'
 #'
 #' @param p p
-#' @param lr lr
-#' @param mom mom
-#' @param wd wd
-#' @param eps eps
-#' @param sqr_mom sqr_mom
+#' @param lr learning rate
+#' @param mom momentum
+#' @param wd weight decay
+#' @param eps epsilon
+#' @param sqr_mom sqr momentum
 #' @param beta beta
-#' @param decouple_wd decouple_wd
-#'
+#' @param decouple_wd decouple weight decay
+#' @return None
 #' @export
 ranger <- function(p, lr, mom = 0.95, wd = 0.01, eps = 1e-06,
                    sqr_mom = 0.99, beta = 0.0, decouple_wd = TRUE) {
@@ -653,11 +661,11 @@ ranger <- function(p, lr, mom = 0.95, wd = 0.01, eps = 1e-06,
 }
 
 
-#' @title detuplify_pg
+#' @title Detuplify_pg
 #'
 #'
 #' @param d d
-#'
+#' @return None
 #' @export
 detuplify_pg <- function(d) {
 
@@ -668,13 +676,13 @@ detuplify_pg <- function(d) {
 }
 
 
-#' @title set_item_pg
+#' @title Set_item_pg
 #'
 #'
 #' @param pg pg
 #' @param k k
 #' @param v v
-#'
+#' @return None
 #' @export
 set_item_pg <- function(pg, k, v) {
 

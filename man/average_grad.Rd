@@ -2,20 +2,23 @@
 % Please edit documentation in R/optimizers.R
 \name{average_grad}
 \alias{average_grad}
-\title{average_grad}
+\title{Average_grad}
 \usage{
 average_grad(p, mom, dampening = FALSE, grad_avg = NULL, ...)
 }
 \arguments{
 \item{p}{p}
 
-\item{mom}{mom}
+\item{mom}{momentum}
 
 \item{dampening}{dampening}
 
-\item{grad_avg}{grad_avg}
+\item{grad_avg}{grad average}
 
 \item{...}{additional args to pass}
+}
+\value{
+None
 }
 \description{
 Keeps track of the avg grads of `p` in `state` with `mom`.

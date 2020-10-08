@@ -2,20 +2,23 @@
 % Please edit documentation in R/optimizers.R
 \name{weight_decay}
 \alias{weight_decay}
-\title{weight_decay}
+\title{Weight_decay}
 \usage{
 weight_decay(p, lr, wd, do_wd = TRUE, ...)
 }
 \arguments{
 \item{p}{p}
 
-\item{lr}{lr}
+\item{lr}{learning rate}
 
-\item{wd}{wd}
+\item{wd}{weight decay}
 
 \item{do_wd}{do_wd}
 
 \item{...}{additional args to pass}
+}
+\value{
+None
 }
 \description{
 Weight decay as decaying `p` with `lr*wd`

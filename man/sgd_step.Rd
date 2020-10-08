@@ -2,17 +2,20 @@
 % Please edit documentation in R/optimizers.R
 \name{sgd_step}
 \alias{sgd_step}
-\title{sgd_step}
+\title{Sgd_step}
 \usage{
 sgd_step(p, lr, ...)
 }
 \arguments{
 \item{p}{p}
 
-\item{lr}{lr}
+\item{lr}{learning rate}
 
-\item{...}{additional args to pass}
+\item{...}{additional arguments to pass}
+}
+\value{
+None
 }
 \description{
-sgd_step
+Sgd_step
 }

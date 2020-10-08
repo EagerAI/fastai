@@ -2,20 +2,20 @@
 % Please edit documentation in R/optimizers.R
 \name{qhadam_step}
 \alias{qhadam_step}
-\title{qhadam_step}
+\title{Qhadam_step}
 \usage{
 qhadam_step(p, lr, mom, sqr_mom, sqr_avg, nu_1, nu_2, step, grad_avg, eps, ...)
 }
 \arguments{
 \item{p}{p}
 
-\item{lr}{lr}
+\item{lr}{learning rate}
 
-\item{mom}{mom}
+\item{mom}{momentum}
 
-\item{sqr_mom}{sqr_mom}
+\item{sqr_mom}{sqr momentum}
 
-\item{sqr_avg}{sqr_avg}
+\item{sqr_avg}{sqr average}
 
 \item{nu_1}{nu_1}
 
@@ -23,12 +23,15 @@ qhadam_step(p, lr, mom, sqr_mom, sqr_avg, nu_1, nu_2, step, grad_avg, eps, ...)
 
 \item{step}{step}
 
-\item{grad_avg}{grad_avg}
+\item{grad_avg}{gradient average}
 
-\item{eps}{eps}
+\item{eps}{epsilon}
 
-\item{...}{additional args to pass}
+\item{...}{additional arguments to pass}
+}
+\value{
+None
 }
 \description{
-qhadam_step
+Qhadam_step
 }

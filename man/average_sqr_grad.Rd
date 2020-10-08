@@ -2,21 +2,24 @@
 % Please edit documentation in R/optimizers.R
 \name{average_sqr_grad}
 \alias{average_sqr_grad}
-\title{average_sqr_grad}
+\title{Average_sqr_grad}
 \usage{
 average_sqr_grad(p, sqr_mom, dampening = TRUE, sqr_avg = NULL, ...)
 }
 \arguments{
 \item{p}{p}
 
-\item{sqr_mom}{sqr_mom}
+\item{sqr_mom}{sqr momentum}
 
 \item{dampening}{dampening}
 
-\item{sqr_avg}{sqr_avg}
+\item{sqr_avg}{sqr average}
 
 \item{...}{additional args to pass}
 }
+\value{
+None
+}
 \description{
-average_sqr_grad
+Average_sqr_grad
 }

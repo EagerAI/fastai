@@ -2,13 +2,16 @@
 % Please edit documentation in R/optimizers.R
 \name{detuplify_pg}
 \alias{detuplify_pg}
-\title{detuplify_pg}
+\title{Detuplify_pg}
 \usage{
 detuplify_pg(d)
 }
 \arguments{
 \item{d}{d}
 }
+\value{
+None
+}
 \description{
-detuplify_pg
+Detuplify_pg
 }

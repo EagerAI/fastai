@@ -2,21 +2,24 @@
 % Please edit documentation in R/optimizers.R
 \name{l2_reg}
 \alias{l2_reg}
-\title{l2_reg}
+\title{L2_reg}
 \usage{
 l2_reg(p, lr, wd, do_wd = TRUE, ...)
 }
 \arguments{
 \item{p}{p}
 
-\item{lr}{lr}
+\item{lr}{learning rate}
 
-\item{wd}{wd}
+\item{wd}{weight decay}
 
 \item{do_wd}{do_wd}
 
-\item{...}{additional args to pass}
+\item{...}{additional arguments to pass}
+}
+\value{
+None
 }
 \description{
-L2 regularization as adding `wd*p` to `p.grad`
+L2 regularization as adding `wd*p` to `p$grad`
 }

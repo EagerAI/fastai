@@ -2,16 +2,16 @@
 % Please edit documentation in R/optimizers.R
 \name{noop}
 \alias{noop}
-\title{noop}
+\title{Noop}
 \usage{
 noop(...)
 }
 \arguments{
-\item{x}{x}
+\item{..}{parameters to pass}
+}
+\value{
+None
 }
 \description{
-Do nothing
-}
-\details{
-
+Noop
 }

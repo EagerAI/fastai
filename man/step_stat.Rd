@@ -2,7 +2,7 @@
 % Please edit documentation in R/optimizers.R
 \name{step_stat}
 \alias{step_stat}
-\title{step_stat}
+\title{Step_stat}
 \usage{
 step_stat(p, step = 0, ...)
 }
@@ -12,6 +12,9 @@ step_stat(p, step = 0, ...)
 \item{step}{step}
 
 \item{...}{additional args to pass}
+}
+\value{
+None
 }
 \description{
 Register the number of steps done in `state` for `p`

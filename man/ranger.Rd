@@ -2,7 +2,7 @@
 % Please edit documentation in R/optimizers.R
 \name{ranger}
 \alias{ranger}
-\title{ranger}
+\title{Ranger}
 \usage{
 ranger(
   p,
@@ -18,19 +18,22 @@ ranger(
 \arguments{
 \item{p}{p}
 
-\item{lr}{lr}
+\item{lr}{learning rate}
 
-\item{mom}{mom}
+\item{mom}{momentum}
 
-\item{wd}{wd}
+\item{wd}{weight decay}
 
-\item{eps}{eps}
+\item{eps}{epsilon}
 
-\item{sqr_mom}{sqr_mom}
+\item{sqr_mom}{sqr momentum}
 
 \item{beta}{beta}
 
-\item{decouple_wd}{decouple_wd}
+\item{decouple_wd}{decouple weight decay}
+}
+\value{
+None
 }
 \description{
 Convenience method for `Lookahead` with `RAdam`

@@ -2,18 +2,21 @@
 % Please edit documentation in R/optimizers.R
 \name{larc_step}
 \alias{larc_step}
-\title{larc_step}
+\title{Larc_step}
 \usage{
 larc_step(p, local_lr, grad_avg = NULL, ...)
 }
 \arguments{
 \item{p}{p}
 
-\item{local_lr}{local_lr}
+\item{local_lr}{local learning rate}
 
-\item{grad_avg}{grad_avg}
+\item{grad_avg}{gradient average}
 
 \item{...}{additional args to pass}
+}
+\value{
+None
 }
 \description{
 Step for LARC `local_lr` on `p`

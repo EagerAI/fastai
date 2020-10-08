@@ -2,7 +2,7 @@
 % Please edit documentation in R/optimizers.R
 \name{debias}
 \alias{debias}
-\title{debias}
+\title{Debias}
 \usage{
 debias(mom, damp, step)
 }
@@ -13,6 +13,9 @@ debias(mom, damp, step)
 
 \item{step}{step}
 }
+\value{
+None
+}
 \description{
-debias
+Debias
 }

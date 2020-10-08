@@ -2,32 +2,32 @@
 % Please edit documentation in R/optimizers.R
 \name{adam_step}
 \alias{adam_step}
-\title{adam_step}
+\title{Adam_step}
 \usage{
 adam_step(p, lr, mom, step, sqr_mom, grad_avg, sqr_avg, eps, ...)
 }
 \arguments{
 \item{p}{p}
 
-\item{lr}{lr}
+\item{lr}{learning rate}
 
-\item{mom}{mom}
+\item{mom}{momentum}
 
 \item{step}{step}
 
-\item{sqr_mom}{sqr_mom}
+\item{sqr_mom}{sqr momentum}
 
-\item{grad_avg}{grad_avg}
+\item{grad_avg}{grad average}
 
-\item{sqr_avg}{sqr_avg}
+\item{sqr_avg}{sqr average}
 
-\item{eps}{eps}
+\item{eps}{epsilon}
 
-\item{...}{additional args to pass}
+\item{...}{additional arguments to pass}
+}
+\value{
+None
 }
 \description{
 Step for Adam with `lr` on `p`
-}
-\details{
-
 }
