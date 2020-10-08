@@ -7,11 +7,8 @@
 L(...)
 }
 \arguments{
-\item{items}{items}
+\item{...}{arguments to pass}
 }
 \description{
 Behaves like a list of `items` but can also index with list of indices or masks
-}
-\details{
-
 }

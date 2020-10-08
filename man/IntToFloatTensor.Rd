@@ -11,6 +11,9 @@ IntToFloatTensor(div = 255, div_mask = 1)
 
 \item{div_mask}{div_mask}
 }
+\value{
+None
+}
 \description{
 Transform image to float tensor, optionally dividing by 255 (e.g. for images).
 }

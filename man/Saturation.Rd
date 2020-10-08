@@ -15,6 +15,9 @@ Saturation(max_lighting = 0.2, p = 0.75, draw = NULL, batch = FALSE)
 
 \item{batch}{batch}
 }
+\value{
+None
+}
 \description{
 Apply change in saturation of `max_lighting` to batch of images with probability `p`.
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/vision_core.R
 \name{TensorPoint_create}
 \alias{TensorPoint_create}
-\title{create}
+\title{TensorPoint_create}
 \usage{
 TensorPoint_create(...)
 }
@@ -15,9 +15,9 @@ TensorPoint_create(...)
 
 \item{order}{order}
 }
+\value{
+None
+}
 \description{
 Delegates (`__call__`,`decode`,`setup`) to (`encodes`,`decodes`,`setups`) if `split_idx` matches
-}
-\details{
-
 }

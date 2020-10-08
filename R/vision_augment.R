@@ -7,7 +7,7 @@
 #' @param p p
 #' @param nm nm
 #' @param before_call before_call
-#'
+#' @return None
 #' @export
 RandTransform <- function(p = 1.0, nm = NULL, before_call = NULL,
                           ...) {
@@ -28,7 +28,7 @@ RandTransform <- function(p = 1.0, nm = NULL, before_call = NULL,
 #'
 #'
 #' @param p p
-#'
+#' @return None
 #' @export
 FlipItem <- function(p = 0.5) {
 
@@ -47,7 +47,7 @@ FlipItem <- function(p = 0.5) {
 #' @param p p
 #' @param nm nm
 #' @param before_call before_call
-#'
+#' @return None
 #' @export
 DihedralItem <- function(p = 1.0, nm = NULL, before_call = NULL) {
 
@@ -63,11 +63,10 @@ DihedralItem <- function(p = 1.0, nm = NULL, before_call = NULL) {
 #'
 #' @description Center crop or pad an image to `size`
 #'
-#' @details
-#'
+#' @return None
 #' @param size size
 #' @param pad_mode pad_mode
-#'
+#' @param ... additional arguments
 #' @export
 CropPad <- function(size, pad_mode = "zeros",
                     ...) {
@@ -84,9 +83,9 @@ CropPad <- function(size, pad_mode = "zeros",
 #'
 #' @description Randomly crop an image to `size`
 #'
-#'
+#' @param ... additional arguments
 #' @param size size
-#'
+#' @return None
 #' @export
 RandomCrop <- function(size, ...) {
 
@@ -101,8 +100,8 @@ RandomCrop <- function(size, ...) {
 #' @title OldRandomCrop
 #'
 #' @description Randomly crop an image to `size`
-#'
-#' @details
+#' @param ... additional arguments
+#' @return None
 #'
 #' @param size size
 #' @param pad_mode pad_mode
@@ -128,7 +127,7 @@ OldRandomCrop <- function(size, pad_mode = "zeros", ...) {
 #' @param ratio ratio
 #' @param resamples resamples
 #' @param val_xtra val_xtra
-#'
+#' @return None
 #' @export
 RandomResizedCrop <- function(size, min_scale = 0.08, ratio = list(0.75, 1.3333333333333333),
                               resamples = list(2, 0), val_xtra = 0.14) {
@@ -150,7 +149,8 @@ RandomResizedCrop <- function(size, min_scale = 0.08, ratio = list(0.75, 1.33333
 #'
 #' @param max_sz max_sz
 #' @param resamples resamples
-#'
+#' @param ... additional arguments
+#' @return None
 #' @export
 RatioResize <- function(max_sz, resamples = list(2, 0),
                         ...) {
@@ -164,27 +164,12 @@ RatioResize <- function(max_sz, resamples = list(2, 0),
 }
 
 
-#' @title array
-#'
-#' @description array(object, dtype=NULL, copy=TRUE, order='K', subok=FALSE, ndmin=0)
-#'
-#' @details Create an array. Parameters
-#'
-#' @export
-array <- function(...) {
-
-   vision$all$array(
-     ...
-  )
-
-}
-
 
 #' @title TensorImage
 #'
 #'
 #' @param x x
-#'
+#' @return None
 #' @export
 TensorImage <- function(x) {
 
@@ -194,7 +179,7 @@ TensorImage <- function(x) {
 
 }
 
-#' @title affine_coord
+#' @title Aaffine_coord
 #'
 #'
 #' @param x x
@@ -204,7 +189,8 @@ TensorImage <- function(x) {
 #' @param mode mode
 #' @param pad_mode pad_mode
 #' @param align_corners align_corners
-#'
+#' @param ... additional arguments
+#' @return None
 #' @export
 affine_coord <- function(x, mat = NULL, coord_tfm = NULL, sz = NULL,
                          mode = "bilinear", pad_mode = "reflection",
@@ -236,7 +222,7 @@ affine_coord <- function(x, mat = NULL, coord_tfm = NULL, sz = NULL,
 #' @param pad_mode pad_mode
 #' @param mode_mask mode_mask
 #' @param align_corners align_corners
-#'
+#' @return None
 #' @export
 AffineCoordTfm <- function(aff_fs = NULL, coord_fs = NULL, size = NULL,
                            mode = "bilinear", pad_mode = "reflection",
@@ -264,7 +250,7 @@ AffineCoordTfm <- function(aff_fs = NULL, coord_fs = NULL, size = NULL,
 #' @param ratio ratio
 #' @param mode mode
 #' @param valid_scale valid_scale
-#'
+#' @return None
 #' @export
 RandomResizedCropGPU <- function(size, min_scale = 0.08, ratio = list(0.75, 1.3333333333333333),
                                  mode = "bilinear", valid_scale = 1.0) {
@@ -283,7 +269,7 @@ RandomResizedCropGPU <- function(size, min_scale = 0.08, ratio = list(0.75, 1.33
 #' @title Affline mat
 #'
 #' @param ... parameters to pass
-#'
+#' @return None
 #' @export
 affine_mat = function(...) {
   vision$all$affine_mat(...)
@@ -291,7 +277,7 @@ affine_mat = function(...) {
 
 
 
-#' @title mask_tensor
+#' @title Mask_tensor
 #'
 #' @description Mask elements of `x` with `neutral` with probability `1-p`
 #'
@@ -300,7 +286,7 @@ affine_mat = function(...) {
 #' @param p p
 #' @param neutral neutral
 #' @param batch batch
-#'
+#' @return None
 #' @export
 mask_tensor <- function(x, p = 0.5, neutral = 0.0, batch = FALSE) {
 
@@ -314,7 +300,7 @@ mask_tensor <- function(x, p = 0.5, neutral = 0.0, batch = FALSE) {
 }
 
 
-#' @title flip_mat
+#' @title Flip_mat
 #'
 #' @description Return a random flip matrix
 #'
@@ -323,7 +309,7 @@ mask_tensor <- function(x, p = 0.5, neutral = 0.0, batch = FALSE) {
 #' @param p p
 #' @param draw draw
 #' @param batch batch
-#'
+#' @return None
 #' @export
 flip_mat <- function(x, p = 0.5, draw = NULL, batch = FALSE) {
 
@@ -339,7 +325,7 @@ flip_mat <- function(x, p = 0.5, draw = NULL, batch = FALSE) {
 
 #' @title DeterministicDraw
 #' @param vals vals
-#'
+#' @return None
 #' @export
 DeterministicDraw <- function(vals) {
 
@@ -358,7 +344,8 @@ DeterministicDraw <- function(vals) {
 #' @param mode mode
 #' @param pad_mode pad_mode
 #' @param align_corners align_corners
-#'
+#' @param ... parameters to pass
+#' @return None
 #' @export
 DeterministicFlip <- function(size = NULL, mode = "bilinear",
                               pad_mode = "reflection", align_corners = TRUE,
@@ -374,7 +361,7 @@ DeterministicFlip <- function(size = NULL, mode = "bilinear",
 
 }
 
-#' @title dihedral_mat
+#' @title Dihedral_mat
 #'
 #' @description Return a random dihedral matrix
 #'
@@ -382,7 +369,7 @@ DeterministicFlip <- function(size = NULL, mode = "bilinear",
 #' @param p p
 #' @param draw draw
 #' @param batch batch
-#'
+#' @return None
 #' @export
 dihedral_mat <- function(x, p = 0.5, draw = NULL, batch = FALSE) {
 
@@ -408,7 +395,7 @@ dihedral_mat <- function(x, p = 0.5, draw = NULL, batch = FALSE) {
 #' @param pad_mode pad_mode
 #' @param align_corners align_corners
 #' @param batch batch
-#'
+#' @return None
 #' @export
 Dihedral <- function(p = 0.5, draw = NULL, size = NULL, mode = "bilinear",
                      pad_mode = "reflection", align_corners = NULL, batch = FALSE) {
@@ -434,7 +421,7 @@ Dihedral <- function(p = 0.5, draw = NULL, size = NULL, mode = "bilinear",
 #' @param mode mode
 #' @param pad_mode pad_mode
 #' @param align_corners align_corners
-#'
+#' @return None
 #' @export
 DeterministicDihedral <- function(size = NULL, mode = "bilinear",
                                   pad_mode = "reflection", align_corners = NULL) {
@@ -448,7 +435,7 @@ DeterministicDihedral <- function(size = NULL, mode = "bilinear",
 
 }
 
-#' @title rotate_mat
+#' @title Rotate_mat
 #'
 #' @description Return a random rotation matrix with `max_deg` and `p`
 #'
@@ -458,7 +445,7 @@ DeterministicDihedral <- function(size = NULL, mode = "bilinear",
 #' @param p p
 #' @param draw draw
 #' @param batch batch
-#'
+#' @return None
 #' @export
 rotate_mat <- function(x, max_deg = 10, p = 0.5, draw = NULL, batch = FALSE) {
 
@@ -473,7 +460,7 @@ rotate_mat <- function(x, max_deg = 10, p = 0.5, draw = NULL, batch = FALSE) {
 }
 
 
-#' @title zoom_mat
+#' @title Zoom_mat
 #'
 #' @description Return a random zoom matrix with `max_zoom` and `p`
 #'
@@ -486,7 +473,7 @@ rotate_mat <- function(x, max_deg = 10, p = 0.5, draw = NULL, batch = FALSE) {
 #' @param draw_x draw_x
 #' @param draw_y draw_y
 #' @param batch batch
-#'
+#' @return None
 #' @export
 zoom_mat <- function(x, min_zoom = 1.0, max_zoom = 1.1, p = 0.5, draw = NULL,
                      draw_x = NULL, draw_y = NULL, batch = FALSE) {
@@ -505,14 +492,14 @@ zoom_mat <- function(x, min_zoom = 1.0, max_zoom = 1.1, p = 0.5, draw = NULL,
 }
 
 
-#' @title find_coeffs
+#' @title Find_coeffs
 #'
 #' @description Find coefficients for warp tfm from `p1` to `p2`
 #'
 #'
 #' @param p1 p1
 #' @param p2 p2
-#'
+#' @return None
 #' @export
 find_coeffs <- function(p1, p2) {
 
@@ -524,14 +511,14 @@ find_coeffs <- function(p1, p2) {
 }
 
 
-#' @title apply_perspective
+#' @title Apply_perspective
 #'
 #' @description Apply perspective tranfom on `coords` with `coeffs`
 #'
 #'
 #' @param coords coords
 #' @param coeffs coeffs
-#'
+#' @return None
 #' @export
 apply_perspective <- function(coords, coeffs) {
 
@@ -557,7 +544,7 @@ apply_perspective <- function(coords, coeffs) {
 #' @param pad_mode pad_mode
 #' @param batch batch
 #' @param align_corners align_corners
-#'
+#' @return None
 #' @export
 Warp <- function(magnitude = 0.2, p = 0.5, draw_x = NULL, draw_y = NULL,
                  size = NULL, mode = "bilinear", pad_mode = "reflection",
@@ -584,7 +571,8 @@ Warp <- function(magnitude = 0.2, p = 0.5, draw_x = NULL, draw_y = NULL,
 #'
 #'
 #' @param fs fs
-#'
+#' @param ... parameters to pass
+#' @return None
 #' @export
 LightingTfm <- function(fs, ...) {
 
@@ -605,7 +593,7 @@ LightingTfm <- function(fs, ...) {
 #' @param p p
 #' @param draw draw
 #' @param batch batch
-#'
+#' @return None
 #' @export
 Contrast <- function(max_lighting = 0.2, p = 0.75, draw = NULL, batch = FALSE) {
 
@@ -618,13 +606,13 @@ Contrast <- function(max_lighting = 0.2, p = 0.75, draw = NULL, batch = FALSE) {
 
 }
 
-#' @title grayscale
+#' @title Grayscale
 #'
 #' @description Tensor to grayscale tensor. Uses the ITU-R 601-2 luma transform.
 #'
 #'
 #' @param x x
-#'
+#' @return None
 #' @export
 grayscale <- function(x) {
 
@@ -644,7 +632,7 @@ grayscale <- function(x) {
 #' @param p p
 #' @param draw draw
 #' @param batch batch
-#'
+#' @return None
 #' @export
 Saturation <- function(max_lighting = 0.2, p = 0.75, draw = NULL, batch = FALSE) {
 
@@ -657,14 +645,14 @@ Saturation <- function(max_lighting = 0.2, p = 0.75, draw = NULL, batch = FALSE)
 
 }
 
-#' @title rgb2hsv
+#' @title Rgb2hsv
 #'
 #' @description Converts a RGB image to an HSV image.
 #'
 #' @details Note: Will not work on logit space images.
 #'
 #' @param img img
-#'
+#' @return None
 #' @export
 rgb2hsv <- function(img) {
 
@@ -674,13 +662,13 @@ rgb2hsv <- function(img) {
 
 }
 
-#' @title hsv2rgb
+#' @title Hsv2rgb
 #'
 #' @description Converts a HSV image to an RGB image.
 #'
 #'
 #' @param img img
-#'
+#' @return None
 #' @export
 hsv2rgb <- function(img) {
 
@@ -699,7 +687,7 @@ hsv2rgb <- function(img) {
 #' @param p p
 #' @param draw draw
 #' @param batch batch
-#'
+#' @return None
 #' @export
 Hue <- function(max_hue = 0.1, p = 0.75, draw = NULL, batch = FALSE) {
 
@@ -723,7 +711,7 @@ Hue <- function(max_hue = 0.1, p = 0.75, draw = NULL, batch = FALSE) {
 #' @param sh sh
 #' @param min_aspect min_aspect
 #' @param max_count max_count
-#'
+#' @return None
 #' @export
 RandomErasing <- function(p = 0.5, sl = 0.0, sh = 0.3, min_aspect = 0.3, max_count = 1) {
 
@@ -737,15 +725,14 @@ RandomErasing <- function(p = 0.5, sl = 0.0, sh = 0.3, min_aspect = 0.3, max_cou
 
 }
 
-#' @title cutout_gaussian
+#' @title Cutout_gaussian
 #'
 #' @description Replace all `areas` in `x` with N(0,1) noise
 #'
-#' @details
 #'
 #' @param x x
 #' @param areas areas
-#'
+#' @return None
 #' @export
 cutout_gaussian <- function(x, areas) {
 
@@ -757,16 +744,15 @@ cutout_gaussian <- function(x, areas) {
 }
 
 
-#' @title norm_apply_denorm
+#' @title Norm_apply_denorm
 #'
 #' @description Normalize `x` with `nrm`, then apply `f`, then denormalize
 #'
-#' @details
 #'
 #' @param x x
 #' @param f f
 #' @param nrm nrm
-#'
+#' @return None
 #' @export
 norm_apply_denorm <- function(x, f, nrm) {
 
@@ -780,13 +766,13 @@ norm_apply_denorm <- function(x, f, nrm) {
 
 
 
-#' @title setup_aug_tfms
+#' @title Setup_aug_tfms
 #'
 #' @description Go through `tfms` and combines together affine/coord or lighting transforms
 #'
 #'
 #' @param tfms tfms
-#'
+#' @return None
 #' @export
 setup_aug_tfms <- function(tfms) {
 
@@ -797,14 +783,14 @@ setup_aug_tfms <- function(tfms) {
 }
 
 
-#' @title get_annotations
+#' @title Get_annotations
 #'
 #' @description Open a COCO style json in `fname` and returns the lists of filenames (with maybe `prefix`) and labelled bboxes.
 #'
 #'
 #' @param fname fname
 #' @param prefix prefix
-#'
+#' @return None
 #' @export
 get_annotations <- function(fname, prefix = NULL) {
 
@@ -823,7 +809,7 @@ get_annotations <- function(fname, prefix = NULL) {
 #'
 #' @param vocab vocab
 #' @param add_na add_na
-#'
+#' @return None
 #' @export
 MultiCategorize <- function(vocab = NULL, add_na = FALSE) {
 
@@ -841,7 +827,7 @@ MultiCategorize <- function(vocab = NULL, add_na = FALSE) {
 #'
 #' @param div div
 #' @param div_mask div_mask
-#'
+#' @return None
 #' @export
 IntToFloatTensor <- function(div = 255.0, div_mask = 1) {
 
@@ -859,7 +845,7 @@ IntToFloatTensor <- function(div = 255.0, div_mask = 1) {
 #'
 #'
 #' @param func func
-#'
+#' @return None
 #' @export
 FuncSplitter <- function(func) {
 

@@ -6,6 +6,9 @@
 \usage{
 PointBlock()
 }
+\value{
+None
+}
 \description{
 A `TransformBlock` for points in an image
 }

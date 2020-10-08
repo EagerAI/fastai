@@ -9,6 +9,9 @@ TensorMultiCategory(x)
 \arguments{
 \item{x}{x}
 }
+\value{
+None
+}
 \description{
 TensorMultiCategory
 }

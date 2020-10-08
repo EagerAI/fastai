@@ -2,12 +2,15 @@
 % Please edit documentation in R/vision_augment.R
 \name{grayscale}
 \alias{grayscale}
-\title{grayscale}
+\title{Grayscale}
 \usage{
 grayscale(x)
 }
 \arguments{
 \item{x}{x}
+}
+\value{
+None
 }
 \description{
 Tensor to grayscale tensor. Uses the ITU-R 601-2 luma transform.

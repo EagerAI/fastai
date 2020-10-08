@@ -15,6 +15,9 @@ Transform(enc = NULL, dec = NULL, split_idx = NULL, order = NULL)
 
 \item{order}{order}
 }
+\value{
+None
+}
 \description{
 Delegates (`__call__`,`decode`,`setup`) to (`encodes`,`decodes`,`setups`) if `split_idx` matches
 }

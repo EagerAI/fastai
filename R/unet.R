@@ -12,7 +12,7 @@
 #' @param act_cls act_cls
 #' @param init init
 #' @param norm_type norm_type
-#'
+#' @return None
 #' @export
 unet_config <- function(blur = FALSE, blur_final = TRUE, self_attention = FALSE,
                         y_range = NULL, last_cross = TRUE, bottle = FALSE,
@@ -61,7 +61,7 @@ unet_config <- function(blur = FALSE, blur_final = TRUE, self_attention = FALSE,
 #' @param wd_bn_bias wd_bn_bias
 #' @param train_bn train_bn
 #' @param moms moms
-#'
+#' @return None
 #' @export
 unet_learner <- function(dls, arch, loss_func = NULL, pretrained = TRUE,
                          cut = NULL, splitter = NULL, config = NULL, n_in = 3,
@@ -124,7 +124,7 @@ unet_learner <- function(dls, arch, loss_func = NULL, pretrained = TRUE,
 #' @param dilation dilation
 #' @param groups groups
 #' @param padding_mode The mode of padding
-#'
+#' @return None
 #' @export
 UnetBlock <- function(up_in_c, x_in_c, hook, final_div = TRUE,
                       blur = FALSE, act_cls = nn$ReLU, self_attention = FALSE,
@@ -179,7 +179,7 @@ UnetBlock <- function(up_in_c, x_in_c, hook, final_div = TRUE,
 #' @param act_cls act_cls
 #' @param init init
 #' @param norm_type norm_type
-#'
+#' @return None
 #' @export
 DynamicUnet <- function(encoder, n_classes, img_size, blur = FALSE,
                         blur_final = TRUE, self_attention = FALSE,
@@ -232,7 +232,7 @@ DynamicUnet <- function(encoder, n_classes, img_size, blur = FALSE,
 #' @param dilation dilation
 #' @param groups groups
 #' @param padding_mode padding_mode
-#'
+#' @return block object
 #' @export
 UnetBlock <- function(up_in_c, x_in_c, hook, final_div = TRUE,
                       blur = FALSE, act_cls = nn$ReLU, self_attention = FALSE,

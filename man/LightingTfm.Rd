@@ -8,6 +8,11 @@ LightingTfm(fs, ...)
 }
 \arguments{
 \item{fs}{fs}
+
+\item{...}{parameters to pass}
+}
+\value{
+None
 }
 \description{
 Apply `fs` to the logits

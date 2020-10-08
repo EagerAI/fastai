@@ -68,6 +68,9 @@ unet_learner(
 
 \item{moms}{moms}
 }
+\value{
+None
+}
 \description{
 Build a unet learner from `dls` and `arch`
 }

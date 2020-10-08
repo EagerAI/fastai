@@ -13,6 +13,9 @@ DihedralItem(p = 1, nm = NULL, before_call = NULL)
 
 \item{before_call}{before_call}
 }
+\value{
+None
+}
 \description{
 Randomly flip with probability `p`
 }

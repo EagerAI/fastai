@@ -2,7 +2,7 @@
 % Please edit documentation in R/vision_augment.R
 \name{affine_coord}
 \alias{affine_coord}
-\title{affine_coord}
+\title{Aaffine_coord}
 \usage{
 affine_coord(
   x,
@@ -29,7 +29,12 @@ affine_coord(
 \item{pad_mode}{pad_mode}
 
 \item{align_corners}{align_corners}
+
+\item{...}{additional arguments}
+}
+\value{
+None
 }
 \description{
-affine_coord
+Aaffine_coord
 }

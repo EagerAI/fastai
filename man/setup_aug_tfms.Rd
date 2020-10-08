@@ -2,12 +2,15 @@
 % Please edit documentation in R/vision_augment.R
 \name{setup_aug_tfms}
 \alias{setup_aug_tfms}
-\title{setup_aug_tfms}
+\title{Setup_aug_tfms}
 \usage{
 setup_aug_tfms(tfms)
 }
 \arguments{
 \item{tfms}{tfms}
+}
+\value{
+None
 }
 \description{
 Go through `tfms` and combines together affine/coord or lighting transforms

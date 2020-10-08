@@ -9,6 +9,9 @@ TensorImage(x)
 \arguments{
 \item{x}{x}
 }
+\value{
+None
+}
 \description{
 TensorImage
 }

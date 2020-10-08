@@ -2,7 +2,7 @@
 % Please edit documentation in R/vision_core.R
 \name{Mask_create}
 \alias{Mask_create}
-\title{create}
+\title{Mask_create}
 \usage{
 Mask_create(enc = NULL, dec = NULL, split_idx = NULL, order = NULL)
 }
@@ -15,9 +15,9 @@ Mask_create(enc = NULL, dec = NULL, split_idx = NULL, order = NULL)
 
 \item{order}{order}
 }
+\value{
+None
+}
 \description{
 Delegates (`__call__`,`decode`,`setup`) to (`encodes`,`decodes`,`setups`) if `split_idx` matches
-}
-\details{
-
 }

@@ -9,6 +9,9 @@ DeterministicDraw(vals)
 \arguments{
 \item{vals}{vals}
 }
+\value{
+None
+}
 \description{
 DeterministicDraw
 }

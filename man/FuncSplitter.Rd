@@ -9,6 +9,9 @@ FuncSplitter(func)
 \arguments{
 \item{func}{func}
 }
+\value{
+None
+}
 \description{
 Split `items` by result of `func` (`TRUE` for validation, `FALSE` for training set).
 }

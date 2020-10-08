@@ -2,7 +2,7 @@
 % Please edit documentation in R/vision_data.R
 \name{clip_remove_empty}
 \alias{clip_remove_empty}
-\title{clip_remove_empty}
+\title{Clip_remove_empty}
 \usage{
 clip_remove_empty(bbox, label)
 }
@@ -10,6 +10,9 @@ clip_remove_empty(bbox, label)
 \item{bbox}{bbox}
 
 \item{label}{label}
+}
+\value{
+None
 }
 \description{
 Clip bounding boxes with image border and label background the empty ones

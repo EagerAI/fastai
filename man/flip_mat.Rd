@@ -2,7 +2,7 @@
 % Please edit documentation in R/vision_augment.R
 \name{flip_mat}
 \alias{flip_mat}
-\title{flip_mat}
+\title{Flip_mat}
 \usage{
 flip_mat(x, p = 0.5, draw = NULL, batch = FALSE)
 }
@@ -14,6 +14,9 @@ flip_mat(x, p = 0.5, draw = NULL, batch = FALSE)
 \item{draw}{draw}
 
 \item{batch}{batch}
+}
+\value{
+None
 }
 \description{
 Return a random flip matrix

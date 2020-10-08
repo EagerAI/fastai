@@ -2,18 +2,15 @@
 % Please edit documentation in R/vision_learner.R
 \name{create_body}
 \alias{create_body}
-\title{create_body}
+\title{Create_body}
 \usage{
 create_body(...)
 }
 \arguments{
-\item{arch}{arch}
-
-\item{n_in}{n_in}
-
-\item{pretrained}{pretrained}
-
-\item{cut}{cut}
+\item{..}{parameters to pass}
+}
+\value{
+None
 }
 \description{
 Cut off the body of a typically pretrained `arch` as determined by `cut`

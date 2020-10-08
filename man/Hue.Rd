@@ -15,6 +15,9 @@ Hue(max_hue = 0.1, p = 0.75, draw = NULL, batch = FALSE)
 
 \item{batch}{batch}
 }
+\value{
+None
+}
 \description{
 Apply change in hue of `max_hue` to batch of images with probability `p`.
 }

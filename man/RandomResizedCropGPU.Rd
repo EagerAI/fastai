@@ -23,6 +23,9 @@ RandomResizedCropGPU(
 
 \item{valid_scale}{valid_scale}
 }
+\value{
+None
+}
 \description{
 Picks a random scaled crop of an image and resize it to `size`
 }

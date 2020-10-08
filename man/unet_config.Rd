@@ -35,6 +35,9 @@ unet_config(
 
 \item{norm_type}{norm_type}
 }
+\value{
+None
+}
 \description{
 Convenience function to easily create a config for `DynamicUnet`
 }

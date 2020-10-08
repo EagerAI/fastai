@@ -10,6 +10,11 @@ RatioResize(max_sz, resamples = list(2, 0), ...)
 \item{max_sz}{max_sz}
 
 \item{resamples}{resamples}
+
+\item{...}{additional arguments}
+}
+\value{
+None
 }
 \description{
 Resizes the biggest dimension of an image to `max_sz` maintaining the aspect ratio

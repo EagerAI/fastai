@@ -44,6 +44,9 @@ Datasets(
 
 \item{verbose}{verbose}
 }
+\value{
+None
+}
 \description{
 A dataset that creates a list from each `tfms`, passed thru `item_tfms`
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/vision_augment.R
 \name{mask_tensor}
 \alias{mask_tensor}
-\title{mask_tensor}
+\title{Mask_tensor}
 \usage{
 mask_tensor(x, p = 0.5, neutral = 0, batch = FALSE)
 }
@@ -14,6 +14,9 @@ mask_tensor(x, p = 0.5, neutral = 0, batch = FALSE)
 \item{neutral}{neutral}
 
 \item{batch}{batch}
+}
+\value{
+None
 }
 \description{
 Mask elements of `x` with `neutral` with probability `1-p`

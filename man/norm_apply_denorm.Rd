@@ -2,7 +2,7 @@
 % Please edit documentation in R/vision_augment.R
 \name{norm_apply_denorm}
 \alias{norm_apply_denorm}
-\title{norm_apply_denorm}
+\title{Norm_apply_denorm}
 \usage{
 norm_apply_denorm(x, f, nrm)
 }
@@ -13,9 +13,9 @@ norm_apply_denorm(x, f, nrm)
 
 \item{nrm}{nrm}
 }
+\value{
+None
+}
 \description{
 Normalize `x` with `nrm`, then apply `f`, then denormalize
-}
-\details{
-
 }

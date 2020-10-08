@@ -13,6 +13,9 @@ RandTransform(p = 1, nm = NULL, before_call = NULL, ...)
 
 \item{before_call}{before_call}
 }
+\value{
+None
+}
 \description{
 A transform that before_call its state at each `__call__`
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/vision_data.R
 \name{get_grid}
 \alias{get_grid}
-\title{get_grid}
+\title{Get_grid}
 \usage{
 get_grid(
   n,
@@ -35,9 +35,9 @@ get_grid(
 
 \item{imsize}{imsize}
 }
+\value{
+None
+}
 \description{
 Return a grid of `n` axes, `rows` by `cols`
-}
-\details{
-
 }

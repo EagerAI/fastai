@@ -2,12 +2,15 @@
 % Please edit documentation in R/vision_core.R
 \name{Image_create}
 \alias{Image_create}
-\title{create}
+\title{Image_create}
 \usage{
 Image_create(fn)
 }
 \arguments{
-\item{fn}{fn}
+\item{fn}{file name}
+}
+\value{
+None
 }
 \description{
 Open an `Image` from path `fn`

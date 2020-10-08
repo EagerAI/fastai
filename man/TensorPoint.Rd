@@ -9,6 +9,9 @@ TensorPoint(x)
 \arguments{
 \item{x}{x}
 }
+\value{
+None
+}
 \description{
 Basic type for points in an image
 }

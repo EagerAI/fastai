@@ -2,12 +2,15 @@
 % Please edit documentation in R/vision_core.R
 \name{params}
 \alias{params}
-\title{params}
+\title{Params}
 \usage{
 params(m)
 }
 \arguments{
-\item{m}{m}
+\item{m}{parameters}
+}
+\value{
+None
 }
 \description{
 Return all parameters of `m`

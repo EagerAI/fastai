@@ -9,6 +9,9 @@ shape(img)
 \arguments{
 \item{img}{image}
 }
+\value{
+None
+}
 \description{
 Shape
 }

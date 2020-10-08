@@ -2,12 +2,15 @@
 % Please edit documentation in R/vision_learner.R
 \name{default_split}
 \alias{default_split}
-\title{default_split}
+\title{Default_split}
 \usage{
 default_split(m)
 }
 \arguments{
-\item{m}{m}
+\item{m}{parameters}
+}
+\value{
+None
 }
 \description{
 Default split of a model between body and head

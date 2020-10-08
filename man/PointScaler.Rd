@@ -11,6 +11,9 @@ PointScaler(do_scale = TRUE, y_first = FALSE)
 
 \item{y_first}{y_first}
 }
+\value{
+None
+}
 \description{
 Scale a tensor representing points
 }

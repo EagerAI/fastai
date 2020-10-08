@@ -17,6 +17,9 @@ RandomErasing(p = 0.5, sl = 0, sh = 0.3, min_aspect = 0.3, max_count = 1)
 
 \item{max_count}{max_count}
 }
+\value{
+None
+}
 \description{
 Randomly selects a rectangle region in an image and randomizes its pixels.
 }

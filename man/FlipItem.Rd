@@ -9,6 +9,9 @@ FlipItem(p = 0.5)
 \arguments{
 \item{p}{p}
 }
+\value{
+None
+}
 \description{
 Randomly flip with probability `p`
 }

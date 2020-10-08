@@ -6,6 +6,9 @@
 \usage{
 BBoxBlock()
 }
+\value{
+None
+}
 \description{
 A `TransformBlock` for bounding boxes in an image
 }

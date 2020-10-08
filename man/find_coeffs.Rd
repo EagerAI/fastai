@@ -2,7 +2,7 @@
 % Please edit documentation in R/vision_augment.R
 \name{find_coeffs}
 \alias{find_coeffs}
-\title{find_coeffs}
+\title{Find_coeffs}
 \usage{
 find_coeffs(p1, p2)
 }
@@ -10,6 +10,9 @@ find_coeffs(p1, p2)
 \item{p1}{p1}
 
 \item{p2}{p2}
+}
+\value{
+None
 }
 \description{
 Find coefficients for warp tfm from `p1` to `p2`

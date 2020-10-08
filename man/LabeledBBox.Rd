@@ -7,7 +7,10 @@
 LabeledBBox(...)
 }
 \arguments{
-\item{items}{items}
+\item{...}{parameters to pass}
+}
+\value{
+None
 }
 \description{
 Basic type for a list of bounding boxes in an image

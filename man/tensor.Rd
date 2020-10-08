@@ -2,12 +2,15 @@
 % Please edit documentation in R/vision_core.R
 \name{tensor}
 \alias{tensor}
-\title{tensor}
+\title{Tensor}
 \usage{
 tensor(...)
 }
 \arguments{
 \item{...}{image}
+}
+\value{
+None
 }
 \description{
 Like `torch.as_tensor`, but handle lists too, and can pass multiple vector elements directly.

@@ -11,6 +11,9 @@ Pipeline(funcs = NULL, split_idx = NULL)
 
 \item{split_idx}{split_idx}
 }
+\value{
+None
+}
 \description{
 A pipeline of composed (for encode/decode) transforms, setup with types
 }

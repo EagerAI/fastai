@@ -11,6 +11,9 @@ BBoxLblBlock(vocab = NULL, add_na = TRUE)
 
 \item{add_na}{add_na}
 }
+\value{
+None'
+}
 \description{
 A `TransformBlock` for labeled bounding boxes, potentially with `vocab`
 }

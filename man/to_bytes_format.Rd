@@ -2,7 +2,7 @@
 % Please edit documentation in R/vision_core.R
 \name{to_bytes_format}
 \alias{to_bytes_format}
-\title{to_bytes_format}
+\title{To_bytes_format}
 \usage{
 to_bytes_format(img, format = "png")
 }
@@ -11,9 +11,9 @@ to_bytes_format(img, format = "png")
 
 \item{im}{im}
 }
+\value{
+None
+}
 \description{
 Convert to bytes, default to PNG format
-}
-\details{
-
 }

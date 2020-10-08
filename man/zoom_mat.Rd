@@ -2,7 +2,7 @@
 % Please edit documentation in R/vision_augment.R
 \name{zoom_mat}
 \alias{zoom_mat}
-\title{zoom_mat}
+\title{Zoom_mat}
 \usage{
 zoom_mat(
   x,
@@ -31,6 +31,9 @@ zoom_mat(
 \item{draw_y}{draw_y}
 
 \item{batch}{batch}
+}
+\value{
+None
 }
 \description{
 Return a random zoom matrix with `max_zoom` and `p`

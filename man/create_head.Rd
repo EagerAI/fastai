@@ -2,7 +2,7 @@
 % Please edit documentation in R/vision_learner.R
 \name{create_head}
 \alias{create_head}
-\title{create_head}
+\title{Create_head}
 \usage{
 create_head(
   nf,
@@ -31,6 +31,9 @@ create_head(
 \item{lin_first}{lin_first}
 
 \item{y_range}{y_range}
+}
+\value{
+None
 }
 \description{
 Model head that takes `nf` features, runs through `lin_ftrs`, and out `n_out` classes.

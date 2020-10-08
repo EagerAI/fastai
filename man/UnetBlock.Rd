@@ -56,6 +56,10 @@ UnetBlock(...)
 \item{padding_mode}{padding_mode}
 }
 \value{
+None
+
+block object
+
 model
 }
 \description{

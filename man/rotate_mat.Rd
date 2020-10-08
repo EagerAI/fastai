@@ -2,7 +2,7 @@
 % Please edit documentation in R/vision_augment.R
 \name{rotate_mat}
 \alias{rotate_mat}
-\title{rotate_mat}
+\title{Rotate_mat}
 \usage{
 rotate_mat(x, max_deg = 10, p = 0.5, draw = NULL, batch = FALSE)
 }
@@ -16,6 +16,9 @@ rotate_mat(x, max_deg = 10, p = 0.5, draw = NULL, batch = FALSE)
 \item{draw}{draw}
 
 \item{batch}{batch}
+}
+\value{
+None
 }
 \description{
 Return a random rotation matrix with `max_deg` and `p`

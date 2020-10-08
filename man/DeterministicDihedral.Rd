@@ -20,6 +20,9 @@ DeterministicDihedral(
 
 \item{align_corners}{align_corners}
 }
+\value{
+None
+}
 \description{
 Apply a random dihedral transformation to a batch of images with a probability `p`
 }

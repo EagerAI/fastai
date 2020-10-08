@@ -9,6 +9,9 @@ aspect(img)
 \arguments{
 \item{img}{image}
 }
+\value{
+None
+}
 \description{
 Aspect
 }

@@ -2,12 +2,15 @@
 % Please edit documentation in R/vision_learner.R
 \name{has_pool_type}
 \alias{has_pool_type}
-\title{has_pool_type}
+\title{Has_pool_type}
 \usage{
 has_pool_type(m)
 }
 \arguments{
-\item{m}{m}
+\item{m}{parameters}
+}
+\value{
+None
 }
 \description{
 Return `TRUE` if `m` is a pooling layer or has one in its children

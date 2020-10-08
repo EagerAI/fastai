@@ -2,12 +2,15 @@
 % Please edit documentation in R/vision_core.R
 \name{image2tensor}
 \alias{image2tensor}
-\title{image2tensor}
+\title{Image2tensor}
 \usage{
 image2tensor(img)
 }
 \arguments{
 \item{img}{img}
+}
+\value{
+None
 }
 \description{
 Transform image to byte tensor in `c*h*w` dim order.

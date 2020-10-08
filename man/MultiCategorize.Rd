@@ -11,6 +11,9 @@ MultiCategorize(vocab = NULL, add_na = FALSE)
 
 \item{add_na}{add_na}
 }
+\value{
+None
+}
 \description{
 Reversible transform of multi-category strings to `vocab` id
 }

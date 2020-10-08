@@ -2,7 +2,7 @@
 % Please edit documentation in R/vision_core.R
 \name{TensorBBox_create}
 \alias{TensorBBox_create}
-\title{create}
+\title{TensorBBox_create}
 \usage{
 TensorBBox_create(x, img_size = NULL)
 }
@@ -10,6 +10,9 @@ TensorBBox_create(x, img_size = NULL)
 \item{x}{x}
 
 \item{img_size}{img_size}
+}
+\value{
+None
 }
 \description{
 Delegates (`__call__`,`decode`,`setup`) to (`encodes`,`decodes`,`setups`) if `split_idx` matches

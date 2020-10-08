@@ -41,6 +41,8 @@ Dihedral(
 }
 \value{
 None
+
+None
 }
 \description{
 Apply a random dihedral transformation to a batch of images with a probability `p`

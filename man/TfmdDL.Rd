@@ -49,9 +49,9 @@ TfmdDL(
 
 \item{device}{device}
 }
+\value{
+None
+}
 \description{
 Transformed `DataLoader`
-}
-\details{
-
 }

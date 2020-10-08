@@ -2,7 +2,7 @@
 % Please edit documentation in R/vision_augment.R
 \name{apply_perspective}
 \alias{apply_perspective}
-\title{apply_perspective}
+\title{Apply_perspective}
 \usage{
 apply_perspective(coords, coeffs)
 }
@@ -10,6 +10,9 @@ apply_perspective(coords, coeffs)
 \item{coords}{coords}
 
 \item{coeffs}{coeffs}
+}
+\value{
+None
 }
 \description{
 Apply perspective tranfom on `coords` with `coeffs`

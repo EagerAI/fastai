@@ -2,12 +2,15 @@
 % Please edit documentation in R/vision_core.R
 \name{ImageBW_create}
 \alias{ImageBW_create}
-\title{create}
+\title{ImageBW_create}
 \usage{
 ImageBW_create(fn)
 }
 \arguments{
 \item{fn}{fn}
+}
+\value{
+None
 }
 \description{
 Open an `Image` from path `fn`

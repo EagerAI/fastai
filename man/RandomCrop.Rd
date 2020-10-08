@@ -8,6 +8,11 @@ RandomCrop(size, ...)
 }
 \arguments{
 \item{size}{size}
+
+\item{...}{additional arguments}
+}
+\value{
+None
 }
 \description{
 Randomly crop an image to `size`

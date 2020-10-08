@@ -9,6 +9,9 @@ TensorBBox(x)
 \arguments{
 \item{x}{x}
 }
+\value{
+None
+}
 \description{
 Basic type for a tensor of bounding boxes in an image
 }

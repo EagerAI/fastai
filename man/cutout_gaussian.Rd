@@ -2,7 +2,7 @@
 % Please edit documentation in R/vision_augment.R
 \name{cutout_gaussian}
 \alias{cutout_gaussian}
-\title{cutout_gaussian}
+\title{Cutout_gaussian}
 \usage{
 cutout_gaussian(x, areas)
 }
@@ -11,9 +11,9 @@ cutout_gaussian(x, areas)
 
 \item{areas}{areas}
 }
+\value{
+None
+}
 \description{
 Replace all `areas` in `x` with N(0,1) noise
-}
-\details{
-
 }

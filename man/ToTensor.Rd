@@ -15,9 +15,9 @@ ToTensor(enc = NULL, dec = NULL, split_idx = NULL, order = NULL)
 
 \item{order}{order}
 }
+\value{
+None
+}
 \description{
 Convert item to appropriate tensor class
-}
-\details{
-
 }

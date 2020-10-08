@@ -2,12 +2,15 @@
 % Please edit documentation in R/vision_core.R
 \name{to_image}
 \alias{to_image}
-\title{to_image}
+\title{To_image}
 \usage{
 to_image(x)
 }
 \arguments{
 \item{x}{x}
+}
+\value{
+None
 }
 \description{
 Convert a tensor or array to a PIL int8 Image

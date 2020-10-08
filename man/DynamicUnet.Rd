@@ -44,6 +44,9 @@ DynamicUnet(
 
 \item{norm_type}{norm_type}
 }
+\value{
+None
+}
 \description{
 Create a U-Net from a given architecture.
 }

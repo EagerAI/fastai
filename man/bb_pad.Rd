@@ -2,7 +2,7 @@
 % Please edit documentation in R/vision_data.R
 \name{bb_pad}
 \alias{bb_pad}
-\title{bb_pad}
+\title{Bb_pad}
 \usage{
 bb_pad(samples, pad_idx = 0)
 }
@@ -10,6 +10,9 @@ bb_pad(samples, pad_idx = 0)
 \item{samples}{samples}
 
 \item{pad_idx}{pad_idx}
+}
+\value{
+None
 }
 \description{
 Function that collect `samples` of labelled bboxes and adds padding with `pad_idx`.

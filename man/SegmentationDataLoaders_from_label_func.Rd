@@ -2,7 +2,7 @@
 % Please edit documentation in R/vision_data.R
 \name{SegmentationDataLoaders_from_label_func}
 \alias{SegmentationDataLoaders_from_label_func}
-\title{from_label_func}
+\title{SegmentationDataLoaders_from_label_func}
 \usage{
 SegmentationDataLoaders_from_label_func(
   path,
@@ -43,12 +43,10 @@ SegmentationDataLoaders_from_label_func(
 \item{shuffle_train}{shuffle_train}
 
 \item{device}{device}
-
-\item{cls}{cls}
+}
+\value{
+None
 }
 \description{
 Create from list of `fnames` in `path`s with `label_func`.
-}
-\details{
-
 }

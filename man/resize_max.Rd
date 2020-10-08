@@ -2,7 +2,7 @@
 % Please edit documentation in R/vision_core.R
 \name{resize_max}
 \alias{resize_max}
-\title{resize_max}
+\title{Resize_max}
 \usage{
 resize_max(img, resample = 0, max_px = NULL, max_h = NULL, max_w = NULL)
 }
@@ -17,9 +17,9 @@ resize_max(img, resample = 0, max_px = NULL, max_h = NULL, max_w = NULL)
 
 \item{x}{x}
 }
+\value{
+None
+}
 \description{
 `resize` `x` to `max_px`, or `max_h`, or `max_w`
-}
-\details{
-
 }

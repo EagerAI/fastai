@@ -2,12 +2,15 @@
 % Please edit documentation in R/vision_augment.R
 \name{rgb2hsv}
 \alias{rgb2hsv}
-\title{rgb2hsv}
+\title{Rgb2hsv}
 \usage{
 rgb2hsv(img)
 }
 \arguments{
 \item{img}{img}
+}
+\value{
+None
 }
 \description{
 Converts a RGB image to an HSV image.

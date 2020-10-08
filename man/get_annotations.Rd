@@ -2,7 +2,7 @@
 % Please edit documentation in R/vision_augment.R
 \name{get_annotations}
 \alias{get_annotations}
-\title{get_annotations}
+\title{Get_annotations}
 \usage{
 get_annotations(fname, prefix = NULL)
 }
@@ -10,6 +10,9 @@ get_annotations(fname, prefix = NULL)
 \item{fname}{fname}
 
 \item{prefix}{prefix}
+}
+\value{
+None
 }
 \description{
 Open a COCO style json in `fname` and returns the lists of filenames (with maybe `prefix`) and labelled bboxes.

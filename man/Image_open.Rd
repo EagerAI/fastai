@@ -2,7 +2,7 @@
 % Please edit documentation in R/vision_core.R
 \name{Image_open}
 \alias{Image_open}
-\title{open}
+\title{Image_open}
 \usage{
 Image_open(fp, mode = "r")
 }
@@ -10,6 +10,9 @@ Image_open(fp, mode = "r")
 \item{fp}{fp}
 
 \item{mode}{mode}
+}
+\value{
+None
 }
 \description{
 Opens and identifies the given image file.

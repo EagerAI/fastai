@@ -29,6 +29,9 @@ AffineCoordTfm(
 
 \item{align_corners}{align_corners}
 }
+\value{
+None
+}
 \description{
 Combine and apply affine and coord transforms
 }

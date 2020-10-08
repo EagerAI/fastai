@@ -1,10 +1,10 @@
-#' @title has_pool_type
+#' @title Has_pool_type
 #'
 #' @description Return `TRUE` if `m` is a pooling layer or has one in its children
 #'
 #'
-#' @param m m
-#'
+#' @param m parameters
+#' @return None
 #' @export
 has_pool_type <- function(m) {
 
@@ -14,16 +14,13 @@ has_pool_type <- function(m) {
 
 }
 
-#' @title create_body
+#' @title Create_body
 #'
 #' @description Cut off the body of a typically pretrained `arch` as determined by `cut`
 #'
 #'
-#' @param arch arch
-#' @param n_in n_in
-#' @param pretrained pretrained
-#' @param cut cut
-#'
+#' @param .. parameters to pass
+#' @return None
 #' @export
 create_body <- function(...) {
 
@@ -33,7 +30,7 @@ create_body <- function(...) {
 
 }
 
-#' @title create_head
+#' @title Create_head
 #'
 #' @description Model head that takes `nf` features, runs through `lin_ftrs`, and out `n_out` classes.
 #'
@@ -46,7 +43,7 @@ create_body <- function(...) {
 #' @param bn_final bn_final
 #' @param lin_first lin_first
 #' @param y_range y_range
-#'
+#' @return None
 #' @export
 create_head <- function(nf, n_out, lin_ftrs = NULL, ps = 0.5, concat_pool = TRUE,
                         bn_final = FALSE, lin_first = FALSE, y_range = NULL) {
@@ -65,13 +62,13 @@ create_head <- function(nf, n_out, lin_ftrs = NULL, ps = 0.5, concat_pool = TRUE
 }
 
 
-#' @title default_split
+#' @title Default_split
 #'
 #' @description Default split of a model between body and head
 #'
 #'
-#' @param m m
-#'
+#' @param m parameters
+#' @return None
 #' @export
 default_split <- function(m) {
 

@@ -20,6 +20,11 @@ DeterministicFlip(
 \item{pad_mode}{pad_mode}
 
 \item{align_corners}{align_corners}
+
+\item{...}{parameters to pass}
+}
+\value{
+None
 }
 \description{
 Flip the batch every other call

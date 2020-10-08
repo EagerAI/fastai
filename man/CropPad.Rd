@@ -10,10 +10,12 @@ CropPad(size, pad_mode = "zeros", ...)
 \item{size}{size}
 
 \item{pad_mode}{pad_mode}
+
+\item{...}{additional arguments}
+}
+\value{
+None
 }
 \description{
 Center crop or pad an image to `size`
-}
-\details{
-
 }

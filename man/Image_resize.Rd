@@ -2,7 +2,7 @@
 % Please edit documentation in R/vision_core.R
 \name{Image_resize}
 \alias{Image_resize}
-\title{resize}
+\title{Resize}
 \usage{
 Image_resize(img, size, resample = 3, box = NULL, reducing_gap = NULL)
 }
@@ -16,6 +16,9 @@ Image_resize(img, size, resample = 3, box = NULL, reducing_gap = NULL)
 \item{box}{box}
 
 \item{reducing_gap}{reducing_gap}
+}
+\value{
+None
 }
 \description{
 Returns a resized copy of this image.

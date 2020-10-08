@@ -10,10 +10,12 @@ OldRandomCrop(size, pad_mode = "zeros", ...)
 \item{size}{size}
 
 \item{pad_mode}{pad_mode}
+
+\item{...}{additional arguments}
+}
+\value{
+None
 }
 \description{
 Randomly crop an image to `size`
-}
-\details{
-
 }

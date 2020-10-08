@@ -2,7 +2,7 @@
 % Please edit documentation in R/vision_augment.R
 \name{dihedral_mat}
 \alias{dihedral_mat}
-\title{dihedral_mat}
+\title{Dihedral_mat}
 \usage{
 dihedral_mat(x, p = 0.5, draw = NULL, batch = FALSE)
 }
@@ -14,6 +14,9 @@ dihedral_mat(x, p = 0.5, draw = NULL, batch = FALSE)
 \item{draw}{draw}
 
 \item{batch}{batch}
+}
+\value{
+None
 }
 \description{
 Return a random dihedral matrix

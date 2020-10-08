@@ -2,12 +2,15 @@
 % Please edit documentation in R/vision_core.R
 \name{n_px}
 \alias{n_px}
-\title{n_px}
+\title{N_px}
 \usage{
 n_px(img)
 }
 \arguments{
 \item{img}{image}
+}
+\value{
+None
 }
 \description{
 int(x=0) -> integer

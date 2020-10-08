@@ -2,7 +2,7 @@
 % Please edit documentation in R/vision_core.R
 \name{load_image}
 \alias{load_image}
-\title{load_image}
+\title{Load_image}
 \usage{
 load_image(fn, mode = NULL)
 }
@@ -10,6 +10,9 @@ load_image(fn, mode = NULL)
 \item{fn}{fn}
 
 \item{mode}{mode}
+}
+\value{
+None
 }
 \description{
 Open and load a `PIL.Image` and convert to `mode`
