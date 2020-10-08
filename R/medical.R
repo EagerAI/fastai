@@ -39,11 +39,11 @@ dcmread <- function(fn, force = FALSE) {
 
 #' @title Dicom
 #' @description prints dicom file
-#' @param img dicom file
+#' @param x dicom file
 #' @return None
 #' @export
-print.pydicom.dataset.FileDataset <- function(img) {
-  cat(img$`__str__`())
+print.pydicom.dataset.FileDataset <- function(x, ...) {
+  cat(x$`__str__`())
 }
 
 

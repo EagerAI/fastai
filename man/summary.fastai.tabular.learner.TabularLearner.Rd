@@ -4,10 +4,12 @@
 \alias{summary.fastai.tabular.learner.TabularLearner}
 \title{Summary}
 \usage{
-\method{summary}{fastai.tabular.learner.TabularLearner}(object)
+\method{summary}{fastai.tabular.learner.TabularLearner}(object, ...)
 }
 \arguments{
 \item{object}{model}
+
+\item{...}{additional parameters to pass}
 }
 \value{
 None

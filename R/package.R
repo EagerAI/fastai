@@ -68,10 +68,12 @@ retinanet <- NULL
     # colors
     colors <<- fastai2$vision$all$matplotlib$colors
 
-    # remove fill
-    fastaip <<- reticulate::import('fastprogress')
+    if(reticulate::py_module_available('fastprogress')) {
+      # remove fill
+      fastaip <<- reticulate::import('fastprogress')
 
-    fastaip$progress_bar$fill = ''
+      fastaip$progress_bar$fill = ''
+    }
 
     # callback class
     Callback <<- fastai2$callback$all$Callback
@@ -84,10 +86,6 @@ retinanet <- NULL
 
     # Dicom
     Dicom <<- medical$PILDicom
-
-    if(dir.exists('fastaibuilt/retinanet')) {
-      retinanet <<- reticulate::import_from_path('retinanet', path = 'fastaibuilt')
-    }
 
   }
 
@@ -117,6 +115,10 @@ retinanet <- NULL
 
     if(file.exists('fastaibuilt/migrating_catalyst.py')) {
       catalyst <<- reticulate::import_from_path('migrating_catalyst', path = 'fastaibuilt')
+    }
+
+    if(dir.exists('fastaibuilt/retinanet')) {
+      retinanet <<- reticulate::import_from_path('retinanet', path = 'fastaibuilt')
     }
 
   }

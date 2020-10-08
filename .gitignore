@@ -22,4 +22,15 @@ wikitext-2/
 cats/
 siim_small/
 fastaibuilt/
+kaggle/
+models/
+fastaibuilt/retinanet/\.gitkeep/
+imports/\.gitkeep/
+D/
+docs/
+fastaibuilt/
+files/
+imports/
+
+
 

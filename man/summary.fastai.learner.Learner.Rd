@@ -4,10 +4,12 @@
 \alias{summary.fastai.learner.Learner}
 \title{Summary}
 \usage{
-\method{summary}{fastai.learner.Learner}(object)
+\method{summary}{fastai.learner.Learner}(object, ...)
 }
 \arguments{
 \item{object}{model}
+
+\item{...}{additional arguments to pass}
 }
 \value{
 None

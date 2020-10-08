@@ -4,10 +4,10 @@
 \alias{print.pydicom.dataset.FileDataset}
 \title{Dicom}
 \usage{
-\method{print}{pydicom.dataset.FileDataset}(img)
+\method{print}{pydicom.dataset.FileDataset}(x, ...)
 }
 \arguments{
-\item{img}{dicom file}
+\item{x}{dicom file}
 }
 \value{
 None

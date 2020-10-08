@@ -152,9 +152,10 @@ one_batch <- function(object, convert = FALSE) {
 
 #' @title Summary
 #' @param object model
+#' @param ... additional arguments to pass
 #' @return None
 #' @export
-summary.fastai.learner.Learner <- function(object) {
+summary.fastai.learner.Learner <- function(object, ...) {
   object$summary()
 }
 

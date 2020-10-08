@@ -4,10 +4,12 @@
 \alias{predict.fastai.tabular.learner.TabularLearner}
 \title{Predict}
 \usage{
-\method{predict}{fastai.tabular.learner.TabularLearner}(object, row)
+\method{predict}{fastai.tabular.learner.TabularLearner}(object, ..., row)
 }
 \arguments{
 \item{object}{the model}
+
+\item{...}{additional arguments to pass}
 
 \item{row}{row}
 }

@@ -35,4 +35,7 @@ utils::capture.output
 utils::download.file
 
 
-
+#' @importFrom reticulate condaenv_exists
+#' @return None
+#' @export
+reticulate:::condaenv_exists

@@ -191,11 +191,11 @@ fit.fastai.tabular.learner.TabularLearner <- function(object, ...) {
 #'
 #' @description Print a summary of `m` using a output text width of `n` chars
 #'
-#'
+#' @param ... additional parameters to pass
 #' @param object model
 #' @return None
 #' @export
-summary.fastai.tabular.learner.TabularLearner <- function(object) {
+summary.fastai.tabular.learner.TabularLearner <- function(object,...) {
 
   object$summary()
 

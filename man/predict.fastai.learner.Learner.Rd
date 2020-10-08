@@ -9,6 +9,8 @@
 \arguments{
 \item{object}{the model}
 
+\item{...}{additional arguments to pass}
+
 \item{row}{row}
 }
 \value{
