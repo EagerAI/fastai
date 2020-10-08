@@ -7,13 +7,16 @@
 Resize(size, method = "crop", pad_mode = "reflection", resamples = list(2, 0))
 }
 \arguments{
-\item{size}{size}
+\item{size}{size of image}
 
 \item{method}{method}
 
-\item{pad_mode}{pad_mode}
+\item{pad_mode}{reflection, zeros, border as string parameter}
 
-\item{resamples}{resamples}
+\item{resamples}{list of integers}
+}
+\value{
+None
 }
 \description{
 A transform that before_call its state at each `__call__`

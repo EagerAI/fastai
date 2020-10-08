@@ -39,6 +39,9 @@ Dihedral(
 
 \item{batch}{batch}
 }
+\value{
+None
+}
 \description{
 Apply a random dihedral transformation to a batch of images with a probability `p`
 

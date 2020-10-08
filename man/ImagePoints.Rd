@@ -2,7 +2,7 @@
 % Please edit documentation in R/image_readers.R
 \name{ImagePoints}
 \alias{ImagePoints}
-\title{ImagePoints}
+\title{Image Points}
 \usage{
 ImagePoints(flow, scale = TRUE, y_first = TRUE)
 }
@@ -12,6 +12,9 @@ ImagePoints(flow, scale = TRUE, y_first = TRUE)
 \item{scale}{scale}
 
 \item{y_first}{y_first}
+}
+\value{
+None
 }
 \description{
 Support applying transforms to a `flow` of points.

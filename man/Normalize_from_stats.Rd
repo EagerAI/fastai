@@ -2,21 +2,24 @@
 % Please edit documentation in R/image_ops.R
 \name{Normalize_from_stats}
 \alias{Normalize_from_stats}
-\title{Normalize_from_stats}
+\title{Normalize from stats}
 \usage{
 Normalize_from_stats(mean, std, dim = 1, ndim = 4, cuda = TRUE)
 }
 \arguments{
 \item{mean}{mean}
 
-\item{std}{std}
+\item{std}{standard deviation}
 
-\item{dim}{dim}
+\item{dim}{dimension}
 
-\item{ndim}{ndim}
+\item{ndim}{number of dimensions}
 
-\item{cuda}{cuda}
+\item{cuda}{cuda or not}
+}
+\value{
+list
 }
 \description{
-Normalize_from_stats
+Normalize from stats
 }

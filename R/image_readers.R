@@ -1,15 +1,14 @@
 
 
-#' @title open_mask
+#' @title Open mask
 #'
-#' @description Return `ImageSegment` object create from mask in file `fn`. If `div`, divides pixel values by 255.
+#' @return ImageSegment object create from mask in file `fn`. If `div`, divides pixel values by 255.
 #'
-#' @details
 #'
-#' @param fn fn
-#' @param div div
+#' @param fn path
+#' @param div divide or not
 #' @param convert_mode convert_mode
-#' @param after_open after_open
+#' @param after_open after open
 #'
 #' @export
 open_mask <- function(fn, div = FALSE, convert_mode = "L", after_open = NULL) {
@@ -23,9 +22,9 @@ open_mask <- function(fn, div = FALSE, convert_mode = "L", after_open = NULL) {
 
 }
 
-#' @title open_mask_rle
+#' @title Open mask rle
 #'
-#' @description Return `ImageSegment` object create from run-length encoded string in `mask_lre` with size in `shape`.
+#' @return ImageSegment object create from run-length encoded string in `mask_lre` with size in `shape`.
 #'
 #'
 #' @param mask_rle mask_rle
@@ -41,7 +40,7 @@ open_mask_rle <- function(mask_rle, shape) {
 
 }
 
-#' @title ImagePoints
+#' @title Image Points
 #'
 #' @description Support applying transforms to a `flow` of points.
 #'
@@ -49,7 +48,7 @@ open_mask_rle <- function(mask_rle, shape) {
 #' @param flow flow
 #' @param scale scale
 #' @param y_first y_first
-#'
+#' @return None
 #' @export
 ImagePoints <- function(flow, scale = TRUE, y_first = TRUE) {
 

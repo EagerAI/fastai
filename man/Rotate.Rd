@@ -16,25 +16,25 @@ Rotate(
 )
 }
 \arguments{
-\item{max_deg}{max_deg}
+\item{max_deg}{maximum degrees}
 
-\item{p}{p}
+\item{p}{probability}
 
 \item{draw}{draw}
 
-\item{size}{size}
+\item{size}{size of image}
 
 \item{mode}{mode}
 
-\item{pad_mode}{pad_mode}
+\item{pad_mode}{reflection, zeros, border as string parameter}
 
-\item{align_corners}{align_corners}
+\item{align_corners}{align corners or not}
 
-\item{batch}{batch}
+\item{batch}{batch or not}
+}
+\value{
+None
 }
 \description{
 Apply a random rotation of at most `max_deg` with probability `p` to a batch of images
-}
-\details{
-
 }

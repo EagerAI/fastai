@@ -15,19 +15,22 @@ Flip(
 )
 }
 \arguments{
-\item{p}{p}
+\item{p}{probability}
 
 \item{draw}{draw}
 
-\item{size}{size}
+\item{size}{size of image}
 
 \item{mode}{mode}
 
-\item{pad_mode}{pad_mode}
+\item{pad_mode}{reflection, zeros, border as string parameter}
 
-\item{align_corners}{align_corners}
+\item{align_corners}{align corners ot not}
 
-\item{batch}{batch}
+\item{batch}{batch or not}
+}
+\value{
+None
 }
 \description{
 Randomly flip a batch of images with a probability `p`

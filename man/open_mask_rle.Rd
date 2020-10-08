@@ -2,7 +2,7 @@
 % Please edit documentation in R/image_readers.R
 \name{open_mask_rle}
 \alias{open_mask_rle}
-\title{open_mask_rle}
+\title{Open mask rle}
 \usage{
 open_mask_rle(mask_rle, shape)
 }
@@ -11,6 +11,9 @@ open_mask_rle(mask_rle, shape)
 
 \item{shape}{shape}
 }
+\value{
+ImageSegment object create from run-length encoded string in `mask_lre` with size in `shape`.
+}
 \description{
-Return `ImageSegment` object create from run-length encoded string in `mask_lre` with size in `shape`.
+Open mask rle
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/image_ops.R
 \name{aug_transforms}
 \alias{aug_transforms}
-\title{Aug_transforms}
+\title{Augmentation}
 \usage{
 aug_transforms(
   mult = 1,
@@ -25,29 +25,29 @@ aug_transforms(
 )
 }
 \arguments{
-\item{mult}{mult}
+\item{mult}{ratio}
 
-\item{do_flip}{do_flip}
+\item{do_flip}{to do flip}
 
-\item{flip_vert}{flip_vert}
+\item{flip_vert}{flip vertical or not}
 
-\item{max_rotate}{max_rotate}
+\item{max_rotate}{maximum rotation}
 
-\item{min_zoom}{min_zoom}
+\item{min_zoom}{minimum zoom}
 
-\item{max_zoom}{max_zoom}
+\item{max_zoom}{maximum zoom}
 
-\item{max_lighting}{max_lighting}
+\item{max_lighting}{maximum lighting}
 
-\item{max_warp}{max_warp}
+\item{max_warp}{maximum warp}
 
-\item{p_affine}{p_affine}
+\item{p_affine}{probability affine}
 
-\item{p_lighting}{p_lighting}
+\item{p_lighting}{probability lighting}
 
-\item{xtra_tfms}{xtra_tfms}
+\item{xtra_tfms}{extra transformations}
 
-\item{size}{size}
+\item{size}{size of image}
 
 \item{mode}{mode}
 
@@ -58,6 +58,9 @@ aug_transforms(
 \item{batch}{batch}
 
 \item{min_scale}{min_scale}
+}
+\value{
+None
 }
 \description{
 Utility func to easily create a list of flip, rotate, zoom, warp, lighting transforms.

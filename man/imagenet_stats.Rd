@@ -2,13 +2,13 @@
 % Please edit documentation in R/image_ops.R
 \name{imagenet_stats}
 \alias{imagenet_stats}
-\title{Imagenet_stats}
+\title{Imagenet statistics}
 \usage{
 imagenet_stats()
 }
-\description{
-list() -> empty list
+\value{
+vector
 }
-\details{
-list(iterable) -> list initialized from iterable's items If the argument is a list, the return value is the same object.
+\description{
+Imagenet statistics
 }
