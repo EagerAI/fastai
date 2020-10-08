@@ -71,7 +71,7 @@ FileSplitter <- function(fname) {
 #'
 #' @description Create a `DataLoaders` object from `source`
 #'
-#'
+#' @param object model
 #' @param ... additional parameters to pass
 #'
 #' @export
@@ -147,6 +147,7 @@ basic_generator <- function(out_size, n_channels,
 #'
 #' @param in_size in_size
 #' @param n_channels The number of channels
+#' @param ... additional parameters to pass
 #' @return None
 #' @export
 basic_critic <- function(in_size, n_channels,
@@ -248,7 +249,7 @@ GANLearner_wgan <- function(dls, generator, critic, switcher = NULL, clip = 0.01
 #' @description Fit the model on this learner with `lr` learning rate, `wd` weight decay for `epochs` with `callbacks`.
 #'
 #' @param object model
-#' @param .. additonal parameters to pass
+#' @param ... additonal parameters to pass
 #' @return train history
 #' @export
 fit.fastai.vision.gan.GANLearner <- function(object, ...) {

@@ -7,6 +7,7 @@
 #' @param p p
 #' @param nm nm
 #' @param before_call before_call
+#' @param ... additional arguments to pass
 #' @return None
 #' @export
 RandTransform <- function(p = 1.0, nm = NULL, before_call = NULL,

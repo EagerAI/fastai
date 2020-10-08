@@ -35,6 +35,7 @@ flatten_check <- function(inp, targ) {
 #' @param to_np to matrix or not
 #' @param invert_arg invert arguments
 #' @param flatten flatten
+#' @param ... additional arguments to pass
 #' @return None
 #' @export
 AccumMetric <- function(func, dim_argmax = NULL, activation = "no",
@@ -67,6 +68,7 @@ AccumMetric <- function(func, dim_argmax = NULL, activation = "no",
 #' @param thresh threshold point
 #' @param axis axis
 #' @param activation activation
+#' @param ... additional arguments to pass
 #' @return None
 #' @export
 skm_to_fastai <- function(func, is_class = TRUE, thresh = NULL,
@@ -494,7 +496,7 @@ RocAucBinary <- function(axis = -1, average = "macro",
 #' @title MatthewsCorrCoef
 #'
 #' @description Matthews correlation coefficient for single-label classification problems
-#'
+#' @param ... parameters to pass
 #' @return None
 #' @export
 MatthewsCorrCoef <- function( ...) {

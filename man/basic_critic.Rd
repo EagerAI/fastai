@@ -10,6 +10,8 @@ basic_critic(in_size, n_channels, ...)
 \item{in_size}{in_size}
 
 \item{n_channels}{The number of channels}
+
+\item{...}{additional parameters to pass}
 }
 \value{
 None

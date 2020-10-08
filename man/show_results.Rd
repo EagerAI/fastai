@@ -15,6 +15,8 @@ show_results(
 )
 }
 \arguments{
+\item{object}{model}
+
 \item{ds_idx}{ds_idx}
 
 \item{dl}{dl}

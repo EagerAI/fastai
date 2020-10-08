@@ -9,7 +9,7 @@
 \arguments{
 \item{object}{model}
 
-\item{..}{additonal parameters to pass}
+\item{...}{additonal parameters to pass}
 }
 \value{
 train history

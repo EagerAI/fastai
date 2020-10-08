@@ -7,9 +7,9 @@
 to_bytes_format(img, format = "png")
 }
 \arguments{
-\item{format}{format}
+\item{img}{image}
 
-\item{im}{im}
+\item{format}{format}
 }
 \value{
 None

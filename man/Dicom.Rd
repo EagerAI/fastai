@@ -6,6 +6,9 @@
 \usage{
 Dicom(...)
 }
+\arguments{
+\item{...}{additional arguments}
+}
 \value{
 module
 }

@@ -42,44 +42,23 @@ get_confusion_matrix <- function(object) {
   conf
 }
 
-#' @title Most_confused
-#' @description Sorted descending list of largest non-diagonal entries of confusion matrix,
-#' presented as actual, predicted, number of occurrences.
-#'
-#' @param object interpret object
-#'
-#' @param min_val minimum value
-#' @return data.frame
-#' @export
-most_confused <- function(object, min_val = 1) {
-
-  res = rbind(
-    object$most_confused(
-    min_val = as.integer(min_val)
-  )
-  )
-
-  res = as.data.frame(res)
-
-  colnames(res) = c('Actual','Predicted','Confused_n')
-}
 
 
 #' @title Lr_find
 #'
 #' @description Launch a mock training to find a good learning rate, return lr_min, lr_steep if `suggestions` is TRUE
 #'
-#' @param objetc learner
+#' @param object learner
 #' @param start_lr start_lr
 #' @param end_lr end_lr
 #' @param num_it num_it
 #' @param stop_div stop_div
-#' @param show_plot show_plot
 #' @param suggestions suggestions
+#' @param ... additional arguments to pass
 #' @return data frame
 #' @export
 lr_find <- function(object, start_lr = 1e-07, end_lr = 10, num_it = 100,
-                    stop_div = TRUE, suggestions = TRUE) {
+                    stop_div = TRUE, suggestions = TRUE, ...) {
 
   args <- list(
     start_lr = start_lr,
@@ -87,7 +66,8 @@ lr_find <- function(object, start_lr = 1e-07, end_lr = 10, num_it = 100,
     num_it = as.integer(num_it),
     stop_div = stop_div,
     show_plot = FALSE,
-    suggestions = suggestions
+    suggestions = suggestions,
+    ...
   )
 
   print(do.call(object$lr_find, args))

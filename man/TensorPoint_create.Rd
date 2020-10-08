@@ -7,13 +7,7 @@
 TensorPoint_create(...)
 }
 \arguments{
-\item{enc}{enc}
-
-\item{dec}{dec}
-
-\item{split_idx}{split_idx}
-
-\item{order}{order}
+\item{...}{arguments to pass}
 }
 \value{
 None

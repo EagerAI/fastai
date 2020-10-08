@@ -113,7 +113,7 @@ reshape <- function(x, h, w, resample = 0) {
 #' @description Convert to bytes, default to PNG format
 #'
 #'
-#' @param im im
+#' @param img image
 #' @param format format
 #' @return None
 #' @export
@@ -151,7 +151,7 @@ to_thumb <- function(h, w = NULL) {
 #' @description `resize` `x` to `max_px`, or `max_h`, or `max_w`
 #'
 #'
-#' @param x x
+#' @param img image
 #' @param resample resample
 #' @param max_px max_px
 #' @param max_h max_h
@@ -332,10 +332,7 @@ ImageBW_create <- function(fn) {
 #' @description Delegates (`__call__`,`decode`,`setup`) to (`encodes`,`decodes`,`setups`) if `split_idx` matches
 #'
 #'
-#' @param enc enc
-#' @param dec dec
-#' @param split_idx split_idx
-#' @param order order
+#' @param ... arguments to pass
 #' @return None
 #' @export
 TensorPoint_create <- function( ...) {
@@ -523,6 +520,8 @@ Image = function(...) {
 #' @param indexed indexed
 #' @param n n
 #' @param device device
+#' @param ... additional arguments to pass
+#' @param after_batch after_batch
 #' @return None
 #' @export
 TfmdDL <- function(dataset, bs = 64, shuffle = FALSE, num_workers = NULL,

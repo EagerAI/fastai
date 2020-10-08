@@ -60,9 +60,7 @@ language_model_learner(
 
 \item{moms}{moms}
 
-\item{loss_func}{loss_func}
-
-\item{splitter}{splitter}
+\item{...}{additional arguments}
 }
 \value{
 None

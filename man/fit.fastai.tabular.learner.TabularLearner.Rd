@@ -7,13 +7,9 @@
 \method{fit}{fastai.tabular.learner.TabularLearner}(object, ...)
 }
 \arguments{
-\item{epochs}{epochs}
+\item{object}{model}
 
-\item{lr}{learning rate}
-
-\item{wd}{weight decay}
-
-\item{callbacks}{callbacks}
+\item{...}{additional arguments}
 }
 \value{
 data frame

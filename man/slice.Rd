@@ -6,6 +6,9 @@
 \usage{
 slice(...)
 }
+\arguments{
+\item{...}{additional arguments}
+}
 \value{
 sliced object
 }

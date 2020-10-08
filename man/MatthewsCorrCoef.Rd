@@ -6,6 +6,9 @@
 \usage{
 MatthewsCorrCoef(...)
 }
+\arguments{
+\item{...}{parameters to pass}
+}
 \value{
 None
 }

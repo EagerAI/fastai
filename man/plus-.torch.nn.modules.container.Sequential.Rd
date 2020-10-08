@@ -6,6 +6,11 @@
 \usage{
 \method{+}{torch.nn.modules.container.Sequential}(a, b)
 }
+\arguments{
+\item{a}{sequential model}
+
+\item{b}{layer}
+}
 \value{
 model
 }

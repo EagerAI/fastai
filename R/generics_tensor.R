@@ -157,8 +157,8 @@
 #'
 #' @name logical_and
 #' @export
-"&.torch.Tensor" <- function(a, b) {
-  a$logical_and(b)
+"&.torch.Tensor" <- function(x, y) {
+  x$logical_and(y)
 }
 
 #' @title Logical_or
@@ -167,8 +167,8 @@
 #' @return tensor
 #' @name logical_or
 #' @export
-"|.torch.Tensor" <- function(a, b) {
-  a$logical_or(b)
+"|.torch.Tensor" <- function(x, y) {
+  x$logical_or(y)
 }
 
 #' @title Logical_not
@@ -176,8 +176,8 @@
 #' @return tensor
 #' @name logical_not_
 #' @export
-"!.torch.Tensor" <- function(a) {
-  a$logical_not()
+"!.torch.Tensor" <- function(x) {
+  x$logical_not()
 }
 
 

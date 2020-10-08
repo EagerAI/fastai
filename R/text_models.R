@@ -53,10 +53,8 @@ AWD_LSTM <- function(vocab_sz, emb_sz, n_hid, n_layers, pad_token = 1,
 #' @param backwards backwards
 #' @param pretrained pretrained
 #' @param pretrained_fnames pretrained_fnames
-#' @param loss_func loss_func
 #' @param opt_func opt_func
 #' @param lr lr
-#' @param splitter splitter
 #' @param cbs cbs
 #' @param metrics metrics
 #' @param path path
@@ -65,6 +63,7 @@ AWD_LSTM <- function(vocab_sz, emb_sz, n_hid, n_layers, pad_token = 1,
 #' @param wd_bn_bias wd_bn_bias
 #' @param train_bn train_bn
 #' @param moms moms
+#' @param ... additional arguments
 #' @return None
 #' @export
 language_model_learner <- function(dls, arch, config = NULL, drop_mult = 1.0,
@@ -474,7 +473,7 @@ forget_mult_CPU <- function(x, f, first_h = NULL, batch_first = TRUE, backward =
 #'
 #' @description Wrapper around the CUDA kernels for the ForgetMult gate.
 #'
-#'
+#' @param ... parameters to pass
 #' @return None
 #' @export
 ForgetMultGPU <- function(...) {

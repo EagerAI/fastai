@@ -80,7 +80,6 @@ BaseLoss = function(...) {
 #'
 #' @description Hamming loss for single-label classification problems
 #'
-#' @param ... parameters to pass
 #'
 #' @return Loss object
 #'
@@ -173,7 +172,6 @@ BCEWithLogitsLossFlat = function(...) {
 #' @title LabelSmoothingCrossEntropy
 #'
 #' @description Same as `nn$Module`, but no need for subclasses to call `super()$__init__`
-#' @param ... parameters to pass
 #'
 #' @return Loss object
 #'

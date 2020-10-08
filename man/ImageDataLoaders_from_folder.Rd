@@ -46,6 +46,8 @@ ImageDataLoaders_from_folder(
 
 \item{device}{device}
 
+\item{size}{image size}
+
 \item{...}{additional parameters to pass}
 }
 \description{

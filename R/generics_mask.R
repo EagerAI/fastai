@@ -141,8 +141,8 @@
 #' @param y tensor
 #' @return tensor
 #' @export
-"&.fastai.torch_core.TensorMask" <- function(a, b) {
-  a$logical_and(b)
+"&.fastai.torch_core.TensorMask" <- function(x, y) {
+  x$logical_and(y)
 }
 
 #' @title Logical_or
@@ -151,8 +151,8 @@
 #' @return tensor
 #' @name or_mask
 #' @export
-"|.fastai.torch_core.TensorMask" <- function(a, b) {
-  a$logical_or(b)
+"|.fastai.torch_core.TensorMask" <- function(x, y) {
+  x$logical_or(y)
 }
 
 #' @title Logical_not
@@ -160,8 +160,8 @@
 #' @return tensor
 #' @name not__mask
 #' @export
-"!.fastai.torch_core.TensorMask" <- function(a) {
-  a$logical_not()
+"!.fastai.torch_core.TensorMask" <- function(x) {
+  x$logical_not()
 }
 
 

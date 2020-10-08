@@ -29,6 +29,8 @@ AccumMetric(
 \item{invert_arg}{invert arguments}
 
 \item{flatten}{flatten}
+
+\item{...}{additional arguments to pass}
 }
 \value{
 None

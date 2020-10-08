@@ -28,6 +28,7 @@ colors <- NULL
 
 #' Callback
 #' @return module
+#' @param ... additional arguments
 #' @export
 Callback <- NULL
 
@@ -51,13 +52,14 @@ F <- NULL
 
 #' Dicom
 #' @return module
+#' @param ... additional arguments
 #' @export
 Dicom <- NULL
 
 
 #' @title Slice
 #'
-#'
+#' @param ... additional arguments
 #' @details slice(start, stop[, step]) Create a slice object. This is used for extended slicing (e.g. a[0:10:2]).
 #'
 #' @return sliced object

@@ -48,6 +48,10 @@ TfmdDL(
 \item{n}{n}
 
 \item{device}{device}
+
+\item{after_batch}{after_batch}
+
+\item{...}{additional arguments to pass}
 }
 \value{
 None

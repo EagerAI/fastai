@@ -12,6 +12,8 @@ RandTransform(p = 1, nm = NULL, before_call = NULL, ...)
 \item{nm}{nm}
 
 \item{before_call}{before_call}
+
+\item{...}{additional arguments to pass}
 }
 \value{
 None

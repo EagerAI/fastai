@@ -1,7 +1,8 @@
 
 #' Add layers to Sequential
 #'
-#'
+#' @param a sequential model
+#' @param b layer
 #' @return model
 #'
 #' @export
@@ -43,6 +44,8 @@
 #' @param ctxs ctxs
 #' @param show show
 #' @param unique unique
+#' @param fig_size figure size
+#' @param dpi dots per inch
 #' @return None
 #' @export
 show_batch <- function(dls, b = NULL, max_n = 9, ctxs = NULL,
@@ -285,7 +288,7 @@ subplots <- function(nrows = 2, ncols = 2, figsize = NULL, imsize = 4, add_vert 
 #'
 #' @param frames file rames
 #' @param scale scale
-#' @param additional parameters to pass
+#' @param ... additional arguments
 #' @return None
 #' @export
 show <- function(img, frames = 1, scale = TRUE, ...) {
@@ -427,7 +430,7 @@ gauss_blur2d <- function(x, s) {
 #'
 #' @description Show some predictions on `ds_idx`-th dataset or `dl`
 #'
-#'
+#' @param object model
 #' @param ds_idx ds_idx
 #' @param dl dl
 #' @param max_n max_n

@@ -45,6 +45,7 @@ competition_download_file <- function(competition, file_name, path = NULL, force
 #' @param path a path to download the file to
 #' @param force force the download if the file already exists (default FALSE)
 #' @param quiet suppress verbose output (default is TRUE)
+#' @param unzip unzip downloaded files
 #' @return None
 #' @export
 competition_download_files <- function(competition, path = NULL, force = FALSE, quiet = FALSE,

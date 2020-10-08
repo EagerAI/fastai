@@ -190,7 +190,7 @@ Optimizer <- function(...) {
 #' @title Noop
 #'
 #'
-#' @param .. parameters to pass
+#' @param ... parameters to pass
 #' @return None
 #' @export
 noop <- function(...) {

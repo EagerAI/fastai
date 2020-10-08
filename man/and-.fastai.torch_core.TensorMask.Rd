@@ -4,7 +4,7 @@
 \alias{&.fastai.torch_core.TensorMask}
 \title{Logical_and}
 \usage{
-\method{&}{fastai.torch_core.TensorMask}(a, b)
+\method{&}{fastai.torch_core.TensorMask}(x, y)
 }
 \arguments{
 \item{x}{tensor}

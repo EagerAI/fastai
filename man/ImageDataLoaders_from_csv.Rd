@@ -63,6 +63,8 @@ ImageDataLoaders_from_csv(
 
 \item{val_bs}{The batch size for the validation DataLoader (defaults to bs)}
 
+\item{size}{image size}
+
 \item{shuffle_train}{If we shuffle the training DataLoader or not}
 
 \item{device}{device}

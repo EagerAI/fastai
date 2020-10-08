@@ -10,8 +10,6 @@ LabelSmoothingCrossEntropy(eps = 0.1, reduction = "mean")
 \item{eps}{epsilon}
 
 \item{reduction}{reduction, defaults to mean}
-
-\item{...}{parameters to pass}
 }
 \value{
 Loss object

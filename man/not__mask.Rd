@@ -5,7 +5,7 @@
 \alias{!.fastai.torch_core.TensorMask}
 \title{Logical_not}
 \usage{
-\method{!}{fastai.torch_core.TensorMask}(a)
+\method{!}{fastai.torch_core.TensorMask}(x)
 }
 \arguments{
 \item{x}{tensor}

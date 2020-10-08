@@ -23,15 +23,9 @@ crappifier <- function(path_lr, path_hr) {
 #'
 #' @description Implements RetinaNet from https://arxiv.org/abs/1708.02002
 #'
-#' @details
 #'
-#' @param encoder encoder
-#' @param n_classes n_classes
-#' @param final_bias final_bias
-#' @param chs chs
-#' @param n_anchors n_anchors
-#' @param flatten flatten
-#'
+#' @param ... arguments to pass
+#' @return model
 #' @export
 RetinaNet <- function(...) {
 
@@ -63,13 +57,8 @@ RetinaNet <- function(...) {
 #' a tree structure. You can assign the submodules as regular attributes:: import torch.nn as nn import torch.nn.functional as F class Model(nn.Module): def __init__(self): super(Model, self).__init__() self.conv1 = nn.Conv2d(1, 20, 5) self.conv2 = nn.Conv2d(20, 20, 5) def forward(self, x): x = F.relu(self.conv1(x)) return F.relu(self.conv2(x)) Submodules assigned in this way will be registered, and will have their
 #' parameters converted too when you call :meth:`to`, etc.
 #'
-#' @param gamma gamma
-#' @param alpha alpha
-#' @param pad_idx pad_idx
-#' @param scales scales
-#' @param ratios ratios
-#' @param reg_loss reg_loss
-#'
+#' @param ... parameters to pass
+#' @return None
 #' @export
 RetinaNetFocalLoss <- function(...) {
 

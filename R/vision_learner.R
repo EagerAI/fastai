@@ -19,7 +19,7 @@ has_pool_type <- function(m) {
 #' @description Cut off the body of a typically pretrained `arch` as determined by `cut`
 #'
 #'
-#' @param .. parameters to pass
+#' @param ... parameters to pass
 #' @return None
 #' @export
 create_body <- function(...) {

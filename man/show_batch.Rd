@@ -27,6 +27,10 @@ show_batch(
 \item{show}{show}
 
 \item{unique}{unique}
+
+\item{dpi}{dots per inch}
+
+\item{fig_size}{figure size}
 }
 \value{
 None

@@ -23,6 +23,8 @@ skm_to_fastai(
 \item{axis}{axis}
 
 \item{activation}{activation}
+
+\item{...}{additional arguments to pass}
 }
 \value{
 None

@@ -10,10 +10,13 @@ lr_find(
   end_lr = 10,
   num_it = 100,
   stop_div = TRUE,
-  suggestions = TRUE
+  suggestions = TRUE,
+  ...
 )
 }
 \arguments{
+\item{object}{learner}
+
 \item{start_lr}{start_lr}
 
 \item{end_lr}{end_lr}
@@ -24,9 +27,7 @@ lr_find(
 
 \item{suggestions}{suggestions}
 
-\item{objetc}{learner}
-
-\item{show_plot}{show_plot}
+\item{...}{additional arguments to pass}
 }
 \value{
 data frame

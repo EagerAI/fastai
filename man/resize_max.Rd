@@ -7,6 +7,8 @@
 resize_max(img, resample = 0, max_px = NULL, max_h = NULL, max_w = NULL)
 }
 \arguments{
+\item{img}{image}
+
 \item{resample}{resample}
 
 \item{max_px}{max_px}
@@ -14,8 +16,6 @@ resize_max(img, resample = 0, max_px = NULL, max_h = NULL, max_w = NULL)
 \item{max_h}{max_h}
 
 \item{max_w}{max_w}
-
-\item{x}{x}
 }
 \value{
 None

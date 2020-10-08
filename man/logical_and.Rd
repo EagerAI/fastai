@@ -5,7 +5,7 @@
 \alias{&.torch.Tensor}
 \title{Logical_and}
 \usage{
-\method{&}{torch.Tensor}(a, b)
+\method{&}{torch.Tensor}(x, y)
 }
 \arguments{
 \item{x}{tensor}

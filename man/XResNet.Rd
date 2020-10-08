@@ -16,6 +16,8 @@ XResNet(block, expansion, layers, c_in = 3, c_out = 1000, ...)
 \item{c_in}{number of inputs}
 
 \item{c_out}{number of outputs}
+
+\item{...}{additional arguments}
 }
 \description{
 A sequential container.

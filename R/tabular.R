@@ -141,10 +141,8 @@ tabular_learner <- function(dls, layers = NULL, emb_szs = NULL, config = NULL,
 #' @title Fit
 #' @description Fit the model on this learner with `lr` learning rate, `wd` weight decay for `epochs` with `callbacks`.
 #'
-#' @param epochs epochs
-#' @param lr learning rate
-#' @param wd weight decay
-#' @param callbacks callbacks
+#' @param object model
+#' @param ... additional arguments
 #' @return data frame
 #' @export
 fit.fastai.tabular.learner.TabularLearner <- function(object, ...) {

@@ -122,17 +122,6 @@ xresnet101 <- function(...) {
   }
 }
 
-#' @title UnetBlock
-#'
-#' @description Load Unet block
-#' @param ... parameters to pass
-#' @return model
-#' @export
-UnetBlock <- function(...) {
-  args = list(...)
-  do.call(vision$all$UnetBlock, args)
-}
-
 
 #' @title Xresnet50_deep
 #'
@@ -183,6 +172,7 @@ alexnet <- function(pretrained = FALSE, progress) {
 #' @param layers the layers to pass to XResNet
 #' @param c_in number of inputs
 #' @param c_out number of outputs
+#' @param ... additional arguments
 #'
 #' @export
 XResNet <- function(block, expansion, layers, c_in = 3, c_out = 1000,

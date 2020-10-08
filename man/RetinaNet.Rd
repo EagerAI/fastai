@@ -7,21 +7,11 @@
 RetinaNet(...)
 }
 \arguments{
-\item{encoder}{encoder}
-
-\item{n_classes}{n_classes}
-
-\item{final_bias}{final_bias}
-
-\item{chs}{chs}
-
-\item{n_anchors}{n_anchors}
-
-\item{flatten}{flatten}
+\item{...}{arguments to pass}
+}
+\value{
+model
 }
 \description{
 Implements RetinaNet from https://arxiv.org/abs/1708.02002
-}
-\details{
-
 }

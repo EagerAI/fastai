@@ -7,6 +7,8 @@
 dataloaders(object, ...)
 }
 \arguments{
+\item{object}{model}
+
 \item{...}{additional parameters to pass}
 }
 \description{

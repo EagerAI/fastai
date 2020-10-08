@@ -9,7 +9,7 @@ URLs_MOVIE_LENS_ML_100k(filename = "ml-100k", unzip = TRUE)
 \arguments{
 \item{filename}{the name of the file}
 
-\item{untar}{logical, whether to untar the '.tgz' file}
+\item{unzip}{logical, whether to unzip the '.zip' file}
 }
 \value{
 None

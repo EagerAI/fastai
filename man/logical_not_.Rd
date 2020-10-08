@@ -5,7 +5,7 @@
 \alias{!.torch.Tensor}
 \title{Logical_not}
 \usage{
-\method{!}{torch.Tensor}(a)
+\method{!}{torch.Tensor}(x)
 }
 \arguments{
 \item{x}{tensor}

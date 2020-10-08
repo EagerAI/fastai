@@ -7,17 +7,10 @@
 RetinaNetFocalLoss(...)
 }
 \arguments{
-\item{gamma}{gamma}
-
-\item{alpha}{alpha}
-
-\item{pad_idx}{pad_idx}
-
-\item{scales}{scales}
-
-\item{ratios}{ratios}
-
-\item{reg_loss}{reg_loss}
+\item{...}{parameters to pass}
+}
+\value{
+None
 }
 \description{
 Base class for all neural network modules.

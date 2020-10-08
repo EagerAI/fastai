@@ -11,7 +11,7 @@ show(img, frames = 1, scale = TRUE, ...)
 
 \item{scale}{scale}
 
-\item{additional}{parameters to pass}
+\item{...}{additional arguments}
 }
 \value{
 None

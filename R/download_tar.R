@@ -1008,7 +1008,7 @@ URLs_YELP_REVIEWS_POLARITY <- function(filename = 'YELP_REVIEWS_POLARITY', untar
 #' @title MOVIE_LENS_ML_100k dataset
 #'
 #' @param filename the name of the file
-#' @param untar logical, whether to untar the '.tgz' file
+#' @param unzip logical, whether to unzip the '.zip' file
 #'
 #' @description download YELP_REVIEWS_POLARITY dataset
 #' @return None

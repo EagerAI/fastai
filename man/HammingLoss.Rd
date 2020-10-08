@@ -12,8 +12,6 @@ HammingLoss(axis = -1, sample_weight = NULL)
 \item{axis}{axis}
 
 \item{sample_weight}{sample_weight}
-
-\item{...}{parameters to pass}
 }
 \value{
 Loss object

@@ -20,6 +20,8 @@ competition_download_files(
 \item{force}{force the download if the file already exists (default FALSE)}
 
 \item{quiet}{suppress verbose output (default is TRUE)}
+
+\item{unzip}{unzip downloaded files}
 }
 \value{
 None

@@ -75,7 +75,7 @@ get_image_files <- function(path, recurse = TRUE, folders = NULL) {
 
 #' @title Fit one cycle
 #'
-#' @param n_epoch The number of epochs
+#' @param object model
 #' @param ... parameters to pass, e.g. lr, n_epoch, wd, and etc.
 #' @return None
 #' @export
@@ -111,6 +111,7 @@ fit_one_cycle <- function(object, ...) {
 #' @param val_bs The batch size for the validation DataLoader (defaults to bs)
 #' @param shuffle_train If we shuffle the training DataLoader or not
 #' @param device device
+#' @param size image size
 #' @param ... additional parameters to pass
 #' @export
 ImageDataLoaders_from_folder <- function(path, train = "train", valid = "valid",
@@ -175,6 +176,7 @@ ImageDataLoaders_from_folder <- function(path, train = "train", valid = "valid",
 #' @param bs batch size
 #' @param val_bs The batch size for the validation DataLoader (defaults to bs)
 #' @param shuffle_train If we shuffle the training DataLoader or not
+#' @param size image size
 #' @param device device
 #' @param ... additional parameters to pass
 #' @return None
