@@ -1,9 +1,9 @@
-#' @title spec_add_spaces
+#' @title Spec_add_spaces
 #'
 #' @description Add spaces around / and #
 #'
-#' @param t t
-#'
+#' @param t text
+#' @return string
 #' @export
 spec_add_spaces <- function(t) {
 
@@ -24,8 +24,8 @@ spec_add_spaces <- function(t) {
 #' @description Remove multiple spaces
 #'
 #'
-#' @param t t
-#'
+#' @param t text
+#' @return string
 #' @export
 rm_useless_spaces <- function(t) {
 
@@ -41,14 +41,13 @@ rm_useless_spaces <- function(t) {
 
 }
 
-#' @title replace_rep
+#' @title Replace_rep
 #'
 #' @description Replace repetitions at the character level: cccc -- TK_REP 4 c
 #'
-#' @details
 #'
-#' @param t t
-#'
+#' @param t text
+#' @return string
 #' @export
 replace_rep <- function(t) {
 
@@ -69,9 +68,9 @@ replace_rep <- function(t) {
 #'
 #' @description Replace word repetitions: word word word word -- TK_WREP 4 word
 #'
-#' @details
 #'
-#' @param t t
+#' @param t text
+#' @return string
 #'
 #' @export
 replace_wrep <- function(t) {
@@ -86,20 +85,19 @@ replace_wrep <- function(t) {
 }
 
 
-#' @title fix_html
+#' @title Fix_html
 #'
 #' @description Various messy things we've seen in documents
 #'
-#' @details
-#'
-#' @param x x
+#' @param x text
+#' @return string
 #'
 #' @export
 fix_html <- function(x) {
 
 
 
-  if(missing(t)) {
+  if(missing(x)) {
     invisible(text$fix_html)
   } else {
     text$fix_html(
@@ -109,13 +107,12 @@ fix_html <- function(x) {
 
 }
 
-#' @title replace_all_caps
+#' @title Replace_all_caps
 #'
 #' @description Replace tokens in ALL CAPS by their lower version and add `TK_UP` before.
 #'
-#' @details
-#'
-#' @param t t
+#' @param t text
+#' @return string
 #'
 #' @export
 replace_all_caps <- function(t) {
@@ -131,12 +128,13 @@ replace_all_caps <- function(t) {
 }
 
 
-#' @title replace_maj
+#' @title Replace_maj
 #'
 #' @description Replace tokens in ALL CAPS by their lower version and add `TK_UP` before.
 #'
 #'
-#' @param t t
+#' @param t text
+#' @return string
 #'
 #' @export
 replace_maj <- function(t) {
@@ -155,8 +153,8 @@ replace_maj <- function(t) {
 #' @description Basic tokenizer that just splits on spaces
 #'
 #'
-#' @param split_char split_char
-#'
+#' @param split_char separator
+#' @return None
 #' @export
 BaseTokenizer <- function(split_char = " ") {
 
@@ -172,10 +170,10 @@ BaseTokenizer <- function(split_char = " ") {
 #' @description Spacy tokenizer for `lang`
 #'
 #'
-#' @param lang lang
-#' @param special_toks special_toks
-#' @param buf_sz buf_sz
-#'
+#' @param lang language
+#' @param special_toks special tokenizers
+#' @param buf_sz buffer size
+#' @return none
 #' @export
 SpacyTokenizer <- function(lang = "en", special_toks = NULL, buf_sz = 5000) {
 
@@ -193,10 +191,10 @@ SpacyTokenizer <- function(lang = "en", special_toks = NULL, buf_sz = 5000) {
 #' @description A wrapper around `tok` which applies `rules`, then tokenizes, then applies `post_rules`
 #'
 #'
-#' @param tok tok
+#' @param tok tokenizer
 #' @param rules rules
 #' @param post_rules post_rules
-#'
+#' @return None
 #' @export
 TokenizeWithRules <- function(tok, rules = NULL, post_rules = NULL) {
 
@@ -208,7 +206,7 @@ TokenizeWithRules <- function(tok, rules = NULL, post_rules = NULL) {
 
 }
 
-#' @title tokenize1
+#' @title Tokenize1
 #'
 #' @description Call `TokenizeWithRules` with a single text
 #'
@@ -217,7 +215,7 @@ TokenizeWithRules <- function(tok, rules = NULL, post_rules = NULL) {
 #' @param tok tok
 #' @param rules rules
 #' @param post_rules post_rules
-#'
+#' @return None
 #' @export
 tokenize1 <- function(text, tok, rules = NULL, post_rules = NULL) {
 
@@ -230,16 +228,16 @@ tokenize1 <- function(text, tok, rules = NULL, post_rules = NULL) {
 
 }
 
-#' @title parallel_tokenize
+#' @title Parallel_tokenize
 #'
 #' @description Calls optional `setup` on `tok` before launching `TokenizeWithRules` using `parallel_gen
 #'
 #'
 #' @param items items
-#' @param tok tok
+#' @param tok tokenizer
 #' @param rules rules
 #' @param n_workers n_workers
-#'
+#' @return None
 #' @export
 parallel_tokenize <- function(items, tok = NULL, rules = NULL, n_workers = 6) {
 
@@ -254,21 +252,21 @@ parallel_tokenize <- function(items, tok = NULL, rules = NULL, n_workers = 6) {
 
 
 
-#' @title tokenize_csv
+#' @title Tokenize_csv
 #'
 #' @description Tokenize texts in the `text_cols` of the csv `fname` in parallel using `n_workers`
 #'
 #'
-#' @param fname fname
-#' @param text_cols text_cols
+#' @param fname file name
+#' @param text_cols text columns
 #' @param outname outname
-#' @param n_workers n_workers
+#' @param n_workers numeber of workers
 #' @param rules rules
-#' @param mark_fields mark_fields
-#' @param tok tok
+#' @param mark_fields mark fields
+#' @param tok tokenizer
 #' @param header header
-#' @param chunksize chunksize
-#'
+#' @param chunksize chunk size
+#' @return None
 #' @export
 tokenize_csv <- function(fname, text_cols, outname = NULL, n_workers = 4,
                          rules = NULL, mark_fields = NULL, tok = NULL,
@@ -290,20 +288,19 @@ tokenize_csv <- function(fname, text_cols, outname = NULL, n_workers = 4,
 
 }
 
-#' @title tokenize_df
+#' @title Tokenize_df
 #'
 #' @description Tokenize texts in `df[text_cols]` in parallel using `n_workers`
 #'
-#' @details
 #'
-#' @param df df
-#' @param text_cols text_cols
-#' @param n_workers n_workers
+#' @param df data frame
+#' @param text_cols text columns
+#' @param n_workers number of workers
 #' @param rules rules
 #' @param mark_fields mark_fields
-#' @param tok tok
+#' @param tok tokenizer
 #' @param res_col_name res_col_name
-#'
+#' @return None
 #' @export
 tokenize_df <- function(df, text_cols, n_workers = 6, rules = NULL,
                         mark_fields = NULL, tok = NULL,
@@ -324,7 +321,7 @@ tokenize_df <- function(df, text_cols, n_workers = 6, rules = NULL,
 }
 
 
-#' @title tokenize_files
+#' @title Tokenize_files
 #'
 #' @description Tokenize text `files` in parallel using `n_workers`
 #'
@@ -334,10 +331,10 @@ tokenize_df <- function(df, text_cols, n_workers = 6, rules = NULL,
 #' @param output_names output_names
 #' @param n_workers n_workers
 #' @param rules rules
-#' @param tok tok
+#' @param tok tokenizer
 #' @param encoding encoding
 #' @param skip_if_exists skip_if_exists
-#'
+#' @return None
 #' @export
 tokenize_files <- function(files, path, output_dir, output_names = NULL,
                            n_workers = 6, rules = NULL, tok = NULL,
@@ -359,7 +356,7 @@ tokenize_files <- function(files, path, output_dir, output_names = NULL,
 
 }
 
-#' @title tokenize_folder
+#' @title Tokenize_folder
 #'
 #' @description Tokenize text files in `path` in parallel using `n_workers`
 #'
@@ -370,18 +367,18 @@ tokenize_files <- function(files, path, output_dir, output_names = NULL,
 #' @param output_dir output_dir
 #' @param skip_if_exists skip_if_exists
 #' @param output_names output_names
-#' @param n_workers n_workers
+#' @param n_workers number of workers
 #' @param rules rules
-#' @param tok tok
+#' @param tok tokenizer
 #' @param encoding encoding
-#'
+#' @return None
 #' @export
 tokenize_folder <- function(path, extensions = NULL, folders = NULL,
                             output_dir = NULL, skip_if_exists = TRUE,
                             output_names = NULL, n_workers = 6,
                             rules = NULL, tok = NULL, encoding = "utf8") {
 
-  python_function_result <- text$tokenize_folder(
+  args = list(
     path = path,
     extensions = extensions,
     folders = folders,
@@ -394,9 +391,11 @@ tokenize_folder <- function(path, extensions = NULL, folders = NULL,
     encoding = encoding
   )
 
+  do.call(text$tokenize_folder, args)
+
 }
 
-#' @title tokenize_texts
+#' @title Tokenize_texts
 #'
 #' @description Tokenize `texts` in parallel using `n_workers`
 #'
@@ -405,7 +404,7 @@ tokenize_folder <- function(path, extensions = NULL, folders = NULL,
 #' @param n_workers n_workers
 #' @param rules rules
 #' @param tok tok
-#'
+#' @return None
 #' @export
 tokenize_texts <- function(texts, n_workers = 6, rules = NULL, tok = NULL) {
 
@@ -420,13 +419,13 @@ tokenize_texts <- function(texts, n_workers = 6, rules = NULL, tok = NULL) {
 
 }
 
-#' @title load_tokenized_csv
+#' @title Load_tokenized_csv
 #'
 #' @description Utility function to quickly load a tokenized csv and the corresponding counter
 #'
 #'
-#' @param fname fname
-#'
+#' @param fname file name
+#' @return None
 #' @export
 load_tokenized_csv <- function(fname) {
 
@@ -442,13 +441,13 @@ load_tokenized_csv <- function(fname) {
 #' @description Provides a consistent `Transform` interface to tokenizers operating on `DataFrame`s and folders
 #'
 #'
-#' @param tok tok
+#' @param tok tokenizer
 #' @param rules rules
 #' @param counter counter
 #' @param lengths lengths
 #' @param mode mode
-#' @param sep sep
-#'
+#' @param sep separator
+#' @return None
 #' @export
 Tokenizer <- function(tok, rules = NULL, counter = NULL, lengths = NULL, mode = NULL, sep = " ") {
 
@@ -472,7 +471,6 @@ Tokenizer <- function(tok, rules = NULL, counter = NULL, lengths = NULL, mode = 
 #'
 #' @description SentencePiece tokenizer for `lang`
 #'
-#' @details
 #'
 #' @param lang lang
 #' @param special_toks special_toks
@@ -482,7 +480,7 @@ Tokenizer <- function(tok, rules = NULL, counter = NULL, lengths = NULL, mode = 
 #' @param model_type model_type
 #' @param char_coverage char_coverage
 #' @param cache_dir cache_dir
-#'
+#' @return None
 #' @export
 SentencePieceTokenizer <- function(lang = "en", special_toks = NULL,
                                    sp_model = NULL, vocab_sz = NULL,
@@ -505,10 +503,11 @@ SentencePieceTokenizer <- function(lang = "en", special_toks = NULL,
 }
 
 
-#' @title fa_collate
+#' @title Fa_collate
 #'
 #'
-#' @param t t
+#' @param t text
+#' @return None
 #'
 #' @export
 fa_collate <- function(t) {
@@ -523,11 +522,11 @@ fa_collate <- function(t) {
 
 }
 
-#' @title fa_convert
+#' @title Da_convert
 #'
 #'
-#' @param t t
-#'
+#' @param t text
+#' @return None
 #' @export
 fa_convert <- function(t) {
 
@@ -557,7 +556,8 @@ fa_convert <- function(t) {
 #' @param types types
 #' @param verbose verbose
 #' @param dl_type dl_type
-#'
+#' @return None
+#' @param ... parameters to pass
 #' @export
 TfmdLists <- function(items, tfms, use_list = NULL, do_setup = TRUE, split_idx = NULL,
                       train_setup = TRUE, splits = NULL, types = NULL,

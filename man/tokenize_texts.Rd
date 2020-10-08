@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_core.R
 \name{tokenize_texts}
 \alias{tokenize_texts}
-\title{tokenize_texts}
+\title{Tokenize_texts}
 \usage{
 tokenize_texts(texts, n_workers = 6, rules = NULL, tok = NULL)
 }
@@ -14,6 +14,9 @@ tokenize_texts(texts, n_workers = 6, rules = NULL, tok = NULL)
 \item{rules}{rules}
 
 \item{tok}{tok}
+}
+\value{
+None
 }
 \description{
 Tokenize `texts` in parallel using `n_workers`

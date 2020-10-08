@@ -7,11 +7,14 @@
 SpacyTokenizer(lang = "en", special_toks = NULL, buf_sz = 5000)
 }
 \arguments{
-\item{lang}{lang}
+\item{lang}{language}
 
-\item{special_toks}{special_toks}
+\item{special_toks}{special tokenizers}
 
-\item{buf_sz}{buf_sz}
+\item{buf_sz}{buffer size}
+}
+\value{
+none
 }
 \description{
 Spacy tokenizer for `lang`

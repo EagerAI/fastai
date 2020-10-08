@@ -2,16 +2,16 @@
 % Please edit documentation in R/text_core.R
 \name{fix_html}
 \alias{fix_html}
-\title{fix_html}
+\title{Fix_html}
 \usage{
 fix_html(x)
 }
 \arguments{
-\item{x}{x}
+\item{x}{text}
+}
+\value{
+string
 }
 \description{
 Various messy things we've seen in documents
-}
-\details{
-
 }

@@ -38,6 +38,11 @@ TfmdLists(
 \item{verbose}{verbose}
 
 \item{dl_type}{dl_type}
+
+\item{...}{parameters to pass}
+}
+\value{
+None
 }
 \description{
 A `Pipeline` of `tfms` applied to a collection of `items`

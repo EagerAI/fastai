@@ -2,13 +2,16 @@
 % Please edit documentation in R/text_core.R
 \name{fa_collate}
 \alias{fa_collate}
-\title{fa_collate}
+\title{Fa_collate}
 \usage{
 fa_collate(t)
 }
 \arguments{
-\item{t}{t}
+\item{t}{text}
+}
+\value{
+None
 }
 \description{
-fa_collate
+Fa_collate
 }

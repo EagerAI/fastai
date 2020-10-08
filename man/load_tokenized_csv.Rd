@@ -2,12 +2,15 @@
 % Please edit documentation in R/text_core.R
 \name{load_tokenized_csv}
 \alias{load_tokenized_csv}
-\title{load_tokenized_csv}
+\title{Load_tokenized_csv}
 \usage{
 load_tokenized_csv(fname)
 }
 \arguments{
-\item{fname}{fname}
+\item{fname}{file name}
+}
+\value{
+None
 }
 \description{
 Utility function to quickly load a tokenized csv and the corresponding counter

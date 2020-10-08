@@ -2,16 +2,16 @@
 % Please edit documentation in R/text_core.R
 \name{replace_all_caps}
 \alias{replace_all_caps}
-\title{replace_all_caps}
+\title{Replace_all_caps}
 \usage{
 replace_all_caps(t)
 }
 \arguments{
-\item{t}{t}
+\item{t}{text}
+}
+\value{
+string
 }
 \description{
 Replace tokens in ALL CAPS by their lower version and add `TK_UP` before.
-}
-\details{
-
 }

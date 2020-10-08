@@ -2,13 +2,16 @@
 % Please edit documentation in R/text_core.R
 \name{fa_convert}
 \alias{fa_convert}
-\title{fa_convert}
+\title{Da_convert}
 \usage{
 fa_convert(t)
 }
 \arguments{
-\item{t}{t}
+\item{t}{text}
+}
+\value{
+None
 }
 \description{
-fa_convert
+Da_convert
 }

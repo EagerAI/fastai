@@ -7,7 +7,10 @@
 rm_useless_spaces(t)
 }
 \arguments{
-\item{t}{t}
+\item{t}{text}
+}
+\value{
+string
 }
 \description{
 Remove multiple spaces

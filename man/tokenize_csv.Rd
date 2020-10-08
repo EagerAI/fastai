@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_core.R
 \name{tokenize_csv}
 \alias{tokenize_csv}
-\title{tokenize_csv}
+\title{Tokenize_csv}
 \usage{
 tokenize_csv(
   fname,
@@ -17,23 +17,26 @@ tokenize_csv(
 )
 }
 \arguments{
-\item{fname}{fname}
+\item{fname}{file name}
 
-\item{text_cols}{text_cols}
+\item{text_cols}{text columns}
 
 \item{outname}{outname}
 
-\item{n_workers}{n_workers}
+\item{n_workers}{numeber of workers}
 
 \item{rules}{rules}
 
-\item{mark_fields}{mark_fields}
+\item{mark_fields}{mark fields}
 
-\item{tok}{tok}
+\item{tok}{tokenizer}
 
 \item{header}{header}
 
-\item{chunksize}{chunksize}
+\item{chunksize}{chunk size}
+}
+\value{
+None
 }
 \description{
 Tokenize texts in the `text_cols` of the csv `fname` in parallel using `n_workers`

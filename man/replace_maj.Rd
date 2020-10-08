@@ -2,12 +2,15 @@
 % Please edit documentation in R/text_core.R
 \name{replace_maj}
 \alias{replace_maj}
-\title{replace_maj}
+\title{Replace_maj}
 \usage{
 replace_maj(t)
 }
 \arguments{
-\item{t}{t}
+\item{t}{text}
+}
+\value{
+string
 }
 \description{
 Replace tokens in ALL CAPS by their lower version and add `TK_UP` before.

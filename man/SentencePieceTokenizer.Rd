@@ -32,9 +32,9 @@ SentencePieceTokenizer(
 
 \item{cache_dir}{cache_dir}
 }
+\value{
+None
+}
 \description{
 SentencePiece tokenizer for `lang`
-}
-\details{
-
 }

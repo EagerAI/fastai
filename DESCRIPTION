@@ -24,8 +24,6 @@ Imports:
     reticulate,
     generics,
     png,
-    grid,
-    stats,
     vctrs
 Suggests:
     knitr,

@@ -2,16 +2,16 @@
 % Please edit documentation in R/text_core.R
 \name{replace_rep}
 \alias{replace_rep}
-\title{replace_rep}
+\title{Replace_rep}
 \usage{
 replace_rep(t)
 }
 \arguments{
-\item{t}{t}
+\item{t}{text}
+}
+\value{
+string
 }
 \description{
 Replace repetitions at the character level: cccc -- TK_REP 4 c
-}
-\details{
-
 }

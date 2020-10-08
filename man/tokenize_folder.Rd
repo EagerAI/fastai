@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_core.R
 \name{tokenize_folder}
 \alias{tokenize_folder}
-\title{tokenize_folder}
+\title{Tokenize_folder}
 \usage{
 tokenize_folder(
   path,
@@ -30,13 +30,16 @@ tokenize_folder(
 
 \item{output_names}{output_names}
 
-\item{n_workers}{n_workers}
+\item{n_workers}{number of workers}
 
 \item{rules}{rules}
 
-\item{tok}{tok}
+\item{tok}{tokenizer}
 
 \item{encoding}{encoding}
+}
+\value{
+None
 }
 \description{
 Tokenize text files in `path` in parallel using `n_workers`

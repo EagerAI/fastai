@@ -2,12 +2,15 @@
 % Please edit documentation in R/text_core.R
 \name{spec_add_spaces}
 \alias{spec_add_spaces}
-\title{spec_add_spaces}
+\title{Spec_add_spaces}
 \usage{
 spec_add_spaces(t)
 }
 \arguments{
-\item{t}{t}
+\item{t}{text}
+}
+\value{
+string
 }
 \description{
 Add spaces around / and #

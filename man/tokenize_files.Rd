@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_core.R
 \name{tokenize_files}
 \alias{tokenize_files}
-\title{tokenize_files}
+\title{Tokenize_files}
 \usage{
 tokenize_files(
   files,
@@ -29,11 +29,14 @@ tokenize_files(
 
 \item{rules}{rules}
 
-\item{tok}{tok}
+\item{tok}{tokenizer}
 
 \item{encoding}{encoding}
 
 \item{skip_if_exists}{skip_if_exists}
+}
+\value{
+None
 }
 \description{
 Tokenize text `files` in parallel using `n_workers`

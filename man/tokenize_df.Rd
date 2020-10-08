@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_core.R
 \name{tokenize_df}
 \alias{tokenize_df}
-\title{tokenize_df}
+\title{Tokenize_df}
 \usage{
 tokenize_df(
   df,
@@ -15,23 +15,23 @@ tokenize_df(
 )
 }
 \arguments{
-\item{df}{df}
+\item{df}{data frame}
 
-\item{text_cols}{text_cols}
+\item{text_cols}{text columns}
 
-\item{n_workers}{n_workers}
+\item{n_workers}{number of workers}
 
 \item{rules}{rules}
 
 \item{mark_fields}{mark_fields}
 
-\item{tok}{tok}
+\item{tok}{tokenizer}
 
 \item{res_col_name}{res_col_name}
 }
+\value{
+None
+}
 \description{
 Tokenize texts in `df[text_cols]` in parallel using `n_workers`
-}
-\details{
-
 }

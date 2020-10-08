@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_core.R
 \name{tokenize1}
 \alias{tokenize1}
-\title{tokenize1}
+\title{Tokenize1}
 \usage{
 tokenize1(text, tok, rules = NULL, post_rules = NULL)
 }
@@ -14,6 +14,9 @@ tokenize1(text, tok, rules = NULL, post_rules = NULL)
 \item{rules}{rules}
 
 \item{post_rules}{post_rules}
+}
+\value{
+None
 }
 \description{
 Call `TokenizeWithRules` with a single text

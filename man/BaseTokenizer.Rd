@@ -7,7 +7,10 @@
 BaseTokenizer(split_char = " ")
 }
 \arguments{
-\item{split_char}{split_char}
+\item{split_char}{separator}
+}
+\value{
+None
 }
 \description{
 Basic tokenizer that just splits on spaces

@@ -14,7 +14,7 @@ Tokenizer(
 )
 }
 \arguments{
-\item{tok}{tok}
+\item{tok}{tokenizer}
 
 \item{rules}{rules}
 
@@ -24,7 +24,10 @@ Tokenizer(
 
 \item{mode}{mode}
 
-\item{sep}{sep}
+\item{sep}{separator}
+}
+\value{
+None
 }
 \description{
 Provides a consistent `Transform` interface to tokenizers operating on `DataFrame`s and folders

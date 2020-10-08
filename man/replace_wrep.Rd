@@ -7,11 +7,11 @@
 replace_wrep(t)
 }
 \arguments{
-\item{t}{t}
+\item{t}{text}
+}
+\value{
+string
 }
 \description{
 Replace word repetitions: word word word word -- TK_WREP 4 word
-}
-\details{
-
 }

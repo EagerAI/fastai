@@ -7,11 +7,14 @@
 TokenizeWithRules(tok, rules = NULL, post_rules = NULL)
 }
 \arguments{
-\item{tok}{tok}
+\item{tok}{tokenizer}
 
 \item{rules}{rules}
 
 \item{post_rules}{post_rules}
+}
+\value{
+None
 }
 \description{
 A wrapper around `tok` which applies `rules`, then tokenizes, then applies `post_rules`

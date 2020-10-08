@@ -2,18 +2,21 @@
 % Please edit documentation in R/text_core.R
 \name{parallel_tokenize}
 \alias{parallel_tokenize}
-\title{parallel_tokenize}
+\title{Parallel_tokenize}
 \usage{
 parallel_tokenize(items, tok = NULL, rules = NULL, n_workers = 6)
 }
 \arguments{
 \item{items}{items}
 
-\item{tok}{tok}
+\item{tok}{tokenizer}
 
 \item{rules}{rules}
 
 \item{n_workers}{n_workers}
+}
+\value{
+None
 }
 \description{
 Calls optional `setup` on `tok` before launching `TokenizeWithRules` using `parallel_gen
