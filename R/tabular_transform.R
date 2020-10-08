@@ -179,7 +179,7 @@ add_cyclic_datepart <- function(df, field_name, prefix = NULL, drop = TRUE, time
 #' @return data frame
 #' @param ... additional arguments to pass
 #' @export
-predict.fastai.tabular.learner.TabularLearner <- function(object, ..., row) {
+predict.fastai.tabular.learner.TabularLearner <- function(object, row, ...) {
 
   #object$predict(reticulate::r_to_py(row)$iloc[0])[[3]]$numpy()
   # remove metric to obtain prediction

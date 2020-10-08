@@ -40,6 +40,7 @@ dcmread <- function(fn, force = FALSE) {
 #' @title Dicom
 #' @description prints dicom file
 #' @param x dicom file
+#' @param ... additional parameters to pass
 #' @return None
 #' @export
 print.pydicom.dataset.FileDataset <- function(x, ...) {

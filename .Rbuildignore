@@ -13,3 +13,9 @@
 ^CODE_OF_CONDUCT\.md$
 ^LICENSE$
 ^_pkgdown\.yml$
+^docs$
+^D$
+^MNIST$
+^fastaibuilt$
+^files$
+^imports$

@@ -8,6 +8,8 @@
 }
 \arguments{
 \item{x}{dicom file}
+
+\item{...}{additional parameters to pass}
 }
 \value{
 None

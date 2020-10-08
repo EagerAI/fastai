@@ -314,12 +314,14 @@ show <- function(img, frames = 1, scale = TRUE, ...) {
 
 #' @title Plot dicom
 #'
-#' @param object model
+#' @param x model
+#' @param y parameter
 #' @param ... parameters to pass
 #' @param dpi dots per inch
 #' @return None
 #' @export
-plot <- function(object, ..., dpi = 100) {
+plot <- function(x, y, ..., dpi = 100) {
+  object = x
   tmp_d = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
   fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi), ...)
 

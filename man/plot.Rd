@@ -4,10 +4,12 @@
 \alias{plot}
 \title{Plot dicom}
 \usage{
-plot(object, ..., dpi = 100)
+plot(x, y, ..., dpi = 100)
 }
 \arguments{
-\item{object}{model}
+\item{x}{model}
+
+\item{y}{parameter}
 
 \item{...}{parameters to pass}
 
