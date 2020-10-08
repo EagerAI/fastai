@@ -2,7 +2,7 @@
 % Please edit documentation in R/stats.R
 \name{get_files}
 \alias{get_files}
-\title{get_files}
+\title{Get_files}
 \usage{
 get_files(
   path,
@@ -22,6 +22,9 @@ get_files(
 \item{folders}{folders}
 
 \item{followlinks}{followlinks}
+}
+\value{
+list
 }
 \description{
 Get all the files in `path` with optional `extensions`, optionally with `recurse`, only in `folders`, if specified.

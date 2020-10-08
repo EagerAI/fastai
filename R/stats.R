@@ -29,7 +29,7 @@ plot_confusion_matrix <- function(object, dataloader) {
 #' @title Extract confusion matrix
 #'
 #' @param object model
-#' @param dataloader dataloaders object
+#' @return matrix
 #' @export
 get_confusion_matrix <- function(object) {
   interp = vision$all$ClassificationInterpretation$from_learner(object)
@@ -43,26 +43,29 @@ get_confusion_matrix <- function(object) {
 }
 
 #' @title Most_confused
-#' @importFrom data.table rbindlist
-#' @description Sorted descending list of largest non-diagonal entries of confusion matrix, presented as actual, predicted, number of occurrences.
+#' @description Sorted descending list of largest non-diagonal entries of confusion matrix,
+#' presented as actual, predicted, number of occurrences.
 #'
-#' @param object learner
+#' @param object interpret object
 #'
-#' @param min_val min_val
-#'
+#' @param min_val minimum value
+#' @return data.frame
 #' @export
 most_confused <- function(object, min_val = 1) {
 
-  res = rbindlist(
+  res = rbind(
     object$most_confused(
     min_val = as.integer(min_val)
   )
   )
+
+  res = as.data.frame(res)
+
   colnames(res) = c('Actual','Predicted','Confused_n')
 }
 
 
-#' @title lr_find
+#' @title Lr_find
 #'
 #' @description Launch a mock training to find a good learning rate, return lr_min, lr_steep if `suggestions` is TRUE
 #'
@@ -73,7 +76,7 @@ most_confused <- function(object, min_val = 1) {
 #' @param stop_div stop_div
 #' @param show_plot show_plot
 #' @param suggestions suggestions
-#'
+#' @return data frame
 #' @export
 lr_find <- function(object, start_lr = 1e-07, end_lr = 10, num_it = 100,
                     stop_div = TRUE, suggestions = TRUE) {
@@ -105,10 +108,10 @@ lr_find <- function(object, start_lr = 1e-07, end_lr = 10, num_it = 100,
 #' @description Compute accuracy with `targ` when `pred` is bs * n_classes
 #'
 #'
-#' @param inp inp
-#' @param targ targ
+#' @param inp predictions
+#' @param targ actuals
 #' @param axis axis
-#'
+#' @return tensor
 #' @export
 accuracy <- function(inp, targ, axis = -1) {
 
@@ -130,18 +133,19 @@ attr(accuracy,"py_function_name") <- "accuracy"
 #'
 #'
 #' @param ... parameters to pass
-#'
+#' @return None
 #' @export
 Perplexity <- function(...) {
   invisible(text$Perplexity(...))
 }
 
+attr(Perplexity,"py_function_name") <- "Perplexity"
 
 #' @title One batch
 #'
 #' @param convert to R matrix
-#' @param object dataloader
-#'
+#' @param object data loader
+#' @return tensor
 #' @export
 one_batch <- function(object, convert = FALSE) {
   obj = object$one_batch()
@@ -168,6 +172,7 @@ one_batch <- function(object, convert = FALSE) {
 
 #' @title Summary
 #' @param object model
+#' @return None
 #' @export
 summary.fastai.learner.Learner <- function(object) {
   object$summary()
@@ -175,7 +180,7 @@ summary.fastai.learner.Learner <- function(object) {
 
 
 
-#' @title get_files
+#' @title Get_files
 #'
 #' @description Get all the files in `path` with optional `extensions`, optionally with `recurse`, only in `folders`, if specified.
 #'
@@ -185,7 +190,7 @@ summary.fastai.learner.Learner <- function(object) {
 #' @param recurse recurse
 #' @param folders folders
 #' @param followlinks followlinks
-#'
+#' @return list
 #' @export
 get_files <- function(path, extensions = NULL, recurse = TRUE, folders = NULL, followlinks = TRUE) {
 
@@ -201,15 +206,15 @@ get_files <- function(path, extensions = NULL, recurse = TRUE, folders = NULL, f
 
 
 
-#' @title parallel
+#' @title Parallel
 #'
 #' @description Applies `func` in parallel to `items`, using `n_workers`
 #'
-#' @details
 #'
-#' @param f f
+#' @param f file names
 #' @param items items
-#'
+#' @param ... additional arguments
+#' @return None
 #' @export
 parallel <- function(f, items, ...) {
 

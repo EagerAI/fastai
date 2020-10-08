@@ -11,6 +11,9 @@
 
 \item{row}{row}
 }
+\value{
+data frame
+}
 \description{
 Prediction on `item`, fully decoded, loss function decoded and probabilities
 }

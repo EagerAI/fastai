@@ -2,7 +2,7 @@
 % Please edit documentation in R/stats.R
 \name{lr_find}
 \alias{lr_find}
-\title{lr_find}
+\title{Lr_find}
 \usage{
 lr_find(
   object,
@@ -27,6 +27,9 @@ lr_find(
 \item{objetc}{learner}
 
 \item{show_plot}{show_plot}
+}
+\value{
+data frame
 }
 \description{
 Launch a mock training to find a good learning rate, return lr_min, lr_steep if `suggestions` is TRUE

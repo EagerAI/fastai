@@ -8,8 +8,9 @@ get_confusion_matrix(object)
 }
 \arguments{
 \item{object}{model}
-
-\item{dataloader}{dataloaders object}
+}
+\value{
+matrix
 }
 \description{
 Extract confusion matrix

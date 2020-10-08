@@ -2,18 +2,20 @@
 % Please edit documentation in R/stats.R
 \name{parallel}
 \alias{parallel}
-\title{parallel}
+\title{Parallel}
 \usage{
 parallel(f, items, ...)
 }
 \arguments{
-\item{f}{f}
+\item{f}{file names}
 
 \item{items}{items}
+
+\item{...}{additional arguments}
+}
+\value{
+None
 }
 \description{
 Applies `func` in parallel to `items`, using `n_workers`
-}
-\details{
-
 }

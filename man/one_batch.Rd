@@ -7,9 +7,12 @@
 one_batch(object, convert = FALSE)
 }
 \arguments{
-\item{object}{dataloader}
+\item{object}{data loader}
 
 \item{convert}{to R matrix}
+}
+\value{
+tensor
 }
 \description{
 One batch

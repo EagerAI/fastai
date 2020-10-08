@@ -9,6 +9,9 @@
 \arguments{
 \item{object}{model}
 }
+\value{
+None
+}
 \description{
 Summary
 }

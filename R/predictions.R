@@ -5,7 +5,7 @@
 #'
 #' @param object the model
 #' @param row row
-#'
+#' @return data frame
 #' @export
 predict.fastai.learner.Learner <- function(object, row) {
 

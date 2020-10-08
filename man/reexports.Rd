@@ -11,6 +11,21 @@
 \alias{capture.output}
 \alias{download.file}
 \title{Objects exported from other packages}
+\value{
+None
+
+None
+
+None
+
+None
+
+None
+
+None
+
+None
+}
 \keyword{internal}
 \description{
 These objects are imported from other packages. Follow the links

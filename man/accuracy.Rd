@@ -9,14 +9,16 @@ accuracy(inp, targ, axis = -1)
 accuracy(inp, targ, axis = -1)
 }
 \arguments{
-\item{inp}{inp}
+\item{inp}{predictions}
 
-\item{targ}{targ}
+\item{targ}{actuals}
 
 \item{axis}{axis}
 }
 \value{
 None
+
+tensor
 }
 \description{
 Compute accuracy with `targ` when `pred` is bs * n_classes
