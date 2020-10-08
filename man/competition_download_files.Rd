@@ -2,7 +2,7 @@
 % Please edit documentation in R/kaggle_wrappers.R
 \name{competition_download_files}
 \alias{competition_download_files}
-\title{competition_download_files}
+\title{Competition download files}
 \usage{
 competition_download_files(
   competition,
@@ -13,37 +13,17 @@ competition_download_files(
 )
 }
 \arguments{
-\item{competition}{competition}
+\item{competition}{the name of the competition}
 
-\item{path}{path}
+\item{path}{a path to download the file to}
 
-\item{force}{force}
+\item{force}{force the download if the file already exists (default FALSE)}
 
-\item{quiet}{quiet}
+\item{quiet}{suppress verbose output (default is TRUE)}
+}
+\value{
+None
 }
 \description{
-downloads all competition files.
+Competition download files
 }
-\details{
-Parameters
-=========
-competition: the name of the competition
-path: a path to download the file to
-force: force the download if the file already exists (default FALSE)
-quiet: suppress verbose output (default is TRUE)
-}
-\section{competition}{
- the name of the competition:
-path: a path to download the file to force: force the download if the file already exists (default FALSE) quiet: suppress verbose output (default is TRUE)
-}
-
-\section{path}{
- a path to download the file to:
-force: force the download if the file already exists (default FALSE) quiet: suppress verbose output (default is TRUE)
-}
-
-\section{force}{
- force the download if the file already exists (default False):
-quiet: suppress verbose output (default is TRUE)
-}
-

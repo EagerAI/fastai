@@ -4,8 +4,10 @@
 #' @param version specify version
 #' @param gpu installation of gpu
 #' @param cuda_version if gpu true, then cuda version is required. By default it is 10.1
-#' @param overwrite will install all the dependencies
+#' @param overwrite will install all the dependencies\
+#' @param extra_pkgs character vector of additional packages
 #' @importFrom reticulate py_install
+#' @return None
 #' @export
 install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrite = FALSE,
                            extra_pkgs = c('kaggle', 'transformers', 'pytorch_lightning',

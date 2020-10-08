@@ -2,7 +2,7 @@
 % Please edit documentation in R/kaggle_wrappers.R
 \name{competitions_list}
 \alias{competitions_list}
-\title{competitions_list}
+\title{Competitions list}
 \usage{
 competitions_list(
   group = NULL,
@@ -13,44 +13,19 @@ competitions_list(
 )
 }
 \arguments{
-\item{group}{group}
+\item{group}{group to filter result to}
 
-\item{category}{category}
+\item{category}{category to filter result to}
 
-\item{sort_by}{sort_by}
+\item{sort_by}{how to sort the result, see valid_competition_sort_by for options}
 
-\item{page}{page}
+\item{page}{the page to return (default is 1)}
 
-\item{search}{search}
+\item{search}{a search term to use (default is empty string)}
+}
+\value{
+list of competitions
 }
 \description{
-make call to list competitions, format the response, and return
+Competitions list
 }
-\details{
-a list of Competition instances Parameters
-========== page: the page to return (default is 1)
-search: a search term to use (default is empty string)
-sort_by: how to sort the result, see valid_competition_sort_by for options
-category: category to filter result to
-group: group to filter result to
-}
-\section{page}{
- the page to return (default is 1):
-search: a search term to use (default is empty string) sort_by: how to sort the result, see valid_competition_sort_by for options category: category to filter result to group: group to filter result to
-}
-
-\section{search}{
- a search term to use (default is empty string):
-sort_by: how to sort the result, see valid_competition_sort_by for options category: category to filter result to group: group to filter result to
-}
-
-\section{sort_by}{
- how to sort the result, see valid_competition_sort_by for options:
-category: category to filter result to group: group to filter result to
-}
-
-\section{category}{
- category to filter result to:
-group: group to filter result to
-}
-

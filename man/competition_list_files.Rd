@@ -2,12 +2,15 @@
 % Please edit documentation in R/kaggle_wrappers.R
 \name{competition_list_files}
 \alias{competition_list_files}
-\title{competition_list_files}
+\title{Competition list files}
 \usage{
 competition_list_files(competition)
 }
 \arguments{
-\item{competition}{competition the name of the competition}
+\item{competition}{the name of the competition}
+}
+\value{
+list of files
 }
 \description{
 list files for competition

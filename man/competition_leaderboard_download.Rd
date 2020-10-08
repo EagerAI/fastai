@@ -2,34 +2,20 @@
 % Please edit documentation in R/kaggle_wrappers.R
 \name{competition_leaderboard_download}
 \alias{competition_leaderboard_download}
-\title{competition_leaderboard_download}
+\title{Competition leaderboard download}
 \usage{
 competition_leaderboard_download(competition, path, quiet = TRUE)
 }
 \arguments{
-\item{competition}{competition}
+\item{competition}{the name of the competition}
 
-\item{path}{path}
+\item{path}{a path to download the file to}
 
-\item{quiet}{quiet}
+\item{quiet}{suppress verbose output (default is TRUE)}
+}
+\value{
+data frame
 }
 \description{
 Download competition leaderboards
 }
-\details{
-Parameters
-=========
-competition: the name of the competition
-path: a path to download the file to
-quiet: suppress verbose output (default is TRUE)
-}
-\section{competition}{
- the name of the competition:
-path: a path to download the file to quiet: suppress verbose output (default is TRUE)
-}
-
-\section{path}{
- a path to download the file to:
-quiet: suppress verbose output (default is TRUE)
-}
-

@@ -2,7 +2,7 @@
 % Please edit documentation in R/kaggle_wrappers.R
 \name{competition_download_file}
 \alias{competition_download_file}
-\title{competition_download_file}
+\title{Competition download file}
 \usage{
 competition_download_file(
   competition,
@@ -13,45 +13,19 @@ competition_download_file(
 )
 }
 \arguments{
-\item{competition}{competition}
+\item{competition}{the name of the competition}
 
-\item{file_name}{file_name}
+\item{file_name}{the configuration file name}
 
-\item{path}{path}
+\item{path}{a path to download the file to}
 
-\item{force}{force}
+\item{force}{force the download if the file already exists (default FALSE)}
 
-\item{quiet}{quiet}
+\item{quiet}{suppress verbose output (default is FALSE)}
+}
+\value{
+None
 }
 \description{
 download a competition file to a designated location, or use
 }
-\details{
-a default location Paramters
-=========
-competition: the name of the competition
-file_name: the configuration file name
-path: a path to download the file to
-force: force the download if the file already exists (default FALSE)
-quiet: suppress verbose output (default is FALSE)
-}
-\section{competition}{
- the name of the competition:
-file_name: the configuration file name path: a path to download the file to force: force the download if the file already exists (default FALSE) quiet: suppress verbose output (default is FALSE)
-}
-
-\section{file_name}{
- the configuration file name:
-path: a path to download the file to force: force the download if the file already exists (default FALSE) quiet: suppress verbose output (default is FALSE)
-}
-
-\section{path}{
- a path to download the file to:
-force: force the download if the file already exists (default FALSE) quiet: suppress verbose output (default is FALSE)
-}
-
-\section{force}{
- force the download if the file already exists (default False):
-quiet: suppress verbose output (default is FALSE)
-}
-

@@ -1,10 +1,10 @@
-#' @title competition_list_files
+#' @title Competition list files
 #'
 #' @description list files for competition
 #'
 #'
-#' @param competition competition the name of the competition
-#'
+#' @param competition the name of the competition
+#' @return list of files
 #' @export
 competition_list_files <- function(competition) {
 
@@ -15,36 +15,17 @@ competition_list_files <- function(competition) {
 }
 
 
-#' @title competition_download_file
+#' @title Competition download file
 #'
 #' @description download a competition file to a designated location, or use
 #'
-#' @details a default location Paramters
-#' =========
-#' competition: the name of the competition
-#' file_name: the configuration file name
-#' path: a path to download the file to
-#' force: force the download if the file already exists (default FALSE)
-#' quiet: suppress verbose output (default is FALSE)
 #'
-#' @param competition competition
-#' @param file_name file_name
-#' @param path path
-#' @param force force
-#' @param quiet quiet
-#'
-#' @section competition: the name of the competition:
-#' file_name: the configuration file name path: a path to download the file to force: force the download if the file already exists (default FALSE) quiet: suppress verbose output (default is FALSE)
-#'
-#' @section file_name: the configuration file name:
-#' path: a path to download the file to force: force the download if the file already exists (default FALSE) quiet: suppress verbose output (default is FALSE)
-#'
-#' @section path: a path to download the file to:
-#' force: force the download if the file already exists (default FALSE) quiet: suppress verbose output (default is FALSE)
-#'
-#' @section force: force the download if the file already exists (default False):
-#' quiet: suppress verbose output (default is FALSE)
-#'
+#' @param competition the name of the competition
+#' @param file_name the configuration file name
+#' @param path a path to download the file to
+#' @param force force the download if the file already exists (default FALSE)
+#' @param quiet suppress verbose output (default is FALSE)
+#' @return None
 #' @export
 competition_download_file <- function(competition, file_name, path = NULL, force = FALSE, quiet = FALSE) {
 
@@ -58,31 +39,13 @@ competition_download_file <- function(competition, file_name, path = NULL, force
 
 }
 
-#' @title competition_download_files
+#' @title Competition download files
 #'
-#' @description downloads all competition files.
-#'
-#' @details Parameters
-#' =========
-#' competition: the name of the competition
-#' path: a path to download the file to
-#' force: force the download if the file already exists (default FALSE)
-#' quiet: suppress verbose output (default is TRUE)
-#'
-#' @param competition competition
-#' @param path path
-#' @param force force
-#' @param quiet quiet
-#'
-#' @section competition: the name of the competition:
-#' path: a path to download the file to force: force the download if the file already exists (default FALSE) quiet: suppress verbose output (default is TRUE)
-#'
-#' @section path: a path to download the file to:
-#' force: force the download if the file already exists (default FALSE) quiet: suppress verbose output (default is TRUE)
-#'
-#' @section force: force the download if the file already exists (default False):
-#' quiet: suppress verbose output (default is TRUE)
-#'
+#' @param competition the name of the competition
+#' @param path a path to download the file to
+#' @param force force the download if the file already exists (default FALSE)
+#' @param quiet suppress verbose output (default is TRUE)
+#' @return None
 #' @export
 competition_download_files <- function(competition, path = NULL, force = FALSE, quiet = FALSE,
                                        unzip = FALSE) {
@@ -104,25 +67,15 @@ competition_download_files <- function(competition, path = NULL, force = FALSE, 
 
 
 
-#' @title competition_leaderboard_download
+#' @title Competition leaderboard download
 #'
 #' @description Download competition leaderboards
 #'
-#' @details Parameters
-#' =========
-#' competition: the name of the competition
-#' path: a path to download the file to
-#' quiet: suppress verbose output (default is TRUE)
 #'
-#' @param competition competition
-#' @param path path
-#' @param quiet quiet
-#'
-#' @section competition: the name of the competition:
-#' path: a path to download the file to quiet: suppress verbose output (default is TRUE)
-#'
-#' @section path: a path to download the file to:
-#' quiet: suppress verbose output (default is TRUE)
+#' @param competition the name of the competition
+#' @param path a path to download the file to
+#' @param quiet suppress verbose output (default is TRUE)
+#' @return data frame
 #'
 #' @export
 competition_leaderboard_download <- function(competition, path, quiet = TRUE) {
@@ -137,35 +90,15 @@ competition_leaderboard_download <- function(competition, path, quiet = TRUE) {
 
 }
 
-#' @title competitions_list
+#' @title Competitions list
 #'
-#' @description make call to list competitions, format the response, and return
 #'
-#' @details a list of Competition instances Parameters
-#' ========== page: the page to return (default is 1)
-#' search: a search term to use (default is empty string)
-#' sort_by: how to sort the result, see valid_competition_sort_by for options
-#' category: category to filter result to
-#' group: group to filter result to
-#'
-#' @param group group
-#' @param category category
-#' @param sort_by sort_by
-#' @param page page
-#' @param search search
-#'
-#' @section page: the page to return (default is 1):
-#' search: a search term to use (default is empty string) sort_by: how to sort the result, see valid_competition_sort_by for options category: category to filter result to group: group to filter result to
-#'
-#' @section search: a search term to use (default is empty string):
-#' sort_by: how to sort the result, see valid_competition_sort_by for options category: category to filter result to group: group to filter result to
-#'
-#' @section sort_by: how to sort the result, see valid_competition_sort_by for options:
-#' category: category to filter result to group: group to filter result to
-#'
-#' @section category: category to filter result to:
-#' group: group to filter result to
-#'
+#' @param group group to filter result to
+#' @param category category to filter result to
+#' @param sort_by how to sort the result, see valid_competition_sort_by for options
+#' @param page the page to return (default is 1)
+#' @param search a search term to use (default is empty string)
+#' @return list of competitions
 #' @export
 competitions_list <- function(group = NULL, category = NULL, sort_by = NULL, page = 1, search = NULL) {
 
@@ -181,31 +114,13 @@ competitions_list <- function(group = NULL, category = NULL, sort_by = NULL, pag
 
 
 
-#' @title competition_submit
+#' @title Competition submit
 #'
-#' @description submit a competition!
-#'
-#' @details Parameters
-#' ==========
-#' file_name: the competition metadata file
-#' message: the submission description
-#' competition: the competition name
-#' quiet: suppress verbose output (default is FALSE)
-#'
-#' @param file_name file_name
-#' @param message message
-#' @param competition competition
-#' @param quiet quiet
-#'
-#' @section file_name: the competition metadata file:
-#' message: the submission description competition: the competition name quiet: suppress verbose output (default is FALSE)
-#'
-#' @section message: the submission description:
-#' competition: the competition name quiet: suppress verbose output (default is FALSE)
-#'
-#' @section competition: the competition name:
-#' quiet: suppress verbose output (default is FALSE)
-#'
+#' @param file_name the competition metadata file
+#' @param message the submission description
+#' @param competition the competition name
+#' @param quiet suppress verbose output (default is FALSE)
+#' @return None
 #' @export
 competition_submit <- function(file_name, message, competition, quiet = FALSE) {
 

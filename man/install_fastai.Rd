@@ -20,7 +20,10 @@ install_fastai(
 
 \item{cuda_version}{if gpu true, then cuda version is required. By default it is 10.1}
 
-\item{overwrite}{will install all the dependencies}
+\item{extra_pkgs}{character vector of additional packages}
+}
+\value{
+None
 }
 \description{
 Install fastai
