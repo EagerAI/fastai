@@ -44,7 +44,7 @@
 #' @param ctxs ctxs
 #' @param show show
 #' @param unique unique
-#' @param fig_size figure size
+#' @param figsize figure size
 #' @param dpi dots per inch
 #' @return None
 #' @export
@@ -285,7 +285,7 @@ subplots <- function(nrows = 2, ncols = 2, figsize = NULL, imsize = 4, add_vert 
 #'
 #' @description Adds functionality to view dicom images where each file may have more than 1 frame
 #'
-#'
+#' @param img image
 #' @param frames file rames
 #' @param scale scale
 #' @param ... additional arguments

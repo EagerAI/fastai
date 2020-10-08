@@ -7,7 +7,7 @@
 #' @param row row
 #' @return data frame
 #' @export
-predict.fastai.learner.Learner <- function(object, row) {
+predict.fastai.learner.Learner <- function(object, ..., row) {
 
   #object$predict(reticulate::r_to_py(row)$iloc[0])[[3]]$numpy()
   # remove metric to obtain prediction

@@ -6,6 +6,7 @@ nn <- NULL
 
 #' Core Pytorch module
 #' @return module
+#' @param ... additional arguments
 #' @export
 Module <- NULL
 

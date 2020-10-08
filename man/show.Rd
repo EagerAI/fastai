@@ -7,6 +7,8 @@
 show(img, frames = 1, scale = TRUE, ...)
 }
 \arguments{
+\item{img}{image}
+
 \item{frames}{file rames}
 
 \item{scale}{scale}

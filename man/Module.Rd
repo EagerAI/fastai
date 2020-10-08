@@ -6,6 +6,9 @@
 \usage{
 Module(...)
 }
+\arguments{
+\item{...}{additional arguments}
+}
 \value{
 module
 }
