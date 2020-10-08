@@ -181,7 +181,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>DynamicUnet</h1>
-    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/unet.R'><code>R/unet.R</code></a>, <a href='https://github.com/henry090/fastai/blob/master/R/vision_models.R'><code>R/vision_models.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/unet.R'><code>R/unet.R</code></a></small>
     <div class="hidden name"><code>DynamicUnet.Rd</code></div>
     </div>
 
@@ -189,17 +189,24 @@
     <p>Create a U-Net from a given architecture.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>DynamicUnet</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span>
-
-<span class='fu'>DynamicUnet</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>DynamicUnet</span><span class='op'>(</span>
+  <span class='va'>encoder</span>,
+  <span class='va'>n_classes</span>,
+  <span class='va'>img_size</span>,
+  blur <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  blur_final <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  self_attention <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  y_range <span class='op'>=</span> <span class='cn'>NULL</span>,
+  last_cross <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  bottle <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  act_cls <span class='op'>=</span> <span class='va'>nn</span><span class='op'>$</span><span class='va'>ReLU</span>,
+  init <span class='op'>=</span> <span class='va'>nn</span><span class='op'>$</span><span class='va'>init</span><span class='op'>$</span><span class='va'>kaiming_normal_</span>,
+  norm_type <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>...</th>
-      <td><p>parameters to pass</p></td>
-    </tr>
     <tr>
       <th>encoder</th>
       <td><p>encoder</p></td>
@@ -250,9 +257,6 @@
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>model</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

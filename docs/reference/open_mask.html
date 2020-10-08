@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>open_mask — open_mask • fastai</title>
+<title>Open mask — open_mask • fastai</title>
 
 
 <!-- jquery -->
@@ -45,8 +45,8 @@
 
 
 
-<meta property="og:title" content="open_mask — open_mask" />
-<meta property="og:description" content="Return `ImageSegment` object create from mask in file `fn`. If `div`, divides pixel values by 255." />
+<meta property="og:title" content="Open mask — open_mask" />
+<meta property="og:description" content="Open mask" />
 
 
 
@@ -180,13 +180,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>open_mask</h1>
+    <h1>Open mask</h1>
     <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/image_readers.R'><code>R/image_readers.R</code></a></small>
     <div class="hidden name"><code>open_mask.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Return `ImageSegment` object create from mask in file `fn`. If `div`, divides pixel values by 255.</p>
+    <p>Open mask</p>
     </div>
 
     <pre class="usage"><span class='fu'>open_mask</span><span class='op'>(</span><span class='va'>fn</span>, div <span class='op'>=</span> <span class='cn'>FALSE</span>, convert_mode <span class='op'>=</span> <span class='st'>"L"</span>, after_open <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
@@ -196,11 +196,11 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>fn</th>
-      <td><p>fn</p></td>
+      <td><p>path</p></td>
     </tr>
     <tr>
       <th>div</th>
-      <td><p>div</p></td>
+      <td><p>divide or not</p></td>
     </tr>
     <tr>
       <th>convert_mode</th>
@@ -208,15 +208,13 @@
     </tr>
     <tr>
       <th>after_open</th>
-      <td><p>after_open</p></td>
+      <td><p>after open</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    
-
-
+    <p>ImageSegment object create from mask in file `fn`. If `div`, divides pixel values by 255.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

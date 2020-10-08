@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>competitions_list — competitions_list • fastai</title>
+<title>Competitions list — competitions_list • fastai</title>
 
 
 <!-- jquery -->
@@ -45,8 +45,8 @@
 
 
 
-<meta property="og:title" content="competitions_list — competitions_list" />
-<meta property="og:description" content="make call to list competitions, format the response, and return" />
+<meta property="og:title" content="Competitions list — competitions_list" />
+<meta property="og:description" content="Competitions list" />
 
 
 
@@ -180,13 +180,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>competitions_list</h1>
+    <h1>Competitions list</h1>
     <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/kaggle_wrappers.R'><code>R/kaggle_wrappers.R</code></a></small>
     <div class="hidden name"><code>competitions_list.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>make call to list competitions, format the response, and return</p>
+    <p>Competitions list</p>
     </div>
 
     <pre class="usage"><span class='fu'>competitions_list</span><span class='op'>(</span>
@@ -202,50 +202,29 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>group</th>
-      <td><p>group</p></td>
+      <td><p>group to filter result to</p></td>
     </tr>
     <tr>
       <th>category</th>
-      <td><p>category</p></td>
+      <td><p>category to filter result to</p></td>
     </tr>
     <tr>
       <th>sort_by</th>
-      <td><p>sort_by</p></td>
+      <td><p>how to sort the result, see valid_competition_sort_by for options</p></td>
     </tr>
     <tr>
       <th>page</th>
-      <td><p>page</p></td>
+      <td><p>the page to return (default is 1)</p></td>
     </tr>
     <tr>
       <th>search</th>
-      <td><p>search</p></td>
+      <td><p>a search term to use (default is empty string)</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a list of Competition instances Parameters
-========== page: the page to return (default is 1)
-search: a search term to use (default is empty string)
-sort_by: how to sort the result, see valid_competition_sort_by for options
-category: category to filter result to
-group: group to filter result to</p>
-    <h2 class="hasAnchor" id="page"><a class="anchor" href="#page"></a>page</h2>
-
-    <p>the page to return (default is 1):
-search: a search term to use (default is empty string) sort_by: how to sort the result, see valid_competition_sort_by for options category: category to filter result to group: group to filter result to</p>
-    <h2 class="hasAnchor" id="search"><a class="anchor" href="#search"></a>search</h2>
-
-    <p>a search term to use (default is empty string):
-sort_by: how to sort the result, see valid_competition_sort_by for options category: category to filter result to group: group to filter result to</p>
-    <h2 class="hasAnchor" id="sort-by"><a class="anchor" href="#sort-by"></a>sort_by</h2>
-
-    <p>how to sort the result, see valid_competition_sort_by for options:
-category: category to filter result to group: group to filter result to</p>
-    <h2 class="hasAnchor" id="category"><a class="anchor" href="#category"></a>category</h2>
-
-    <p>category to filter result to:
-group: group to filter result to</p>
+    <p>list of competitions</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
