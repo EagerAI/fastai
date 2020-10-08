@@ -198,7 +198,7 @@ noop <- function(...) {
   args = list(...)
   if(length(args)>0) {
     vision$all$noop(
-      x = x
+      ...
     )
   } else {
     vision$all$noop

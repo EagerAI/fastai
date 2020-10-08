@@ -412,6 +412,7 @@ float <- function(tensor) {
 #' @title To matrix
 #' @param obj learner/model
 #' @param matrix bool, to R matrix
+#' @importFrom  utils write.csv read.csv
 #' @export
 to_matrix = function(obj, matrix = TRUE) {
   if(inherits(obj,'pydicom.dataset.FileDataset')) {

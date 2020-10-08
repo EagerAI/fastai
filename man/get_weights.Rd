@@ -7,7 +7,7 @@
 get_weights(object, arr, is_item = TRUE, convert = FALSE)
 }
 \arguments{
-\item{object}{object to extract weights}
+\item{object}{extract weights}
 
 \item{arr}{R data frame}
 

@@ -130,12 +130,12 @@ to_bytes_format <- function(img, format = "png") {
 #'
 #' @description Same as `thumbnail`, but uses a copy
 #'
-#'
+#' @param img image
 #' @param h h
 #' @param w w
 #' @return None
 #' @export
-to_thumb <- function(h, w = NULL) {
+to_thumb <- function(img, h, w = NULL) {
 
   img$to_thumb(
     h = h,

@@ -2,7 +2,7 @@
 % Please edit documentation in R/tabular_model.R
 \name{tabular_config}
 \alias{tabular_config}
-\title{tabular_config}
+\title{Tabular_config}
 \usage{
 tabular_config(
   ps = NULL,
@@ -29,9 +29,9 @@ tabular_config(
 
 \item{act_cls}{act_cls}
 }
+\value{
+None
+}
 \description{
 Convenience function to easily create a config for `TabularModel`
-}
-\details{
-
 }

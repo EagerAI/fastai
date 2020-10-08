@@ -2,16 +2,16 @@
 % Please edit documentation in R/tabular_model.R
 \name{emb_sz_rule}
 \alias{emb_sz_rule}
-\title{emb_sz_rule}
+\title{Emb_sz_rule}
 \usage{
 emb_sz_rule(n_cat)
 }
 \arguments{
 \item{n_cat}{n_cat}
 }
+\value{
+None
+}
 \description{
 Rule of thumb to pick embedding size corresponding to `n_cat`
-}
-\details{
-
 }

@@ -114,41 +114,6 @@ FillStrategy_CONSTANT <- function() {
 
 
 
-
-
-
-
-tabular_apply <- function(object, DT) {
-
-  # fill
-  islist = tryCatch({identical(class(object$na_dict), "list")
-  }, error = function(e){FALSE})
-
-  # norm
-  islist2 = tryCatch({identical(class(object$means), "list")
-  }, error = function(e){FALSE})
-
-  if(!islist & !islist2)
-    tryCatch({object(DT)}, error = function(e){FALSE})
-
-  # fill
-  islist = tryCatch({identical(class(object$na_dict), "list")
-  }, error = function(e){FALSE})
-
-  # norm
-  islist2 = tryCatch({identical(class(object$means), "list")
-  }, error = function(e){FALSE})
-
-  if(islist) {
-    for (j in names(object$na_dict))
-      set(DT,which(is.na(DT[[j]])), j, object$na_dict[j])
-  } else {
-    DT[, c(names(object$means)) := lapply(.SD, function(x) (x - mean(x))/sd(x) ), .SDcols = names(object$means)]
-  }
-
-}
-
-
 #' @title Add datepart
 #'
 #' @description Helper function that adds columns relevant to a date in the column `field_name` of `df`.

@@ -7,7 +7,7 @@
 get_bias(object, arr, is_item = TRUE, convert = TRUE)
 }
 \arguments{
-\item{object}{object to extract bias}
+\item{object}{extract bias}
 
 \item{arr}{R data frame}
 

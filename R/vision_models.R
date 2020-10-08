@@ -183,7 +183,7 @@ XResNet <- function(block, expansion, layers, c_in = 3, c_out = 1000,
     expansion = expansion,
     layers = layers,
     c_in = as.integer(c_in),
-    c_out = asintec_out,
+    c_out = as.integer(c_out),
     ...
   )
 

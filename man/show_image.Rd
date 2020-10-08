@@ -53,6 +53,3 @@ show_image(
 \description{
 Show a PIL or PyTorch image on `ax`.
 }
-\details{
-
-}

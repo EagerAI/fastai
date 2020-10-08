@@ -275,7 +275,7 @@ CohenKappa <- function(axis = -1, labels = NULL, weights = NULL, sample_weight =
 #'
 #' @description F1 score for single-label classification problems
 #'
-#' @details
+
 #'
 #' @param axis axis
 #' @param labels labels

@@ -29,6 +29,3 @@ None
 \description{
 F1 score for single-label classification problems
 }
-\details{
-
-}

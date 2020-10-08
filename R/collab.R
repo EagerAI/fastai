@@ -169,7 +169,7 @@ trainable_params <- function(m) {
 #'
 #' @description Weight for item or user (based on `is_item`) for all in `arr`
 #'
-#' @param object object to extract weights
+#' @param object extract weights
 #' @param arr R data frame
 #' @param is_item logical, is item
 #' @param convert to R matrix
@@ -178,9 +178,9 @@ trainable_params <- function(m) {
 get_weights <- function(object, arr, is_item = TRUE, convert = FALSE) {
 
   if(convert)
-    learn$model$weight(arr = arr,is_item = is_item)$numpy()
+    object$model$weight(arr = arr,is_item = is_item)$numpy()
   else
-    learn$model$weight(arr = arr,is_item = is_item)
+    object$model$weight(arr = arr,is_item = is_item)
 
 }
 
@@ -190,7 +190,7 @@ get_weights <- function(object, arr, is_item = TRUE, convert = FALSE) {
 #'
 #' @description Bias for item or user (based on `is_item`) for all in `arr`
 #'
-#' @param object object to extract bias
+#' @param object extract bias
 #' @param arr R data frame
 #' @param is_item logical, is item
 #' @param convert to R matrix
@@ -199,9 +199,9 @@ get_weights <- function(object, arr, is_item = TRUE, convert = FALSE) {
 get_bias <- function(object, arr, is_item = TRUE, convert = TRUE) {
 
   if(convert)
-    learn$model$bias(arr = arr,is_item = is_item)$numpy()
+    object$model$bias(arr = arr,is_item = is_item)$numpy()
   else
-    learn$model$bias(arr = arr,is_item = is_item)
+    object$model$bias(arr = arr,is_item = is_item)
 
 }
 

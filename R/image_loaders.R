@@ -223,7 +223,7 @@ ImageDataLoaders_from_csv <- function(path, csv_fname = "labels.csv", header = "
   }
 
   if(!is.null(args$val_bs)) {
-    args$args$val_bs = as.integer(args$args$val_bs)
+    args$val_bs = as.integer(args$val_bs)
   }
 
   do.call(vision$all$ImageDataLoaders$from_csv, args)
@@ -265,12 +265,12 @@ ImageDataLoaders_from_dblock <- function(dblock, source, path = ".",
     args$batch_tfms <- unlist(args$batch_tfms)
   }
 
-  if(!is.null(size)) {
+  if(!is.null(args$size)) {
     args$size = as.integer(args$size)
   }
 
   if(!is.null(args$val_bs)) {
-    args$args$val_bs = as.integer(args$args$val_bs)
+    args$val_bs = as.integer(args$val_bs)
   }
 
   do.call(vision$all$ImageDataLoaders$from_dblock, args)
@@ -334,12 +334,12 @@ ImageDataLoaders_from_df <- function(df, path = ".", valid_pct = 0.2, seed = NUL
     args$batch_tfms <- unlist(args$batch_tfms)
   }
 
-  if(!is.null(size)) {
+  if(!is.null(args$size)) {
     args$size = as.integer(args$size)
   }
 
   if(!is.null(args$val_bs)) {
-    args$args$val_bs = as.integer(args$args$val_bs)
+    args$val_bs = as.integer(args$val_bs)
   }
 
   do.call(vision$all$ImageDataLoaders$from_df, args)
@@ -392,12 +392,12 @@ ImageDataLoaders_from_lists <- function(path, fnames, labels, valid_pct = 0.2,
     args$batch_tfms <- unlist(args$batch_tfms)
   }
 
-  if(!is.null(size)) {
+  if(!is.null(args$size)) {
     args$size = as.integer(args$size)
   }
 
   if(!is.null(args$val_bs)) {
-    args$args$val_bs = as.integer(args$args$val_bs)
+    args$val_bs = as.integer(args$val_bs)
   }
 
   do.call(vision$all$ImageDataLoaders$from_lists, args)
@@ -449,12 +449,12 @@ ImageDataLoaders_from_path_func <- function(path, fnames, label_func,
     args$batch_tfms <- unlist(args$batch_tfms)
   }
 
-  if(!is.null(size)) {
+  if(!is.null(args$size)) {
     args$size = as.integer(args$size)
   }
 
   if(!is.null(args$val_bs)) {
-    args$args$val_bs = as.integer(args$args$val_bs)
+    args$val_bs = as.integer(args$val_bs)
   }
 
   do.call(vision$all$ImageDataLoaders$from_path_func, args)
@@ -505,13 +505,13 @@ ImageDataLoaders_from_path_re <- function(path, fnames, pat, valid_pct = 0.2,
     args$batch_tfms <- unlist(args$batch_tfms)
   }
 
-  if(!is.null(size)) {
+  if(!is.null(args$size)) {
     args$size = as.integer(args$size)
   }
 
   if(!is.null(args$val_bs)) {
-    args$args$val_bs = as.integer(args$args$val_bs)
+    args$val_bs = as.integer(args$val_bs)
   }
 
-  do.call(vision$all$ImageDataLoaders$from_path_re, argss)
+  do.call(vision$all$ImageDataLoaders$from_path_re, args)
 }

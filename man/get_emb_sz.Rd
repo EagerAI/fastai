@@ -2,7 +2,7 @@
 % Please edit documentation in R/tabular_model.R
 \name{get_emb_sz}
 \alias{get_emb_sz}
-\title{get_emb_sz}
+\title{Get_emb_sz}
 \usage{
 get_emb_sz(to, sz_dict = NULL)
 }
@@ -11,9 +11,9 @@ get_emb_sz(to, sz_dict = NULL)
 
 \item{sz_dict}{sz_dict}
 }
+\value{
+None
+}
 \description{
 Get default embedding size from `TabularPreprocessor` `proc` or the ones in `sz_dict`
-}
-\details{
-
 }

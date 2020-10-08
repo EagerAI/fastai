@@ -1,12 +1,11 @@
 
-#' @title emb_sz_rule
+#' @title Emb_sz_rule
 #'
 #' @description Rule of thumb to pick embedding size corresponding to `n_cat`
 #'
-#' @details
 #'
 #' @param n_cat n_cat
-#'
+#' @return None
 #' @export
 emb_sz_rule <- function(n_cat) {
 
@@ -17,15 +16,14 @@ emb_sz_rule <- function(n_cat) {
 }
 
 
-#' @title get_emb_sz
+#' @title Get_emb_sz
 #'
 #' @description Get default embedding size from `TabularPreprocessor` `proc` or the ones in `sz_dict`
 #'
-#' @details
 #'
 #' @param to to
 #' @param sz_dict sz_dict
-#'
+#' @return None
 #' @export
 get_emb_sz <- function(to, sz_dict = NULL) {
 
@@ -37,11 +35,10 @@ get_emb_sz <- function(to, sz_dict = NULL) {
 }
 
 
-#' @title tabular_config
+#' @title Tabular_config
 #'
 #' @description Convenience function to easily create a config for `TabularModel`
 #'
-#' @details
 #'
 #' @param ps ps
 #' @param embed_p embed_p
@@ -50,7 +47,7 @@ get_emb_sz <- function(to, sz_dict = NULL) {
 #' @param bn_final bn_final
 #' @param bn_cont bn_cont
 #' @param act_cls act_cls
-#'
+#' @return None
 #' @export
 tabular_config <- function(ps = NULL, embed_p = 0.0, y_range = NULL,
                            use_bn = TRUE, bn_final = FALSE,
@@ -73,7 +70,6 @@ tabular_config <- function(ps = NULL, embed_p = 0.0, y_range = NULL,
 #'
 #' @description Basic model for tabular data.
 #'
-#' @details
 #'
 #' @param emb_szs emb_szs
 #' @param n_cont n_cont
@@ -86,7 +82,7 @@ tabular_config <- function(ps = NULL, embed_p = 0.0, y_range = NULL,
 #' @param bn_final bn_final
 #' @param bn_cont bn_cont
 #' @param act_cls act_cls
-#'
+#' @return None
 #' @export
 TabularModel <- function(emb_szs, n_cont, out_sz, layers, ps = NULL,
                          embed_p = 0.0, y_range = NULL, use_bn = TRUE, bn_final = FALSE,

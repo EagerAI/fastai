@@ -128,7 +128,7 @@ fit.fastai.learner.Learner <- function(object, ...) {
 #' @return None
 #' @export
 cnn_config <- function(cut = NULL, pretrained = TRUE, n_in = 3,
-                       init = kaiming_normal_, custom_head = NULL,
+                       init = nn$init$kaiming_normal_, custom_head = NULL,
                        concat_pool = TRUE, lin_ftrs = NULL, ps = 0.5,
                        bn_final = FALSE, lin_first = FALSE, y_range = NULL) {
 

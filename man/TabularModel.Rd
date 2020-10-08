@@ -41,9 +41,9 @@ TabularModel(
 
 \item{act_cls}{act_cls}
 }
+\value{
+None
+}
 \description{
 Basic model for tabular data.
-}
-\details{
-
 }

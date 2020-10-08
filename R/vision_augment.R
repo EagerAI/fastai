@@ -862,7 +862,6 @@ FuncSplitter <- function(func) {
 #'
 #' @description Show a PIL or PyTorch image on `ax`.
 #'
-#' @details
 #'
 #' @param im im
 #' @param ax ax

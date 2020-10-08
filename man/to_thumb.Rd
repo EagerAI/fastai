@@ -4,9 +4,11 @@
 \alias{to_thumb}
 \title{To_thumb}
 \usage{
-to_thumb(h, w = NULL)
+to_thumb(img, h, w = NULL)
 }
 \arguments{
+\item{img}{image}
+
 \item{h}{h}
 
 \item{w}{w}
