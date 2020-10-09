@@ -6,6 +6,9 @@
 \usage{
 loaders()
 }
+\value{
+None
+}
 \description{
 a loader from Catalyst
 }

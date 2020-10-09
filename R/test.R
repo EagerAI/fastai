@@ -369,24 +369,6 @@ show_images <- function(ims, nrows = 1, ncols = NULL,
 
 }
 
-#' @title Plot tensor
-#' @param x x axis
-#' @param y y axis
-#' @param ... additional arguments
-#' @param dpi dots per inch
-#' @return None
-#' @export
-plot.list = function(x, y, ..., dpi = 100) {
-  tmp_d = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
-  fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi))
-
-  img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
-  try(dev.off(),TRUE)
-  grid::grid.raster(img)
-  fastai2$vision$all$plt$close()
-}
-
-
 
 #' @title Uniform_blur2d
 #'

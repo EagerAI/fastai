@@ -6,9 +6,6 @@
 \usage{
 Callback(...)
 }
-\arguments{
-\item{...}{additional arguments}
-}
 \value{
 module
 }

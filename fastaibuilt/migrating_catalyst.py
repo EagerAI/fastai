@@ -11,10 +11,12 @@ from catalyst.utils import metrics
 model = torch.nn.Linear(28 * 28, 10)
 optimizer = torch.optim.Adam(model.parameters(), lr=0.02)
 
-loaders = {
+def loaders():
+    loaders = {
     "train": DataLoader(MNIST(os.getcwd(), train=True, download=True, transform=ToTensor()), batch_size=32),
     "valid": DataLoader(MNIST(os.getcwd(), train=False, download=True, transform=ToTensor()), batch_size=32),
-}
+    }
+    
 
 class CustomRunner(dl.Runner):
     def predict_batch(self, batch): return self.model(batch[0].to(self.device).view(batch[0].size(0), -1))

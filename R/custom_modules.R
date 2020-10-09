@@ -71,9 +71,10 @@ LitModel = function() {
 
 #' @title Loaders
 #' @description a loader from Catalyst
+#' @return None
 #' @export
 loaders = function() {
-  catalyst$loaders
+  catalyst$loaders()
 }
 
 

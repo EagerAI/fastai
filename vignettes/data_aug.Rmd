@@ -36,7 +36,7 @@ img %>% show() %>% plot()
 
 <center>
 
-<img src="images/cat.png" alt="_" style="width: 600px;"/>
+<img src="images/cat.png" alt="_" style="width: 300px;"/>
 
 </center>
 
@@ -61,7 +61,7 @@ img %>% plot(dpi = 250)
 
 <center>
 
-<img src="images/flip.png" alt="_" style="width: 600px;"/>
+<img src="images/flip.png" alt="_" style="width: 300px;"/>
 
 </center>
 
@@ -81,7 +81,7 @@ img %>% plot(dpi = 250)
 
 <center>
 
-<img src="images/dihedral.png" alt="_" style="width: 600px;"/>
+<img src="images/dihedral.png" alt="_" style="width: 300px;"/>
 
 </center>
 
@@ -105,7 +105,7 @@ img %>% plot(dpi = 250)
 
 <center>
 
-<img src="images/crop.png" alt="_" style="width: 600px;"/>
+<img src="images/crop.png" alt="_" style="width: 300px;"/>
 
 </center>
 
@@ -127,7 +127,7 @@ img %>% plot(dpi = 250)
 
 <center>
 
-<img src="images/modes.png" alt="_" style="width: 600px;"/>
+<img src="images/modes.png" alt="_" style="width: 300px;"/>
 
 </center>
 
@@ -148,7 +148,7 @@ img %>% plot(dpi = 250)
 
 <center>
 
-<img src="images/random_crop.png" alt="_" style="width: 600px;"/>
+<img src="images/random_crop.png" alt="_" style="width: 300px;"/>
 
 </center>
 
@@ -170,7 +170,7 @@ img %>% plot(dpi = 250)
 
 <center>
 
-<img src="images/center_crop.png" alt="_" style="width: 600px;"/>
+<img src="images/center_crop.png" alt="_" style="width: 300px;"/>
 
 </center>
 
@@ -194,7 +194,7 @@ img %>% plot(dpi = 250)
 
 <center>
 
-<img src="images/resize.png" alt="_" style="width: 600px;"/>
+<img src="images/resize.png" alt="_" style="width: 300px;"/>
 
 </center>
 
@@ -217,7 +217,7 @@ img %>% plot(dpi = 250)
 
 <center>
 
-<img src="images/random_resize.png" alt="_" style="width: 600px;"/>
+<img src="images/random_resize.png" alt="_" style="width: 300px;"/>
 
 </center>
 

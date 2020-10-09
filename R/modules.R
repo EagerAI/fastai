@@ -6,7 +6,6 @@ nn <- NULL
 
 #' Core Pytorch module
 #' @return module
-#' @param ... additional arguments
 #' @export
 Module <- NULL
 
@@ -29,7 +28,6 @@ colors <- NULL
 
 #' Callback
 #' @return module
-#' @param ... additional arguments
 #' @export
 Callback <- NULL
 
@@ -53,7 +51,6 @@ F <- NULL
 
 #' Dicom
 #' @return module
-#' @param ... additional arguments
 #' @export
 Dicom <- NULL
 
