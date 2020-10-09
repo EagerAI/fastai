@@ -70,7 +70,7 @@
 #' @param a tensor
 #' @param b tensor
 #' @return tensor
-#' @name greater
+#' @name less
 #' @export
 "<.torch.Tensor" <- function(a, b) {
   a$lt(b)
@@ -247,7 +247,7 @@
 #' @param a tensor
 #' @param b tensor
 #' @return tensor
-#' @name div
+#' @name multiplygit add -A && git commit -m 'staging all files'
 #' @export
 "*.torch.Tensor" <- function(a, b) {
   a$mul(b)

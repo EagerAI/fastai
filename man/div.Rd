@@ -3,12 +3,9 @@
 \name{div}
 \alias{div}
 \alias{/.torch.Tensor}
-\alias{*.torch.Tensor}
 \title{Div}
 \usage{
 \method{/}{torch.Tensor}(a, b)
-
-\method{*}{torch.Tensor}(a, b)
 }
 \arguments{
 \item{a}{tensor}
@@ -17,11 +14,7 @@
 }
 \value{
 tensor
-
-tensor
 }
 \description{
 Div
-
-Multiply
 }

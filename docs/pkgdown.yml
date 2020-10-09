@@ -14,7 +14,7 @@ articles:
   migrating_pytorch: migrating_pytorch.html
   obj_detect: obj_detect.html
   super_res_gan: super_res_gan.html
-last_built: 2020-10-09T07:55Z
+last_built: 2020-10-09T08:44Z
 urls:
   reference: https://henry090.github.io/fastai//reference
   article: https://henry090.github.io/fastai//articles

@@ -1,5 +1,5 @@
 ## ----setup, include=FALSE-----------------------------------------------------
-knitr::opts_chunk$set(echo = TRUE,eval = FALSE,echo = T)
+knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
 
 ## -----------------------------------------------------------------------------
 #  library(magrittr)
@@ -38,7 +38,7 @@ knitr::opts_chunk$set(echo = TRUE,eval = FALSE,echo = T)
 #                                               F1Score()))
 
 ## -----------------------------------------------------------------------------
-#  model %>% lr_find()
+#  lrs = model %>% lr_find()
 #  # SuggestedLRs(lr_min=0.002754228748381138, lr_steep=1.5848931980144698e-06)
 #  
 #  model %>% plot_lr_find()
