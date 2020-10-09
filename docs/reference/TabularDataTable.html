@@ -200,7 +200,8 @@
   do_setup <span class='op'>=</span> <span class='cn'>TRUE</span>,
   device <span class='op'>=</span> <span class='cn'>NULL</span>,
   inplace <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  reduce_memory <span class='op'>=</span> <span class='cn'>TRUE</span>
+  reduce_memory <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -212,7 +213,7 @@
     </tr>
     <tr>
       <th>procs</th>
-      <td><p>procs</p></td>
+      <td><p>list of preprocess functions</p></td>
     </tr>
     <tr>
       <th>cat_names</th>
@@ -250,8 +251,15 @@
       <th>reduce_memory</th>
       <td><p>fastai will attempt to reduce the overall memory usage</p></td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td><p>additional parameters to pass</p></td>
+    </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>None</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

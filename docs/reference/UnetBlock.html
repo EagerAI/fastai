@@ -46,9 +46,7 @@
 
 
 <meta property="og:title" content="UnetBlock — UnetBlock" />
-<meta property="og:description" content="A quasi-UNet block, using `PixelShuffle_ICNR upsampling`.
-A quasi-UNet block, using `PixelShuffle_ICNR upsampling`.
-Load Unet block" />
+<meta property="og:description" content="A quasi-UNet block, using `PixelShuffle_ICNR upsampling`." />
 
 
 
@@ -183,29 +181,41 @@ Load Unet block" />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>UnetBlock</h1>
-    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/unet.R'><code>R/unet.R</code></a>, <a href='https://github.com/henry090/fastai/blob/master/R/vision_models.R'><code>R/vision_models.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/unet.R'><code>R/unet.R</code></a></small>
     <div class="hidden name"><code>UnetBlock.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>A quasi-UNet block, using `PixelShuffle_ICNR upsampling`.</p>
-<p>A quasi-UNet block, using `PixelShuffle_ICNR upsampling`.</p>
-<p>Load Unet block</p>
     </div>
 
-    <pre class="usage"><span class='fu'>UnetBlock</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span>
-
-<span class='fu'>UnetBlock</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span>
-
-<span class='fu'>UnetBlock</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>UnetBlock</span><span class='op'>(</span>
+  <span class='va'>up_in_c</span>,
+  <span class='va'>x_in_c</span>,
+  <span class='va'>hook</span>,
+  final_div <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  blur <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  act_cls <span class='op'>=</span> <span class='va'>nn</span><span class='op'>$</span><span class='va'>ReLU</span>,
+  self_attention <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  init <span class='op'>=</span> <span class='va'>nn</span><span class='op'>$</span><span class='va'>init</span><span class='op'>$</span><span class='va'>kaiming_normal_</span>,
+  norm_type <span class='op'>=</span> <span class='cn'>NULL</span>,
+  ks <span class='op'>=</span> <span class='fl'>3</span>,
+  stride <span class='op'>=</span> <span class='fl'>1</span>,
+  padding <span class='op'>=</span> <span class='cn'>NULL</span>,
+  bias <span class='op'>=</span> <span class='cn'>NULL</span>,
+  ndim <span class='op'>=</span> <span class='fl'>2</span>,
+  bn_1st <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  transpose <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  xtra <span class='op'>=</span> <span class='cn'>NULL</span>,
+  bias_std <span class='op'>=</span> <span class='fl'>0.01</span>,
+  dilation <span class='op'>=</span> <span class='fl'>1</span>,
+  groups <span class='op'>=</span> <span class='fl'>1</span>,
+  padding_mode <span class='op'>=</span> <span class='st'>"zeros"</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>...</th>
-      <td><p>parameters to pass</p></td>
-    </tr>
     <tr>
       <th>up_in_c</th>
       <td><p>up_in_c</p></td>
@@ -216,7 +226,7 @@ Load Unet block" />
     </tr>
     <tr>
       <th>hook</th>
-      <td><p>hook</p></td>
+      <td><p>The hook is set to this intermediate layer to store the output needed for this block.</p></td>
     </tr>
     <tr>
       <th>final_div</th>
@@ -232,7 +242,7 @@ Load Unet block" />
     </tr>
     <tr>
       <th>self_attention</th>
-      <td><p>self_attention</p></td>
+      <td><p>self_attention determines if we use a self-attention layer</p></td>
     </tr>
     <tr>
       <th>init</th>
@@ -288,13 +298,13 @@ Load Unet block" />
     </tr>
     <tr>
       <th>padding_mode</th>
-      <td><p>padding_mode</p></td>
+      <td><p>The mode of padding</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>model</p>
+    <p>None</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

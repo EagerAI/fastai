@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>plot_lr_find — plot_lr_find • fastai</title>
+<title>Plot_lr_find — plot_lr_find • fastai</title>
 
 
 <!-- jquery -->
@@ -45,8 +45,9 @@
 
 
 
-<meta property="og:title" content="plot_lr_find — plot_lr_find" />
-<meta property="og:description" content="Plot the result of an LR Finder test (won't work if you didn't do `learn.lr_find()` before)" />
+<meta property="og:title" content="Plot_lr_find — plot_lr_find" />
+<meta property="og:description" content="Plot the result of an LR Finder test
+(won't work if you didn't do `lr_find(learn)` before)" />
 
 
 
@@ -180,13 +181,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>plot_lr_find</h1>
+    <h1>Plot_lr_find</h1>
     <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/test.R'><code>R/test.R</code></a></small>
     <div class="hidden name"><code>plot_lr_find.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Plot the result of an LR Finder test (won't work if you didn't do `learn.lr_find()` before)</p>
+    <p>Plot the result of an LR Finder test
+(won't work if you didn't do `lr_find(learn)` before)</p>
     </div>
 
     <pre class="usage"><span class='fu'>plot_lr_find</span><span class='op'>(</span><span class='va'>object</span>, skip_end <span class='op'>=</span> <span class='fl'>5</span>, dpi <span class='op'>=</span> <span class='fl'>250</span><span class='op'>)</span></pre>
@@ -195,11 +197,22 @@
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>object</th>
+      <td><p>model</p></td>
+    </tr>
+    <tr>
       <th>skip_end</th>
       <td><p>skip_end</p></td>
     </tr>
+    <tr>
+      <th>dpi</th>
+      <td><p>dots per inch</p></td>
+    </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>None</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

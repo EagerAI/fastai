@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>lr_find — lr_find • fastai</title>
+<title>Lr_find — lr_find • fastai</title>
 
 
 <!-- jquery -->
@@ -45,7 +45,7 @@
 
 
 
-<meta property="og:title" content="lr_find — lr_find" />
+<meta property="og:title" content="Lr_find — lr_find" />
 <meta property="og:description" content="Launch a mock training to find a good learning rate, return lr_min, lr_steep if `suggestions` is TRUE" />
 
 
@@ -180,7 +180,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>lr_find</h1>
+    <h1>Lr_find</h1>
     <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/stats.R'><code>R/stats.R</code></a></small>
     <div class="hidden name"><code>lr_find.Rd</code></div>
     </div>
@@ -195,12 +195,17 @@
   end_lr <span class='op'>=</span> <span class='fl'>10</span>,
   num_it <span class='op'>=</span> <span class='fl'>100</span>,
   stop_div <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  suggestions <span class='op'>=</span> <span class='cn'>TRUE</span>
+  suggestions <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>object</th>
+      <td><p>learner</p></td>
+    </tr>
     <tr>
       <th>start_lr</th>
       <td><p>start_lr</p></td>
@@ -222,15 +227,14 @@
       <td><p>suggestions</p></td>
     </tr>
     <tr>
-      <th>objetc</th>
-      <td><p>learner</p></td>
-    </tr>
-    <tr>
-      <th>show_plot</th>
-      <td><p>show_plot</p></td>
+      <th>...</th>
+      <td><p>additional arguments to pass</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>data frame</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
