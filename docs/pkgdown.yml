@@ -15,7 +15,7 @@ articles:
   obj_detect: obj_detect.html
   optimizer: optimizer.html
   super_res_gan: super_res_gan.html
-last_built: 2020-10-10T15:06Z
+last_built: 2020-10-10T15:16Z
 urls:
   reference: https://henry090.github.io/fastai//reference
   article: https://henry090.github.io/fastai//articles
