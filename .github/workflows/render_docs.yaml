@@ -34,6 +34,10 @@ jobs:
           Rscript -e "remotes::install_deps(dependencies =  TRUE)"
           Rscript -e "remotes::install_cran('rcmdcheck')"
 
+      - name: Install textshaping
+        run: |
+          Rscript - e "install.packages('textshaping')"
+
       - name: Install Python
         run: |
           Rscript -e "remotes::install_github('rstudio/reticulate')"
