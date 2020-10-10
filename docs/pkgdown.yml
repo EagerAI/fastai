@@ -13,9 +13,9 @@ articles:
   migrating_ignite: migrating_ignite.html
   migrating_pytorch: migrating_pytorch.html
   obj_detect: obj_detect.html
-  optimizer: optimizer.html
+  optimizer_: optimizer_.html
   super_res_gan: super_res_gan.html
-last_built: 2020-10-10T19:31Z
+last_built: 2020-10-10T19:49Z
 urls:
   reference: https://henry090.github.io/fastai//reference
   article: https://henry090.github.io/fastai//articles
