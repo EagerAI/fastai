@@ -52,7 +52,7 @@ navbar:
     - text: "Training"
       menu:
         - text: "Optimizers"
-          href: articles/optimizer.html
+          href: articles/custom_img.html
     - text: "Reference"
       href: reference/index.html
 
