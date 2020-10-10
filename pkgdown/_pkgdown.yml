@@ -49,10 +49,8 @@ navbar:
       menu:
         - text: "Image Classification"
           href: articles/custom_img.html
-    - text: "Training"
-      menu:
         - text: "Optimizers"
-          href: articles/custom_img.html
+          href: articles/optimizer.html
     - text: "Reference"
       href: reference/index.html
 
