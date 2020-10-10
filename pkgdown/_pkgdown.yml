@@ -50,7 +50,7 @@ navbar:
         - text: "Image Classification"
           href: articles/custom_img.html
         - text: "Optimizers"
-          href: articles/optimizer.html
+          href: articles/optimizer_.html
     - text: "Reference"
       href: reference/index.html
 
