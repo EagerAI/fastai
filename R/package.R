@@ -23,6 +23,7 @@ catalyst <- NULL
 F <- NULL
 Dicom <- NULL
 retinanet <- NULL
+torch <- NULL
 
 .onLoad <- function(libname, pkgname) {
 
@@ -35,6 +36,10 @@ retinanet <- NULL
      reticulate::py_module_available('torch') &
      reticulate::py_module_available('torchvision') &
      reticulate::py_module_available('fastai')) {
+
+    # torch module
+    torch <<- fastai2$torch_basics$torch
+
     # tabular module
     tabular <<- fastai2$tabular$all
 

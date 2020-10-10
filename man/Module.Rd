@@ -2,7 +2,7 @@
 % Please edit documentation in R/modules.R
 \name{Module}
 \alias{Module}
-\title{Core Pytorch module}
+\title{Core Pytorch Module}
 \usage{
 Module(...)
 }
@@ -10,5 +10,5 @@ Module(...)
 module
 }
 \description{
-Core Pytorch module
+Core Pytorch Module
 }

@@ -4,10 +4,15 @@
 nn <- NULL
 
 
-#' Core Pytorch module
+#' Core Pytorch Module
 #' @return module
 #' @export
 Module <- NULL
+
+#' Core Torch
+#' @return module
+#' @export
+torch <- NULL
 
 
 #' Window effect
