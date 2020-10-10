@@ -1621,6 +1621,9 @@
     <loc>https://henry090.github.io/fastai//reference/top_k_accuracy.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/torch.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/train_loader.html</loc>
   </url>
   <url>
@@ -1745,6 +1748,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//articles/obj_detect.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//articles/optimizer.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//articles/super_res_gan.html</loc>
