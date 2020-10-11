@@ -35,8 +35,6 @@ navbar:
           href: articles/data_aug.html
         - text: "Object detection"
           href: articles/obj_detect.html
-        - text: "Optimizers"
-          href: articles/optimizer_.html
     - text: "Migrating"
       menu:
         - text: "Plain Pytorch"
@@ -51,6 +49,10 @@ navbar:
       menu:
         - text: "Image Classification"
           href: articles/custom_img.html
+    - text: "Training"
+      menu:
+        - text: "Optimizers"
+          href: articles/optimizer.html
     - text: "Reference"
       href: reference/index.html
 
