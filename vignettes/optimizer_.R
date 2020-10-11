@@ -1,5 +1,5 @@
 ## ----setup, include=FALSE-----------------------------------------------------
-knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
+knitr::opts_chunk$set(echo = TRUE,eval = FALSE,echo = T)
 
 ## -----------------------------------------------------------------------------
 #  library(magrittr)
