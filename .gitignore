@@ -27,7 +27,6 @@ models/
 fastaibuilt/retinanet/\.gitkeep/
 imports/\.gitkeep/
 D/
-docs/
 fastaibuilt/
 files/
 imports/
