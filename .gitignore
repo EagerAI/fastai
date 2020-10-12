@@ -28,7 +28,6 @@ fastaibuilt/retinanet/\.gitkeep/
 imports/\.gitkeep/
 D/
 fastaibuilt/
-files/
 imports/
 mnist.pkl/
 
