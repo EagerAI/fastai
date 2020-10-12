@@ -53,6 +53,8 @@ navbar:
       menu:
         - text: "Optimizers"
           href: articles/optimizer.html
+        - text: "Callbacks"
+          href: articles/callbacks.html
     - text: "Reference"
       href: reference/index.html
 

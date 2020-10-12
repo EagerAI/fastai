@@ -475,6 +475,9 @@
     <loc>https://henry090.github.io/fastai//reference/RecallMulti.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/ReduceLROnPlateau.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/RegressionBlock.html</loc>
   </url>
   <url>
@@ -1721,6 +1724,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//articles/basic_img_class.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//articles/callbacks.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//articles/catalyst.html</loc>
