@@ -2,27 +2,18 @@
 
 #' @title CSVLogger
 #'
-#' @description A `LearnerCallback` that saves history of metrics while training `learn` into CSV `filename`.
+#' @description Basic class handling tweaks of the training loop by changing a `Learner` in various events
 #'
-#'
-#' @param learn learner object
-#' @param filename the name of the file "history.csv"
-#' @param append whether to append the new file or not
+#' @param fname file name
+#' @param append append or not
 #' @return None
 #' @export
-CSVLogger <- function(learn, filename = "history", append = FALSE) {
+CSVLogger <- function(fname = "history.csv", append = FALSE) {
 
-  if(missing(learn)) {
-    tabular$callbacks$CSVLogger
-  } else {
-    args <- list(
-      learn = learn,
-      filename = filename,
-      append = append
-    )
-
-    do.call(tabular$callbacks$CSVLogger, args)
-  }
+  fastai2$callback$all$CSVLogger(
+    fname = fname,
+    append = append
+  )
 
 }
 
@@ -99,6 +90,14 @@ CollectDataCallback <- function(...) {
   fastai2$callback$all$CollectDataCallback(...)
 }
 
+#' @title ReduceLROnPlateau
+#'
+#' @param ... parameters to pass
+#' @return None
+#' @export
+ReduceLROnPlateau <- function(...) {
+  fastai2$callback$all$ReduceLROnPlateau(...)
+}
 
 #' @title FetchPredsCallback
 #'

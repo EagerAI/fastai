@@ -1,0 +1,147 @@
+---
+title: "Callbacks"
+output:
+  rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Callbacks}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
+```
+
+## Intro
+
+The [fastai](https://github.com/fastai/fastai) library simplifies training fast and accurate neural nets using modern best practices. See the fastai website to get started. The library is based on research into deep learning best practices undertaken at ```fast.ai```, and includes "out of the box" support for ```vision```, ```text```, ```tabular```, and ```collab``` (collaborative filtering) models. 
+
+## MNIST data
+
+Download and prepare data:
+
+```{r}
+URLs_MNIST_SAMPLE()
+```
+
+Transformations:
+
+```{r}
+# transformations
+tfms = aug_transforms(do_flip = FALSE)
+path = 'mnist_sample'
+bs = 20
+
+#load into memory
+data = ImageDataLoaders_from_folder(path, batch_tfms = tfms, size = 26, bs = bs)
+
+learn = cnn_learner(data, resnet18(), metrics = accuracy)
+```
+
+
+
+## TerminateOnNaNCallback
+
+```Cbs``` argument means callbacks:
+
+```{r}
+learn %>% fit_one_cycle(1, cbs = TerminateOnNaNCallback())
+```
+
+## EarlyStoppingCallback
+
+```{r}
+learn %>% fit_one_cycle(10, cbs = EarlyStoppingCallback(monitor='valid_loss', patience = 1))
+```
+
+```
+epoch     train_loss  valid_loss  accuracy  time
+0         0.023524    0.009781    0.996565  00:16
+1         0.033328    0.019839    0.993621  00:16
+No improvement since epoch 0: early stopping
+```
+
+
+
+
+Save best model for each epoch:
+
+```{r}
+learn = cnn_learner(data, resnet18(), metrics = accuracy, path = getwd())
+
+learn %>% fit_one_cycle(3, cbs = SaveModelCallback(every_epoch = TRUE,  fname = 'model'))
+```
+
+See folder:
+
+```{r}
+list.files('models')
+# [1] "model_0.pth" "model_1.pth" "model_2.pth"
+```
+
+```
+# [1] "model_0.pth" "model_1.pth" "model_2.pth"
+```
+
+## ReduceLROnPlateau
+
+Decrease learning rate if loss is not improved:
+
+```{r}
+learn %>% fit_one_cycle(10, 1e-2, cbs = ReduceLROnPlateau(monitor='valid_loss', patience = 1))
+```
+
+```
+epoch     train_loss  valid_loss  accuracy  time
+0         0.117138    0.038180    0.987242  00:17
+1         0.140064    0.006160    0.996565  00:16
+2         0.133680    0.061945    0.985770  00:16
+Epoch 2: reducing lr to 0.0009891441414237997
+3         0.049780    0.005699    0.998037  00:16
+4         0.040660    0.019514    0.994112  00:16
+Epoch 4: reducing lr to 0.0007502954607977343
+5         0.027146    0.009783    0.997056  00:16
+Epoch 5: reducing lr to 0.0005526052040192481
+6         0.024709    0.008050    0.998528  00:16
+Epoch 6: reducing lr to 0.0003458198506447947
+7         0.016352    0.010778    0.998037  00:16
+Epoch 7: reducing lr to 0.0001656946233635187
+8         0.071180    0.009519    0.998528  00:16
+Epoch 8: reducing lr to 4.337456332530222e-05
+9         0.014804    0.005769    0.998528  00:16
+Epoch 9: reducing lr to 1.0114427793916913e-08
+```
+
+Or add new parameter ```min_lr```:
+
+```{r}
+learn %>% fit_one_cycle(10, 1e-2, cbs = ReduceLROnPlateau(monitor='valid_loss',
+min_delta=0.1, patience = 1, min_lr = 1e-8))
+```
+
+
+## CSVLogger
+
+Save train history. In addition, for multiple callbacks it is important to pass them within list:
+
+```{r}
+learn = cnn_learner(data, resnet18(), metrics = accuracy, path = getwd())
+
+learn %>% fit_one_cycle(2, cbs = list(CSVLogger(),
+                                      ReduceLROnPlateau(monitor='valid_loss',
+                                      min_delta=0.1, patience = 1, min_lr = 1e-8)))
+history  = read.csv('history.csv')
+history
+```
+
+```
+epoch train_loss valid_loss  accuracy  time
+1     0 0.15677054 0.09788394 0.9646713 00:17
+2     1 0.08268011 0.05654754 0.9803729 00:17
+```
+
+
+
+
+
+

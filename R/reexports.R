@@ -34,3 +34,18 @@ utils::capture.output
 #' @export
 utils::download.file
 
+#' @importFrom reticulate array_reshape
+#' @return None
+#' @export
+reticulate::array_reshape
+
+#' @importFrom reticulate py_load_object
+#' @return None
+#' @export
+reticulate::py_load_object
+
+#' @importFrom reticulate PyClass
+#' @return None
+#' @export
+reticulate::PyClass
+

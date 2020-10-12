@@ -10,8 +10,17 @@
 \alias{sd}
 \alias{capture.output}
 \alias{download.file}
+\alias{array_reshape}
+\alias{py_load_object}
+\alias{PyClass}
 \title{Objects exported from other packages}
 \value{
+None
+
+None
+
+None
+
 None
 
 None
@@ -35,6 +44,8 @@ below to see their documentation.
   \item{generics}{\code{\link[generics]{fit}}}
 
   \item{grDevices}{\code{\link[grDevices:dev]{dev.off}}}
+
+  \item{reticulate}{\code{\link[reticulate]{PyClass}}, \code{\link[reticulate]{array_reshape}}, \code{\link[reticulate:py_save_object]{py_load_object}}}
 
   \item{stats}{\code{\link[stats]{median}}, \code{\link[stats]{predict}}, \code{\link[stats]{sd}}}
 

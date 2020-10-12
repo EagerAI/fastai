@@ -30,6 +30,7 @@ D/
 fastaibuilt/
 files/
 imports/
+mnist.pkl/
 
 
 

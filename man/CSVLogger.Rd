@@ -4,18 +4,16 @@
 \alias{CSVLogger}
 \title{CSVLogger}
 \usage{
-CSVLogger(learn, filename = "history", append = FALSE)
+CSVLogger(fname = "history.csv", append = FALSE)
 }
 \arguments{
-\item{learn}{learner object}
+\item{fname}{file name}
 
-\item{filename}{the name of the file "history.csv"}
-
-\item{append}{whether to append the new file or not}
+\item{append}{append or not}
 }
 \value{
 None
 }
 \description{
-A `LearnerCallback` that saves history of metrics while training `learn` into CSV `filename`.
+Basic class handling tweaks of the training loop by changing a `Learner` in various events
 }
