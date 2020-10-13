@@ -219,6 +219,16 @@
 
     <p>model</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+
+<span class='va'>encoder</span> <span class='op'>=</span> <span class='fu'><a href='create_body.html'>create_body</a></span><span class='op'>(</span><span class='fu'><a href='resnet34.html'>resnet34</a></span><span class='op'>(</span><span class='op'>)</span>, pretrained <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='va'>arch</span> <span class='op'>=</span> <span class='fu'>RetinaNet</span><span class='op'>(</span><span class='va'>encoder</span>, <span class='fu'><a href='get_c.html'>get_c</a></span><span class='op'>(</span><span class='va'>dls</span><span class='op'>)</span>, final_bias<span class='op'>=</span><span class='op'>-</span><span class='fl'>4</span><span class='op'>)</span>
+
+<span class='op'>}</span>
+
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

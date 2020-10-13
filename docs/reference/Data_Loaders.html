@@ -219,6 +219,20 @@
 
     <p>loader object</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+
+<span class='va'>data</span> <span class='op'>=</span> <span class='fu'>Data_Loaders</span><span class='op'>(</span><span class='va'>train_loader</span>, <span class='va'>test_loader</span><span class='op'>)</span>
+
+<span class='va'>learn</span> <span class='op'>=</span> <span class='fu'><a href='Learner.html'>Learner</a></span><span class='op'>(</span><span class='va'>data</span>, <span class='fu'><a href='Net.html'>Net</a></span><span class='op'>(</span><span class='op'>)</span>, loss_func <span class='op'>=</span> <span class='cn'>F</span><span class='op'>$</span><span class='va'>nll_loss</span>,
+                opt_func <span class='op'>=</span> <span class='fu'><a href='Adam.html'>Adam</a></span><span class='op'>(</span><span class='op'>)</span>, metrics <span class='op'>=</span> <span class='va'>accuracy</span>, cbs <span class='op'>=</span> <span class='fu'><a href='CudaCallback.html'>CudaCallback</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='va'>learn</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='fit_one_cycle.html'>fit_one_cycle</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1e-2</span><span class='op'>)</span>
+
+<span class='op'>}</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

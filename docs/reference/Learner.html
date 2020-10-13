@@ -219,6 +219,19 @@
 
     <p>None</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+
+<span class='va'>model</span> <span class='op'>=</span> <span class='fu'><a href='LitModel.html'>LitModel</a></span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='va'>data</span> <span class='op'>=</span> <span class='fu'><a href='Data_Loaders.html'>Data_Loaders</a></span><span class='op'>(</span><span class='va'>model</span><span class='op'>$</span><span class='fu'>train_dataloader</span><span class='op'>(</span><span class='op'>)</span>, <span class='va'>model</span><span class='op'>$</span><span class='fu'>val_dataloader</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span><span class='op'>$</span><span class='fu'>cuda</span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='va'>learn</span> <span class='op'>=</span> <span class='fu'>Learner</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>model</span>, loss_func <span class='op'>=</span> <span class='cn'>F</span><span class='op'>$</span><span class='va'>cross_entropy</span>, opt_func <span class='op'>=</span> <span class='va'>Adam</span>,
+                metrics <span class='op'>=</span> <span class='va'>accuracy</span><span class='op'>)</span>
+
+<span class='op'>}</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
