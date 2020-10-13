@@ -178,7 +178,7 @@ cnn_config <- function(cut = NULL, pretrained = TRUE, n_in = 3,
 #' @param n_out number of out
 #' @param cut cut
 #' @param pretrained pretrained model or not
-#' @param input shape
+#' @param n_in input shape
 #' @param init initializer
 #' @param custom_head custom head
 #' @param concat_pool concatenate pooling
