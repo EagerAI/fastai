@@ -67,11 +67,16 @@ collab_learner(
 }
 \value{
 learner object
+}
+\description{
+Create a Learner for collaborative filtering on `dls`.
+}
+\examples{
 
 \dontrun{
 
 URLs_MOVIE_LENS_ML_100k()
-c(user,item,title)  %<-% list('userId','movieId','title')
+c(user,item,title)  \%<-\% list('userId','movieId','title')
 ratings = fread('ml-100k/u.data', col.names = c(user,item,'rating','timestamp'))
 movies = fread('ml-100k/u.item', col.names = c(item, 'title', 'date', 'N', 'url',
                                                paste('g',1:19,sep = '')))
@@ -81,10 +86,8 @@ item_name=title, path='ml-100k')
 
 learn = collab_learner(dls, n_factors = 40, y_range=c(0, 5.5))
 
-learn %>% fit_one_cycle(1, 5e-3,  wd = 1e-1)
+learn \%>\% fit_one_cycle(1, 5e-3,  wd = 1e-1)
 
 }
-}
-\description{
-Create a Learner for collaborative filtering on `dls`.
+
 }

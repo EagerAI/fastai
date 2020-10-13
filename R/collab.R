@@ -126,6 +126,7 @@ CollabDataLoaders_from_dblock <- function(dblock, source, path = ".", bs = 64,
 #' @param train_bn It controls if BatchNorm layers are trained even when they are supposed to be frozen according to the splitter.
 #' @param moms The default momentums used in Learner.fit_one_cycle.
 #' @return learner object
+#' @examples
 #'
 #' \dontrun{
 #'
