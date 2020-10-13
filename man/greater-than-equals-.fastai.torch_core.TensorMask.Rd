@@ -17,3 +17,12 @@ tensor
 \description{
 Greater or equal
 }
+\examples{
+\dontrun{
+
+aa = tensor(1:10)
+aa >= aa
+
+}
+
+}

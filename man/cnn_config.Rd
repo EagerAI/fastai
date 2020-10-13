@@ -2,7 +2,7 @@
 % Please edit documentation in R/cnn_learner.R
 \name{cnn_config}
 \alias{cnn_config}
-\title{Cnn_config}
+\title{Cnn config}
 \usage{
 cnn_config(
   cut = NULL,
@@ -23,7 +23,7 @@ cnn_config(
 
 \item{pretrained}{pretrained}
 
-\item{n_in}{number of in}
+\item{n_in}{input shape}
 
 \item{init}{init}
 

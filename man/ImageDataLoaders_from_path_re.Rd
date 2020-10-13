@@ -2,7 +2,7 @@
 % Please edit documentation in R/image_loaders.R
 \name{ImageDataLoaders_from_path_re}
 \alias{ImageDataLoaders_from_path_re}
-\title{ImageDataLoaders_from_path_re}
+\title{ImageDataLoaders from path re}
 \usage{
 ImageDataLoaders_from_path_re(
   path,

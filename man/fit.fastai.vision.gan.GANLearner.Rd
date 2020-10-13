@@ -17,3 +17,11 @@ train history
 \description{
 Fit the model on this learner with `lr` learning rate, `wd` weight decay for `epochs` with `callbacks`.
 }
+\examples{
+\dontrun{
+
+learn \%>\% fit(1, 2e-4, wd = 0)
+
+}
+
+}

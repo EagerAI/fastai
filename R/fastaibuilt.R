@@ -7,6 +7,15 @@
 #' @param path_lr path from (origin)
 #' @param path_hr path to (destination)
 #' @return None
+#'
+#' @examples
+#' \dontrun{
+#'
+#' items = get_image_files(path_hr)
+#' parallel(crappifier(path_lr, path_hr), items)
+#'
+#' }
+#'
 #' @export
 crappifier <- function(path_lr, path_hr) {
 
@@ -26,6 +35,16 @@ crappifier <- function(path_lr, path_hr) {
 #'
 #' @param ... arguments to pass
 #' @return model
+#'
+#' @examples
+#' \dontrun{
+#'
+#' encoder = create_body(resnet34(), pretrained = TRUE)
+#' arch = RetinaNet(encoder, get_c(dls), final_bias=-4)
+#'
+#' }
+#'
+#'
 #' @export
 RetinaNet <- function(...) {
 

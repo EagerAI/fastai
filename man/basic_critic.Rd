@@ -19,3 +19,12 @@ None
 \description{
 A basic critic for images `n_channels` x `in_size` x `in_size`.
 }
+\examples{
+\dontrun{
+
+critic    = basic_critic(in_size = 64, n_channels = 3, n_extra_layers = 1,
+                        act_cls = partial(nn$LeakyReLU, negative_slope = 0.2))
+
+}
+
+}

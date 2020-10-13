@@ -7,6 +7,27 @@
 #' @param fname file name
 #' @param append append or not
 #' @return None
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' URLs_MNIST_SAMPLE()
+#' # transformations
+#' tfms = aug_transforms(do_flip = FALSE)
+#' path = 'mnist_sample'
+#' bs = 20
+#'
+#' #load into memory
+#' data = ImageDataLoaders_from_folder(path, batch_tfms = tfms, size = 26, bs = bs)
+#'
+#'
+#' learn = cnn_learner(data, resnet18(), metrics = accuracy, path = getwd())
+#'
+#' learn %>% fit_one_cycle(2, cbs = CSVLogger())
+#'
+#' }
+#'
 #' @export
 CSVLogger <- function(fname = "history.csv", append = FALSE) {
 
@@ -94,6 +115,27 @@ CollectDataCallback <- function(...) {
 #'
 #' @param ... parameters to pass
 #' @return None
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' URLs_MNIST_SAMPLE()
+#' # transformations
+#' tfms = aug_transforms(do_flip = FALSE)
+#' path = 'mnist_sample'
+#' bs = 20
+#'
+#' #load into memory
+#' data = ImageDataLoaders_from_folder(path, batch_tfms = tfms, size = 26, bs = bs)
+#'
+#'
+#' learn = cnn_learner(data, resnet18(), metrics = accuracy, path = getwd())
+#'
+#' learn %>% fit_one_cycle(10, 1e-2, cbs = ReduceLROnPlateau(monitor='valid_loss', patience = 1))
+#'
+#' }
+#'
 #' @export
 ReduceLROnPlateau <- function(...) {
   fastai2$callback$all$ReduceLROnPlateau(...)

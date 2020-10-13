@@ -1,4 +1,4 @@
-#' @title From name regex
+#' @title ImageDataLoaders from name regex
 #'
 #' @description Create from the name attrs of `fnames` in `path`s with re expression `pat`
 #'
@@ -13,6 +13,26 @@
 #' @param batch_tfms One or several transforms applied to the batches once they are formed
 #' @param ... additional parameters to pass
 #' @return None
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' URLs_PETS()
+#'
+#' path = 'oxford-iiit-pet'
+#'
+#' dls = ImageDataLoaders_from_name_re(
+#' path, fnames, pat='(.+)_\\d+.jpg$',
+#' item_tfms = RandomResizedCrop(460, min_scale=0.75), bs = 10,
+#' batch_tfms = list(aug_transforms(size = 299, max_warp = 0),
+#'                   Normalize_from_stats( imagenet_stats() )
+#' ),
+#' device = 'cuda'
+#' )
+#'
+#' }
+#'
 #' @export
 ImageDataLoaders_from_name_re <- function(path, fnames, pat, bs = 64,
                                           val_bs = NULL, shuffle_train = TRUE,
@@ -54,6 +74,20 @@ ImageDataLoaders_from_name_re <- function(path, fnames, pat, bs = 64,
 #' @param recurse recursive path
 #' @param folders folder names
 #' @return None
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' URLs_PETS()
+#'
+#' path = 'oxford-iiit-pet'
+#'
+#' path_img = 'oxford-iiit-pet/images'
+#' fnames = get_image_files(path_img)
+#'
+#' }
+#'
 #' @export
 get_image_files <- function(path, recurse = TRUE, folders = NULL) {
 
@@ -95,7 +129,7 @@ fit_one_cycle <- function(object, ...) {
 }
 
 
-#' @title From folder
+#' @title ImageDataLoaders from folder
 #'
 #' @description Create from imagenet style dataset in `path` with `train` and `valid` subfolders (or provide `valid_pct`)
 #'
@@ -154,7 +188,7 @@ ImageDataLoaders_from_folder <- function(path, train = "train", valid = "valid",
 }
 
 
-#' @title From_csv
+#' @title ImageDataLoaders from csv
 #'
 #' @description Create from `path/csv_fname` using `fn_col` and `label_col`
 #'
@@ -230,7 +264,7 @@ ImageDataLoaders_from_csv <- function(path, csv_fname = "labels.csv", header = "
 }
 
 
-#' @title ImageDataLoaders_from_dblock
+#' @title ImageDataLoaders from dblock
 #'
 #' @description Create a dataloaders from a given `dblock`
 #'
@@ -278,7 +312,7 @@ ImageDataLoaders_from_dblock <- function(dblock, source, path = ".",
 }
 
 
-#' @title ImageDataLoaders_from_df
+#' @title ImageDataLoaders from df
 #'
 #' @description Create from `df` using `fn_col` and `label_col`
 #'
@@ -347,7 +381,7 @@ ImageDataLoaders_from_df <- function(df, path = ".", valid_pct = 0.2, seed = NUL
 }
 
 
-#' @title ImageDataLoaders_from_lists
+#' @title ImageDataLoaders from lists
 #'
 #' @description Create from list of `fnames` and `labels` in `path`
 #'
@@ -406,7 +440,7 @@ ImageDataLoaders_from_lists <- function(path, fnames, labels, valid_pct = 0.2,
 
 
 
-#' @title ImageDataLoaders_from_path_func
+#' @title ImageDataLoaders from path function
 #'
 #' @description Create from list of `fnames` in `path`s with `label_func`
 #' @param path The folder where to work
@@ -462,7 +496,7 @@ ImageDataLoaders_from_path_func <- function(path, fnames, label_func,
 }
 
 
-#' @title ImageDataLoaders_from_path_re
+#' @title ImageDataLoaders from path re
 #'
 #' @description Create from list of `fnames` in `path`s with re expression `pat`
 #'

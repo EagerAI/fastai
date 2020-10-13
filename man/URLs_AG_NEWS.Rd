@@ -17,3 +17,11 @@ None
 \description{
 download AG_NEWS dataset
 }
+\examples{
+\dontrun{
+
+URLs_AG_NEWS()
+
+}
+
+}

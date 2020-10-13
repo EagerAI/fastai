@@ -2,7 +2,7 @@
 % Please edit documentation in R/image_loaders.R
 \name{ImageDataLoaders_from_lists}
 \alias{ImageDataLoaders_from_lists}
-\title{ImageDataLoaders_from_lists}
+\title{ImageDataLoaders from lists}
 \usage{
 ImageDataLoaders_from_lists(
   path,

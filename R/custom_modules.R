@@ -5,6 +5,15 @@
 #'
 #' @description Net model from Migrating_Pytorch
 #' @return model
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' Net()
+#'
+#' }
+#'
 #' @export
 Net = function() {
   migrating_pytorch$Net()
@@ -72,6 +81,16 @@ LitModel = function() {
 #' @title Loaders
 #' @description a loader from Catalyst
 #' @return None
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' # trigger download
+#' loaders()
+#'
+#' }
+#'
 #' @export
 loaders = function() {
   catalyst$loaders()

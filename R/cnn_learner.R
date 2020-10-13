@@ -24,6 +24,25 @@
 #' @param train_bn It controls if BatchNorm layers are trained even when they are supposed to be frozen according to the splitter.
 #' @param moms The default momentums used in Learner.fit_one_cycle.
 #' @return learner object
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' URLs_MNIST_SAMPLE()
+#' # transformations
+#' tfms = aug_transforms(do_flip = FALSE)
+#' path = 'mnist_sample'
+#' bs = 20
+#'
+#' #load into memory
+#' data = ImageDataLoaders_from_folder(path, batch_tfms = tfms, size = 26, bs = bs)
+#'
+#'
+#' learn = cnn_learner(data, resnet18(), metrics = accuracy, path = getwd())
+#'
+#' }
+#'
 #' @export
 cnn_learner <- function(dls, arch, loss_func = NULL, pretrained = TRUE, cut = NULL,
                         splitter = NULL, y_range = NULL, config = NULL, n_out = NULL,
@@ -109,14 +128,14 @@ fit.fastai.learner.Learner <- function(object, ...) {
 
 }
 
-#' @title Cnn_config
+#' @title Cnn config
 #'
 #' @description Convenience function to easily create a config for `create_cnn_model`
 #'
 #'
 #' @param cut cut
 #' @param pretrained pretrained
-#' @param n_in number of in
+#' @param n_in input shape
 #' @param init init
 #' @param custom_head custom_head
 #' @param concat_pool concat_pool
@@ -159,7 +178,7 @@ cnn_config <- function(cut = NULL, pretrained = TRUE, n_in = 3,
 #' @param n_out number of out
 #' @param cut cut
 #' @param pretrained pretrained model or not
-#' @param n_in number of in
+#' @param input shape
 #' @param init initializer
 #' @param custom_head custom head
 #' @param concat_pool concatenate pooling

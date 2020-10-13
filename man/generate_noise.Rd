@@ -17,3 +17,11 @@ None
 \description{
 Generate noise
 }
+\examples{
+\dontrun{
+
+generate_noise()
+
+}
+
+}

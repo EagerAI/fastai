@@ -12,3 +12,12 @@ model
 \description{
 Net model from Migrating_Pytorch
 }
+\examples{
+
+\dontrun{
+
+Net()
+
+}
+
+}

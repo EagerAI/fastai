@@ -2,7 +2,7 @@
 % Please edit documentation in R/image_loaders.R
 \name{ImageDataLoaders_from_folder}
 \alias{ImageDataLoaders_from_folder}
-\title{From folder}
+\title{ImageDataLoaders from folder}
 \usage{
 ImageDataLoaders_from_folder(
   path,

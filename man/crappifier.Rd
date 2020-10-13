@@ -17,3 +17,12 @@ None
 \description{
 Crappifier
 }
+\examples{
+\dontrun{
+
+items = get_image_files(path_hr)
+parallel(crappifier(path_lr, path_hr), items)
+
+}
+
+}

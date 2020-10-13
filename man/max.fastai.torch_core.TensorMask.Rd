@@ -19,3 +19,12 @@ tensor
 \description{
 Max
 }
+\examples{
+\dontrun{
+
+aa = tensor(1:10)
+max(aa)
+
+}
+
+}

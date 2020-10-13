@@ -19,3 +19,17 @@ None
 \description{
 Get image files in `path` recursively, only in `folders`, if specified.
 }
+\examples{
+
+\dontrun{
+
+URLs_PETS()
+
+path = 'oxford-iiit-pet'
+
+path_img = 'oxford-iiit-pet/images'
+fnames = get_image_files(path_img)
+
+}
+
+}

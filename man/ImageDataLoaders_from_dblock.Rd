@@ -2,7 +2,7 @@
 % Please edit documentation in R/image_loaders.R
 \name{ImageDataLoaders_from_dblock}
 \alias{ImageDataLoaders_from_dblock}
-\title{ImageDataLoaders_from_dblock}
+\title{ImageDataLoaders from dblock}
 \usage{
 ImageDataLoaders_from_dblock(
   dblock,

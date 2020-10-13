@@ -15,3 +15,12 @@ tensor
 \description{
 Abs
 }
+\examples{
+\dontrun{
+
+aa = tensor(-1:-10)
+abs(aa)
+
+}
+
+}

@@ -21,3 +21,12 @@ tensor
 \description{
 Weight for item or user (based on `is_item`) for all in `arr`
 }
+\examples{
+
+\dontrun{
+
+movie_w = learn \%>\% get_weights(top_movies, is_item = TRUE, convert = TRUE)
+
+}
+
+}

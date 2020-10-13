@@ -5,6 +5,15 @@
 #' @param fn path
 #' @param size the size
 #' @return None
+#'
+#'
+#' @examples
+#' \dontrun{
+#'
+#' generate_noise()
+#'
+#' }
+#'
 #' @export
 generate_noise <- function(fn, size = 100) {
 
@@ -74,6 +83,16 @@ FileSplitter <- function(fname) {
 #' @param object model
 #' @param ... additional parameters to pass
 #'
+#'
+#' @examples
+#' \dontrun{
+#'
+#' dls = TabularDataTable(df, procs, cat_names, cont_names,
+#' y_names = dep_var, splits = list(tr_idx, ts_idx) ) %>%
+#'   dataloaders(bs = 50)
+#'
+#' }
+#'
 #' @export
 dataloaders <- function(object, ...) {
 
@@ -106,6 +125,14 @@ dataloaders <- function(object, ...) {
 #' @param n_channels n_channels
 #' @param ... additional params to pass
 #' @return generator object
+#'
+#' @examples
+#' \dontrun{
+#'
+#' generator = basic_generator(out_size = 64, n_channels = 3, n_extra_layers = 1)
+#'
+#' }
+#'
 #' @export
 basic_generator <- function(out_size, n_channels,
                             ...) {
@@ -149,6 +176,15 @@ basic_generator <- function(out_size, n_channels,
 #' @param n_channels The number of channels
 #' @param ... additional parameters to pass
 #' @return None
+#'
+#' @examples
+#' \dontrun{
+#'
+#' critic    = basic_critic(in_size = 64, n_channels = 3, n_extra_layers = 1,
+#'                         act_cls = partial(nn$LeakyReLU, negative_slope = 0.2))
+#'
+#' }
+#'
 #' @export
 basic_critic <- function(in_size, n_channels,
                          ...) {
@@ -208,6 +244,14 @@ basic_critic <- function(in_size, n_channels,
 #' @param train_bn train_bn
 #' @param moms moms
 #' @return None
+#'
+#' @examples
+#' \dontrun{
+#'
+#' learn = GANLearner_wgan(dls, generator, critic, opt_func = partial(Adam(), mom=0.))
+#'
+#' }
+#'
 #' @export
 GANLearner_wgan <- function(dls, generator, critic, switcher = NULL, clip = 0.01,
                  switch_eval = FALSE, gen_first = FALSE, show_img = TRUE,
@@ -251,6 +295,15 @@ GANLearner_wgan <- function(dls, generator, critic, switcher = NULL, clip = 0.01
 #' @param object model
 #' @param ... additonal parameters to pass
 #' @return train history
+#'
+#'
+#' @examples
+#' \dontrun{
+#'
+#' learn %>% fit(1, 2e-4, wd = 0)
+#'
+#' }
+#'
 #' @export
 fit.fastai.vision.gan.GANLearner <- function(object, ...) {
 
@@ -676,6 +729,19 @@ GANLearner_from_learners <- function(gen_learn, crit_learn, switcher = NULL, wei
 #'
 #' @param ... parameters to pass
 #' @return None
+#'
+#' @examples
+#' \dontrun{
+#'
+#' model = LitModel()
+#'
+#' data = Data_Loaders(model$train_dataloader(), model$val_dataloader())$cuda()
+#'
+#' learn = Learner(data, model, loss_func = F$cross_entropy, opt_func = Adam,
+#'                 metrics = accuracy)
+#'
+#' }
+#'
 #' @export
 Learner = function(...) {
   args = list(...)
@@ -690,6 +756,14 @@ Learner = function(...) {
 #'
 #' @param dls dataloader object
 #' @return number of layers
+#'
+#' @examples
+#' \dontrun{
+#'
+#' get_c(dls)
+#'
+#' }
+#'
 #' @export
 get_c <- function(dls) {
 

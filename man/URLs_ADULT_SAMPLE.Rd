@@ -17,3 +17,11 @@ None
 \description{
 download ADULT_SAMPLE dataset
 }
+\examples{
+\dontrun{
+
+URLs_ADULT_SAMPLE()
+
+}
+
+}

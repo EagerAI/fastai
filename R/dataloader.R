@@ -7,6 +7,20 @@
 #' @param ... parameters to pass
 #'
 #' @return loader object
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' data = Data_Loaders(train_loader, test_loader)
+#'
+#' learn = Learner(data, Net(), loss_func = F$nll_loss,
+#'                 opt_func = Adam(), metrics = accuracy, cbs = CudaCallback())
+#'
+#' learn %>% fit_one_cycle(1, 1e-2)
+#'
+#' }
+#'
 #' @export
 Data_Loaders = function(...) {
 

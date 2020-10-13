@@ -2,7 +2,7 @@
 % Please edit documentation in R/image_loaders.R
 \name{ImageDataLoaders_from_csv}
 \alias{ImageDataLoaders_from_csv}
-\title{From_csv}
+\title{ImageDataLoaders from csv}
 \usage{
 ImageDataLoaders_from_csv(
   path,

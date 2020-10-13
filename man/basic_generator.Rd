@@ -19,3 +19,11 @@ generator object
 \description{
 A basic generator from `in_sz` to images `n_channels` x `out_size` x `out_size`.
 }
+\examples{
+\dontrun{
+
+generator = basic_generator(out_size = 64, n_channels = 3, n_extra_layers = 1)
+
+}
+
+}

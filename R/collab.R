@@ -14,6 +14,23 @@
 #' @param shuffle_train If we shuffle the training DataLoader or not
 #' @param device the device, e.g. cpu, cuda, and etc.
 #' @return None
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' URLs_MOVIE_LENS_ML_100k()
+#' c(user,item,title)  %<-% list('userId','movieId','title')
+#' ratings = fread('ml-100k/u.data', col.names = c(user,item,'rating','timestamp'))
+#' movies = fread('ml-100k/u.item', col.names = c(item, 'title', 'date', 'N', 'url',
+#'                                                paste('g',1:19,sep = '')))
+#' rating_movie = ratings[movies[, .SD, .SDcols=c(item,title)], on = item]
+#' dls = CollabDataLoaders_from_df(rating_movie, seed = 42, valid_pct = 0.1, bs = 64,
+#' item_name=title, path='ml-100k')
+#'
+#' }
+#'
+#'
 #' @export
 CollabDataLoaders_from_df <- function(ratings, valid_pct = 0.2, user_name = NULL,
                                       item_name = NULL, rating_name = NULL, seed = NULL,
@@ -109,6 +126,24 @@ CollabDataLoaders_from_dblock <- function(dblock, source, path = ".", bs = 64,
 #' @param train_bn It controls if BatchNorm layers are trained even when they are supposed to be frozen according to the splitter.
 #' @param moms The default momentums used in Learner.fit_one_cycle.
 #' @return learner object
+#'
+#' \dontrun{
+#'
+#' URLs_MOVIE_LENS_ML_100k()
+#' c(user,item,title)  %<-% list('userId','movieId','title')
+#' ratings = fread('ml-100k/u.data', col.names = c(user,item,'rating','timestamp'))
+#' movies = fread('ml-100k/u.item', col.names = c(item, 'title', 'date', 'N', 'url',
+#'                                                paste('g',1:19,sep = '')))
+#' rating_movie = ratings[movies[, .SD, .SDcols=c(item,title)], on = item]
+#' dls = CollabDataLoaders_from_df(rating_movie, seed = 42, valid_pct = 0.1, bs = 64,
+#' item_name=title, path='ml-100k')
+#'
+#' learn = collab_learner(dls, n_factors = 40, y_range=c(0, 5.5))
+#'
+#' learn %>% fit_one_cycle(1, 5e-3,  wd = 1e-1)
+#'
+#' }
+#'
 #' @export
 collab_learner <- function(dls, n_factors = 50, use_nn = FALSE,
                            emb_szs = NULL, layers = NULL, config = NULL,
@@ -174,6 +209,15 @@ trainable_params <- function(m) {
 #' @param is_item logical, is item
 #' @param convert to R matrix
 #' @return tensor
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' movie_w = learn %>% get_weights(top_movies, is_item = TRUE, convert = TRUE)
+#'
+#' }
+#'
 #' @export
 get_weights <- function(object, arr, is_item = TRUE, convert = FALSE) {
 
@@ -195,6 +239,15 @@ get_weights <- function(object, arr, is_item = TRUE, convert = FALSE) {
 #' @param is_item logical, is item
 #' @param convert to R matrix
 #' @return tensor
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' movie_bias = learn %>% get_bias(top_movies, is_item = TRUE)
+#'
+#' }
+#'
 #' @export
 get_bias <- function(object, arr, is_item = TRUE, convert = TRUE) {
 

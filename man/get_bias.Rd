@@ -21,3 +21,12 @@ tensor
 \description{
 Bias for item or user (based on `is_item`) for all in `arr`
 }
+\examples{
+
+\dontrun{
+
+movie_bias = learn \%>\% get_bias(top_movies, is_item = TRUE)
+
+}
+
+}

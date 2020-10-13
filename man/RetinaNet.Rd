@@ -15,3 +15,13 @@ model
 \description{
 Implements RetinaNet from https://arxiv.org/abs/1708.02002
 }
+\examples{
+\dontrun{
+
+encoder = create_body(resnet34(), pretrained = TRUE)
+arch = RetinaNet(encoder, get_c(dls), final_bias=-4)
+
+}
+
+
+}

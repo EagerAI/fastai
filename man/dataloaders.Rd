@@ -14,3 +14,13 @@ dataloaders(object, ...)
 \description{
 Create a `DataLoaders` object from `source`
 }
+\examples{
+\dontrun{
+
+dls = TabularDataTable(df, procs, cat_names, cont_names,
+y_names = dep_var, splits = list(tr_idx, ts_idx) ) \%>\%
+  dataloaders(bs = 50)
+
+}
+
+}

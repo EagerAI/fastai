@@ -12,3 +12,13 @@ None
 \description{
 a loader from Catalyst
 }
+\examples{
+
+\dontrun{
+
+# trigger download
+loaders()
+
+}
+
+}

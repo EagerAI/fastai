@@ -2,7 +2,7 @@
 % Please edit documentation in R/image_loaders.R
 \name{ImageDataLoaders_from_df}
 \alias{ImageDataLoaders_from_df}
-\title{ImageDataLoaders_from_df}
+\title{ImageDataLoaders from df}
 \usage{
 ImageDataLoaders_from_df(
   df,

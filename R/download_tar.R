@@ -6,6 +6,13 @@
 #'
 #' @description download ADULT_SAMPLE dataset
 #' @return None
+#' @examples
+#' \dontrun{
+#'
+#' URLs_ADULT_SAMPLE()
+#'
+#' }
+#'
 #' @export
 URLs_ADULT_SAMPLE <- function(filename = 'ADULT_SAMPLE', untar = TRUE) {
 
@@ -25,6 +32,14 @@ URLs_ADULT_SAMPLE <- function(filename = 'ADULT_SAMPLE', untar = TRUE) {
 #'
 #' @description download AG_NEWS dataset
 #' @return None
+#'
+#' @examples
+#' \dontrun{
+#'
+#' URLs_AG_NEWS()
+#'
+#' }
+#'
 #' @export
 URLs_AG_NEWS <- function(filename = 'AG_NEWS', untar = TRUE) {
 

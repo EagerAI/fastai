@@ -2,7 +2,7 @@
 % Please edit documentation in R/image_loaders.R
 \name{ImageDataLoaders_from_name_re}
 \alias{ImageDataLoaders_from_name_re}
-\title{From name regex}
+\title{ImageDataLoaders from name regex}
 \usage{
 ImageDataLoaders_from_name_re(
   path,
@@ -43,4 +43,24 @@ None
 }
 \description{
 Create from the name attrs of `fnames` in `path`s with re expression `pat`
+}
+\examples{
+
+\dontrun{
+
+URLs_PETS()
+
+path = 'oxford-iiit-pet'
+
+dls = ImageDataLoaders_from_name_re(
+path, fnames, pat='(.+)_\\\\d+.jpg$',
+item_tfms = RandomResizedCrop(460, min_scale=0.75), bs = 10,
+batch_tfms = list(aug_transforms(size = 299, max_warp = 0),
+                  Normalize_from_stats( imagenet_stats() )
+),
+device = 'cuda'
+)
+
+}
+
 }

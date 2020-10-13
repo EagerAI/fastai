@@ -2,7 +2,7 @@
 % Please edit documentation in R/image_loaders.R
 \name{ImageDataLoaders_from_path_func}
 \alias{ImageDataLoaders_from_path_func}
-\title{ImageDataLoaders_from_path_func}
+\title{ImageDataLoaders from path function}
 \usage{
 ImageDataLoaders_from_path_func(
   path,

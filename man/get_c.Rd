@@ -15,3 +15,11 @@ number of layers
 \description{
 Get_c
 }
+\examples{
+\dontrun{
+
+get_c(dls)
+
+}
+
+}

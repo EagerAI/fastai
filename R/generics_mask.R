@@ -4,6 +4,16 @@
 #' @param a tensor
 #' @param b tensor
 #' @return tensor
+#'
+#'
+#' @examples
+#' \dontrun{
+#'
+#' aa = tensor(1:10)
+#' aa == aa
+#'
+#' }
+#'
 #' @export
 "==.fastai.torch_core.TensorMask" <- function(a, b) {
   a$eq(b)
@@ -37,6 +47,15 @@
 #' @param a tensor
 #' @param b tensor
 #' @return tensor
+#'
+#' @examples
+#' \dontrun{
+#'
+#' aa = tensor(1:10)
+#' aa >= aa
+#'
+#' }
+#'
 #' @export
 ">=.fastai.torch_core.TensorMask" <- function(a, b) {
   a$ge(b)
@@ -79,6 +98,15 @@
 #' @param ... additional parameters
 #' @param na.rm remove NAs
 #' @return tensor
+#'
+#' @examples
+#' \dontrun{
+#'
+#' aa = tensor(1:10)
+#' max(aa)
+#'
+#' }
+#'
 #' @export
 "max.fastai.torch_core.TensorMask" <- function(a, ..., na.rm = FALSE) {
   a$max()
@@ -187,6 +215,15 @@
 #'
 #' @param x tensor
 #' @return tensor
+#'
+#' @examples
+#' \dontrun{
+#'
+#' aa = tensor(-1:-10)
+#' abs(aa)
+#'
+#' }
+#'
 #' @export
 "abs.fastai.torch_core.TensorMask" <- function(x) {
   x$abs()

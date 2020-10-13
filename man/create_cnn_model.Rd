@@ -29,8 +29,6 @@ create_cnn_model(
 
 \item{pretrained}{pretrained model or not}
 
-\item{n_in}{number of in}
-
 \item{init}{initializer}
 
 \item{custom_head}{custom head}
@@ -46,6 +44,8 @@ create_cnn_model(
 \item{lin_first}{lin_first}
 
 \item{y_range}{y_range}
+
+\item{input}{shape}
 }
 \value{
 None

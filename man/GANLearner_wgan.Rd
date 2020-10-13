@@ -71,3 +71,11 @@ None
 \description{
 Create a WGAN from `data`, `generator` and `critic`.
 }
+\examples{
+\dontrun{
+
+learn = GANLearner_wgan(dls, generator, critic, opt_func = partial(Adam(), mom=0.))
+
+}
+
+}
