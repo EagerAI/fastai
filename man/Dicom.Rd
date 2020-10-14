@@ -6,6 +6,9 @@
 \usage{
 Dicom(...)
 }
+\arguments{
+\item{...}{parameters to pass}
+}
 \value{
 module
 }

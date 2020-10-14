@@ -5,6 +5,8 @@
 \title{SeparableBlock}
 \usage{
 SeparableBlock(expansion, ni, nf, reduction = 16, stride = 1, base_width = 4)
+
+SeparableBlock(expansion, ni, nf, reduction = 16, stride = 1, base_width = 4)
 }
 \arguments{
 \item{expansion}{decoder}
@@ -21,7 +23,11 @@ SeparableBlock(expansion, ni, nf, reduction = 16, stride = 1, base_width = 4)
 }
 \value{
 Block object
+
+Block object
 }
 \description{
+SeparableBlock
+
 SeparableBlock
 }

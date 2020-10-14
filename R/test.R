@@ -60,21 +60,32 @@
 #' @export
 show_batch <- function(dls, b = NULL, max_n = 9, ctxs = NULL,
                        figsize = c(19.2,10.8),
-                       show = TRUE, unique = FALSE, dpi = 90) {
+                       show = TRUE, unique = FALSE, dpi = 90, ...) {
 
   fastai2$vision$all$plt$close()
 
   if(class(dls)[1]=="fastai.tabular.data.TabularDataLoaders") {
     dls$dataset$train$items[sample(nrow(dls$dataset$train$items),dls$bs),]
   } else {
-    dls$show_batch(
+    args = list(
       b = b,
       max_n = as.integer(max_n),
       ctxs = ctxs,
       show = show,
       unique = unique,
-      figsize = figsize
+      figsize = figsize,
+      ...
     )
+
+    if(!is.null(args[['nrows']])) {
+      args[['nrows']] = as.integer(args[['nrows']])
+    }
+
+    if(!is.null(args[['ncols']])) {
+      args[['ncols']] = as.integer(args[['ncols']])
+    }
+
+    do.call(dls$show_batch, args)
 
     tmp_d = proj_name = gsub(tempdir(), replacement = '/', pattern = '\\', fixed=TRUE)
     fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi))

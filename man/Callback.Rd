@@ -6,6 +6,9 @@
 \usage{
 Callback(...)
 }
+\arguments{
+\item{...}{parameters to pass}
+}
 \value{
 module
 }

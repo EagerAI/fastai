@@ -6,6 +6,9 @@
 \usage{
 Module(...)
 }
+\arguments{
+\item{...}{parameters to pass}
+}
 \value{
 module
 }

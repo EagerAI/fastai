@@ -12,7 +12,8 @@ show_batch(
   figsize = c(19.2, 10.8),
   show = TRUE,
   unique = FALSE,
-  dpi = 90
+  dpi = 90,
+  ...
 )
 }
 \arguments{

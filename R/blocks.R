@@ -23,6 +23,56 @@ SEBlock <- function(expansion, ni, nf, groups = 1, reduction = 16, stride = 1) {
 
 }
 
+#' @title SEResNeXtBlock
+#'
+#' @param expansion decoder
+#' @param ni ni
+#' @param nf nf
+#' @param groups number of groups
+#' @param reduction number of reduction
+#' @param stride number of stride
+#' @param base_width base width
+#' @return Block object
+#' @export
+SEResNeXtBlock <- function(expansion, ni, nf, groups = 32, reduction = 16, stride = 1, base_width = 4) {
+
+  vision$all$SEResNeXtBlock(
+    expansion = expansion,
+    ni = ni,
+    nf = nf,
+    groups = as.integer(),
+    reduction = as.integer(reduction),
+    stride = as.integer(stride),
+    base_width = as.integer(base_width)
+  )
+
+}
+
+#' @title SeparableBlock
+#'
+#'
+#' @param expansion decoder
+#' @param ni ni
+#' @param nf nf
+#' @param reduction number of reduction
+#' @param stride number of stride
+#' @param base_width base width
+#' @return Block object
+#'
+#' @export
+SeparableBlock <- function(expansion, ni, nf, reduction = 16, stride = 1, base_width = 4) {
+
+  vision$all$SeparableBlock(
+    expansion = expansion,
+    ni = ni,
+    nf = nf,
+    reduction = as.integer(reduction),
+    stride = as.integer(stride),
+    base_width = as.integer(base_width)
+  )
+
+}
+
 #' @title ResBlock
 #'
 #' @description Resnet block from `ni` to `nh` with `stride`
