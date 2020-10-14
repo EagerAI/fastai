@@ -71,7 +71,7 @@ get_confusion_matrix <- function(object) {
 #' \dontrun{
 #'
 #' model %>% lr_find()
-#' model %>% plot_lr_find(dpi = 200)s
+#' model %>% plot_lr_find(dpi = 200)
 #'
 #' }
 #'

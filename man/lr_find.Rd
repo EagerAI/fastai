@@ -40,7 +40,7 @@ Launch a mock training to find a good learning rate, return lr_min, lr_steep if 
 \dontrun{
 
 model \%>\% lr_find()
-model \%>\% plot_lr_find(dpi = 200)s
+model \%>\% plot_lr_find(dpi = 200)
 
 }
 

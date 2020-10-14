@@ -224,7 +224,15 @@
     <p>None</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"></pre>
+    <pre class="examples"><div class='input'>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+
+<span class='va'>model</span> <span class='op'>=</span> <span class='va'>dls</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='tabular_learner.html'>tabular_learner</a></span><span class='op'>(</span>layers<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>200</span>,<span class='fl'>100</span>,<span class='fl'>100</span>,<span class='fl'>200</span><span class='op'>)</span>,
+metrics <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'>mse</span><span class='op'>(</span><span class='op'>)</span>,<span class='fu'><a href='rmse.html'>rmse</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>)</span>
+
+<span class='op'>}</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
