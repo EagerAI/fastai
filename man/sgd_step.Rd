@@ -19,3 +19,26 @@ None
 \description{
 Sgd_step
 }
+\examples{
+
+\dontrun{
+
+tst_param = function(val, grad = NULL) {
+  "Create a tensor with `val` and a gradient of `grad` for testing"
+  res = tensor(val) \%>\% float()
+
+  if(is.null(grad)) {
+    grad = tensor(val / 10)
+  } else {
+    grad = tensor(grad)
+  }
+
+  res$grad = grad \%>\% float()
+  res
+}
+p = tst_param(1., 0.1)
+sgd_step(p, 1.)
+
+}
+
+}

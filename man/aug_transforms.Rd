@@ -65,3 +65,25 @@ None
 \description{
 Utility func to easily create a list of flip, rotate, zoom, warp, lighting transforms.
 }
+\examples{
+
+\dontrun{
+
+URLs_PETS()
+
+path = 'oxford-iiit-pet'
+
+path_img = 'oxford-iiit-pet/images'
+fnames = get_image_files(path_img)
+
+dls = ImageDataLoaders_from_name_re(
+path, fnames, pat='(.+)_.jpg$',
+item_tfms=Resize(size = 460), bs = 10,
+batch_tfms=list(aug_transforms(size = 224, min_scale = 0.75),
+                Normalize_from_stats( imagenet_stats() )
+)
+)
+
+}
+
+}

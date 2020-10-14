@@ -47,6 +47,16 @@
 #' @param figsize figure size
 #' @param dpi dots per inch
 #' @return None
+#'
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' dls %>% show_batch()
+#'
+#' }
+#'
 #' @export
 show_batch <- function(dls, b = NULL, max_n = 9, ctxs = NULL,
                        figsize = c(19.2,10.8),
@@ -109,6 +119,18 @@ ClassificationInterpretation_from_learner <- function(learn, ds_idx = 1, dl = NU
 #' @param dpi dots per inch
 #' @param ... additional parameters to pass
 #' @return None
+#'
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' # get interperetation from learn object, the model.
+#' interp = ClassificationInterpretation_from_learner(learn)
+#' interp %>% plot_top_losses(k = 9, figsize = c(15,11))
+#'
+#' }
+#'
 #' @export
 plot_top_losses <- function(interp, k, largest = TRUE, figsize = c(19.2,10.8),
                             ..., dpi = NULL) {
@@ -149,6 +171,16 @@ plot_top_losses <- function(interp, k, largest = TRUE, figsize = c(19.2,10.8),
 #' @param dpi dots per inch
 #' @param ... additional parameters to pass
 #' @return None
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' interp = ClassificationInterpretation_from_learner(model)
+#' interp %>% plot_confusion_matrix(dpi = 90,figsize = c(6,6))
+#'
+#' }
+#'
 #' @export
 plot_confusion_matrix <- function(interp, normalize = FALSE, title = "Confusion matrix",
                                   cmap = "Blues", norm_dec = 2, plot_txt = TRUE,
@@ -462,6 +494,17 @@ show_results <- function(object, ds_idx = 1, dl = NULL, max_n = 9, shuffle = TRU
 #'
 #' @param ... additional arguments
 #' @return None
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' generator = basic_generator(out_size = 64, n_channels = 3, n_extra_layers = 1)
+#' critic    = basic_critic(in_size = 64, n_channels = 3, n_extra_layers = 1,
+#'                          act_cls = partial(nn$LeakyReLU, negative_slope = 0.2))
+#'
+#' }
+#'
 #' @export
 partial <- function(...) {
 

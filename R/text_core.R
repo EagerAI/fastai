@@ -23,6 +23,13 @@ spec_add_spaces <- function(t) {
 #'
 #' @description Remove multiple spaces
 #'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' rm_useless_spaces('hello,   Sir!')
+#'
+#' }
 #'
 #' @param t text
 #' @return string
@@ -64,7 +71,7 @@ replace_rep <- function(t) {
 
 
 
-#' @title replace_wrep
+#' @title Replace_wrep
 #'
 #' @description Replace word repetitions: word word word word -- TK_WREP 4 word
 #'

@@ -7,6 +7,17 @@
 #' @param recurse recursive or not
 #' @param folders folder names
 #' @return lsit of files
+#'
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' items = get_dicom_files("siim_small/train/")
+#'
+#'
+#' }
+#'
 #' @export
 get_dicom_files <- function(path, recurse = TRUE, folders = NULL) {
 
@@ -26,6 +37,17 @@ get_dicom_files <- function(path, recurse = TRUE, folders = NULL) {
 #' @param fn file name
 #' @param force logical, force
 #' @return dicom object
+#'
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' img = dcmread('hemorrhage.dcm')
+#'
+#'
+#' }
+#'
 #' @export
 dcmread <- function(fn, force = FALSE) {
 
@@ -56,6 +78,17 @@ print.pydicom.dataset.FileDataset <- function(x, ...) {
 #' @param size size of image
 #' @param convert to R matrix or keep tensor
 #' @return tensor
+#'
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' img = dcmread('hemorrhage.dcm')
+#' img %>% get_dcm_matrix(type = 'raw')
+#'
+#' }
+#'
 #' @export
 get_dcm_matrix <- function(img, type = 'raw', scan = '', size = 50, convert = TRUE) {
 

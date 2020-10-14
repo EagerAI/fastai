@@ -19,3 +19,13 @@ lsit of files
 \description{
 Get dicom files in `path` recursively, only in `folders`, if specified.
 }
+\examples{
+
+\dontrun{
+
+items = get_dicom_files("siim_small/train/")
+
+
+}
+
+}

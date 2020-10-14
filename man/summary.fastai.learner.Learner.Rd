@@ -17,3 +17,12 @@ None
 \description{
 Summary
 }
+\examples{
+
+\dontrun{
+
+summary(model)
+
+}
+
+}

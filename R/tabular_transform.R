@@ -9,6 +9,16 @@
 #' @param add_col add_col
 #' @param fill_val fill_val
 #' @return None
+#'
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' procs = list(FillMissing(),Categorify(),Normalize())
+#'
+#' }
+#'
 #' @export
 FillMissing <- function(cat_names, cont_names, fill_strategy = FillStrategy_MEDIAN(), add_col = TRUE, fill_val = 0.0) {
 

@@ -15,3 +15,12 @@ string
 \description{
 Remove multiple spaces
 }
+\examples{
+
+\dontrun{
+
+rm_useless_spaces('hello,   Sir!')
+
+}
+
+}

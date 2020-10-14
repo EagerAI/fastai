@@ -17,3 +17,14 @@ None
 \description{
 Mean squared error between `inp` and `targ`.
 }
+\examples{
+
+\dontrun{
+
+model = dls \%>\% tabular_learner(layers=c(200,100,100,200),
+config = tabular_config(embed_p = 0.3, use_bn = FALSE),
+metrics = list(mse(),rmse())
+
+}
+
+}

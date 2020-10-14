@@ -155,6 +155,24 @@ accuracy <- function(inp, targ, axis = -1) {
 #' @param k k
 #' @param axis axis
 #' @return None
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' loaders = loaders()
+#'
+#' data = Data_Loaders(loaders['train'], loaders['valid'])$cuda()
+#'
+#' model = nn$Sequential() +
+#'   nn$Flatten() +
+#'   nn$Linear(28L * 28L, 10L)
+#' metrics = list(accuracy,top_k_accuracy)
+#' learn = Learner(data, model, loss_func = F$cross_entropy, opt_func = Adam,
+#'                 metrics = metrics)
+#'
+#' }
+#'
 #' @export
 top_k_accuracy <- function(inp, targ, k = 5, axis = -1) {
 
@@ -476,6 +494,19 @@ RocAuc <- function(axis = -1, average = "macro",
 #' @param max_fpr max_fpr
 #' @param multi_class multi_class
 #' @return None
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' model = dls %>% tabular_learner(layers=c(200,100,100,200),
+#' config = tabular_config(embed_p = 0.3, use_bn = FALSE),
+#' metrics = list(accuracy, RocAucBinary(),
+#'                Precision(), Recall(),
+#'                F1Score()))
+#'
+#' }
+#'
 #' @export
 RocAucBinary <- function(axis = -1, average = "macro",
                          sample_weight = NULL, max_fpr = NULL, multi_class = "raise") {
@@ -806,6 +837,18 @@ RocAucMulti <- function(sigmoid = TRUE, average = "macro",
 #' @param inp predictions
 #' @param targ targets
 #' @return None
+#'
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' model = dls %>% tabular_learner(layers=c(200,100,100,200),
+#' config = tabular_config(embed_p = 0.3, use_bn = FALSE),
+#' metrics = list(mse(),rmse())
+#'
+#' }
+#'
 #' @export
 mse <- function(inp, targ) {
 
@@ -829,6 +872,18 @@ mse <- function(inp, targ) {
 #' @param preds predictions
 #' @param targs targets
 #' @return None
+#'
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' model = dls %>% tabular_learner(layers=c(200,100,100,200),
+#' config = tabular_config(embed_p = 0.3, use_bn = FALSE),
+#' metrics = list(mse(),rmse())
+#'
+#' }
+#'
 #' @export
 rmse <- function(preds, targs) {
 

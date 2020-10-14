@@ -23,3 +23,26 @@ None
 \description{
 L2 regularization as adding `wd*p` to `p$grad`
 }
+\examples{
+
+\dontrun{
+
+tst_param = function(val, grad = NULL) {
+  "Create a tensor with `val` and a gradient of `grad` for testing"
+  res = tensor(val) \%>\% float()
+
+  if(is.null(grad)) {
+    grad = tensor(val / 10)
+  } else {
+    grad = tensor(grad)
+  }
+
+  res$grad = grad \%>\% float()
+  res
+}
+p = tst_param(1., 0.1)
+l2_reg(p, 1., 0.1)
+
+}
+
+}

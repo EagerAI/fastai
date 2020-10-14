@@ -48,6 +48,29 @@ Resize <- function(size, method = "crop", pad_mode = "reflection", resamples = l
 #' @param batch batch
 #' @param min_scale min_scale
 #' @return None
+#'
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' URLs_PETS()
+#'
+#' path = 'oxford-iiit-pet'
+#'
+#' path_img = 'oxford-iiit-pet/images'
+#' fnames = get_image_files(path_img)
+#'
+#' dls = ImageDataLoaders_from_name_re(
+#' path, fnames, pat='(.+)_.jpg$',
+#' item_tfms=Resize(size = 460), bs = 10,
+#' batch_tfms=list(aug_transforms(size = 224, min_scale = 0.75),
+#'                 Normalize_from_stats( imagenet_stats() )
+#' )
+#' )
+#'
+#' }
+#'
 #' @export
 aug_transforms <- function(mult = 1.0, do_flip = TRUE, flip_vert = FALSE,
                            max_rotate = 10.0, min_zoom = 1.0, max_zoom = 1.1,
@@ -92,6 +115,14 @@ aug_transforms <- function(mult = 1.0, do_flip = TRUE, flip_vert = FALSE,
 
 #' @title Imagenet statistics
 #'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' imagenet_stats()
+#'
+#'
+#' }
 #'
 #' @return vector
 #' @export

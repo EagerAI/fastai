@@ -19,3 +19,14 @@ tensor
 \description{
 1 - `accuracy`
 }
+\examples{
+
+\dontrun{
+
+learn = cnn_learner(dls, resnet34(), metrics = error_rate)
+
+
+}
+
+
+}

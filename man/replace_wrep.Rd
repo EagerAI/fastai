@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_core.R
 \name{replace_wrep}
 \alias{replace_wrep}
-\title{replace_wrep}
+\title{Replace_wrep}
 \usage{
 replace_wrep(t)
 }

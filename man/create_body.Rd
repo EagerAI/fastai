@@ -15,3 +15,12 @@ None
 \description{
 Cut off the body of a typically pretrained `arch` as determined by `cut`
 }
+\examples{
+
+\dontrun{
+
+encoder = create_body(resnet34(), pretrained = TRUE)
+
+}
+
+}

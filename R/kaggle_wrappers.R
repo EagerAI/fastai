@@ -2,7 +2,15 @@
 #'
 #' @description list files for competition
 #'
+#' @examples
 #'
+#' \dontrun{
+#'
+#' com_nm = 'titanic'
+#' titanic_files = competition_list_files(com_nm)
+#'
+#'
+#' }
 #' @param competition the name of the competition
 #' @return list of files
 #' @export
@@ -19,7 +27,26 @@ competition_list_files <- function(competition) {
 #'
 #' @description download a competition file to a designated location, or use
 #'
+#' @examples
 #'
+#' \dontrun{
+#'
+#' com_nm = 'titanic'
+#'
+#' titanic_files = competition_list_files(com_nm)
+#' titanic_files = lapply(1:length(titanic_files),
+#'                       function(x) as.character(titanic_files[[x]]))
+#'
+#' str(titanic_files)
+#'
+#' if(!dir.exists(com_nm)) {
+#'  dir.create(com_nm)
+#' }
+#'
+#' # download via api
+#' competition_download_files(competition = com_nm, path = com_nm, unzip = TRUE)
+#'
+#' }
 #' @param competition the name of the competition
 #' @param file_name the configuration file name
 #' @param path a path to download the file to

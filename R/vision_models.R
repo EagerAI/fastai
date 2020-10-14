@@ -149,6 +149,15 @@ xresnet50_deep <- function(...) {
 #' @param pretrained pretrained or not
 #' @param progress to see progress bar or not
 #' @return model
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' alexnet(pretrained = FALSE, progress = TRUE)
+#'
+#' }
+#'
 #' @export
 alexnet <- function(pretrained = FALSE, progress) {
 

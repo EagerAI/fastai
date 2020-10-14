@@ -29,3 +29,24 @@ None
 \description{
 download a competition file to a designated location, or use
 }
+\examples{
+
+\dontrun{
+
+com_nm = 'titanic'
+
+titanic_files = competition_list_files(com_nm)
+titanic_files = lapply(1:length(titanic_files),
+                      function(x) as.character(titanic_files[[x]]))
+
+str(titanic_files)
+
+if(!dir.exists(com_nm)) {
+ dir.create(com_nm)
+}
+
+# download via api
+competition_download_files(competition = com_nm, path = com_nm, unzip = TRUE)
+
+}
+}

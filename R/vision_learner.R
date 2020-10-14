@@ -21,6 +21,15 @@ has_pool_type <- function(m) {
 #'
 #' @param ... parameters to pass
 #' @return None
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' encoder = create_body(resnet34(), pretrained = TRUE)
+#'
+#' }
+#'
 #' @export
 create_body <- function(...) {
 

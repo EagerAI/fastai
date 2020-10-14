@@ -29,3 +29,16 @@ None
 \description{
 Area Under the Receiver Operating Characteristic Curve for single-label binary classification problems
 }
+\examples{
+
+\dontrun{
+
+model = dls \%>\% tabular_learner(layers=c(200,100,100,200),
+config = tabular_config(embed_p = 0.3, use_bn = FALSE),
+metrics = list(accuracy, RocAucBinary(),
+               Precision(), Recall(),
+               F1Score()))
+
+}
+
+}

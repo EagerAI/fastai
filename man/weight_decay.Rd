@@ -23,3 +23,26 @@ None
 \description{
 Weight decay as decaying `p` with `lr*wd`
 }
+\examples{
+
+\dontrun{
+
+tst_param = function(val, grad = NULL) {
+  "Create a tensor with `val` and a gradient of `grad` for testing"
+  res = tensor(val) \%>\% float()
+
+  if(is.null(grad)) {
+    grad = tensor(val / 10)
+  } else {
+    grad = tensor(grad)
+  }
+
+  res$grad = grad \%>\% float()
+  res
+}
+p = tst_param(1., 0.1)
+weight_decay(p, 1., 0.1)
+
+}
+
+}

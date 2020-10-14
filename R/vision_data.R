@@ -113,6 +113,44 @@ BBoxBlock <- function() {
 #' @param vocab vocab
 #' @param add_na add_na
 #'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' URLs_COCO_TINY()
+#'
+#' c(images, lbl_bbox) %<-% get_annotations('coco_tiny/train.json')
+#' timg = Transform(ImageBW_create)
+#' idx = 49
+#' c(coco_fn,bbox) %<-% list(paste('coco_tiny/train',images[[idx]],sep = '/'),
+#'                           lbl_bbox[[idx]])
+#' coco_img = timg(coco_fn)
+#'
+#' tbbox = LabeledBBox(TensorBBox(bbox[[1]]), bbox[[2]])
+#'
+#' coco_bb = function(x) {
+#' TensorBBox_create(bbox[[1]])
+#' }
+#'
+#' coco_lbl = function(x) {
+#'   bbox[[2]]
+#' }
+#'
+#' coco_dsrc = Datasets(c(rep(coco_fn,10)),
+#'                      list(Image_create(), list(coco_bb),
+#'                           list( coco_lbl, MultiCategorize(add_na = TRUE) )
+#'                      ), n_inp = 1)
+#'
+#' coco_tdl = TfmdDL(coco_dsrc, bs = 9,
+#'                   after_item = list(BBoxLabeler(), PointScaler(),
+#'                                     ToTensor()),
+#'                   after_batch = list(IntToFloatTensor(), aug_transforms())
+#' )
+#'
+#' coco_tdl %>% show_batch(dpi = 200)
+#'
+#' }
+#'
 #' @export
 BBoxLblBlock <- function(vocab = NULL, add_na = TRUE) {
 

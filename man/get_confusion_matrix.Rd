@@ -15,3 +15,12 @@ matrix
 \description{
 Extract confusion matrix
 }
+\examples{
+
+\dontrun{
+
+model \%>\% get_confusion_matrix()
+
+}
+
+}

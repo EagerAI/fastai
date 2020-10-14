@@ -17,3 +17,13 @@ tensor
 \description{
 One batch
 }
+\examples{
+
+\dontrun{
+
+# get batch from data loader
+batch = dls \%>\% one_batch()
+
+}
+
+}

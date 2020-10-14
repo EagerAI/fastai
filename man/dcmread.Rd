@@ -17,3 +17,13 @@ dicom object
 \description{
 Open a `DICOM` file
 }
+\examples{
+
+\dontrun{
+
+img = dcmread('hemorrhage.dcm')
+
+
+}
+
+}

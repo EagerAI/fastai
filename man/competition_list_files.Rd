@@ -15,3 +15,13 @@ list of files
 \description{
 list files for competition
 }
+\examples{
+
+\dontrun{
+
+com_nm = 'titanic'
+titanic_files = competition_list_files(com_nm)
+
+
+}
+}

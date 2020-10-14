@@ -12,3 +12,13 @@ vector
 \description{
 Imagenet statistics
 }
+\examples{
+
+\dontrun{
+
+imagenet_stats()
+
+
+}
+
+}

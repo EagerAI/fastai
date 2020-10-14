@@ -20,3 +20,12 @@ AlexNet model architecture
 \details{
 "One weird trick..." <https://arxiv.org/abs/1404.5997>
 }
+\examples{
+
+\dontrun{
+
+alexnet(pretrained = FALSE, progress = TRUE)
+
+}
+
+}

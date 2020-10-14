@@ -41,3 +41,13 @@ None
 \description{
 Plot the confusion matrix, with `title` and using `cmap`.
 }
+\examples{
+
+\dontrun{
+
+interp = ClassificationInterpretation_from_learner(model)
+interp \%>\% plot_confusion_matrix(dpi = 90,figsize = c(6,6))
+
+}
+
+}

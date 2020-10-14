@@ -30,6 +30,15 @@ plot_confusion_matrix <- function(object, dataloader) {
 #'
 #' @param object model
 #' @return matrix
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' model %>% get_confusion_matrix()
+#'
+#' }
+#'
 #' @export
 get_confusion_matrix <- function(object) {
   interp = vision$all$ClassificationInterpretation$from_learner(object)
@@ -56,6 +65,16 @@ get_confusion_matrix <- function(object) {
 #' @param suggestions suggestions
 #' @param ... additional arguments to pass
 #' @return data frame
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' model %>% lr_find()
+#' model %>% plot_lr_find(dpi = 200)s
+#'
+#' }
+#'
 #' @export
 lr_find <- function(object, start_lr = 1e-07, end_lr = 10, num_it = 100,
                     stop_div = TRUE, suggestions = TRUE, ...) {
@@ -126,6 +145,16 @@ attr(Perplexity,"py_function_name") <- "Perplexity"
 #' @param convert to R matrix
 #' @param object data loader
 #' @return tensor
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' # get batch from data loader
+#' batch = dls %>% one_batch()
+#'
+#' }
+#'
 #' @export
 one_batch <- function(object, convert = FALSE) {
   obj = object$one_batch()
@@ -154,6 +183,15 @@ one_batch <- function(object, convert = FALSE) {
 #' @param object model
 #' @param ... additional arguments to pass
 #' @return None
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' summary(model)
+#'
+#' }
+#'
 #' @export
 summary.fastai.learner.Learner <- function(object, ...) {
   object$summary()

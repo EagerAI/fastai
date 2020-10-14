@@ -38,3 +38,12 @@ None
 \description{
 Show_batch
 }
+\examples{
+
+\dontrun{
+
+dls \%>\% show_batch()
+
+}
+
+}

@@ -23,3 +23,13 @@ tensor
 \description{
 Get image matrix
 }
+\examples{
+
+\dontrun{
+
+img = dcmread('hemorrhage.dcm')
+img \%>\% get_dcm_matrix(type = 'raw')
+
+}
+
+}

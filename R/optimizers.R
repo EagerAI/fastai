@@ -213,6 +213,30 @@ noop <- function(...) {
 #' @param p p
 #' @param lr learning rate
 #' @param ... additional arguments to pass
+#'
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' tst_param = function(val, grad = NULL) {
+#'   "Create a tensor with `val` and a gradient of `grad` for testing"
+#'   res = tensor(val) %>% float()
+#'
+#'   if(is.null(grad)) {
+#'     grad = tensor(val / 10)
+#'   } else {
+#'     grad = tensor(grad)
+#'   }
+#'
+#'   res$grad = grad %>% float()
+#'   res
+#' }
+#' p = tst_param(1., 0.1)
+#' sgd_step(p, 1.)
+#'
+#' }
+#'
 #' @export
 sgd_step <- function(p, lr, ...) {
 
@@ -237,6 +261,29 @@ sgd_step <- function(p, lr, ...) {
 #' @param do_wd do_wd
 #' @param ... additional args to pass
 #' @return None
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' tst_param = function(val, grad = NULL) {
+#'   "Create a tensor with `val` and a gradient of `grad` for testing"
+#'   res = tensor(val) %>% float()
+#'
+#'   if(is.null(grad)) {
+#'     grad = tensor(val / 10)
+#'   } else {
+#'     grad = tensor(grad)
+#'   }
+#'
+#'   res$grad = grad %>% float()
+#'   res
+#' }
+#' p = tst_param(1., 0.1)
+#' weight_decay(p, 1., 0.1)
+#'
+#' }
+#'
 #' @export
 weight_decay <- function(p, lr, wd, do_wd = TRUE, ...) {
 
@@ -264,6 +311,29 @@ weight_decay <- function(p, lr, wd, do_wd = TRUE, ...) {
 #' @param do_wd do_wd
 #' @param ... additional arguments to pass
 #' @return None
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' tst_param = function(val, grad = NULL) {
+#'   "Create a tensor with `val` and a gradient of `grad` for testing"
+#'   res = tensor(val) %>% float()
+#'
+#'   if(is.null(grad)) {
+#'     grad = tensor(val / 10)
+#'   } else {
+#'     grad = tensor(grad)
+#'   }
+#'
+#'   res$grad = grad %>% float()
+#'   res
+#' }
+#' p = tst_param(1., 0.1)
+#' l2_reg(p, 1., 0.1)
+#'
+#' }
+#'
 #' @export
 l2_reg <- function(p, lr, wd, do_wd = TRUE, ...) {
 

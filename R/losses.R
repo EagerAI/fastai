@@ -6,6 +6,17 @@
 #' @param targ The corresponding labels
 #' @param axis Axis
 #' @return tensor
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' learn = cnn_learner(dls, resnet34(), metrics = error_rate)
+#'
+#'
+#' }
+#'
+#'
 #' @export
 error_rate <- function(inp, targ, axis = -1) {
 

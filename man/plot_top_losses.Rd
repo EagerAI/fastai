@@ -32,3 +32,14 @@ None
 \description{
 Plot_top_losses
 }
+\examples{
+
+\dontrun{
+
+# get interperetation from learn object, the model.
+interp = ClassificationInterpretation_from_learner(learn)
+interp \%>\% plot_top_losses(k = 9, figsize = c(15,11))
+
+}
+
+}

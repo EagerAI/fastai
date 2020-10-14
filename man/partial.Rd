@@ -15,3 +15,14 @@ None
 \description{
 partial(func, *args, **keywords) - new function with partial application
 }
+\examples{
+
+\dontrun{
+
+generator = basic_generator(out_size = 64, n_channels = 3, n_extra_layers = 1)
+critic    = basic_critic(in_size = 64, n_channels = 3, n_extra_layers = 1,
+                         act_cls = partial(nn$LeakyReLU, negative_slope = 0.2))
+
+}
+
+}

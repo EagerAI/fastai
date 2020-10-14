@@ -35,3 +35,13 @@ data frame
 \description{
 Launch a mock training to find a good learning rate, return lr_min, lr_steep if `suggestions` is TRUE
 }
+\examples{
+
+\dontrun{
+
+model \%>\% lr_find()
+model \%>\% plot_lr_find(dpi = 200)s
+
+}
+
+}

@@ -29,3 +29,12 @@ None
 \description{
 Fill the missing values in continuous columns.
 }
+\examples{
+
+\dontrun{
+
+procs = list(FillMissing(),Categorify(),Normalize())
+
+}
+
+}
