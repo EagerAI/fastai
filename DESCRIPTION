@@ -3,7 +3,7 @@ Type: Package
 Title: Interface to 'fastai' 
 Version: 2.0.0
 Authors@R: c(
-  person("Turgut", "Abdullayev", role = c("ctb", "cre"),
+  person("Turgut", "Abdullayev", role = c("ctb", "cre", "cph", "aut"),
          email = "turqut.a.314@gmail.com")
   )
 Maintainer: Turgut Abdullayev <turqut.a.314@gmail.com>
