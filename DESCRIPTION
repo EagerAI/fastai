@@ -23,13 +23,13 @@ RoxygenNote: 7.1.1
 Imports:
     reticulate,
     generics,
-    png,
-    vctrs
+    png
 Suggests:
     knitr,
     testthat,
     rmarkdown,
     curl,
     magrittr,
-    data.table
+    data.table,
+    vctrs
 VignetteBuilder: knitr
