@@ -241,6 +241,19 @@
 
     <p>None</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+
+<span class='va'>model</span> <span class='op'>=</span> <span class='va'>dls</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='tabular_learner.html'>tabular_learner</a></span><span class='op'>(</span>layers<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>200</span>,<span class='fl'>100</span>,<span class='fl'>100</span>,<span class='fl'>200</span><span class='op'>)</span>,
+config <span class='op'>=</span> <span class='fu'><a href='tabular_config.html'>tabular_config</a></span><span class='op'>(</span>embed_p <span class='op'>=</span> <span class='fl'>0.3</span>, use_bn <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>,
+metrics <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>accuracy</span>, <span class='fu'>RocAucBinary</span><span class='op'>(</span><span class='op'>)</span>,
+               <span class='fu'><a href='Precision.html'>Precision</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'><a href='Recall.html'>Recall</a></span><span class='op'>(</span><span class='op'>)</span>,
+               <span class='fu'><a href='F1Score.html'>F1Score</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='op'>}</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -256,7 +269,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

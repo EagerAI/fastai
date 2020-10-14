@@ -1,0 +1,50 @@
+on: [push, pull_request]
+
+name: windows
+
+jobs:
+  R-CMD:
+    runs-on: ${{ matrix.config.os }}
+
+    name: (fastai ${{ matrix.config.fastai }})
+
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+        - { os: windows-latest, fastai: '2.0.0'}
+    env:
+      R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
+      PIP_NO_WARN_SCRIPT_LOCATION: false
+      FASTAI_VERSION: ${{ matrix.config.fastai2 }}
+      RETICULATE_AUTOCONFIGURE: 'FALSE'
+      CRAN: ${{ matrix.config.cran }}
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - uses: r-lib/actions/setup-r@master
+
+      - uses: r-lib/actions/setup-pandoc@master
+
+      - name: Install MacOS/Windows/Linux
+        run: |
+          Rscript -e "install.packages('remotes')"
+          Rscript -e "remotes::install_deps(dependencies =  TRUE)"
+          Rscript -e "remotes::install_cran('rcmdcheck')"
+
+      - name: Install Python
+        run: |
+          Rscript -e "remotes::install_github('rstudio/reticulate')"
+          Rscript -e "try(reticulate::install_miniconda())"
+      - name: Install FASTAI & TORCH
+        run: |
+          Rscript -e "reticulate::conda_create('r-reticulate', packages = c('python==3.6.9'))"
+          Rscript -e "remotes::install_github('henry090/fastai')"
+
+      - name: Check
+        continue-on-error: ${{ matrix.config.allow_failure }}
+
+
+
+        run: Rscript -e "rcmdcheck::rcmdcheck(args = c('--no-manual'), error_on = 'error', check_dir = 'check')"

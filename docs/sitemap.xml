@@ -280,9 +280,6 @@
     <loc>https://henry090.github.io/fastai//reference/ImageDataLoaders_from_path_re.html</loc>
   </url>
   <url>
-    <loc>https://henry090.github.io/fastai//reference/ImagePoints.html</loc>
-  </url>
-  <url>
     <loc>https://henry090.github.io/fastai//reference/Image_create.html</loc>
   </url>
   <url>
@@ -371,6 +368,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/MatthewsCorrCoefMulti.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/MaxPool.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/Module.html</loc>
@@ -1337,12 +1337,6 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/one_batch.html</loc>
-  </url>
-  <url>
-    <loc>https://henry090.github.io/fastai//reference/open_mask.html</loc>
-  </url>
-  <url>
-    <loc>https://henry090.github.io/fastai//reference/open_mask_rle.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/optim_metric.html</loc>

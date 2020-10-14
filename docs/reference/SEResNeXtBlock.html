@@ -46,7 +46,8 @@
 
 
 <meta property="og:title" content="SEResNeXtBlock — SEResNeXtBlock" />
-<meta property="og:description" content="SEResNeXtBlock" />
+<meta property="og:description" content="SEResNeXtBlock
+SEResNeXtBlock" />
 
 
 
@@ -202,9 +203,20 @@
 
     <div class="ref-description">
     <p>SEResNeXtBlock</p>
+<p>SEResNeXtBlock</p>
     </div>
 
     <pre class="usage"><span class='fu'>SEResNeXtBlock</span><span class='op'>(</span>
+  <span class='va'>expansion</span>,
+  <span class='va'>ni</span>,
+  <span class='va'>nf</span>,
+  groups <span class='op'>=</span> <span class='fl'>32</span>,
+  reduction <span class='op'>=</span> <span class='fl'>16</span>,
+  stride <span class='op'>=</span> <span class='fl'>1</span>,
+  base_width <span class='op'>=</span> <span class='fl'>4</span>
+<span class='op'>)</span>
+
+<span class='fu'>SEResNeXtBlock</span><span class='op'>(</span>
   <span class='va'>expansion</span>,
   <span class='va'>ni</span>,
   <span class='va'>nf</span>,
@@ -219,7 +231,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>expansion</th>
-      <td><p>expansion</p></td>
+      <td><p>decoder</p></td>
     </tr>
     <tr>
       <th>ni</th>
@@ -231,25 +243,26 @@
     </tr>
     <tr>
       <th>groups</th>
-      <td><p>groups</p></td>
+      <td><p>groups number</p></td>
     </tr>
     <tr>
       <th>reduction</th>
-      <td><p>reduction</p></td>
+      <td><p>reduction number</p></td>
     </tr>
     <tr>
       <th>stride</th>
-      <td><p>stride</p></td>
+      <td><p>stride number</p></td>
     </tr>
     <tr>
       <th>base_width</th>
-      <td><p>base_width</p></td>
+      <td><p>int, base width</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Block object</p>
+<p>Block object</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -266,7 +279,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

@@ -223,6 +223,45 @@
 
     <p>None'</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+
+<span class='fu'><a href='URLs_COCO_TINY.html'>URLs_COCO_TINY</a></span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>images</span>, <span class='va'>lbl_bbox</span><span class='op'>)</span> <span class='op'>%&lt;-%</span> <span class='fu'><a href='get_annotations.html'>get_annotations</a></span><span class='op'>(</span><span class='st'>'coco_tiny/train.json'</span><span class='op'>)</span>
+<span class='va'>timg</span> <span class='op'>=</span> <span class='fu'><a href='Transform.html'>Transform</a></span><span class='op'>(</span><span class='va'>ImageBW_create</span><span class='op'>)</span>
+<span class='va'>idx</span> <span class='op'>=</span> <span class='fl'>49</span>
+<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>coco_fn</span>,<span class='va'>bbox</span><span class='op'>)</span> <span class='op'>%&lt;-%</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='st'>'coco_tiny/train'</span>,<span class='va'>images</span><span class='op'>[[</span><span class='va'>idx</span><span class='op'>]</span><span class='op'>]</span>,sep <span class='op'>=</span> <span class='st'>'/'</span><span class='op'>)</span>,
+                          <span class='va'>lbl_bbox</span><span class='op'>[[</span><span class='va'>idx</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span>
+<span class='va'>coco_img</span> <span class='op'>=</span> <span class='fu'>timg</span><span class='op'>(</span><span class='va'>coco_fn</span><span class='op'>)</span>
+
+<span class='va'>tbbox</span> <span class='op'>=</span> <span class='fu'><a href='LabeledBBox.html'>LabeledBBox</a></span><span class='op'>(</span><span class='fu'><a href='TensorBBox.html'>TensorBBox</a></span><span class='op'>(</span><span class='va'>bbox</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span>, <span class='va'>bbox</span><span class='op'>[[</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span>
+
+<span class='va'>coco_bb</span> <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'><a href='TensorBBox_create.html'>TensorBBox_create</a></span><span class='op'>(</span><span class='va'>bbox</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+<span class='va'>coco_lbl</span> <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='va'>bbox</span><span class='op'>[[</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>]</span>
+<span class='op'>}</span>
+
+<span class='va'>coco_dsrc</span> <span class='op'>=</span> <span class='fu'><a href='Datasets.html'>Datasets</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='va'>coco_fn</span>,<span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>,
+                     <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='Image_create.html'>Image_create</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>coco_bb</span><span class='op'>)</span>,
+                          <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span> <span class='va'>coco_lbl</span>, <span class='fu'><a href='MultiCategorize.html'>MultiCategorize</a></span><span class='op'>(</span>add_na <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>)</span>
+                     <span class='op'>)</span>, n_inp <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
+
+<span class='va'>coco_tdl</span> <span class='op'>=</span> <span class='fu'><a href='TfmdDL.html'>TfmdDL</a></span><span class='op'>(</span><span class='va'>coco_dsrc</span>, bs <span class='op'>=</span> <span class='fl'>9</span>,
+                  after_item <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='BBoxLabeler.html'>BBoxLabeler</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'><a href='PointScaler.html'>PointScaler</a></span><span class='op'>(</span><span class='op'>)</span>,
+                                    <span class='fu'><a href='ToTensor.html'>ToTensor</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>,
+                  after_batch <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='IntToFloatTensor.html'>IntToFloatTensor</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'><a href='aug_transforms.html'>aug_transforms</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>)</span>
+
+<span class='va'>coco_tdl</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='show_batch.html'>show_batch</a></span><span class='op'>(</span>dpi <span class='op'>=</span> <span class='fl'>200</span><span class='op'>)</span>
+
+<span class='op'>}</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -238,7 +277,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>
