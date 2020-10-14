@@ -15,19 +15,19 @@ SEResNeXtBlock(
 )
 }
 \arguments{
-\item{expansion}{expansion}
+\item{expansion}{decoder}
 
 \item{ni}{ni}
 
 \item{nf}{nf}
 
-\item{groups}{groups}
+\item{groups}{groups number}
 
-\item{reduction}{reduction}
+\item{reduction}{reduction number}
 
-\item{stride}{stride}
+\item{stride}{stride number}
 
-\item{base_width}{base_width}
+\item{base_width}{int, base width}
 }
 \value{
 Block object

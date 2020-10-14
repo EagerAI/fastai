@@ -7,7 +7,7 @@
 RegressionBlock(n_out = NULL)
 }
 \arguments{
-\item{n_out}{n_out}
+\item{n_out}{output shape}
 }
 \value{
 Block object

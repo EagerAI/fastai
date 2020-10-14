@@ -7,17 +7,17 @@
 SeparableBlock(expansion, ni, nf, reduction = 16, stride = 1, base_width = 4)
 }
 \arguments{
-\item{expansion}{expansion}
+\item{expansion}{decoder}
 
 \item{ni}{ni}
 
 \item{nf}{nf}
 
-\item{reduction}{reduction}
+\item{reduction}{reduction number}
 
-\item{stride}{stride}
+\item{stride}{stride number}
 
-\item{base_width}{base_width}
+\item{base_width}{int, base width}
 }
 \value{
 Block object

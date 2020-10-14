@@ -7,11 +7,11 @@
 MultiCategoryBlock(encoded = FALSE, vocab = NULL, add_na = FALSE)
 }
 \arguments{
-\item{encoded}{encoded}
+\item{encoded}{encoded or not}
 
-\item{vocab}{vocab}
+\item{vocab}{vocabulary}
 
-\item{add_na}{add_na}
+\item{add_na}{add NA}
 }
 \value{
 Block object

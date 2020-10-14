@@ -7,17 +7,17 @@
 SEBlock(expansion, ni, nf, groups = 1, reduction = 16, stride = 1)
 }
 \arguments{
-\item{expansion}{expansion}
+\item{expansion}{decoder}
 
 \item{ni}{ni}
 
 \item{nf}{nf}
 
-\item{groups}{groups}
+\item{groups}{number of groups}
 
-\item{reduction}{reduction}
+\item{reduction}{number of reduction}
 
-\item{stride}{stride}
+\item{stride}{number of stride}
 }
 \value{
 Block object

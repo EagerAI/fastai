@@ -35,15 +35,15 @@ ResBlock(
 )
 }
 \arguments{
-\item{expansion}{expansion}
+\item{expansion}{decoder}
 
 \item{ni}{ni}
 
 \item{nf}{nf}
 
-\item{stride}{stride}
+\item{stride}{stride number}
 
-\item{groups}{groups}
+\item{groups}{groups number}
 
 \item{reduction}{reduction}
 
@@ -63,11 +63,11 @@ ResBlock(
 
 \item{act_cls}{act_cls}
 
-\item{ndim}{ndim}
+\item{ndim}{dimension number}
 
 \item{ks}{ks}
 
-\item{pool}{pool}
+\item{pool}{pooling type, Average, Max}
 
 \item{pool_first}{pool_first}
 
@@ -75,19 +75,19 @@ ResBlock(
 
 \item{bias}{bias}
 
-\item{bn_1st}{bn_1st}
+\item{bn_1st}{bn 1st}
 
 \item{transpose}{transpose}
 
-\item{init}{init}
+\item{init}{initializer}
 
 \item{xtra}{xtra}
 
-\item{bias_std}{bias_std}
+\item{bias_std}{bias standard deviation}
 
-\item{dilation}{dilation}
+\item{dilation}{dilation number}
 
-\item{padding_mode}{padding_mode}
+\item{padding_mode}{padding mode}
 }
 \value{
 Block object

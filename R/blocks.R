@@ -2,12 +2,12 @@
 
 #' @title SEBlock
 #'
-#' @param expansion expansion
+#' @param expansion decoder
 #' @param ni ni
 #' @param nf nf
-#' @param groups groups
-#' @param reduction reduction
-#' @param stride stride
+#' @param groups number of groups
+#' @param reduction number of reduction
+#' @param stride number of stride
 #' @return Block object
 #' @export
 SEBlock <- function(expansion, ni, nf, groups = 1, reduction = 16, stride = 1) {
@@ -28,11 +28,11 @@ SEBlock <- function(expansion, ni, nf, groups = 1, reduction = 16, stride = 1) {
 #' @description Resnet block from `ni` to `nh` with `stride`
 #'
 #'
-#' @param expansion expansion
+#' @param expansion decoder
 #' @param ni ni
 #' @param nf nf
-#' @param stride stride
-#' @param groups groups
+#' @param stride stride number
+#' @param groups groups number
 #' @param reduction reduction
 #' @param nh1 nh1
 #' @param nh2 nh2
@@ -42,19 +42,19 @@ SEBlock <- function(expansion, ni, nf, groups = 1, reduction = 16, stride = 1) {
 #' @param sym sym
 #' @param norm_type norm_type
 #' @param act_cls act_cls
-#' @param ndim ndim
+#' @param ndim dimension number
 #' @param ks ks
-#' @param pool pool
+#' @param pool pooling type, Average, Max
 #' @param pool_first pool_first
 #' @param padding padding
 #' @param bias bias
-#' @param bn_1st bn_1st
+#' @param bn_1st bn 1st
 #' @param transpose transpose
-#' @param init init
+#' @param init initializer
 #' @param xtra xtra
-#' @param bias_std bias_std
-#' @param dilation dilation
-#' @param padding_mode padding_mode
+#' @param bias_std bias standard deviation
+#' @param dilation dilation number
+#' @param padding_mode padding mode
 #' @return Block object
 #' @export
 ResBlock <- function(expansion, ni, nf, stride = 1, groups = 1,
@@ -120,16 +120,40 @@ AvgPool <- function(ks = 2, stride = NULL, padding = 0, ndim = 2, ceil_mode = FA
 
 }
 
+#' @title MaxPool
+#'
+#' @description nn.MaxPool layer for `ndim`
+#'
+#'
+#' @param ks ks
+#' @param stride stride
+#' @param padding padding
+#' @param ndim ndim
+#' @param ceil_mode ceil_mode
+#' @return None
+#' @export
+MaxPool <- function(ks = 2, stride = NULL, padding = 0, ndim = 2, ceil_mode = FALSE) {
+
+  vision$all$MaxPool(
+    ks = as.integer(ks),
+    stride = stride,
+    padding = as.integer(padding),
+    ndim = as.integer(ndim),
+    ceil_mode = ceil_mode
+  )
+
+}
+
 
 #' @title SeparableBlock
 #'
 #'
-#' @param expansion expansion
+#' @param expansion decoder
 #' @param ni ni
 #' @param nf nf
-#' @param reduction reduction
-#' @param stride stride
-#' @param base_width base_width
+#' @param reduction reduction number
+#' @param stride stride number
+#' @param base_width int, base width
 #' @return Block object
 #' @export
 SeparableBlock <- function(expansion, ni, nf, reduction = 16, stride = 1, base_width = 4) {
@@ -151,9 +175,9 @@ SeparableBlock <- function(expansion, ni, nf, reduction = 16, stride = 1, base_w
 #' @description `TransformBlock` for single-label categorical targets
 #'
 #'
-#' @param vocab vocab
-#' @param sort sort
-#' @param add_na add_na
+#' @param vocab vocabulary
+#' @param sort sort or not
+#' @param add_na add NA
 #' @return Block object
 #' @export
 CategoryBlock <- function(vocab = NULL, sort = TRUE, add_na = FALSE) {
@@ -175,13 +199,13 @@ CategoryBlock <- function(vocab = NULL, sort = TRUE, add_na = FALSE) {
 #' @title SEResNeXtBlock
 #'
 #'
-#' @param expansion expansion
+#' @param expansion decoder
 #' @param ni ni
 #' @param nf nf
-#' @param groups groups
-#' @param reduction reduction
-#' @param stride stride
-#' @param base_width base_width
+#' @param groups groups number
+#' @param reduction reduction number
+#' @param stride stride number
+#' @param base_width int, base width
 #' @return Block object
 #' @export
 SEResNeXtBlock <- function(expansion, ni, nf, groups = 32, reduction = 16, stride = 1, base_width = 4) {
@@ -205,7 +229,7 @@ SEResNeXtBlock <- function(expansion, ni, nf, groups = 32, reduction = 16, strid
 #' @description `TransformBlock` for float targets
 #'
 #'
-#' @param n_out n_out
+#' @param n_out output shape
 #' @return Block object
 #' @export
 RegressionBlock <- function(n_out = NULL) {
@@ -221,9 +245,9 @@ RegressionBlock <- function(n_out = NULL) {
 #' @description `TransformBlock` for multi-label categorical targets
 #'
 #'
-#' @param encoded encoded
-#' @param vocab vocab
-#' @param add_na add_na
+#' @param encoded encoded or not
+#' @param vocab vocabulary
+#' @param add_na add NA
 #' @return Block object
 #' @export
 MultiCategoryBlock <- function(encoded = FALSE, vocab = NULL, add_na = FALSE) {
@@ -245,9 +269,10 @@ MultiCategoryBlock <- function(encoded = FALSE, vocab = NULL, add_na = FALSE) {
 #'
 #'
 #' @param blocks blocks
-#' @param dl_type dl_type
+#' @param dl_type DL applications
 #' @param getters how to get dataet
-#' @param n_inp n_inp is the number of elements in the tuples that should be considered part of the input and will default to 1 if tfms consists of one set of transforms
+#' @param n_inp n_inp is the number of elements in the tuples that should be considered part
+#' of the input and will default to 1 if tfms consists of one set of transforms
 #' @param item_tfms One or several transforms applied to the items before batching them
 #' @param batch_tfms One or several transforms applied to the batches once they are formed
 #' @param ... additional parameters to pass
@@ -286,11 +311,11 @@ DataBlock <- function(blocks = NULL, dl_type = NULL, getters = NULL,
 #' @description A basic wrapper that links defaults transforms for the data block API
 #'
 #'
-#' @param type_tfms type_tfms
-#' @param item_tfms item_tfms
+#' @param type_tfms transforamtion type
+#' @param item_tfms item transofrmation type
 #' @param batch_tfms one or several transforms applied to the batches once they are formed
-#' @param dl_type dl_type
-#' @param dls_kwargs dls_kwargs
+#' @param dl_type DL applications
+#' @param dls_kwargs additional argument
 #' @return block
 #' @export
 TransformBlock <- function(type_tfms = NULL, item_tfms = NULL,

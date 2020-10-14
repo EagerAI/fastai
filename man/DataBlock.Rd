@@ -17,11 +17,12 @@ DataBlock(
 \arguments{
 \item{blocks}{blocks}
 
-\item{dl_type}{dl_type}
+\item{dl_type}{DL applications}
 
 \item{getters}{how to get dataet}
 
-\item{n_inp}{n_inp is the number of elements in the tuples that should be considered part of the input and will default to 1 if tfms consists of one set of transforms}
+\item{n_inp}{n_inp is the number of elements in the tuples that should be considered part
+of the input and will default to 1 if tfms consists of one set of transforms}
 
 \item{item_tfms}{One or several transforms applied to the items before batching them}
 

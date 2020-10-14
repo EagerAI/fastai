@@ -7,11 +7,11 @@
 CategoryBlock(vocab = NULL, sort = TRUE, add_na = FALSE)
 }
 \arguments{
-\item{vocab}{vocab}
+\item{vocab}{vocabulary}
 
-\item{sort}{sort}
+\item{sort}{sort or not}
 
-\item{add_na}{add_na}
+\item{add_na}{add NA}
 }
 \value{
 Block object
