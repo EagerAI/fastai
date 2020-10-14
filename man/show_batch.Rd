@@ -32,6 +32,8 @@ show_batch(
 \item{unique}{unique}
 
 \item{dpi}{dots per inch}
+
+\item{...}{additional arguments to pass}
 }
 \value{
 None

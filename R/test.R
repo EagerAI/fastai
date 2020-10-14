@@ -46,6 +46,7 @@
 #' @param unique unique
 #' @param figsize figure size
 #' @param dpi dots per inch
+#' @param ... additional arguments to pass
 #' @return None
 #'
 #'
