@@ -35,7 +35,7 @@ jobs:
 
       - name: Install Python
         run: |
-          Rscript -e "remotes::install_github('rstudio/reticulate')"
+          Rscript -e "install.packages('reticulate')"
           Rscript -e "try(reticulate::install_miniconda())"
       - name: Install FASTAI & TORCH
         run: |

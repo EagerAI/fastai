@@ -73,12 +73,6 @@ torch <- NULL
     # colors
     colors <<- fastai2$vision$all$matplotlib$colors
 
-    if(reticulate::py_module_available('fastprogress')) {
-      # remove fill
-      fastaip <<- reticulate::import('fastprogress')
-
-      fastaip$progress_bar$fill = ''
-    }
 
     # callback class
     Callback <<- fastai2$callback$all$Callback
@@ -93,6 +87,14 @@ torch <- NULL
     Dicom <<- medical$PILDicom
 
   }
+
+  if(reticulate::py_module_available('fastprogress')) {
+    # remove fill
+    fastaip <<- reticulate::import('fastprogress')
+
+    fastaip$progress_bar$fill = ''
+  }
+
 
   if(reticulate::py_module_available('kaggle')) {
     kg <<- reticulate::import('kaggle')
@@ -127,7 +129,6 @@ torch <- NULL
     }
 
   }
-
 
 }
 
