@@ -40,7 +40,7 @@ jobs:
       - name: Install FASTAI & TORCH
         run: |
           Rscript -e "reticulate::conda_create('r-reticulate', packages = c('python==3.6.9'))"
-          Rscript -e "remotes::install_github('henry090/fastai')"
+          Rscript -e "remotes::install_local()"
 
       - name: Check
         continue-on-error: ${{ matrix.config.allow_failure }}
