@@ -47,4 +47,4 @@ jobs:
 
 
 
-        run: Rscript -e "rcmdcheck::rcmdcheck(args = c('--no-manual'), error_on = 'error', check_dir = 'check')"
+        run: Rscript -e "rcmdcheck::rcmdcheck(error_on = 'error', check_dir = 'check')"

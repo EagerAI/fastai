@@ -1,4 +1,4 @@
-This is a ffirst submission of 'fastai' 2.0.0
+This is a first submission of 'fastai' 2.0.0
 
 ## Test environments
 
