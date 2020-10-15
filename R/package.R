@@ -32,7 +32,10 @@ torch <- NULL
     environment = "r-fastai"
   ))
 
-  fun_base = function() {
+  if(reticulate::py_module_available('IPython') &
+     reticulate::py_module_available('torch') &
+     reticulate::py_module_available('torchvision') &
+     reticulate::py_module_available('fastai')) {
 
     # torch module
     torch <<- fastai2$torch_basics$torch
@@ -83,18 +86,24 @@ torch <- NULL
     # Dicom
     Dicom <<- medical$PILDicom
 
+  }
+
+  if(reticulate::py_module_available('fastprogress')) {
     # remove fill
     fastaip <<- reticulate::import('fastprogress')
 
     fastaip$progress_bar$fill = ''
-
   }
 
-  fun_kaggle = function() {
+
+  if(reticulate::py_module_available('kaggle')) {
     kg <<- reticulate::import('kaggle')
   }
 
-  fun_extra = function() {
+  if(reticulate::py_module_available('ignite') &
+     reticulate::py_module_available('pytorch_lightning') &
+     reticulate::py_module_available('catalyst')) {
+
     if(file.exists('fastaibuilt/crappify.py')) {
       crap <<- reticulate::import_from_path('crappify', path = 'fastaibuilt')
     }
@@ -120,11 +129,6 @@ torch <- NULL
     }
 
   }
-
-
-  try(fun(),silent = TRUE)
-  try(fun_kaggle(),silent = TRUE)
-  try(fun_extra(),silent = TRUE)
 
 }
 
