@@ -22,6 +22,15 @@
     <loc>https://henry090.github.io/fastai//reference/Adam.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/AdaptiveAvgPool.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/AdaptiveConcatPool1d.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/AdaptiveConcatPool2d.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/AdaptiveGANSwitcher.html</loc>
   </url>
   <url>
@@ -67,6 +76,12 @@
     <loc>https://henry090.github.io/fastai//reference/BaseTokenizer.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/BatchNorm.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/BatchNorm1dFlat.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/BrierScore.html</loc>
   </url>
   <url>
@@ -77,6 +92,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/Callback.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/Cat.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/Categorify.html</loc>
@@ -109,6 +127,9 @@
     <loc>https://henry090.github.io/fastai//reference/Contrast.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/ConvLayer.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/CorpusBLEUMetric.html</loc>
   </url>
   <url>
@@ -128,6 +149,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/Datasets.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/Debugger.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/DenseResBlock.html</loc>
@@ -158,6 +182,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/EarlyStoppingCallback.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/Embedding.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/EmbeddingDropout.html</loc>
@@ -200,6 +227,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/FixedGANSwitcher.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/Flatten.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/Flip.html</loc>
@@ -292,6 +322,9 @@
     <loc>https://henry090.github.io/fastai//reference/IndexSplitter.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/InstanceNorm.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/IntToFloatTensor.html</loc>
   </url>
   <url>
@@ -334,6 +367,9 @@
     <loc>https://henry090.github.io/fastai//reference/Lamb.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/Lambda.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/Larc.html</loc>
   </url>
   <url>
@@ -341,6 +377,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/LightingTfm.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/LinBnDrop.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/LinearDecoder.html</loc>
@@ -373,6 +412,12 @@
     <loc>https://henry090.github.io/fastai//reference/MaxPool.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/MergeLayer.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/MishJitAutoFn.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/Module.html</loc>
   </url>
   <url>
@@ -403,6 +448,9 @@
     <loc>https://henry090.github.io/fastai//reference/Optimizer.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/PartialLambda.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/PearsonCorrCoef.html</loc>
   </url>
   <url>
@@ -412,10 +460,19 @@
     <loc>https://henry090.github.io/fastai//reference/Pipeline.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/PixelShuffle_ICNR.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/PointBlock.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/PointScaler.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/PoolFlatten.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/PooledSelfAttention2d.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/PoolingLinearClassifier.html</loc>
@@ -490,6 +547,9 @@
     <loc>https://henry090.github.io/fastai//reference/Resize.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/ResizeBatch.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/RetinaNet.html</loc>
   </url>
   <url>
@@ -511,6 +571,9 @@
     <loc>https://henry090.github.io/fastai//reference/SEBlock.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/SEModule.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/SEResNeXtBlock.html</loc>
   </url>
   <url>
@@ -526,6 +589,9 @@
     <loc>https://henry090.github.io/fastai//reference/SegmentationDataLoaders_from_label_func.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/SelfAttention.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/SentenceEncoder.html</loc>
   </url>
   <url>
@@ -535,6 +601,9 @@
     <loc>https://henry090.github.io/fastai//reference/SeparableBlock.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/SequentialEx.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/SequentialRNN.html</loc>
   </url>
   <url>
@@ -542,6 +611,15 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/ShowGraphCallback.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/SigmoidRange.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/SimpleCNN.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/SimpleSelfAttention.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/SortedDL.html</loc>
@@ -554,6 +632,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/SqueezeNet.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/Swish_.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/TabularDataTable.html</loc>
@@ -811,6 +892,9 @@
     <loc>https://henry090.github.io/fastai//reference/UnetBlock.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/View.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/Warp.html</loc>
   </url>
   <url>
@@ -836,6 +920,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/adam_step.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/adaptive_pool.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/add.html</loc>
@@ -1087,6 +1174,9 @@
     <loc>https://henry090.github.io/fastai//reference/floor_mod.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/fmodule.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/foreground_acc.html</loc>
   </url>
   <url>
@@ -1177,10 +1267,19 @@
     <loc>https://henry090.github.io/fastai//reference/hsv2rgb.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/icnr_init.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/image2tensor.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/imagenet_stats.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/init_default.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/init_linear.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/install_fastai.html</loc>
@@ -1480,6 +1579,9 @@
     <loc>https://henry090.github.io/fastai//reference/round.fastai.torch_core.TensorMask.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/sequential.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/set_freeze_model.html</loc>
   </url>
   <url>
@@ -1508,6 +1610,15 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/show_results.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/sigmoid.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/sigmoid_.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/sigmoid_range.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/sin.fastai.torch_core.TensorMask.html</loc>
@@ -1565,6 +1676,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/summary.fastai.tabular.learner.TabularLearner.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/swish.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/tabular_config.html</loc>
@@ -1627,6 +1741,9 @@
     <loc>https://henry090.github.io/fastai//reference/trainable_params.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/trunc_normal_.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/unet_config.html</loc>
   </url>
   <url>
@@ -1646,6 +1763,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/vgg19_bn.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/vleaky_relu.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/weight_decay.html</loc>
