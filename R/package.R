@@ -32,10 +32,18 @@ torch <- NULL
     environment = "r-fastai"
   ))
 
-  if(reticulate::py_module_available('IPython') &
-     reticulate::py_module_available('torch') &
-     reticulate::py_module_available('torchvision') &
-     reticulate::py_module_available('fastai')) {
+  strings = c('IPython', 'torch', 'torchvision', 'fastai', 'fastprogress')
+
+  main_modules = list()
+  for (i in 1:length(strings)) {
+    py_mod = try(reticulate::import(strings[i]),silent = TRUE)
+    py_mod = inherits(py_mod,"python.builtin.module")
+    main_modules[[i]] = py_mod
+  }
+
+  res = as.vector(do.call(rbind, main_modules))
+
+  if(all(res)) {
 
     # torch module
     torch <<- fastai2$torch_basics$torch
@@ -86,23 +94,42 @@ torch <- NULL
     # Dicom
     Dicom <<- medical$PILDicom
 
-  }
-
-  if(reticulate::py_module_available('fastprogress')) {
     # remove fill
     fastaip <<- reticulate::import('fastprogress')
 
     fastaip$progress_bar$fill = ''
+
   }
 
 
-  if(reticulate::py_module_available('kaggle')) {
+  strings = c('kaggle')
+
+  main_modules = list()
+  for (i in 1:length(strings)) {
+    py_mod = try(reticulate::import(strings[i]),silent = TRUE)
+    py_mod = inherits(py_mod,"python.builtin.module")
+    main_modules[[i]] = py_mod
+  }
+
+  res = as.vector(do.call(rbind, main_modules))
+
+  if(all(res)) {
     kg <<- reticulate::import('kaggle')
   }
 
-  if(reticulate::py_module_available('ignite') &
-     reticulate::py_module_available('pytorch_lightning') &
-     reticulate::py_module_available('catalyst')) {
+
+  strings = c('ignite', 'pytorch_lightning', 'catalyst')
+
+  main_modules = list()
+  for (i in 1:length(strings)) {
+    py_mod = try(reticulate::import(strings[i]),silent = TRUE)
+    py_mod = inherits(py_mod,"python.builtin.module")
+    main_modules[[i]] = py_mod
+  }
+
+  res = as.vector(do.call(rbind, main_modules))
+
+  if(all(res)) {
 
     if(file.exists('fastaibuilt/crappify.py')) {
       crap <<- reticulate::import_from_path('crappify', path = 'fastaibuilt')
