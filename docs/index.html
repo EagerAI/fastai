@@ -14,13 +14,13 @@
 <script src="pkgdown.js"></script><!-- docsearch --><script src="docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="Interface to fastai ">
-<meta property="og:description" content='The fastai &lt;https://docs.fast.ai/index.html&gt; library 
-             simplifies training fast and accurate neural nets 
+<meta property="og:description" content="The fastai &lt;https://docs.fast.ai/index.html&gt; library 
+             simplifies training fast and accurate neural networks 
              using modern best practices. It is based on research 
              in to deep learning best practices undertaken 
-             at fast.ai, including "out of the box" support
-             for vision, text, tabular, and 
-             collab (collaborative filtering) models. '>
+             at fast.ai, including out of the box support
+             for vision, text, tabular, audio, time series, and 
+             collab (collaborative filtering) models. ">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -160,7 +160,7 @@
 <h2 class="hasAnchor">
 <a href="#r-interface-to-fastai" class="anchor"></a>R interface to fastai</h2>
 <p>The fastai package provides R wrappers to <a href="https://github.com/fastai/fastai">fastai</a>.</p>
-<p>The fastai library simplifies training fast and accurate neural nets using modern best practices. See the fastai website to get started. The library is based on research into deep learning best practices undertaken at <code>fast.ai</code>, and includes “out of the box” support for <code>vision</code>, <code>text</code>, <code>tabular</code>, and <code>collab</code> (collaborative filtering) models.</p>
+<p>The fastai library simplifies training fast and accurate neural nets using modern best practices. See the fastai website to get started. The library is based on research into deep learning best practices undertaken at <code>fast.ai</code>, and includes “out of the box” support for <code>vision</code>, <code>text</code>, <code>tabular</code>, <a href="https://github.com/fastaudio/fastaudio">audio</a>, <a href="https://github.com/tcapelle/timeseries_fastai">time-series</a> and <code>collab</code> (collaborative filtering) models.</p>
 <p><img src="files/fastai.png" width="200" align="right" style="margin-left: 15px;" alt="fastai"></p>
 <p><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a> <a href="https://CRAN.R-project.org/package=fastai"><img src="https://www.r-pkg.org/badges/version/fastai" alt="CRAN status"></a></p>
 </div>
@@ -216,7 +216,7 @@ reticulate::py_config()</a></code></pre>
 <ol>
 <li><strong>The dev version:</strong></li>
 </ol>
-<pre><code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">devtools::install_github('henry090/fastai')</a></code></pre>
+<pre><code>devtools::install_github('henry090/fastai')</code></pre>
 <ol>
 <li><strong>Later, you need to install the python module <code>fastai</code>:</strong></li>
 </ol>
@@ -926,8 +926,8 @@ learn %&gt;% fit_one_cycle(2, lr, pct_start = 0.9, wd = wd)</code></pre>
 <h2 class="hasAnchor">
 <a href="#collab-collaborative-filtering" class="anchor"></a>Collab (Collaborative filtering)</h2>
 <p>Call libraries:</p>
-<pre><code><a href="https://github.com/nteetor/zeallot">library(zeallot)
-library(magrittr)</a></code></pre>
+<pre><code>library(zeallot)
+library(magrittr)</code></pre>
 <p>Get data:</p>
 <pre><code><a href="reference/URLs_MOVIE_LENS_ML_100k.html">URLs_MOVIE_LENS_ML_100k()</a></code></pre>
 <p>Specify column names:</p>
@@ -1054,7 +1054,7 @@ ggpubr::ggarrange(p_[[1]], p_[[2]], p_[[3]], p_[[4]], labels = types)</code></pr
 <p align="center">
 <img src="files/dcm.png" height="500" align="center" alt="dicom"></p>
 <p>Let’s try a relatively complex example:</p>
-<pre><code><a href="http://ggplot2.tidyverse.org">library(ggplot2)
+<pre><code>library(ggplot2)
 
 # crop parameters
 img = dcmread('hemorrhage.dcm')
@@ -1108,7 +1108,7 @@ ggpubr::ggarrange(p_[[1]],
                   p_[[4]],
                   labels = paste(types[1:4],
                                  paste(c('','',scan_))[1:4])
-                  )</a></code></pre>
+                  )</code></pre>
 <p align="center">
 <img src="files/dcm2.png" height="500" align="center" alt="dicom2"></p>
 </div>
@@ -1131,7 +1131,7 @@ data
 5 0.0000002089296 5.043181
 6 0.0000002511886 5.023340</code></pre>
 <p>Visualize:</p>
-<pre><code><a href="http://jkunst.com/highcharter/reference/hchart.html">highcharter::hchart(data, "line", highcharter::hcaes(y = losses, x = lr_rates ))</a></code></pre>
+<pre><code>highcharter::hchart(data, "line", highcharter::hcaes(y = losses, x = lr_rates ))</code></pre>
 <p align="center">
 <img src="files/lr.png" height="500" align="center" alt="Learning_rates"></p>
 </div>
@@ -1220,7 +1220,7 @@ tbbox = LabeledBBox(TensorBBox(bbox[[1]]), bbox[[2]])
 <pre><code>(#2) [TensorBBox([[ 91.3000,  77.9400, 102.4300,  82.4700],
         [ 27.5800,  77.6500,  40.7600,  82.3400]]),['tv', 'tv']]</code></pre>
 <p>Visualize:</p>
-<pre><code><a href="http://dahtah.github.io/imager">library(imager)
+<pre><code>library(imager)
 coco = imager::load.image(coco_fn)
 plot(coco,axes=F)
 
@@ -1236,7 +1236,7 @@ for ( i in 1:length(bbox[[1]])) {
        col = "white"
   )
 }
-</a></code></pre>
+</code></pre>
 <p align="center">
 <img src="files/annotate.png" height="500" align="center" alt="Annotation"></p>
 <p>Alternatively, we could see batch via dataloader:</p>

@@ -1,4 +1,4 @@
-pandoc: 2.9.2.1
+pandoc: 2.7.3
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
@@ -16,7 +16,7 @@ articles:
   obj_detect: obj_detect.html
   optimizer: optimizer.html
   super_res_gan: super_res_gan.html
-last_built: 2020-10-16T09:24Z
+last_built: 2020-10-16T15:20Z
 urls:
   reference: https://henry090.github.io/fastai//reference
   article: https://henry090.github.io/fastai//articles
