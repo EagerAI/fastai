@@ -1,0 +1,262 @@
+
+
+
+#' @title AudioBlock
+#'
+#' @description A `TransformBlock` for audios
+#'
+#'
+#' @param cache_folder cache_folder
+#' @param sample_rate sample_rate
+#' @param force_mono force_mono
+#' @param crop_signal_to crop_signal_to
+#' @return None
+#' @export
+AudioBlock <- function(cache_folder = NULL, sample_rate = 16000,
+                       force_mono = TRUE, crop_signal_to = NULL) {
+
+  fastaudio$core$config$AudioBlock(
+    cache_folder = cache_folder,
+    sample_rate = as.integer(sample_rate),
+    force_mono = force_mono,
+    crop_signal_to = crop_signal_to
+  )
+
+}
+
+
+
+#' @title AudioBlock from folder
+#'
+#' @description Build a `AudioBlock` from a `path` and caches some intermediary results
+#'
+#' @param path path
+#' @param sample_rate sample_rate
+#' @param force_mono force_mono
+#' @param crop_signal_to crop_signal_to
+#' @return None
+#' @export
+AudioBlock_from_folder <- function(path, sample_rate = 16000,
+                                   force_mono = TRUE, crop_signal_to = NULL) {
+
+  fastaudio$core$config$AudioBlock$from_folder(
+    path = path,
+    sample_rate = as.integer(sample_rate),
+    force_mono = force_mono,
+    crop_signal_to = crop_signal_to
+  )
+
+}
+
+
+#' @title Preprocess_audio_folder
+#'
+#' @description Preprocess audio files in `path` in parallel using `n_workers`
+#'
+#'
+#' @param path path
+#' @param folders folders
+#' @param output_dir output_dir
+#' @param sample_rate sample_rate
+#' @param force_mono force_mono
+#' @param crop_signal_to crop_signal_to
+#' @return None
+#' @export
+preprocess_audio_folder <- function(path, folders = NULL, output_dir = NULL,
+                                    sample_rate = 16000, force_mono = TRUE,
+                                    crop_signal_to = NULL) {
+
+  fastaudio$core$config$preprocess_audio_folder(
+    path = path,
+    folders = folders,
+    output_dir = output_dir,
+    sample_rate = as.integer(sample_rate),
+    force_mono = force_mono,
+    crop_signal_to = crop_signal_to
+  )
+
+}
+
+
+#' @title Preprocess Audio
+#'
+#' @description Creates an audio tensor and run the basic preprocessing transforms on it.
+#'
+#' @details Used while preprocessing the audios, this is not a `Transform`.
+#'
+#' @param sample_rate sample_rate
+#' @param force_mono force_mono
+#' @param crop_signal_to crop_signal_to
+#' @return None
+#' @export
+PreprocessAudio <- function(sample_rate = 16000, force_mono = TRUE, crop_signal_to = NULL) {
+
+  fastaudio$core$config$PreprocessAudio(
+    sample_rate = as.integer(sample_rate),
+    force_mono = force_mono,
+    crop_signal_to = crop_signal_to
+  )
+
+}
+
+
+#' @title BasicMelSpectrogram
+#'
+#'
+#' @param sample_rate sample_rate
+#' @param n_fft n_fft
+#' @param win_length win_length
+#' @param hop_length hop_length
+#' @param f_min f_min
+#' @param f_max f_max
+#' @param pad pad
+#' @param n_mels n_mels
+#' @param window_fn window_fn
+#' @param power power
+#' @param normalized normalized
+#' @param wkwargs wkwargs
+#' @param mel mel
+#' @param to_db to_db
+#' @return None
+#' @export
+BasicMelSpectrogram <- function(sample_rate = 16000, n_fft = 400, win_length = NULL,
+                                hop_length = NULL, f_min = 0.0, f_max = NULL,
+                                pad = 0, n_mels = 128, window_fn = torch$hann_window,
+                                power = 2.0, normalized = FALSE, wkwargs = NULL,
+                                mel = TRUE, to_db = TRUE) {
+
+  args <- list(
+    sample_rate = as.integer(sample_rate),
+    n_fft = as.integer(n_fft),
+    win_length = win_length,
+    hop_length = hop_length,
+    f_min = f_min,
+    f_max = f_max,
+    pad = as.integer(pad),
+    n_mels = as.integer(n_mels),
+    window_fn = window_fn,
+    power = power,
+    normalized = normalized,
+    wkwargs = wkwargs,
+    mel = mel,
+    to_db = to_db
+  )
+
+  if(!is.null(args[['win_length']]))
+    args[['win_length']] = as.integer(args[['win_length']])
+
+  if(!is.null(args[['hop_length']]))
+    args[['hop_length']] = as.integer(args[['hop_length']])
+
+  do.call(fastaudio$core$config$AudioConfig$BasicMelSpectrogram, args)
+
+}
+
+
+#' @title BasicMFCC
+#'
+#' @param sample_rate sample_rate
+#' @param n_mfcc n_mfcc
+#' @param dct_type dct_type
+#' @param norm norm
+#' @param log_mels log_mels
+#' @param melkwargs melkwargs
+#' @return None
+#' @export
+BasicMFCC <- function(sample_rate = 16000, n_mfcc = 40, dct_type = 2, norm = "ortho",
+                      log_mels = FALSE, melkwargs = NULL) {
+
+  fastaudio$core$config$AudioConfig$BasicMFCC(
+    sample_rate = as.integer(sample_rate),
+    n_mfcc = as.integer(n_mfcc),
+    dct_type = as.integer(dct_type),
+    norm = norm,
+    log_mels = log_mels,
+    melkwargs = melkwargs
+  )
+
+}
+
+
+#' @title BasicSpectrogram
+#'
+#'
+#' @param n_fft n_fft
+#' @param win_length win_length
+#' @param hop_length hop_length
+#' @param pad pad
+#' @param window_fn window_fn
+#' @param power power
+#' @param normalized normalized
+#' @param wkwargs wkwargs
+#' @param mel mel
+#' @param to_db to_db
+#' @return None
+#' @export
+BasicSpectrogram <- function(n_fft = 400, win_length = NULL, hop_length = NULL,
+                             pad = 0, window_fn = torch$hann_window, power = 2.0,
+                             normalized = FALSE, wkwargs = NULL, mel = FALSE, to_db = TRUE) {
+
+  fastaudio$core$config$AudioConfig$BasicSpectrogram(
+    n_fft = as.integer(n_fft),
+    win_length = win_length,
+    hop_length = hop_length,
+    pad = as.integer(pad),
+    window_fn = window_fn,
+    power = power,
+    normalized = normalized,
+    wkwargs = wkwargs,
+    mel = mel,
+    to_db = to_db
+  )
+
+}
+
+
+#' @title Voice
+#'
+#'
+#' @param sample_rate sample_rate
+#' @param n_fft n_fft
+#' @param win_length win_length
+#' @param hop_length hop_length
+#' @param f_min f_min
+#' @param f_max f_max
+#' @param pad pad
+#' @param n_mels n_mels
+#' @param window_fn window_fn
+#' @param power power
+#' @param normalized normalized
+#' @param wkwargs wkwargs
+#' @param mel mel
+#' @param to_db to_db
+#' @return None
+#' @export
+Voice <- function(sample_rate = 16000, n_fft = 1024, win_length = NULL, hop_length = 128,
+                  f_min = 50.0, f_max = 8000.0, pad = 0, n_mels = 128, window_fn = torch$hann_window,
+                  power = 2.0, normalized = FALSE, wkwargs = NULL, mel = TRUE, to_db = FALSE) {
+
+  args <- list(
+    sample_rate = as.integer(sample_rate),
+    n_fft = as.integer(n_fft),
+    win_length = win_length,
+    hop_length = hop_length,
+    f_min = f_min,
+    f_max = f_max,
+    pad = as.integer(pad),
+    n_mels = as.integer(n_mels),
+    window_fn = window_fn,
+    power = power,
+    normalized = normalized,
+    wkwargs = wkwargs,
+    mel = mel,
+    to_db = to_db
+  )
+
+  do.call(fastaudio$core$config$AudioConfig$Voice, args)
+
+}
+
+
+
+

@@ -56,6 +56,7 @@ bt <- NULL
 #' @export
 F <- NULL
 
+
 #' Dicom
 #' @return module
 #' @param ... parameters to pass
