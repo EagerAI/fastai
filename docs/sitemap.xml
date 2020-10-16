@@ -40,7 +40,40 @@
     <loc>https://henry090.github.io/fastai//reference/AddChannels.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/AddNoise.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/AffineCoordTfm.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/AudioBlock.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/AudioBlock_from_folder.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/AudioGetter.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/AudioPadType.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/AudioSpectrogram.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/AudioTensor.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/AudioTensor_create.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/AudioToMFCC.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/AudioToMFCC_from_cfg.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/AudioToSpec_from_cfg.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/AvgLoss.html</loc>
@@ -76,6 +109,15 @@
     <loc>https://henry090.github.io/fastai//reference/BaseTokenizer.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/BasicMFCC.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/BasicMelSpectrogram.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/BasicSpectrogram.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/BatchNorm.html</loc>
   </url>
   <url>
@@ -101,6 +143,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/CategoryBlock.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/ChangeVolume.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/ClassificationInterpretation_from_learner.html</loc>
@@ -136,6 +181,9 @@
     <loc>https://henry090.github.io/fastai//reference/CropPad.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/CropTime.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/CrossEntropyLossFlat.html</loc>
   </url>
   <url>
@@ -152,6 +200,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/Debugger.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/Delta.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/DenseResBlock.html</loc>
@@ -176,6 +227,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/DihedralItem.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/DownmixMono.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/DynamicUnet.html</loc>
@@ -400,6 +454,12 @@
     <loc>https://henry090.github.io/fastai//reference/MaskBlock.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/MaskFreq.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/MaskTime.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/Mask_create.html</loc>
   </url>
   <url>
@@ -433,6 +493,9 @@
     <loc>https://henry090.github.io/fastai//reference/Net.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/NoiseColor.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/NoneReduce.html</loc>
   </url>
   <url>
@@ -446,6 +509,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/OldRandomCrop.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/OpenAudio.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/OptimWrapper.html</loc>
@@ -488,6 +554,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/PrecisionMulti.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/PreprocessAudio.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/QHAdam.html</loc>
@@ -544,16 +613,28 @@
     <loc>https://henry090.github.io/fastai//reference/RegressionBlock.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/RemoveSilence.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/RemoveType.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/ResBlock.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/ResNet.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/Resample.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/Resize.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/ResizeBatch.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/ResizeSignal.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/RetinaNet.html</loc>
@@ -584,6 +665,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/SGD.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/SGRoll.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/Saturation.html</loc>
@@ -622,6 +706,15 @@
     <loc>https://henry090.github.io/fastai//reference/SigmoidRange.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/SignalCutout.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/SignalLoss.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/SignalShifter.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/SimpleCNN.html</loc>
   </url>
   <url>
@@ -635,6 +728,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/SpearmanCorrCoef.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/SpectrogramTransformer.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/SqueezeNet.html</loc>
@@ -701,6 +797,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/TextLearner_save_encoder.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/TfmResize.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/TfmdDL.html</loc>
@@ -901,6 +1000,9 @@
     <loc>https://henry090.github.io/fastai//reference/View.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/Voice.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/Warp.html</loc>
   </url>
   <url>
@@ -956,6 +1058,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/aspect.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/audio_extensions.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/aug_transforms.html</loc>
@@ -1208,6 +1313,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/get_annotations.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/get_audio_files.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/get_bias.html</loc>
@@ -1519,6 +1627,9 @@
     <loc>https://henry090.github.io/fastai//reference/preplexity.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/preprocess_audio_folder.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/print.fastai.learner.Learner.html</loc>
   </url>
   <url>
@@ -1703,6 +1814,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/tabular_learner.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/tar_extract_at_filename.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/tensor.html</loc>
