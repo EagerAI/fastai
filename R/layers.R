@@ -807,9 +807,101 @@ MishJitAutoFn <- function(...) {
 }
 
 
+#' @title Mish
+#'
+#'
+#' @param x tensor
+#' @return None
+#' @export
+mish <- function(x) {
+
+  fastai2$layers$mish(
+    x = x
+  )
+
+}
+
+#' @title Class Mish
+#'
+#'
+#' @param ... parameters to pass
+#' @return None
+#' @export
+Mish_ <- function(...) {
+
+  fastai2$layers$Mish(
+    ...
+  )
+
+}
+
+
+#' @title Children_and_parameters
+#'
+#' @description Return the children of `m` and its direct parameters not registered in modules.
+#'
+#'
+#' @param m parameters
+#' @return None
+#' @export
+children_and_parameters <- function(m) {
+
+  fastai2$layers$children_and_parameters(
+    m = m
+  )
+
+}
+
+
+#' @title Flatten_model
+#'
+#' @description Return the list of all submodules and parameters of `m`
+#'
+#'
+#' @param m parameters
+#' @return None
+#' @export
+flatten_model <- function(m) {
+
+  fastai2$layers$flatten_model(
+    m = m
+  )
+
+}
 
 
 
+#' @title NoneReduce
+#'
+#' @description A context manager to evaluate `loss_func` with none reduce.
+#'
+#'
+#' @param loss_func loss function
+#' @return None
+#' @export
+NoneReduce <- function(loss_func) {
+
+  fastai2$layers$NoneReduce(
+    loss_func = loss_func
+  )
+
+}
+
+#' @title In_channels
+#'
+#' @description Return the shape of the first weight layer in `m`.
+#'
+#'
+#' @param m parameters
+#' @return None
+#' @export
+in_channels <- function(m) {
+
+  fastai2$layers$in_channels(
+    m = m
+  )
+
+}
 
 
 
