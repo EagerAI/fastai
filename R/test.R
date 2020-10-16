@@ -347,11 +347,11 @@ show <- function(img, frames = 1, scale = TRUE, ...) {
   }
 
   if(class(img)[1]=="pydicom.dataset.FileDataset") {
-    do.call(img$show, args)
+    invisible(do.call(img$show, args))
   } else {
 
     args <- list(...)
-    do.call(img$show, args)
+    invisible(do.call(img$show, args))
   }
 
 }

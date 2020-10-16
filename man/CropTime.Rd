@@ -4,7 +4,7 @@
 \alias{CropTime}
 \title{Crop Time}
 \usage{
-CropTime(duration, pad_mode = AudioPadType$Zeros$value)
+CropTime(duration, pad_mode = AudioPadType$Zeros)
 }
 \arguments{
 \item{duration}{duration}
