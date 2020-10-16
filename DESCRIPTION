@@ -12,7 +12,7 @@ Description: The 'fastai' <https://docs.fast.ai/index.html> library
              using modern best practices. It is based on research 
              in to deep learning best practices undertaken 
              at 'fast.ai', including 'out of the box' support
-             for vision, text, tabular, and 
+             for vision, text, tabular, audio, time series, and 
              collab (collaborative filtering) models. 
 License: Apache License 2.0
 URL: https://github.com/henry090/fastai
