@@ -418,6 +418,9 @@
     <loc>https://henry090.github.io/fastai//reference/MishJitAutoFn.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/Mish_.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/Module.html</loc>
   </url>
   <url>
@@ -428,6 +431,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/Net.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/NoneReduce.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/Normalize.html</loc>
@@ -988,6 +994,9 @@
     <loc>https://henry090.github.io/fastai//reference/ceiling_.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/children_and_parameters.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/clean_raw_keys.html</loc>
   </url>
   <url>
@@ -1156,6 +1165,9 @@
     <loc>https://henry090.github.io/fastai//reference/flatten_check.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/flatten_model.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/flip_mat.html</loc>
   </url>
   <url>
@@ -1274,6 +1286,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/imagenet_stats.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/in_channels.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/init_default.html</loc>
@@ -1397,6 +1412,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/min.fastai.torch_core.TensorMask.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/mish.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/momentum_step.html</loc>
