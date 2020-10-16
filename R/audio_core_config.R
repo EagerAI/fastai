@@ -240,7 +240,7 @@ Voice <- function(sample_rate = 16000, n_fft = 1024, win_length = NULL, hop_leng
     sample_rate = as.integer(sample_rate),
     n_fft = as.integer(n_fft),
     win_length = win_length,
-    hop_length = hop_length,
+    hop_length = as.integer(hop_length),
     f_min = f_min,
     f_max = f_max,
     pad = as.integer(pad),
@@ -252,6 +252,9 @@ Voice <- function(sample_rate = 16000, n_fft = 1024, win_length = NULL, hop_leng
     mel = mel,
     to_db = to_db
   )
+
+  if(!is.null(args[['win_length']]))
+    args[['win_length']] = as.integer(args[['win_length']])
 
   do.call(fastaudio$core$config$AudioConfig$Voice, args)
 

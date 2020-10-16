@@ -22,11 +22,15 @@ audio_extensions = function() {
 #' @export
 get_audio_files <- function(path, recurse = TRUE, folders = NULL) {
 
-  fastaudio$core$signal$get_audio_files(
-    path = path,
-    recurse = recurse,
-    folders = folders
-  )
+  if(missing(path)) {
+    fastaudio$core$signal$get_audio_files
+  } else {
+    fastaudio$core$signal$get_audio_files(
+      path = path,
+      recurse = recurse,
+      folders = folders
+    )
+  }
 
 }
 
