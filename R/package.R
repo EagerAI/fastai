@@ -37,122 +37,127 @@ torch <- NULL
     environment = "r-fastai"
   ))
 
-  if(reticulate::py_module_available('IPython') &
-     reticulate::py_module_available('torch') &
-     reticulate::py_module_available('torchvision') &
-     reticulate::py_module_available('fastai')) {
+  py_av = reticulate::py_available(initialize = TRUE)
 
-    # torch module
-    torch <<- fastai2$torch_basics$torch
+  if(py_av) {
 
-    # tabular module
-    tabular <<- fastai2$tabular$all
+    if(reticulate::py_module_available('IPython') &
+       reticulate::py_module_available('torch') &
+       reticulate::py_module_available('torchvision') &
+       reticulate::py_module_available('fastai')) {
 
-    # vision module
-    vision <<- fastai2$vision
+      # torch module
+      torch <<- fastai2$torch_basics$torch
 
-    # collab module
-    collab <<- fastai2$collab
+      # tabular module
+      tabular <<- fastai2$tabular$all
 
-    # text module
-    text <<- fastai2$text$all
+      # vision module
+      vision <<- fastai2$vision
 
-    # Torch module
-    nn <<- fastai2$torch_core$nn
+      # collab module
+      collab <<- fastai2$collab
 
-    # Metrics
-    metrics <<- fastai2$metrics
+      # text module
+      text <<- fastai2$text$all
 
-    # Module
-    Module <<- fastai2$vision$all$Module
+      # Torch module
+      nn <<- fastai2$torch_core$nn
 
-    # Medical
-    medical <<- fastai2$medical$imaging
+      # Metrics
+      metrics <<- fastai2$metrics
 
-    # windows
-    dicom_windows <<- fastai2$medical$imaging$dicom_windows
+      # Module
+      Module <<- fastai2$vision$all$Module
 
-    # cmap
-    cm <<- fastai2$vision$all$plt$cm
+      # Medical
+      medical <<- fastai2$medical$imaging
 
-    # colors
-    colors <<- fastai2$vision$all$matplotlib$colors
+      # windows
+      dicom_windows <<- fastai2$medical$imaging$dicom_windows
+
+      # cmap
+      cm <<- fastai2$vision$all$plt$cm
+
+      # colors
+      colors <<- fastai2$vision$all$matplotlib$colors
 
 
-    # callback class
-    Callback <<- fastai2$callback$all$Callback
+      # callback class
+      Callback <<- fastai2$callback$all$Callback
 
-    #builtins
-    bt <<- reticulate::import_builtins()
+      #builtins
+      bt <<- reticulate::import_builtins()
 
-    # Functional interface
-    F <<- fastai2$torch_core$F
+      # Functional interface
+      F <<- fastai2$torch_core$F
 
-    # Dicom
-    Dicom <<- medical$PILDicom
+      # Dicom
+      Dicom <<- medical$PILDicom
+
+    }
+
+    if(reticulate::py_module_available('fastaudio')){
+
+      # main module
+      fastaudio <<- reticulate::import('fastaudio')
+
+      # RemoveType
+      RemoveType <<- fastaudio$augment$preprocess$RemoveType
+
+      # AudioPadType
+      AudioPadType <<- fastaudio$augment$signal$AudioPadType
+
+      # NoiseColor
+      NoiseColor <<- fastaudio$augment$signal$NoiseColor
+
+      # AudioSpectrogram
+      AudioSpectrogram <<- fastaudio$core$spectrogram$AudioSpectrogram
+    }
+
+    if(reticulate::py_module_available('fastprogress')) {
+      # remove fill
+      fastaip <<- reticulate::import('fastprogress')
+
+      fastaip$progress_bar$fill = ''
+    }
+
+
+    if(reticulate::py_module_available('kaggle')) {
+      kg <<- reticulate::import('kaggle')
+    }
+
+    if(reticulate::py_module_available('ignite') &
+       reticulate::py_module_available('pytorch_lightning') &
+       reticulate::py_module_available('catalyst')) {
+
+      if(file.exists('fastaibuilt/crappify.py')) {
+        crap <<- reticulate::import_from_path('crappify', path = 'fastaibuilt')
+      }
+
+      if(file.exists('fastaibuilt/migrating_ignite.py')) {
+        migrating_ignite <<- reticulate::import_from_path('migrating_ignite', path = 'fastaibuilt')
+      }
+
+      if(file.exists('fastaibuilt/migrating_lightning.py')) {
+        migrating_lightning <<- reticulate::import_from_path('migrating_lightning', path = 'fastaibuilt')
+      }
+
+      if(file.exists('fastaibuilt/migrating_pytorch.py')) {
+        migrating_pytorch <<- reticulate::import_from_path('migrating_pytorch', path = 'fastaibuilt')
+      }
+
+      if(file.exists('fastaibuilt/migrating_catalyst.py')) {
+        catalyst <<- reticulate::import_from_path('migrating_catalyst', path = 'fastaibuilt')
+      }
+
+      if(dir.exists('fastaibuilt/retinanet')) {
+        retinanet <<- reticulate::import_from_path('retinanet', path = 'fastaibuilt')
+      }
+
+    }
 
   }
-
-  if(reticulate::py_module_available('fastaudio')){
-
-    # main module
-    fastaudio <<- reticulate::import('fastaudio')
-
-    # RemoveType
-    RemoveType <<- fastaudio$augment$preprocess$RemoveType
-
-    # AudioPadType
-    AudioPadType <<- fastaudio$augment$signal$AudioPadType
-
-    # NoiseColor
-    NoiseColor <<- fastaudio$augment$signal$NoiseColor
-
-    # AudioSpectrogram
-    AudioSpectrogram <<- fastaudio$core$spectrogram$AudioSpectrogram
-  }
-
-  if(reticulate::py_module_available('fastprogress')) {
-    # remove fill
-    fastaip <<- reticulate::import('fastprogress')
-
-    fastaip$progress_bar$fill = ''
-  }
-
-
-  if(reticulate::py_module_available('kaggle')) {
-    kg <<- reticulate::import('kaggle')
-  }
-
-  if(reticulate::py_module_available('ignite') &
-     reticulate::py_module_available('pytorch_lightning') &
-     reticulate::py_module_available('catalyst')) {
-
-    if(file.exists('fastaibuilt/crappify.py')) {
-      crap <<- reticulate::import_from_path('crappify', path = 'fastaibuilt')
-    }
-
-    if(file.exists('fastaibuilt/migrating_ignite.py')) {
-      migrating_ignite <<- reticulate::import_from_path('migrating_ignite', path = 'fastaibuilt')
-    }
-
-    if(file.exists('fastaibuilt/migrating_lightning.py')) {
-      migrating_lightning <<- reticulate::import_from_path('migrating_lightning', path = 'fastaibuilt')
-    }
-
-    if(file.exists('fastaibuilt/migrating_pytorch.py')) {
-      migrating_pytorch <<- reticulate::import_from_path('migrating_pytorch', path = 'fastaibuilt')
-    }
-
-    if(file.exists('fastaibuilt/migrating_catalyst.py')) {
-      catalyst <<- reticulate::import_from_path('migrating_catalyst', path = 'fastaibuilt')
-    }
-
-    if(dir.exists('fastaibuilt/retinanet')) {
-      retinanet <<- reticulate::import_from_path('retinanet', path = 'fastaibuilt')
-    }
-
-  }
-
 }
 
 
