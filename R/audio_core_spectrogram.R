@@ -16,7 +16,7 @@ AudioSpectrogram <- NULL
 #' @param audio_cfg audio_cfg
 #' @return None
 #' @export
-AudioToSpec_from_cfg <- function(cls, audio_cfg) {
+AudioToSpec_from_cfg <- function(audio_cfg) {
 
   fastaudio$core$spectrogram$AudioToSpec$from_cfg(
     audio_cfg = audio_cfg

@@ -1,5 +1,5 @@
 
-
+fastaudio <- NULL
 AudioSpectrogram <- NULL
 NoiseColor <- NULL
 AudioPadType <- NULL

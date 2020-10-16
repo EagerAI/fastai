@@ -4,7 +4,7 @@
 \alias{AudioToSpec_from_cfg}
 \title{AudioToSpec from cfg}
 \usage{
-AudioToSpec_from_cfg(cls, audio_cfg)
+AudioToSpec_from_cfg(audio_cfg)
 }
 \arguments{
 \item{audio_cfg}{audio_cfg}
