@@ -7,9 +7,9 @@
 SpectrogramTransformer(mel = TRUE, to_db = TRUE)
 }
 \arguments{
-\item{mel}{mel}
+\item{mel}{mel-spectrogram or not}
 
-\item{to_db}{to_db}
+\item{to_db}{to decibels}
 }
 \value{
 None

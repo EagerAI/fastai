@@ -14,7 +14,7 @@ RemoveType <- NULL
 #'
 #' @param remove_type remove type from RemoveType module
 #' @param threshold threshold point
-#' @param pad_ms pad ms
+#' @param pad_ms pad milliseconds
 #' @return None
 #' @export
 RemoveSilence <- function(remove_type = RemoveType$Trim$value, threshold = 20, pad_ms = 20) {
@@ -33,7 +33,7 @@ RemoveSilence <- function(remove_type = RemoveType$Trim$value, threshold = 20, p
 #' @description Resample using faster polyphase technique and avoiding FFT computation
 #'
 #'
-#' @param sr_new sr_new
+#' @param sr_new input
 #' @return None
 #' @export
 Resample <- function(sr_new) {

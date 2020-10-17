@@ -9,15 +9,15 @@ SEBlock(expansion, ni, nf, groups = 1, reduction = 16, stride = 1)
 \arguments{
 \item{expansion}{decoder}
 
-\item{ni}{ni}
+\item{ni}{number of inputs}
 
-\item{nf}{nf}
+\item{nf}{number of features}
 
 \item{groups}{number of groups}
 
 \item{reduction}{number of reduction}
 
-\item{stride}{number of stride}
+\item{stride}{number of strides}
 }
 \value{
 Block object

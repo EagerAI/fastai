@@ -37,9 +37,9 @@ ResBlock(
 \arguments{
 \item{expansion}{decoder}
 
-\item{ni}{ni}
+\item{ni}{number of linear inputs}
 
-\item{nf}{nf}
+\item{nf}{number of features}
 
 \item{stride}{stride number}
 
@@ -47,9 +47,9 @@ ResBlock(
 
 \item{reduction}{reduction}
 
-\item{nh1}{nh1}
+\item{nh1}{out channels 1}
 
-\item{nh2}{nh2}
+\item{nh2}{out channels 2}
 
 \item{dw}{dw}
 
@@ -59,17 +59,17 @@ ResBlock(
 
 \item{sym}{sym}
 
-\item{norm_type}{norm_type}
+\item{norm_type}{normalization type}
 
-\item{act_cls}{act_cls}
+\item{act_cls}{activation}
 
 \item{ndim}{dimension number}
 
-\item{ks}{ks}
+\item{ks}{kernel size}
 
 \item{pool}{pooling type, Average, Max}
 
-\item{pool_first}{pool_first}
+\item{pool_first}{pooling first}
 
 \item{padding}{padding}
 

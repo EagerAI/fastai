@@ -13,7 +13,7 @@ DownmixMono(enc = NULL, dec = NULL, split_idx = NULL, order = NULL)
 
 \item{split_idx}{split by index}
 
-\item{order}{order}
+\item{order}{order, by default is NULL}
 }
 \value{
 None

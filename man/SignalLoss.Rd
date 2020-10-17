@@ -7,7 +7,7 @@
 SignalLoss(p = 0.5, max_loss_pct = 0.15)
 }
 \arguments{
-\item{p}{p}
+\item{p}{probability}
 
 \item{max_loss_pct}{max loss percentage}
 }

@@ -9,7 +9,7 @@ TfmResize(size, interp_mode = "bilinear")
 \arguments{
 \item{size}{size}
 
-\item{interp_mode}{interp_mode}
+\item{interp_mode}{interpolation mode}
 }
 \value{
 None

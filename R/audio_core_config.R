@@ -6,10 +6,10 @@
 #' @description A `TransformBlock` for audios
 #'
 #'
-#' @param cache_folder cache_folder
-#' @param sample_rate sample_rate
-#' @param force_mono force_mono
-#' @param crop_signal_to crop_signal_to
+#' @param cache_folder cache folder
+#' @param sample_rate sample rate
+#' @param force_mono force mono or not
+#' @param crop_signal_to int, crop signal
 #' @return None
 #' @export
 AudioBlock <- function(cache_folder = NULL, sample_rate = 16000,
@@ -30,10 +30,10 @@ AudioBlock <- function(cache_folder = NULL, sample_rate = 16000,
 #'
 #' @description Build a `AudioBlock` from a `path` and caches some intermediary results
 #'
-#' @param path path
-#' @param sample_rate sample_rate
-#' @param force_mono force_mono
-#' @param crop_signal_to crop_signal_to
+#' @param path directory, path
+#' @param sample_rate sample rate
+#' @param force_mono force mono or not
+#' @param crop_signal_to int, crop signal
 #' @return None
 #' @export
 AudioBlock_from_folder <- function(path, sample_rate = 16000,
@@ -49,17 +49,17 @@ AudioBlock_from_folder <- function(path, sample_rate = 16000,
 }
 
 
-#' @title Preprocess_audio_folder
+#' @title Preprocess audio folder
 #'
 #' @description Preprocess audio files in `path` in parallel using `n_workers`
 #'
 #'
-#' @param path path
+#' @param path directory, path
 #' @param folders folders
-#' @param output_dir output_dir
-#' @param sample_rate sample_rate
-#' @param force_mono force_mono
-#' @param crop_signal_to crop_signal_to
+#' @param output_dir output directory
+#' @param sample_rate sample rate
+#' @param force_mono force mono or not
+#' @param crop_signal_to int, crop signal
 #' @return None
 #' @export
 preprocess_audio_folder <- function(path, folders = NULL, output_dir = NULL,
@@ -84,9 +84,9 @@ preprocess_audio_folder <- function(path, folders = NULL, output_dir = NULL,
 #'
 #' @details Used while preprocessing the audios, this is not a `Transform`.
 #'
-#' @param sample_rate sample_rate
-#' @param force_mono force_mono
-#' @param crop_signal_to crop_signal_to
+#' @param sample_rate sample rate
+#' @param force_mono force mono or not
+#' @param crop_signal_to int, crop signal
 #' @return None
 #' @export
 PreprocessAudio <- function(sample_rate = 16000, force_mono = TRUE, crop_signal_to = NULL) {
@@ -103,20 +103,20 @@ PreprocessAudio <- function(sample_rate = 16000, force_mono = TRUE, crop_signal_
 #' @title BasicMelSpectrogram
 #'
 #'
-#' @param sample_rate sample_rate
-#' @param n_fft n_fft
-#' @param win_length win_length
-#' @param hop_length hop_length
-#' @param f_min f_min
-#' @param f_max f_max
-#' @param pad pad
-#' @param n_mels n_mels
-#' @param window_fn window_fn
+#' @param sample_rate sample rate
+#' @param n_fft number of fast fourier transforms
+#' @param win_length windowing length
+#' @param hop_length hopping length
+#' @param f_min minimum frequency
+#' @param f_max maximum frequency
+#' @param pad padding
+#' @param n_mels number of mel-spectrograms
+#' @param window_fn window function
 #' @param power power
-#' @param normalized normalized
-#' @param wkwargs wkwargs
-#' @param mel mel
-#' @param to_db to_db
+#' @param normalized normalized or not
+#' @param wkwargs additional arguments
+#' @param mel mel-spectrogram or not
+#' @param to_db to decibels
 #' @return None
 #' @export
 BasicMelSpectrogram <- function(sample_rate = 16000, n_fft = 400, win_length = NULL,
@@ -153,14 +153,14 @@ BasicMelSpectrogram <- function(sample_rate = 16000, n_fft = 400, win_length = N
 }
 
 
-#' @title BasicMFCC
+#' @title Basic MFCC
 #'
-#' @param sample_rate sample_rate
-#' @param n_mfcc n_mfcc
-#' @param dct_type dct_type
-#' @param norm norm
-#' @param log_mels log_mels
-#' @param melkwargs melkwargs
+#' @param sample_rate sample rate
+#' @param n_mfcc number of mel-frequency cepstral coefficients
+#' @param dct_type dct type
+#' @param norm normalization type
+#' @param log_mels apply log to mels
+#' @param melkwargs additional arguments for mels
 #' @return None
 #' @export
 BasicMFCC <- function(sample_rate = 16000, n_mfcc = 40, dct_type = 2, norm = "ortho",
@@ -181,16 +181,16 @@ BasicMFCC <- function(sample_rate = 16000, n_mfcc = 40, dct_type = 2, norm = "or
 #' @title BasicSpectrogram
 #'
 #'
-#' @param n_fft n_fft
-#' @param win_length win_length
-#' @param hop_length hop_length
-#' @param pad pad
-#' @param window_fn window_fn
+#' @param n_fft number of fast fourier transforms
+#' @param win_length windowing length
+#' @param hop_length hopping length
+#' @param pad padding
+#' @param window_fn window function
 #' @param power power
-#' @param normalized normalized
-#' @param wkwargs wkwargs
-#' @param mel mel
-#' @param to_db to_db
+#' @param normalized normalized or not
+#' @param wkwargs additional arguments
+#' @param mel mel-spectrogram or not
+#' @param to_db to decibels
 #' @return None
 #' @export
 BasicSpectrogram <- function(n_fft = 400, win_length = NULL, hop_length = NULL,
@@ -216,20 +216,20 @@ BasicSpectrogram <- function(n_fft = 400, win_length = NULL, hop_length = NULL,
 #' @title Voice
 #'
 #'
-#' @param sample_rate sample_rate
-#' @param n_fft n_fft
-#' @param win_length win_length
-#' @param hop_length hop_length
-#' @param f_min f_min
-#' @param f_max f_max
-#' @param pad pad
-#' @param n_mels n_mels
-#' @param window_fn window_fn
+#' @param sample_rate sample rate
+#' @param n_fft number of fast fourier transforms
+#' @param win_length windowing length
+#' @param hop_length hopping length
+#' @param f_min minimum frequency
+#' @param f_max maximum frequency
+#' @param pad padding
+#' @param n_mels number of mel-spectrograms
+#' @param window_fn window function
 #' @param power power
-#' @param normalized normalized
-#' @param wkwargs wkwargs
-#' @param mel mel
-#' @param to_db to_db
+#' @param normalized normalized or not
+#' @param wkwargs additional arguments
+#' @param mel mel-spectrogram or not
+#' @param to_db to decibels
 #' @return None
 #' @export
 Voice <- function(sample_rate = 16000, n_fft = 1024, win_length = NULL, hop_length = 128,

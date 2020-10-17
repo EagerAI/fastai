@@ -7,11 +7,11 @@
 PreprocessAudio(sample_rate = 16000, force_mono = TRUE, crop_signal_to = NULL)
 }
 \arguments{
-\item{sample_rate}{sample_rate}
+\item{sample_rate}{sample rate}
 
-\item{force_mono}{force_mono}
+\item{force_mono}{force mono or not}
 
-\item{crop_signal_to}{crop_signal_to}
+\item{crop_signal_to}{int, crop signal}
 }
 \value{
 None

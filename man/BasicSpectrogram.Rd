@@ -18,25 +18,25 @@ BasicSpectrogram(
 )
 }
 \arguments{
-\item{n_fft}{n_fft}
+\item{n_fft}{number of fast fourier transforms}
 
-\item{win_length}{win_length}
+\item{win_length}{windowing length}
 
-\item{hop_length}{hop_length}
+\item{hop_length}{hopping length}
 
-\item{pad}{pad}
+\item{pad}{padding}
 
-\item{window_fn}{window_fn}
+\item{window_fn}{window function}
 
 \item{power}{power}
 
-\item{normalized}{normalized}
+\item{normalized}{normalized or not}
 
-\item{wkwargs}{wkwargs}
+\item{wkwargs}{additional arguments}
 
-\item{mel}{mel}
+\item{mel}{mel-spectrogram or not}
 
-\item{to_db}{to_db}
+\item{to_db}{to decibels}
 }
 \value{
 None

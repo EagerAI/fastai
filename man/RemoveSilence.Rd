@@ -11,7 +11,7 @@ RemoveSilence(remove_type = RemoveType$Trim$value, threshold = 20, pad_ms = 20)
 
 \item{threshold}{threshold point}
 
-\item{pad_ms}{pad ms}
+\item{pad_ms}{pad milliseconds}
 }
 \value{
 None

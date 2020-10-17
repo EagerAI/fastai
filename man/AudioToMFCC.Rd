@@ -14,17 +14,17 @@ AudioToMFCC(
 )
 }
 \arguments{
-\item{sample_rate}{sample_rate}
+\item{sample_rate}{sample rate}
 
-\item{n_mfcc}{n_mfcc}
+\item{n_mfcc}{number of mel-frequency cepstral coefficients}
 
-\item{dct_type}{dct_type}
+\item{dct_type}{dct type}
 
-\item{norm}{norm}
+\item{norm}{normalization type}
 
-\item{log_mels}{log_mels}
+\item{log_mels}{apply log to mels}
 
-\item{melkwargs}{melkwargs}
+\item{melkwargs}{additional arguments for mels}
 }
 \value{
 None

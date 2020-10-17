@@ -27,9 +27,9 @@ SEResNeXtBlock(
 \arguments{
 \item{expansion}{decoder}
 
-\item{ni}{ni}
+\item{ni}{number of linear inputs}
 
-\item{nf}{nf}
+\item{nf}{number of features}
 
 \item{groups}{groups number}
 

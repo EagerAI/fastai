@@ -12,13 +12,13 @@ AudioBlock_from_folder(
 )
 }
 \arguments{
-\item{path}{path}
+\item{path}{directory, path}
 
-\item{sample_rate}{sample_rate}
+\item{sample_rate}{sample rate}
 
-\item{force_mono}{force_mono}
+\item{force_mono}{force mono or not}
 
-\item{crop_signal_to}{crop_signal_to}
+\item{crop_signal_to}{int, crop signal}
 }
 \value{
 None

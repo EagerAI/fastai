@@ -11,9 +11,9 @@ SeparableBlock(expansion, ni, nf, reduction = 16, stride = 1, base_width = 4)
 \arguments{
 \item{expansion}{decoder}
 
-\item{ni}{ni}
+\item{ni}{number of linear inputs}
 
-\item{nf}{nf}
+\item{nf}{number of features}
 
 \item{reduction}{reduction number}
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/audio_core_config.R
 \name{preprocess_audio_folder}
 \alias{preprocess_audio_folder}
-\title{Preprocess_audio_folder}
+\title{Preprocess audio folder}
 \usage{
 preprocess_audio_folder(
   path,
@@ -14,17 +14,17 @@ preprocess_audio_folder(
 )
 }
 \arguments{
-\item{path}{path}
+\item{path}{directory, path}
 
 \item{folders}{folders}
 
-\item{output_dir}{output_dir}
+\item{output_dir}{output directory}
 
-\item{sample_rate}{sample_rate}
+\item{sample_rate}{sample rate}
 
-\item{force_mono}{force_mono}
+\item{force_mono}{force mono or not}
 
-\item{crop_signal_to}{crop_signal_to}
+\item{crop_signal_to}{int, crop signal}
 }
 \value{
 None

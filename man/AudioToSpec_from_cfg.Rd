@@ -7,7 +7,7 @@
 AudioToSpec_from_cfg(audio_cfg)
 }
 \arguments{
-\item{audio_cfg}{audio_cfg}
+\item{audio_cfg}{audio configuration}
 }
 \value{
 None

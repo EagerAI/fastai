@@ -7,7 +7,7 @@
 AudioTensor(x, sr = NULL)
 }
 \arguments{
-\item{x}{x}
+\item{x}{tensor}
 
 \item{sr}{sr}
 }

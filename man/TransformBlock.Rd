@@ -21,7 +21,7 @@ TransformBlock(
 
 \item{dl_type}{DL applications}
 
-\item{dls_kwargs}{additional argument}
+\item{dls_kwargs}{additional arguments}
 }
 \value{
 block

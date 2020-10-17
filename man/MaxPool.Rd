@@ -7,15 +7,15 @@
 MaxPool(ks = 2, stride = NULL, padding = 0, ndim = 2, ceil_mode = FALSE)
 }
 \arguments{
-\item{ks}{ks}
+\item{ks}{kernel size}
 
-\item{stride}{stride}
+\item{stride}{the stride of the window. Default value is kernel_size}
 
-\item{padding}{padding}
+\item{padding}{implicit zero padding to be added on both sides}
 
-\item{ndim}{ndim}
+\item{ndim}{dimension number}
 
-\item{ceil_mode}{ceil_mode}
+\item{ceil_mode}{when True, will use ceil instead of floor to compute the output shape}
 }
 \value{
 None

@@ -7,7 +7,7 @@
 OpenAudio(items)
 }
 \arguments{
-\item{items}{items}
+\item{items}{vector, items}
 }
 \value{
 None

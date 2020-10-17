@@ -16,8 +16,8 @@ audio_extensions = function() {
 #'
 #'
 #' @param path path
-#' @param recurse recurse
-#' @param folders folders
+#' @param recurse recursive or not
+#' @param folders vector, folders
 #' @return None
 #' @export
 get_audio_files <- function(path, recurse = TRUE, folders = NULL) {
@@ -41,8 +41,8 @@ get_audio_files <- function(path, recurse = TRUE, folders = NULL) {
 #' @details and passes along `kwargs`, only in `folders`, if specified.
 #'
 #' @param suf suffix
-#' @param recurse recurse
-#' @param folders folders
+#' @param recurse recursive or not
+#' @param folders vector, folders
 #' @return None
 #' @export
 AudioGetter <- function(suf = "", recurse = TRUE, folders = NULL) {
@@ -61,8 +61,8 @@ AudioGetter <- function(suf = "", recurse = TRUE, folders = NULL) {
 #' @description Extract `fname` to `dest`/`fname.name` folder using `tarfile`
 #'
 #'
-#' @param fname fname
-#' @param dest dest
+#' @param fname folder name
+#' @param dest destination
 #' @return None
 #' @export
 tar_extract_at_filename <- function(fname, dest) {
@@ -78,7 +78,7 @@ tar_extract_at_filename <- function(fname, dest) {
 #'
 #' @description Semantic torch tensor that represents an audio.
 #'
-#' @param x x
+#' @param x tensor
 #' @param sr sr
 #' @return tensor
 #' @export
@@ -96,16 +96,16 @@ AudioTensor <- function(x, sr = NULL) {
 #'
 #' @description Creates audio tensor from file
 #'
-#' @param fn fn
-#' @param cache_folder cache_folder
-#' @param out out
-#' @param normalization normalization
-#' @param channels_first channels_first
-#' @param num_frames num_frames
+#' @param fn function
+#' @param cache_folder cache folder
+#' @param out out format
+#' @param normalization apply normalization or not
+#' @param channels_first channels first/last
+#' @param num_frames number of frames
 #' @param offset offset
-#' @param signalinfo signalinfo
-#' @param encodinginfo encodinginfo
-#' @param filetype filetype
+#' @param signalinfo signal info
+#' @param encodinginfo encoding info
+#' @param filetype the type of file
 #' @return None
 #' @export
 AudioTensor_create <- function(fn, cache_folder = NULL, out = NULL,
@@ -141,7 +141,7 @@ AudioTensor_create <- function(fn, cache_folder = NULL, out = NULL,
 #' @description Transform that creates AudioTensors from a list of files.
 #'
 #'
-#' @param items items
+#' @param items vector, items
 #' @return None
 #'
 #' @export

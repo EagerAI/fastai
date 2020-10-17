@@ -9,9 +9,9 @@ AudioGetter(suf = "", recurse = TRUE, folders = NULL)
 \arguments{
 \item{suf}{suffix}
 
-\item{recurse}{recurse}
+\item{recurse}{recursive or not}
 
-\item{folders}{folders}
+\item{folders}{vector, folders}
 }
 \value{
 None

@@ -7,13 +7,13 @@
 MaskTime(num_masks = 1, size = 20, start = NULL, val = NULL)
 }
 \arguments{
-\item{num_masks}{number masks}
+\item{num_masks}{number of masks}
 
 \item{size}{size}
 
-\item{start}{start point}
+\item{start}{starting point}
 
-\item{val}{val}
+\item{val}{value}
 }
 \value{
 None

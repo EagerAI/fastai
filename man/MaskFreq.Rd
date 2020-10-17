@@ -11,9 +11,9 @@ MaskFreq(num_masks = 1, size = 20, start = NULL, val = NULL)
 
 \item{size}{size}
 
-\item{start}{start point}
+\item{start}{starting point}
 
-\item{val}{val}
+\item{val}{value}
 }
 \value{
 None

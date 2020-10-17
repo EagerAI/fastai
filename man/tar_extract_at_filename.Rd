@@ -7,9 +7,9 @@
 tar_extract_at_filename(fname, dest)
 }
 \arguments{
-\item{fname}{fname}
+\item{fname}{folder name}
 
-\item{dest}{dest}
+\item{dest}{destination}
 }
 \value{
 None

@@ -3,11 +3,11 @@
 #' @title SEBlock
 #'
 #' @param expansion decoder
-#' @param ni ni
-#' @param nf nf
+#' @param ni number of inputs
+#' @param nf number of features
 #' @param groups number of groups
 #' @param reduction number of reduction
-#' @param stride number of stride
+#' @param stride number of strides
 #' @return Block object
 #' @export
 SEBlock <- function(expansion, ni, nf, groups = 1, reduction = 16, stride = 1) {
@@ -26,8 +26,8 @@ SEBlock <- function(expansion, ni, nf, groups = 1, reduction = 16, stride = 1) {
 #' @title SEResNeXtBlock
 #'
 #' @param expansion decoder
-#' @param ni ni
-#' @param nf nf
+#' @param ni number of inputs
+#' @param nf number of features
 #' @param groups number of groups
 #' @param reduction number of reduction
 #' @param stride number of stride
@@ -52,8 +52,8 @@ SEResNeXtBlock <- function(expansion, ni, nf, groups = 32, reduction = 16, strid
 #'
 #'
 #' @param expansion decoder
-#' @param ni ni
-#' @param nf nf
+#' @param ni number of inputs
+#' @param nf number of features
 #' @param reduction number of reduction
 #' @param stride number of stride
 #' @param base_width base width
@@ -79,23 +79,23 @@ SeparableBlock <- function(expansion, ni, nf, reduction = 16, stride = 1, base_w
 #'
 #'
 #' @param expansion decoder
-#' @param ni ni
-#' @param nf nf
+#' @param ni number of linear inputs
+#' @param nf number of features
 #' @param stride stride number
 #' @param groups groups number
 #' @param reduction reduction
-#' @param nh1 nh1
-#' @param nh2 nh2
+#' @param nh1 out channels 1
+#' @param nh2 out channels 2
 #' @param dw dw
 #' @param g2 g2
 #' @param sa sa
 #' @param sym sym
-#' @param norm_type norm_type
-#' @param act_cls act_cls
+#' @param norm_type normalization type
+#' @param act_cls activation
 #' @param ndim dimension number
-#' @param ks ks
+#' @param ks kernel size
 #' @param pool pooling type, Average, Max
-#' @param pool_first pool_first
+#' @param pool_first pooling first
 #' @param padding padding
 #' @param bias bias
 #' @param bn_1st bn 1st
@@ -151,11 +151,11 @@ ResBlock <- function(expansion, ni, nf, stride = 1, groups = 1,
 #' @description nn$AvgPool layer for `ndim`
 #'
 #'
-#' @param ks ks
-#' @param stride stride
-#' @param padding padding
-#' @param ndim ndim
-#' @param ceil_mode ceil_mode
+#' @param ks kernel size
+#' @param stride the stride of the window. Default value is kernel_size
+#' @param padding implicit zero padding to be added on both sides
+#' @param ndim dimension number
+#' @param ceil_mode when True, will use ceil instead of floor to compute the output shape
 #' @return None
 #' @export
 AvgPool <- function(ks = 2, stride = NULL, padding = 0, ndim = 2, ceil_mode = FALSE) {
@@ -175,11 +175,11 @@ AvgPool <- function(ks = 2, stride = NULL, padding = 0, ndim = 2, ceil_mode = FA
 #' @description nn.MaxPool layer for `ndim`
 #'
 #'
-#' @param ks ks
-#' @param stride stride
-#' @param padding padding
-#' @param ndim ndim
-#' @param ceil_mode ceil_mode
+#' @param ks kernel size
+#' @param stride the stride of the window. Default value is kernel_size
+#' @param padding implicit zero padding to be added on both sides
+#' @param ndim dimension number
+#' @param ceil_mode when True, will use ceil instead of floor to compute the output shape
 #' @return None
 #' @export
 MaxPool <- function(ks = 2, stride = NULL, padding = 0, ndim = 2, ceil_mode = FALSE) {
@@ -199,8 +199,8 @@ MaxPool <- function(ks = 2, stride = NULL, padding = 0, ndim = 2, ceil_mode = FA
 #'
 #'
 #' @param expansion decoder
-#' @param ni ni
-#' @param nf nf
+#' @param ni number of linear inputs
+#' @param nf number of features
 #' @param reduction reduction number
 #' @param stride stride number
 #' @param base_width int, base width
@@ -250,8 +250,8 @@ CategoryBlock <- function(vocab = NULL, sort = TRUE, add_na = FALSE) {
 #'
 #'
 #' @param expansion decoder
-#' @param ni ni
-#' @param nf nf
+#' @param ni number of linear inputs
+#' @param nf number of features
 #' @param groups groups number
 #' @param reduction reduction number
 #' @param stride stride number
@@ -279,7 +279,7 @@ SEResNeXtBlock <- function(expansion, ni, nf, groups = 32, reduction = 16, strid
 #' @description `TransformBlock` for float targets
 #'
 #'
-#' @param n_out output shape
+#' @param n_out number of out features
 #' @return Block object
 #' @export
 RegressionBlock <- function(n_out = NULL) {
@@ -365,7 +365,7 @@ DataBlock <- function(blocks = NULL, dl_type = NULL, getters = NULL,
 #' @param item_tfms item transofrmation type
 #' @param batch_tfms one or several transforms applied to the batches once they are formed
 #' @param dl_type DL applications
-#' @param dls_kwargs additional argument
+#' @param dls_kwargs additional arguments
 #' @return block
 #' @export
 TransformBlock <- function(type_tfms = NULL, item_tfms = NULL,

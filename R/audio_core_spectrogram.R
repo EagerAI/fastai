@@ -13,7 +13,7 @@ AudioSpectrogram <- NULL
 #'
 #' @description Creates AudioToSpec from configuration file
 #'
-#' @param audio_cfg audio_cfg
+#' @param audio_cfg audio configuration
 #' @return None
 #' @export
 AudioToSpec_from_cfg <- function(audio_cfg) {
@@ -31,8 +31,8 @@ AudioToSpec_from_cfg <- function(audio_cfg) {
 #'
 #' @details transforms with different parameters
 #'
-#' @param mel mel
-#' @param to_db to_db
+#' @param mel mel-spectrogram or not
+#' @param to_db to decibels
 #' @return None
 #' @export
 SpectrogramTransformer <- function(mel = TRUE, to_db = TRUE) {
@@ -50,12 +50,12 @@ SpectrogramTransformer <- function(mel = TRUE, to_db = TRUE) {
 #' @description Transform to create MFCC features from audio tensors.
 #'
 #'
-#' @param sample_rate sample_rate
-#' @param n_mfcc n_mfcc
-#' @param dct_type dct_type
-#' @param norm norm
-#' @param log_mels log_mels
-#' @param melkwargs melkwargs
+#' @param sample_rate sample rate
+#' @param n_mfcc number of mel-frequency cepstral coefficients
+#' @param dct_type dct type
+#' @param norm normalization type
+#' @param log_mels apply log to mels
+#' @param melkwargs additional arguments for mels
 #' @return None
 #' @export
 AudioToMFCC <- function(sample_rate = 16000, n_mfcc = 40, dct_type = 2,
@@ -78,7 +78,7 @@ AudioToMFCC <- function(sample_rate = 16000, n_mfcc = 40, dct_type = 2,
 #'
 #' @description Creates AudioToMFCC from configuration file
 #'
-#' @param audio_cfg audio_cfg
+#' @param audio_cfg audio configuration
 #' @return None
 #' @export
 AudioToMFCC_from_cfg <- function(audio_cfg) {

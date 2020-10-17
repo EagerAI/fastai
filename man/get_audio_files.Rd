@@ -9,9 +9,9 @@ get_audio_files(path, recurse = TRUE, folders = NULL)
 \arguments{
 \item{path}{path}
 
-\item{recurse}{recurse}
+\item{recurse}{recursive or not}
 
-\item{folders}{folders}
+\item{folders}{vector, folders}
 }
 \value{
 None

@@ -86,9 +86,9 @@ AddNoise <- function(noise_level = 0.05, color = 0) {
 #' @description Changes the volume of the signal
 #'
 #'
-#' @param p p
-#' @param lower lower
-#' @param upper upper
+#' @param p probability
+#' @param lower lower bound
+#' @param upper upper bound
 #' @return None
 #' @export
 ChangeVolume <- function(p = 0.5, lower = 0.5, upper = 1.5) {
@@ -107,7 +107,7 @@ ChangeVolume <- function(p = 0.5, lower = 0.5, upper = 1.5) {
 #' @description Randomly zeros some portion of the signal
 #'
 #'
-#' @param p p
+#' @param p probability
 #' @param max_cut_pct max cut percentage
 #' @return None
 #' @export
@@ -126,7 +126,7 @@ SignalCutout <- function(p = 0.5, max_cut_pct = 0.15) {
 #' @description Randomly loses some portion of the signal
 #'
 #'
-#' @param p p
+#' @param p probability
 #' @param max_loss_pct max loss percentage
 #' @return None
 #' @export
@@ -147,7 +147,7 @@ SignalLoss <- function(p = 0.5, max_loss_pct = 0.15) {
 #' @param enc encoder
 #' @param dec decoder
 #' @param split_idx split by index
-#' @param order order
+#' @param order order, by default is NULL
 #' @return None
 #' @export
 DownmixMono <- function(enc = NULL, dec = NULL, split_idx = NULL, order = NULL) {

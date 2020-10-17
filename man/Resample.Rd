@@ -7,7 +7,7 @@
 Resample(sr_new)
 }
 \arguments{
-\item{sr_new}{sr_new}
+\item{sr_new}{input}
 }
 \value{
 None

@@ -18,25 +18,25 @@ AudioTensor_create(
 )
 }
 \arguments{
-\item{fn}{fn}
+\item{fn}{function}
 
-\item{cache_folder}{cache_folder}
+\item{cache_folder}{cache folder}
 
-\item{out}{out}
+\item{out}{out format}
 
-\item{normalization}{normalization}
+\item{normalization}{apply normalization or not}
 
-\item{channels_first}{channels_first}
+\item{channels_first}{channels first/last}
 
-\item{num_frames}{num_frames}
+\item{num_frames}{number of frames}
 
 \item{offset}{offset}
 
-\item{signalinfo}{signalinfo}
+\item{signalinfo}{signal info}
 
-\item{encodinginfo}{encodinginfo}
+\item{encodinginfo}{encoding info}
 
-\item{filetype}{filetype}
+\item{filetype}{the type of file}
 }
 \value{
 None

@@ -9,7 +9,7 @@ CropTime(duration, pad_mode = AudioPadType$Zeros)
 \arguments{
 \item{duration}{duration}
 
-\item{pad_mode}{pad_mode}
+\item{pad_mode}{padding mode, by default `AudioPadType$Zeros`}
 }
 \value{
 None

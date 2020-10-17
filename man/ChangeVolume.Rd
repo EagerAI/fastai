@@ -7,11 +7,11 @@
 ChangeVolume(p = 0.5, lower = 0.5, upper = 1.5)
 }
 \arguments{
-\item{p}{p}
+\item{p}{probability}
 
-\item{lower}{lower}
+\item{lower}{lower bound}
 
-\item{upper}{upper}
+\item{upper}{upper bound}
 }
 \value{
 None

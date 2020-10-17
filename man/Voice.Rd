@@ -22,33 +22,33 @@ Voice(
 )
 }
 \arguments{
-\item{sample_rate}{sample_rate}
+\item{sample_rate}{sample rate}
 
-\item{n_fft}{n_fft}
+\item{n_fft}{number of fast fourier transforms}
 
-\item{win_length}{win_length}
+\item{win_length}{windowing length}
 
-\item{hop_length}{hop_length}
+\item{hop_length}{hopping length}
 
-\item{f_min}{f_min}
+\item{f_min}{minimum frequency}
 
-\item{f_max}{f_max}
+\item{f_max}{maximum frequency}
 
-\item{pad}{pad}
+\item{pad}{padding}
 
-\item{n_mels}{n_mels}
+\item{n_mels}{number of mel-spectrograms}
 
-\item{window_fn}{window_fn}
+\item{window_fn}{window function}
 
 \item{power}{power}
 
-\item{normalized}{normalized}
+\item{normalized}{normalized or not}
 
-\item{wkwargs}{wkwargs}
+\item{wkwargs}{additional arguments}
 
-\item{mel}{mel}
+\item{mel}{mel-spectrogram or not}
 
-\item{to_db}{to_db}
+\item{to_db}{to decibels}
 }
 \value{
 None

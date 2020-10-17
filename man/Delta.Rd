@@ -7,11 +7,12 @@
 Delta(width = 9)
 }
 \arguments{
-\item{width}{width}
+\item{width}{int, width}
+}
+\value{
+None
 }
 \description{
 Creates delta with order 1 and 2 from spectrogram
-}
-\details{
-and concatenate with the original
+ and concatenate with the original
 }

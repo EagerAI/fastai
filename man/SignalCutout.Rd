@@ -7,7 +7,7 @@
 SignalCutout(p = 0.5, max_cut_pct = 0.15)
 }
 \arguments{
-\item{p}{p}
+\item{p}{probability}
 
 \item{max_cut_pct}{max cut percentage}
 }
