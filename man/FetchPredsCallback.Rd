@@ -14,17 +14,17 @@ FetchPredsCallback(
 )
 }
 \arguments{
-\item{ds_idx}{ds_idx}
+\item{ds_idx}{dataset index}
 
-\item{dl}{dl}
+\item{dl}{DL application}
 
-\item{with_input}{with_input}
+\item{with_input}{with input or not}
 
-\item{with_decoded}{with_decoded}
+\item{with_decoded}{with decoded or not}
 
-\item{cbs}{cbs}
+\item{cbs}{callbacks}
 
-\item{reorder}{reorder}
+\item{reorder}{reorder or not}
 }
 \value{
 None

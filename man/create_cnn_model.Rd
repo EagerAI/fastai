@@ -23,7 +23,7 @@ create_cnn_model(
 \arguments{
 \item{arch}{a model architecture}
 
-\item{n_out}{number of out}
+\item{n_out}{number of outs}
 
 \item{cut}{cut}
 
@@ -37,13 +37,13 @@ create_cnn_model(
 
 \item{concat_pool}{concatenate pooling}
 
-\item{lin_ftrs}{lin_ftrs}
+\item{lin_ftrs}{linear fiters}
 
-\item{ps}{ps}
+\item{ps}{parameter server}
 
-\item{bn_final}{bn_final}
+\item{bn_final}{batch normalization final}
 
-\item{lin_first}{lin_first}
+\item{lin_first}{linear first}
 
 \item{y_range}{y_range}
 }

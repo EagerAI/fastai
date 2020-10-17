@@ -13,15 +13,15 @@ GatherPredsCallback(
 )
 }
 \arguments{
-\item{with_input}{with_input}
+\item{with_input}{include inputs or not}
 
-\item{with_loss}{with_loss}
+\item{with_loss}{include loss or not}
 
-\item{save_preds}{save_preds}
+\item{save_preds}{save predictions}
 
-\item{save_targs}{save_targs}
+\item{save_targs}{save targets/actuals}
 
-\item{concat_dim}{concat_dim}
+\item{concat_dim}{concatenate dimensions}
 }
 \value{
 None

@@ -145,12 +145,12 @@ ReduceLROnPlateau <- function(...) {
 #'
 #' @description A callback to fetch predictions during the training loop
 #'
-#' @param ds_idx ds_idx
-#' @param dl dl
-#' @param with_input with_input
-#' @param with_decoded with_decoded
-#' @param cbs cbs
-#' @param reorder reorder
+#' @param ds_idx dataset index
+#' @param dl DL application
+#' @param with_input with input or not
+#' @param with_decoded with decoded or not
+#' @param cbs callbacks
+#' @param reorder reorder or not
 #' @return None
 #' @export
 FetchPredsCallback <- function(ds_idx = 1, dl = NULL, with_input = FALSE,
@@ -213,11 +213,11 @@ ShortEpochCallback <- function(...) {
 #'
 #' @description `Callback` that saves the predictions and targets, optionally `with_loss`
 #'
-#' @param with_input with_input
-#' @param with_loss with_loss
-#' @param save_preds save_preds
-#' @param save_targs save_targs
-#' @param concat_dim concat_dim
+#' @param with_input include inputs or not
+#' @param with_loss include loss or not
+#' @param save_preds save predictions
+#' @param save_targs save targets/actuals
+#' @param concat_dim concatenate dimensions
 #' @return None
 #' @export
 GatherPredsCallback <- function(with_input = FALSE, with_loss = FALSE,

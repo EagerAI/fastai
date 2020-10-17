@@ -134,15 +134,15 @@ fit.fastai.learner.Learner <- function(object, ...) {
 #'
 #'
 #' @param cut cut
-#' @param pretrained pretrained
+#' @param pretrained pre-trained or not
 #' @param n_in input shape
-#' @param init init
-#' @param custom_head custom_head
-#' @param concat_pool concat_pool
-#' @param lin_ftrs lin_ftrs
-#' @param ps ps
-#' @param bn_final bn_final
-#' @param lin_first lin_first
+#' @param init initializer
+#' @param custom_head custom head
+#' @param concat_pool concatenate pooling
+#' @param lin_ftrs linear filters
+#' @param ps parameter server
+#' @param bn_final batch normalization final
+#' @param lin_first linear first
 #' @param y_range y_range
 #' @return None
 #' @export
@@ -175,17 +175,17 @@ cnn_config <- function(cut = NULL, pretrained = TRUE, n_in = 3,
 #' @description Create custom convnet architecture using `arch`, `n_in` and `n_out`
 #'
 #' @param arch a model architecture
-#' @param n_out number of out
+#' @param n_out number of outs
 #' @param cut cut
 #' @param pretrained pretrained model or not
 #' @param n_in input shape
 #' @param init initializer
 #' @param custom_head custom head
 #' @param concat_pool concatenate pooling
-#' @param lin_ftrs lin_ftrs
-#' @param ps ps
-#' @param bn_final bn_final
-#' @param lin_first lin_first
+#' @param lin_ftrs linear fiters
+#' @param ps parameter server
+#' @param bn_final batch normalization final
+#' @param lin_first linear first
 #' @param y_range y_range
 #' @return None
 #' @export

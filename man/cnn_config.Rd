@@ -21,23 +21,23 @@ cnn_config(
 \arguments{
 \item{cut}{cut}
 
-\item{pretrained}{pretrained}
+\item{pretrained}{pre-trained or not}
 
 \item{n_in}{input shape}
 
-\item{init}{init}
+\item{init}{initializer}
 
-\item{custom_head}{custom_head}
+\item{custom_head}{custom head}
 
-\item{concat_pool}{concat_pool}
+\item{concat_pool}{concatenate pooling}
 
-\item{lin_ftrs}{lin_ftrs}
+\item{lin_ftrs}{linear filters}
 
-\item{ps}{ps}
+\item{ps}{parameter server}
 
-\item{bn_final}{bn_final}
+\item{bn_final}{batch normalization final}
 
-\item{lin_first}{lin_first}
+\item{lin_first}{linear first}
 
 \item{y_range}{y_range}
 }
