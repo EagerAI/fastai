@@ -22,21 +22,21 @@ Datasets(
 \arguments{
 \item{items}{items}
 
-\item{tfms}{tfms}
+\item{tfms}{transformations}
 
 \item{tls}{tls}
 
 \item{n_inp}{n_inp}
 
-\item{dl_type}{dl_type}
+\item{dl_type}{DL type}
 
-\item{use_list}{use_list}
+\item{use_list}{use list}
 
-\item{do_setup}{do_setup}
+\item{do_setup}{do setup}
 
-\item{split_idx}{split_idx}
+\item{split_idx}{split by index}
 
-\item{train_setup}{train_setup}
+\item{train_setup}{train setup}
 
 \item{splits}{splits}
 

@@ -24,27 +24,27 @@ show_image(
 \arguments{
 \item{im}{im}
 
-\item{ax}{ax}
+\item{ax}{axis}
 
-\item{figsize}{figsize}
+\item{figsize}{figure size}
 
 \item{title}{title}
 
 \item{ctx}{ctx}
 
-\item{cmap}{cmap}
+\item{cmap}{color maps}
 
-\item{norm}{norm}
+\item{norm}{normalization}
 
 \item{aspect}{aspect}
 
 \item{interpolation}{interpolation}
 
-\item{alpha}{alpha}
+\item{alpha}{alpha value}
 
-\item{vmin}{vmin}
+\item{vmin}{value min}
 
-\item{vmax}{vmax}
+\item{vmax}{value max}
 
 \item{origin}{origin}
 

@@ -7,7 +7,7 @@
 FlipItem(p = 0.5)
 }
 \arguments{
-\item{p}{p}
+\item{p}{probability}
 }
 \value{
 None

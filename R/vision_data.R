@@ -5,14 +5,14 @@
 #'
 #'
 #' @param n n
-#' @param nrows nrows
-#' @param ncols ncols
-#' @param add_vert add_vert
-#' @param figsize figsize
+#' @param nrows number of rows
+#' @param ncols number of columns
+#' @param add_vert add vertical
+#' @param figsize figure size
 #' @param double double
 #' @param title title
-#' @param return_fig return_fig
-#' @param imsize imsize
+#' @param return_fig return figure or not
+#' @param imsize image size
 #' @return None
 #' @export
 get_grid <- function(n, nrows = NULL, ncols = NULL, add_vert = 0,
@@ -67,7 +67,7 @@ clip_remove_empty <- function(bbox, label) {
 #'
 #'
 #' @param samples samples
-#' @param pad_idx pad_idx
+#' @param pad_idx pad index
 #' @return None
 #' @export
 bb_pad <- function(samples, pad_idx = 0) {
@@ -110,8 +110,8 @@ BBoxBlock <- function() {
 #' @description A `TransformBlock` for labeled bounding boxes, potentially with `vocab`
 #'
 #' @return None'
-#' @param vocab vocab
-#' @param add_na add_na
+#' @param vocab vocabulary
+#' @param add_na add NA
 #'
 #' @examples
 #'
@@ -167,17 +167,17 @@ BBoxLblBlock <- function(vocab = NULL, add_na = TRUE) {
 #' @description Create from list of `fnames` in `path`s with `label_func`.
 #'
 #' @param path path
-#' @param fnames fnames
-#' @param label_func label_func
-#' @param valid_pct valid_pct
+#' @param fnames file names
+#' @param label_func label function
+#' @param valid_pct validation percentage
 #' @param seed seed
 #' @param codes codes
-#' @param item_tfms item_tfms
-#' @param batch_tfms batch_tfms
-#' @param bs bs
-#' @param val_bs val_bs
-#' @param shuffle_train shuffle_train
-#' @param device device
+#' @param item_tfms item transformations
+#' @param batch_tfms batch transformations
+#' @param bs batch size
+#' @param val_bs validation batch size
+#' @param shuffle_train shuffle train
+#' @param device device name
 #' @return None
 #' @export
 SegmentationDataLoaders_from_label_func <- function(path, fnames, label_func, valid_pct = 0.2,

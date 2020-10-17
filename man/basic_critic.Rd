@@ -7,7 +7,7 @@
 basic_critic(in_size, n_channels, ...)
 }
 \arguments{
-\item{in_size}{in_size}
+\item{in_size}{input size}
 
 \item{n_channels}{The number of channels}
 

@@ -7,11 +7,11 @@
 rotate_mat(x, max_deg = 10, p = 0.5, draw = NULL, batch = FALSE)
 }
 \arguments{
-\item{x}{x}
+\item{x}{tensor}
 
 \item{max_deg}{max_deg}
 
-\item{p}{p}
+\item{p}{probability}
 
 \item{draw}{draw}
 

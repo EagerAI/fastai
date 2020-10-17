@@ -51,13 +51,13 @@ aug_transforms(
 
 \item{mode}{mode}
 
-\item{pad_mode}{pad_mode}
+\item{pad_mode}{padding mode}
 
 \item{align_corners}{align_corners}
 
-\item{batch}{batch}
+\item{batch}{batch size}
 
-\item{min_scale}{min_scale}
+\item{min_scale}{minimum scale}
 }
 \value{
 None

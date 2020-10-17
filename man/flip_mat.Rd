@@ -7,9 +7,9 @@
 flip_mat(x, p = 0.5, draw = NULL, batch = FALSE)
 }
 \arguments{
-\item{x}{x}
+\item{x}{tensor}
 
-\item{p}{p}
+\item{p}{probability}
 
 \item{draw}{draw}
 

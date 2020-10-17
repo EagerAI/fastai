@@ -24,11 +24,11 @@ DenseResBlock(
 )
 }
 \arguments{
-\item{nf}{nf}
+\item{nf}{number of features}
 
-\item{norm_type}{norm_type}
+\item{norm_type}{normalization type}
 
-\item{ks}{ks}
+\item{ks}{kernel size}
 
 \item{stride}{stride}
 
@@ -36,25 +36,25 @@ DenseResBlock(
 
 \item{bias}{bias}
 
-\item{ndim}{ndim}
+\item{ndim}{number of dimensions}
 
-\item{bn_1st}{bn_1st}
+\item{bn_1st}{batch normalization 1st}
 
-\item{act_cls}{act_cls}
+\item{act_cls}{activation}
 
 \item{transpose}{transpose}
 
-\item{init}{init}
+\item{init}{initizalier}
 
 \item{xtra}{xtra}
 
-\item{bias_std}{bias_std}
+\item{bias_std}{bias standard deviation}
 
-\item{dilation}{dilation}
+\item{dilation}{dilation number}
 
-\item{groups}{groups}
+\item{groups}{groups number}
 
-\item{padding_mode}{padding_mode}
+\item{padding_mode}{padding mode}
 }
 \value{
 block

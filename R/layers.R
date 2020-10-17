@@ -337,7 +337,7 @@ LinBnDrop <- function(n_in, n_out, bn = TRUE, p = 0.0, act = NULL, lin_first = F
 #' @description Same as `torch$sigmoid`, plus clamping to `(eps,1-eps)
 #'
 #'
-#' @param input input
+#' @param input inputs
 #' @param eps epsilon
 #' @return None
 #' @export
@@ -374,8 +374,8 @@ sigmoid_ <- function(input, eps = 1e-07) {
 #' @description `F$leaky_relu` with 0.3 slope
 #'
 #'
-#' @param input input
-#' @param inplace inplace
+#' @param input inputs
+#' @param inplace inplace or not
 #' @return None
 #' @export
 vleaky_relu <- function(input, inplace = TRUE) {
@@ -394,7 +394,7 @@ vleaky_relu <- function(input, inplace = TRUE) {
 #' @description Initialize `m` weights with `func` and set `bias` to 0.
 #'
 #'
-#' @param m m parameter
+#' @param m parameters
 #' @param func function
 #' @return None
 #' @export
@@ -410,7 +410,7 @@ init_default <- function(m, func = nn$init$kaiming_normal_) {
 #' @title Init_linear
 #'
 #'
-#' @param m m parameter
+#' @param m parameter
 #' @param act_func activation function
 #' @param init initializer
 #' @param bias_std bias standard deviation
@@ -435,15 +435,15 @@ init_linear <- function(m, act_func = NULL, init = "auto", bias_std = 0.01) {
 #'
 #' @description Create a sequence of convolutional (`ni` to `nf`), ReLU (if `use_activ`) and `norm_type` layers.
 #'
-#' @param ni input
-#' @param nf output
+#' @param ni number of inputs
+#' @param nf outputs/ number of features
 #' @param ks kernel size
 #' @param stride stride
 #' @param padding padding
 #' @param bias bias
 #' @param ndim dimension number
 #' @param norm_type normalization type
-#' @param bn_1st bn_1st
+#' @param bn_1st batch normalization 1st
 #' @param act_cls activation
 #' @param transpose transpose
 #' @param init initializer
@@ -530,8 +530,8 @@ trunc_normal_ <- function(x, mean = 0.0, std = 1.0) {
 #' @description Embedding layer with truncated normal initialization
 #'
 #'
-#' @param ni input
-#' @param nf output
+#' @param ni inputs
+#' @param nf outputs / number of features
 #' @return None
 #' @export
 Embedding <- function(ni, nf) {
@@ -583,7 +583,7 @@ PooledSelfAttention2d <- function(n_channels) {
 #' @description Same as `nn$Module`, but no need for subclasses to call `super()$__init__`
 #'
 #'
-#' @param n_in input
+#' @param n_in inputs
 #' @param ks kernel size
 #' @param sym sym
 #' @return None
@@ -626,8 +626,8 @@ icnr_init <- function(x, scale = 2, init = nn$init$kaiming_normal_) {
 #' @description Upsample by `scale` from `ni` filters to `nf` (default `ni`), using `nn.PixelShuffle`.
 #'
 #'
-#' @param ni input filters
-#' @param nf nf filters
+#' @param ni input shape
+#' @param nf number of features / outputs
 #' @param scale scale
 #' @param blur blur
 #' @param norm_type normalziation type
@@ -723,7 +723,7 @@ Cat <- function(layers, dim = 1) {
 #' @param filters filters number
 #' @param kernel_szs kernel size
 #' @param strides strides
-#' @param bn bn
+#' @param bn batch normalization
 #' @return None
 #' @export
 SimpleCNN <- function(filters, kernel_szs = NULL, strides = NULL, bn = TRUE) {

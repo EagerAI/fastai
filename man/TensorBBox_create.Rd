@@ -7,13 +7,13 @@
 TensorBBox_create(x, img_size = NULL)
 }
 \arguments{
-\item{x}{x}
+\item{x}{tensor}
 
-\item{img_size}{img_size}
+\item{img_size}{image size}
 }
 \value{
 None
 }
 \description{
-Delegates (`__call__`,`decode`,`setup`) to (`encodes`,`decodes`,`setups`) if `split_idx` matches
+TensorBBox_create
 }

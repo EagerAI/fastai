@@ -36,13 +36,13 @@ GANLearner_from_learners(
 
 \item{weights_gen}{weights generator}
 
-\item{gen_first}{gen_first}
+\item{gen_first}{generator first}
 
-\item{switch_eval}{switch_eval}
+\item{switch_eval}{switch evaluation}
 
-\item{show_img}{show_img}
+\item{show_img}{show image or not}
 
-\item{clip}{clip}
+\item{clip}{clip value}
 
 \item{cbs}{Cbs is one or a list of Callbacks to pass to the Learner.}
 
@@ -66,7 +66,7 @@ GANLearner_from_learners(
 
 \item{train_bn}{It controls if BatchNorm layers are trained even when they are supposed to be frozen according to the splitter.}
 
-\item{moms}{The default momentums used in Learner.fit_one_cycle.}
+\item{moms}{The default momentums used in Learner$fit_one_cycle.}
 }
 \value{
 None

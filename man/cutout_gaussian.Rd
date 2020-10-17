@@ -7,7 +7,7 @@
 cutout_gaussian(x, areas)
 }
 \arguments{
-\item{x}{x}
+\item{x}{tensor}
 
 \item{areas}{areas}
 }

@@ -7,11 +7,11 @@
 BBoxLabeler(enc = NULL, dec = NULL, split_idx = NULL, order = NULL)
 }
 \arguments{
-\item{enc}{enc}
+\item{enc}{encoder}
 
-\item{dec}{dec}
+\item{dec}{decoder}
 
-\item{split_idx}{split_idx}
+\item{split_idx}{split by index}
 
 \item{order}{order}
 }

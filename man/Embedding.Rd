@@ -7,9 +7,9 @@
 Embedding(ni, nf)
 }
 \arguments{
-\item{ni}{input}
+\item{ni}{inputs}
 
-\item{nf}{output}
+\item{nf}{outputs / number of features}
 }
 \value{
 None

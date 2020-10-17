@@ -7,9 +7,9 @@
 norm_apply_denorm(x, f, nrm)
 }
 \arguments{
-\item{x}{x}
+\item{x}{tensor}
 
-\item{f}{f}
+\item{f}{function}
 
 \item{nrm}{nrm}
 }

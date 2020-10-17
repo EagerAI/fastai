@@ -33,19 +33,19 @@ TfmdDL(
 
 \item{verbose}{verbose}
 
-\item{do_setup}{do_setup}
+\item{do_setup}{do setup}
 
-\item{pin_memory}{pin_memory}
+\item{pin_memory}{pin memory}
 
 \item{timeout}{timeout}
 
-\item{batch_size}{batch_size}
+\item{batch_size}{batch size}
 
-\item{drop_last}{drop_last}
+\item{drop_last}{drop last}
 
 \item{indexed}{indexed}
 
-\item{n}{n}
+\item{n}{int, n}
 
 \item{device}{device}
 

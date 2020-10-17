@@ -44,13 +44,13 @@ create_body <- function(...) {
 #' @description Model head that takes `nf` features, runs through `lin_ftrs`, and out `n_out` classes.
 #'
 #'
-#' @param nf nf
-#' @param n_out n_out
-#' @param lin_ftrs lin_ftrs
-#' @param ps ps
-#' @param concat_pool concat_pool
-#' @param bn_final bn_final
-#' @param lin_first lin_first
+#' @param nf number of features
+#' @param n_out number of out features
+#' @param lin_ftrs linear features
+#' @param ps parameter server
+#' @param concat_pool concatenate pooling
+#' @param bn_final batch normalization final
+#' @param lin_first linear first
 #' @param y_range y_range
 #' @return None
 #' @export

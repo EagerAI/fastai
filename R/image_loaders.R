@@ -3,12 +3,12 @@
 #' @description Create from the name attrs of `fnames` in `path`s with re expression `pat`
 #'
 #' @param path The folder where to work
-#' @param fnames fnames
+#' @param fnames folder names
 #' @param pat an argument that requires regex
 #' @param bs The batch size
 #' @param val_bs The batch size for the validation DataLoader (defaults to bs)
 #' @param shuffle_train If we shuffle the training DataLoader or not
-#' @param device device
+#' @param device device name
 #' @param item_tfms One or several transforms applied to the items before batching them
 #' @param batch_tfms One or several transforms applied to the batches once they are formed
 #' @param ... additional parameters to pass
@@ -136,7 +136,7 @@ fit_one_cycle <- function(object, ...) {
 #' @param path The folder where to work
 #' @param train train data
 #' @param valid validation data
-#' @param valid_pct valid_pct
+#' @param valid_pct validion percentage
 #' @param seed random seed
 #' @param vocab vocabulary
 #' @param item_tfms One or several transforms applied to the items before batching them
@@ -144,7 +144,7 @@ fit_one_cycle <- function(object, ...) {
 #' @param bs batch size
 #' @param val_bs The batch size for the validation DataLoader (defaults to bs)
 #' @param shuffle_train If we shuffle the training DataLoader or not
-#' @param device device
+#' @param device device name
 #' @param size image size
 #' @param ... additional parameters to pass
 #' @export
@@ -198,11 +198,11 @@ ImageDataLoaders_from_folder <- function(path, train = "train", valid = "valid",
 #' @param delimiter delimiter
 #' @param valid_pct validation percentage
 #' @param seed random seed
-#' @param fn_col fn_col
+#' @param fn_col column name
 #' @param folder folder name
 #' @param suff suff
 #' @param label_col label column
-#' @param label_delim label_delim
+#' @param label_delim label delimiter
 #' @param y_block y_block
 #' @param valid_col validation column
 #' @param item_tfms One or several transforms applied to the items before batching them
@@ -211,7 +211,7 @@ ImageDataLoaders_from_folder <- function(path, train = "train", valid = "valid",
 #' @param val_bs The batch size for the validation DataLoader (defaults to bs)
 #' @param shuffle_train If we shuffle the training DataLoader or not
 #' @param size image size
-#' @param device device
+#' @param device device name
 #' @param ... additional parameters to pass
 #' @return None
 #' @export
@@ -274,7 +274,7 @@ ImageDataLoaders_from_csv <- function(path, csv_fname = "labels.csv", header = "
 #' @param bs batch size
 #' @param val_bs The batch size for the validation DataLoader (defaults to bs)
 #' @param shuffle_train If we shuffle the training DataLoader or not
-#' @param device device
+#' @param device device name
 #' @param ... additional parameters to pass
 #' @return None
 #'
@@ -318,9 +318,9 @@ ImageDataLoaders_from_dblock <- function(dblock, source, path = ".",
 #'
 #' @param df data frame
 #' @param path The folder where to work
-#' @param valid_pct valid_pct
+#' @param valid_pct validation percentage
 #' @param seed random seed
-#' @param fn_col fn_col
+#' @param fn_col column name
 #' @param folder folder name
 #' @param suff suff
 #' @param label_col label column
@@ -396,7 +396,7 @@ ImageDataLoaders_from_df <- function(df, path = ".", valid_pct = 0.2, seed = NUL
 #' @param bs batch size
 #' @param val_bs The batch size for the validation DataLoader (defaults to bs)
 #' @param shuffle_train If we shuffle the training DataLoader or not
-#' @param device device
+#' @param device device name
 #' @param ... additional parameters to pass
 #' @return None
 #' @export
@@ -453,7 +453,7 @@ ImageDataLoaders_from_lists <- function(path, fnames, labels, valid_pct = 0.2,
 #' @param bs batch size
 #' @param val_bs The batch size for the validation DataLoader (defaults to bs)
 #' @param shuffle_train If we shuffle the training DataLoader or not
-#' @param device device
+#' @param device device name
 #' @param ... additional parameters to pass
 #' @return None
 #' @export
@@ -510,7 +510,7 @@ ImageDataLoaders_from_path_func <- function(path, fnames, label_func,
 #' @param bs batch size
 #' @param val_bs The batch size for the validation DataLoader (defaults to bs)
 #' @param shuffle_train If we shuffle the training DataLoader or not
-#' @param device device
+#' @param device device name
 #' @param ... additional parameters to pass
 #' @return None
 #' @export

@@ -22,27 +22,27 @@ SegmentationDataLoaders_from_label_func(
 \arguments{
 \item{path}{path}
 
-\item{fnames}{fnames}
+\item{fnames}{file names}
 
-\item{label_func}{label_func}
+\item{label_func}{label function}
 
-\item{valid_pct}{valid_pct}
+\item{valid_pct}{validation percentage}
 
 \item{seed}{seed}
 
 \item{codes}{codes}
 
-\item{item_tfms}{item_tfms}
+\item{item_tfms}{item transformations}
 
-\item{batch_tfms}{batch_tfms}
+\item{batch_tfms}{batch transformations}
 
-\item{bs}{bs}
+\item{bs}{batch size}
 
-\item{val_bs}{val_bs}
+\item{val_bs}{validation batch size}
 
-\item{shuffle_train}{shuffle_train}
+\item{shuffle_train}{shuffle train}
 
-\item{device}{device}
+\item{device}{device name}
 }
 \value{
 None

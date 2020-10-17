@@ -7,7 +7,7 @@
 hsv2rgb(img)
 }
 \arguments{
-\item{img}{img}
+\item{img}{image object}
 }
 \value{
 None

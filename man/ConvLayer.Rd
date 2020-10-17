@@ -25,9 +25,9 @@ ConvLayer(
 )
 }
 \arguments{
-\item{ni}{input}
+\item{ni}{number of inputs}
 
-\item{nf}{output}
+\item{nf}{outputs/ number of features}
 
 \item{ks}{kernel size}
 
@@ -41,7 +41,7 @@ ConvLayer(
 
 \item{norm_type}{normalization type}
 
-\item{bn_1st}{bn_1st}
+\item{bn_1st}{batch normalization 1st}
 
 \item{act_cls}{activation}
 

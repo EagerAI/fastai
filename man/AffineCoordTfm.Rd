@@ -15,19 +15,19 @@ AffineCoordTfm(
 )
 }
 \arguments{
-\item{aff_fs}{aff_fs}
+\item{aff_fs}{aff fs}
 
-\item{coord_fs}{coord_fs}
+\item{coord_fs}{coordinate fs}
 
 \item{size}{size}
 
 \item{mode}{mode}
 
-\item{pad_mode}{pad_mode}
+\item{pad_mode}{padding mode}
 
-\item{mode_mask}{mode_mask}
+\item{mode_mask}{mode mask}
 
-\item{align_corners}{align_corners}
+\item{align_corners}{align corners}
 }
 \value{
 None

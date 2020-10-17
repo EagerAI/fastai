@@ -30,11 +30,11 @@ ImageDataLoaders_from_df(
 
 \item{path}{The folder where to work}
 
-\item{valid_pct}{valid_pct}
+\item{valid_pct}{validation percentage}
 
 \item{seed}{random seed}
 
-\item{fn_col}{fn_col}
+\item{fn_col}{column name}
 
 \item{folder}{folder name}
 

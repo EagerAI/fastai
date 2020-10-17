@@ -19,21 +19,21 @@ Warp(
 \arguments{
 \item{magnitude}{magnitude}
 
-\item{p}{p}
+\item{p}{probability}
 
-\item{draw_x}{draw_x}
+\item{draw_x}{draw x}
 
-\item{draw_y}{draw_y}
+\item{draw_y}{draw y}
 
 \item{size}{size}
 
 \item{mode}{mode}
 
-\item{pad_mode}{pad_mode}
+\item{pad_mode}{padding mode}
 
 \item{batch}{batch}
 
-\item{align_corners}{align_corners}
+\item{align_corners}{align corners}
 }
 \value{
 None

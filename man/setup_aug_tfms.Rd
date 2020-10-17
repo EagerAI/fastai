@@ -7,7 +7,7 @@
 setup_aug_tfms(tfms)
 }
 \arguments{
-\item{tfms}{tfms}
+\item{tfms}{transformations}
 }
 \value{
 None

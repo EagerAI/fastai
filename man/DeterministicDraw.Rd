@@ -7,7 +7,7 @@
 DeterministicDraw(vals)
 }
 \arguments{
-\item{vals}{vals}
+\item{vals}{values}
 }
 \value{
 None

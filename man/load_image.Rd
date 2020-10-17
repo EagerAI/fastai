@@ -7,7 +7,7 @@
 load_image(fn, mode = NULL)
 }
 \arguments{
-\item{fn}{fn}
+\item{fn}{file name}
 
 \item{mode}{mode}
 }

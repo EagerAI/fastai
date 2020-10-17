@@ -7,7 +7,7 @@
 FuncSplitter(func)
 }
 \arguments{
-\item{func}{func}
+\item{func}{function}
 }
 \value{
 None

@@ -7,7 +7,7 @@
 TensorBBox(x)
 }
 \arguments{
-\item{x}{x}
+\item{x}{tensor}
 }
 \value{
 None

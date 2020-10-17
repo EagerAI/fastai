@@ -7,9 +7,9 @@
 IntToFloatTensor(div = 255, div_mask = 1)
 }
 \arguments{
-\item{div}{div}
+\item{div}{divide value}
 
-\item{div_mask}{div_mask}
+\item{div_mask}{divide mask}
 }
 \value{
 None

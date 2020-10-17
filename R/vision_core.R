@@ -88,10 +88,10 @@ aspect = function(img) {
 #' @description resize x to (w,h)
 #'
 #'
-#' @param x x
-#' @param h h
-#' @param w w
-#' @param resample resample
+#' @param x tensor
+#' @param h height
+#' @param w width
+#' @param resample resample value
 #' @return None
 #' @export
 reshape <- function(x, h, w, resample = 0) {
@@ -130,8 +130,8 @@ to_bytes_format <- function(img, format = "png") {
 #' @description Same as `thumbnail`, but uses a copy
 #'
 #' @param img image
-#' @param h h
-#' @param w w
+#' @param h height
+#' @param w width
 #' @return None
 #' @export
 to_thumb <- function(img, h, w = NULL) {
@@ -151,10 +151,10 @@ to_thumb <- function(img, h, w = NULL) {
 #'
 #'
 #' @param img image
-#' @param resample resample
-#' @param max_px max_px
-#' @param max_h max_h
-#' @param max_w max_w
+#' @param resample resample value
+#' @param max_px max px
+#' @param max_h max height
+#' @param max_w max width
 #' @return None
 #' @export
 resize_max <- function(img, resample = 0, max_px = NULL, max_h = NULL, max_w = NULL) {
@@ -178,7 +178,7 @@ resize_max <- function(img, resample = 0, max_px = NULL, max_h = NULL, max_w = N
 #' @description Convert a tensor or array to a PIL int8 Image
 #'
 #'
-#' @param x x
+#' @param x tensor
 #' @return None
 #' @export
 to_image <- function(x) {
@@ -194,7 +194,7 @@ to_image <- function(x) {
 #' @description Open and load a `PIL.Image` and convert to `mode`
 #'
 #'
-#' @param fn fn
+#' @param fn file name
 #' @param mode mode
 #' @return None
 #' @export
@@ -213,7 +213,7 @@ load_image <- function(fn, mode = NULL) {
 #' @description Transform image to byte tensor in `c*h*w` dim order.
 #'
 #'
-#' @param img img
+#' @param img image
 #' @return None
 #' @export
 image2tensor <- function(img) {
@@ -249,9 +249,9 @@ Image_create <- function(fn) {
 #' @description Delegates (`__call__`,`decode`,`setup`) to (`encodes`,`decodes`,`setups`) if `split_idx` matches
 #'
 #'
-#' @param enc enc
-#' @param dec dec
-#' @param split_idx split_idx
+#' @param enc encoder
+#' @param dec decoder
+#' @param split_idx split by index
 #' @param order order
 #' @return None
 #' @export
@@ -282,9 +282,9 @@ Mask_create <- function(enc = NULL, dec = NULL, split_idx = NULL, order = NULL) 
 #' @description Delegates (`__call__`,`decode`,`setup`) to (`encodes`,`decodes`,`setups`) if `split_idx` matches
 #'
 #'
-#' @param enc enc
-#' @param dec dec
-#' @param split_idx split_idx
+#' @param enc encoder
+#' @param dec decoder
+#' @param split_idx split by index
 #' @param order order
 #' @return None
 #' @export
@@ -313,7 +313,7 @@ Transform <- function(enc = NULL, dec = NULL, split_idx = NULL, order = NULL) {
 #'
 #' @description Open an `Image` from path `fn`
 #'
-#' @param fn fn
+#' @param fn file name
 #' @return None
 #' @export
 ImageBW_create <- function(fn) {
@@ -357,7 +357,7 @@ TensorPoint_create <- function( ...) {
 #'
 #' @description Basic type for a tensor of bounding boxes in an image
 #'
-#' @param x x
+#' @param x tensor
 #' @return None
 #' @export
 TensorBBox <- function(x) {
@@ -388,9 +388,9 @@ LabeledBBox <- function(...) {
 #' @description Convert item to appropriate tensor class
 #'
 #'
-#' @param enc enc
-#' @param dec dec
-#' @param split_idx split_idx
+#' @param enc encoder
+#' @param dec decoder
+#' @param split_idx int, split by index
 #' @param order order
 #' @return None
 #' @export
@@ -410,8 +410,8 @@ ToTensor <- function(enc = NULL, dec = NULL, split_idx = NULL, order = NULL) {
 #' @description A pipeline of composed (for encode/decode) transforms, setup with types
 #'
 #'
-#' @param funcs funcs
-#' @param split_idx split_idx
+#' @param funcs functions
+#' @param split_idx split by index
 #' @return None
 #' @export
 Pipeline <- function(funcs = NULL, split_idx = NULL) {
@@ -425,7 +425,7 @@ Pipeline <- function(funcs = NULL, split_idx = NULL) {
 
 #' @title TensorImageBW
 #'
-#' @param x x
+#' @param x tensor
 #' @return None
 #' @export
 TensorImageBW <- function(x) {
@@ -447,14 +447,14 @@ TensorImageBW <- function(x) {
 #'
 #'
 #' @param items items
-#' @param tfms tfms
+#' @param tfms transformations
 #' @param tls tls
 #' @param n_inp n_inp
-#' @param dl_type dl_type
-#' @param use_list use_list
-#' @param do_setup do_setup
-#' @param split_idx split_idx
-#' @param train_setup train_setup
+#' @param dl_type DL type
+#' @param use_list use list
+#' @param do_setup do setup
+#' @param split_idx split by index
+#' @param train_setup train setup
 #' @param splits splits
 #' @param types types
 #' @param verbose verbose
@@ -511,13 +511,13 @@ Image = function(...) {
 #' @param shuffle shuffle
 #' @param num_workers num_workers
 #' @param verbose verbose
-#' @param do_setup do_setup
-#' @param pin_memory pin_memory
+#' @param do_setup do setup
+#' @param pin_memory pin memory
 #' @param timeout timeout
-#' @param batch_size batch_size
-#' @param drop_last drop_last
+#' @param batch_size batch size
+#' @param drop_last drop last
 #' @param indexed indexed
-#' @param n n
+#' @param n int, n
 #' @param device device
 #' @param ... additional arguments to pass
 #' @param after_batch after_batch
@@ -560,8 +560,8 @@ TfmdDL <- function(dataset, bs = 64, shuffle = FALSE, num_workers = NULL,
 #'
 #' @description Scale a tensor representing points
 #'
-#' @param do_scale do_scale
-#' @param y_first y_first
+#' @param do_scale do scale
+#' @param y_first y first
 #' @return None
 #' @export
 PointScaler <- function(do_scale = TRUE, y_first = FALSE) {
@@ -595,7 +595,7 @@ tensor <- function(...) {
 #'
 #' @description Basic type for points in an image
 #'
-#' @param x x
+#' @param x tensor
 #' @return None
 #' @export
 TensorPoint <- function(x) {
@@ -609,10 +609,8 @@ TensorPoint <- function(x) {
 
 #' @title TensorBBox_create
 #'
-#' @description Delegates (`__call__`,`decode`,`setup`) to (`encodes`,`decodes`,`setups`) if `split_idx` matches
-#'
-#' @param x x
-#' @param img_size img_size
+#' @param x tensor
+#' @param img_size image size
 #' @return None
 #' @export
 TensorBBox_create <- function(x, img_size = NULL) {
@@ -638,9 +636,9 @@ TensorBBox_create <- function(x, img_size = NULL) {
 #' @description Delegates (`__call__`,`decode`,`setup`) to (`encodes`,`decodes`,`setups`) if `split_idx` matches
 #'
 #'
-#' @param enc enc
-#' @param dec dec
-#' @param split_idx split_idx
+#' @param enc encoder
+#' @param dec decoder
+#' @param split_idx split by index
 #' @param order order
 #' @return None
 #' @export
@@ -658,7 +656,7 @@ BBoxLabeler <- function(enc = NULL, dec = NULL, split_idx = NULL, order = NULL) 
 
 #' @title TensorMultiCategory
 #'
-#' @param x x
+#' @param x tensor
 #' @return None
 #' @export
 TensorMultiCategory <- function(x) {

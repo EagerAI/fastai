@@ -7,9 +7,9 @@
 Pipeline(funcs = NULL, split_idx = NULL)
 }
 \arguments{
-\item{funcs}{funcs}
+\item{funcs}{functions}
 
-\item{split_idx}{split_idx}
+\item{split_idx}{split by index}
 }
 \value{
 None

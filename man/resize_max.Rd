@@ -9,13 +9,13 @@ resize_max(img, resample = 0, max_px = NULL, max_h = NULL, max_w = NULL)
 \arguments{
 \item{img}{image}
 
-\item{resample}{resample}
+\item{resample}{resample value}
 
-\item{max_px}{max_px}
+\item{max_px}{max px}
 
-\item{max_h}{max_h}
+\item{max_h}{max height}
 
-\item{max_w}{max_w}
+\item{max_w}{max width}
 }
 \value{
 None

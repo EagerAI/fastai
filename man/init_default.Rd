@@ -7,7 +7,7 @@
 init_default(m, func = nn$init$kaiming_normal_)
 }
 \arguments{
-\item{m}{m parameter}
+\item{m}{parameters}
 
 \item{func}{function}
 }

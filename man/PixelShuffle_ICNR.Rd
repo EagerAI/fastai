@@ -14,9 +14,9 @@ PixelShuffle_ICNR(
 )
 }
 \arguments{
-\item{ni}{input filters}
+\item{ni}{input shape}
 
-\item{nf}{nf filters}
+\item{nf}{number of features / outputs}
 
 \item{scale}{scale}
 

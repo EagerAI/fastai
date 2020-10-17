@@ -19,21 +19,21 @@ get_grid(
 \arguments{
 \item{n}{n}
 
-\item{nrows}{nrows}
+\item{nrows}{number of rows}
 
-\item{ncols}{ncols}
+\item{ncols}{number of columns}
 
-\item{add_vert}{add_vert}
+\item{add_vert}{add vertical}
 
-\item{figsize}{figsize}
+\item{figsize}{figure size}
 
 \item{double}{double}
 
 \item{title}{title}
 
-\item{return_fig}{return_fig}
+\item{return_fig}{return figure or not}
 
-\item{imsize}{imsize}
+\item{imsize}{image size}
 }
 \value{
 None

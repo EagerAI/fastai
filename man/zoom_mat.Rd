@@ -16,19 +16,19 @@ zoom_mat(
 )
 }
 \arguments{
-\item{x}{x}
+\item{x}{tensor}
 
-\item{min_zoom}{min_zoom}
+\item{min_zoom}{minimum zoom}
 
-\item{max_zoom}{max_zoom}
+\item{max_zoom}{maximum zoom}
 
-\item{p}{p}
+\item{p}{probability}
 
 \item{draw}{draw}
 
-\item{draw_x}{draw_x}
+\item{draw_x}{draw x}
 
-\item{draw_y}{draw_y}
+\item{draw_y}{draw y}
 
 \item{batch}{batch}
 }

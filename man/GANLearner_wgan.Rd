@@ -27,7 +27,7 @@ GANLearner_wgan(
 )
 }
 \arguments{
-\item{dls}{dls}
+\item{dls}{dataloader}
 
 \item{generator}{generator}
 
@@ -35,35 +35,35 @@ GANLearner_wgan(
 
 \item{switcher}{switcher}
 
-\item{clip}{clip}
+\item{clip}{clip value}
 
-\item{switch_eval}{switch_eval}
+\item{switch_eval}{switch evaluation}
 
-\item{gen_first}{gen_first}
+\item{gen_first}{generator first}
 
-\item{show_img}{show_img}
+\item{show_img}{show image or not}
 
-\item{cbs}{cbs}
+\item{cbs}{callbacks}
 
 \item{metrics}{metrics}
 
-\item{opt_func}{opt_func}
+\item{opt_func}{optimization function}
 
-\item{lr}{lr}
+\item{lr}{learning rate}
 
 \item{splitter}{splitter}
 
 \item{path}{path}
 
-\item{model_dir}{model_dir}
+\item{model_dir}{model directory}
 
-\item{wd}{wd}
+\item{wd}{weight decay}
 
-\item{wd_bn_bias}{wd_bn_bias}
+\item{wd_bn_bias}{weight decay bn bias}
 
-\item{train_bn}{train_bn}
+\item{train_bn}{It controls if BatchNorm layers are trained even when they are supposed to be frozen according to the splitter.}
 
-\item{moms}{moms}
+\item{moms}{momentums}
 }
 \value{
 None

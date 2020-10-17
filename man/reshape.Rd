@@ -7,13 +7,13 @@
 reshape(x, h, w, resample = 0)
 }
 \arguments{
-\item{x}{x}
+\item{x}{tensor}
 
-\item{h}{h}
+\item{h}{height}
 
-\item{w}{w}
+\item{w}{width}
 
-\item{resample}{resample}
+\item{resample}{resample value}
 }
 \value{
 None

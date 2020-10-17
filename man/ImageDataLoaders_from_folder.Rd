@@ -28,7 +28,7 @@ ImageDataLoaders_from_folder(
 
 \item{valid}{validation data}
 
-\item{valid_pct}{valid_pct}
+\item{valid_pct}{validion percentage}
 
 \item{seed}{random seed}
 
@@ -44,7 +44,7 @@ ImageDataLoaders_from_folder(
 
 \item{shuffle_train}{If we shuffle the training DataLoader or not}
 
-\item{device}{device}
+\item{device}{device name}
 
 \item{size}{image size}
 

@@ -7,11 +7,11 @@
 RandTransform(p = 1, nm = NULL, before_call = NULL, ...)
 }
 \arguments{
-\item{p}{p}
+\item{p}{probability}
 
 \item{nm}{nm}
 
-\item{before_call}{before_call}
+\item{before_call}{before call}
 
 \item{...}{additional arguments to pass}
 }

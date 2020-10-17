@@ -7,7 +7,7 @@
 image2tensor(img)
 }
 \arguments{
-\item{img}{img}
+\item{img}{image}
 }
 \value{
 None

@@ -16,19 +16,19 @@ create_head(
 )
 }
 \arguments{
-\item{nf}{nf}
+\item{nf}{number of features}
 
-\item{n_out}{n_out}
+\item{n_out}{number of out features}
 
-\item{lin_ftrs}{lin_ftrs}
+\item{lin_ftrs}{linear features}
 
-\item{ps}{ps}
+\item{ps}{parameter server}
 
-\item{concat_pool}{concat_pool}
+\item{concat_pool}{concatenate pooling}
 
-\item{bn_final}{bn_final}
+\item{bn_final}{batch normalization final}
 
-\item{lin_first}{lin_first}
+\item{lin_first}{linear first}
 
 \item{y_range}{y_range}
 }

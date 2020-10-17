@@ -7,7 +7,7 @@
 get_annotations(fname, prefix = NULL)
 }
 \arguments{
-\item{fname}{fname}
+\item{fname}{folder name}
 
 \item{prefix}{prefix}
 }

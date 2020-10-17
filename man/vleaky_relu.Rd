@@ -7,9 +7,9 @@
 vleaky_relu(input, inplace = TRUE)
 }
 \arguments{
-\item{input}{input}
+\item{input}{inputs}
 
-\item{inplace}{inplace}
+\item{inplace}{inplace or not}
 }
 \value{
 None

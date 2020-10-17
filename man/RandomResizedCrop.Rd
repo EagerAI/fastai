@@ -15,13 +15,13 @@ RandomResizedCrop(
 \arguments{
 \item{size}{size}
 
-\item{min_scale}{min_scale}
+\item{min_scale}{minimum scale}
 
 \item{ratio}{ratio}
 
 \item{resamples}{resamples}
 
-\item{val_xtra}{val_xtra}
+\item{val_xtra}{validation xtra}
 }
 \value{
 None

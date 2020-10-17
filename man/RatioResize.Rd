@@ -7,7 +7,7 @@
 RatioResize(max_sz, resamples = list(2, 0), ...)
 }
 \arguments{
-\item{max_sz}{max_sz}
+\item{max_sz}{maximum sz}
 
 \item{resamples}{resamples}
 

@@ -16,19 +16,19 @@ affine_coord(
 )
 }
 \arguments{
-\item{x}{x}
+\item{x}{tensor}
 
 \item{mat}{mat}
 
-\item{coord_tfm}{coord_tfm}
+\item{coord_tfm}{coordinate tfm}
 
 \item{sz}{sz}
 
 \item{mode}{mode}
 
-\item{pad_mode}{pad_mode}
+\item{pad_mode}{padding mode}
 
-\item{align_corners}{align_corners}
+\item{align_corners}{align corners}
 
 \item{...}{additional arguments}
 }

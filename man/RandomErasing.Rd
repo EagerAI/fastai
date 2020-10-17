@@ -7,15 +7,15 @@
 RandomErasing(p = 0.5, sl = 0, sh = 0.3, min_aspect = 0.3, max_count = 1)
 }
 \arguments{
-\item{p}{p}
+\item{p}{probability}
 
 \item{sl}{sl}
 
 \item{sh}{sh}
 
-\item{min_aspect}{min_aspect}
+\item{min_aspect}{minimum aspect}
 
-\item{max_count}{max_count}
+\item{max_count}{maximum count}
 }
 \value{
 None

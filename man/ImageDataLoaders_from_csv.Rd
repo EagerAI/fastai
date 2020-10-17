@@ -41,7 +41,7 @@ ImageDataLoaders_from_csv(
 
 \item{seed}{random seed}
 
-\item{fn_col}{fn_col}
+\item{fn_col}{column name}
 
 \item{folder}{folder name}
 
@@ -49,7 +49,7 @@ ImageDataLoaders_from_csv(
 
 \item{label_col}{label column}
 
-\item{label_delim}{label_delim}
+\item{label_delim}{label delimiter}
 
 \item{y_block}{y_block}
 
@@ -67,7 +67,7 @@ ImageDataLoaders_from_csv(
 
 \item{shuffle_train}{If we shuffle the training DataLoader or not}
 
-\item{device}{device}
+\item{device}{device name}
 
 \item{...}{additional parameters to pass}
 }

@@ -15,13 +15,13 @@ RandomResizedCropGPU(
 \arguments{
 \item{size}{size}
 
-\item{min_scale}{min_scale}
+\item{min_scale}{minimum scale}
 
 \item{ratio}{ratio}
 
 \item{mode}{mode}
 
-\item{valid_scale}{valid_scale}
+\item{valid_scale}{validation scale}
 }
 \value{
 None

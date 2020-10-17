@@ -9,7 +9,7 @@ bb_pad(samples, pad_idx = 0)
 \arguments{
 \item{samples}{samples}
 
-\item{pad_idx}{pad_idx}
+\item{pad_idx}{pad index}
 }
 \value{
 None

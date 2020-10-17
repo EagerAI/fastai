@@ -172,7 +172,7 @@ basic_generator <- function(out_size, n_channels,
 #' @description A basic critic for images `n_channels` x `in_size` x `in_size`.
 #'
 #'
-#' @param in_size in_size
+#' @param in_size input size
 #' @param n_channels The number of channels
 #' @param ... additional parameters to pass
 #' @return None
@@ -224,25 +224,25 @@ basic_critic <- function(in_size, n_channels,
 #'
 #' @description Create a WGAN from `data`, `generator` and `critic`.
 #'
-#' @param dls dls
+#' @param dls dataloader
 #' @param generator generator
 #' @param critic critic
 #' @param switcher switcher
-#' @param clip clip
-#' @param switch_eval switch_eval
-#' @param gen_first gen_first
-#' @param show_img show_img
-#' @param cbs cbs
+#' @param clip clip value
+#' @param switch_eval switch evaluation
+#' @param gen_first generator first
+#' @param show_img show image or not
+#' @param cbs callbacks
 #' @param metrics metrics
-#' @param opt_func opt_func
-#' @param lr lr
+#' @param opt_func optimization function
+#' @param lr learning rate
 #' @param splitter splitter
 #' @param path path
-#' @param model_dir model_dir
-#' @param wd wd
-#' @param wd_bn_bias wd_bn_bias
-#' @param train_bn train_bn
-#' @param moms moms
+#' @param model_dir model directory
+#' @param wd weight decay
+#' @param wd_bn_bias weight decay bn bias
+#' @param train_bn It controls if BatchNorm layers are trained even when they are supposed to be frozen according to the splitter.
+#' @param moms momentums
 #' @return None
 #'
 #' @examples
@@ -356,7 +356,7 @@ fit.fastai.vision.gan.GANLearner <- function(object, ...) {
 #'
 #' @param generator generator
 #' @param critic critic
-#' @param gen_mode gen_mode
+#' @param gen_mode generator mode or not
 #' @return None
 #' @export
 GANModule <- function(generator = NULL, critic = NULL, gen_mode = FALSE) {
@@ -433,22 +433,22 @@ AddChannels <- function(n_dim) {
 #' @description Resnet block of `nf` features. `conv_kwargs` are passed to `conv_layer`.
 #'
 #'
-#' @param nf nf
-#' @param norm_type norm_type
-#' @param ks ks
+#' @param nf number of features
+#' @param norm_type normalization type
+#' @param ks kernel size
 #' @param stride stride
 #' @param padding padding
 #' @param bias bias
-#' @param ndim ndim
-#' @param bn_1st bn_1st
-#' @param act_cls act_cls
+#' @param ndim number of dimensions
+#' @param bn_1st batch normalization 1st
+#' @param act_cls activation
 #' @param transpose transpose
-#' @param init init
+#' @param init initizalier
 #' @param xtra xtra
-#' @param bias_std bias_std
-#' @param dilation dilation
-#' @param groups groups
-#' @param padding_mode padding_mode
+#' @param bias_std bias standard deviation
+#' @param dilation dilation number
+#' @param groups groups number
+#' @param padding_mode padding mode
 #' @return block
 #' @export
 DenseResBlock <- function(nf, norm_type = 1,
@@ -487,7 +487,7 @@ DenseResBlock <- function(nf, norm_type = 1,
 #'
 #'
 #' @param n_channels number of channels
-#' @param nf nf
+#' @param nf number of features
 #' @param n_blocks number of blocks
 #' @param p probability
 #' @return GAN object
@@ -569,11 +569,11 @@ set_freeze_model <- function(m, rg) {
 #' @description Handles GAN Training.
 #'
 #'
-#' @param switch_eval switch_eval
-#' @param clip clip
-#' @param beta beta
-#' @param gen_first gen_first
-#' @param show_img show_img
+#' @param switch_eval switch evaluation
+#' @param clip clip value
+#' @param beta beta parameter
+#' @param gen_first generator first
+#' @param show_img show image or not
 #' @return None
 #' @export
 GANTrainer <- function(switch_eval = FALSE, clip = NULL, beta = 0.98,
@@ -613,8 +613,8 @@ FixedGANSwitcher <- function(n_crit = 1, n_gen = 1) {
 #' @description Switcher that goes back to generator/critic when the loss goes below `gen_thresh`/`crit_thresh`.
 #'
 #'
-#' @param gen_thresh gen_thresh
-#' @param critic_thresh critic_thresh
+#' @param gen_thresh generator threshold
+#' @param critic_thresh discriminator threshold
 #' @return None
 #' @export
 AdaptiveGANSwitcher <- function(gen_thresh = NULL, critic_thresh = NULL) {
@@ -669,10 +669,10 @@ gan_loss_from_func <- function(loss_gen, loss_crit, weights_gen = NULL) {
 #' @param crit_learn discriminator learner
 #' @param switcher switcher
 #' @param weights_gen weights generator
-#' @param gen_first gen_first
-#' @param switch_eval switch_eval
-#' @param show_img show_img
-#' @param clip clip
+#' @param gen_first generator first
+#' @param switch_eval switch evaluation
+#' @param show_img show image or not
+#' @param clip clip value
 #' @param cbs Cbs is one or a list of Callbacks to pass to the Learner.
 #' @param metrics It is an optional list of metrics, that can be either functions or Metrics.
 #' @param loss_func loss function
@@ -684,7 +684,7 @@ gan_loss_from_func <- function(loss_gen, loss_crit, weights_gen = NULL) {
 #' @param wd It is the default weight decay used when training the model.
 #' @param wd_bn_bias It controls if weight decay is applied to BatchNorm layers and bias.
 #' @param train_bn It controls if BatchNorm layers are trained even when they are supposed to be frozen according to the splitter.
-#' @param moms The default momentums used in Learner.fit_one_cycle.
+#' @param moms The default momentums used in Learner$fit_one_cycle.
 #' @return None
 #' @export
 GANLearner_from_learners <- function(gen_learn, crit_learn, switcher = NULL, weights_gen = NULL,

@@ -43,10 +43,10 @@ Resize <- function(size, method = "crop", pad_mode = "reflection", resamples = l
 #' @param xtra_tfms extra transformations
 #' @param size size of image
 #' @param mode mode
-#' @param pad_mode pad_mode
+#' @param pad_mode padding mode
 #' @param align_corners align_corners
-#' @param batch batch
-#' @param min_scale min_scale
+#' @param batch batch size
+#' @param min_scale minimum scale
 #' @return None
 #'
 #'

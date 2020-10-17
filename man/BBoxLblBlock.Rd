@@ -7,9 +7,9 @@
 BBoxLblBlock(vocab = NULL, add_na = TRUE)
 }
 \arguments{
-\item{vocab}{vocab}
+\item{vocab}{vocabulary}
 
-\item{add_na}{add_na}
+\item{add_na}{add NA}
 }
 \value{
 None'

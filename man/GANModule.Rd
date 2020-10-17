@@ -11,7 +11,7 @@ GANModule(generator = NULL, critic = NULL, gen_mode = FALSE)
 
 \item{critic}{critic}
 
-\item{gen_mode}{gen_mode}
+\item{gen_mode}{generator mode or not}
 }
 \value{
 None

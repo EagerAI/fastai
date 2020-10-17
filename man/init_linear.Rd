@@ -7,7 +7,7 @@
 init_linear(m, act_func = NULL, init = "auto", bias_std = 0.01)
 }
 \arguments{
-\item{m}{m parameter}
+\item{m}{parameter}
 
 \item{act_func}{activation function}
 

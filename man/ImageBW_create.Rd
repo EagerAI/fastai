@@ -7,7 +7,7 @@
 ImageBW_create(fn)
 }
 \arguments{
-\item{fn}{fn}
+\item{fn}{file name}
 }
 \value{
 None

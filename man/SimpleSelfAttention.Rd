@@ -7,7 +7,7 @@
 SimpleSelfAttention(n_in, ks = 1, sym = FALSE)
 }
 \arguments{
-\item{n_in}{input}
+\item{n_in}{inputs}
 
 \item{ks}{kernel size}
 

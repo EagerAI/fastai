@@ -7,9 +7,9 @@
 PointScaler(do_scale = TRUE, y_first = FALSE)
 }
 \arguments{
-\item{do_scale}{do_scale}
+\item{do_scale}{do scale}
 
-\item{y_first}{y_first}
+\item{y_first}{y first}
 }
 \value{
 None

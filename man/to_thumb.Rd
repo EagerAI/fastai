@@ -9,9 +9,9 @@ to_thumb(img, h, w = NULL)
 \arguments{
 \item{img}{image}
 
-\item{h}{h}
+\item{h}{height}
 
-\item{w}{w}
+\item{w}{width}
 }
 \value{
 None

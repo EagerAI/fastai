@@ -9,7 +9,7 @@ gan_critic(n_channels = 3, nf = 128, n_blocks = 3, p = 0.15)
 \arguments{
 \item{n_channels}{number of channels}
 
-\item{nf}{nf}
+\item{nf}{number of features}
 
 \item{n_blocks}{number of blocks}
 

@@ -7,9 +7,9 @@
 Saturation(max_lighting = 0.2, p = 0.75, draw = NULL, batch = FALSE)
 }
 \arguments{
-\item{max_lighting}{max_lighting}
+\item{max_lighting}{maximum lighting}
 
-\item{p}{p}
+\item{p}{probability}
 
 \item{draw}{draw}
 

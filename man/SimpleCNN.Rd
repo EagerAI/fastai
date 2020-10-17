@@ -13,7 +13,7 @@ SimpleCNN(filters, kernel_szs = NULL, strides = NULL, bn = TRUE)
 
 \item{strides}{strides}
 
-\item{bn}{bn}
+\item{bn}{batch normalization}
 }
 \value{
 None

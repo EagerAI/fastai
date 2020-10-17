@@ -7,9 +7,9 @@
 AdaptiveGANSwitcher(gen_thresh = NULL, critic_thresh = NULL)
 }
 \arguments{
-\item{gen_thresh}{gen_thresh}
+\item{gen_thresh}{generator threshold}
 
-\item{critic_thresh}{critic_thresh}
+\item{critic_thresh}{discriminator threshold}
 }
 \value{
 None

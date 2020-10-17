@@ -7,9 +7,9 @@
 find_coeffs(p1, p2)
 }
 \arguments{
-\item{p1}{p1}
+\item{p1}{coefficient p1}
 
-\item{p2}{p2}
+\item{p2}{coefficient p2}
 }
 \value{
 None

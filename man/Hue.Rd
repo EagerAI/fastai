@@ -7,9 +7,9 @@
 Hue(max_hue = 0.1, p = 0.75, draw = NULL, batch = FALSE)
 }
 \arguments{
-\item{max_hue}{max_hue}
+\item{max_hue}{maximum hue}
 
-\item{p}{p}
+\item{p}{probability}
 
 \item{draw}{draw}
 

@@ -20,7 +20,7 @@ ImageDataLoaders_from_name_re(
 \arguments{
 \item{path}{The folder where to work}
 
-\item{fnames}{fnames}
+\item{fnames}{folder names}
 
 \item{pat}{an argument that requires regex}
 
@@ -30,7 +30,7 @@ ImageDataLoaders_from_name_re(
 
 \item{shuffle_train}{If we shuffle the training DataLoader or not}
 
-\item{device}{device}
+\item{device}{device name}
 
 \item{item_tfms}{One or several transforms applied to the items before batching them}
 

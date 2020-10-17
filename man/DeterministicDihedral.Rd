@@ -16,9 +16,9 @@ DeterministicDihedral(
 
 \item{mode}{mode}
 
-\item{pad_mode}{pad_mode}
+\item{pad_mode}{padding mode}
 
-\item{align_corners}{align_corners}
+\item{align_corners}{align corners}
 }
 \value{
 None

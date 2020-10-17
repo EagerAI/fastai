@@ -7,9 +7,9 @@
 apply_perspective(coords, coeffs)
 }
 \arguments{
-\item{coords}{coords}
+\item{coords}{coordinates}
 
-\item{coeffs}{coeffs}
+\item{coeffs}{coefficient}
 }
 \value{
 None

@@ -7,7 +7,7 @@
 sigmoid(input, eps = 1e-07)
 }
 \arguments{
-\item{input}{input}
+\item{input}{inputs}
 
 \item{eps}{epsilon}
 }

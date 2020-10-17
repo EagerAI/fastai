@@ -40,7 +40,7 @@ ImageDataLoaders_from_path_func(
 
 \item{shuffle_train}{If we shuffle the training DataLoader or not}
 
-\item{device}{device}
+\item{device}{device name}
 
 \item{...}{additional parameters to pass}
 }

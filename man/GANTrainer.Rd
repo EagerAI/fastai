@@ -13,15 +13,15 @@ GANTrainer(
 )
 }
 \arguments{
-\item{switch_eval}{switch_eval}
+\item{switch_eval}{switch evaluation}
 
-\item{clip}{clip}
+\item{clip}{clip value}
 
-\item{beta}{beta}
+\item{beta}{beta parameter}
 
-\item{gen_first}{gen_first}
+\item{gen_first}{generator first}
 
-\item{show_img}{show_img}
+\item{show_img}{show image or not}
 }
 \value{
 None

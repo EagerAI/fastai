@@ -9,7 +9,7 @@ CropPad(size, pad_mode = "zeros", ...)
 \arguments{
 \item{size}{size}
 
-\item{pad_mode}{pad_mode}
+\item{pad_mode}{padding mode}
 
 \item{...}{additional arguments}
 }

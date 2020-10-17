@@ -7,9 +7,9 @@
 mask_tensor(x, p = 0.5, neutral = 0, batch = FALSE)
 }
 \arguments{
-\item{x}{x}
+\item{x}{tensor}
 
-\item{p}{p}
+\item{p}{probability}
 
 \item{neutral}{neutral}
 
