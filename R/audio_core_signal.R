@@ -22,11 +22,15 @@ audio_extensions = function() {
 #' @export
 get_audio_files <- function(path, recurse = TRUE, folders = NULL) {
 
-  fastaudio$core$signal$get_audio_files(
-    path = path,
-    recurse = recurse,
-    folders = folders
-  )
+  if(missing(path)) {
+    fastaudio$core$signal$get_audio_files
+  } else {
+    fastaudio$core$signal$get_audio_files(
+      path = path,
+      recurse = recurse,
+      folders = folders
+    )
+  }
 
 }
 
@@ -109,18 +113,25 @@ AudioTensor_create <- function(fn, cache_folder = NULL, out = NULL,
                                num_frames = 0, offset = 0, signalinfo = NULL,
                                encodinginfo = NULL, filetype = NULL) {
 
-  fastaudio$core$signal$AudioTensor$create(
-    fn = fn,
-    cache_folder = cache_folder,
-    out = out,
-    normalization = normalization,
-    channels_first = channels_first,
-    num_frames = as.integer(num_frames),
-    offset = as.integer(offset),
-    signalinfo = signalinfo,
-    encodinginfo = encodinginfo,
-    filetype = filetype
-  )
+
+  if(missing(fn)) {
+    fastaudio$core$signal$AudioTensor$create
+  } else {
+    args = list(
+      fn = fn,
+      cache_folder = cache_folder,
+      out = out,
+      normalization = normalization,
+      channels_first = channels_first,
+      num_frames = as.integer(num_frames),
+      offset = as.integer(offset),
+      signalinfo = signalinfo,
+      encodinginfo = encodinginfo,
+      filetype = filetype
+    )
+
+    do.call(fastaudio$core$signal$AudioTensor$create, args)
+  }
 
 }
 

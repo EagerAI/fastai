@@ -454,7 +454,12 @@ to_matrix = function(obj, matrix = TRUE) {
 #' @return None
 #' @export
 print.fastai.learner.Learner = function(x, ...) {
-  print(x$model)
+  res = try(x$model(),  silent = TRUE)
+  if(inherits(res,'try-error')) {
+    print(x$model)
+  } else {
+    print(x$model())
+  }
 }
 
 

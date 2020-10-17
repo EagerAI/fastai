@@ -19,9 +19,9 @@ AudioPadType <- NULL
 #' @param pad_mode padding mode
 #' @return None
 #' @export
-ResizeSignal <- function(duration, pad_mode = AudioPadType$Zeros$value) {
+ResizeSignal <- function(duration, pad_mode = AudioPadType$Zeros) {
 
-  python_function_result <- fastaudio$augment$signal$ResizeSignal(
+  fastaudio$augment$signal$ResizeSignal(
     duration = duration,
     pad_mode = pad_mode
   )

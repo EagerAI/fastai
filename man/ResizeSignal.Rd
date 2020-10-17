@@ -4,7 +4,7 @@
 \alias{ResizeSignal}
 \title{Resize Signal}
 \usage{
-ResizeSignal(duration, pad_mode = AudioPadType$Zeros$value)
+ResizeSignal(duration, pad_mode = AudioPadType$Zeros)
 }
 \arguments{
 \item{duration}{duration}
