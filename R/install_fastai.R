@@ -75,7 +75,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   }
 
 
-  py_av = reticulate::py_available(T)
+  py_av = reticulate::py_available(TRUE)
 
   if (!length(required_py_pkgs) == 0) {
 

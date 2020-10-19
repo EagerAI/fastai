@@ -31,6 +31,7 @@ Grab data:
 
 ```{r}
 URLs_SPEAKERS10()
+path_dig = 'SPEAKERS10'
 ```
 
 

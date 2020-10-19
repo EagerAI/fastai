@@ -22,8 +22,12 @@ URLs_SPEAKERS10 <- function(filename = 'SPEAKERS10', untar = TRUE) {
   download.file(paste(fastaudio$core$all$URLs$SPEAKERS10,sep = ''),
                 destfile = paste(filename,'.tgz',sep = ''))
 
-  if(untar)
-    untar(paste(filename,'.tgz',sep = ''))
+  if(untar) {
+    if(!dir.exists('SPEAKERS10')) {
+      dir.create('SPEAKERS10')
+    }
+    untar(paste(filename,'.tgz',sep = ''),exdir = 'SPEAKERS10')
+  }
 
 }
 
