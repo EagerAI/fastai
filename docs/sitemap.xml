@@ -973,6 +973,9 @@
     <loc>https://henry090.github.io/fastai//reference/URLs_SOGOU_NEWS.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/URLs_SPEAKERS10.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/URLs_WIKITEXT.html</loc>
   </url>
   <url>
@@ -1967,6 +1970,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//articles/Basic_Tabular.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//articles/audio.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//articles/basic_img_class.html</loc>
