@@ -51,6 +51,12 @@ install_fastai(gpu = FALSE, cuda_version = '10.1', overwrite = FALSE)
 
 __4. Restart RStudio!__
 
+> Note: for GPU version, please set this option:
+
+```
+options(reticulate.useImportHook = FALSE)
+```
+
 ## Tabular data
 
 ```
