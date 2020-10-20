@@ -29,7 +29,7 @@ Requirements:
 - Python >= 3.6
 - CPU or GPU
 
-1. __Install miniconda and activate environment:__
+__1. Install miniconda and activate environment:__
 
 
 ```
@@ -37,19 +37,19 @@ reticulate::install_miniconda()
 reticulate::py_config()
 ```
 
-2. __The dev version:__
+__2. The dev version:__
 
 ```
 devtools::install_github('henry090/fastai')
 ```
 
-3. __Later, you need to install the python module ```fastai```:__
+__3. Later, you need to install the python module ```fastai```:__
 
 ```
 install_fastai(gpu = FALSE, cuda_version = '10.1', overwrite = FALSE)
 ```
 
-4. __Restart RStudio!__
+__4. Restart RStudio!__
 
 ## Tabular data
 
