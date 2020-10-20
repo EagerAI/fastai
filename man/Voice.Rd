@@ -18,7 +18,7 @@ Voice(
   normalized = FALSE,
   wkwargs = NULL,
   mel = TRUE,
-  to_db = FALSE
+  to_db = TRUE
 )
 }
 \arguments{

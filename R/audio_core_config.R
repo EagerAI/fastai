@@ -15,12 +15,17 @@
 AudioBlock <- function(cache_folder = NULL, sample_rate = 16000,
                        force_mono = TRUE, crop_signal_to = NULL) {
 
-  fastaudio$core$config$AudioBlock(
-    cache_folder = cache_folder,
-    sample_rate = as.integer(sample_rate),
-    force_mono = force_mono,
-    crop_signal_to = crop_signal_to
-  )
+
+  if(missing(cache_folder)) {
+    fastaudio$core$config$AudioBlock
+  } else {
+    fastaudio$core$config$AudioBlock(
+      cache_folder = cache_folder,
+      sample_rate = as.integer(sample_rate),
+      force_mono = force_mono,
+      crop_signal_to = crop_signal_to
+    )
+  }
 
 }
 
@@ -234,7 +239,7 @@ BasicSpectrogram <- function(n_fft = 400, win_length = NULL, hop_length = NULL,
 #' @export
 Voice <- function(sample_rate = 16000, n_fft = 1024, win_length = NULL, hop_length = 128,
                   f_min = 50.0, f_max = 8000.0, pad = 0, n_mels = 128, window_fn = torch$hann_window,
-                  power = 2.0, normalized = FALSE, wkwargs = NULL, mel = TRUE, to_db = FALSE) {
+                  power = 2.0, normalized = FALSE, wkwargs = NULL, mel = TRUE, to_db = TRUE) {
 
   args <- list(
     sample_rate = as.integer(sample_rate),
