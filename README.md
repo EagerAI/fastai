@@ -51,7 +51,7 @@ install_fastai(gpu = FALSE, cuda_version = '10.1', overwrite = FALSE)
 
 __4. Restart RStudio!__
 
-> Note: for GPU version, please set this option:
+> Note: for GPU version, ensure this is run before reticulate is loaded:
 
 ```
 options(reticulate.useImportHook = FALSE)
