@@ -181,7 +181,7 @@
 <span class="op">}</span></pre></div>
 <p>A function to download cat images:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">rvest</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://rvest.tidyverse.org/">rvest</a></span><span class="op">)</span>
 
 <span class="va">download_pet</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">name</span>, <span class="va">dest</span><span class="op">)</span> <span class="op">{</span>
   <span class="va">query</span> <span class="op">=</span> <span class="va">name</span>
@@ -189,7 +189,7 @@
 
   <span class="va">search</span> <span class="op">&lt;-</span> <span class="fu">read_html</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"https://www.google.com/search?site=&amp;tbm=isch&amp;q"</span>, <span class="va">query</span>, sep <span class="op">=</span> <span class="st">"="</span><span class="op">)</span><span class="op">)</span>
 
-  <span class="va">urls</span> <span class="op">&lt;-</span> <span class="va">search</span> <span class="op">%&gt;%</span> <span class="fu">html_nodes</span><span class="op">(</span><span class="st">"img"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">html_attr</span><span class="op">(</span><span class="st">"src"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="va">.</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span>
+  <span class="va">urls</span> <span class="op">&lt;-</span> <span class="va">search</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_nodes.html">html_nodes</a></span><span class="op">(</span><span class="st">"img"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_attr</a></span><span class="op">(</span><span class="st">"src"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="va">.</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span>
 
   <span class="va">fixed_name</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span><span class="op">(</span><span class="st">'\\s|[[:punct:]]'</span>, <span class="st">'_'</span>, <span class="va">name</span><span class="op">)</span>
 
@@ -241,8 +241,7 @@
   item_tfms  <span class="op">=</span> <span class="fu"><a href="../reference/Resize.html">Resize</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">200</span><span class="op">)</span>, bs <span class="op">=</span> <span class="fl">15</span>,
   batch_tfms <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="../reference/aug_transforms.html">aug_transforms</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">224</span>, min_scale <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span>,
                   <span class="fu"><a href="../reference/Normalize_from_stats.html">Normalize_from_stats</a></span><span class="op">(</span> <span class="fu"><a href="../reference/imagenet_stats.html">imagenet_stats</a></span><span class="op">(</span><span class="op">)</span> <span class="op">)</span>
-  <span class="op">)</span>,
-  device <span class="op">=</span> <span class="st">'cuda'</span>
+  <span class="op">)</span>
 <span class="op">)</span>
 
 
@@ -260,7 +259,7 @@
 
 <span class="va">learn</span><span class="op">$</span><span class="va">recorder</span><span class="op">$</span><span class="va">train_metrics</span> <span class="op">=</span> <span class="cn">TRUE</span></pre></div>
 <div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span>n_epoch <span class="op">=</span> <span class="fl">5</span>, <span class="fl">1e-3</span><span class="op">)</span></pre></div>
+<span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">1e-3</span><span class="op">)</span></pre></div>
 <pre><code>epoch     train_loss  train_accuracy  train_error_rate  valid_loss  valid_accuracy  valid_er_r
 0         2.145128    0.333333        0.666667          1.205951    0.500000        0.500000  
 1         1.480864    0.650000        0.350000          0.605784    0.812500        0.187500    
@@ -302,7 +301,7 @@ $labels
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>
