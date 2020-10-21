@@ -2,6 +2,9 @@
 knitr::opts_chunk$set(echo = TRUE,eval = FALSE,echo = T)
 
 ## -----------------------------------------------------------------------------
+#  reticulate::py_install('git+https://github.com/tcapelle/timeseries_fastai.git', pip = TRUE)
+
+## -----------------------------------------------------------------------------
 #  
 #  library(dplyr)
 #  library(fastai)
