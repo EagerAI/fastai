@@ -37,6 +37,8 @@ navbar:
           href: articles/obj_detect.html
         - text: "Audio classification"
           href: articles/audio.html
+        - text: "Time series"
+          href: articles/time_series.html
     - text: "Migrating"
       menu:
         - text: "Plain Pytorch"

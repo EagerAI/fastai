@@ -1,0 +1,288 @@
+---
+title: "Time-Series"
+output:
+  rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Time-Series}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,eval = FALSE,echo = T)
+```
+
+## Intro
+
+The [fastai](https://github.com/fastai/fastai) library simplifies training fast and accurate neural nets using modern best practices. See the fastai website to get started. The library is based on research into deep learning best practices undertaken at ```fast.ai```, and includes "out of the box" support for ```vision```, ```text```, ```tabular```, and ```collab``` (collaborative filtering) models. 
+
+
+## Grab data 
+
+Download the data from Facebook Github page (Prophet):
+
+```{r}
+
+library(dplyr)
+library(fastai)
+
+df = data.table::fread('https://raw.githubusercontent.com/facebook/prophet/master/examples/example_wp_log_peyton_manning.csv')
+```
+
+```
+           ds        y
+1: 2007-12-10 9.590761
+2: 2007-12-11 8.519590
+3: 2007-12-12 8.183677
+4: 2007-12-13 8.072467
+5: 2007-12-14 7.893572
+6: 2007-12-15 7.783641
+```
+
+## Preprocess
+
+Scale and fill NA's:
+
+
+```{r}
+split_idx = which(df$ds=='2016-01-01') # take 1 year for validation
+
+y = df$y
+
+df = timetk::tk_augment_timeseries_signature(df) %>%
+  mutate_if(is.factor,  as.numeric) %>%
+  select(-ds, -hour, -minute, -second, -hour12, -am.pm, -y) %>%
+  scale() %>% data.table::as.data.table()
+
+df[is.na(df)]=0
+df$y = y
+```
+
+## Split
+
+Split data into 2 parts:
+
+- train
+- test
+
+```{r}
+df_train = df[1:split_idx,]
+df_test = df[(split_idx+1):nrow(df),]
+
+x_cols = setdiff(colnames(df_train),'y')
+```
+
+
+## Dataloader and Inception model
+
+```{r}
+dls = TSDataLoaders_from_dfs(df_train, df_test, x_cols = x_cols, label_col = 'y', bs=60,
+                             y_block = RegressionBlock())
+
+dls %>% show_batch()
+
+inception = create_inception(1, 1)
+
+learn = Learner(dls, inception, metrics=list(mae(), rmse()))
+```
+
+
+```
+Sequential(
+  (0): SequentialEx(
+    (layers): ModuleList(
+      (0): InceptionModule(
+        (convs): ModuleList(
+          (0): Conv1d(1, 32, kernel_size=(39,), stride=(1,), padding=(19,), bias=False)
+          (1): Conv1d(1, 32, kernel_size=(19,), stride=(1,), padding=(9,), bias=False)
+          (2): Conv1d(1, 32, kernel_size=(9,), stride=(1,), padding=(4,), bias=False)
+        )
+        (conv_bottle): Sequential(
+          (0): MaxPool1d(kernel_size=3, stride=1, padding=1, dilation=1, ceil_mode=False)
+          (1): Conv1d(1, 32, kernel_size=(1,), stride=(1,), bias=False)
+        )
+        (bn_relu): Sequential(
+          (0): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+      )
+    )
+  )
+  (1): SequentialEx(
+    (layers): ModuleList(
+      (0): InceptionModule(
+        (bottleneck): Conv1d(128, 32, kernel_size=(1,), stride=(1,), bias=False)
+        (convs): ModuleList(
+          (0): Conv1d(32, 32, kernel_size=(39,), stride=(1,), padding=(19,), bias=False)
+          (1): Conv1d(32, 32, kernel_size=(19,), stride=(1,), padding=(9,), bias=False)
+          (2): Conv1d(32, 32, kernel_size=(9,), stride=(1,), padding=(4,), bias=False)
+        )
+        (conv_bottle): Sequential(
+          (0): MaxPool1d(kernel_size=3, stride=1, padding=1, dilation=1, ceil_mode=False)
+          (1): Conv1d(128, 32, kernel_size=(1,), stride=(1,), bias=False)
+        )
+        (bn_relu): Sequential(
+          (0): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+      )
+    )
+  )
+  (2): SequentialEx(
+    (layers): ModuleList(
+      (0): InceptionModule(
+        (bottleneck): Conv1d(128, 32, kernel_size=(1,), stride=(1,), bias=False)
+        (convs): ModuleList(
+          (0): Conv1d(32, 32, kernel_size=(39,), stride=(1,), padding=(19,), bias=False)
+          (1): Conv1d(32, 32, kernel_size=(19,), stride=(1,), padding=(9,), bias=False)
+          (2): Conv1d(32, 32, kernel_size=(9,), stride=(1,), padding=(4,), bias=False)
+        )
+        (conv_bottle): Sequential(
+          (0): MaxPool1d(kernel_size=3, stride=1, padding=1, dilation=1, ceil_mode=False)
+          (1): Conv1d(128, 32, kernel_size=(1,), stride=(1,), bias=False)
+        )
+        (bn_relu): Sequential(
+          (0): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+      )
+      (1): Shortcut(
+        (act_fn): ReLU(inplace=True)
+        (conv): ConvLayer(
+          (0): Conv1d(128, 128, kernel_size=(1,), stride=(1,), bias=False)
+          (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): ReLU()
+        )
+        (bn): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+  )
+  (3): SequentialEx(
+    (layers): ModuleList(
+      (0): InceptionModule(
+        (bottleneck): Conv1d(128, 32, kernel_size=(1,), stride=(1,), bias=False)
+        (convs): ModuleList(
+          (0): Conv1d(32, 32, kernel_size=(39,), stride=(1,), padding=(19,), bias=False)
+          (1): Conv1d(32, 32, kernel_size=(19,), stride=(1,), padding=(9,), bias=False)
+          (2): Conv1d(32, 32, kernel_size=(9,), stride=(1,), padding=(4,), bias=False)
+        )
+        (conv_bottle): Sequential(
+          (0): MaxPool1d(kernel_size=3, stride=1, padding=1, dilation=1, ceil_mode=False)
+          (1): Conv1d(128, 32, kernel_size=(1,), stride=(1,), bias=False)
+        )
+        (bn_relu): Sequential(
+          (0): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+      )
+    )
+  )
+  (4): SequentialEx(
+    (layers): ModuleList(
+      (0): InceptionModule(
+        (bottleneck): Conv1d(128, 32, kernel_size=(1,), stride=(1,), bias=False)
+        (convs): ModuleList(
+          (0): Conv1d(32, 32, kernel_size=(39,), stride=(1,), padding=(19,), bias=False)
+          (1): Conv1d(32, 32, kernel_size=(19,), stride=(1,), padding=(9,), bias=False)
+          (2): Conv1d(32, 32, kernel_size=(9,), stride=(1,), padding=(4,), bias=False)
+        )
+        (conv_bottle): Sequential(
+          (0): MaxPool1d(kernel_size=3, stride=1, padding=1, dilation=1, ceil_mode=False)
+          (1): Conv1d(128, 32, kernel_size=(1,), stride=(1,), bias=False)
+        )
+        (bn_relu): Sequential(
+          (0): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+      )
+    )
+  )
+  (5): SequentialEx(
+    (layers): ModuleList(
+      (0): InceptionModule(
+        (bottleneck): Conv1d(128, 32, kernel_size=(1,), stride=(1,), bias=False)
+        (convs): ModuleList(
+          (0): Conv1d(32, 32, kernel_size=(39,), stride=(1,), padding=(19,), bias=False)
+          (1): Conv1d(32, 32, kernel_size=(19,), stride=(1,), padding=(9,), bias=False)
+          (2): Conv1d(32, 32, kernel_size=(9,), stride=(1,), padding=(4,), bias=False)
+        )
+        (conv_bottle): Sequential(
+          (0): MaxPool1d(kernel_size=3, stride=1, padding=1, dilation=1, ceil_mode=False)
+          (1): Conv1d(128, 32, kernel_size=(1,), stride=(1,), bias=False)
+        )
+        (bn_relu): Sequential(
+          (0): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+      )
+      (1): Shortcut(
+        (act_fn): ReLU(inplace=True)
+        (conv): ConvLayer(
+          (0): Conv1d(128, 128, kernel_size=(1,), stride=(1,), bias=False)
+          (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): ReLU()
+        )
+        (bn): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+  )
+  (6): AdaptiveConcatPool1d(
+    (ap): AdaptiveAvgPool1d(output_size=1)
+    (mp): AdaptiveMaxPool1d(output_size=1)
+  )
+  (7): Flatten(full=False)
+  (8): Linear(in_features=256, out_features=1, bias=True)
+)
+```
+
+## Optimal LR
+
+Find suitable learning rate and plot:
+
+```{r}
+lrs = learn %>% lr_find()
+
+learn %>% plot_lr_find()
+```
+
+
+## Conclusion
+
+Fit and include early stopping:
+
+```{r}
+learn %>% fit_one_cycle(30, 1e-5, cbs = EarlyStoppingCallback(patience = 5))
+
+learn %>% predict(df_test)
+
+# to R
+# result = learn %>% predict(df_test) 
+# result$cpu()$numpy()
+```
+
+```
+tensor([[7.7424],
+        [8.1811],
+        [9.3027],
+        [8.9411],
+        [8.6638],
+        [8.4315],
+        [8.3787],
+        [8.3773],
+        [9.2661],
+        [9.2318],
+        [8.9331],
+        [8.6524],
+        [8.3974],
+        [8.5527],
+        [8.4238],
+        [8.9372],
+        [9.0976],
+        [9.1249],
+        [8.6052]])
+```
+
+
+
+
+
