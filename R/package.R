@@ -1,4 +1,6 @@
 
+
+tms <- NULL
 fastaudio <- NULL
 AudioSpectrogram <- NULL
 NoiseColor <- NULL
@@ -130,6 +132,11 @@ torch <- NULL
       if(reticulate::py_module_available('kaggle')) {
         kg <<- reticulate::import('kaggle')
       }
+
+      if(reticulate::py_module_available('timeseries_fastai')) {
+        tms <<- reticulate::import('timeseries_fastai')
+      }
+
 
       if(reticulate::py_module_available('ignite') &
          reticulate::py_module_available('pytorch_lightning') &

@@ -62,12 +62,7 @@ knitr::opts_chunk$set(echo = TRUE,eval = FALSE,echo = T)
 #    item_tfms  = Resize(size = 200), bs = 15,
 #    batch_tfms = list(aug_transforms(size = 224, min_scale = 0.75),
 #                    Normalize_from_stats( imagenet_stats() )
-#    ),
-<<<<<<< HEAD
-#    device = 'cuda',
-=======
-#    device = 'cuda'
->>>>>>> 1a7d8e4825f5bdc739075f26445698a65d35762e
+#    )
 #  )
 #  
 #  
@@ -80,7 +75,7 @@ knitr::opts_chunk$set(echo = TRUE,eval = FALSE,echo = T)
 #  
 
 ## -----------------------------------------------------------------------------
-#  learn %>% fit_one_cycle(n_epoch = 5, 1e-3)
+#  learn %>% fit_one_cycle(5, 1e-3)
 
 ## -----------------------------------------------------------------------------
 #  fnames[1]
