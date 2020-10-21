@@ -373,6 +373,9 @@
     <loc>https://henry090.github.io/fastai//reference/Image_resize.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/InceptionModule.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/IndexSplitter.html</loc>
   </url>
   <url>
@@ -502,6 +505,9 @@
     <loc>https://henry090.github.io/fastai//reference/Normalize.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/NormalizeTS.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/Normalize_from_stats.html</loc>
   </url>
   <url>
@@ -599,6 +605,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/RatioResize.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/ReadTSBatch.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/Recall.html</loc>
@@ -700,6 +709,9 @@
     <loc>https://henry090.github.io/fastai//reference/ShortEpochCallback.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/Shortcut.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/ShowGraphCallback.html</loc>
   </url>
   <url>
@@ -739,10 +751,31 @@
     <loc>https://henry090.github.io/fastai//reference/Swish_.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/TSBlock.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/TSDataLoaders_from_dfs.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/TSDataTable.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/TSeries.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/TSeries_create.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/TabularDataTable.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/TabularModel.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/TabularTS.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/TabularTSDataloader.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/TensorBBox.html</loc>
@@ -1165,7 +1198,19 @@
     <loc>https://henry090.github.io/fastai//reference/create_cnn_model.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/create_fcn.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/create_head.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/create_inception.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/create_mlp.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/create_resnet.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/cutout_gaussian.html</loc>
@@ -1513,6 +1558,9 @@
     <loc>https://henry090.github.io/fastai//reference/max.fastai.torch_core.TensorMask.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/maybe_unsqueeze.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/mean.fastai.torch_core.TensorMask.html</loc>
   </url>
   <url>
@@ -1666,6 +1714,9 @@
     <loc>https://henry090.github.io/fastai//reference/replace_wrep.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/res_block_1d.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/reshape.html</loc>
   </url>
   <url>
@@ -1732,6 +1783,9 @@
     <loc>https://henry090.github.io/fastai//reference/show.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/show_array.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/show_batch.html</loc>
   </url>
   <url>
@@ -1790,6 +1844,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/squeezenet1_1.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/stack_train_valid.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/step_stat.html</loc>
