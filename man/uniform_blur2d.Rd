@@ -7,9 +7,9 @@
 uniform_blur2d(x, s)
 }
 \arguments{
-\item{x}{x}
+\item{x}{image}
 
-\item{s}{s}
+\item{s}{effect}
 }
 \value{
 None

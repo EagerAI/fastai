@@ -9,7 +9,7 @@ plot_lr_find(object, skip_end = 5, dpi = 250)
 \arguments{
 \item{object}{model}
 
-\item{skip_end}{skip_end}
+\item{skip_end}{n points to skip the end}
 
 \item{dpi}{dots per inch}
 }

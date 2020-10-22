@@ -16,7 +16,7 @@ plot_top_losses(
 \arguments{
 \item{interp}{interpretation object}
 
-\item{k}{k}
+\item{k}{number of images}
 
 \item{largest}{largest}
 

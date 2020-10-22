@@ -23,11 +23,11 @@ plot_confusion_matrix(
 
 \item{title}{title}
 
-\item{cmap}{cmap}
+\item{cmap}{color map}
 
-\item{norm_dec}{norm_dec}
+\item{norm_dec}{norm dec}
 
-\item{plot_txt}{plot_txt}
+\item{plot_txt}{plot text}
 
 \item{figsize}{plot size}
 

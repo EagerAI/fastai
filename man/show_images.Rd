@@ -15,7 +15,7 @@ show_images(
 )
 }
 \arguments{
-\item{ims}{ims}
+\item{ims}{images}
 
 \item{nrows}{number of rows}
 

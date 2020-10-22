@@ -9,9 +9,9 @@ plot_loss(object, skip_start = 5, with_valid = TRUE, dpi = 200)
 \arguments{
 \item{object}{model}
 
-\item{skip_start}{skip_start}
+\item{skip_start}{n points to skip the start}
 
-\item{with_valid}{with_valid}
+\item{with_valid}{with validation}
 
 \item{dpi}{dots per inch}
 }

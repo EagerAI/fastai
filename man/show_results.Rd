@@ -17,13 +17,13 @@ show_results(
 \arguments{
 \item{object}{model}
 
-\item{ds_idx}{ds_idx}
+\item{ds_idx}{ds by index}
 
-\item{dl}{dl}
+\item{dl}{DL application}
 
-\item{max_n}{max_n}
+\item{max_n}{maximum number of images}
 
-\item{shuffle}{shuffle}
+\item{shuffle}{shuffle or not}
 
 \item{dpi}{dots per inch}
 

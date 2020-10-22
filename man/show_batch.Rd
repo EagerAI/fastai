@@ -19,17 +19,17 @@ show_batch(
 \arguments{
 \item{dls}{dataloader object}
 
-\item{b}{b}
+\item{b}{defaults to one_batch}
 
-\item{max_n}{max_n}
+\item{max_n}{maximum images}
 
-\item{ctxs}{ctxs}
+\item{ctxs}{ctxs parameter}
 
 \item{figsize}{figure size}
 
-\item{show}{show}
+\item{show}{show or not}
 
-\item{unique}{unique}
+\item{unique}{unique images}
 
 \item{dpi}{dots per inch}
 

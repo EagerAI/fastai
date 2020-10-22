@@ -12,13 +12,13 @@ ClassificationInterpretation_from_learner(
 )
 }
 \arguments{
-\item{learn}{learn}
+\item{learn}{learner/model}
 
-\item{ds_idx}{ds_idx}
+\item{ds_idx}{ds by index}
 
-\item{dl}{dl}
+\item{dl}{DL application}
 
-\item{act}{act}
+\item{act}{activation}
 }
 \value{
 interpretation object

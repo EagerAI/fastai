@@ -9,7 +9,7 @@ most_confused(interp, min_val = 1)
 \arguments{
 \item{interp}{interpretation object}
 
-\item{min_val}{min_val}
+\item{min_val}{minimum value}
 }
 \value{
 data frame

@@ -9,7 +9,7 @@ plot(x, y, ..., dpi = 100)
 \arguments{
 \item{x}{model}
 
-\item{y}{parameter}
+\item{y}{y axis}
 
 \item{...}{parameters to pass}
 

@@ -39,11 +39,11 @@
 #'
 #'
 #' @param dls dataloader object
-#' @param b b
-#' @param max_n max_n
-#' @param ctxs ctxs
-#' @param show show
-#' @param unique unique
+#' @param b defaults to one_batch
+#' @param max_n maximum images
+#' @param ctxs ctxs parameter
+#' @param show show or not
+#' @param unique unique images
 #' @param figsize figure size
 #' @param dpi dots per inch
 #' @param ... additional arguments to pass
@@ -104,10 +104,10 @@ show_batch <- function(dls, b = NULL, max_n = 9, ctxs = NULL,
 #'
 #' @description Construct interpretation object from a learner
 #'
-#' @param learn learn
-#' @param ds_idx ds_idx
-#' @param dl dl
-#' @param act act
+#' @param learn learner/model
+#' @param ds_idx ds by index
+#' @param dl DL application
+#' @param act activation
 #' @return interpretation object
 #' @export
 ClassificationInterpretation_from_learner <- function(learn, ds_idx = 1, dl = NULL, act = NULL) {
@@ -125,7 +125,7 @@ ClassificationInterpretation_from_learner <- function(learn, ds_idx = 1, dl = NU
 #' @title Plot_top_losses
 #'
 #' @param interp interpretation object
-#' @param k k
+#' @param k number of images
 #' @param largest largest
 #' @param figsize plot size
 #' @param dpi dots per inch
@@ -175,9 +175,9 @@ plot_top_losses <- function(interp, k, largest = TRUE, figsize = c(19.2,10.8),
 #' @param interp interpretation object
 #' @param normalize normalize
 #' @param title title
-#' @param cmap cmap
-#' @param norm_dec norm_dec
-#' @param plot_txt plot_txt
+#' @param cmap color map
+#' @param norm_dec norm dec
+#' @param plot_txt plot text
 #' @importFrom graphics rasterImage
 #' @param figsize plot size
 #' @param dpi dots per inch
@@ -225,8 +225,8 @@ plot_confusion_matrix <- function(interp, normalize = FALSE, title = "Confusion 
 #' @description Plot the losses from `skip_start` and onward
 #'
 #' @param object model
-#' @param skip_start skip_start
-#' @param with_valid with_valid
+#' @param skip_start n points to skip the start
+#' @param with_valid with validation
 #' @param dpi dots per inch
 #' @return None
 #' @export
@@ -254,7 +254,7 @@ plot_loss <- function(object, skip_start = 5, with_valid = TRUE, dpi = 200) {
 #' (won't work if you didn't do `lr_find(learn)` before)
 #'
 #' @param object model
-#' @param skip_end skip_end
+#' @param skip_end n points to skip the end
 #' @param dpi dots per inch
 #' @return None
 #'
@@ -283,7 +283,7 @@ plot_lr_find <- function(object, skip_end = 5, dpi = 250) {
 #' presented as actual, predicted, number of occurrences.
 #'
 #' @param interp interpretation object
-#' @param min_val min_val
+#' @param min_val minimum value
 #' @return data frame
 #' @export
 most_confused <- function(interp, min_val = 1) {
@@ -329,8 +329,8 @@ subplots <- function(nrows = 2, ncols = 2, figsize = NULL, imsize = 4, add_vert 
 #'
 #' @description Adds functionality to view dicom images where each file may have more than 1 frame
 #'
-#' @param img image
-#' @param frames file rames
+#' @param img image object
+#' @param frames number of frames
 #' @param scale scale
 #' @param ... additional arguments
 #' @return None
@@ -359,7 +359,7 @@ show <- function(img, frames = 1, scale = TRUE, ...) {
 #' @title Plot dicom
 #'
 #' @param x model
-#' @param y parameter
+#' @param y y axis
 #' @param ... parameters to pass
 #' @param dpi dots per inch
 #' @return None
@@ -382,7 +382,7 @@ plot <- function(x, y, ..., dpi = 100) {
 #' @description Show all images `ims` as subplots with `rows` using `titles`
 #'
 #'
-#' @param ims ims
+#' @param ims images
 #' @param nrows number of rows
 #' @param ncols number of columns
 #' @param titles titles
@@ -419,8 +419,8 @@ show_images <- function(ims, nrows = 1, ncols = NULL,
 #' @description Uniformly apply blurring
 #'
 #'
-#' @param x x
-#' @param s s
+#' @param x image
+#' @param s effect
 #' @return None
 #' @export
 uniform_blur2d <- function(x, s) {
@@ -439,8 +439,8 @@ uniform_blur2d <- function(x, s) {
 #' @description Apply gaussian_blur2d kornia filter
 #'
 #'
-#' @param x x
-#' @param s s
+#' @param x image
+#' @param s effect
 #' @return None
 #' @export
 gauss_blur2d <- function(x, s) {
@@ -459,10 +459,10 @@ gauss_blur2d <- function(x, s) {
 #' @description Show some predictions on `ds_idx`-th dataset or `dl`
 #'
 #' @param object model
-#' @param ds_idx ds_idx
-#' @param dl dl
-#' @param max_n max_n
-#' @param shuffle shuffle
+#' @param ds_idx ds by index
+#' @param dl DL application
+#' @param max_n maximum number of images
+#' @param shuffle shuffle or not
 #' @return None
 #' @param dpi dots per inch
 #' @param ... additional arguments

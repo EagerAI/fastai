@@ -7,9 +7,9 @@
 show(img, frames = 1, scale = TRUE, ...)
 }
 \arguments{
-\item{img}{image}
+\item{img}{image object}
 
-\item{frames}{file rames}
+\item{frames}{number of frames}
 
 \item{scale}{scale}
 
