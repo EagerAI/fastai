@@ -49,8 +49,4 @@ knitr::opts_chunk$set(echo = TRUE,eval = FALSE,echo = T)
 #  learn %>% fit_one_cycle(30, 1e-5, cbs = EarlyStoppingCallback(patience = 5))
 #  
 #  learn %>% predict(df_test)
-#  
-#  # to R
-#  # result = learn %>% predict(df_test)
-#  # result$cpu()$numpy()
 

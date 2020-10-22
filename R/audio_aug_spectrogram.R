@@ -6,7 +6,7 @@
 #' @description Random crops full spectrogram to be length specified in ms by crop_duration
 #'
 #'
-#' @param duration duration
+#' @param duration int, duration
 #' @param pad_mode padding mode, by default `AudioPadType$Zeros`
 #' @return None
 #' @export

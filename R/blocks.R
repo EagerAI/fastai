@@ -30,7 +30,7 @@ SEBlock <- function(expansion, ni, nf, groups = 1, reduction = 16, stride = 1) {
 #' @param nf number of features
 #' @param groups number of groups
 #' @param reduction number of reduction
-#' @param stride number of stride
+#' @param stride number of strides
 #' @param base_width base width
 #' @return Block object
 #' @export
@@ -86,10 +86,10 @@ SeparableBlock <- function(expansion, ni, nf, reduction = 16, stride = 1, base_w
 #' @param reduction reduction
 #' @param nh1 out channels 1
 #' @param nh2 out channels 2
-#' @param dw dw
-#' @param g2 g2
-#' @param sa sa
-#' @param sym sym
+#' @param dw dw paramer
+#' @param g2 g2 block
+#' @param sa sa parameter
+#' @param sym symmetric
 #' @param norm_type normalization type
 #' @param act_cls activation
 #' @param ndim dimension number
@@ -98,7 +98,7 @@ SeparableBlock <- function(expansion, ni, nf, reduction = 16, stride = 1, base_w
 #' @param pool_first pooling first
 #' @param padding padding
 #' @param bias bias
-#' @param bn_1st bn 1st
+#' @param bn_1st batch normalization 1st
 #' @param transpose transpose
 #' @param init initializer
 #' @param xtra xtra
@@ -314,15 +314,15 @@ MultiCategoryBlock <- function(encoded = FALSE, vocab = NULL, add_na = FALSE) {
 #' @description Generic container to quickly build `Datasets` and `DataLoaders`
 #'
 #'
-#' @param blocks blocks
-#' @param dl_type DL applications
+#' @param blocks input blocks
+#' @param dl_type DL application
 #' @param getters how to get dataet
 #' @param n_inp n_inp is the number of elements in the tuples that should be considered part
 #' of the input and will default to 1 if tfms consists of one set of transforms
 #' @param item_tfms One or several transforms applied to the items before batching them
 #' @param batch_tfms One or several transforms applied to the batches once they are formed
 #' @param ... additional parameters to pass
-#' @return block
+#' @return Block object
 #' @export
 DataBlock <- function(blocks = NULL, dl_type = NULL, getters = NULL,
                       n_inp = NULL, item_tfms = NULL, batch_tfms = NULL,
@@ -357,10 +357,10 @@ DataBlock <- function(blocks = NULL, dl_type = NULL, getters = NULL,
 #' @description A basic wrapper that links defaults transforms for the data block API
 #'
 #'
-#' @param type_tfms transforamtion type
-#' @param item_tfms item transofrmation type
+#' @param type_tfms transformation type
+#' @param item_tfms item transformation type
 #' @param batch_tfms one or several transforms applied to the batches once they are formed
-#' @param dl_type DL applications
+#' @param dl_type DL application
 #' @param dls_kwargs additional arguments
 #' @return block
 #' @export

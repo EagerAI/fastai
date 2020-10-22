@@ -1,7 +1,7 @@
 
 
 
-#' AudioSpectrogram
+#' @title AudioSpectrogram
 #' @return module
 #' @param ... parameters to pass
 #' @export
@@ -61,7 +61,7 @@ SpectrogramTransformer <- function(mel = TRUE, to_db = TRUE) {
 AudioToMFCC <- function(sample_rate = 16000, n_mfcc = 40, dct_type = 2,
                         norm = "ortho", log_mels = FALSE, melkwargs = NULL) {
 
-  fastaudio$core$spectrogram$AudioToMFCC(
+  args = list(
     sample_rate = as.integer(sample_rate),
     n_mfcc = as.integer(n_mfcc),
     dct_type = as.integer(dct_type),
@@ -69,6 +69,16 @@ AudioToMFCC <- function(sample_rate = 16000, n_mfcc = 40, dct_type = 2,
     log_mels = log_mels,
     melkwargs = melkwargs
   )
+
+  strings = c('sample_rate', 'n_fft', 'hop_length', 'win_length', 'pad', 'n_mels')
+
+  for (i in 1:length(strings)) {
+    if(!is.null(args[['melkwargs']][[strings[i]]])) {
+      args[['melkwargs']][[strings[i]]] = as.integer(args[['melkwargs']][[strings[i]]])
+    }
+  }
+
+  do.call(fastaudio$core$spectrogram$AudioToMFCC, args)
 
 }
 

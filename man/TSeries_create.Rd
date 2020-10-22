@@ -17,3 +17,14 @@ tensor
 \description{
 TSeries_create
 }
+\examples{
+
+\dontrun{
+
+res = TSeries_create(as.array(runif(100)))
+res \%>\% show(title = 'R array') \%>\% plot(dpi = 200)
+
+}
+
+
+}

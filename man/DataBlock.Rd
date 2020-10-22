@@ -15,9 +15,9 @@ DataBlock(
 )
 }
 \arguments{
-\item{blocks}{blocks}
+\item{blocks}{input blocks}
 
-\item{dl_type}{DL applications}
+\item{dl_type}{DL application}
 
 \item{getters}{how to get dataet}
 
@@ -31,7 +31,7 @@ of the input and will default to 1 if tfms consists of one set of transforms}
 \item{...}{additional parameters to pass}
 }
 \value{
-block
+Block object
 }
 \description{
 Generic container to quickly build `Datasets` and `DataLoaders`

@@ -15,7 +15,7 @@ AudioPadType <- NULL
 #' @description Crops signal to be length specified in ms by duration, padding if needed
 #'
 #'
-#' @param duration duration
+#' @param duration int, duration
 #' @param pad_mode padding mode
 #' @return None
 #' @export
@@ -38,7 +38,7 @@ ResizeSignal <- function(duration, pad_mode = AudioPadType$Zeros) {
 #' @param max_pct max percentage
 #' @param max_time maximum time
 #' @param direction direction
-#' @param roll roll
+#' @param roll roll or not
 #' @return None
 #' @export
 SignalShifter <- function(p = 0.5, max_pct = 0.2, max_time = NULL, direction = 0, roll = FALSE) {

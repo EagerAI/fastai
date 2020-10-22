@@ -21,7 +21,7 @@ SignalShifter(
 
 \item{direction}{direction}
 
-\item{roll}{roll}
+\item{roll}{roll or not}
 }
 \value{
 None

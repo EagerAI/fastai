@@ -30,6 +30,19 @@ maybe_unsqueeze <- function(x) {
 #' @param ctx ctx
 #' @param tx tx
 #' @return None
+#'
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' arr = as.array(1:10)
+#' show_array(arr,title = 'My R array') %>% plot(dpi = 200)
+#'
+#' }
+#'
+#'
+#'
 #' @export
 show_array <- function(array, ax = NULL, figsize = NULL, title = NULL, ctx = NULL, tx = NULL) {
 
@@ -51,6 +64,19 @@ show_array <- function(array, ax = NULL, figsize = NULL, title = NULL, ctx = NUL
 #' @param x tensor
 #' @param ... additional parameters
 #' @return tensor
+#'
+#'
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' res = TSeries_create(as.array(runif(100)))
+#' res %>% show(title = 'R array') %>% plot(dpi = 200)
+#'
+#' }
+#'
+#'
 #' @export
 TSeries_create <- function(x, ...) {
 

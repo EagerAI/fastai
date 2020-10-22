@@ -34,7 +34,7 @@ Voice(
 
 \item{f_max}{maximum frequency}
 
-\item{pad}{padding}
+\item{pad}{padding mode}
 
 \item{n_mels}{number of mel-spectrograms}
 

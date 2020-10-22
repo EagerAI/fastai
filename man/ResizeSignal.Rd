@@ -7,7 +7,7 @@
 ResizeSignal(duration, pad_mode = AudioPadType$Zeros)
 }
 \arguments{
-\item{duration}{duration}
+\item{duration}{int, duration}
 
 \item{pad_mode}{padding mode}
 }

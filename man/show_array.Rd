@@ -32,3 +32,15 @@ None
 \description{
 Show an array on `ax`.
 }
+\examples{
+
+\dontrun{
+
+arr = as.array(1:10)
+show_array(arr,title = 'My R array') \%>\% plot(dpi = 200)
+
+}
+
+
+
+}

@@ -189,7 +189,7 @@ BasicMFCC <- function(sample_rate = 16000, n_mfcc = 40, dct_type = 2, norm = "or
 #' @param n_fft number of fast fourier transforms
 #' @param win_length windowing length
 #' @param hop_length hopping length
-#' @param pad padding
+#' @param pad padding mode
 #' @param window_fn window function
 #' @param power power
 #' @param normalized normalized or not
@@ -227,7 +227,7 @@ BasicSpectrogram <- function(n_fft = 400, win_length = NULL, hop_length = NULL,
 #' @param hop_length hopping length
 #' @param f_min minimum frequency
 #' @param f_max maximum frequency
-#' @param pad padding
+#' @param pad padding mode
 #' @param n_mels number of mel-spectrograms
 #' @param window_fn window function
 #' @param power power

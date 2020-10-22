@@ -51,13 +51,13 @@ ResBlock(
 
 \item{nh2}{out channels 2}
 
-\item{dw}{dw}
+\item{dw}{dw paramer}
 
-\item{g2}{g2}
+\item{g2}{g2 block}
 
-\item{sa}{sa}
+\item{sa}{sa parameter}
 
-\item{sym}{sym}
+\item{sym}{symmetric}
 
 \item{norm_type}{normalization type}
 
@@ -75,7 +75,7 @@ ResBlock(
 
 \item{bias}{bias}
 
-\item{bn_1st}{bn 1st}
+\item{bn_1st}{batch normalization 1st}
 
 \item{transpose}{transpose}
 

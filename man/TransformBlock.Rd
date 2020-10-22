@@ -13,13 +13,13 @@ TransformBlock(
 )
 }
 \arguments{
-\item{type_tfms}{transforamtion type}
+\item{type_tfms}{transformation type}
 
-\item{item_tfms}{item transofrmation type}
+\item{item_tfms}{item transformation type}
 
 \item{batch_tfms}{one or several transforms applied to the batches once they are formed}
 
-\item{dl_type}{DL applications}
+\item{dl_type}{DL application}
 
 \item{dls_kwargs}{additional arguments}
 }

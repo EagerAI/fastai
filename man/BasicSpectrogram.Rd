@@ -24,7 +24,7 @@ BasicSpectrogram(
 
 \item{hop_length}{hopping length}
 
-\item{pad}{padding}
+\item{pad}{padding mode}
 
 \item{window_fn}{window function}
 
