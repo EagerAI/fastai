@@ -217,7 +217,7 @@ Get predictions on new data:
 6 0.5111378 0.4888622       0
 ```
 
-Fastinference by [Zachary Mueller](https://github.com/muellerzr/fastinference) has ShapInterpretation function a allows you to utilize various methods within the SHAP interpretation library. Currently ```summary_plot```, ```dependence_plot```, ```waterfall_plot```, ```force_plot```, and ```decision_plot``` are supported.
+Fastinference by [Zachary Mueller](https://github.com/muellerzr/fastinference) has ShapInterpretation function that allows to utilize various methods within the SHAP interpretation library. Currently ```summary_plot```, ```dependence_plot```, ```waterfall_plot```, ```force_plot```, and ```decision_plot``` are supported.
 
 First, get explanation object:
 
