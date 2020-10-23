@@ -218,7 +218,7 @@
 <pre><code><a href="https://rdrr.io/pkg/reticulate/man/install_miniconda.html">reticulate::install_miniconda()
 reticulate::py_config()</a></code></pre>
 <p><strong>2. The dev version:</strong></p>
-<pre><code>devtools::install_github('henry090/fastai')</code></pre>
+<pre><code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">devtools::install_github('henry090/fastai')</a></code></pre>
 <p><strong>3. Later, you need to install the python module <code>fastai</code>:</strong></p>
 <pre><code><a href="reference/install_fastai.html">install_fastai(gpu = FALSE, cuda_version = '10.1', overwrite = FALSE)</a></code></pre>
 <p><strong>4. Restart RStudio!</strong></p>
@@ -331,6 +331,35 @@ interp %&gt;% plot_confusion_matrix(dpi = 90,figsize = c(6,6))</code></pre>
 4 0.5013804 0.4986197       0
 5 0.4964157 0.5035844       1
 6 0.5111378 0.4888622       0</code></pre>
+<p>Fastinference by <a href="https://github.com/muellerzr/fastinference">Zachary Mueller</a> has ShapInterpretation function a allows you to utilize various methods within the SHAP interpretation library. Currently <code>summary_plot</code>, <code>dependence_plot</code>, <code>waterfall_plot</code>, <code>force_plot</code>, and <code>decision_plot</code> are supported.</p>
+<p>First, get explanation object:</p>
+<pre><code>exp = ShapInterpretation(model,n_samples = 10)
+# 100%|██████████| 20/20 [02:49&lt;00:00,  8.46s/it]</code></pre>
+<p>Then, visualize decision plot:</p>
+<pre><code>exp %&gt;% decision_plot(class_id = 1, row_idx = 2)</code></pre>
+<center>
+<img src="files/shap1.png" height="500" align="center" alt="Shap">
+</center>
+<p>Dependence plot:</p>
+<pre><code>exp %&gt;% dependence_plot('age', class_id = 0)</code></pre>
+<center>
+<img src="files/shap2.png" height="500" align="center" alt="Shap">
+</center>
+<p>Summary plot:</p>
+<pre><code>exp %&gt;% summary_plot()</code></pre>
+<center>
+<img src="files/shap2.png" height="500" align="center" alt="Shap">
+</center>
+<p>Waterfall plot:</p>
+<pre><code>exp %&gt;% waterfall_plot(row_idx=10)</code></pre>
+<center>
+<img src="files/shap4.png" height="500" align="center" alt="Shap">
+</center>
+<p>Force (JS) plot:</p>
+<pre><code>exp %&gt;% force_plot(class_id = 0)</code></pre>
+<center>
+<img src="files/force.png" height="500" align="center" alt="Shap">
+</center>
 </div>
 <div id="image-data" class="section level2">
 <h2 class="hasAnchor">
@@ -927,8 +956,8 @@ learn %&gt;% fit_one_cycle(2, lr, pct_start = 0.9, wd = wd)</code></pre>
 <h2 class="hasAnchor">
 <a href="#collab-collaborative-filtering" class="anchor"></a>Collab (Collaborative filtering)</h2>
 <p>Call libraries:</p>
-<pre><code>library(zeallot)
-library(magrittr)</code></pre>
+<pre><code><a href="https://github.com/nteetor/zeallot">library(zeallot)
+library(magrittr)</a></code></pre>
 <p>Get data:</p>
 <pre><code><a href="reference/URLs_MOVIE_LENS_ML_100k.html">URLs_MOVIE_LENS_ML_100k()</a></code></pre>
 <p>Specify column names:</p>
@@ -1055,7 +1084,7 @@ ggpubr::ggarrange(p_[[1]], p_[[2]], p_[[3]], p_[[4]], labels = types)</code></pr
 <p align="center">
 <img src="files/dcm.png" height="500" align="center" alt="dicom"></p>
 <p>Let’s try a relatively complex example:</p>
-<pre><code>library(ggplot2)
+<pre><code><a href="http://ggplot2.tidyverse.org">library(ggplot2)
 
 # crop parameters
 img = dcmread('hemorrhage.dcm')
@@ -1109,7 +1138,7 @@ ggpubr::ggarrange(p_[[1]],
                   p_[[4]],
                   labels = paste(types[1:4],
                                  paste(c('','',scan_))[1:4])
-                  )</code></pre>
+                  )</a></code></pre>
 <p align="center">
 <img src="files/dcm2.png" height="500" align="center" alt="dicom2"></p>
 </div>
@@ -1132,7 +1161,7 @@ data
 5 0.0000002089296 5.043181
 6 0.0000002511886 5.023340</code></pre>
 <p>Visualize:</p>
-<pre><code>highcharter::hchart(data, "line", highcharter::hcaes(y = losses, x = lr_rates ))</code></pre>
+<pre><code><a href="http://jkunst.com/highcharter/reference/hchart.html">highcharter::hchart(data, "line", highcharter::hcaes(y = losses, x = lr_rates ))</a></code></pre>
 <p align="center">
 <img src="files/lr.png" height="500" align="center" alt="Learning_rates"></p>
 </div>
@@ -1221,7 +1250,7 @@ tbbox = LabeledBBox(TensorBBox(bbox[[1]]), bbox[[2]])
 <pre><code>(#2) [TensorBBox([[ 91.3000,  77.9400, 102.4300,  82.4700],
         [ 27.5800,  77.6500,  40.7600,  82.3400]]),['tv', 'tv']]</code></pre>
 <p>Visualize:</p>
-<pre><code>library(imager)
+<pre><code><a href="http://dahtah.github.io/imager">library(imager)
 coco = imager::load.image(coco_fn)
 plot(coco,axes=F)
 
@@ -1237,7 +1266,7 @@ for ( i in 1:length(bbox[[1]])) {
        col = "white"
   )
 }
-</code></pre>
+</a></code></pre>
 <p align="center">
 <img src="files/annotate.png" height="500" align="center" alt="Annotation"></p>
 <p>Alternatively, we could see batch via dataloader:</p>
@@ -1446,7 +1475,7 @@ Successfully submitted to Titanic: Machine Learning from Disaster</code></pre>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

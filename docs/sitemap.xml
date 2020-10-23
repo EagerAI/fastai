@@ -706,6 +706,9 @@
     <loc>https://henry090.github.io/fastai//reference/SequentialRNN.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/ShapInterpretation.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/ShortEpochCallback.html</loc>
   </url>
   <url>
@@ -1225,6 +1228,9 @@
     <loc>https://henry090.github.io/fastai//reference/debias.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/decision_plot.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/decode_spec_tokens.html</loc>
   </url>
   <url>
@@ -1241,6 +1247,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/densenet201.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/dependence_plot.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/detuplify_pg.html</loc>
@@ -1340,6 +1349,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/fmodule.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/force_plot.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/foreground_acc.html</loc>
@@ -1867,6 +1879,9 @@
     <loc>https://henry090.github.io/fastai//reference/summary.fastai.tabular.learner.TabularLearner.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/summary_plot.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/swish.html</loc>
   </url>
   <url>
@@ -1958,6 +1973,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/vleaky_relu.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/waterfall_plot.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/weight_decay.html</loc>
