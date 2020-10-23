@@ -254,7 +254,7 @@ exp %>% summary_plot()
 ```
 
 <center>
-<img src="files/shap2.png" height=500 align=center alt="Shap"/>
+<img src="files/shap3.png" height=500 align=center alt="Shap"/>
 </center>
 
 Waterfall plot:
