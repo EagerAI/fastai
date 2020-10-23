@@ -263,9 +263,9 @@ Waterfall plot:
 exp %>% waterfall_plot(row_idx=10)
 ```
 
-<center>
+<p align="center">
 <img src="files/shap4.png" height=500 align=center alt="Shap"/>
-</center>
+</p>
 
 Force (JS) plot:
 
