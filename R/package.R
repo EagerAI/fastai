@@ -1,5 +1,9 @@
 
 
+shap <- NULL
+warnings <- NULL
+fastinf <- NULL
+matplot <- NULL
 tms <- NULL
 fastaudio <- NULL
 AudioSpectrogram <- NULL
@@ -101,6 +105,23 @@ torch <- NULL
         # Dicom
         Dicom <<- medical$PILDicom
 
+      }
+
+      if(reticulate::py_module_available('matplotlib')) {
+        matplot <<- reticulate::import('matplotlib')
+        matplot$use('Agg')
+        warnings <<- reticulate::import('warnings')
+        warnings$filterwarnings("ignore")
+      }
+
+      if(reticulate::py_module_available('fastinference') &
+         reticulate::py_module_available('shap')) {
+        fastinf <<- reticulate::import('fastinference')
+      }
+
+      if(reticulate::py_module_available('shap')) {
+        shap <<- reticulate::import('shap')
+        #shap$initjs()
       }
 
       if(reticulate::py_module_available('fastaudio')){
