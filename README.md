@@ -273,9 +273,9 @@ Force (JS) plot:
 exp %>% force_plot(class_id = 0)
 ```
 
-<center>
+<p align="center">
 <img src="files/force.png" height=500 align=center alt="Shap"/>
-</center>
+</p>
 
 ## Image data
 
