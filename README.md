@@ -217,6 +217,66 @@ Get predictions on new data:
 6 0.5111378 0.4888622       0
 ```
 
+Fastinference by [Zachary Mueller](https://github.com/muellerzr/fastinference) has ShapInterpretation function a allows you to utilize various methods within the SHAP interpretation library. Currently ```summary_plot```, ```dependence_plot```, ```waterfall_plot```, ```force_plot```, and ```decision_plot``` are supported.
+
+First, get explanation object:
+
+```
+exp = ShapInterpretation(model,n_samples = 10)
+# 100%|██████████| 20/20 [02:49<00:00,  8.46s/it]
+```
+
+Then, visualize decision plot:
+
+```
+exp %>% decision_plot(class_id = 1, row_idx = 2)
+```
+
+<center>
+<img src="files/shap1.png" height=500 align=center alt="Shap"/>
+</center>
+
+
+Dependence plot:
+
+```
+exp %>% dependence_plot('age', class_id = 0)
+```
+
+<center>
+<img src="files/shap2.png" height=500 align=center alt="Shap"/>
+</center>
+
+Summary plot:
+
+```
+exp %>% summary_plot()
+```
+
+<center>
+<img src="files/shap2.png" height=500 align=center alt="Shap"/>
+</center>
+
+Waterfall plot:
+
+```
+exp %>% waterfall_plot(row_idx=10)
+```
+
+<center>
+<img src="files/shap4.png" height=500 align=center alt="Shap"/>
+</center>
+
+Force (JS) plot:
+
+```
+exp %>% force_plot(class_id = 0)
+```
+
+<center>
+<img src="files/force.png" height=500 align=center alt="Shap"/>
+</center>
+
 ## Image data
 
 Get Pets dataset:
