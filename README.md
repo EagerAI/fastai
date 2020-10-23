@@ -2,7 +2,7 @@
 
 The fastai package provides R wrappers to [fastai](https://github.com/fastai/fastai).
 
-The fastai library simplifies training fast and accurate neural nets using modern best practices. See the fastai website to get started. The library is based on research into deep learning best practices undertaken at ```fast.ai```, and includes "out of the box" support for ```vision```, ```text```, ```tabular```, [audio](https://github.com/fastaudio/fastaudio), [time-series](https://github.com/tcapelle/timeseries_fastai) and ```collab``` (collaborative filtering) models. 
+The fastai library simplifies training fast and accurate neural nets using modern best practices. See the [fastai website](https://henry090.github.io/fastai/) to get started. The library is based on research into deep learning best practices undertaken at ```fast.ai```, and includes "out of the box" support for ```vision```, ```text```, ```tabular```, [audio](https://github.com/fastaudio/fastaudio), [time-series](https://github.com/tcapelle/timeseries_fastai) and ```collab``` (collaborative filtering) models. 
 
 
 
@@ -10,6 +10,7 @@ The fastai library simplifies training fast and accurate neural nets using moder
 
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN status](https://www.r-pkg.org/badges/version/fastai)](https://CRAN.R-project.org/package=fastai)
+[![Last month downloads](http://cranlogs.r-pkg.org/badges/last-month/fastai?color=green)](https://cran.r-project.org/package=fastai)
 
 ## Continuous Build Status
 
