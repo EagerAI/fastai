@@ -222,7 +222,7 @@ Fastinference by [Zachary Mueller](https://github.com/muellerzr/fastinference) h
 First, get explanation object:
 
 ```
-exp = ShapInterpretation(model,n_samples = 10)
+exp = ShapInterpretation(model,n_samples = 20)
 # 100%|██████████| 20/20 [02:49<00:00,  8.46s/it]
 ```
 

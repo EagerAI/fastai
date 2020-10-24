@@ -71,7 +71,7 @@ Flatten <- function(full = FALSE) {
 #' @param ... parameters to pass
 #' @return None
 #' @export
-View <- function(...) {
+fView <- function(...) {
 
   fastai2$layers$View(
     ...
