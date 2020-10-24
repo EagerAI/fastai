@@ -64,7 +64,11 @@ options(reticulate.useImportHook = FALSE)
 library(magrittr)
 library(fastai)
 
-df = data.table::fread('https://github.com/henry090/fastai/raw/master/files/adult.csv')
+# download
+URLs_ADULT_SAMPLE()
+
+# read data
+df = data.table::fread('adult_sample/adult.csv')
 ```
 
 Variables:
@@ -274,7 +278,7 @@ exp %>% force_plot(class_id = 0)
 ```
 
 <p align="center">
-<img src="files/force.png" height=500 align=center alt="Shap"/>
+<img src="files/force_.png" height=500 align=center alt="Shap"/>
 </p>
 
 ## Image data

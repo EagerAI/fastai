@@ -233,7 +233,11 @@ reticulate::py_config()</a></code></pre>
 <pre><code>library(magrittr)
 library(fastai)
 
-df = data.table::fread('https://github.com/henry090/fastai/raw/master/files/adult.csv')</code></pre>
+# download
+URLs_ADULT_SAMPLE()
+
+# read data
+df = data.table::fread('adult_sample/adult.csv')</code></pre>
 <p>Variables:</p>
 <pre><code>dep_var = 'salary'
 cat_names = c('workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race')
@@ -357,7 +361,7 @@ interp %&gt;% plot_confusion_matrix(dpi = 90,figsize = c(6,6))</code></pre>
 <p>Force (JS) plot:</p>
 <pre><code>exp %&gt;% force_plot(class_id = 0)</code></pre>
 <p align="center">
-<img src="files/force.png" height="500" align="center" alt="Shap"></p>
+<img src="files/force_.png" height="500" align="center" alt="Shap"></p>
 </div>
 <div id="image-data" class="section level2">
 <h2 class="hasAnchor">
