@@ -1036,9 +1036,6 @@
     <loc>https://henry090.github.io/fastai//reference/UnetBlock.html</loc>
   </url>
   <url>
-    <loc>https://henry090.github.io/fastai//reference/View.html</loc>
-  </url>
-  <url>
     <loc>https://henry090.github.io/fastai//reference/Voice.html</loc>
   </url>
   <url>
@@ -1298,6 +1295,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/expm1.fastai.torch_core.TensorMask.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/fView.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/fa_collate.html</loc>

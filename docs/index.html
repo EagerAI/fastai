@@ -331,9 +331,9 @@ interp %&gt;% plot_confusion_matrix(dpi = 90,figsize = c(6,6))</code></pre>
 4 0.5013804 0.4986197       0
 5 0.4964157 0.5035844       1
 6 0.5111378 0.4888622       0</code></pre>
-<p>Fastinference by <a href="https://github.com/muellerzr/fastinference">Zachary Mueller</a> has ShapInterpretation function a allows you to utilize various methods within the SHAP interpretation library. Currently <code>summary_plot</code>, <code>dependence_plot</code>, <code>waterfall_plot</code>, <code>force_plot</code>, and <code>decision_plot</code> are supported.</p>
+<p>Fastinference by <a href="https://github.com/muellerzr/fastinference">Zachary Mueller</a> has ShapInterpretation function that allows to utilize various methods within the SHAP interpretation library. Currently <code>summary_plot</code>, <code>dependence_plot</code>, <code>waterfall_plot</code>, <code>force_plot</code>, and <code>decision_plot</code> are supported.</p>
 <p>First, get explanation object:</p>
-<pre><code>exp = ShapInterpretation(model,n_samples = 10)
+<pre><code>exp = ShapInterpretation(model,n_samples = 20)
 # 100%|██████████| 20/20 [02:49&lt;00:00,  8.46s/it]</code></pre>
 <p>Then, visualize decision plot:</p>
 <pre><code>exp %&gt;% decision_plot(class_id = 1, row_idx = 2)</code></pre>
@@ -348,18 +348,16 @@ interp %&gt;% plot_confusion_matrix(dpi = 90,figsize = c(6,6))</code></pre>
 <p>Summary plot:</p>
 <pre><code>exp %&gt;% summary_plot()</code></pre>
 <center>
-<img src="files/shap2.png" height="500" align="center" alt="Shap">
+<img src="files/shap3.png" height="500" align="center" alt="Shap">
 </center>
 <p>Waterfall plot:</p>
 <pre><code>exp %&gt;% waterfall_plot(row_idx=10)</code></pre>
-<center>
-<img src="files/shap4.png" height="500" align="center" alt="Shap">
-</center>
+<p align="center">
+<img src="files/shap4.png" height="500" align="center" alt="Shap"></p>
 <p>Force (JS) plot:</p>
 <pre><code>exp %&gt;% force_plot(class_id = 0)</code></pre>
-<center>
-<img src="files/force.png" height="500" align="center" alt="Shap">
-</center>
+<p align="center">
+<img src="files/force.png" height="500" align="center" alt="Shap"></p>
 </div>
 <div id="image-data" class="section level2">
 <h2 class="hasAnchor">
