@@ -135,6 +135,405 @@ List of 4
  $ :tensor(2.9400)
 ```
 
+```{r}
+params = L(lapply(0:3, function(x) tst_param(x)))
+
+opt = Optimizer(params, sgd_step, lr=0.1)
+
+try(params[3]$grad <- NULL,
+    TRUE)
+
+params[3]$grad
+
+opt$step()
+
+str(params$items)
+```
+
+```
+List of 4
+ $ :tensor(0.)
+ $ :tensor(0.9900)
+ $ :tensor(1.9800)
+ $ :tensor(3.)
+```
+
+```{r}
+params = L(lapply(0:3, function(x) tst_param(x)))
+
+opt = Optimizer(list(params[0:1],params[2:3]), sgd_step, lr=0.1)
+
+opt$hypers$items[[1]][[1]] = 0.01
+
+opt$step()
+
+str(params$items)
+```
+
+```
+List of 4
+ $ :tensor(0.)
+ $ :tensor(0.9990)
+ $ :tensor(1.9800)
+ $ :tensor(2.9700)
+```
+
+## Zero grad
+
+```{r}
+params = L(lapply(0:3, function(x) tst_param(x)))
+
+opt = Optimizer(params, list(weight_decay, sgd_step), lr=0.1, wd = 0.1)
+
+opt$zero_grad()
+
+str(params$items)
+```
+
+```
+List of 4
+ $ :tensor(0.)
+ $ :tensor(1.)
+ $ :tensor(2.)
+ $ :tensor(3.)
+```
+
+## Average grad
+
+Keeps track of the avg grads of ```p``` in ```state``` with ```mom```.
+
+```dampening = FALSE`` gives the classical formula for momentum in SGD:
+
+- new_val = old_val * mom + grad
+
+whereas ```dampening = TRUE``` makes it an exponential moving average:
+
+```{r}
+p = tst_param(c(1,2,3), c(4,5,6))
+state = average_grad(p, mom = 0.9, dampening = FALSE, grad_avg = NULL)
+p$grad
+# tensor([4., 5., 6.])
+
+state = average_grad(p, mom=0.9, dampening = TRUE)
+p$grad*0.1
+# tensor([0.4000, 0.5000, 0.6000])
+p$grad*(0.1*0.9+0.1)
+# tensor([0.7600, 0.9500, 1.1400])
+```
+
+
+## Average sqr_grad
+
+```dampening = FALSE``` gives the classical formula for momentum in SGD:
+
+- new_val = old_val * mom + grad**2
+
+whereas ```dampening = TRUE``` makes it an exponential moving average:
+
+- new_val = old_val * mom + (grad ** 2) * (1-mom)
+
+```{r}
+p = tst_param(c(1,2,3), c(4,5,6))
+state = average_sqr_grad(p, sqr_mom = 0.99, dampening = FALSE)
+
+p$grad$pow(2)
+# tensor([16., 25., 36.])
+
+p$grad$pow(2) * 1.99
+# tensor([31.8400, 49.7500, 71.6400])
+ 
+state = average_sqr_grad(p, sqr_mom = 0.99)
+p$grad$pow(2) * 1e-2
+# tensor([0.1600, 0.2500, 0.3600])
+state = average_sqr_grad(p, sqr_mom = 0.99)
+
+p$grad$pow(2)*(0.01*0.99+0.01)
+# tensor([0.3184, 0.4975, 0.7164])
+
+params = L(lapply(0:3, function(x) tst_param(x)))
+opt = Optimizer(params, sgd_step, lr = 0.1)
+opt$freeze_to(1L)
+```
+
+
+## SGD
+
+A ```Optimizer``` for SGD with ```lr``` and ```mom``` and ```params```.
+
+Optional weight decay of ```wd``` is applied, as true weight decay (decay the weights directly) if ```decouple_wd = TRUE``` else as ```L2``` regularization (add the decay to the gradients).
+
+```{r}
+params = L(lapply(0:3, function(x) tst_param(x)))
+opt = SGD(params, lr = 0.1)
+opt$step()
+str(params$items)
+```
+
+```
+List of 4
+ $ :tensor(0.)
+ $ :tensor(0.9900)
+ $ :tensor(1.9800)
+ $ :tensor(2.9700)
+```
+
+```{r}
+params = L(lapply(0:3, function(x) tst_param(x)))
+opt = SGD(params, lr = 0.1, mom = 0.9)
+opt$step()
+str(params$items)
+```
+
+```
+List of 4
+ $ :tensor(0.)
+ $ :tensor(0.9900)
+ $ :tensor(1.9800)
+ $ :tensor(2.9700)
+```
+
+
+Test weight decay, notice how we can see that ```L2``` regularization is different from weight decay even for simple SGD with momentum.
+
+```{r}
+params =  L(lapply(0:3, function(x) tst_param(x)))
+#Weight decay
+opt = SGD(params, lr=0.1, mom=0.9, wd=0.1)
+opt$step()
+str(params$items)
+```
+
+```
+List of 4
+ $ :tensor(0.)
+ $ :tensor(0.9800)
+ $ :tensor(1.9600)
+ $ :tensor(2.9400)
+```
+
+
+```{r}
+params =  L(lapply(0:3, function(x) tst_param(x)))
+#L2 reg
+opt = SGD(params, lr=0.1, mom=0.9, wd=0.1, decouple_wd=FALSE)
+opt$step()
+str(params$items)
+```
+
+```
+List of 4
+ $ :tensor(0.)
+ $ :tensor(0.9800)
+ $ :tensor(1.9600)
+ $ :tensor(2.9400)
+```
+
+
+## RMSProp
+
+A ```Optimizer``` for ```RMSProp``` with ```lr```, ```sqr_mom```, ```mom``` and ```params```.
+
+```RMSProp``` was introduced by Geoffrey Hinton in [his course](http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf). What is named ```sqr_mom``` here is the ```alpha``` in the course. Optional weight decay of ```wd``` is applied, as true weight decay (decay the weights directly) if ```decouple_wd = TRUE``` else as L2 regularization (add the decay to the gradients).
+
+```{r}
+params = tst_param(c(1:3), c(0.1,0.2,0.3))
+opt = RMSProp(params, lr=0.1)
+opt$step()
+opt$step()
+step = (-0.1 * 0.1) / (sqrt((0.01*0.99+0.01) * 0.1**2) + 1e-8)
+params; tensor(c(step, 1+step, 2+step))
+```
+
+```
+tensor([-0.7089,  0.2911,  1.2911])
+tensor([-0.7089,  0.2911,  1.2911])
+```
+
+
+```{r}
+params = tst_param(c(1:3), c(0.1,0.2,0.3))
+opt = RMSProp(params, lr=0.1, mom=0.9)
+opt$step()
+opt$step()
+step = (- 0.1 * (0.1 + 0.9*0.1)) / (sqrt((0.01*0.99+0.01) * 0.1**2) + 1e-8)
+params; tensor(c(step, 1+step, 2+step))
+```
+
+```
+tensor([-1.3469, -0.3469,  0.6531])
+tensor([-1.3469, -0.3469,  0.6531])
+```
+
+
+## Adam
+
+A Optimizer for Adam with ```lr```, ```mom```, ```sqr_mom```, ```eps``` and ```params```.
+
+Adam was introduced by Diederik P. Kingma and Jimmy Ba in Adam: A Method for Stochastic Optimization. For consistency across optimizers, we renamed ```beta1``` and ```beta2``` in the paper to ```mom``` and ```sqr_mom```. Note that our defaults also differ from the paper (0.99 for ```sqr_mom``` or ```beta2```, 1e-5 for ```eps```). Those values seem to be better from our experiments in a wide range of situations.
+
+Optional weight decay of ```wd``` is applied, as true weight decay (decay the weights directly) if ```decouple_wd=TRUE``` else as ```L2``` regularization (add the decay to the gradients).
+
+
+```{r}
+params = tst_param(c(1:3), c(0.1,0.2,0.3))
+opt = Adam(params, lr=0.1, wd=0)
+opt$step()
+step = (-0.1 * 0.1) / (sqrt(0.1**2) + 1e-8)
+params; tensor(c(1+step, 2+step, 3+step))
+```
+
+```
+tensor([0.9000, 1.9000, 2.9000])
+tensor([0.9000, 1.9000, 2.9000])
+```
+
+```{r}
+opt$step()
+params;tensor(tensor(c(1+2*step, 2+2*step, 3+2*step)))
+```
+
+```
+tensor([0.8000, 1.8000, 2.8000])
+tensor([0.8000, 1.8000, 2.8000])
+```
+
+## RAdam
+
+
+```{r}
+beta = 0.99
+r_inf = 2/(1-beta) - 1
+rs = lapply(5:500, function(s) {r_inf - 2*s*beta**s/(1-beta**s)}) %>% as.numeric()
+v = sqrt(((rs-4) * (rs-2) * r_inf)/((r_inf-4)*(r_inf-2)*rs))
+df_high = data.frame(x = 1:length(v), y = v)
+
+library(highcharter)
+hchart(df_high,'line', hcaes(x,y))
+```
+
+
+## QHAdam
+
+An Optimizer for Adam with ```lr```, ```mom```, ```sqr_mom```, ```nus```, ```eps``` and ```params```.
+
+```{r}
+params = tst_param(c(1:3), c(0.1,0.2,0.3))
+opt = QHAdam(params, lr=0.1)
+opt$step()
+step = (-0.1 * (((1-0.7) * 0.1) + (0.7 * 0.1)) )/ (
+ sqrt(((1-1.0) * 0.1**2) + (1.0 * 0.1**2)) + 1e-8)
+params; tensor(c(1+step, 2+step, 3+step))
+# tensor([0.9000, 1.9000, 2.9000])
+# tensor([0.9000, 1.9000, 2.9000])
+opt$step()
+params; tensor(c(1+2*step, 2+2*step, 3+2*step))
+# tensor([0.8000, 1.8000, 2.8000])
+# tensor([0.8000, 1.8000, 2.8000])
+```
+
+
+## Larc
+
+A ```Optimizer``` for ```Adam``` with ```lr```, ```mom```, ```sqr_mom```, ```eps``` and ```params```.
+
+The LARS optimizer was first introduced in Large Batch Training of Convolutional Networks then refined in its LARC variant (original LARS is with ```clip=FALSE```). A learning rate is computed for each individual layer with a certain ```trust_coefficient```, then clipped to be always less than ```lr```.
+
+Optional weight decay of ```wd``` is applied, as true weight decay (decay the weights directly) if ```decouple_wd = TRUE``` else as ```L2``` regularization (add the decay to the gradients).
+
+```{r}
+params = list(tst_param(c(1:3), c(0.1,0.2,0.3)), tst_param(c(1:3), c(0.01,0.02,0.03)))
+opt = Larc(params, lr=0.1)
+opt$step()
+#First param local lr is 0.02 < lr so it's not clipped
+opt$state[params[[1]]]['local_lr']
+```
+
+```
+$local_lr
+tensor(0.0200)
+```
+
+```{r}
+opt$state[params[[2]]]['local_lr']
+```
+
+```
+$local_lr
+[1] 0.1
+```
+
+```{r}
+params = list(tst_param(c(1:3), c(0.1,0.2,0.3)), tst_param(c(1:3), c(0.01,0.02,0.03)))
+opt = Larc(params, lr=0.1, clip = FALSE)
+opt$step()
+#Second param local lr is 0.2 > lr so it's clipped
+opt$state[params[[1]]]['local_lr']
+```
+
+```
+$local_lr
+tensor(0.0200)
+```
+
+```{r}
+opt$state[params[[2]]]['local_lr']
+```
+
+
+```
+$local_lr
+tensor(0.2000)
+```
+
+## LAMB
+
+A ```Optimizer``` for Adam with ```lr```, ```mom```, ```sqr_mom```, ```eps``` and ```params```.
+
+LAMB was introduced in [Large Batch Optimization for Deep Learning: Training BERT in 76 minutes](https://arxiv.org/abs/1904.00962). Intuitively, it's LARC applied to Adam. As in Adam, we renamed beta1 and beta2 in the paper to mom and sqr_mom. Note that our defaults also differ from the paper (0.99 for ```sqr_mom``` or ```beta2```, 1e-5 for ```eps```). Those values seem to be better from our experiments in a wide range of situations.
+
+Optional weight decay of ```wd``` is applied, as true weight decay (decay the weights directly) if ```decouple_wd=TRUE``` else as L2 regularization (add the decay to the gradients).
+
+```{r}
+params = tst_param(c(1:3), c(0.1,0.2,0.3))
+opt = Lamb(params, lr=0.1)
+opt$step()
+params
+```
+
+```
+tensor([0.7840, 1.7840, 2.7840])
+```
+
+## Looahead
+
+
+
+```{r}
+params = tst_param(c(1:3), c(0.1,0.2,0.3))
+p = params$data$clone()
+g = tensor(c(0.1,0.2,0.3))
+opt = Lookahead(SGD(params, lr=0.1))
+
+for(i in 1:5) {
+  opt$step()
+}
+#first 5 steps are normal SGD steps
+params; p - g * 0.5
+# tensor([0.9500, 1.9000, 2.8500])
+# tensor([0.9500, 1.9000, 2.8500])
+
+#Since k=6, sixth step is a moving average of the 6 SGD steps with the initial weight
+opt$step()
+params; p * 0.5 + (p-g*0.6) * 0.5
+# tensor([0.9700, 1.9400, 2.9100])
+# tensor([0.9700, 1.9400, 2.9100])
+```
+
+
+
+
+
+
 
 
 
