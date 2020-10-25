@@ -504,7 +504,7 @@ params
 tensor([0.7840, 1.7840, 2.7840])
 ```
 
-## Looahead
+## Lookahead
 
 
 
