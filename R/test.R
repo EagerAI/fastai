@@ -92,7 +92,7 @@ show_batch <- function(dls, b = NULL, max_n = 9, ctxs = NULL,
     fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi))
 
     img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
-    try(dev.off(),TRUE)
+    #try(dev.off(),TRUE)
     grid::grid.raster(img)
   }
 
@@ -164,7 +164,7 @@ plot_top_losses <- function(interp, k, largest = TRUE, figsize = c(19.2,10.8),
   }
 
   img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
-  try(dev.off(),TRUE)
+  #try(dev.off(),TRUE)
   grid::grid.raster(img)
 }
 
@@ -214,7 +214,7 @@ plot_confusion_matrix <- function(interp, normalize = FALSE, title = "Confusion 
   fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi))
 
   img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
-  try(dev.off(),TRUE)
+  #try(dev.off(),TRUE)
   grid::grid.raster(img)
 
 }
@@ -243,7 +243,7 @@ plot_loss <- function(object, skip_start = 5, with_valid = TRUE, dpi = 200) {
   fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi))
 
   img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
-  try(dev.off(),TRUE)
+  #try(dev.off(),TRUE)
   grid::grid.raster(img)
 
 }
@@ -270,7 +270,7 @@ plot_lr_find <- function(object, skip_end = 5, dpi = 250) {
   fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi))
 
   img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
-  try(dev.off(),TRUE)
+  #try(dev.off(),TRUE)
   grid::grid.raster(img)
 
 }
@@ -370,7 +370,7 @@ plot <- function(x, y, ..., dpi = 100) {
   fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi), ...)
 
   img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
-  try(dev.off(),TRUE)
+  #try(dev.off(),TRUE)
   grid::grid.raster(img)
   fastai2$vision$all$plt$close()
 }
@@ -493,7 +493,7 @@ show_results <- function(object, ds_idx = 1, dl = NULL, max_n = 9, shuffle = TRU
   fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi))
 
   img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
-  try(dev.off(),TRUE)
+  #try(dev.off(),TRUE)
   grid::grid.raster(img)
   fastai2$vision$all$plt$close()
 }

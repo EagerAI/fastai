@@ -64,7 +64,7 @@ decision_plot = function(object, class_id = 0, row_idx = -1, dpi = 200, ...) {
   fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi), ...)
 
   img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
-  try(dev.off(),TRUE)
+  #try(dev.off(),TRUE)
   grid::grid.raster(img)
   fastai2$vision$all$plt$close()
 
@@ -103,7 +103,7 @@ dependence_plot = function(object, variable_name = "", class_id = 0, dpi = 200, 
   fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi), ...)
 
   img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
-  try(dev.off(),TRUE)
+  #try(dev.off(),TRUE)
   grid::grid.raster(img)
   fastai2$vision$all$plt$close()
 
@@ -133,7 +133,7 @@ summary_plot = function(object, dpi = 200, ...) {
   fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi), ...)
 
   img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
-  try(dev.off(),TRUE)
+  #try(dev.off(),TRUE)
   grid::grid.raster(img)
   fastai2$vision$all$plt$close()
 
@@ -172,7 +172,7 @@ waterfall_plot = function(object, row_idx = NULL, class_id = 0, dpi = 200, ...) 
   fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi), ...)
 
   img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
-  try(dev.off(),TRUE)
+  #try(dev.off(),TRUE)
   grid::grid.raster(img)
   fastai2$vision$all$plt$close()
 
