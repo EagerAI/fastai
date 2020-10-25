@@ -57,7 +57,7 @@ decision_plot = function(object, class_id = 0, row_idx = -1, dpi = 200, ...) {
     row_idx = as.integer(row_idx)
   )
 
-
+  fastai2$vision$all$plt$close()
   do.call(object$decision_plot, args)
   fastai2$vision$all$plt$tight_layout()
   tmp_d = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
@@ -96,7 +96,7 @@ dependence_plot = function(object, variable_name = "", class_id = 0, dpi = 200, 
     variable_name = variable_name
   )
 
-
+  fastai2$vision$all$plt$close()
   do.call(object$dependence_plot, args)
   fastai2$vision$all$plt$tight_layout()
   tmp_d = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
@@ -125,7 +125,7 @@ dependence_plot = function(object, variable_name = "", class_id = 0, dpi = 200, 
 #' @return None
 #' @export
 summary_plot = function(object, dpi = 200, ...) {
-
+  fastai2$vision$all$plt$close()
   object$summary_plot()
 
   fastai2$vision$all$plt$tight_layout()
@@ -161,7 +161,7 @@ waterfall_plot = function(object, row_idx = NULL, class_id = 0, dpi = 200, ...) 
     row_idx = row_idx,
     class_id = as.integer(class_id)
   )
-
+  fastai2$vision$all$plt$close()
   if(!is.null(args[['row_idx']]))
     args[['row_idx']] = as.integer(args[['row_idx']])
 
@@ -194,7 +194,7 @@ waterfall_plot = function(object, row_idx = NULL, class_id = 0, dpi = 200, ...) 
 #' @return None
 #' @export
 force_plot = function(object, class_id = 0, ...) {
-
+  fastai2$vision$all$plt$close()
   tempDir <- tempfile()
   dir.create(tempDir)
   shap$save_html(paste(tempDir,'test.html',sep = '/'),
