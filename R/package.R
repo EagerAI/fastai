@@ -181,9 +181,12 @@ torch <- NULL
             df <- data.frame(matrix(ncol = length(text2), nrow = 0))
             colnames(df) <- text2
             # add actual row
-            df[nrow(df) + 1,] = text
-            df = knitr::kable(df, format = "pandoc")
-            cat(df[3], sep="\n")
+            silent_fun = function() {
+              df[nrow(df) + 1,] = text
+              df = knitr::kable(df, format = "pandoc")
+              cat(df[3], sep="\n")
+            }
+            try(silent_fun(), TRUE)
           }
 
         }
