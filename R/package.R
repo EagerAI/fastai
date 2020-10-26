@@ -1,5 +1,6 @@
 
 
+fp <- NULL
 shap <- NULL
 warnings <- NULL
 fastinf <- NULL
@@ -147,6 +148,45 @@ torch <- NULL
         fastaip <<- reticulate::import('fastprogress')
 
         fastaip$progress_bar$fill = ''
+
+        fastaip$fastprogress$WRITER_FN = function(value, ..., sep=' ', end='\n', flush = FALSE) {
+          args = list(
+            value, ...)
+
+          text = unlist(strsplit(trimws(args[[1]]),' '))
+          text = text[!text=='']
+          lgl = grepl('epoch', text)
+
+          # save column names // write to temp dir
+          if(lgl[1]) {
+            tmm = tempdir()
+            tmp_name = paste(tmm,"output.txt",sep = '/')
+            fileConn <- file(tmp_name)
+            writeLines(text, fileConn)
+            close(fileConn)
+          }
+
+          if(lgl[1]) {
+            df <- data.frame(matrix(ncol = length(text), nrow = 0))
+            colnames(df) <- text
+            # add row for tidy output
+            df[nrow(df) + 1,] = c(0, 0.9, 0.8, 0.8, '00:09')
+            df = knitr::kable(df, format = "pandoc")
+            cat(df[1:2], sep="\n")
+          } else {
+            ## restore from temp
+            tmm = tempdir()
+            tmp_name = paste(tmm,"output.txt",sep = '/')
+            text2 = readLines(paste(tmm,"output.txt",sep = '/'))
+            df <- data.frame(matrix(ncol = length(text2), nrow = 0))
+            colnames(df) <- text2
+            # add actual row
+            df[nrow(df) + 1,] = text
+            df = knitr::kable(df, format = "pandoc")
+            cat(df[3], sep="\n")
+          }
+
+        }
       }
 
 
