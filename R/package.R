@@ -170,7 +170,7 @@ torch <- NULL
             df <- data.frame(matrix(ncol = length(text), nrow = 0))
             colnames(df) <- text
             # add row for tidy output
-            df[nrow(df) + 1,] = c(0, 0.9, 0.8, 0.8, '00:09')
+            df[nrow(df) + 1,] = as.character(round(runif(ncol(df)),4))
             df = knitr::kable(df, format = "pandoc")
             cat(df[1:2], sep="\n")
           } else {
