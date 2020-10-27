@@ -343,7 +343,9 @@ fix_fit = function() {
           paste('done plot')
         }
 
-        try(result_fun(), TRUE)
+        if(!is_rmarkdown()){
+          try(result_fun(), TRUE)
+        }
 
       }
     }
