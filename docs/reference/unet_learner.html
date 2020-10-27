@@ -210,111 +210,22 @@
     <p>Build a unet learner from `dls` and `arch`</p>
     </div>
 
-    <pre class="usage"><span class='fu'>unet_learner</span><span class='op'>(</span>
-  <span class='va'>dls</span>,
-  <span class='va'>arch</span>,
-  loss_func <span class='op'>=</span> <span class='cn'>NULL</span>,
-  pretrained <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  cut <span class='op'>=</span> <span class='cn'>NULL</span>,
-  splitter <span class='op'>=</span> <span class='cn'>NULL</span>,
-  config <span class='op'>=</span> <span class='cn'>NULL</span>,
-  n_in <span class='op'>=</span> <span class='fl'>3</span>,
-  n_out <span class='op'>=</span> <span class='cn'>NULL</span>,
-  normalize <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  opt_func <span class='op'>=</span> <span class='fu'><a href='Adam.html'>Adam</a></span><span class='op'>(</span><span class='op'>)</span>,
-  lr <span class='op'>=</span> <span class='fl'>0.001</span>,
-  cbs <span class='op'>=</span> <span class='cn'>NULL</span>,
-  metrics <span class='op'>=</span> <span class='cn'>NULL</span>,
-  path <span class='op'>=</span> <span class='cn'>NULL</span>,
-  model_dir <span class='op'>=</span> <span class='st'>"models"</span>,
-  wd <span class='op'>=</span> <span class='cn'>NULL</span>,
-  wd_bn_bias <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  train_bn <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  moms <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fl'>0.95</span>, <span class='fl'>0.85</span>, <span class='fl'>0.95</span><span class='op'>)</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>unet_learner</span><span class='op'>(</span><span class='va'>dls</span>, <span class='va'>arch</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>dls</th>
-      <td><p>dls</p></td>
+      <td><p>dataloader</p></td>
     </tr>
     <tr>
       <th>arch</th>
-      <td><p>arch</p></td>
+      <td><p>architecture</p></td>
     </tr>
     <tr>
-      <th>loss_func</th>
-      <td><p>loss_func</p></td>
-    </tr>
-    <tr>
-      <th>pretrained</th>
-      <td><p>pretrained</p></td>
-    </tr>
-    <tr>
-      <th>cut</th>
-      <td><p>cut</p></td>
-    </tr>
-    <tr>
-      <th>splitter</th>
-      <td><p>splitter</p></td>
-    </tr>
-    <tr>
-      <th>config</th>
-      <td><p>config</p></td>
-    </tr>
-    <tr>
-      <th>n_in</th>
-      <td><p>n_in</p></td>
-    </tr>
-    <tr>
-      <th>n_out</th>
-      <td><p>n_out</p></td>
-    </tr>
-    <tr>
-      <th>normalize</th>
-      <td><p>normalize</p></td>
-    </tr>
-    <tr>
-      <th>opt_func</th>
-      <td><p>opt_func</p></td>
-    </tr>
-    <tr>
-      <th>lr</th>
-      <td><p>lr</p></td>
-    </tr>
-    <tr>
-      <th>cbs</th>
-      <td><p>cbs</p></td>
-    </tr>
-    <tr>
-      <th>metrics</th>
-      <td><p>metrics</p></td>
-    </tr>
-    <tr>
-      <th>path</th>
-      <td><p>path</p></td>
-    </tr>
-    <tr>
-      <th>model_dir</th>
-      <td><p>model_dir</p></td>
-    </tr>
-    <tr>
-      <th>wd</th>
-      <td><p>wd</p></td>
-    </tr>
-    <tr>
-      <th>wd_bn_bias</th>
-      <td><p>wd_bn_bias</p></td>
-    </tr>
-    <tr>
-      <th>train_bn</th>
-      <td><p>train_bn</p></td>
-    </tr>
-    <tr>
-      <th>moms</th>
-      <td><p>moms</p></td>
+      <th>...</th>
+      <td><p>additional arguments</p></td>
     </tr>
     </table>
 

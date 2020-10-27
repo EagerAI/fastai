@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Unet_config — unet_config • fastai</title>
+<title>Fix fit — fix_fit • fastai</title>
 
 
 <!-- jquery -->
@@ -45,8 +45,8 @@
 
 
 
-<meta property="og:title" content="Unet_config — unet_config" />
-<meta property="og:description" content="Convenience function to easily create a config for `DynamicUnet`" />
+<meta property="og:title" content="Fix fit — fix_fit" />
+<meta property="og:description" content="Fix fit" />
 
 
 
@@ -201,67 +201,17 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Unet_config</h1>
-    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/unet.R'><code>R/unet.R</code></a></small>
-    <div class="hidden name"><code>unet_config.Rd</code></div>
+    <h1>Fix fit</h1>
+    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/package.R'><code>R/package.R</code></a></small>
+    <div class="hidden name"><code>fix_fit.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Convenience function to easily create a config for `DynamicUnet`</p>
+    <p>Fix fit</p>
     </div>
 
-    <pre class="usage"><span class='fu'>unet_config</span><span class='op'>(</span>
-  blur <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  blur_final <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  self_attention <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  y_range <span class='op'>=</span> <span class='cn'>NULL</span>,
-  last_cross <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  bottle <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  act_cls <span class='op'>=</span> <span class='va'>nn</span><span class='op'>$</span><span class='va'>ReLU</span>,
-  init <span class='op'>=</span> <span class='va'>nn</span><span class='op'>$</span><span class='va'>init</span><span class='op'>$</span><span class='va'>kaiming_normal_</span>,
-  norm_type <span class='op'>=</span> <span class='cn'>NULL</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>fix_fit</span><span class='op'>(</span><span class='op'>)</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>blur</th>
-      <td><p>blur is used to avoid checkerboard artifacts at each layer.</p></td>
-    </tr>
-    <tr>
-      <th>blur_final</th>
-      <td><p>blur final is specific to the last layer.</p></td>
-    </tr>
-    <tr>
-      <th>self_attention</th>
-      <td><p>self_attention determines if we use a self attention layer at the third block before the end.</p></td>
-    </tr>
-    <tr>
-      <th>y_range</th>
-      <td><p>If y_range is passed, the last activations go through a sigmoid rescaled to that range.</p></td>
-    </tr>
-    <tr>
-      <th>last_cross</th>
-      <td><p>last cros</p></td>
-    </tr>
-    <tr>
-      <th>bottle</th>
-      <td><p>bottle</p></td>
-    </tr>
-    <tr>
-      <th>act_cls</th>
-      <td><p>activation</p></td>
-    </tr>
-    <tr>
-      <th>init</th>
-      <td><p>initializer</p></td>
-    </tr>
-    <tr>
-      <th>norm_type</th>
-      <td><p>normalization type</p></td>
-    </tr>
-    </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 

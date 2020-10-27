@@ -1273,12 +1273,6 @@
     <loc>https://henry090.github.io/fastai//reference/emb_sz_rule.html</loc>
   </url>
   <url>
-    <loc>https://henry090.github.io/fastai//reference/equals-.fastai.torch_core.TensorMask.html</loc>
-  </url>
-  <url>
-    <loc>https://henry090.github.io/fastai//reference/equals-.torch.Tensor.html</loc>
-  </url>
-  <url>
     <loc>https://henry090.github.io/fastai//reference/error_rate.html</loc>
   </url>
   <url>
@@ -1319,6 +1313,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/fit_one_cycle.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/fix_fit.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/fix_html.html</loc>
@@ -1553,6 +1550,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/mask2bbox.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/mask_eq.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/mask_from_blur.html</loc>
@@ -1898,6 +1898,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/tensor.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/tensor_eq.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/test_loader.html</loc>
