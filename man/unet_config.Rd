@@ -19,21 +19,21 @@ unet_config(
 \arguments{
 \item{blur}{blur is used to avoid checkerboard artifacts at each layer.}
 
-\item{blur_final}{blur_final is specific to the last layer.}
+\item{blur_final}{blur final is specific to the last layer.}
 
 \item{self_attention}{self_attention determines if we use a self attention layer at the third block before the end.}
 
 \item{y_range}{If y_range is passed, the last activations go through a sigmoid rescaled to that range.}
 
-\item{last_cross}{last_cros}
+\item{last_cross}{last cros}
 
 \item{bottle}{bottle}
 
-\item{act_cls}{act_cls}
+\item{act_cls}{activation}
 
-\item{init}{init}
+\item{init}{initializer}
 
-\item{norm_type}{norm_type}
+\item{norm_type}{normalization type}
 }
 \value{
 None

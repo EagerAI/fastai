@@ -3,6 +3,7 @@
 #' @param a tensor
 #' @param b tensor
 #' @return tensor
+#' @rdname tensor_eq
 #' @export
 "==.torch.Tensor" <- function(a, b) {
   a$eq(b)

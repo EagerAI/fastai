@@ -22,27 +22,27 @@ DynamicUnet(
 \arguments{
 \item{encoder}{encoder}
 
-\item{n_classes}{n_classes}
+\item{n_classes}{number of classes}
 
-\item{img_size}{img_size}
+\item{img_size}{image size}
 
-\item{blur}{blur}
+\item{blur}{blur is used to avoid checkerboard artifacts at each layer.}
 
-\item{blur_final}{blur_final}
+\item{blur_final}{blur final is specific to the last layer.}
 
-\item{self_attention}{self_attention}
+\item{self_attention}{self_attention determines if we use a self attention layer at the third block before the end.}
 
-\item{y_range}{y_range}
+\item{y_range}{If y_range is passed, the last activations go through a sigmoid rescaled to that range.}
 
-\item{last_cross}{last_cross}
+\item{last_cross}{last cross}
 
 \item{bottle}{bottle}
 
-\item{act_cls}{act_cls}
+\item{act_cls}{activation}
 
-\item{init}{init}
+\item{init}{initializer}
 
-\item{norm_type}{norm_type}
+\item{norm_type}{normalization type}
 }
 \value{
 None

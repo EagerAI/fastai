@@ -29,41 +29,41 @@ UnetBlock(
 )
 }
 \arguments{
-\item{up_in_c}{up_in_c}
+\item{up_in_c}{up_in_c parameter}
 
-\item{x_in_c}{x_in_c}
+\item{x_in_c}{x_in_c parameter}
 
 \item{hook}{The hook is set to this intermediate layer to store the output needed for this block.}
 
-\item{final_div}{final_div}
+\item{final_div}{final div}
 
-\item{blur}{blur}
+\item{blur}{blur is used to avoid checkerboard artifacts at each layer.}
 
-\item{act_cls}{act_cls}
+\item{act_cls}{activation}
 
 \item{self_attention}{self_attention determines if we use a self-attention layer}
 
-\item{init}{init}
+\item{init}{initializer}
 
-\item{norm_type}{norm_type}
+\item{norm_type}{normalization type}
 
-\item{ks}{ks}
+\item{ks}{kernel size}
 
 \item{stride}{stride}
 
-\item{padding}{padding}
+\item{padding}{padding mode}
 
 \item{bias}{bias}
 
-\item{ndim}{ndim}
+\item{ndim}{number of dimensions}
 
-\item{bn_1st}{bn_1st}
+\item{bn_1st}{batch normalization 1st}
 
 \item{transpose}{transpose}
 
 \item{xtra}{xtra}
 
-\item{bias_std}{bias_std}
+\item{bias_std}{bias standard deviation}
 
 \item{dilation}{dilation}
 

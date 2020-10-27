@@ -24,5 +24,4 @@ aa = tensor(1:10)
 aa == aa
 
 }
-
 }

@@ -13,7 +13,7 @@
 #' aa == aa
 #'
 #' }
-#'
+#' @rdname mask_eq
 #' @export
 "==.fastai.torch_core.TensorMask" <- function(a, b) {
   a$eq(b)
