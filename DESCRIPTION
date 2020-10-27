@@ -23,7 +23,9 @@ RoxygenNote: 7.1.1
 Imports:
     reticulate,
     generics,
-    png
+    png,
+    ggplot2,
+    ggpubr
 Suggests:
     knitr,
     testthat,
@@ -32,5 +34,6 @@ Suggests:
     magrittr,
     data.table,
     vctrs,
-    stats
+    stats,
+    utils
 VignetteBuilder: knitr
