@@ -31,5 +31,6 @@ Suggests:
     curl,
     magrittr,
     data.table,
-    vctrs
+    vctrs,
+    stats
 VignetteBuilder: knitr

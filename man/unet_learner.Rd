@@ -10,6 +10,8 @@ unet_learner(dls, arch, ...)
 \item{dls}{dataloader}
 
 \item{arch}{architecture}
+
+\item{...}{additional arguments}
 }
 \value{
 None

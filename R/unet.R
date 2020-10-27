@@ -43,6 +43,7 @@ unet_config <- function(blur = FALSE, blur_final = TRUE, self_attention = FALSE,
 #'
 #' @param dls dataloader
 #' @param arch architecture
+#' @param ... additional arguments
 #' @return None
 #' @export
 unet_learner <- function(dls, arch, ...) {
