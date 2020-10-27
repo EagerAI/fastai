@@ -201,9 +201,8 @@ torch <- NULL
 #' Fix fit
 #'
 #' @return None
-#' @export
 fix_fit = function() {
-  fp$fastprogress$WRITER_FN = function(value, ..., sep=' ', end='\n', flush = FALSE) {
+  fastaip$fastprogress$WRITER_FN = function(value, ..., sep=' ', end='\n', flush = FALSE) {
     args = list(
       value, ...)
 
@@ -344,7 +343,7 @@ fix_fit = function() {
           paste('done plot')
         }
 
-        invisible(try(result_fun(), TRUE))
+        try(result_fun(), TRUE)
 
       }
     }
