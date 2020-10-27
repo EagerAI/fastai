@@ -176,6 +176,12 @@ epoch     train_loss  valid_loss  accuracy  time
 4         0.348969    0.350707    0.830660  00:04 
 ```
 
+See training process in RStudio Viwer Pane:
+
+<p align="center">
+<img src="files/fastai.gif" height=350 align=center alt="train"/>
+</p>
+
 Plot loss history:
 
 ```
