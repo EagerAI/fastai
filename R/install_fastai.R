@@ -117,7 +117,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
       }
 
       if (os %in% 'mac' & !length(required_py_pkgs) == 0) {
-        py_install(packages = c(required_py_pkgs, 'torch torchvision'), pip = TRUE)
+        py_install(packages = c(required_py_pkgs, 'torch==1.6.0 torchvision==0.7.0'), pip = TRUE)
         py_install('fastinference[interp]', pip = TRUE)
       } else if (os %in% 'mac' & length(required_py_pkgs) == 0){
         print('Fastai is installed!')
