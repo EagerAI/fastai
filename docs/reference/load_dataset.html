@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MOVIE_LENS_ML_100k dataset — URLs_MOVIE_LENS_ML_100k • fastai</title>
+<title>Load_dataset — load_dataset • fastai</title>
 
 
 <!-- jquery -->
@@ -45,8 +45,8 @@
 
 
 
-<meta property="og:title" content="MOVIE_LENS_ML_100k dataset — URLs_MOVIE_LENS_ML_100k" />
-<meta property="og:description" content="download MOVIE_LENS_ML_100k dataset" />
+<meta property="og:title" content="Load_dataset — load_dataset" />
+<meta property="og:description" content="A helper function for getting a DataLoader for images in the folder `test_path`, with batch size `bs`, and number of workers `num_workers`" />
 
 
 
@@ -201,27 +201,31 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>MOVIE_LENS_ML_100k dataset</h1>
-    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/download_tar.R'><code>R/download_tar.R</code></a></small>
-    <div class="hidden name"><code>URLs_MOVIE_LENS_ML_100k.Rd</code></div>
+    <h1>Load_dataset</h1>
+    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/cycleGAN_models.R'><code>R/cycleGAN_models.R</code></a></small>
+    <div class="hidden name"><code>load_dataset.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>download MOVIE_LENS_ML_100k dataset</p>
+    <p>A helper function for getting a DataLoader for images in the folder `test_path`, with batch size `bs`, and number of workers `num_workers`</p>
     </div>
 
-    <pre class="usage"><span class='fu'>URLs_MOVIE_LENS_ML_100k</span><span class='op'>(</span>filename <span class='op'>=</span> <span class='st'>"ml-100k"</span>, unzip <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>load_dataset</span><span class='op'>(</span><span class='va'>test_path</span>, bs <span class='op'>=</span> <span class='fl'>4</span>, num_workers <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>filename</th>
-      <td><p>the name of the file</p></td>
+      <th>test_path</th>
+      <td><p>test path (directory)</p></td>
     </tr>
     <tr>
-      <th>unzip</th>
-      <td><p>logical, whether to unzip the '.zip' file</p></td>
+      <th>bs</th>
+      <td><p>batch size</p></td>
+    </tr>
+    <tr>
+      <th>num_workers</th>
+      <td><p>number of workers</p></td>
     </tr>
     </table>
 

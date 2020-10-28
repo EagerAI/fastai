@@ -218,7 +218,7 @@
 <pre><code><a href="https://rdrr.io/pkg/reticulate/man/install_miniconda.html">reticulate::install_miniconda()
 reticulate::py_config()</a></code></pre>
 <p><strong>2. The dev version:</strong></p>
-<pre><code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">devtools::install_github('henry090/fastai')</a></code></pre>
+<pre><code>devtools::install_github('henry090/fastai')</code></pre>
 <p><strong>3. Later, you need to install the python module <code>fastai</code>:</strong></p>
 <pre><code><a href="reference/install_fastai.html">install_fastai(gpu = FALSE, cuda_version = '10.1', overwrite = FALSE)</a></code></pre>
 <p><strong>4. Restart RStudio!</strong></p>
@@ -312,7 +312,7 @@ model %&gt;% plot_lr_find(dpi = 200)</code></pre>
 2         0.368743    0.340913    0.844920  00:05     
 3         0.347277    0.333084    0.852050  00:04     
 4         0.348969    0.350707    0.830660  00:04 </code></pre>
-<p>See training process in RStudio Viwer Pane:</p>
+<p>See training process:</p>
 <p align="center">
 <img src="files/fastai.gif" height="350" align="center" alt="train"></p>
 <p>Plot loss history:</p>
@@ -562,9 +562,7 @@ List of 32
 }
 
 attr(acc_camvid, "py_function_name") &lt;- 'acc_camvid'</code></pre>
-<details><summary>
-Debug acc_camvid manually
-</summary><p>
+<details><summary>Debug acc_camvid manually</summary><p>
 </p>
 <pre><code>batch = dls %&gt;% one_batch(convert = FALSE)</code></pre>
 <pre><code>[[1]]
@@ -963,8 +961,8 @@ learn %&gt;% fit_one_cycle(2, lr, pct_start = 0.9, wd = wd)</code></pre>
 <h2 class="hasAnchor">
 <a href="#collab-collaborative-filtering" class="anchor"></a>Collab (Collaborative filtering)</h2>
 <p>Call libraries:</p>
-<pre><code><a href="https://github.com/nteetor/zeallot">library(zeallot)
-library(magrittr)</a></code></pre>
+<pre><code>library(zeallot)
+library(magrittr)</code></pre>
 <p>Get data:</p>
 <pre><code><a href="reference/URLs_MOVIE_LENS_ML_100k.html">URLs_MOVIE_LENS_ML_100k()</a></code></pre>
 <p>Specify column names:</p>
@@ -1168,7 +1166,7 @@ data
 5 0.0000002089296 5.043181
 6 0.0000002511886 5.023340</code></pre>
 <p>Visualize:</p>
-<pre><code><a href="http://jkunst.com/highcharter/reference/hchart.html">highcharter::hchart(data, "line", highcharter::hcaes(y = losses, x = lr_rates ))</a></code></pre>
+<pre><code>highcharter::hchart(data, "line", highcharter::hcaes(y = losses, x = lr_rates ))</code></pre>
 <p align="center">
 <img src="files/lr.png" height="500" align="center" alt="Learning_rates"></p>
 </div>
@@ -1257,7 +1255,7 @@ tbbox = LabeledBBox(TensorBBox(bbox[[1]]), bbox[[2]])
 <pre><code>(#2) [TensorBBox([[ 91.3000,  77.9400, 102.4300,  82.4700],
         [ 27.5800,  77.6500,  40.7600,  82.3400]]),['tv', 'tv']]</code></pre>
 <p>Visualize:</p>
-<pre><code><a href="http://dahtah.github.io/imager">library(imager)
+<pre><code>library(imager)
 coco = imager::load.image(coco_fn)
 plot(coco,axes=F)
 
@@ -1273,7 +1271,7 @@ for ( i in 1:length(bbox[[1]])) {
        col = "white"
   )
 }
-</a></code></pre>
+</code></pre>
 <p align="center">
 <img src="files/annotate.png" height="500" align="center" alt="Annotation"></p>
 <p>Alternatively, we could see batch via dataloader:</p>
@@ -1482,7 +1480,7 @@ Successfully submitted to Titanic: Machine Learning from Disaster</code></pre>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

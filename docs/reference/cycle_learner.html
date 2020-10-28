@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MOVIE_LENS_ML_100k dataset — URLs_MOVIE_LENS_ML_100k • fastai</title>
+<title>Cycle_learner — cycle_learner • fastai</title>
 
 
 <!-- jquery -->
@@ -45,8 +45,8 @@
 
 
 
-<meta property="og:title" content="MOVIE_LENS_ML_100k dataset — URLs_MOVIE_LENS_ML_100k" />
-<meta property="og:description" content="download MOVIE_LENS_ML_100k dataset" />
+<meta property="og:title" content="Cycle_learner — cycle_learner" />
+<meta property="og:description" content="Initialize and return a `Learner` object with the data in `dls`, CycleGAN model `m`, optimizer function `opt_func`, metrics `metrics`," />
 
 
 
@@ -201,33 +201,71 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>MOVIE_LENS_ML_100k dataset</h1>
-    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/download_tar.R'><code>R/download_tar.R</code></a></small>
-    <div class="hidden name"><code>URLs_MOVIE_LENS_ML_100k.Rd</code></div>
+    <h1>Cycle_learner</h1>
+    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/cycleGAN_models.R'><code>R/cycleGAN_models.R</code></a></small>
+    <div class="hidden name"><code>cycle_learner.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>download MOVIE_LENS_ML_100k dataset</p>
+    <p>Initialize and return a `Learner` object with the data in `dls`, CycleGAN model `m`, optimizer function `opt_func`, metrics `metrics`,</p>
     </div>
 
-    <pre class="usage"><span class='fu'>URLs_MOVIE_LENS_ML_100k</span><span class='op'>(</span>filename <span class='op'>=</span> <span class='st'>"ml-100k"</span>, unzip <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>cycle_learner</span><span class='op'>(</span>
+  <span class='va'>dls</span>,
+  <span class='va'>m</span>,
+  opt_func <span class='op'>=</span> <span class='fu'><a href='Adam.html'>Adam</a></span><span class='op'>(</span><span class='op'>)</span>,
+  show_imgs <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  imgA <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  imgB <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  show_img_interval <span class='op'>=</span> <span class='fl'>10</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>filename</th>
-      <td><p>the name of the file</p></td>
+      <th>dls</th>
+      <td><p>dataloader</p></td>
     </tr>
     <tr>
-      <th>unzip</th>
-      <td><p>logical, whether to unzip the '.zip' file</p></td>
+      <th>m</th>
+      <td><p>CycleGAN model</p></td>
+    </tr>
+    <tr>
+      <th>opt_func</th>
+      <td><p>optimizer</p></td>
+    </tr>
+    <tr>
+      <th>show_imgs</th>
+      <td><p>show images</p></td>
+    </tr>
+    <tr>
+      <th>imgA</th>
+      <td><p>image a (from)</p></td>
+    </tr>
+    <tr>
+      <th>imgB</th>
+      <td><p>image B (to)</p></td>
+    </tr>
+    <tr>
+      <th>show_img_interval</th>
+      <td><p>show images interval rafe</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>additional arguments</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>None</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>and callbacks `cbs`. Additionally, if `show_imgs` is TRUE, it will show intermediate predictions during training. It will show domain
+B-to-A predictions if `imgA` is TRUE and/or domain A-to-B predictions if `imgB` is TRUE. Additionally, it will show images every
+`show_img_interval` epochs. ` Other `Learner` arguments can be passed as well.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

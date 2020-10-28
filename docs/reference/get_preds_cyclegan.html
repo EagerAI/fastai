@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MOVIE_LENS_ML_100k dataset — URLs_MOVIE_LENS_ML_100k • fastai</title>
+<title>Get_preds_cyclegan — get_preds_cyclegan • fastai</title>
 
 
 <!-- jquery -->
@@ -45,8 +45,8 @@
 
 
 
-<meta property="og:title" content="MOVIE_LENS_ML_100k dataset — URLs_MOVIE_LENS_ML_100k" />
-<meta property="og:description" content="download MOVIE_LENS_ML_100k dataset" />
+<meta property="og:title" content="Get_preds_cyclegan — get_preds_cyclegan" />
+<meta property="og:description" content="A prediction function that takes the Learner object `learn` with the trained model, the `test_path` folder with the images to perform" />
 
 
 
@@ -201,33 +201,57 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>MOVIE_LENS_ML_100k dataset</h1>
-    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/download_tar.R'><code>R/download_tar.R</code></a></small>
-    <div class="hidden name"><code>URLs_MOVIE_LENS_ML_100k.Rd</code></div>
+    <h1>Get_preds_cyclegan</h1>
+    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/cycleGAN_models.R'><code>R/cycleGAN_models.R</code></a></small>
+    <div class="hidden name"><code>get_preds_cyclegan.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>download MOVIE_LENS_ML_100k dataset</p>
+    <p>A prediction function that takes the Learner object `learn` with the trained model, the `test_path` folder with the images to perform</p>
     </div>
 
-    <pre class="usage"><span class='fu'>URLs_MOVIE_LENS_ML_100k</span><span class='op'>(</span>filename <span class='op'>=</span> <span class='st'>"ml-100k"</span>, unzip <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>get_preds_cyclegan</span><span class='op'>(</span>
+  <span class='va'>learn</span>,
+  <span class='va'>test_path</span>,
+  <span class='va'>pred_path</span>,
+  bs <span class='op'>=</span> <span class='fl'>4</span>,
+  num_workers <span class='op'>=</span> <span class='fl'>4</span>,
+  suffix <span class='op'>=</span> <span class='st'>"tif"</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>filename</th>
-      <td><p>the name of the file</p></td>
+      <th>learn</th>
+      <td><p>learner/model</p></td>
     </tr>
     <tr>
-      <th>unzip</th>
-      <td><p>logical, whether to unzip the '.zip' file</p></td>
+      <th>test_path</th>
+      <td><p>testdat path</p></td>
+    </tr>
+    <tr>
+      <th>pred_path</th>
+      <td><p>predict data path</p></td>
+    </tr>
+    <tr>
+      <th>bs</th>
+      <td><p>batch size</p></td>
+    </tr>
+    <tr>
+      <th>num_workers</th>
+      <td><p>number of workers</p></td>
+    </tr>
+    <tr>
+      <th>suffix</th>
+      <td><p>suffix</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>None</p>
+    <p>batch inference on, and the output folder `pred_path` where the predictions will be saved, with a batch size `bs`, `num_workers`,
+and suffix of the prediction images `suffix` (default='png').</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

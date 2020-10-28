@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MOVIE_LENS_ML_100k dataset — URLs_MOVIE_LENS_ML_100k • fastai</title>
+<title>Conv_norm_lr — conv_norm_lr • fastai</title>
 
 
 <!-- jquery -->
@@ -45,8 +45,8 @@
 
 
 
-<meta property="og:title" content="MOVIE_LENS_ML_100k dataset — URLs_MOVIE_LENS_ML_100k" />
-<meta property="og:description" content="download MOVIE_LENS_ML_100k dataset" />
+<meta property="og:title" content="Conv_norm_lr — conv_norm_lr" />
+<meta property="og:description" content="Conv_norm_lr" />
 
 
 
@@ -201,27 +201,75 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>MOVIE_LENS_ML_100k dataset</h1>
-    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/download_tar.R'><code>R/download_tar.R</code></a></small>
-    <div class="hidden name"><code>URLs_MOVIE_LENS_ML_100k.Rd</code></div>
+    <h1>Conv_norm_lr</h1>
+    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/cycleGAN_models.R'><code>R/cycleGAN_models.R</code></a></small>
+    <div class="hidden name"><code>conv_norm_lr.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>download MOVIE_LENS_ML_100k dataset</p>
+    <p>Conv_norm_lr</p>
     </div>
 
-    <pre class="usage"><span class='fu'>URLs_MOVIE_LENS_ML_100k</span><span class='op'>(</span>filename <span class='op'>=</span> <span class='st'>"ml-100k"</span>, unzip <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>conv_norm_lr</span><span class='op'>(</span>
+  <span class='va'>ch_in</span>,
+  <span class='va'>ch_out</span>,
+  norm_layer <span class='op'>=</span> <span class='cn'>NULL</span>,
+  ks <span class='op'>=</span> <span class='fl'>3</span>,
+  bias <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  pad <span class='op'>=</span> <span class='fl'>1</span>,
+  stride <span class='op'>=</span> <span class='fl'>1</span>,
+  activ <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  slope <span class='op'>=</span> <span class='fl'>0.2</span>,
+  init <span class='op'>=</span> <span class='va'>nn</span><span class='op'>$</span><span class='va'>init</span><span class='op'>$</span><span class='va'>normal_</span>,
+  init_gain <span class='op'>=</span> <span class='fl'>0.02</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>filename</th>
-      <td><p>the name of the file</p></td>
+      <th>ch_in</th>
+      <td><p>input</p></td>
     </tr>
     <tr>
-      <th>unzip</th>
-      <td><p>logical, whether to unzip the '.zip' file</p></td>
+      <th>ch_out</th>
+      <td><p>output</p></td>
+    </tr>
+    <tr>
+      <th>norm_layer</th>
+      <td><p>normalziation layer</p></td>
+    </tr>
+    <tr>
+      <th>ks</th>
+      <td><p>kernel size</p></td>
+    </tr>
+    <tr>
+      <th>bias</th>
+      <td><p>bias</p></td>
+    </tr>
+    <tr>
+      <th>pad</th>
+      <td><p>pad</p></td>
+    </tr>
+    <tr>
+      <th>stride</th>
+      <td><p>stride</p></td>
+    </tr>
+    <tr>
+      <th>activ</th>
+      <td><p>activation</p></td>
+    </tr>
+    <tr>
+      <th>slope</th>
+      <td><p>slope</p></td>
+    </tr>
+    <tr>
+      <th>init</th>
+      <td><p>inititializer</p></td>
+    </tr>
+    <tr>
+      <th>init_gain</th>
+      <td><p>initializer gain</p></td>
     </tr>
     </table>
 

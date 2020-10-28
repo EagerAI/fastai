@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MOVIE_LENS_ML_100k dataset — URLs_MOVIE_LENS_ML_100k • fastai</title>
+<title>ConvT_norm_relu — convT_norm_relu • fastai</title>
 
 
 <!-- jquery -->
@@ -45,8 +45,8 @@
 
 
 
-<meta property="og:title" content="MOVIE_LENS_ML_100k dataset — URLs_MOVIE_LENS_ML_100k" />
-<meta property="og:description" content="download MOVIE_LENS_ML_100k dataset" />
+<meta property="og:title" content="ConvT_norm_relu — convT_norm_relu" />
+<meta property="og:description" content="ConvT_norm_relu" />
 
 
 
@@ -201,27 +201,43 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>MOVIE_LENS_ML_100k dataset</h1>
-    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/download_tar.R'><code>R/download_tar.R</code></a></small>
-    <div class="hidden name"><code>URLs_MOVIE_LENS_ML_100k.Rd</code></div>
+    <h1>ConvT_norm_relu</h1>
+    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/cycleGAN_models.R'><code>R/cycleGAN_models.R</code></a></small>
+    <div class="hidden name"><code>convT_norm_relu.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>download MOVIE_LENS_ML_100k dataset</p>
+    <p>ConvT_norm_relu</p>
     </div>
 
-    <pre class="usage"><span class='fu'>URLs_MOVIE_LENS_ML_100k</span><span class='op'>(</span>filename <span class='op'>=</span> <span class='st'>"ml-100k"</span>, unzip <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>convT_norm_relu</span><span class='op'>(</span><span class='va'>ch_in</span>, <span class='va'>ch_out</span>, <span class='va'>norm_layer</span>, ks <span class='op'>=</span> <span class='fl'>3</span>, stride <span class='op'>=</span> <span class='fl'>2</span>, bias <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>filename</th>
-      <td><p>the name of the file</p></td>
+      <th>ch_in</th>
+      <td><p>input</p></td>
     </tr>
     <tr>
-      <th>unzip</th>
-      <td><p>logical, whether to unzip the '.zip' file</p></td>
+      <th>ch_out</th>
+      <td><p>output</p></td>
+    </tr>
+    <tr>
+      <th>norm_layer</th>
+      <td><p>normalziation layer</p></td>
+    </tr>
+    <tr>
+      <th>ks</th>
+      <td><p>kernel size</p></td>
+    </tr>
+    <tr>
+      <th>stride</th>
+      <td><p>stride size</p></td>
+    </tr>
+    <tr>
+      <th>bias</th>
+      <td><p>bias true or not</p></td>
     </tr>
     </table>
 

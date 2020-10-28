@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MOVIE_LENS_ML_100k dataset — URLs_MOVIE_LENS_ML_100k • fastai</title>
+<title>CycleGANLoss — CycleGANLoss • fastai</title>
 
 
 <!-- jquery -->
@@ -45,8 +45,9 @@
 
 
 
-<meta property="og:title" content="MOVIE_LENS_ML_100k dataset — URLs_MOVIE_LENS_ML_100k" />
-<meta property="og:description" content="download MOVIE_LENS_ML_100k dataset" />
+<meta property="og:title" content="CycleGANLoss — CycleGANLoss" />
+<meta property="og:description" content="CycleGAN loss function. The individual loss terms are also atrributes
+of this class that are accessed by fastai for recording during training." />
 
 
 
@@ -201,33 +202,57 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>MOVIE_LENS_ML_100k dataset</h1>
-    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/download_tar.R'><code>R/download_tar.R</code></a></small>
-    <div class="hidden name"><code>URLs_MOVIE_LENS_ML_100k.Rd</code></div>
+    <h1>CycleGANLoss</h1>
+    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/cycleGAN_models.R'><code>R/cycleGAN_models.R</code></a></small>
+    <div class="hidden name"><code>CycleGANLoss.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>download MOVIE_LENS_ML_100k dataset</p>
+    <p>CycleGAN loss function. The individual loss terms are also atrributes
+of this class that are accessed by fastai for recording during training.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>URLs_MOVIE_LENS_ML_100k</span><span class='op'>(</span>filename <span class='op'>=</span> <span class='st'>"ml-100k"</span>, unzip <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>CycleGANLoss</span><span class='op'>(</span><span class='va'>cgan</span>, l_A <span class='op'>=</span> <span class='fl'>10</span>, l_B <span class='op'>=</span> <span class='fl'>10</span>, l_idt <span class='op'>=</span> <span class='fl'>0.5</span>, lsgan <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>filename</th>
-      <td><p>the name of the file</p></td>
+      <th>cgan</th>
+      <td><p>The CycleGAN model.</p></td>
     </tr>
     <tr>
-      <th>unzip</th>
-      <td><p>logical, whether to unzip the '.zip' file</p></td>
+      <th>l_A</th>
+      <td><p>lambda_A, weight of domain A losses. (default=10)</p></td>
+    </tr>
+    <tr>
+      <th>l_B</th>
+      <td><p>lambda_B, weight of domain B losses. (default=10)</p></td>
+    </tr>
+    <tr>
+      <th>l_idt</th>
+      <td><p>lambda_idt, weight of identity lossees. (default=0.5)</p></td>
+    </tr>
+    <tr>
+      <th>lsgan</th>
+      <td><p>Whether or not to use LSGAN objective (default=True)</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>None</p>
+    <p>Attributes: `self.cgan` (`nn.Module`): The CycleGAN model.
+`self.l_A` (`float`): lambda_A, weight of domain A losses.
+`self.l_B` (`float`): lambda_B, weight of domain B losses.
+`self.l_idt` (`float`): lambda_idt, weight of identity lossees.
+`self.crit` (`AdaptiveLoss`): The adversarial loss function
+(either a BCE or MSE loss depending on `lsgan` argument)
+`self.real_A` and `self.real_B` (`fastai.torch_core.TensorImage`): Real images from domain A and B.
+`self.id_loss_A` (`torch.FloatTensor`): The identity loss for domain A calculated
+in the forward function `self.id_loss_B` (`torch.FloatTensor`): The identity loss for domain B calculated
+in the forward function `self.gen_loss` (`torch.FloatTensor`): The generator loss calculated
+in the forward function `self.cyc_loss` (`torch.FloatTensor`): The cyclic loss calculated
+in the forward function</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
