@@ -1025,7 +1025,7 @@ URLs_YELP_REVIEWS_POLARITY <- function(filename = 'YELP_REVIEWS_POLARITY', untar
 #' @param filename the name of the file
 #' @param unzip logical, whether to unzip the '.zip' file
 #'
-#' @description download YELP_REVIEWS_POLARITY dataset
+#' @description download MOVIE_LENS_ML_100k dataset
 #' @return None
 #' @export
 URLs_MOVIE_LENS_ML_100k <- function(filename = 'ml-100k', unzip = TRUE) {

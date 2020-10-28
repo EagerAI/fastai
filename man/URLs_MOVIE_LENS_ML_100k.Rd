@@ -15,5 +15,5 @@ URLs_MOVIE_LENS_ML_100k(filename = "ml-100k", unzip = TRUE)
 None
 }
 \description{
-download YELP_REVIEWS_POLARITY dataset
+download MOVIE_LENS_ML_100k dataset
 }

@@ -1,5 +1,5 @@
 
-
+upit <- NULL
 fp <- NULL
 shap <- NULL
 warnings <- NULL
@@ -155,6 +155,10 @@ torch <- NULL
 
       if(reticulate::py_module_available('kaggle')) {
         kg <<- reticulate::import('kaggle')
+      }
+
+      if(reticulate::py_module_available('upit')) {
+        upit <<- reticulate::import('upit')
       }
 
       if(reticulate::py_module_available('timeseries_fastai')) {
