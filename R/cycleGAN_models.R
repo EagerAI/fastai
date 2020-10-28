@@ -277,6 +277,12 @@ get_dls <- function(pathA, pathB, num_A = NULL, num_B = NULL,
     num_workers = as.integer(num_workers)
   )
 
+ if(!is.null(args[['num_A']]))
+   args[['num_A']] = as.integer(args[['num_A']])
+
+ if(!is.null(args[['num_B']]))
+   args[['num_B']] = as.integer(args[['num_B']])
+
  do.call(upit$data$unpaired$get_dls, args)
 
 }
@@ -438,6 +444,91 @@ URLs_HORSE_2_ZEBRA <- function(filename = 'horse2zebra', unzip = TRUE) {
 
 
 
+#' @title FolderDataset
+#'
+#' @description A PyTorch Dataset class that can be created from a folder `path` of images, for the sole purpose of inference. Optional `transforms`
+#'
+#' @details can be provided. Attributes: `self.files`: A list of the filenames in the folder. `self.totensor`: `torchvision.transforms.ToTensor` transform. `self.transform`: The transforms passed in as `transforms` to the constructor.
+#'
+#' @param path path to dir
+#' @param transforms transformations
+#' @return None
+#' @export
+FolderDataset <- function(path, transforms = NULL) {
 
+  upit$inference$cyclegan$FolderDataset(
+    path = path,
+    transforms = transforms
+  )
+
+}
+
+#' @title Load_dataset
+#'
+#' @description A helper function for getting a DataLoader for images in the folder `test_path`, with batch size `bs`, and number of workers `num_workers`
+#'
+#'
+#' @param test_path test path (directory)
+#' @param bs batch size
+#' @param num_workers number of workers
+#' @return None
+#' @export
+load_dataset <- function(test_path, bs = 4, num_workers = 4) {
+
+  upit$inference$cyclegan$load_dataset(
+    test_path = test_path,
+    bs = as.integer(bs),
+    num_workers = as.integer(num_workers)
+  )
+
+}
+
+#' @title Get_preds_cyclegan
+#'
+#' @description A prediction function that takes the Learner object `learn` with the trained model, the `test_path` folder with the images to perform
+#'
+#' @details batch inference on, and the output folder `pred_path` where the predictions will be saved, with a batch size `bs`, `num_workers`,
+#' and suffix of the prediction images `suffix` (default='png').
+#'
+#' @param learn learner/model
+#' @param test_path testdat path
+#' @param pred_path predict data path
+#' @param bs batch size
+#' @param num_workers number of workers
+#' @param suffix suffix
+#'
+#' @export
+get_preds_cyclegan <- function(learn, test_path, pred_path, bs = 4, num_workers = 4, suffix = "tif") {
+
+  upit$inference$cyclegan$get_preds_cyclegan(
+    learn = learn,
+    test_path = test_path,
+    pred_path = pred_path,
+    bs = as.integer(bs),
+    num_workers = as.integer(num_workers),
+    suffix = suffix
+  )
+
+}
+
+#' @title Export_generator
+#'
+#'
+#' @param learn learner/model
+#' @param generator_name generator name
+#' @param path path (save dir)
+#' @param convert_to convert to
+#' @return None
+#' @export
+export_generator <- function(learn, generator_name = "generator", path = '.', convert_to = "B") {
+
+  upit$inference$cyclegan$export_generator(
+    learn = learn,
+    generator_name = generator_name,
+    path = path,
+    convert_to = convert_to
+  )
+
+}
 
 
