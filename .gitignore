@@ -27,6 +27,7 @@ fastaibuilt/retinanet/\.gitkeep/
 imports/\.gitkeep/
 D/
 mnist.pkl/
+horse2zebra/
 
 
 
