@@ -399,11 +399,11 @@ learn %>% fit(2)
 <img src="files/mnist.png" height=500 align=center alt="Mnist"/>
 
 
-What about the implementation of the latest [Computer Vision models](https://github.com/rwightman/pytorch-image-models)?
+__What about the implementation of the latest [Computer Vision models](https://github.com/rwightman/pytorch-image-models)?__
 
-There is function in fastai ```timm_learner``` which originally written by [Zachary Muller](https://github.com/walkwithfastai/walkwithfastai.github.io/blob/master/02_vision.external.timm.ipynb). It helps to quickly load the pretrained models from [timm library](https://github.com/rwightman/pytorch-image-models).
+There is a function in fastai ```timm_learner``` which originally written by [Zachary Muller](https://github.com/walkwithfastai/walkwithfastai.github.io/blob/master/02_vision.external.timm.ipynb). It helps to quickly load the pretrained models from [timm library](https://github.com/rwightman/pytorch-image-models).
 
-First, see list of available models (TOP 10):
+First, lets's see the list of available models (TOP 10):
 
 ```
 > str(as.list(timm_list_models()[1:10]))
@@ -422,10 +422,10 @@ List of 10
 
 Exciting!
 
-Now load and train for pets dataset:
+Now, load and train pets dataset:
 
 ```
-options(reticulate.useImportHook = FALSE) # fix GPU issue
+options(reticulate.useImportHook = FALSE) # fix multiple workers issue
 
 library(magrittr)
 library(fastai)
