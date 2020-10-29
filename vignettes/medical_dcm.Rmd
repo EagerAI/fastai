@@ -44,12 +44,13 @@ xray_sample = dcmread(items[patient])
 xray_sample %>% show() %>% plot()
 ```
 
-
+```
 <center>
 
 <img src="images/pneu0.png" alt="_" style="width: 700px;"/>
 
 </center>
+```
 
 At the same time it is possible to gather the information from ```dcm``` files:
 
@@ -113,11 +114,14 @@ dls = pneumothorax %>% dataloaders(as.matrix(df))
 dls %>% show_batch(max_n = 16)
 ```
 
+
+```
 <center>
 
 <img src="images/pneu.png" alt="_" style="width: 700px;"/>
 
 </center>
+```
 
 ## Fit model
 

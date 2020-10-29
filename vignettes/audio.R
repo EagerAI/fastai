@@ -1,5 +1,5 @@
 ## ----setup, include=FALSE-----------------------------------------------------
-knitr::opts_chunk$set(echo = TRUE,eval = FALSE,echo = T)
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 
 ## -----------------------------------------------------------------------------
 #  reticulate::py_install('git+https://github.com/fastaudio/fastaudio.git', pip = TRUE)
