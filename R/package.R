@@ -46,7 +46,8 @@ torch <- NULL
     environment = "r-fastai"
   ))
 
-  cran_ = identical(Sys.getenv("NOT_CRAN", unset = "true"), "true")
+  #cran_ = identical(Sys.getenv("NOT_CRAN", unset = "true"), "true")
+  cran_ = !file.exists("C:/Users/ligges/AppData/Local/r-miniconda/envs/r-reticulate/python.exe")
 
   if(cran_) {
 

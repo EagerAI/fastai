@@ -10,7 +10,7 @@ install_fastai(
   cuda_version = "10.1",
   overwrite = FALSE,
   extra_pkgs = c("kaggle", "transformers", "pytorch_lightning", "timm", "catalyst",
-    "ignite", "tensorboard", "fastinference", "shap")
+    "ignite", "tensorboard", "fastinference", "shap", "torchaudio")
 )
 }
 \arguments{
