@@ -401,7 +401,7 @@ learn %>% fit(2)
 
 __What about the implementation of the latest [Computer Vision models](https://github.com/rwightman/pytorch-image-models)?__
 
-There is a function in fastai ```timm_learner``` which originally written by [Zachary Muller](https://github.com/walkwithfastai/walkwithfastai.github.io/blob/master/02_vision.external.timm.ipynb). It helps to quickly load the pretrained models from [timm library](https://github.com/rwightman/pytorch-image-models).
+There is a function in fastai ```timm_learner``` which originally written by [Zachary Mueller](https://github.com/walkwithfastai/walkwithfastai.github.io/blob/master/02_vision.external.timm.ipynb). It helps to quickly load the pretrained models from [timm library](https://github.com/rwightman/pytorch-image-models).
 
 First, lets's see the list of available models (TOP 10):
 
