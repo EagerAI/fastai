@@ -1,4 +1,6 @@
 
+load_pre_models <- NULL
+timm <- NULL
 upit <- NULL
 fp <- NULL
 shap <- NULL
@@ -105,6 +107,13 @@ torch <- NULL
 
         # Dicom
         Dicom <<- medical$PILDicom
+
+        if(reticulate::py_module_available('timm')) {
+          timm <<- reticulate::import('timm')
+          if(file.exists('fastaibuilt/pretrained_timm_models.py')) {
+            load_pre_models <<- reticulate::import_from_path('pretrained_timm_models', path = 'fastaibuilt')
+          }
+        }
 
       }
 
