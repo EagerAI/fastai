@@ -3,7 +3,10 @@ context("tabular")
 source("utils.R")
 
 test_succeeds('dataset load', {
-  df = fread('https://github.com/henry090/fastai/raw/master/files/adult.csv')
+  # download
+  URLs_ADULT_SAMPLE()
+
+  df = data.table::fread('adult_sample/adult.csv')
   dep_var = 'salary'
   cat_names = c('workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race')
   cont_names = c('age', 'fnlwgt', 'education-num')
