@@ -53,7 +53,7 @@ navbar:
       menu:
         - text: "Image Classification"
           href: articles/custom_img.html
-        - text: "Audio Classification"
+        - text: "Speech Recognition"
           href: articles/audio2tf.html
     - text: "Training"
       menu:

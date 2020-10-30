@@ -1,9 +1,9 @@
 ---
-title: "Audio Classification"
+title: "Speech Recognition"
 output:
   rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Audio Classification}
+  %\VignetteIndexEntry{Speech Recognition}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
