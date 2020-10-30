@@ -58,7 +58,7 @@ URLs_SPEECHCOMMANDS <- function(filename = 'SPEECHCOMMANDS', untar = TRUE) {
     if(!dir.exists('SPEECHCOMMANDS')) {
       dir.create('SPEECHCOMMANDS')
     }
-    untar(paste(filename,'.tgz',sep = ''),exdir = 'SPEECHCOMMANDS')
+    untar(paste(filename,'.tar.gz',sep = ''),exdir = 'SPEECHCOMMANDS')
   }
 
 }

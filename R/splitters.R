@@ -29,8 +29,13 @@ GrandparentSplitter <- function(train_name = "train", valid_name = "valid") {
 #' @export
 parent_label <- function(o) {
 
-  fastai2$vision$all$parent_label(
-    o = o
-  )
+  if(missing(o)) {
+    fastai2$vision$all$parent_label
+  } else {
+    fastai2$vision$all$parent_label(
+      o = o
+    )
+  }
+
 
 }

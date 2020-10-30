@@ -1,0 +1,91 @@
+---
+title: "Audio Classification"
+output:
+  rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Audio Classification}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+```
+
+## Intro
+
+The [fastai](https://github.com/fastai/fastai) library simplifies training fast and accurate neural nets using modern best practices. See the fastai website to get started. The library is based on research into deep learning best practices undertaken at ```fast.ai```, and includes "out of the box" support for ```vision```, ```text```, ```tabular```, and ```collab``` (collaborative filtering) models. 
+
+
+## Dataset
+
+Grab data from TensorFlow Speech Commands (2.3 GB):
+
+
+```{r}
+commands_path = "SPEECHCOMMANDS"
+audio_files = get_audio_files(commands_path)
+length(audio_files$items)
+# [1] 105835
+```
+
+
+## Preprocess
+
+Prepare dataset and put into data loader:
+
+```{r}
+DBMelSpec = SpectrogramTransformer(mel=TRUE, to_db=TRUE)
+a2s = DBMelSpec()
+crop_4000ms = ResizeSignal(4000)
+tfms = list(crop_4000ms, a2s)
+```
+
+
+```{r}
+auds = DataBlock(blocks = list(AudioBlock(), CategoryBlock()),  
+                 get_items = get_audio_files, 
+                 splitter = RandomSplitter(),
+                 item_tfms = tfms,
+                 get_y = parent_label)
+
+audio_dbunch = auds %>% dataloaders(commands_path, item_tfms = tfms, bs = 20)
+```
+
+See batch:
+
+```{r}
+audio_dbunch %>% show_batch(figsize = c(15, 8.5), nrows = 3, ncols = 3, max_n = 9, dpi = 180)
+```
+
+## Model
+
+Before fitting, 3 channels to 1 channel:
+
+```{r}
+alter_learner = function(learn, channels = 1L) {
+  try(learn$model[0][0][['in_channels']] <- channels,
+      silent = TRUE)
+  try(learn$model[0][0][['weight']] <- torch$nn$parameter$Parameter(torch$narrow(learn$model[0][0][['weight']],1L,1L,1L)),
+      silent = TRUE)
+}
+
+
+learn = Learner(audio_dbunch, xresnet18(pretrained = FALSE), nn$CrossEntropyLoss(), metrics=accuracy)
+
+nnchannels = audio_dbunch %>% one_batch() %>% .[[1]] %>% .$shape %>% .[1]
+
+alter_learner(learn, nnchannels)
+```
+
+
+## Conclusion
+
+Now we can train our model:
+
+```{r}
+learn %>% fit_one_cycle(5, lr_max=slice(1e-2))
+```
+
+
+

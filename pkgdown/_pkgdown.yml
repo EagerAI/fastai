@@ -53,6 +53,8 @@ navbar:
       menu:
         - text: "Image Classification"
           href: articles/custom_img.html
+        - text: "Audio Classification"
+          href: articles/audio2tf.html
     - text: "Training"
       menu:
         - text: "Optimizers"
