@@ -28,6 +28,6 @@ imports/\.gitkeep/
 D/
 mnist.pkl/
 horse2zebra/
-
+wandb/
 
 

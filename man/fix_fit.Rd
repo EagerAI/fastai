@@ -4,7 +4,10 @@
 \alias{fix_fit}
 \title{Fix fit}
 \usage{
-fix_fit()
+fix_fit(disable_graph = FALSE)
+}
+\arguments{
+\item{disable_graph}{to remove dynamic plot, by default is FALSE}
 }
 \value{
 None

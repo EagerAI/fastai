@@ -1,4 +1,89 @@
+#' @title WandbCallback
+#'
+#' @description Saves model topology, losses & metrics
+#'
+#'
+#' @param log "gradients" (default), "parameters", "all" or None. Losses & metrics are always logged.
+#' @param log_preds whether we want to log prediction samples (default to True).
+#' @param log_model whether we want to log our model (default to True). This also requires SaveModelCallback.
+#' @param log_dataset Options:
+#' - False (default)
+#' - True will log folder referenced by learn.dls.path.
+#' - a path can be defined explicitly to reference which folder to log.
+#' Note: subfolder "models" is always ignored.
+#' @param dataset_name name of logged dataset (default to folder name).
+#' @param valid_dl DataLoaders containing items used for prediction samples (default to random items from learn.dls.valid.
+#' @param n_preds number of logged predictions (default to 36).
+#' @param seed used for defining random samples.
+#' @param reorder reorder or not
+#' @return None
+#' @export
+WandbCallback <- function(log = "gradients", log_preds = TRUE, log_model = TRUE,
+                          log_dataset = FALSE, dataset_name = NULL, valid_dl = NULL,
+                          n_preds = 36, seed = 12345, reorder = TRUE) {
 
+  args <- list(
+    log = log,
+    log_preds = log_preds,
+    log_model = log_model,
+    log_dataset = log_dataset,
+    dataset_name = dataset_name,
+    valid_dl = valid_dl,
+    n_preds = as.integer(n_preds),
+    seed = as.integer(seed),
+    reorder = reorder
+  )
+
+  do.call(fastai2$callback$wandb$WandbCallback, args)
+
+}
+
+#' @title Wandb login
+#'
+#' @description Log in to W&B.
+#'
+#'
+#' @param anonymous must,never,allow,false,true
+#' @param key API key (secret)
+#' @param relogin relogin or not
+#' @param host host address
+#' @param force whether to force a user to be logged into wandb when running a script
+#'
+#' @return None
+#'
+#'
+#' @export
+login <- function(anonymous = NULL, key = NULL, relogin = NULL, host = NULL, force = NULL) {
+
+ wandb$login(
+    anonymous = anonymous,
+    key = key,
+    relogin = relogin,
+    host = host,
+    force = force
+  )
+
+}
+
+
+#' @title Wandb init
+#'
+#' @description Initialize a wandb Run.
+#'
+#'
+#' @param ... parameters to pass
+#'
+#' @return wandb Run object
+#' @section see https://docs.wandb.com/library/init
+#'
+#' @export
+init <- function(...) {
+
+  wandb$init(
+    ...
+  )
+
+}
 
 #' @title CSVLogger
 #'
