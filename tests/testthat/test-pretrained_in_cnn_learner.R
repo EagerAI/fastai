@@ -21,51 +21,51 @@ test_succeeds('mnist_sample dataloader', {
 
 test_succeeds('mnist_sample load xresnet50_deep', {
   learn = cnn_learner(data, xresnet50_deep(), metrics = accuracy)
-  summary(learn)
+  #summary(learn)
 })
 
 test_succeeds('mnist_sample load xresnet50', {
   learn = cnn_learner(data, xresnet50(), metrics = accuracy)
-  summary(learn)
+  #summary(learn)
 })
 
 
 test_succeeds('mnist_sample load xresnet34_deep', {
   learn = cnn_learner(data, xresnet34_deep(), metrics = accuracy)
-  summary(learn)
+  #summary(learn)
 })
 
 test_succeeds('mnist_sample load xresnet34', {
   learn = cnn_learner(data, xresnet34(), metrics = accuracy)
-  summary(learn)
+  #summary(learn)
 })
 
 test_succeeds('mnist_sample load xresnet18_deep', {
   learn = cnn_learner(data, xresnet18_deep(), metrics = accuracy)
-  summary(learn)
+  #summary(learn)
 })
 
 
 test_succeeds('mnist_sample load xresnet18', {
   learn = cnn_learner(data, xresnet18(), metrics = accuracy)
-  summary(learn)
+  #summary(learn)
 })
 
 
 test_succeeds('mnist_sample load xresnet152', {
   learn = cnn_learner(data, xresnet152(), metrics = accuracy)
-  summary(learn)
+  #summary(learn)
 })
 
 test_succeeds('mnist_sample load xresnet101', {
   learn = cnn_learner(data, xresnet101(), metrics = accuracy)
-  summary(learn)
+  #summary(learn)
 })
 
 
 test_succeeds('mnist_sample load xresnet50_deep', {
   learn = cnn_learner(data, xresnet50_deep(), metrics = accuracy)
-  summary(learn)
+  #summary(learn)
 })
 
 test_succeeds('download PETS', {
