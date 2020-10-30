@@ -33,13 +33,13 @@ Plot it:
 img %>% show() %>% plot()
 ```
 
-```
+
 <center>
 
-<img src="images/cat.png" alt="_" style="width: 300px;"/>
+<img src="images/cat.png" alt="_" style="width: 350px;"/>
 
 </center>
-```
+
 
 ## Flipped
 
@@ -58,13 +58,13 @@ for (i in 1:2) {
 img %>% plot(dpi = 250)
 ```
 
-```
+
 <center>
 
-<img src="images/flip.png" alt="_" style="width: 300px;"/>
+<img src="images/flip.png" alt="_" style="width: 350px;"/>
 
 </center>
-```
+
 
 ## Dihedral
 
@@ -78,13 +78,13 @@ for (i in 1:8) {
 img %>% plot(dpi = 250)
 ```
 
-```
+
 <center>
 
-<img src="images/dihedral.png" alt="_" style="width: 300px;"/>
+<img src="images/dihedral.png" alt="_" style="width: 350px;"/>
 
 </center>
-```
+
 
 ## CropPad
 
@@ -102,13 +102,13 @@ for (i in 1:3) {
 img %>% plot(dpi = 250)
 ```
 
-```
+
 <center>
 
-<img src="images/crop.png" alt="_" style="width: 300px;"/>
+<img src="images/crop.png" alt="_" style="width: 350px;"/>
 
 </center>
-```
+
 
 # PadModes
 
@@ -125,13 +125,13 @@ for (i in 1:3) {
 img %>% plot(dpi = 250)
 ```
 
-```
+
 <center>
 
-<img src="images/modes.png" alt="_" style="width: 300px;"/>
+<img src="images/modes.png" alt="_" style="width: 350px;"/>
 
 </center>
-```
+
 
 ## RandomCrop
 
@@ -147,13 +147,13 @@ for (i in 1:3) {
 img %>% plot(dpi = 250)
 ```
 
-```
+
 <center>
 
-<img src="images/random_crop.png" alt="_" style="width: 300px;"/>
+<img src="images/random_crop.png" alt="_" style="width: 350px;"/>
 
 </center>
-```
+
 
 
 ## CenterCrop
@@ -170,13 +170,13 @@ for (i in 1:3) {
 img %>% plot(dpi = 250)
 ```
 
-```
+
 <center>
 
-<img src="images/center_crop.png" alt="_" style="width: 300px;"/>
+<img src="images/center_crop.png" alt="_" style="width: 350px;"/>
 
 </center>
-```
+
 
 
 ## Resize method
@@ -194,13 +194,13 @@ for (i in 1:3) {
 img %>% plot(dpi = 250)
 ```
 
-```
+
 <center>
 
-<img src="images/resize.png" alt="_" style="width: 300px;"/>
+<img src="images/resize.png" alt="_" style="width: 350px;"/>
 
 </center>
-```
+
 
 ## RandomResizeCrop
 
@@ -217,13 +217,13 @@ img %>% plot(dpi = 250)
 ```
 
 
-```
+
 <center>
 
-<img src="images/random_resize.png" alt="_" style="width: 300px;"/>
+<img src="images/random_resize.png" alt="_" style="width: 350px;"/>
 
 </center>
-```
+
 
 
 

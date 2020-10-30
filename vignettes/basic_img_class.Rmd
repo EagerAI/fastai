@@ -56,13 +56,13 @@ See batch:
 dls %>% show_batch()
 ```
 
-```
+
 <center>
 
 <img src="images/img_batch.png" alt="_" style="width: 700px;"/>
 
 </center>
-```
+
 
 ## ResNet50
 

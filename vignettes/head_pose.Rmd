@@ -37,13 +37,13 @@ img = Image_create(paste(path,fname,sep = '/'))
 img %>% show() %>% plot()
 ```
 
-```
+
 <center>
 
 <img src="images/simple.png" alt="_" style="width: 600px;"/>
 
 </center>
-```
+
 
 To add the points, we need to write simple functions:
 
@@ -89,13 +89,13 @@ ax = img %>% show(figsize = c(6, 6))
 img %>% get_ip(ctr) %>% show(ctx = ax) %>% plot()
 ```
 
-```
+
 <center>
 
 <img src="images/point.png" alt="_" style="width: 600px;"/>
 
 </center>
-```
+
 
 ## Preparation
 
@@ -117,13 +117,13 @@ dls = dblock %>% dataloaders(path, path = path, bs = 64)
 dls %>% show_batch(max_n = 9, figsize = c(9,6))
 ```
 
-```
+
 <center>
 
 <img src="images/points.png" alt="_" style="width: 600px;"/>
 
 </center>
-```
+
 
 ## Fit
 

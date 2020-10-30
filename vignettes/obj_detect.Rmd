@@ -59,13 +59,13 @@ dls = coco %>% dataloaders('coco_tiny/train')
 dls %>% show_batch(max_n = 12)
 ```
 
-```
+
 <center>
 
 <img src="images/detect.png" alt="_" style="width: 700px;"/>
 
 </center>
-```
+
 
 ## RetinaNet
 
