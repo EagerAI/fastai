@@ -75,7 +75,7 @@ login <- function(anonymous = NULL, key = NULL, relogin = NULL, host = NULL, for
 #'
 #' @return wandb Run object
 #' @section see https://docs.wandb.com/library/init
-#'
+#' @return None
 #' @export
 init <- function(...) {
 

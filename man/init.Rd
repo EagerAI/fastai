@@ -11,6 +11,8 @@ init(...)
 }
 \value{
 wandb Run object
+
+None
 }
 \description{
 Initialize a wandb Run.
