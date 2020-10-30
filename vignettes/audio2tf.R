@@ -4,12 +4,13 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 ## -----------------------------------------------------------------------------
 #  commands_path = "SPEECHCOMMANDS"
 #  audio_files = get_audio_files(commands_path)
-#  length(audio_files)
+#  length(audio_files$items)
+#  # [1] 105835
 
 ## -----------------------------------------------------------------------------
 #  DBMelSpec = SpectrogramTransformer(mel=TRUE, to_db=TRUE)
 #  a2s = DBMelSpec()
-#  crop_4000ms = CropSignal(4000)
+#  crop_4000ms = ResizeSignal(4000)
 #  tfms = list(crop_4000ms, a2s)
 
 ## -----------------------------------------------------------------------------
@@ -19,7 +20,7 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 #                   item_tfms = tfms,
 #                   get_y = parent_label)
 #  
-#  audio_dbunch = auds %>% dataloaders(commands_path, item_tfms = tfms, bs = 64)
+#  audio_dbunch = auds %>% dataloaders(commands_path, item_tfms = tfms, bs = 20)
 
 ## -----------------------------------------------------------------------------
 #  audio_dbunch %>% show_batch(figsize = c(15, 8.5), nrows = 3, ncols = 3, max_n = 9, dpi = 180)
@@ -33,12 +34,17 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 #  }
 #  
 #  
-#  learn = Learner(dls, xresnet18(pretrained = FALSE), nn$CrossEntropyLoss(), metrics=accuracy)
+#  learn = Learner(audio_dbunch, xresnet18(pretrained = FALSE), nn$CrossEntropyLoss(), metrics=accuracy)
 #  
-#  nnchannels = dls %>% one_batch() %>% .[[1]] %>% .$shape %>% .[1]
+#  nnchannels = audio_dbunch %>% one_batch() %>% .[[1]] %>% .$shape %>% .[1]
 #  
 #  alter_learner(learn, nnchannels)
 
 ## -----------------------------------------------------------------------------
-#  learn %>% fit_one_cycle(5, lr_max=slice(1e-2))
+#  # login for the 1st time then remove it
+#  login("API_key_from_wandb_dot_ai")
+#  init(project='R')
+
+## -----------------------------------------------------------------------------
+#  learn %>% fit_one_cycle(3, lr_max=slice(1e-2), cbs = list(WandbCallback()))
 

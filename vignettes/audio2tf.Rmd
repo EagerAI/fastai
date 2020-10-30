@@ -78,14 +78,53 @@ nnchannels = audio_dbunch %>% one_batch() %>% .[[1]] %>% .$shape %>% .[1]
 alter_learner(learn, nnchannels)
 ```
 
+## Add callbacks
+
+Weights and biases could be save and visualized on [wandb.ai](https://wandb.ai/):
+
+```{r}
+# login for the 1st time then remove it
+login("API_key_from_wandb_dot_ai")
+init(project='R')
+```
+
+```
+wandb: Currently logged in as: henry090 (use `wandb login --relogin` to force relogin)
+wandb: Tracking run with wandb version 0.10.8
+wandb: Syncing run macabre-zombie-2
+wandb: ⭐️ View project at https://wandb.ai/henry090/speech_recognition_from_R
+wandb: 🚀 View run at https://wandb.ai/henry090/speech_recognition_from_R/runs/2sjw3juv
+wandb: Run data is saved locally in wandb/run-20201030_224503-2sjw3juv
+wandb: Run `wandb off` to turn off syncing.
+```
 
 ## Conclusion
 
 Now we can train our model:
 
 ```{r}
-learn %>% fit_one_cycle(5, lr_max=slice(1e-2))
+learn %>% fit_one_cycle(3, lr_max=slice(1e-2), cbs = list(WandbCallback()))
 ```
+
+
+```
+epoch   train_loss   valid_loss   accuracy   time 
+------  -----------  -----------  ---------  -----
+epoch   train_loss   valid_loss   accuracy   time 
+------  -----------  -----------  ---------  -----
+WandbCallback requires use of "SaveModelCallback" to log best model
+0       0.590236     0.728817     0.787121   04:18 
+WandbCallback was not able to get prediction samples -> wandb.log must be passed a dictionary
+1       0.288492     0.310335     0.908490   04:19 
+2       0.182899     0.196792     0.941088   04:10 
+```
+
+See beautiful dashboard here:
+
+```
+https://wandb.ai/henry090/speech_recognition_from_R/runs/2sjw3juv?workspace=user-henry090
+```
+
 
 
 

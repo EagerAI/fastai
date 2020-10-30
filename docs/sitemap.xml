@@ -331,6 +331,9 @@
     <loc>https://henry090.github.io/fastai//reference/GatherPredsCallback.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/GrandparentSplitter.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/HammingLoss.html</loc>
   </url>
   <url>
@@ -1036,6 +1039,9 @@
     <loc>https://henry090.github.io/fastai//reference/URLs_SPEAKERS10.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/URLs_SPEECHCOMMANDS.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/URLs_WIKITEXT.html</loc>
   </url>
   <url>
@@ -1061,6 +1067,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/Voice.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/WandbCallback.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/Warp.html</loc>
@@ -1507,6 +1516,9 @@
     <loc>https://henry090.github.io/fastai//reference/in_channels.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/init.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/init_default.html</loc>
   </url>
   <url>
@@ -1592,6 +1604,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/logical_or.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/login.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/lr_find.html</loc>
@@ -1706,6 +1721,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/params.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/parent_label.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/partial.html</loc>
@@ -2120,6 +2138,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//articles/audio.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//articles/audio2tf.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//articles/basic_img_class.html</loc>
