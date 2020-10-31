@@ -858,6 +858,70 @@ learn %>% show_results(max_n = 16, figsize = c(8,8), ds_idx=0)
 
 </center>
 
+## CycleGAN
+
+CycleGAN package by [Tanishq Abraham](https://github.com/tmabraham/UPIT) makes building and training a CycleGAN model very easy
+
+Get data:
+
+```
+URLs_HORSE_2_ZEBRA()
+```
+
+Prepare data:
+
+```
+horse2zebra = 'horse2zebra'
+
+
+trainA_path = file.path(horse2zebra,'trainA')
+trainB_path = file.path(horse2zebra,'trainB')
+testA_path = file.path(horse2zebra,'testA')
+testB_path = file.path(horse2zebra,'testB')
+
+dls = get_dls(trainA_path, trainB_path, num_A = 130,load_size = 270,crop_size = 144,bs=4)
+
+```
+
+Build model:
+
+```
+cycle_gan = CycleGAN(3,3,64)
+learn = cycle_learner(dls, cycle_gan)
+```
+
+And fit:
+
+```
+learn %>% fit_flat_lin(4,4,2e-4)
+```
+
+```
+epoch   train_loss   id_loss_A   id_loss_B   gen_loss_A   gen_loss_B   cyc_loss_A   cyc_loss_B   D_A_loss   D_B_loss   time 
+------  -----------  ----------  ----------  -----------  -----------  -----------  -----------  ---------  ---------  -----
+0       10.500859    1.551905    1.678394    0.375322     0.385088     3.266770     3.509404     0.367762   0.367762   00:19 
+1       9.547493     1.267837    1.453950    0.301558     0.298583     2.698074     3.106223     0.253554   0.253554   00:19 
+2       8.938786     1.234537    1.250279    0.328651     0.328309     2.618085     2.713281     0.237375   0.237375   00:19 
+3       8.391484     1.066745    1.227453    0.327970     0.336748     2.285323     2.669749     0.240033   0.240033   00:19 
+4       7.642654     0.941413    1.057014    0.327448     0.350729     1.980680     2.274255     0.246695   0.246695   00:19 
+5       7.478543     0.966484    1.111054    0.291666     0.384912     2.119692     2.446879     0.251393   0.251393   00:18 
+6       7.190168     0.961237    1.034505    0.315916     0.397697     1.990408     2.182239     0.222851   0.222851   00:19 
+7       6.902316     0.891176    1.001932    0.343578     0.386471     1.848317     2.137690     0.215832   0.215832   00:19
+```
+
+Get predicitons and see results:
+
+```
+learn %>% get_preds_cyclegan(testA_path, './h2z-preds')
+
+learn %>% show_results()
+```
+<center>
+
+<img src="files/cycleGAN.png" height=600 align=center alt="Mnist"/>
+
+</center>
+
 ## Unet example
 
 Call libraries:

@@ -62,3 +62,9 @@ URLs_SPEECHCOMMANDS <- function(filename = 'SPEECHCOMMANDS', untar = TRUE) {
   }
 
 }
+
+
+
+
+
+
