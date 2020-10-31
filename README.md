@@ -1,10 +1,16 @@
 ## R interface to fastai
 
-The fastai package provides R wrappers to [fastai](https://github.com/fastai/fastai).
+The fastai package provides R wrappers to
+[fastai](https://github.com/fastai/fastai).
 
-The fastai library simplifies training fast and accurate neural nets using modern best practices. See the [fastai website](https://henry090.github.io/fastai/) to get started. The library is based on research into deep learning best practices undertaken at ```fast.ai```, and includes "out of the box" support for ```vision```, ```text```, ```tabular```, [audio](https://github.com/fastaudio/fastaudio), [time-series](https://github.com/tcapelle/timeseries_fastai) and ```collab``` (collaborative filtering) models. 
-
-
+The fastai library simplifies training fast and accurate neural nets using
+modern best practices. See the
+[fastai website](https://henry090.github.io/fastai/) to get started. The library
+is based on research into deep learning best practices undertaken at `fast.ai`,
+and includes "out of the box" support for `vision`, `text`, `tabular`,
+[audio](https://github.com/fastaudio/fastaudio),
+[time-series](https://github.com/tcapelle/timeseries_fastai) and `collab`
+(collaborative filtering) models.
 
 <img src="files/fastai.png" width=200 align=right style="margin-left: 15px;" alt="fastai"/>
 
@@ -14,14 +20,14 @@ The fastai library simplifies training fast and accurate neural nets using moder
 
 ## Continuous Build Status
 
-| Build      | Status |
-| ---             | ---    |
-| **Xenial**   | ![ubuntu_16](https://github.com/henry090/fastai/workflows/ubuntu_16/badge.svg)|
-| **Bionic**   | ![ubuntu_18](https://github.com/henry090/fastai/workflows/ubuntu_18/badge.svg)|
-| **Focal**   | ![ubuntu_20](https://github.com/henry090/fastai/workflows/ubuntu_20/badge.svg)|
-| **Mac OS**   | ![mac_os](https://github.com/henry090/fastai/workflows/mac_os/badge.svg) |
-| **Windows**   | ![windows](https://github.com/henry090/fastai/workflows/windows/badge.svg)|
-| **Documentation**   | ![docs](https://github.com/henry090/fastai/workflows/docs/badge.svg)|
+| Build             | Status                                                                         |
+| ----------------- | ------------------------------------------------------------------------------ |
+| **Xenial**        | ![ubuntu_16](https://github.com/henry090/fastai/workflows/ubuntu_16/badge.svg) |
+| **Bionic**        | ![ubuntu_18](https://github.com/henry090/fastai/workflows/ubuntu_18/badge.svg) |
+| **Focal**         | ![ubuntu_20](https://github.com/henry090/fastai/workflows/ubuntu_20/badge.svg) |
+| **Mac OS**        | ![mac_os](https://github.com/henry090/fastai/workflows/mac_os/badge.svg)       |
+| **Windows**       | ![windows](https://github.com/henry090/fastai/workflows/windows/badge.svg)     |
+| **Documentation** | ![docs](https://github.com/henry090/fastai/workflows/docs/badge.svg)           |
 
 ## Installation
 
@@ -30,27 +36,26 @@ Requirements:
 - Python >= 3.6
 - CPU or GPU
 
-__1. Install miniconda and activate environment:__
-
+**1. Install miniconda and activate environment:**
 
 ```
 reticulate::install_miniconda()
 reticulate::py_config()
 ```
 
-__2. The dev version:__
+**2. The dev version:**
 
 ```
 devtools::install_github('henry090/fastai')
 ```
 
-__3. Later, you need to install the python module ```fastai```:__
+**3. Later, you need to install the python module `fastai`:**
 
 ```
 install_fastai(gpu = FALSE, cuda_version = '10.1', overwrite = FALSE)
 ```
 
-__4. Restart RStudio!__
+**4. Restart RStudio!**
 
 > Note: for GPU version, ensure this is run before reticulate is loaded:
 
@@ -88,8 +93,8 @@ procs = list(FillMissing(),Categorify(),Normalize())
 Prepare:
 
 ```
-dls = TabularDataTable(df, procs, cat_names, cont_names, 
-      y_names = dep_var, splits = list(c(1:32000),c(32001:32561))) %>% 
+dls = TabularDataTable(df, procs, cat_names, cont_names,
+      y_names = dep_var, splits = list(c(1:32000),c(32001:32561))) %>%
       dataloaders(bs = 64)
 ```
 
@@ -103,39 +108,39 @@ model %>% summary()
 ```
 TabularModel (Input shape: ['64 x 7', '64 x 3'])
 ================================================================
-Layer (type)         Output Shape         Param #    Trainable 
+Layer (type)         Output Shape         Param #    Trainable
 ================================================================
-Embedding            64 x 6               60         True      
+Embedding            64 x 6               60         True
 ________________________________________________________________
-Embedding            64 x 8               136        True      
+Embedding            64 x 8               136        True
 ________________________________________________________________
-Embedding            64 x 5               40         True      
+Embedding            64 x 5               40         True
 ________________________________________________________________
-Embedding            64 x 8               136        True      
+Embedding            64 x 8               136        True
 ________________________________________________________________
-Embedding            64 x 5               35         True      
+Embedding            64 x 5               35         True
 ________________________________________________________________
-Embedding            64 x 4               24         True      
+Embedding            64 x 4               24         True
 ________________________________________________________________
-Embedding            64 x 3               9          True      
+Embedding            64 x 3               9          True
 ________________________________________________________________
-Dropout              64 x 39              0          False     
+Dropout              64 x 39              0          False
 ________________________________________________________________
-BatchNorm1d          64 x 3               6          True      
+BatchNorm1d          64 x 3               6          True
 ________________________________________________________________
-BatchNorm1d          64 x 42              84         True      
+BatchNorm1d          64 x 42              84         True
 ________________________________________________________________
-Linear               64 x 200             8,400      True      
+Linear               64 x 200             8,400      True
 ________________________________________________________________
-ReLU                 64 x 200             0          False     
+ReLU                 64 x 200             0          False
 ________________________________________________________________
-BatchNorm1d          64 x 200             400        True      
+BatchNorm1d          64 x 200             400        True
 ________________________________________________________________
-Linear               64 x 100             20,000     True      
+Linear               64 x 100             20,000     True
 ________________________________________________________________
-ReLU                 64 x 100             0          False     
+ReLU                 64 x 100             0          False
 ________________________________________________________________
-Linear               64 x 2               202        True      
+Linear               64 x 2               202        True
 ________________________________________________________________
 
 Total params: 29,532
@@ -168,12 +173,12 @@ model %>% fit(5, lr = 10^-1)
 ```
 
 ```
-epoch     train_loss  valid_loss  accuracy  time    
-0         0.360149    0.329587    0.846702  00:04     
-1         0.352106    0.345761    0.828877  00:04     
-2         0.368743    0.340913    0.844920  00:05     
-3         0.347277    0.333084    0.852050  00:04     
-4         0.348969    0.350707    0.830660  00:04 
+epoch     train_loss  valid_loss  accuracy  time
+0         0.360149    0.329587    0.846702  00:04
+1         0.352106    0.345761    0.828877  00:04
+2         0.368743    0.340913    0.844920  00:05
+3         0.347277    0.333084    0.852050  00:04
+4         0.348969    0.350707    0.830660  00:04
 ```
 
 See training process:
@@ -189,7 +194,6 @@ model %>% plot_loss(dpi = 200)
 ```
 
 <img src="files/plot_loss.png" height=500 align=center alt="lr"/>
-
 
 Get confusion matrix:
 
@@ -227,7 +231,10 @@ Get predictions on new data:
 6 0.5111378 0.4888622       0
 ```
 
-Fastinference by [Zachary Mueller](https://github.com/muellerzr/fastinference) has ShapInterpretation function that allows to utilize various methods within the SHAP interpretation library. Currently ```summary_plot```, ```dependence_plot```, ```waterfall_plot```, ```force_plot```, and ```decision_plot``` are supported.
+Fastinference by [Zachary Mueller](https://github.com/muellerzr/fastinference)
+has ShapInterpretation function that allows to utilize various methods within
+the SHAP interpretation library. Currently `summary_plot`, `dependence_plot`,
+`waterfall_plot`, `force_plot`, and `decision_plot` are supported.
 
 First, get explanation object:
 
@@ -245,7 +252,6 @@ exp %>% decision_plot(class_id = 1, row_idx = 2)
 <center>
 <img src="files/shap1.png" height=500 align=center alt="Shap"/>
 </center>
-
 
 Dependence plot:
 
@@ -364,7 +370,6 @@ hchart(conf, label = TRUE) %>%
 
 > Note that the plot is built with highcharter.
 
-
 Plot top losses:
 
 ```
@@ -389,19 +394,22 @@ bs = 20
 #load into memory
 data = ImageDataLoaders_from_folder(path, batch_tfms = tfms, size = 26, bs = bs)
 
-# Visualize and train 
+# Visualize and train
 data %>% show_batch(dpi = 150)
-               
+
 learn = cnn_learner(data, resnet18(), metrics = accuracy)
 learn %>% fit(2)
 ```
 
 <img src="files/mnist.png" height=500 align=center alt="Mnist"/>
 
+**What about the implementation of the latest
+[Computer Vision models](https://github.com/rwightman/pytorch-image-models)?**
 
-__What about the implementation of the latest [Computer Vision models](https://github.com/rwightman/pytorch-image-models)?__
-
-There is a function in fastai ```timm_learner``` which originally written by [Zachary Mueller](https://github.com/walkwithfastai/walkwithfastai.github.io/blob/master/02_vision.external.timm.ipynb). It helps to quickly load the pretrained models from [timm library](https://github.com/rwightman/pytorch-image-models).
+There is a function in fastai `timm_learner` which originally written by
+[Zachary Mueller](https://github.com/walkwithfastai/walkwithfastai.github.io/blob/master/02_vision.external.timm.ipynb).
+It helps to quickly load the pretrained models from
+[timm library](https://github.com/rwightman/pytorch-image-models).
 
 First, lets's see the list of available models (TOP 10):
 
@@ -455,295 +463,295 @@ learn %>% summary()
 ```
 Sequential (Input shape: ['10 x 3 x 224 x 224'])
 ================================================================
-Layer (type)         Output Shape         Param #    Trainable 
+Layer (type)         Output Shape         Param #    Trainable
 ================================================================
-Conv2d               10 x 32 x 224 x 224  864        False     
+Conv2d               10 x 32 x 224 x 224  864        False
 ________________________________________________________________
-LeakyReLU            10 x 32 x 224 x 224  0          False     
+LeakyReLU            10 x 32 x 224 x 224  0          False
 ________________________________________________________________
-Conv2d               10 x 64 x 112 x 112  18,432     False     
+Conv2d               10 x 64 x 112 x 112  18,432     False
 ________________________________________________________________
-LeakyReLU            10 x 64 x 112 x 112  0          False     
+LeakyReLU            10 x 64 x 112 x 112  0          False
 ________________________________________________________________
-Conv2d               10 x 128 x 112 x 11  8,192      False     
+Conv2d               10 x 128 x 112 x 11  8,192      False
 ________________________________________________________________
-LeakyReLU            10 x 128 x 112 x 11  0          False     
+LeakyReLU            10 x 128 x 112 x 11  0          False
 ________________________________________________________________
-Conv2d               10 x 32 x 112 x 112  2,048      False     
+Conv2d               10 x 32 x 112 x 112  2,048      False
 ________________________________________________________________
-LeakyReLU            10 x 32 x 112 x 112  0          False     
+LeakyReLU            10 x 32 x 112 x 112  0          False
 ________________________________________________________________
-Conv2d               10 x 64 x 112 x 112  18,432     False     
+Conv2d               10 x 64 x 112 x 112  18,432     False
 ________________________________________________________________
-LeakyReLU            10 x 64 x 112 x 112  0          False     
+LeakyReLU            10 x 64 x 112 x 112  0          False
 ________________________________________________________________
-Conv2d               10 x 64 x 112 x 112  4,096      False     
+Conv2d               10 x 64 x 112 x 112  4,096      False
 ________________________________________________________________
-LeakyReLU            10 x 64 x 112 x 112  0          False     
+LeakyReLU            10 x 64 x 112 x 112  0          False
 ________________________________________________________________
-Conv2d               10 x 64 x 112 x 112  8,192      False     
+Conv2d               10 x 64 x 112 x 112  8,192      False
 ________________________________________________________________
-LeakyReLU            10 x 64 x 112 x 112  0          False     
+LeakyReLU            10 x 64 x 112 x 112  0          False
 ________________________________________________________________
-Conv2d               10 x 128 x 56 x 56   73,728     False     
+Conv2d               10 x 128 x 56 x 56   73,728     False
 ________________________________________________________________
-LeakyReLU            10 x 128 x 56 x 56   0          False     
+LeakyReLU            10 x 128 x 56 x 56   0          False
 ________________________________________________________________
-Conv2d               10 x 128 x 56 x 56   16,384     False     
+Conv2d               10 x 128 x 56 x 56   16,384     False
 ________________________________________________________________
-LeakyReLU            10 x 128 x 56 x 56   0          False     
+LeakyReLU            10 x 128 x 56 x 56   0          False
 ________________________________________________________________
-Conv2d               10 x 64 x 56 x 56    4,096      False     
+Conv2d               10 x 64 x 56 x 56    4,096      False
 ________________________________________________________________
-LeakyReLU            10 x 64 x 56 x 56    0          False     
+LeakyReLU            10 x 64 x 56 x 56    0          False
 ________________________________________________________________
-Conv2d               10 x 64 x 56 x 56    36,864     False     
+Conv2d               10 x 64 x 56 x 56    36,864     False
 ________________________________________________________________
-LeakyReLU            10 x 64 x 56 x 56    0          False     
+LeakyReLU            10 x 64 x 56 x 56    0          False
 ________________________________________________________________
-Conv2d               10 x 64 x 56 x 56    4,096      False     
+Conv2d               10 x 64 x 56 x 56    4,096      False
 ________________________________________________________________
-LeakyReLU            10 x 64 x 56 x 56    0          False     
+LeakyReLU            10 x 64 x 56 x 56    0          False
 ________________________________________________________________
-Conv2d               10 x 64 x 56 x 56    36,864     False     
+Conv2d               10 x 64 x 56 x 56    36,864     False
 ________________________________________________________________
-LeakyReLU            10 x 64 x 56 x 56    0          False     
+LeakyReLU            10 x 64 x 56 x 56    0          False
 ________________________________________________________________
-Conv2d               10 x 64 x 56 x 56    4,096      False     
+Conv2d               10 x 64 x 56 x 56    4,096      False
 ________________________________________________________________
-LeakyReLU            10 x 64 x 56 x 56    0          False     
+LeakyReLU            10 x 64 x 56 x 56    0          False
 ________________________________________________________________
-Conv2d               10 x 128 x 56 x 56   16,384     False     
+Conv2d               10 x 128 x 56 x 56   16,384     False
 ________________________________________________________________
-LeakyReLU            10 x 128 x 56 x 56   0          False     
+LeakyReLU            10 x 128 x 56 x 56   0          False
 ________________________________________________________________
-Conv2d               10 x 256 x 28 x 28   294,912    False     
+Conv2d               10 x 256 x 28 x 28   294,912    False
 ________________________________________________________________
-LeakyReLU            10 x 256 x 28 x 28   0          False     
+LeakyReLU            10 x 256 x 28 x 28   0          False
 ________________________________________________________________
-Conv2d               10 x 256 x 28 x 28   65,536     False     
+Conv2d               10 x 256 x 28 x 28   65,536     False
 ________________________________________________________________
-LeakyReLU            10 x 256 x 28 x 28   0          False     
+LeakyReLU            10 x 256 x 28 x 28   0          False
 ________________________________________________________________
-Conv2d               10 x 128 x 28 x 28   16,384     False     
+Conv2d               10 x 128 x 28 x 28   16,384     False
 ________________________________________________________________
-LeakyReLU            10 x 128 x 28 x 28   0          False     
+LeakyReLU            10 x 128 x 28 x 28   0          False
 ________________________________________________________________
-Conv2d               10 x 128 x 28 x 28   147,456    False     
+Conv2d               10 x 128 x 28 x 28   147,456    False
 ________________________________________________________________
-LeakyReLU            10 x 128 x 28 x 28   0          False     
+LeakyReLU            10 x 128 x 28 x 28   0          False
 ________________________________________________________________
-Conv2d               10 x 128 x 28 x 28   16,384     False     
+Conv2d               10 x 128 x 28 x 28   16,384     False
 ________________________________________________________________
-LeakyReLU            10 x 128 x 28 x 28   0          False     
+LeakyReLU            10 x 128 x 28 x 28   0          False
 ________________________________________________________________
-Conv2d               10 x 128 x 28 x 28   147,456    False     
+Conv2d               10 x 128 x 28 x 28   147,456    False
 ________________________________________________________________
-LeakyReLU            10 x 128 x 28 x 28   0          False     
+LeakyReLU            10 x 128 x 28 x 28   0          False
 ________________________________________________________________
-Conv2d               10 x 128 x 28 x 28   16,384     False     
+Conv2d               10 x 128 x 28 x 28   16,384     False
 ________________________________________________________________
-LeakyReLU            10 x 128 x 28 x 28   0          False     
+LeakyReLU            10 x 128 x 28 x 28   0          False
 ________________________________________________________________
-Conv2d               10 x 128 x 28 x 28   147,456    False     
+Conv2d               10 x 128 x 28 x 28   147,456    False
 ________________________________________________________________
-LeakyReLU            10 x 128 x 28 x 28   0          False     
+LeakyReLU            10 x 128 x 28 x 28   0          False
 ________________________________________________________________
-Conv2d               10 x 128 x 28 x 28   16,384     False     
+Conv2d               10 x 128 x 28 x 28   16,384     False
 ________________________________________________________________
-LeakyReLU            10 x 128 x 28 x 28   0          False     
+LeakyReLU            10 x 128 x 28 x 28   0          False
 ________________________________________________________________
-Conv2d               10 x 128 x 28 x 28   147,456    False     
+Conv2d               10 x 128 x 28 x 28   147,456    False
 ________________________________________________________________
-LeakyReLU            10 x 128 x 28 x 28   0          False     
+LeakyReLU            10 x 128 x 28 x 28   0          False
 ________________________________________________________________
-Conv2d               10 x 128 x 28 x 28   16,384     False     
+Conv2d               10 x 128 x 28 x 28   16,384     False
 ________________________________________________________________
-LeakyReLU            10 x 128 x 28 x 28   0          False     
+LeakyReLU            10 x 128 x 28 x 28   0          False
 ________________________________________________________________
-Conv2d               10 x 128 x 28 x 28   147,456    False     
+Conv2d               10 x 128 x 28 x 28   147,456    False
 ________________________________________________________________
-LeakyReLU            10 x 128 x 28 x 28   0          False     
+LeakyReLU            10 x 128 x 28 x 28   0          False
 ________________________________________________________________
-Conv2d               10 x 128 x 28 x 28   16,384     False     
+Conv2d               10 x 128 x 28 x 28   16,384     False
 ________________________________________________________________
-LeakyReLU            10 x 128 x 28 x 28   0          False     
+LeakyReLU            10 x 128 x 28 x 28   0          False
 ________________________________________________________________
-Conv2d               10 x 128 x 28 x 28   147,456    False     
+Conv2d               10 x 128 x 28 x 28   147,456    False
 ________________________________________________________________
-LeakyReLU            10 x 128 x 28 x 28   0          False     
+LeakyReLU            10 x 128 x 28 x 28   0          False
 ________________________________________________________________
-Conv2d               10 x 128 x 28 x 28   16,384     False     
+Conv2d               10 x 128 x 28 x 28   16,384     False
 ________________________________________________________________
-LeakyReLU            10 x 128 x 28 x 28   0          False     
+LeakyReLU            10 x 128 x 28 x 28   0          False
 ________________________________________________________________
-Conv2d               10 x 128 x 28 x 28   147,456    False     
+Conv2d               10 x 128 x 28 x 28   147,456    False
 ________________________________________________________________
-LeakyReLU            10 x 128 x 28 x 28   0          False     
+LeakyReLU            10 x 128 x 28 x 28   0          False
 ________________________________________________________________
-Conv2d               10 x 128 x 28 x 28   16,384     False     
+Conv2d               10 x 128 x 28 x 28   16,384     False
 ________________________________________________________________
-LeakyReLU            10 x 128 x 28 x 28   0          False     
+LeakyReLU            10 x 128 x 28 x 28   0          False
 ________________________________________________________________
-Conv2d               10 x 128 x 28 x 28   147,456    False     
+Conv2d               10 x 128 x 28 x 28   147,456    False
 ________________________________________________________________
-LeakyReLU            10 x 128 x 28 x 28   0          False     
+LeakyReLU            10 x 128 x 28 x 28   0          False
 ________________________________________________________________
-Conv2d               10 x 128 x 28 x 28   16,384     False     
+Conv2d               10 x 128 x 28 x 28   16,384     False
 ________________________________________________________________
-LeakyReLU            10 x 128 x 28 x 28   0          False     
+LeakyReLU            10 x 128 x 28 x 28   0          False
 ________________________________________________________________
-Conv2d               10 x 256 x 28 x 28   65,536     False     
+Conv2d               10 x 256 x 28 x 28   65,536     False
 ________________________________________________________________
-LeakyReLU            10 x 256 x 28 x 28   0          False     
+LeakyReLU            10 x 256 x 28 x 28   0          False
 ________________________________________________________________
-Conv2d               10 x 512 x 14 x 14   1,179,648  False     
+Conv2d               10 x 512 x 14 x 14   1,179,648  False
 ________________________________________________________________
-LeakyReLU            10 x 512 x 14 x 14   0          False     
+LeakyReLU            10 x 512 x 14 x 14   0          False
 ________________________________________________________________
-Conv2d               10 x 512 x 14 x 14   262,144    False     
+Conv2d               10 x 512 x 14 x 14   262,144    False
 ________________________________________________________________
-LeakyReLU            10 x 512 x 14 x 14   0          False     
+LeakyReLU            10 x 512 x 14 x 14   0          False
 ________________________________________________________________
-Conv2d               10 x 256 x 14 x 14   65,536     False     
+Conv2d               10 x 256 x 14 x 14   65,536     False
 ________________________________________________________________
-LeakyReLU            10 x 256 x 14 x 14   0          False     
+LeakyReLU            10 x 256 x 14 x 14   0          False
 ________________________________________________________________
-Conv2d               10 x 256 x 14 x 14   589,824    False     
+Conv2d               10 x 256 x 14 x 14   589,824    False
 ________________________________________________________________
-LeakyReLU            10 x 256 x 14 x 14   0          False     
+LeakyReLU            10 x 256 x 14 x 14   0          False
 ________________________________________________________________
-Conv2d               10 x 256 x 14 x 14   65,536     False     
+Conv2d               10 x 256 x 14 x 14   65,536     False
 ________________________________________________________________
-LeakyReLU            10 x 256 x 14 x 14   0          False     
+LeakyReLU            10 x 256 x 14 x 14   0          False
 ________________________________________________________________
-Conv2d               10 x 256 x 14 x 14   589,824    False     
+Conv2d               10 x 256 x 14 x 14   589,824    False
 ________________________________________________________________
-LeakyReLU            10 x 256 x 14 x 14   0          False     
+LeakyReLU            10 x 256 x 14 x 14   0          False
 ________________________________________________________________
-Conv2d               10 x 256 x 14 x 14   65,536     False     
+Conv2d               10 x 256 x 14 x 14   65,536     False
 ________________________________________________________________
-LeakyReLU            10 x 256 x 14 x 14   0          False     
+LeakyReLU            10 x 256 x 14 x 14   0          False
 ________________________________________________________________
-Conv2d               10 x 256 x 14 x 14   589,824    False     
+Conv2d               10 x 256 x 14 x 14   589,824    False
 ________________________________________________________________
-LeakyReLU            10 x 256 x 14 x 14   0          False     
+LeakyReLU            10 x 256 x 14 x 14   0          False
 ________________________________________________________________
-Conv2d               10 x 256 x 14 x 14   65,536     False     
+Conv2d               10 x 256 x 14 x 14   65,536     False
 ________________________________________________________________
-LeakyReLU            10 x 256 x 14 x 14   0          False     
+LeakyReLU            10 x 256 x 14 x 14   0          False
 ________________________________________________________________
-Conv2d               10 x 256 x 14 x 14   589,824    False     
+Conv2d               10 x 256 x 14 x 14   589,824    False
 ________________________________________________________________
-LeakyReLU            10 x 256 x 14 x 14   0          False     
+LeakyReLU            10 x 256 x 14 x 14   0          False
 ________________________________________________________________
-Conv2d               10 x 256 x 14 x 14   65,536     False     
+Conv2d               10 x 256 x 14 x 14   65,536     False
 ________________________________________________________________
-LeakyReLU            10 x 256 x 14 x 14   0          False     
+LeakyReLU            10 x 256 x 14 x 14   0          False
 ________________________________________________________________
-Conv2d               10 x 256 x 14 x 14   589,824    False     
+Conv2d               10 x 256 x 14 x 14   589,824    False
 ________________________________________________________________
-LeakyReLU            10 x 256 x 14 x 14   0          False     
+LeakyReLU            10 x 256 x 14 x 14   0          False
 ________________________________________________________________
-Conv2d               10 x 256 x 14 x 14   65,536     False     
+Conv2d               10 x 256 x 14 x 14   65,536     False
 ________________________________________________________________
-LeakyReLU            10 x 256 x 14 x 14   0          False     
+LeakyReLU            10 x 256 x 14 x 14   0          False
 ________________________________________________________________
-Conv2d               10 x 256 x 14 x 14   589,824    False     
+Conv2d               10 x 256 x 14 x 14   589,824    False
 ________________________________________________________________
-LeakyReLU            10 x 256 x 14 x 14   0          False     
+LeakyReLU            10 x 256 x 14 x 14   0          False
 ________________________________________________________________
-Conv2d               10 x 256 x 14 x 14   65,536     False     
+Conv2d               10 x 256 x 14 x 14   65,536     False
 ________________________________________________________________
-LeakyReLU            10 x 256 x 14 x 14   0          False     
+LeakyReLU            10 x 256 x 14 x 14   0          False
 ________________________________________________________________
-Conv2d               10 x 256 x 14 x 14   589,824    False     
+Conv2d               10 x 256 x 14 x 14   589,824    False
 ________________________________________________________________
-LeakyReLU            10 x 256 x 14 x 14   0          False     
+LeakyReLU            10 x 256 x 14 x 14   0          False
 ________________________________________________________________
-Conv2d               10 x 256 x 14 x 14   65,536     False     
+Conv2d               10 x 256 x 14 x 14   65,536     False
 ________________________________________________________________
-LeakyReLU            10 x 256 x 14 x 14   0          False     
+LeakyReLU            10 x 256 x 14 x 14   0          False
 ________________________________________________________________
-Conv2d               10 x 256 x 14 x 14   589,824    False     
+Conv2d               10 x 256 x 14 x 14   589,824    False
 ________________________________________________________________
-LeakyReLU            10 x 256 x 14 x 14   0          False     
+LeakyReLU            10 x 256 x 14 x 14   0          False
 ________________________________________________________________
-Conv2d               10 x 256 x 14 x 14   65,536     False     
+Conv2d               10 x 256 x 14 x 14   65,536     False
 ________________________________________________________________
-LeakyReLU            10 x 256 x 14 x 14   0          False     
+LeakyReLU            10 x 256 x 14 x 14   0          False
 ________________________________________________________________
-Conv2d               10 x 512 x 14 x 14   262,144    False     
+Conv2d               10 x 512 x 14 x 14   262,144    False
 ________________________________________________________________
-LeakyReLU            10 x 512 x 14 x 14   0          False     
+LeakyReLU            10 x 512 x 14 x 14   0          False
 ________________________________________________________________
-Conv2d               10 x 1024 x 7 x 7    4,718,592  False     
+Conv2d               10 x 1024 x 7 x 7    4,718,592  False
 ________________________________________________________________
-LeakyReLU            10 x 1024 x 7 x 7    0          False     
+LeakyReLU            10 x 1024 x 7 x 7    0          False
 ________________________________________________________________
-Conv2d               10 x 1024 x 7 x 7    1,048,576  False     
+Conv2d               10 x 1024 x 7 x 7    1,048,576  False
 ________________________________________________________________
-LeakyReLU            10 x 1024 x 7 x 7    0          False     
+LeakyReLU            10 x 1024 x 7 x 7    0          False
 ________________________________________________________________
-Conv2d               10 x 512 x 7 x 7     262,144    False     
+Conv2d               10 x 512 x 7 x 7     262,144    False
 ________________________________________________________________
-LeakyReLU            10 x 512 x 7 x 7     0          False     
+LeakyReLU            10 x 512 x 7 x 7     0          False
 ________________________________________________________________
-Conv2d               10 x 512 x 7 x 7     2,359,296  False     
+Conv2d               10 x 512 x 7 x 7     2,359,296  False
 ________________________________________________________________
-LeakyReLU            10 x 512 x 7 x 7     0          False     
+LeakyReLU            10 x 512 x 7 x 7     0          False
 ________________________________________________________________
-Conv2d               10 x 512 x 7 x 7     262,144    False     
+Conv2d               10 x 512 x 7 x 7     262,144    False
 ________________________________________________________________
-LeakyReLU            10 x 512 x 7 x 7     0          False     
+LeakyReLU            10 x 512 x 7 x 7     0          False
 ________________________________________________________________
-Conv2d               10 x 512 x 7 x 7     2,359,296  False     
+Conv2d               10 x 512 x 7 x 7     2,359,296  False
 ________________________________________________________________
-LeakyReLU            10 x 512 x 7 x 7     0          False     
+LeakyReLU            10 x 512 x 7 x 7     0          False
 ________________________________________________________________
-Conv2d               10 x 512 x 7 x 7     262,144    False     
+Conv2d               10 x 512 x 7 x 7     262,144    False
 ________________________________________________________________
-LeakyReLU            10 x 512 x 7 x 7     0          False     
+LeakyReLU            10 x 512 x 7 x 7     0          False
 ________________________________________________________________
-Conv2d               10 x 512 x 7 x 7     2,359,296  False     
+Conv2d               10 x 512 x 7 x 7     2,359,296  False
 ________________________________________________________________
-LeakyReLU            10 x 512 x 7 x 7     0          False     
+LeakyReLU            10 x 512 x 7 x 7     0          False
 ________________________________________________________________
-Conv2d               10 x 512 x 7 x 7     262,144    False     
+Conv2d               10 x 512 x 7 x 7     262,144    False
 ________________________________________________________________
-LeakyReLU            10 x 512 x 7 x 7     0          False     
+LeakyReLU            10 x 512 x 7 x 7     0          False
 ________________________________________________________________
-Conv2d               10 x 512 x 7 x 7     2,359,296  False     
+Conv2d               10 x 512 x 7 x 7     2,359,296  False
 ________________________________________________________________
-LeakyReLU            10 x 512 x 7 x 7     0          False     
+LeakyReLU            10 x 512 x 7 x 7     0          False
 ________________________________________________________________
-Conv2d               10 x 512 x 7 x 7     262,144    False     
+Conv2d               10 x 512 x 7 x 7     262,144    False
 ________________________________________________________________
-LeakyReLU            10 x 512 x 7 x 7     0          False     
+LeakyReLU            10 x 512 x 7 x 7     0          False
 ________________________________________________________________
-Conv2d               10 x 1024 x 7 x 7    1,048,576  False     
+Conv2d               10 x 1024 x 7 x 7    1,048,576  False
 ________________________________________________________________
-LeakyReLU            10 x 1024 x 7 x 7    0          False     
+LeakyReLU            10 x 1024 x 7 x 7    0          False
 ________________________________________________________________
-AdaptiveAvgPool2d    10 x 1024 x 1 x 1    0          False     
+AdaptiveAvgPool2d    10 x 1024 x 1 x 1    0          False
 ________________________________________________________________
-AdaptiveMaxPool2d    10 x 1024 x 1 x 1    0          False     
+AdaptiveMaxPool2d    10 x 1024 x 1 x 1    0          False
 ________________________________________________________________
-Flatten              10 x 2048            0          False     
+Flatten              10 x 2048            0          False
 ________________________________________________________________
-BatchNorm1d          10 x 2048            4,096      True      
+BatchNorm1d          10 x 2048            4,096      True
 ________________________________________________________________
-Dropout              10 x 2048            0          False     
+Dropout              10 x 2048            0          False
 ________________________________________________________________
-Linear               10 x 512             1,048,576  True      
+Linear               10 x 512             1,048,576  True
 ________________________________________________________________
-ReLU                 10 x 512             0          False     
+ReLU                 10 x 512             0          False
 ________________________________________________________________
-BatchNorm1d          10 x 512             1,024      True      
+BatchNorm1d          10 x 512             1,024      True
 ________________________________________________________________
-Dropout              10 x 512             0          False     
+Dropout              10 x 512             0          False
 ________________________________________________________________
-Linear               10 x 37              18,944     True      
+Linear               10 x 37              18,944     True
 ________________________________________________________________
 
 Total params: 27,654,496
@@ -760,6 +768,7 @@ Callbacks:
   - Recorder
   - ProgressCallback
 ```
+
 </p>
 </details>
 
@@ -786,10 +795,7 @@ learn %>% show_results()
 
 Impressive!
 
-
 <img src="files/darknet.png" height=500 align=center alt="Mnist"/>
-
-
 
 ### GAN example
 
@@ -800,6 +806,7 @@ URLs_LSUN_BEDROOMS()
 
 path = 'bedroom'
 ```
+
 Dataloader function:
 
 ```
@@ -842,8 +849,8 @@ learn %>% fit(1, 2e-4, wd = 0)
 ```
 
 ```
-epoch     train_loss  gen_loss  crit_loss  time    
-0         -0.555554   0.516327  -0.967604  05:06 
+epoch     train_loss  gen_loss  crit_loss  time
+0         -0.555554   0.516327  -0.967604  05:06
 ```
 
 This is the result for 1 epoch.
@@ -860,7 +867,8 @@ learn %>% show_results(max_n = 16, figsize = c(8,8), ds_idx=0)
 
 ## CycleGAN
 
-CycleGAN package by [Tanishq Abraham](https://github.com/tmabraham/UPIT) makes building and training a CycleGAN model very easy
+CycleGAN package by [Tanishq Abraham](https://github.com/tmabraham/UPIT) makes
+building and training a CycleGAN model very easy
 
 Get data:
 
@@ -897,15 +905,15 @@ learn %>% fit_flat_lin(4,4,2e-4)
 ```
 
 ```
-epoch   train_loss   id_loss_A   id_loss_B   gen_loss_A   gen_loss_B   cyc_loss_A   cyc_loss_B   D_A_loss   D_B_loss   time 
+epoch   train_loss   id_loss_A   id_loss_B   gen_loss_A   gen_loss_B   cyc_loss_A   cyc_loss_B   D_A_loss   D_B_loss   time
 ------  -----------  ----------  ----------  -----------  -----------  -----------  -----------  ---------  ---------  -----
-0       10.500859    1.551905    1.678394    0.375322     0.385088     3.266770     3.509404     0.367762   0.367762   00:19 
-1       9.547493     1.267837    1.453950    0.301558     0.298583     2.698074     3.106223     0.253554   0.253554   00:19 
-2       8.938786     1.234537    1.250279    0.328651     0.328309     2.618085     2.713281     0.237375   0.237375   00:19 
-3       8.391484     1.066745    1.227453    0.327970     0.336748     2.285323     2.669749     0.240033   0.240033   00:19 
-4       7.642654     0.941413    1.057014    0.327448     0.350729     1.980680     2.274255     0.246695   0.246695   00:19 
-5       7.478543     0.966484    1.111054    0.291666     0.384912     2.119692     2.446879     0.251393   0.251393   00:18 
-6       7.190168     0.961237    1.034505    0.315916     0.397697     1.990408     2.182239     0.222851   0.222851   00:19 
+0       10.500859    1.551905    1.678394    0.375322     0.385088     3.266770     3.509404     0.367762   0.367762   00:19
+1       9.547493     1.267837    1.453950    0.301558     0.298583     2.698074     3.106223     0.253554   0.253554   00:19
+2       8.938786     1.234537    1.250279    0.328651     0.328309     2.618085     2.713281     0.237375   0.237375   00:19
+3       8.391484     1.066745    1.227453    0.327970     0.336748     2.285323     2.669749     0.240033   0.240033   00:19
+4       7.642654     0.941413    1.057014    0.327448     0.350729     1.980680     2.274255     0.246695   0.246695   00:19
+5       7.478543     0.966484    1.111054    0.291666     0.384912     2.119692     2.446879     0.251393   0.251393   00:18
+6       7.190168     0.961237    1.034505    0.315916     0.397697     1.990408     2.182239     0.222851   0.222851   00:19
 7       6.902316     0.891176    1.001932    0.343578     0.386471     1.848317     2.137690     0.215832   0.215832   00:19
 ```
 
@@ -916,6 +924,7 @@ learn %>% get_preds_cyclegan(testA_path, './h2z-preds')
 
 learn %>% show_results()
 ```
+
 <center>
 
 <img src="files/cycleGAN.png" height=600 align=center alt="Mnist"/>
@@ -1027,7 +1036,7 @@ Custom accuracy function:
 
 ```
 acc_camvid <- function(input, target) {
- # exclude/filter void label 
+ # exclude/filter void label
   mask = target != void_code
   return(
     (input$argmax(dim=1L)[mask] == target[mask]) %>%
@@ -1383,7 +1392,7 @@ Filter Void class:
 mask = target != void_code
 ```
 
-```31``` will be filtered as ```False```:
+`31` will be filtered as `False`:
 
 ```
 TensorMask([[[True, True, True,  ..., True, True, True],
@@ -1444,7 +1453,7 @@ tensor([False, False, False,  ..., False, False, False], device='cuda:0')
 
 ```
 > (input$argmax(dim=1L)[mask] == target[mask]) %>%
-              float() 
+              float()
 tensor([0., 0., 0.,  ..., 0., 0., 0.], device='cuda:0')
 ```
 
@@ -1453,9 +1462,9 @@ tensor([0., 0., 0.,  ..., 0., 0., 0.], device='cuda:0')
               float() %>% mean()
 tensor(0.0011, device='cuda:0')
 ```
+
 </p>
 </details>
-
 
 Resnet34 model architecture for unet:
 
@@ -1473,9 +1482,9 @@ learn %>% fit_one_cycle(2, lr, pct_start = 0.9, wd = wd)
 ```
 
 ```
-epoch     train_loss  valid_loss  acc_camvid  time    
-0         1.367869    1.239496    0.666145    00:25     
-1         0.929434    0.661407    0.839969    00:23 
+epoch     train_loss  valid_loss  acc_camvid  time
+0         1.367869    1.239496    0.666145    00:25
+1         0.929434    0.661407    0.839969    00:23
 ```
 
 ```
@@ -1559,7 +1568,7 @@ mean_ratings = unique(rating_movie[ , .(mean = mean(rating)), by = title])
    3:                         Four Rooms (1995) 3.033333
    4:                         Get Shorty (1995) 3.550239
    5:                            Copycat (1995) 3.302326
-  ---                                                   
+  ---
 1660:                      Sweet Nothing (1995) 3.000000
 1661:                         Mat' i syn (1997) 1.000000
 1662:                          B. Monkey (1998) 3.000000
@@ -1574,7 +1583,7 @@ movie_bias = learn %>% get_bias(top_movies, is_item = TRUE)
 
 result = data.table(bias = movie_bias,
            title = top_movies)
-           
+
 res = merge(result, mean_ratings, all.y = FALSE)
 
 res[order(bias, decreasing = TRUE)]
@@ -1587,7 +1596,7 @@ res[order(bias, decreasing = TRUE)]
    3:                      Godfather, The (1972)  0.23247446 4.283293
    4:           Silence of the Lambs, The (1991)  0.22765337 4.289744
    5:                             Titanic (1997)  0.22353025 4.245714
-  ---                                                                
+  ---
  996: Children of the Corn: The Gathering (1996) -0.05671900 1.315789
  997:                       Jungle2Jungle (1997) -0.05957306 2.439394
  998:                  Leave It to Beaver (1997) -0.06268980 1.840909
@@ -1630,7 +1639,7 @@ Create datablock and iterator:
 
 ```
 imdb_lm = DataBlock(blocks=list(TextBlock_from_folder(path, is_lm = TRUE)),
-                    get_items = partial(get_text_files(), 
+                    get_items = partial(get_text_files(),
                     folders = c('train', 'test', 'unsup')),
                     splitter = RandomSplitter(0.1))
 
@@ -1640,14 +1649,15 @@ dbunch_lm = imdb_lm %>% dataloaders(source = path, path = path, bs = bs, seq_len
 Load a pretrained model and fit:
 
 ```
-learn = language_model_learner(dbunch_lm, AWD_LSTM(), drop_mult = 0.3, 
+learn = language_model_learner(dbunch_lm, AWD_LSTM(), drop_mult = 0.3,
                                metrics = list(accuracy, Perplexity()))
 
 learn %>% fit_one_cycle(1, 2e-2, moms = c(0.8, 0.7, 0.8))
 ```
 
-
-> Note: [AWD_LSTM() can throw an error](https://github.com/fastai/fastai/issues/1439). In this case find and clean ".fastai" folder.
+> Note:
+> [AWD_LSTM() can throw an error](https://github.com/fastai/fastai/issues/1439).
+> In this case find and clean ".fastai" folder.
 
 ## Medical data
 
@@ -1657,7 +1667,8 @@ learn %>% fit_one_cycle(1, 2e-2, moms = c(0.8, 0.7, 0.8))
 img = dcmread('hemorrhage.dcm')
 ```
 
-Visualize data with different [windowing effects](https://radiopaedia.org/articles/windowing-ct):
+Visualize data with different
+[windowing effects](https://radiopaedia.org/articles/windowing-ct):
 
 ```
 scale = list(FALSE, TRUE, dicom_windows$brain, dicom_windows$subdural)
@@ -1667,8 +1678,8 @@ library(zeallot)
 c(fig, axs) %<-% subplots()
 
 for (i in 1:4) {
-  img %>% show(scale = scale[[i]], 
-               ax = axs[[i]], 
+  img %>% show(scale = scale[[i]],
+               ax = axs[[i]],
                title=titles[i])
 }
 
@@ -1778,7 +1789,7 @@ ggpubr::ggarrange(p_[[1]],
 Get optimal learning rate and then fit:
 
 ```
-data = model %>% lr_find() 
+data = model %>% lr_find()
 data
 
 # SuggestedLRs(lr_min=0.017378008365631102, lr_steep=0.0020892962347716093)
@@ -1876,7 +1887,6 @@ pnt_img %>% to_matrix() %>% nandb::matrix_raster_plot(colours = c('white','black
   theme(legend.position = "none")
 ```
 
-
 <p align="center">
 <img src="files/ggplot.png" height=500 align=center alt="Mnist_3"/>
 </p>
@@ -1938,7 +1948,7 @@ Alternatively, we could see batch via dataloader:
 idx = 3
 c(coco_fn,bbox) %<-% list(paste('coco_tiny/train',images[[idx]],sep = '/'),
                           lbl_bbox[[idx]])
-                          
+
 coco_bb = function(x) {
  TensorBBox_create(bbox[[1]])
 }
@@ -1947,17 +1957,17 @@ coco_lbl = function(x) {
   bbox[[2]]
 }
 
-coco_dsrc = Datasets(c(rep(coco_fn,10)), 
-                     list(Image_create(), list(coco_bb), 
+coco_dsrc = Datasets(c(rep(coco_fn,10)),
+                     list(Image_create(), list(coco_bb),
                      list( coco_lbl, MultiCategorize(add_na = TRUE) )
                           ), n_inp = 1)
 
-coco_tdl = TfmdDL(coco_dsrc, bs = 9, 
-                  after_item = list(BBoxLabeler(), PointScaler(), 
+coco_tdl = TfmdDL(coco_dsrc, bs = 9,
+                  after_item = list(BBoxLabeler(), PointScaler(),
                                  ToTensor()),
                   after_batch = list(IntToFloatTensor(), aug_transforms())
                   )
-                  
+
 coco_tdl %>% show_batch(dpi = 200)
 ```
 
@@ -1984,8 +1994,8 @@ Sequential(
 )
 ```
 
-To specify the name of the layers, one has to pass layer within lists, 
-because torch layers have no ```name``` argument:
+To specify the name of the layers, one has to pass layer within lists, because
+torch layers have no `name` argument:
 
 ```
 nn$Sequential() +
@@ -2006,15 +2016,17 @@ Sequential(
 
 ## Kaggle
 
-Kaggle API is fantastic because it simplifies all the necessary steps for participating in a competition!
-Using the API it is possible to directly download/submit files, check leader board and etc. 
-If you want to use this functionality, then it is important to place your ```kaggle.json``` to ```.kaggle``` folder:
+Kaggle API is fantastic because it simplifies all the necessary steps for
+participating in a competition! Using the API it is possible to directly
+download/submit files, check leader board and etc. If you want to use this
+functionality, then it is important to place your `kaggle.json` to `.kaggle`
+folder:
 
 <p align="center">
 <img src="files/kaggle.png" height=400 align=center alt="Annotation"/>
 </p>
 
-Let's participate in a ```Titanic``` competition:
+Let's participate in a `Titanic` competition:
 
 ```
 library(fastai)
@@ -2023,7 +2035,7 @@ library(magrittr)
 com_nm = 'titanic'
 
 titanic_files = competition_list_files(com_nm)
-titanic_files = lapply(1:length(titanic_files), 
+titanic_files = lapply(1:length(titanic_files),
                       function(x) as.character(titanic_files[[x]]))
 
 str(titanic_files)
@@ -2056,7 +2068,7 @@ Classes ‘data.table’ and 'data.frame':	595 obs. of  10 variables:
  $ Fare    : num  7.25 71.28 7.92 53.1 8.05 ...
  $ Cabin   : chr  "" "C85" "" "C123" ...
  $ Embarked: chr  "S" "C" "S" "S" ...
- - attr(*, ".internal.selfref")=<externalptr> 
+ - attr(*, ".internal.selfref")=<externalptr>
 ```
 
 Preprocess:
@@ -2139,15 +2151,14 @@ competition_submit(dest, 'sumbission from R!', competition = com_nm)
 Successfully submitted to Titanic: Machine Learning from Disaster
 ```
 
-Enter ```Kaggle.com``` and see if everything works fine:
-
+Enter `Kaggle.com` and see if everything works fine:
 
 <p align="center">
 <img src="files/result.png" height=400 align=center alt="Annotation"/>
 </p>
 
-
 ## Code of Conduct
-  
-Please note that the fastai project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
 
+Please note that the fastai project is released with a
+[Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
