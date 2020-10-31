@@ -142,7 +142,3 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   }
 
 }
-
-
-
-
