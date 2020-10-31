@@ -513,8 +513,10 @@ show_results <- function(object, ds_idx = 1, dl = NULL, max_n = 9, shuffle = TRU
 
   if(inherits(rr,'try-error')) {
     # predict
-    b = object$dls$train %>% one_batch()
-    preds = object$get_preds(dl=list(b), with_decoded=T) %>% .[[3]]
+    dls = object$dls
+    b = dls$train %>% one_batch()
+    preds = object$get_preds(dl=list(b), with_decoded=TRUE)
+    preds = preds[[3]]
 
     dls %>% show_batch(list(
       torch$stack(list(b[[1]][2],b[[1]][3]),0L)$cpu(),
