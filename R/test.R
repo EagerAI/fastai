@@ -562,10 +562,3 @@ partial <- function(...) {
   vision$gan$partial(...)
 
 }
-
-
-
-
-
-
-
