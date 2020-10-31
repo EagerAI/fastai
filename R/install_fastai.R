@@ -14,7 +14,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
                                           'catalyst', 'ignite', 'tensorboard', 'fastinference', 'shap')) {
 
   required_py_pkgs <- c('IPython', 'torch', 'torchvision', 'fastai',
-                       'pydicom', 'kornia', 'cv2', 'torchaudio',
+                       'pydicom', 'kornia', 'cv2',
                        'skimage')
 
   if(length(extra_pkgs) > 0) {
