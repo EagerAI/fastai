@@ -42,6 +42,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="pytorch_lightning", "pytorch-lightning")
   required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="ignite", "pytorch-ignite")
   #required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="torchaudio", "torchaudio==0.6.0")
+  required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="shap", "shap==0.35.0")
 
   if(missing(version)) {
     required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastai", "fastai")
