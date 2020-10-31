@@ -46,7 +46,7 @@ jobs:
         run: |
           Rscript -e "reticulate::conda_create('r-reticulate', packages = c('python==3.6.9'))"
           Rscript -e "reticulate::conda_install('r-reticulate','IPython')"
-          Rscript -e "reticulate::py_install('torch torchvision',pip = TRUE)"
+          Rscript -e "reticulate::py_install('torch torchvision torchaudio',pip = TRUE)"
           Rscript -e "reticulate::py_install('fastai',pip = TRUE)"
           Rscript -e "reticulate::py_install('pydicom kornia opencv-python scikit-image kaggle',pip = TRUE)"
           Rscript -e "reticulate::py_module_available('IPython')"

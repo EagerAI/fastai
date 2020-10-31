@@ -60,7 +60,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
                  'torch==1.7.0+cu101 torchvision==0.8.1+cu101 torchaudio==0.7.0 -f https://download.pytorch.org/whl/torch_stable.html',
                  'torch torchvision torchaudio',
                  'torch==1.7.0+cu110 torchvision==0.8.1+cu110 torchaudio===0.7.0 -f https://download.pytorch.org/whl/torch_stable.html')
-  cpu_cpu = c('torch==1.7.0+cpu torchvision==0.8.1+cpu torchaudio==0.7.0 -f https://download.pytorch.org/whl/torch_stable.html')
+  linux_cpu = c('torch==1.7.0+cpu torchvision==0.8.1+cpu torchaudio==0.7.0 -f https://download.pytorch.org/whl/torch_stable.html')
 
   # windows
   cuda_windows = c('Follow instructions at this URL: https://github.com/pytorch/pytorch#from-source',
@@ -98,7 +98,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
           py_install(packages = c(required_py_pkgs, cuda_linux[4]), pip = TRUE)
           py_install('fastinference[interp]', pip = TRUE)
         } else {
-          py_install(packages = c(required_py_pkgs), pip = TRUE)
+          py_install(packages = c(linux_cpu, required_py_pkgs), pip = TRUE)
           py_install('fastinference[interp]', pip = TRUE)
         }
       } else if (os %in% 'linux' & length(required_py_pkgs) == 0) {
@@ -126,7 +126,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
       }
 
       if (os %in% 'mac' & !length(required_py_pkgs) == 0) {
-        py_install(packages = c(required_py_pkgs, 'torch torchvision torchaudio'), pip = TRUE)
+        py_install(packages = c('torch torchvision torchaudio', required_py_pkgs), pip = TRUE)
         py_install('fastinference[interp]', pip = TRUE)
       } else if (os %in% 'mac' & length(required_py_pkgs) == 0){
         print('Fastai is installed!')

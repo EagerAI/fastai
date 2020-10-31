@@ -42,7 +42,7 @@ jobs:
       - name: Install FASTAI
         run: |
           Rscript -e "reticulate::py_install(c('setuptools', 'wheel', 'requests', 'IPython'), pip = TRUE)"
-          Rscript -e "reticulate::py_install('torch==1.6.0 torchvision==0.7.0',pip = TRUE)"
+          Rscript -e "reticulate::py_install('torch torchvision torchaudio',pip = TRUE)"
           Rscript -e "reticulate::py_install('git+git://github.com/fastai/fastai@master',pip = TRUE)"
           Rscript -e "reticulate::py_install('pydicom kornia opencv-python scikit-image kaggle',pip = TRUE)"
           Rscript -e "remotes::install_local()"
