@@ -166,11 +166,5 @@ test_succeeds('pet load densenet169', {
 
 test_succeeds('pet load densenet201', {
   learn = cnn_learner(dls, densenet201(), metrics = accuracy)
-  #ummary(learn)
+  #summary(learn)
 })
-
-
-
-
-
-

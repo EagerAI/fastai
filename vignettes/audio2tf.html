@@ -12,7 +12,7 @@
 
 
 
-<title>Audio Classification</title>
+<title>Speech Recognition</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -262,7 +262,7 @@ pre, code {
 background-color: #f7f7f7;
 border-radius: 3px;
 color: #333;
-white-space: pre-wrap; 
+white-space: pre-wrap;
 }
 pre {
 border-radius: 3px;
@@ -330,18 +330,18 @@ text-decoration: underline; }
 a[href^="https:"] {
 text-decoration: underline; }
 
-code > span.kw { color: #555; font-weight: bold; } 
-code > span.dt { color: #902000; } 
-code > span.dv { color: #40a070; } 
-code > span.bn { color: #d14; } 
-code > span.fl { color: #d14; } 
-code > span.ch { color: #d14; } 
-code > span.st { color: #d14; } 
-code > span.co { color: #888888; font-style: italic; } 
-code > span.ot { color: #007020; } 
-code > span.al { color: #ff0000; font-weight: bold; } 
-code > span.fu { color: #900; font-weight: bold; } 
-code > span.er { color: #a61717; background-color: #e3d2d2; } 
+code > span.kw { color: #555; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #d14; }
+code > span.fl { color: #d14; }
+code > span.ch { color: #d14; }
+code > span.st { color: #d14; }
+code > span.co { color: #888888; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #900; font-weight: bold; }
+code > span.er { color: #a61717; background-color: #e3d2d2; }
 </style>
 
 
@@ -354,7 +354,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 
 
-<h1 class="title toc-ignore">Audio Classification</h1>
+<h1 class="title toc-ignore">Speech Recognition</h1>
 
 
 
@@ -422,14 +422,14 @@ wandb: Run `wandb off` to turn off syncing.</code></pre>
 <h2>Conclusion</h2>
 <p>Now we can train our model:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>learn <span class="sc">%&gt;%</span> <span class="fu">fit_one_cycle</span>(<span class="dv">3</span>, <span class="at">lr_max=</span><span class="fu">slice</span>(<span class="fl">1e-2</span>), <span class="at">cbs =</span> <span class="fu">list</span>(<span class="fu">WandbCallback</span>()))</span></code></pre></div>
-<pre><code>epoch   train_loss   valid_loss   accuracy   time 
+<pre><code>epoch   train_loss   valid_loss   accuracy   time
 ------  -----------  -----------  ---------  -----
-epoch   train_loss   valid_loss   accuracy   time 
+epoch   train_loss   valid_loss   accuracy   time
 ------  -----------  -----------  ---------  -----
 WandbCallback requires use of &quot;SaveModelCallback&quot; to log best model
-0       0.590236     0.728817     0.787121   04:18 
+0       0.590236     0.728817     0.787121   04:18
 WandbCallback was not able to get prediction samples -&gt; wandb.log must be passed a dictionary
-1       0.288492     0.310335     0.908490   04:19 
+1       0.288492     0.310335     0.908490   04:19
 2       0.182899     0.196792     0.941088   04:10 </code></pre>
 <p>See beautiful dashboard here:</p>
 <pre><code>https://wandb.ai/henry090/speech_recognition_from_R/runs/2sjw3juv?workspace=user-henry090</code></pre>

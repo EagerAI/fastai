@@ -509,18 +509,34 @@ show_results <- function(object, ds_idx = 1, dl = NULL, max_n = 9, shuffle = TRU
     args[['vmax']] = as.integer(args[['vmax']])
   }
 
+  rr = try(do.call(object$show_results, args), silent = TRUE)
 
-  do.call(object$show_results, args)
+  if(inherits(rr,'try-error')) {
+    # predict
+    dls = object$dls
+    b = one_batch(dls$train)
+    preds = object$get_preds(dl=list(b), with_decoded=TRUE)
+    preds = preds[[3]]
 
-  tmp_d = proj_name = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
-  fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi))
+    show_batch(dls, list(
+      torch$stack(list(b[[1]][2],b[[1]][3]),0L)$cpu(),
+      torch$stack(list(preds[[2]][2],preds[[2]][3]),0L)
+    ), nrows = 2, ncols = 1, dpi = 120)
 
-  img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
-  if(!is_rmarkdown()) {
-    try(dev.off(),TRUE)
+  } else {
+    do.call(object$show_results, args)
+
+    tmp_d = gsub(tempdir(), replacement = '/', pattern = '\\', fixed=TRUE)
+    fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi))
+
+    img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
+    if(!is_rmarkdown()) {
+      try(dev.off(),TRUE)
+    }
+    grid::grid.raster(img)
   }
-  grid::grid.raster(img)
-  fastai2$vision$all$plt$close()
+
+
 }
 
 
@@ -548,10 +564,3 @@ partial <- function(...) {
   vision$gan$partial(...)
 
 }
-
-
-
-
-
-
-
