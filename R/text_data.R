@@ -97,26 +97,31 @@ LMDataLoader <- function(dataset, lens = NULL, cache = 2, bs = 64,
                          timeout = 0L, batch_size = NULL, drop_last = FALSE,
                          indexed = NULL, n = NULL, device = NULL) {
 
-  args <- list(
-    dataset = dataset,
-    lens = lens,
-    cache = as.integer(cache),
-    bs = as.integer(bs),
-    seq_len = as.integer(seq_len),
-    num_workers = as.integer(num_workers),
-    shuffle = shuffle,
-    verbose = verbose,
-    do_setup = do_setup,
-    pin_memory = pin_memory,
-    timeout = timeout,
-    batch_size = batch_size,
-    drop_last = drop_last,
-    indexed = indexed,
-    n = n,
-    device = device
-  )
 
-  do.call(text$LMDataLoader, args)
+  if(missing(dataset)) {
+    text$LMDataLoader
+  } else {
+    args <- list(
+      dataset = dataset,
+      lens = lens,
+      cache = as.integer(cache),
+      bs = as.integer(bs),
+      seq_len = as.integer(seq_len),
+      num_workers = as.integer(num_workers),
+      shuffle = shuffle,
+      verbose = verbose,
+      do_setup = do_setup,
+      pin_memory = pin_memory,
+      timeout = timeout,
+      batch_size = batch_size,
+      drop_last = drop_last,
+      indexed = indexed,
+      n = n,
+      device = device
+    )
+
+    do.call(text$LMDataLoader, args)
+  }
 
 }
 

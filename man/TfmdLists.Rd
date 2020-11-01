@@ -4,45 +4,10 @@
 \alias{TfmdLists}
 \title{TfmdLists}
 \usage{
-TfmdLists(
-  items,
-  tfms,
-  use_list = NULL,
-  do_setup = TRUE,
-  split_idx = NULL,
-  train_setup = TRUE,
-  splits = NULL,
-  types = NULL,
-  verbose = FALSE,
-  dl_type = NULL,
-  ...
-)
+TfmdLists(...)
 }
 \arguments{
-\item{items}{items}
-
-\item{tfms}{tfms}
-
-\item{use_list}{use_list}
-
-\item{do_setup}{do_setup}
-
-\item{split_idx}{split_idx}
-
-\item{train_setup}{train_setup}
-
-\item{splits}{splits}
-
-\item{types}{types}
-
-\item{verbose}{verbose}
-
-\item{dl_type}{dl_type}
-
 \item{...}{parameters to pass}
-}
-\value{
-None
 }
 \description{
 A `Pipeline` of `tfms` applied to a collection of `items`
