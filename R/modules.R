@@ -80,6 +80,29 @@ slice <- function(...) {
 }
 
 
+#' @title TransformersTokenizer
+#'
+#'
+#' @param tokenizer tokenizer object
+#' @return None
+#' @export
+TransformersTokenizer <- function(tokenizer) {
 
+  hug$TransformersTokenizer(
+    tokenizer = tokenizer
+  )
+
+}
+
+#' @title TransformersDropOutput
+#'
+#'
+#' @return None
+#' @export
+TransformersDropOutput <- function() {
+
+  hug$TransformersDropOutput()
+
+}
 
 

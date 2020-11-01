@@ -1,5 +1,6 @@
 
 
+hug <- NULL
 wandb <- NULL
 load_pre_models <- NULL
 timm <- NULL
@@ -129,6 +130,16 @@ torch <- NULL
 
       if(reticulate::py_module_available('wandb')) {
         wandb <<- reticulate::import('wandb')
+      }
+
+      if(reticulate::py_module_available('transformers') &
+         reticulate::py_module_available('IPython') &
+         reticulate::py_module_available('fastai')) {
+
+        if(file.exists('fastaibuilt/Transformer.py')) {
+          hug <<- reticulate::import_from_path('Transformer', path = 'fastaibuilt')
+        }
+
       }
 
       if(reticulate::py_module_available('fastinference') &
