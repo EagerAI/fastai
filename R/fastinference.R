@@ -59,8 +59,11 @@ decision_plot = function(object, class_id = 0, row_idx = -1, dpi = 200, ...) {
 
   fastai2$vision$all$plt$close()
   do.call(object$decision_plot, args)
-  fastai2$vision$all$plt$tight_layout()
+  #fastai2$vision$all$plt$tight_layout()
   tmp_d = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
+  #fastai2$vision$all$plt$rcParams$update(list('font.size' = 8L))
+  fig = fastai2$vision$all$plt$gcf()
+  fig$set_size_inches(18,10, forward=TRUE)
   fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi), ...)
 
   img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
@@ -100,8 +103,10 @@ dependence_plot = function(object, variable_name = "", class_id = 0, dpi = 200, 
 
   fastai2$vision$all$plt$close()
   do.call(object$dependence_plot, args)
-  fastai2$vision$all$plt$tight_layout()
+  #fastai2$vision$all$plt$tight_layout()
   tmp_d = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
+  fig = fastai2$vision$all$plt$gcf()
+  fig$set_size_inches(18,10, forward=TRUE)
   fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi), ...)
 
   img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
@@ -132,8 +137,10 @@ summary_plot = function(object, dpi = 200, ...) {
   fastai2$vision$all$plt$close()
   object$summary_plot()
 
-  fastai2$vision$all$plt$tight_layout()
+  #fastai2$vision$all$plt$tight_layout()
   tmp_d = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
+  fig = fastai2$vision$all$plt$gcf()
+  fig$set_size_inches(18,10, forward=TRUE)
   fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi), ...)
 
   img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
@@ -173,9 +180,13 @@ waterfall_plot = function(object, row_idx = NULL, class_id = 0, dpi = 200, ...) 
 
   do.call(object$waterfall_plot, args)
 
-  fastai2$vision$all$plt$tight_layout()
+  #fastai2$vision$all$plt$figure(figsize=c(8L, 6L), dpi=120)
+  #fastai2$vision$all$plt$tight_layout()
   tmp_d = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
-  fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi), ...)
+
+  fig = fastai2$vision$all$plt$gcf()
+  fig$set_size_inches(18,10, forward=TRUE)
+  fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi),bbox_inches="tight", ...)
 
   img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
   if(!is_rmarkdown()) {
