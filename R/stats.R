@@ -58,10 +58,10 @@ get_confusion_matrix <- function(object) {
 #' @description Launch a mock training to find a good learning rate, return lr_min, lr_steep if `suggestions` is TRUE
 #'
 #' @param object learner
-#' @param start_lr start_lr
-#' @param end_lr end_lr
-#' @param num_it num_it
-#' @param stop_div stop_div
+#' @param start_lr starting learning rate
+#' @param end_lr end learning rate
+#' @param num_it number of iterations
+#' @param stop_div stop div or not
 #' @param suggestions suggestions
 #' @param ... additional arguments to pass
 #' @return data frame

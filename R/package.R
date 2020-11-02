@@ -1,5 +1,5 @@
 
-
+bs_finder <- NULL
 hug <- NULL
 wandb <- NULL
 load_pre_models <- NULL
@@ -138,6 +138,15 @@ torch <- NULL
 
         if(file.exists('fastaibuilt/Transformer.py')) {
           hug <<- reticulate::import_from_path('Transformer', path = 'fastaibuilt')
+        }
+
+      }
+
+      if(reticulate::py_module_available('IPython') &
+         reticulate::py_module_available('fastai')) {
+
+        if(file.exists('fastaibuilt/bs_finder.py')) {
+          bs_finder <<- reticulate::import_from_path('bs_finder', path = 'fastaibuilt')
         }
 
       }

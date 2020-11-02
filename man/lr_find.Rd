@@ -17,13 +17,13 @@ lr_find(
 \arguments{
 \item{object}{learner}
 
-\item{start_lr}{start_lr}
+\item{start_lr}{starting learning rate}
 
-\item{end_lr}{end_lr}
+\item{end_lr}{end learning rate}
 
-\item{num_it}{num_it}
+\item{num_it}{number of iterations}
 
-\item{stop_div}{stop_div}
+\item{stop_div}{stop div or not}
 
 \item{suggestions}{suggestions}
 
