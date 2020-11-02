@@ -112,6 +112,9 @@
     <li>
       <a href="../articles/audio2tf.html">Speech Recognition</a>
     </li>
+    <li>
+      <a href="../articles/gpt.html">GPT2</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -156,7 +159,7 @@
 
       
 
-      </header><script src="Basic_Tabular_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="Basic_Tabular_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+      </header><script src="Basic_Tabular_files/header-attrs-2.4.6/header-attrs.js"></script><link href="Basic_Tabular_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
 <script src="Basic_Tabular_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -286,7 +289,7 @@ TabularModel(
 <a href="#fit" class="anchor"></a>Fit</h2>
 <p>And finally, fit the model:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit">
-<span class="va">res</span> <span class="op">=</span> <span class="va">model</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://generics.r-lib.org/reference/fit.html">fit</a></span><span class="op">(</span><span class="fl">5</span>, lr <span class="op">=</span> <span class="fl">0.005</span><span class="op">)</span></pre></div>
+<span class="va">res</span> <span class="op">=</span> <span class="va">model</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/generics/man/fit.html">fit</a></span><span class="op">(</span><span class="fl">5</span>, lr <span class="op">=</span> <span class="fl">0.005</span><span class="op">)</span></pre></div>
 <pre><code>epoch     train_loss  valid_loss  accuracy  roc_auc_score  precision_score  recall_score
 0         0.173383    0.189803    0.950333  0.969118       0.900000         0.893793   
 1         0.151623    0.132094    0.960000  0.980776       0.924264         0.908966    
@@ -339,7 +342,7 @@ TabularModel(
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

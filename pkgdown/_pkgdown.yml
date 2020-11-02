@@ -55,6 +55,8 @@ navbar:
           href: articles/custom_img.html
         - text: "Speech Recognition"
           href: articles/audio2tf.html
+        - text: "GPT2"
+          href: articles/gpt.html
     - text: "Training"
       menu:
         - text: "Optimizers"
