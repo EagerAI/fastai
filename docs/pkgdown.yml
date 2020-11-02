@@ -2,7 +2,7 @@ pandoc: 2.11.0.2
 pkgdown: 1.6.0
 pkgdown_sha: ~
 articles: []
-last_built: 2020-11-02T09:30Z
+last_built: 2020-11-02T12:31Z
 urls:
   reference: https://henry090.github.io/fastai//reference
   article: https://henry090.github.io/fastai//articles

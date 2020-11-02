@@ -181,12 +181,6 @@ epoch     train_loss  valid_loss  accuracy  time
 4         0.348969    0.350707    0.830660  00:04
 ```
 
-See training process:
-
-<p align="center">
-<img src="files/fastai.gif" height=350 align=center alt="train"/>
-</p>
-
 Plot loss history:
 
 ```
@@ -194,6 +188,26 @@ model %>% plot_loss(dpi = 200)
 ```
 
 <img src="files/plot_loss.png" height=500 align=center alt="lr"/>
+
+At the same time, users can find optimal batch size.
+
+Implementation of OpenAI paper ["An Empirical Model of Large-Batch Training"](https://arxiv.org/pdf/1812.06162.pdf) for Fastai was done by [hal-314](https://github.com/hal-314/fastai-batch-size-finder):
+
+```
+bss = model %>% bs_find(lr=1e-3)
+
+model %>% plot_bs_find()
+```
+
+<img src="files/plot_bs.png" height=500 align=center alt="bs"/>
+
+See training process:
+
+<p align="center">
+<img src="files/fastai.gif" height=350 align=center alt="train"/>
+</p>
+
+
 
 Get confusion matrix:
 

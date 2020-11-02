@@ -318,12 +318,18 @@ model %&gt;% plot_lr_find(dpi = 200)</code></pre>
 2         0.368743    0.340913    0.844920  00:05
 3         0.347277    0.333084    0.852050  00:04
 4         0.348969    0.350707    0.830660  00:04</code></pre>
-<p>See training process:</p>
-<p align="center">
-<img src="files/fastai.gif" height="350" align="center" alt="train"></p>
 <p>Plot loss history:</p>
 <pre><code>model %&gt;% plot_loss(dpi = 200)</code></pre>
 <p><img src="files/plot_loss.png" height="500" align="center" alt="lr"></p>
+<p>At the same time, users can find optimal batch size.</p>
+<p>Implementation of OpenAI paper <a href="https://arxiv.org/pdf/1812.06162.pdf">“An Empirical Model of Large-Batch Training”</a> for Fastai was done by <a href="https://github.com/hal-314/fastai-batch-size-finder">hal-314</a>:</p>
+<pre><code>bss = model %&gt;% bs_find(lr=1e-3)
+
+model %&gt;% plot_bs_find()</code></pre>
+<p><img src="files/plot_bs.png" height="500" align="center" alt="bs"></p>
+<p>See training process:</p>
+<p align="center">
+<img src="files/fastai.gif" height="350" align="center" alt="train"></p>
 <p>Get confusion matrix:</p>
 <pre><code>model %&gt;% get_confusion_matrix()</code></pre>
 <pre><code>       &lt;50k  &gt;=50k
