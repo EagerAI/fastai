@@ -208,6 +208,32 @@
 <span class="va">tokenizer</span> <span class="op">=</span> <span class="va">tr</span><span class="op">$</span><span class="va">GPT2TokenizerFast</span><span class="op">$</span><span class="fu">from_pretrained</span><span class="op">(</span><span class="va">pretrained_weights</span><span class="op">)</span>
 <span class="va">model</span> <span class="op">=</span> <span class="va">tr</span><span class="op">$</span><span class="va">GPT2LMHeadModel</span><span class="op">$</span><span class="fu">from_pretrained</span><span class="op">(</span><span class="va">pretrained_weights</span><span class="op">)</span></pre></div>
 </div>
+<div id="tokenize" class="section level2">
+<h2 class="hasAnchor">
+<a href="#tokenize" class="anchor"></a>Tokenize</h2>
+<p>Tokenize and place into list:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="va">tokenize</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">text</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">toks</span> <span class="op">=</span> <span class="va">tokenizer</span><span class="op">$</span><span class="fu">tokenize</span><span class="op">(</span><span class="va">text</span><span class="op">)</span>
+  <span class="fu"><a href="../reference/tensor.html">tensor</a></span><span class="op">(</span><span class="va">tokenizer</span><span class="op">$</span><span class="fu">convert_tokens_to_ids</span><span class="op">(</span><span class="va">toks</span><span class="op">)</span><span class="op">)</span>
+<span class="op">}</span>
+
+<span class="va">tokenized</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span>
+
+<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="../reference/length.html">length</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">V1</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">tokeniz</span> <span class="op">=</span> <span class="fu">tokenize</span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">V1</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span>
+  <span class="va">tokenized</span> <span class="op">=</span> <span class="va">tokenized</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/append.html">append</a></span><span class="op">(</span><span class="va">tokeniz</span><span class="op">)</span>
+  <span class="kw">if</span><span class="op">(</span><span class="va">i</span> <span class="op">%%</span> <span class="fl">100</span> <span class="op">==</span> <span class="fl">0</span> <span class="op">)</span> <span class="op">{</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">i</span><span class="op">)</span>
+  <span class="op">}</span>
+<span class="op">}</span></pre></div>
+<p>Later split data:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="va">tot</span> <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span>
+<span class="va">tr_idx</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span>, <span class="fl">0.8</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span><span class="op">)</span>
+<span class="va">ts_idx</span> <span class="op">=</span> <span class="va">tot</span><span class="op">[</span><span class="op">!</span><span class="va">tot</span> <span class="op">%in%</span> <span class="va">tr_idx</span><span class="op">]</span>
+<span class="va">splits</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">tr_idx</span>, <span class="va">ts_idx</span><span class="op">)</span></pre></div>
+</div>
 <div id="dataloader" class="section level2">
 <h2 class="hasAnchor">
 <a href="#dataloader" class="anchor"></a>Dataloader</h2>
@@ -215,10 +241,14 @@
 <blockquote>
 <p>Note: The HuggingFace model will return a tuple in outputs, with the actual predictions and some additional activations (should we want to use them in some regularization scheme). To work inside the fastai training loop, we will need to drop those using a Callback: we use those to alter the behavior of the training loop. Here we need to write the event after_pred and replace self.learn.pred (which contains the predictions that will be passed to the loss function) by just its first element. In callbacks, there is a shortcut that lets you access any of the underlying Learner attributes so we can write <code>self$pred[0]</code> instead of <code>self$learn$pred[0]</code>. That shortcut only works for read access, not write, so we have to write <code>self$learn$pred</code> on the right side (otherwise we would set a pred attribute in the <code>Callback</code>).</p>
 </blockquote>
-<div class="sourceCode" id="cb3"><pre class="downlit">
+<div class="sourceCode" id="cb5"><pre class="downlit">
 <span class="va">tls</span> <span class="op">=</span> <span class="fu"><a href="../reference/TfmdLists.html">TfmdLists</a></span><span class="op">(</span><span class="va">tokenized</span>, <span class="fu"><a href="../reference/TransformersTokenizer.html">TransformersTokenizer</a></span><span class="op">(</span><span class="va">tokenizer</span><span class="op">)</span>,
                                  splits <span class="op">=</span> <span class="va">splits</span>,
                                  dl_type <span class="op">=</span> <span class="fu"><a href="../reference/LMDataLoader.html">LMDataLoader</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">bs</span> <span class="op">=</span> <span class="fl">8</span>
+<span class="va">sl</span> <span class="op">=</span> <span class="fl">100</span>
+<span class="va">dls</span> <span class="op">=</span> <span class="va">tls</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/dataloaders.html">dataloaders</a></span><span class="op">(</span>bs <span class="op">=</span> <span class="va">bs</span>, seq_len <span class="op">=</span> <span class="va">sl</span><span class="op">)</span>
 
 <span class="co"># Now, we are ready to create our Learner, which is a fastai object grouping data, model</span>
 <span class="co"># and loss function and handles model training or inference. Since we are in a language</span>
@@ -239,7 +269,7 @@
 <h2 class="hasAnchor">
 <a href="#conclusion" class="anchor"></a>Conclusion</h2>
 <p>Generate text:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
+<div class="sourceCode" id="cb7"><pre class="downlit">
 <span class="va">prompt</span> <span class="op">=</span> <span class="st">"\n = Unicorn = \n \n A unicorn is a magical creature with a rainbow tail and a horn"</span>
 <span class="va">prompt_ids</span> <span class="op">=</span> <span class="va">tokenizer</span><span class="op">$</span><span class="fu">encode</span><span class="op">(</span><span class="va">prompt</span><span class="op">)</span>
 <span class="va">inp</span> <span class="op">=</span> <span class="fu"><a href="../reference/tensor.html">tensor</a></span><span class="op">(</span><span class="va">prompt_ids</span><span class="op">)</span><span class="op">[</span><span class="cn">NULL</span><span class="op">]</span><span class="op">$</span><span class="fu">cuda</span><span class="op">(</span><span class="op">)</span>

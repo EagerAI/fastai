@@ -24,9 +24,35 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 #  model = tr$GPT2LMHeadModel$from_pretrained(pretrained_weights)
 
 ## -----------------------------------------------------------------------------
+#  tokenize = function(text) {
+#    toks = tokenizer$tokenize(text)
+#    tensor(tokenizer$convert_tokens_to_ids(toks))
+#  }
+#  
+#  tokenized = list()
+#  
+#  for (i in 1:length(df$V1)) {
+#    tokeniz = tokenize(df$V1[i])
+#    tokenized = tokenized %>% append(tokeniz)
+#    if(i %% 100 == 0 ) {
+#      print(i)
+#    }
+#  }
+
+## -----------------------------------------------------------------------------
+#  tot = 1:nrow(df)
+#  tr_idx = sample(nrow(df), 0.8 * nrow(df))
+#  ts_idx = tot[!tot %in% tr_idx]
+#  splits = list(tr_idx, ts_idx)
+
+## -----------------------------------------------------------------------------
 #  tls = TfmdLists(tokenized, TransformersTokenizer(tokenizer),
 #                                   splits = splits,
 #                                   dl_type = LMDataLoader())
+#  
+#  bs = 8
+#  sl = 100
+#  dls = tls %>% dataloaders(bs = bs, seq_len = sl)
 #  
 #  # Now, we are ready to create our Learner, which is a fastai object grouping data, model
 #  # and loss function and handles model training or inference. Since we are in a language
@@ -43,6 +69,6 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 #  prompt = "\n = Unicorn = \n \n A unicorn is a magical creature with a rainbow tail and a horn"
 #  prompt_ids = tokenizer$encode(prompt)
 #  inp = tensor(prompt_ids)[NULL]$cuda()
-#  preds = learn$model$generate(inp, max_length=80L, num_beams=5L, temperature=1.5)
+#  preds = learn$model$generate(inp, max_length = 80L, num_beams = 5L, temperature = 1.5)
 #  tokenizer$decode(as.integer(preds[0]$cpu()$numpy()))
 

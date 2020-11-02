@@ -388,26 +388,53 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>tokenizer <span class="ot">=</span> tr<span class="sc">$</span>GPT2TokenizerFast<span class="sc">$</span><span class="fu">from_pretrained</span>(pretrained_weights)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>model <span class="ot">=</span> tr<span class="sc">$</span>GPT2LMHeadModel<span class="sc">$</span><span class="fu">from_pretrained</span>(pretrained_weights)</span></code></pre></div>
 </div>
+<div id="tokenize" class="section level2">
+<h2>Tokenize</h2>
+<p>Tokenize and place into list:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tokenize <span class="ot">=</span> <span class="cf">function</span>(text) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  toks <span class="ot">=</span> tokenizer<span class="sc">$</span><span class="fu">tokenize</span>(text)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tensor</span>(tokenizer<span class="sc">$</span><span class="fu">convert_tokens_to_ids</span>(toks))</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>tokenized <span class="ot">=</span> <span class="fu">list</span>()</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(df<span class="sc">$</span>V1)) {</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  tokeniz <span class="ot">=</span> <span class="fu">tokenize</span>(df<span class="sc">$</span>V1[i])</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  tokenized <span class="ot">=</span> tokenized <span class="sc">%&gt;%</span> <span class="fu">append</span>(tokeniz)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(i <span class="sc">%%</span> <span class="dv">100</span> <span class="sc">==</span> <span class="dv">0</span> ) {</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(i)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Later split data:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>tot <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>tr_idx <span class="ot">=</span> <span class="fu">sample</span>(<span class="fu">nrow</span>(df), <span class="fl">0.8</span> <span class="sc">*</span> <span class="fu">nrow</span>(df))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>ts_idx <span class="ot">=</span> tot[<span class="sc">!</span>tot <span class="sc">%in%</span> tr_idx]</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>splits <span class="ot">=</span> <span class="fu">list</span>(tr_idx, ts_idx)</span></code></pre></div>
+</div>
 <div id="dataloader" class="section level2">
 <h2>Dataloader</h2>
 <p>Prepare dataloader and train data:</p>
 <blockquote>
 <p>Note: The HuggingFace model will return a tuple in outputs, with the actual predictions and some additional activations (should we want to use them in some regularization scheme). To work inside the fastai training loop, we will need to drop those using a Callback: we use those to alter the behavior of the training loop. Here we need to write the event after_pred and replace self.learn.pred (which contains the predictions that will be passed to the loss function) by just its first element. In callbacks, there is a shortcut that lets you access any of the underlying Learner attributes so we can write <code>self$pred[0]</code> instead of <code>self$learn$pred[0]</code>. That shortcut only works for read access, not write, so we have to write <code>self$learn$pred</code> on the right side (otherwise we would set a pred attribute in the <code>Callback</code>).</p>
 </blockquote>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tls <span class="ot">=</span> <span class="fu">TfmdLists</span>(tokenized, <span class="fu">TransformersTokenizer</span>(tokenizer),</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">splits =</span> splits,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">dl_type =</span> <span class="fu">LMDataLoader</span>())</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, we are ready to create our Learner, which is a fastai object grouping data, model</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># and loss function and handles model training or inference. Since we are in a language</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#model setting, we pass perplexity as a metric, and we need to use the callback we just</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># defined. Lastly, we use mixed precision to save every bit of memory we can (and if you</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># have a modern GPU, it will also make training faster):</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>learn <span class="ot">=</span> <span class="fu">Learner</span>(dls, model, <span class="at">loss_func=</span><span class="fu">CrossEntropyLossFlat</span>(), </span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">cbs =</span> <span class="fu">list</span>(<span class="fu">TransformersDropOutput</span>()),</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                <span class="at">metrics =</span> <span class="fu">Perplexity</span>())<span class="sc">$</span><span class="fu">to_fp16</span>()</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>learn <span class="sc">%&gt;%</span> <span class="fu">fit_one_cycle</span>(<span class="dv">1</span>, <span class="fl">1e-4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tls <span class="ot">=</span> <span class="fu">TfmdLists</span>(tokenized, <span class="fu">TransformersTokenizer</span>(tokenizer),</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">splits =</span> splits,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">dl_type =</span> <span class="fu">LMDataLoader</span>())</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>bs <span class="ot">=</span> <span class="dv">8</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>sl <span class="ot">=</span> <span class="dv">100</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>dls <span class="ot">=</span> tls <span class="sc">%&gt;%</span> <span class="fu">dataloaders</span>(<span class="at">bs =</span> bs, <span class="at">seq_len =</span> sl)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, we are ready to create our Learner, which is a fastai object grouping data, model</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># and loss function and handles model training or inference. Since we are in a language</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#model setting, we pass perplexity as a metric, and we need to use the callback we just</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># defined. Lastly, we use mixed precision to save every bit of memory we can (and if you</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># have a modern GPU, it will also make training faster):</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>learn <span class="ot">=</span> <span class="fu">Learner</span>(dls, model, <span class="at">loss_func=</span><span class="fu">CrossEntropyLossFlat</span>(), </span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>                <span class="at">cbs =</span> <span class="fu">list</span>(<span class="fu">TransformersDropOutput</span>()),</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>                <span class="at">metrics =</span> <span class="fu">Perplexity</span>())<span class="sc">$</span><span class="fu">to_fp16</span>()</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>learn <span class="sc">%&gt;%</span> <span class="fu">fit_one_cycle</span>(<span class="dv">1</span>, <span class="fl">1e-4</span>)</span></code></pre></div>
 <pre><code>epoch   train_loss   valid_loss   perplexity   time  
 ------  -----------  -----------  -----------  ------
 0       3.245887     3.301065     27.141541    07:40 
@@ -416,13 +443,16 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div id="conclusion" class="section level2">
 <h2>Conclusion</h2>
 <p>Generate text:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>prompt <span class="ot">=</span> <span class="st">&quot;</span><span class="sc">\n</span><span class="st"> = Unicorn = </span><span class="sc">\n</span><span class="st"> </span><span class="sc">\n</span><span class="st"> A unicorn is a magical creature with a rainbow tail and a horn&quot;</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>prompt_ids <span class="ot">=</span> tokenizer<span class="sc">$</span><span class="fu">encode</span>(prompt)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>inp <span class="ot">=</span> <span class="fu">tensor</span>(prompt_ids)[<span class="cn">NULL</span>]<span class="sc">$</span><span class="fu">cuda</span>()</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>preds <span class="ot">=</span> learn<span class="sc">$</span>model<span class="sc">$</span><span class="fu">generate</span>(inp, <span class="at">max_length=</span>80L, <span class="at">num_beams=</span>5L, <span class="at">temperature=</span><span class="fl">1.5</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>tokenizer<span class="sc">$</span><span class="fu">decode</span>(<span class="fu">as.integer</span>(preds[<span class="dv">0</span>]<span class="sc">$</span><span class="fu">cpu</span>()<span class="sc">$</span><span class="fu">numpy</span>()))</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>prompt <span class="ot">=</span> <span class="st">&quot;</span><span class="sc">\n</span><span class="st"> = Unicorn = </span><span class="sc">\n</span><span class="st"> </span><span class="sc">\n</span><span class="st"> A unicorn is a magical creature with a rainbow tail and a horn&quot;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>prompt_ids <span class="ot">=</span> tokenizer<span class="sc">$</span><span class="fu">encode</span>(prompt)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>inp <span class="ot">=</span> <span class="fu">tensor</span>(prompt_ids)[<span class="cn">NULL</span>]<span class="sc">$</span><span class="fu">cuda</span>()</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>preds <span class="ot">=</span> learn<span class="sc">$</span>model<span class="sc">$</span><span class="fu">generate</span>(inp, <span class="at">max_length =</span> 80L, <span class="at">num_beams =</span> 5L, <span class="at">temperature =</span> <span class="fl">1.5</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>tokenizer<span class="sc">$</span><span class="fu">decode</span>(<span class="fu">as.integer</span>(preds[<span class="dv">0</span>]<span class="sc">$</span><span class="fu">cpu</span>()<span class="sc">$</span><span class="fu">numpy</span>()))</span></code></pre></div>
 <p>Result:</p>
-<pre><code>&quot;\n = Unicorn = \n \n A unicorn is a magical creature with a rainbow tail and a horn @-@ like head. The unicorn is a member of the &lt;unk&gt; family, a group of &lt;unk&gt;. The unicorn is a member of the &lt;unk&gt; family, a group of &lt;unk&gt;. The unicorn is a member of the &lt;unk&gt; family, a group of&quot;</code></pre>
+<pre><code>&quot;\n = Unicorn = \n \n A unicorn is a magical creature with a rainbow tail and a horn 
+@-@ like head. The unicorn is a member of the &lt;unk&gt; family, a group of &lt;unk&gt;. 
+The unicorn is a member of the &lt;unk&gt; family, a group of &lt;unk&gt;. The unicorn is a 
+member of the &lt;unk&gt; family, a group of&quot;</code></pre>
 </div>
 
 
