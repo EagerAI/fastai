@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Lr_find — lr_find • fastai</title>
+<title>Plot_bs_find — plot_bs_find • fastai</title>
 
 
 <!-- jquery -->
@@ -45,8 +45,8 @@
 
 
 
-<meta property="og:title" content="Lr_find — lr_find" />
-<meta property="og:description" content="Launch a mock training to find a good learning rate, return lr_min, lr_steep if `suggestions` is TRUE" />
+<meta property="og:title" content="Plot_bs_find — plot_bs_find" />
+<meta property="og:description" content="Plot_bs_find" />
 
 
 
@@ -207,72 +207,38 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Lr_find</h1>
-    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/stats.R'><code>R/stats.R</code></a></small>
-    <div class="hidden name"><code>lr_find.Rd</code></div>
+    <h1>Plot_bs_find</h1>
+    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/bs_finder.R'><code>R/bs_finder.R</code></a></small>
+    <div class="hidden name"><code>plot_bs_find.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Launch a mock training to find a good learning rate, return lr_min, lr_steep if `suggestions` is TRUE</p>
+    <p>Plot_bs_find</p>
     </div>
 
-    <pre class="usage"><span class='fu'>lr_find</span><span class='op'>(</span>
-  <span class='va'>object</span>,
-  start_lr <span class='op'>=</span> <span class='fl'>1e-07</span>,
-  end_lr <span class='op'>=</span> <span class='fl'>10</span>,
-  num_it <span class='op'>=</span> <span class='fl'>100</span>,
-  stop_div <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  suggestions <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  <span class='va'>...</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>plot_bs_find</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span>, dpi <span class='op'>=</span> <span class='fl'>250</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>object</th>
-      <td><p>learner</p></td>
-    </tr>
-    <tr>
-      <th>start_lr</th>
-      <td><p>starting learning rate</p></td>
-    </tr>
-    <tr>
-      <th>end_lr</th>
-      <td><p>end learning rate</p></td>
-    </tr>
-    <tr>
-      <th>num_it</th>
-      <td><p>number of iterations</p></td>
-    </tr>
-    <tr>
-      <th>stop_div</th>
-      <td><p>stop div or not</p></td>
-    </tr>
-    <tr>
-      <th>suggestions</th>
-      <td><p>suggestions</p></td>
+      <td><p>model</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>additional arguments to pass</p></td>
+      <td><p>additional arguments</p></td>
+    </tr>
+    <tr>
+      <th>dpi</th>
+      <td><p>dots per inch</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>data frame</p>
+    <p>None</p>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-
-<span class='va'>model</span> <span class='op'>%&gt;%</span> <span class='fu'>lr_find</span><span class='op'>(</span><span class='op'>)</span>
-<span class='va'>model</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='plot_lr_find.html'>plot_lr_find</a></span><span class='op'>(</span>dpi <span class='op'>=</span> <span class='fl'>200</span><span class='op'>)</span>
-
-<span class='op'>}</span>
-
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

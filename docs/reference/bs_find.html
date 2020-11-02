@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Lr_find — lr_find • fastai</title>
+<title>Bs_find — bs_find • fastai</title>
 
 
 <!-- jquery -->
@@ -45,8 +45,8 @@
 
 
 
-<meta property="og:title" content="Lr_find — lr_find" />
-<meta property="og:description" content="Launch a mock training to find a good learning rate, return lr_min, lr_steep if `suggestions` is TRUE" />
+<meta property="og:title" content="Bs_find — bs_find" />
+<meta property="og:description" content="Launch a mock training to find a good batch size to minimaze training time." />
 
 
 
@@ -207,23 +207,22 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Lr_find</h1>
-    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/stats.R'><code>R/stats.R</code></a></small>
-    <div class="hidden name"><code>lr_find.Rd</code></div>
+    <h1>Bs_find</h1>
+    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/bs_finder.R'><code>R/bs_finder.R</code></a></small>
+    <div class="hidden name"><code>bs_find.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Launch a mock training to find a good learning rate, return lr_min, lr_steep if `suggestions` is TRUE</p>
+    <p>Launch a mock training to find a good batch size to minimaze training time.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>lr_find</span><span class='op'>(</span>
+    <pre class="usage"><span class='fu'>bs_find</span><span class='op'>(</span>
   <span class='va'>object</span>,
-  start_lr <span class='op'>=</span> <span class='fl'>1e-07</span>,
-  end_lr <span class='op'>=</span> <span class='fl'>10</span>,
-  num_it <span class='op'>=</span> <span class='fl'>100</span>,
-  stop_div <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  suggestions <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  <span class='va'>...</span>
+  <span class='va'>lr</span>,
+  num_it <span class='op'>=</span> <span class='cn'>NULL</span>,
+  n_batch <span class='op'>=</span> <span class='fl'>5</span>,
+  simulate_multi_gpus <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  show_plot <span class='op'>=</span> <span class='cn'>TRUE</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -231,48 +230,35 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>object</th>
-      <td><p>learner</p></td>
+      <td><p>model/learner</p></td>
     </tr>
     <tr>
-      <th>start_lr</th>
-      <td><p>starting learning rate</p></td>
-    </tr>
-    <tr>
-      <th>end_lr</th>
-      <td><p>end learning rate</p></td>
+      <th>lr</th>
+      <td><p>learning rate</p></td>
     </tr>
     <tr>
       <th>num_it</th>
       <td><p>number of iterations</p></td>
     </tr>
     <tr>
-      <th>stop_div</th>
-      <td><p>stop div or not</p></td>
+      <th>n_batch</th>
+      <td><p>number of batches</p></td>
     </tr>
     <tr>
-      <th>suggestions</th>
-      <td><p>suggestions</p></td>
+      <th>simulate_multi_gpus</th>
+      <td><p>simulate on multi gpus or not</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>additional arguments to pass</p></td>
+      <th>show_plot</th>
+      <td><p>show plot or not</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>data frame</p>
+    <p>However, it may not be a good batch size to minimize the validation loss. A good batch size is where the Simple Noise Scale converge ignoring the small growing trend with the number of iterations if exists. The optimal batch size is about an order the magnitud
+where Simple Noise scale converge. Typically, the optimial batch size in image classification problems will be 2-3 times lower where</p>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-
-<span class='va'>model</span> <span class='op'>%&gt;%</span> <span class='fu'>lr_find</span><span class='op'>(</span><span class='op'>)</span>
-<span class='va'>model</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='plot_lr_find.html'>plot_lr_find</a></span><span class='op'>(</span>dpi <span class='op'>=</span> <span class='fl'>200</span><span class='op'>)</span>
-
-<span class='op'>}</span>
-
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -1165,6 +1165,9 @@
     <loc>https://henry090.github.io/fastai//reference/bb_pad.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/bs_find.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/bt.html</loc>
   </url>
   <url>
@@ -1742,6 +1745,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/plot.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/plot_bs_find.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/plot_confusion_matrix.html</loc>
