@@ -28,6 +28,7 @@ bs_find <- function(object, lr, num_it = NULL, n_batch = 5, simulate_multi_gpus 
 
   do.call(object$bs_find, args)
 
+  invisible(object$recorder$bs_find_stats)
 }
 
 #' @title Plot_bs_find
