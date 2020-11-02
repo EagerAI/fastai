@@ -672,6 +672,30 @@ RandomSplitter <- function(valid_pct = 0.2, seed = NULL) {
 }
 
 
+#' @title Tokenizer_from_df
+#'
+#' @param text_cols text columns
+#' @param tok tokenizer
+#' @param rules special rules
+#' @param sep separator
+#' @param n_workers number of workers
+#' @param mark_fields mark fields
+#' @param res_col_name output column name
+#' @return None
+#' @export
+Tokenizer_from_df <- function(text_cols, tok = NULL, rules = NULL, sep = " ", n_workers = 6,
+                              mark_fields = NULL, res_col_name = "text") {
 
+  text$Tokenizer$from_df(
+    text_cols = text_cols,
+    tok = tok,
+    rules = rules,
+    sep = sep,
+    n_workers = as.integer(n_workers),
+    mark_fields = mark_fields,
+    res_col_name = res_col_name
+  )
+
+}
 
 
