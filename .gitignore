@@ -23,7 +23,7 @@ cats/
 siim_small/
 kaggle/
 models/
-fastaibuilt/retinanet/\.gitkeep/
+\.gitkeep/
 imports/\.gitkeep/
 D/
 mnist.pkl/

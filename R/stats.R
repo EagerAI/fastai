@@ -95,8 +95,10 @@ lr_find <- function(object, start_lr = 1e-07, end_lr = 10, num_it = 100,
   losses = unlist(lapply(1:length(losses),function(x) losses[[x]]$numpy()))
   lrs = object$recorder$lrs
 
-  data.frame(lr_rates = lrs,
+  lrs = data.frame(lr_rates = lrs,
              losses = losses)
+
+  invisible(lrs)
 
 }
 
