@@ -187,8 +187,8 @@
 <h2 class="hasAnchor">
 <a href="#basic-steppers" class="anchor"></a>Basic steppers</h2>
 <p>To be able to give examples of optimizer steps, we will need some steppers, like the following:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">magrittr</span><span class="op">)</span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">magrittr</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/henry090/fastai">fastai</a></span><span class="op">)</span>
 
 <span class="va">tst_param</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">val</span>, <span class="va">grad</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
@@ -203,69 +203,69 @@
 
   <span class="va">res</span><span class="op">$</span><span class="va">grad</span> <span class="op">=</span> <span class="va">grad</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/float.html">float</a></span><span class="op">(</span><span class="op">)</span>
   <span class="va">res</span>
-<span class="op">}</span></pre></div>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="va">p</span> <span class="op">=</span> <span class="fu">tst_param</span><span class="op">(</span><span class="fl">1.</span>, <span class="fl">0.1</span><span class="op">)</span>
-<span class="va">p</span></pre></div>
+<span class="op">}</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span> <span class="op">=</span> <span class="fu">tst_param</span><span class="op">(</span><span class="fl">1.</span>, <span class="fl">0.1</span><span class="op">)</span>
+<span class="va">p</span></code></pre></div>
 <pre><code><a href="../reference/tensor.html">tensor(1.)</a></code></pre>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="../reference/sgd_step.html">sgd_step</a></span><span class="op">(</span><span class="va">p</span>, <span class="fl">1.</span><span class="op">)</span>
-<span class="va">p</span></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/sgd_step.html">sgd_step</a></span><span class="op">(</span><span class="va">p</span>, <span class="fl">1.</span><span class="op">)</span>
+<span class="va">p</span></code></pre></div>
 <pre><code><a href="../reference/tensor.html">tensor(0.9000)</a></code></pre>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="va">p</span><span class="op">$</span><span class="va">grad</span></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span><span class="op">$</span><span class="va">grad</span></code></pre></div>
 <pre><code><a href="../reference/tensor.html">tensor(0.1000)</a></code></pre>
 </div>
 <div id="weight-decay" class="section level2">
 <h2 class="hasAnchor">
 <a href="#weight-decay" class="anchor"></a>Weight decay</h2>
-<div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="va">p</span> <span class="op">=</span> <span class="fu">tst_param</span><span class="op">(</span><span class="fl">1.</span>, <span class="fl">0.1</span><span class="op">)</span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span> <span class="op">=</span> <span class="fu">tst_param</span><span class="op">(</span><span class="fl">1.</span>, <span class="fl">0.1</span><span class="op">)</span>
 <span class="fu"><a href="../reference/weight_decay.html">weight_decay</a></span><span class="op">(</span><span class="va">p</span>, <span class="fl">1.</span>, <span class="fl">0.1</span><span class="op">)</span>
-<span class="va">p</span></pre></div>
+<span class="va">p</span></code></pre></div>
 <pre><code><a href="../reference/tensor.html">tensor(0.9000)</a></code></pre>
 </div>
 <div id="l2-regularization" class="section level2">
 <h2 class="hasAnchor">
 <a href="#l2-regularization" class="anchor"></a>L2 regularization</h2>
-<div class="sourceCode" id="cb10"><pre class="downlit">
-<span class="va">p</span> <span class="op">=</span> <span class="fu">tst_param</span><span class="op">(</span><span class="fl">1.</span>, <span class="fl">0.1</span><span class="op">)</span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span> <span class="op">=</span> <span class="fu">tst_param</span><span class="op">(</span><span class="fl">1.</span>, <span class="fl">0.1</span><span class="op">)</span>
 <span class="fu"><a href="../reference/l2_reg.html">l2_reg</a></span><span class="op">(</span><span class="va">p</span>, <span class="fl">1.</span>, <span class="fl">0.1</span><span class="op">)</span>
-<span class="va">p</span><span class="op">$</span><span class="va">grad</span></pre></div>
+<span class="va">p</span><span class="op">$</span><span class="va">grad</span></code></pre></div>
 <pre><code><a href="../reference/tensor.html">tensor(0.2000)</a></code></pre>
 </div>
 <div id="making-the-step" class="section level2">
 <h2 class="hasAnchor">
 <a href="#making-the-step" class="anchor"></a>Making the step</h2>
 <p>This method will loop over all param groups, then all parameters for which <code>grad</code> is not <code>NULL</code> and call each function in <code>stepper</code>, passing it the parameter p with the hyper-parameters in the corresponding dict in <code>hypers</code>.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit">
-<span class="va">params</span> <span class="op">=</span> <span class="fu"><a href="../reference/L.html">L</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">tst_param</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">params</span> <span class="op">=</span> <span class="fu"><a href="../reference/L.html">L</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">tst_param</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">opt</span> <span class="op">=</span> <span class="fu"><a href="../reference/Optimizer.html">Optimizer</a></span><span class="op">(</span><span class="va">params</span>, <span class="va">sgd_step</span>, lr<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span>
 
 <span class="va">opt</span><span class="op">$</span><span class="fu">step</span><span class="op">(</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">items</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">items</span><span class="op">)</span></code></pre></div>
 <pre><code>List of 4
  $ :tensor(0.)
  $ :tensor(0.9900)
  $ :tensor(1.9800)
  $ :tensor(2.9700)</code></pre>
-<div class="sourceCode" id="cb14"><pre class="downlit">
-<span class="va">params</span> <span class="op">=</span> <span class="fu"><a href="../reference/L.html">L</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">tst_param</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">params</span> <span class="op">=</span> <span class="fu"><a href="../reference/L.html">L</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">tst_param</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">opt</span> <span class="op">=</span> <span class="fu"><a href="../reference/Optimizer.html">Optimizer</a></span><span class="op">(</span><span class="va">params</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">weight_decay</span>, <span class="va">sgd_step</span><span class="op">)</span>, lr<span class="op">=</span><span class="fl">0.1</span>, wd <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>
 
 <span class="va">opt</span><span class="op">$</span><span class="fu">step</span><span class="op">(</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">items</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">items</span><span class="op">)</span></code></pre></div>
 <pre><code>List of 4
  $ :tensor(0.)
  $ :tensor(0.9800)
  $ :tensor(1.9600)
  $ :tensor(2.9400)</code></pre>
-<div class="sourceCode" id="cb16"><pre class="downlit">
-<span class="va">params</span> <span class="op">=</span> <span class="fu"><a href="../reference/L.html">L</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">tst_param</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">params</span> <span class="op">=</span> <span class="fu"><a href="../reference/L.html">L</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">tst_param</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">opt</span> <span class="op">=</span> <span class="fu"><a href="../reference/Optimizer.html">Optimizer</a></span><span class="op">(</span><span class="va">params</span>, <span class="va">sgd_step</span>, lr<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span>
 
@@ -276,14 +276,14 @@
 
 <span class="va">opt</span><span class="op">$</span><span class="fu">step</span><span class="op">(</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">items</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">items</span><span class="op">)</span></code></pre></div>
 <pre><code>List of 4
  $ :tensor(0.)
  $ :tensor(0.9900)
  $ :tensor(1.9800)
  $ :tensor(3.)</code></pre>
-<div class="sourceCode" id="cb18"><pre class="downlit">
-<span class="va">params</span> <span class="op">=</span> <span class="fu"><a href="../reference/L.html">L</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">tst_param</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">params</span> <span class="op">=</span> <span class="fu"><a href="../reference/L.html">L</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">tst_param</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">opt</span> <span class="op">=</span> <span class="fu"><a href="../reference/Optimizer.html">Optimizer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">params</span><span class="op">[</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span><span class="op">]</span>,<span class="va">params</span><span class="op">[</span><span class="fl">2</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span>, <span class="va">sgd_step</span>, lr<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span>
 
@@ -291,7 +291,7 @@
 
 <span class="va">opt</span><span class="op">$</span><span class="fu">step</span><span class="op">(</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">items</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">items</span><span class="op">)</span></code></pre></div>
 <pre><code>List of 4
  $ :tensor(0.)
  $ :tensor(0.9990)
@@ -301,14 +301,14 @@
 <div id="zero-grad" class="section level2">
 <h2 class="hasAnchor">
 <a href="#zero-grad" class="anchor"></a>Zero grad</h2>
-<div class="sourceCode" id="cb20"><pre class="downlit">
-<span class="va">params</span> <span class="op">=</span> <span class="fu"><a href="../reference/L.html">L</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">tst_param</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">params</span> <span class="op">=</span> <span class="fu"><a href="../reference/L.html">L</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">tst_param</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">opt</span> <span class="op">=</span> <span class="fu"><a href="../reference/Optimizer.html">Optimizer</a></span><span class="op">(</span><span class="va">params</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">weight_decay</span>, <span class="va">sgd_step</span><span class="op">)</span>, lr<span class="op">=</span><span class="fl">0.1</span>, wd <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>
 
 <span class="va">opt</span><span class="op">$</span><span class="fu">zero_grad</span><span class="op">(</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">items</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">items</span><span class="op">)</span></code></pre></div>
 <pre><code>List of 4
  $ :tensor(0.)
  $ :tensor(1.)
@@ -324,8 +324,8 @@
 <li>new_val = old_val * mom + grad</li>
 </ul>
 <p>whereas <code>dampening = TRUE</code> makes it an exponential moving average:</p>
-<div class="sourceCode" id="cb22"><pre class="downlit">
-<span class="va">p</span> <span class="op">=</span> <span class="fu">tst_param</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span> <span class="op">=</span> <span class="fu">tst_param</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span><span class="op">)</span><span class="op">)</span>
 <span class="va">state</span> <span class="op">=</span> <span class="fu"><a href="../reference/average_grad.html">average_grad</a></span><span class="op">(</span><span class="va">p</span>, mom <span class="op">=</span> <span class="fl">0.9</span>, dampening <span class="op">=</span> <span class="cn">FALSE</span>, grad_avg <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
 <span class="va">p</span><span class="op">$</span><span class="va">grad</span>
 <span class="co"># tensor([4., 5., 6.])</span>
@@ -334,7 +334,7 @@
 <span class="va">p</span><span class="op">$</span><span class="va">grad</span><span class="op">*</span><span class="fl">0.1</span>
 <span class="co"># tensor([0.4000, 0.5000, 0.6000])</span>
 <span class="va">p</span><span class="op">$</span><span class="va">grad</span><span class="op">*</span><span class="op">(</span><span class="fl">0.1</span><span class="op">*</span><span class="fl">0.9</span><span class="op">+</span><span class="fl">0.1</span><span class="op">)</span>
-<span class="co"># tensor([0.7600, 0.9500, 1.1400])</span></pre></div>
+<span class="co"># tensor([0.7600, 0.9500, 1.1400])</span></code></pre></div>
 </div>
 <div id="average-sqr_grad" class="section level2">
 <h2 class="hasAnchor">
@@ -347,8 +347,8 @@
 <ul>
 <li>new_val = old_val * mom + (grad ** 2) * (1-mom)</li>
 </ul>
-<div class="sourceCode" id="cb23"><pre class="downlit">
-<span class="va">p</span> <span class="op">=</span> <span class="fu">tst_param</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span> <span class="op">=</span> <span class="fu">tst_param</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span><span class="op">)</span><span class="op">)</span>
 <span class="va">state</span> <span class="op">=</span> <span class="fu"><a href="../reference/average_sqr_grad.html">average_sqr_grad</a></span><span class="op">(</span><span class="va">p</span>, sqr_mom <span class="op">=</span> <span class="fl">0.99</span>, dampening <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 
 <span class="va">p</span><span class="op">$</span><span class="va">grad</span><span class="op">$</span><span class="fu">pow</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>
@@ -367,51 +367,51 @@
 
 <span class="va">params</span> <span class="op">=</span> <span class="fu"><a href="../reference/L.html">L</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">tst_param</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="va">opt</span> <span class="op">=</span> <span class="fu"><a href="../reference/Optimizer.html">Optimizer</a></span><span class="op">(</span><span class="va">params</span>, <span class="va">sgd_step</span>, lr <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>
-<span class="va">opt</span><span class="op">$</span><span class="fu">freeze_to</span><span class="op">(</span><span class="fl">1L</span><span class="op">)</span></pre></div>
+<span class="va">opt</span><span class="op">$</span><span class="fu">freeze_to</span><span class="op">(</span><span class="fl">1L</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="sgd" class="section level2">
 <h2 class="hasAnchor">
 <a href="#sgd" class="anchor"></a>SGD</h2>
 <p>A <code>Optimizer</code> for SGD with <code>lr</code> and <code>mom</code> and <code>params</code>.</p>
 <p>Optional weight decay of <code>wd</code> is applied, as true weight decay (decay the weights directly) if <code>decouple_wd = TRUE</code> else as <code>L2</code> regularization (add the decay to the gradients).</p>
-<div class="sourceCode" id="cb24"><pre class="downlit">
-<span class="va">params</span> <span class="op">=</span> <span class="fu"><a href="../reference/L.html">L</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">tst_param</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">params</span> <span class="op">=</span> <span class="fu"><a href="../reference/L.html">L</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">tst_param</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="va">opt</span> <span class="op">=</span> <span class="fu"><a href="../reference/SGD.html">SGD</a></span><span class="op">(</span><span class="va">params</span>, lr <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>
 <span class="va">opt</span><span class="op">$</span><span class="fu">step</span><span class="op">(</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">items</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">items</span><span class="op">)</span></code></pre></div>
 <pre><code>List of 4
  $ :tensor(0.)
  $ :tensor(0.9900)
  $ :tensor(1.9800)
  $ :tensor(2.9700)</code></pre>
-<div class="sourceCode" id="cb26"><pre class="downlit">
-<span class="va">params</span> <span class="op">=</span> <span class="fu"><a href="../reference/L.html">L</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">tst_param</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">params</span> <span class="op">=</span> <span class="fu"><a href="../reference/L.html">L</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">tst_param</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="va">opt</span> <span class="op">=</span> <span class="fu"><a href="../reference/SGD.html">SGD</a></span><span class="op">(</span><span class="va">params</span>, lr <span class="op">=</span> <span class="fl">0.1</span>, mom <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span>
 <span class="va">opt</span><span class="op">$</span><span class="fu">step</span><span class="op">(</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">items</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">items</span><span class="op">)</span></code></pre></div>
 <pre><code>List of 4
  $ :tensor(0.)
  $ :tensor(0.9900)
  $ :tensor(1.9800)
  $ :tensor(2.9700)</code></pre>
 <p>Test weight decay, notice how we can see that <code>L2</code> regularization is different from weight decay even for simple SGD with momentum.</p>
-<div class="sourceCode" id="cb28"><pre class="downlit">
-<span class="va">params</span> <span class="op">=</span>  <span class="fu"><a href="../reference/L.html">L</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">tst_param</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">params</span> <span class="op">=</span>  <span class="fu"><a href="../reference/L.html">L</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">tst_param</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#Weight decay</span>
 <span class="va">opt</span> <span class="op">=</span> <span class="fu"><a href="../reference/SGD.html">SGD</a></span><span class="op">(</span><span class="va">params</span>, lr<span class="op">=</span><span class="fl">0.1</span>, mom<span class="op">=</span><span class="fl">0.9</span>, wd<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span>
 <span class="va">opt</span><span class="op">$</span><span class="fu">step</span><span class="op">(</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">items</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">items</span><span class="op">)</span></code></pre></div>
 <pre><code>List of 4
  $ :tensor(0.)
  $ :tensor(0.9800)
  $ :tensor(1.9600)
  $ :tensor(2.9400)</code></pre>
-<div class="sourceCode" id="cb30"><pre class="downlit">
-<span class="va">params</span> <span class="op">=</span>  <span class="fu"><a href="../reference/L.html">L</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">tst_param</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">params</span> <span class="op">=</span>  <span class="fu"><a href="../reference/L.html">L</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">tst_param</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#L2 reg</span>
 <span class="va">opt</span> <span class="op">=</span> <span class="fu"><a href="../reference/SGD.html">SGD</a></span><span class="op">(</span><span class="va">params</span>, lr<span class="op">=</span><span class="fl">0.1</span>, mom<span class="op">=</span><span class="fl">0.9</span>, wd<span class="op">=</span><span class="fl">0.1</span>, decouple_wd<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>
 <span class="va">opt</span><span class="op">$</span><span class="fu">step</span><span class="op">(</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">items</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">items</span><span class="op">)</span></code></pre></div>
 <pre><code>List of 4
  $ :tensor(0.)
  $ :tensor(0.9800)
@@ -423,22 +423,22 @@
 <a href="#rmsprop" class="anchor"></a>RMSProp</h2>
 <p>A <code>Optimizer</code> for <code>RMSProp</code> with <code>lr</code>, <code>sqr_mom</code>, <code>mom</code> and <code>params</code>.</p>
 <p><code>RMSProp</code> was introduced by Geoffrey Hinton in <a href="http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf">his course</a>. What is named <code>sqr_mom</code> here is the <code>alpha</code> in the course. Optional weight decay of <code>wd</code> is applied, as true weight decay (decay the weights directly) if <code>decouple_wd = TRUE</code> else as L2 regularization (add the decay to the gradients).</p>
-<div class="sourceCode" id="cb32"><pre class="downlit">
-<span class="va">params</span> <span class="op">=</span> <span class="fu">tst_param</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>,<span class="fl">0.2</span>,<span class="fl">0.3</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">params</span> <span class="op">=</span> <span class="fu">tst_param</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>,<span class="fl">0.2</span>,<span class="fl">0.3</span><span class="op">)</span><span class="op">)</span>
 <span class="va">opt</span> <span class="op">=</span> <span class="fu"><a href="../reference/RMSProp.html">RMSProp</a></span><span class="op">(</span><span class="va">params</span>, lr<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span>
 <span class="va">opt</span><span class="op">$</span><span class="fu">step</span><span class="op">(</span><span class="op">)</span>
 <span class="va">opt</span><span class="op">$</span><span class="fu">step</span><span class="op">(</span><span class="op">)</span>
 <span class="va">step</span> <span class="op">=</span> <span class="op">(</span><span class="op">-</span><span class="fl">0.1</span> <span class="op">*</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="fl">0.01</span><span class="op">*</span><span class="fl">0.99</span><span class="op">+</span><span class="fl">0.01</span><span class="op">)</span> <span class="op">*</span> <span class="fl">0.1</span><span class="op">**</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1e-8</span><span class="op">)</span>
-<span class="va">params</span>; <span class="fu"><a href="../reference/tensor.html">tensor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">step</span>, <span class="fl">1</span><span class="op">+</span><span class="va">step</span>, <span class="fl">2</span><span class="op">+</span><span class="va">step</span><span class="op">)</span><span class="op">)</span></pre></div>
+<span class="va">params</span>; <span class="fu"><a href="../reference/tensor.html">tensor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">step</span>, <span class="fl">1</span><span class="op">+</span><span class="va">step</span>, <span class="fl">2</span><span class="op">+</span><span class="va">step</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>tensor([-0.7089,  0.2911,  1.2911])
 tensor([-0.7089,  0.2911,  1.2911])</code></pre>
-<div class="sourceCode" id="cb34"><pre class="downlit">
-<span class="va">params</span> <span class="op">=</span> <span class="fu">tst_param</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>,<span class="fl">0.2</span>,<span class="fl">0.3</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">params</span> <span class="op">=</span> <span class="fu">tst_param</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>,<span class="fl">0.2</span>,<span class="fl">0.3</span><span class="op">)</span><span class="op">)</span>
 <span class="va">opt</span> <span class="op">=</span> <span class="fu"><a href="../reference/RMSProp.html">RMSProp</a></span><span class="op">(</span><span class="va">params</span>, lr<span class="op">=</span><span class="fl">0.1</span>, mom<span class="op">=</span><span class="fl">0.9</span><span class="op">)</span>
 <span class="va">opt</span><span class="op">$</span><span class="fu">step</span><span class="op">(</span><span class="op">)</span>
 <span class="va">opt</span><span class="op">$</span><span class="fu">step</span><span class="op">(</span><span class="op">)</span>
 <span class="va">step</span> <span class="op">=</span> <span class="op">(</span><span class="op">-</span> <span class="fl">0.1</span> <span class="op">*</span> <span class="op">(</span><span class="fl">0.1</span> <span class="op">+</span> <span class="fl">0.9</span><span class="op">*</span><span class="fl">0.1</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="fl">0.01</span><span class="op">*</span><span class="fl">0.99</span><span class="op">+</span><span class="fl">0.01</span><span class="op">)</span> <span class="op">*</span> <span class="fl">0.1</span><span class="op">**</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1e-8</span><span class="op">)</span>
-<span class="va">params</span>; <span class="fu"><a href="../reference/tensor.html">tensor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">step</span>, <span class="fl">1</span><span class="op">+</span><span class="va">step</span>, <span class="fl">2</span><span class="op">+</span><span class="va">step</span><span class="op">)</span><span class="op">)</span></pre></div>
+<span class="va">params</span>; <span class="fu"><a href="../reference/tensor.html">tensor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">step</span>, <span class="fl">1</span><span class="op">+</span><span class="va">step</span>, <span class="fl">2</span><span class="op">+</span><span class="va">step</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>tensor([-1.3469, -0.3469,  0.6531])
 tensor([-1.3469, -0.3469,  0.6531])</code></pre>
 </div>
@@ -448,39 +448,39 @@ tensor([-1.3469, -0.3469,  0.6531])</code></pre>
 <p>A Optimizer for Adam with <code>lr</code>, <code>mom</code>, <code>sqr_mom</code>, <code>eps</code> and <code>params</code>.</p>
 <p>Adam was introduced by Diederik P. Kingma and Jimmy Ba in Adam: A Method for Stochastic Optimization. For consistency across optimizers, we renamed <code>beta1</code> and <code>beta2</code> in the paper to <code>mom</code> and <code>sqr_mom</code>. Note that our defaults also differ from the paper (0.99 for <code>sqr_mom</code> or <code>beta2</code>, 1e-5 for <code>eps</code>). Those values seem to be better from our experiments in a wide range of situations.</p>
 <p>Optional weight decay of <code>wd</code> is applied, as true weight decay (decay the weights directly) if <code>decouple_wd=TRUE</code> else as <code>L2</code> regularization (add the decay to the gradients).</p>
-<div class="sourceCode" id="cb36"><pre class="downlit">
-<span class="va">params</span> <span class="op">=</span> <span class="fu">tst_param</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>,<span class="fl">0.2</span>,<span class="fl">0.3</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">params</span> <span class="op">=</span> <span class="fu">tst_param</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>,<span class="fl">0.2</span>,<span class="fl">0.3</span><span class="op">)</span><span class="op">)</span>
 <span class="va">opt</span> <span class="op">=</span> <span class="fu"><a href="../reference/Adam.html">Adam</a></span><span class="op">(</span><span class="va">params</span>, lr<span class="op">=</span><span class="fl">0.1</span>, wd<span class="op">=</span><span class="fl">0</span><span class="op">)</span>
 <span class="va">opt</span><span class="op">$</span><span class="fu">step</span><span class="op">(</span><span class="op">)</span>
 <span class="va">step</span> <span class="op">=</span> <span class="op">(</span><span class="op">-</span><span class="fl">0.1</span> <span class="op">*</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">0.1</span><span class="op">**</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1e-8</span><span class="op">)</span>
-<span class="va">params</span>; <span class="fu"><a href="../reference/tensor.html">tensor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">+</span><span class="va">step</span>, <span class="fl">2</span><span class="op">+</span><span class="va">step</span>, <span class="fl">3</span><span class="op">+</span><span class="va">step</span><span class="op">)</span><span class="op">)</span></pre></div>
+<span class="va">params</span>; <span class="fu"><a href="../reference/tensor.html">tensor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">+</span><span class="va">step</span>, <span class="fl">2</span><span class="op">+</span><span class="va">step</span>, <span class="fl">3</span><span class="op">+</span><span class="va">step</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>tensor([0.9000, 1.9000, 2.9000])
 tensor([0.9000, 1.9000, 2.9000])</code></pre>
-<div class="sourceCode" id="cb38"><pre class="downlit">
-<span class="va">opt</span><span class="op">$</span><span class="fu">step</span><span class="op">(</span><span class="op">)</span>
-<span class="va">params</span>;<span class="fu"><a href="../reference/tensor.html">tensor</a></span><span class="op">(</span><span class="fu"><a href="../reference/tensor.html">tensor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">+</span><span class="fl">2</span><span class="op">*</span><span class="va">step</span>, <span class="fl">2</span><span class="op">+</span><span class="fl">2</span><span class="op">*</span><span class="va">step</span>, <span class="fl">3</span><span class="op">+</span><span class="fl">2</span><span class="op">*</span><span class="va">step</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">opt</span><span class="op">$</span><span class="fu">step</span><span class="op">(</span><span class="op">)</span>
+<span class="va">params</span>;<span class="fu"><a href="../reference/tensor.html">tensor</a></span><span class="op">(</span><span class="fu"><a href="../reference/tensor.html">tensor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">+</span><span class="fl">2</span><span class="op">*</span><span class="va">step</span>, <span class="fl">2</span><span class="op">+</span><span class="fl">2</span><span class="op">*</span><span class="va">step</span>, <span class="fl">3</span><span class="op">+</span><span class="fl">2</span><span class="op">*</span><span class="va">step</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>tensor([0.8000, 1.8000, 2.8000])
 tensor([0.8000, 1.8000, 2.8000])</code></pre>
 </div>
 <div id="radam" class="section level2">
 <h2 class="hasAnchor">
 <a href="#radam" class="anchor"></a>RAdam</h2>
-<div class="sourceCode" id="cb40"><pre class="downlit">
-<span class="va">beta</span> <span class="op">=</span> <span class="fl">0.99</span>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">beta</span> <span class="op">=</span> <span class="fl">0.99</span>
 <span class="va">r_inf</span> <span class="op">=</span> <span class="fl">2</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">beta</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span>
 <span class="va">rs</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">5</span><span class="op">:</span><span class="fl">500</span>, <span class="kw">function</span><span class="op">(</span><span class="va">s</span><span class="op">)</span> <span class="op">{</span><span class="va">r_inf</span> <span class="op">-</span> <span class="fl">2</span><span class="op">*</span><span class="va">s</span><span class="op">*</span><span class="va">beta</span><span class="op">**</span><span class="va">s</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">beta</span><span class="op">**</span><span class="va">s</span><span class="op">)</span><span class="op">}</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">v</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="op">(</span><span class="va">rs</span><span class="op">-</span><span class="fl">4</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="va">rs</span><span class="op">-</span><span class="fl">2</span><span class="op">)</span> <span class="op">*</span> <span class="va">r_inf</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="op">(</span><span class="va">r_inf</span><span class="op">-</span><span class="fl">4</span><span class="op">)</span><span class="op">*</span><span class="op">(</span><span class="va">r_inf</span><span class="op">-</span><span class="fl">2</span><span class="op">)</span><span class="op">*</span><span class="va">rs</span><span class="op">)</span><span class="op">)</span>
 <span class="va">df_high</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="../reference/length.html">length</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">v</span><span class="op">)</span>
 
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">highcharter</span><span class="op">)</span>
-<span class="fu">hchart</span><span class="op">(</span><span class="va">df_high</span>,<span class="st">'line'</span>, <span class="fu">hcaes</span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span><span class="op">)</span><span class="op">)</span></pre></div>
+<span class="fu">hchart</span><span class="op">(</span><span class="va">df_high</span>,<span class="st">'line'</span>, <span class="fu">hcaes</span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="qhadam" class="section level2">
 <h2 class="hasAnchor">
 <a href="#qhadam" class="anchor"></a>QHAdam</h2>
 <p>An Optimizer for Adam with <code>lr</code>, <code>mom</code>, <code>sqr_mom</code>, <code>nus</code>, <code>eps</code> and <code>params</code>.</p>
-<div class="sourceCode" id="cb41"><pre class="downlit">
-<span class="va">params</span> <span class="op">=</span> <span class="fu">tst_param</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>,<span class="fl">0.2</span>,<span class="fl">0.3</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">params</span> <span class="op">=</span> <span class="fu">tst_param</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>,<span class="fl">0.2</span>,<span class="fl">0.3</span><span class="op">)</span><span class="op">)</span>
 <span class="va">opt</span> <span class="op">=</span> <span class="fu"><a href="../reference/QHAdam.html">QHAdam</a></span><span class="op">(</span><span class="va">params</span>, lr<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span>
 <span class="va">opt</span><span class="op">$</span><span class="fu">step</span><span class="op">(</span><span class="op">)</span>
 <span class="va">step</span> <span class="op">=</span> <span class="op">(</span><span class="op">-</span><span class="fl">0.1</span> <span class="op">*</span> <span class="op">(</span><span class="op">(</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="fl">0.7</span><span class="op">)</span> <span class="op">*</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span> <span class="op">(</span><span class="fl">0.7</span> <span class="op">*</span> <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span> <span class="op">)</span><span class="op">/</span> <span class="op">(</span>
@@ -491,7 +491,7 @@ tensor([0.8000, 1.8000, 2.8000])</code></pre>
 <span class="va">opt</span><span class="op">$</span><span class="fu">step</span><span class="op">(</span><span class="op">)</span>
 <span class="va">params</span>; <span class="fu"><a href="../reference/tensor.html">tensor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">+</span><span class="fl">2</span><span class="op">*</span><span class="va">step</span>, <span class="fl">2</span><span class="op">+</span><span class="fl">2</span><span class="op">*</span><span class="va">step</span>, <span class="fl">3</span><span class="op">+</span><span class="fl">2</span><span class="op">*</span><span class="va">step</span><span class="op">)</span><span class="op">)</span>
 <span class="co"># tensor([0.8000, 1.8000, 2.8000])</span>
-<span class="co"># tensor([0.8000, 1.8000, 2.8000])</span></pre></div>
+<span class="co"># tensor([0.8000, 1.8000, 2.8000])</span></code></pre></div>
 </div>
 <div id="larc" class="section level2">
 <h2 class="hasAnchor">
@@ -499,28 +499,28 @@ tensor([0.8000, 1.8000, 2.8000])</code></pre>
 <p>A <code>Optimizer</code> for <code>Adam</code> with <code>lr</code>, <code>mom</code>, <code>sqr_mom</code>, <code>eps</code> and <code>params</code>.</p>
 <p>The LARS optimizer was first introduced in Large Batch Training of Convolutional Networks then refined in its LARC variant (original LARS is with <code>clip=FALSE</code>). A learning rate is computed for each individual layer with a certain <code>trust_coefficient</code>, then clipped to be always less than <code>lr</code>.</p>
 <p>Optional weight decay of <code>wd</code> is applied, as true weight decay (decay the weights directly) if <code>decouple_wd = TRUE</code> else as <code>L2</code> regularization (add the decay to the gradients).</p>
-<div class="sourceCode" id="cb42"><pre class="downlit">
-<span class="va">params</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu">tst_param</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>,<span class="fl">0.2</span>,<span class="fl">0.3</span><span class="op">)</span><span class="op">)</span>, <span class="fu">tst_param</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.01</span>,<span class="fl">0.02</span>,<span class="fl">0.03</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">params</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu">tst_param</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>,<span class="fl">0.2</span>,<span class="fl">0.3</span><span class="op">)</span><span class="op">)</span>, <span class="fu">tst_param</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.01</span>,<span class="fl">0.02</span>,<span class="fl">0.03</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="va">opt</span> <span class="op">=</span> <span class="fu"><a href="../reference/Larc.html">Larc</a></span><span class="op">(</span><span class="va">params</span>, lr<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span>
 <span class="va">opt</span><span class="op">$</span><span class="fu">step</span><span class="op">(</span><span class="op">)</span>
 <span class="co">#First param local lr is 0.02 &lt; lr so it's not clipped</span>
-<span class="va">opt</span><span class="op">$</span><span class="va">state</span><span class="op">[</span><span class="va">params</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="st">'local_lr'</span><span class="op">]</span></pre></div>
+<span class="va">opt</span><span class="op">$</span><span class="va">state</span><span class="op">[</span><span class="va">params</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="st">'local_lr'</span><span class="op">]</span></code></pre></div>
 <pre><code>$local_lr
 tensor(0.0200)</code></pre>
-<div class="sourceCode" id="cb44"><pre class="downlit">
-<span class="va">opt</span><span class="op">$</span><span class="va">state</span><span class="op">[</span><span class="va">params</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="st">'local_lr'</span><span class="op">]</span></pre></div>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">opt</span><span class="op">$</span><span class="va">state</span><span class="op">[</span><span class="va">params</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="st">'local_lr'</span><span class="op">]</span></code></pre></div>
 <pre><code>$local_lr
 [1] 0.1</code></pre>
-<div class="sourceCode" id="cb46"><pre class="downlit">
-<span class="va">params</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu">tst_param</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>,<span class="fl">0.2</span>,<span class="fl">0.3</span><span class="op">)</span><span class="op">)</span>, <span class="fu">tst_param</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.01</span>,<span class="fl">0.02</span>,<span class="fl">0.03</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">params</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu">tst_param</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>,<span class="fl">0.2</span>,<span class="fl">0.3</span><span class="op">)</span><span class="op">)</span>, <span class="fu">tst_param</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.01</span>,<span class="fl">0.02</span>,<span class="fl">0.03</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="va">opt</span> <span class="op">=</span> <span class="fu"><a href="../reference/Larc.html">Larc</a></span><span class="op">(</span><span class="va">params</span>, lr<span class="op">=</span><span class="fl">0.1</span>, clip <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="va">opt</span><span class="op">$</span><span class="fu">step</span><span class="op">(</span><span class="op">)</span>
 <span class="co">#Second param local lr is 0.2 &gt; lr so it's clipped</span>
-<span class="va">opt</span><span class="op">$</span><span class="va">state</span><span class="op">[</span><span class="va">params</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="st">'local_lr'</span><span class="op">]</span></pre></div>
+<span class="va">opt</span><span class="op">$</span><span class="va">state</span><span class="op">[</span><span class="va">params</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="st">'local_lr'</span><span class="op">]</span></code></pre></div>
 <pre><code>$local_lr
 tensor(0.0200)</code></pre>
-<div class="sourceCode" id="cb48"><pre class="downlit">
-<span class="va">opt</span><span class="op">$</span><span class="va">state</span><span class="op">[</span><span class="va">params</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="st">'local_lr'</span><span class="op">]</span></pre></div>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">opt</span><span class="op">$</span><span class="va">state</span><span class="op">[</span><span class="va">params</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="st">'local_lr'</span><span class="op">]</span></code></pre></div>
 <pre><code>$local_lr
 tensor(0.2000)</code></pre>
 </div>
@@ -530,18 +530,18 @@ tensor(0.2000)</code></pre>
 <p>A <code>Optimizer</code> for Adam with <code>lr</code>, <code>mom</code>, <code>sqr_mom</code>, <code>eps</code> and <code>params</code>.</p>
 <p>LAMB was introduced in <a href="https://arxiv.org/abs/1904.00962">Large Batch Optimization for Deep Learning: Training BERT in 76 minutes</a>. Intuitively, it’s LARC applied to Adam. As in Adam, we renamed beta1 and beta2 in the paper to mom and sqr_mom. Note that our defaults also differ from the paper (0.99 for <code>sqr_mom</code> or <code>beta2</code>, 1e-5 for <code>eps</code>). Those values seem to be better from our experiments in a wide range of situations.</p>
 <p>Optional weight decay of <code>wd</code> is applied, as true weight decay (decay the weights directly) if <code>decouple_wd=TRUE</code> else as L2 regularization (add the decay to the gradients).</p>
-<div class="sourceCode" id="cb50"><pre class="downlit">
-<span class="va">params</span> <span class="op">=</span> <span class="fu">tst_param</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>,<span class="fl">0.2</span>,<span class="fl">0.3</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">params</span> <span class="op">=</span> <span class="fu">tst_param</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>,<span class="fl">0.2</span>,<span class="fl">0.3</span><span class="op">)</span><span class="op">)</span>
 <span class="va">opt</span> <span class="op">=</span> <span class="fu"><a href="../reference/Lamb.html">Lamb</a></span><span class="op">(</span><span class="va">params</span>, lr<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span>
 <span class="va">opt</span><span class="op">$</span><span class="fu">step</span><span class="op">(</span><span class="op">)</span>
-<span class="va">params</span></pre></div>
+<span class="va">params</span></code></pre></div>
 <pre><code>tensor([0.7840, 1.7840, 2.7840])</code></pre>
 </div>
 <div id="lookahead" class="section level2">
 <h2 class="hasAnchor">
 <a href="#lookahead" class="anchor"></a>Lookahead</h2>
-<div class="sourceCode" id="cb52"><pre class="downlit">
-<span class="va">params</span> <span class="op">=</span> <span class="fu">tst_param</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>,<span class="fl">0.2</span>,<span class="fl">0.3</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">params</span> <span class="op">=</span> <span class="fu">tst_param</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>,<span class="fl">0.2</span>,<span class="fl">0.3</span><span class="op">)</span><span class="op">)</span>
 <span class="va">p</span> <span class="op">=</span> <span class="va">params</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span><span class="op">)</span>
 <span class="va">g</span> <span class="op">=</span> <span class="fu"><a href="../reference/tensor.html">tensor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>,<span class="fl">0.2</span>,<span class="fl">0.3</span><span class="op">)</span><span class="op">)</span>
 <span class="va">opt</span> <span class="op">=</span> <span class="fu"><a href="../reference/Lookahead.html">Lookahead</a></span><span class="op">(</span><span class="fu"><a href="../reference/SGD.html">SGD</a></span><span class="op">(</span><span class="va">params</span>, lr<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span><span class="op">)</span>
@@ -558,7 +558,7 @@ tensor(0.2000)</code></pre>
 <span class="va">opt</span><span class="op">$</span><span class="fu">step</span><span class="op">(</span><span class="op">)</span>
 <span class="va">params</span>; <span class="va">p</span> <span class="op">*</span> <span class="fl">0.5</span> <span class="op">+</span> <span class="op">(</span><span class="va">p</span><span class="op">-</span><span class="va">g</span><span class="op">*</span><span class="fl">0.6</span><span class="op">)</span> <span class="op">*</span> <span class="fl">0.5</span>
 <span class="co"># tensor([0.9700, 1.9400, 2.9100])</span>
-<span class="co"># tensor([0.9700, 1.9400, 2.9100])</span></pre></div>
+<span class="co"># tensor([0.9700, 1.9400, 2.9100])</span></code></pre></div>
 </div>
   </div>
 
