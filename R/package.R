@@ -114,8 +114,8 @@ torch <- NULL
 
         if(reticulate::py_module_available('timm')) {
           timm <<- reticulate::import('timm')
-          if(file.exists('fastaibuilt/pretrained_timm_models.py')) {
-            load_pre_models <<- reticulate::import_from_path('pretrained_timm_models', path = 'fastaibuilt')
+          if(file.exists('inst/python/fastaibuilt/pretrained_timm_models.py')) {
+            load_pre_models <<- reticulate::import_from_path('pretrained_timm_models', path = 'inst/python/fastaibuilt')
           }
         }
 
@@ -136,8 +136,8 @@ torch <- NULL
          reticulate::py_module_available('IPython') &
          reticulate::py_module_available('fastai')) {
 
-        if(file.exists('fastaibuilt/Transformer.py')) {
-          hug <<- reticulate::import_from_path('Transformer', path = 'fastaibuilt')
+        if(file.exists('inst/python/fastaibuilt/Transformer.py')) {
+          hug <<- reticulate::import_from_path('Transformer', path = 'inst/python/fastaibuilt')
         }
 
       }
@@ -145,8 +145,8 @@ torch <- NULL
       if(reticulate::py_module_available('IPython') &
          reticulate::py_module_available('fastai')) {
 
-        if(file.exists('fastaibuilt/bs_finder.py')) {
-          bs_finder <<- reticulate::import_from_path('bs_finder', path = 'fastaibuilt')
+        if(file.exists('inst/python/fastaibuilt/bs_finder.py')) {
+          bs_finder <<- reticulate::import_from_path('bs_finder', path = 'inst/python/fastaibuilt')
         }
 
       }
@@ -208,28 +208,28 @@ torch <- NULL
          reticulate::py_module_available('pytorch_lightning') &
          reticulate::py_module_available('catalyst')) {
 
-        if(file.exists('fastaibuilt/crappify.py')) {
-          crap <<- reticulate::import_from_path('crappify', path = 'fastaibuilt')
+        if(file.exists('inst/python/fastaibuilt/crappify.py')) {
+          crap <<- reticulate::import_from_path('crappify', path = 'inst/python/fastaibuilt')
         }
 
-        if(file.exists('fastaibuilt/migrating_ignite.py')) {
-          migrating_ignite <<- reticulate::import_from_path('migrating_ignite', path = 'fastaibuilt')
+        if(file.exists('inst/python/fastaibuilt/migrating_ignite.py')) {
+          migrating_ignite <<- reticulate::import_from_path('migrating_ignite', path = 'inst/python/fastaibuilt')
         }
 
-        if(file.exists('fastaibuilt/migrating_lightning.py')) {
-          migrating_lightning <<- reticulate::import_from_path('migrating_lightning', path = 'fastaibuilt')
+        if(file.exists('inst/python/fastaibuilt/migrating_lightning.py')) {
+          migrating_lightning <<- reticulate::import_from_path('migrating_lightning', path = 'inst/python/fastaibuilt')
         }
 
-        if(file.exists('fastaibuilt/migrating_pytorch.py')) {
-          migrating_pytorch <<- reticulate::import_from_path('migrating_pytorch', path = 'fastaibuilt')
+        if(file.exists('inst/python/fastaibuilt/migrating_pytorch.py')) {
+          migrating_pytorch <<- reticulate::import_from_path('migrating_pytorch', path = 'inst/python/fastaibuilt')
         }
 
-        if(file.exists('fastaibuilt/migrating_catalyst.py')) {
-          catalyst <<- reticulate::import_from_path('migrating_catalyst', path = 'fastaibuilt')
+        if(file.exists('inst/python/fastaibuilt/migrating_catalyst.py')) {
+          catalyst <<- reticulate::import_from_path('migrating_catalyst', path = 'inst/python/fastaibuilt')
         }
 
-        if(dir.exists('fastaibuilt/retinanet')) {
-          retinanet <<- reticulate::import_from_path('retinanet', path = 'fastaibuilt')
+        if(dir.exists('inst/python/fastaibuilt/retinanet')) {
+          retinanet <<- reticulate::import_from_path('retinanet', path = 'inst/python/fastaibuilt')
         }
 
       }

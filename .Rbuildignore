@@ -16,7 +16,10 @@
 ^docs$
 ^D$
 ^MNIST$
-^fastaibuilt$
 ^imports$
 ^models$
 ^files$
+^.*\.pyc$
+^.*__pycache__$
+
+
