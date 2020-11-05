@@ -126,7 +126,7 @@ PreprocessAudio <- function(sample_rate = 16000, force_mono = TRUE, crop_signal_
 #' @export
 BasicMelSpectrogram <- function(sample_rate = 16000, n_fft = 400, win_length = NULL,
                                 hop_length = NULL, f_min = 0.0, f_max = NULL,
-                                pad = 0, n_mels = 128, window_fn = torch$hann_window,
+                                pad = 0, n_mels = 128, window_fn = torch()$hann_window,
                                 power = 2.0, normalized = FALSE, wkwargs = NULL,
                                 mel = TRUE, to_db = TRUE) {
 
@@ -199,7 +199,7 @@ BasicMFCC <- function(sample_rate = 16000, n_mfcc = 40, dct_type = 2, norm = "or
 #' @return None
 #' @export
 BasicSpectrogram <- function(n_fft = 400, win_length = NULL, hop_length = NULL,
-                             pad = 0, window_fn = torch$hann_window, power = 2.0,
+                             pad = 0, window_fn = torch()$hann_window, power = 2.0,
                              normalized = FALSE, wkwargs = NULL, mel = FALSE, to_db = TRUE) {
 
   fastaudio()$core$config$AudioConfig$BasicSpectrogram(
@@ -238,7 +238,7 @@ BasicSpectrogram <- function(n_fft = 400, win_length = NULL, hop_length = NULL,
 #' @return None
 #' @export
 Voice <- function(sample_rate = 16000, n_fft = 1024, win_length = NULL, hop_length = 128,
-                  f_min = 50.0, f_max = 8000.0, pad = 0, n_mels = 128, window_fn = torch$hann_window,
+                  f_min = 50.0, f_max = 8000.0, pad = 0, n_mels = 128, window_fn = torch()$hann_window,
                   power = 2.0, normalized = FALSE, wkwargs = NULL, mel = TRUE, to_db = TRUE) {
 
   args <- list(

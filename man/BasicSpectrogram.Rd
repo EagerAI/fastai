@@ -9,7 +9,7 @@ BasicSpectrogram(
   win_length = NULL,
   hop_length = NULL,
   pad = 0,
-  window_fn = torch$hann_window,
+  window_fn = torch()$hann_window,
   power = 2,
   normalized = FALSE,
   wkwargs = NULL,

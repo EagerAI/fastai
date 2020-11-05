@@ -21,7 +21,7 @@ env <- new.env()
       env[["warnings"]] <- reticulate::import('warnings')
       env[["warnings"]]$filterwarnings("ignore")
       env[['fix_fit']] <- fix_fit
-      env[['fix_fit']]()
+      try(env[['fix_fit']](), TRUE)
       env[['bs_find']] <- bs_finder
       env[['bs_find']]()
     }
