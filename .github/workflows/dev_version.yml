@@ -41,10 +41,8 @@ jobs:
           Rscript -e "reticulate::conda_create('r-reticulate', packages = 'python==3.6.10')"
       - name: Install FASTAI
         run: |
-          Rscript -e "reticulate::py_install(c('setuptools', 'wheel', 'requests', 'IPython'), pip = TRUE)"
-          Rscript -e "reticulate::py_install('torch torchvision torchaudio',pip = TRUE)"
-          Rscript -e "reticulate::py_install('git+git://github.com/fastai/fastai@master',pip = TRUE)"
-          Rscript -e "reticulate::py_install('pydicom kornia opencv-python scikit-image kaggle',pip = TRUE)"
+          Rscript -e "reticulate::py_install(c('setuptools', 'wheel', 'requests'), pip = TRUE)"
+          Rscript -e "fastai::install_fastai()"
           Rscript -e "remotes::install_local()"
       - name: Check
         continue-on-error: ${{ matrix.config.allow_failure }}
