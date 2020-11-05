@@ -519,8 +519,8 @@ show_results <- function(object, ds_idx = 1, dl = NULL, max_n = 9, shuffle = TRU
     preds = preds[[3]]
 
     show_batch(dls, list(
-      torch$stack(list(b[[1]][2],b[[1]][3]),0L)$cpu(),
-      torch$stack(list(preds[[2]][2],preds[[2]][3]),0L)
+      torch()$stack(list(b[[1]][2],b[[1]][3]),0L)$cpu(),
+      torch()$stack(list(preds[[2]][2],preds[[2]][3]),0L)
     ), nrows = 2, ncols = 1, dpi = 120)
 
   } else {

@@ -1,3 +1,17 @@
+
+
+#' @title Dicom class
+#'
+#'
+#' @return None
+#' @export
+Dicom = function() {
+  invisible(fastai2$medical$imaging$PILDicom)
+}
+
+
+
+
 #' @title get_dicom_files
 #'
 #' @description Get dicom files in `path` recursively, only in `folders`, if specified.

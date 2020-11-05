@@ -108,7 +108,7 @@ test_succeeds('tabular ops shap waterfall plot', {
 
 
 test_succeeds('tabular ops shap JS plot', {
-  exp %>% force_plot(class_id = 0)
+  #exp %>% force_plot(class_id = 0)
 })
 
 

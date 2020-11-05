@@ -176,7 +176,7 @@ collab_learner <- function(dls, n_factors = 50, use_nn = FALSE,
     moms = moms
   )
 
-  do.call(fastai2$collab()$collab_learner, args)
+  do.call(fastai2$collab$collab_learner, args)
 
 }
 
