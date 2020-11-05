@@ -64,7 +64,7 @@ RetinaNet <- function(...) {
     args[['n_anchors']] = as.integer(args[['n_anchors']])
   }
 
-  do.call(retinanet()$RetinaNet, args)
+  do.call(retinanet_()$RetinaNet, args)
 }
 
 
@@ -89,7 +89,7 @@ RetinaNetFocalLoss <- function(...) {
     args[['pad_idx']] = as.integer(args[['pad_idx']])
   }
 
-  do.call(retinanet()$RetinaNetFocalLoss, args)
+  do.call(retinanet_()$RetinaNetFocalLoss, args)
 
 }
 

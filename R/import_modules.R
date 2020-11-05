@@ -69,7 +69,7 @@ catalyst <- function() try(reticulate::import_from_path('fastaibuilt', path = py
 #' @title Retinanet module
 #'
 #' @return None
-retinanet <- function() try(reticulate::import_from_path('fastaibuilt', path = python_path())$retinanet, TRUE)
+retinanet_ <- function() try(reticulate::import_from_path('fastaibuilt', path = python_path())$retinanet, TRUE)
 
 
 #' @title Wandb module
