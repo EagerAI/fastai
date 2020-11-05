@@ -50,42 +50,47 @@ torch <- NULL
 
     on_load = function() {
 
-      python_path <- system.file("python", package = "fastai")
-      #python_path <- system.file("python", package = "fastai")
-
-      # bs finder
-      bs_finder <<- reticulate::import_from_path('fastaibuilt', path = python_path)$bs_finder
-
-      if(reticulate::py_module_available('timm')) {
-        timm <<- reticulate::import('timm')
-        load_pre_models <<- reticulate::import_from_path('fastaibuilt', path = python_path)$pretrained_timm_models
-      }
-
-      if(reticulate::py_module_available('transformers') &
-         reticulate::py_module_available('IPython') &
-         reticulate::py_module_available('fastai')) {
-
-        hug <<- reticulate::import_from_path('fastaibuilt', path = python_path)$Transformer
-
-      }
+      cran_ = !file.exists("C:/Users/ligges/AppData/Local/r-miniconda/envs/r-reticulate/python.exe")
 
 
-      if(reticulate::py_module_available('ignite') &
-         reticulate::py_module_available('pytorch_lightning') &
-         reticulate::py_module_available('catalyst')) {
+      if(cran_) {
+        python_path <- system.file("python", package = "fastai")
+        #python_path <- system.file("python", package = "fastai")
 
-        crap <<- reticulate::import_from_path('fastaibuilt', path = python_path)$crappify
+        # bs finder
+        bs_finder <<- reticulate::import_from_path('fastaibuilt', path = python_path)$bs_finder
 
-        migrating_ignite <<- reticulate::import_from_path('fastaibuilt', path = python_path)$migrating_ignite
+        if(reticulate::py_module_available('timm')) {
+          timm <<- reticulate::import('timm')
+          load_pre_models <<- reticulate::import_from_path('fastaibuilt', path = python_path)$pretrained_timm_models
+        }
 
-        migrating_lightning <<- reticulate::import_from_path('fastaibuilt', path = python_path)$migrating_lightning
+        if(reticulate::py_module_available('transformers') &
+           reticulate::py_module_available('IPython') &
+           reticulate::py_module_available('fastai')) {
 
-        migrating_pytorch <<- reticulate::import_from_path('fastaibuilt', path = python_path)$migrating_pytorch
+          hug <<- reticulate::import_from_path('fastaibuilt', path = python_path)$Transformer
 
-        catalyst <<- reticulate::import_from_path('fastaibuilt', path = python_path)$migrating_catalyst
+        }
 
-        retinanet <<- reticulate::import_from_path('fastaibuilt', path = python_path)$retinanet
 
+        if(reticulate::py_module_available('ignite') &
+           reticulate::py_module_available('pytorch_lightning') &
+           reticulate::py_module_available('catalyst')) {
+
+          crap <<- reticulate::import_from_path('fastaibuilt', path = python_path)$crappify
+
+          migrating_ignite <<- reticulate::import_from_path('fastaibuilt', path = python_path)$migrating_ignite
+
+          migrating_lightning <<- reticulate::import_from_path('fastaibuilt', path = python_path)$migrating_lightning
+
+          migrating_pytorch <<- reticulate::import_from_path('fastaibuilt', path = python_path)$migrating_pytorch
+
+          catalyst <<- reticulate::import_from_path('fastaibuilt', path = python_path)$migrating_catalyst
+
+          retinanet <<- reticulate::import_from_path('fastaibuilt', path = python_path)$retinanet
+
+        }
       }
     }
   ))
