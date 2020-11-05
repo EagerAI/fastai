@@ -39,9 +39,9 @@ jobs:
           Rscript -e "try(reticulate::install_miniconda())"
       - name: Install FASTAI & TORCH
         run: |
-          Rscript -e "reticulate::py_install(c('setuptools', 'wheel', 'requests'), pip = TRUE)"
-          Rscript -e "fastai::install_fastai()"
+          Rscript -e "reticulate::py_config()"
           Rscript -e "remotes::install_local()"
+          Rscript -e "fastai::install_fastai()"
 
       - name: Check
         continue-on-error: ${{ matrix.config.allow_failure }}
