@@ -20,7 +20,11 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   git = try(suppressWarnings(system('which git', intern = TRUE)), TRUE)
 
   # audio, time-series, cycle-GAN, transformers integration==blurr
-  git_pkgs = c('fastaudio', 'timeseries_fastai', 'blurr', 'upit')
+  if(length(git)>0) {
+    git_pkgs = c('fastaudio', 'timeseries_fastai', 'blurr', 'upit')
+  } else {
+    git_pkgs = character()
+  }
 
   if(length(extra_pkgs) > 0) {
     required_py_pkgs = c(required_py_pkgs, extra_pkgs, git_pkgs)
