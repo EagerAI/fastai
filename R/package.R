@@ -2,39 +2,37 @@
 
 fastai2 <- NULL
 
-.onLoad <<- function(libname, pkgname) {
+.onLoad <- function(libname, pkgname) {
 
-  fastai2 <- reticulate::import("fastai", delay_load = list(
+  fastai2 <<- reticulate::import("fastai", delay_load = list(
     priority = 10,
-    environment = "r-fastai",
-
-    on_load = function() {
-
-      cran_ = !file.exists("C:/Users/ligges/AppData/Local/r-miniconda/envs/r-reticulate/python.exe")
-
-
-      if(cran_) {
-
-        if(reticulate::py_module_available('matplotlib')) {
-          matplot <- reticulate::import('matplotlib')
-          matplot$use('Agg')
-          warnings <- reticulate::import('warnings')
-          warnings$filterwarnings("ignore")
-        }
-
-        if(reticulate::py_module_available('fastprogress')) {
-          # remove fill
-          fastaip <- reticulate::import('fastprogress')
-
-          fastaip$progress_bar$fill = ''
-
-          fix_fit()
-        }
-
-
-      }
-    }
+    environment = "r-fastai"
   ))
+
+  cran_ = !file.exists("C:/Users/ligges/AppData/Local/r-miniconda/envs/r-reticulate/python.exe")
+
+
+  if(cran_) {
+
+    if(reticulate::py_module_available('matplotlib')) {
+      matplot <<- reticulate::import('matplotlib')
+      matplot$use('Agg')
+      warnings <- reticulate::import('warnings')
+      warnings$filterwarnings("ignore")
+    }
+
+    if(reticulate::py_module_available('fastprogress')) {
+      # remove fill
+      fastaip <<- reticulate::import('fastprogress')
+
+      fastaip$progress_bar$fill = ''
+
+      fix_fit()
+      rm(fastaip)
+    }
+
+
+  }
 }
 
 
@@ -240,16 +238,6 @@ fix_fit = function(disable_graph = FALSE) {
         }
         try(silent_fun(), TRUE)
       }
-
-      tmp_d = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
-      fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(130))
-
-      img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
-      if(!is_rmarkdown()) {
-        try(dev.off(),TRUE)
-      }
-      grid::grid.raster(img)
-      fastai2$vision$all$plt$close()
 
     }
 

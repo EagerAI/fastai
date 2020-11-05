@@ -110,7 +110,7 @@
 #' @name dim
 #' @export
 "dim.torch.Tensor" <- function(x) {
-  bt$list(x$shape)
+  bt()$list(x$shape)
 }
 
 
