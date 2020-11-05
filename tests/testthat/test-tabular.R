@@ -45,6 +45,13 @@ test_succeeds('tabular ops dims==batch', {
 })
 
 test_succeeds('tabular ops train model', {
+  bss = model %>% bs_find(1e-3)
+  model %>% plot_bs_find()
+  expect_s3_class(bss, 'data.frame')
+})
+
+
+test_succeeds('tabular ops train model', {
   model %>% fit(1,1e-2)
 })
 
