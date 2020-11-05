@@ -99,7 +99,7 @@ show_batch <- function(dls, b = NULL, max_n = 9, ctxs = NULL,
 
     do.call(dls$show_batch, args)
 
-    tmp_d = proj_name = gsub(tempdir(), replacement = '/', pattern = '\\', fixed=TRUE)
+    tmp_d = gsub(tempdir(), replacement = '/', pattern = '\\', fixed=TRUE)
     fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi))
 
     img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))

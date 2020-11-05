@@ -144,6 +144,7 @@ accuracy <- function(inp, targ, axis = -1) {
 
 }
 
+attr(accuracy, "py_function_name") <- 'accuracy'
 
 #' @title Top_k_accuracy
 #'

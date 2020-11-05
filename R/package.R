@@ -1,6 +1,7 @@
 
 
 fastai2 <- NULL
+env <- new.env()
 
 .onLoad <- function(libname, pkgname) {
 
@@ -15,20 +16,14 @@ fastai2 <- NULL
   if(cran_) {
 
     if(reticulate::py_module_available('matplotlib')) {
-      matplot <<- reticulate::import('matplotlib')
-      matplot$use('Agg')
-      warnings <- reticulate::import('warnings')
-      warnings$filterwarnings("ignore")
-    }
-
-    if(reticulate::py_module_available('fastprogress')) {
-      # remove fill
-      fastaip <<- reticulate::import('fastprogress')
-
-      fastaip$progress_bar$fill = ''
-
-      fix_fit()
-      rm(fastaip)
+      env[["matplot"]] <- reticulate::import('matplotlib')
+      env[["matplot"]]$use('Agg')
+      env[["warnings"]] <- reticulate::import('warnings')
+      env[["warnings"]]$filterwarnings("ignore")
+      env[['fix_fit']] <- fix_fit
+      env[['fix_fit']]()
+      env[['bs_find']] <- bs_finder
+      env[['bs_find']]()
     }
 
 
@@ -44,7 +39,9 @@ fastai2 <- NULL
 #' @return None
 #' @export
 fix_fit = function(disable_graph = FALSE) {
+  fastaip <- reticulate::import('fastprogress')
 
+  fastaip$progress_bar$fill = ''
 
   if(!disable_graph) {
     fastaip$fastprogress$WRITER_FN = function(value, ..., sep=' ', end='\n', flush = FALSE) {
