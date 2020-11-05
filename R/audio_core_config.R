@@ -17,9 +17,9 @@ AudioBlock <- function(cache_folder = NULL, sample_rate = 16000,
 
 
   if(missing(cache_folder)) {
-    fastaudio$core$config$AudioBlock
+    fastaudio()$core$config$AudioBlock
   } else {
-    fastaudio$core$config$AudioBlock(
+    fastaudio()$core$config$AudioBlock(
       cache_folder = cache_folder,
       sample_rate = as.integer(sample_rate),
       force_mono = force_mono,
@@ -44,7 +44,7 @@ AudioBlock <- function(cache_folder = NULL, sample_rate = 16000,
 AudioBlock_from_folder <- function(path, sample_rate = 16000,
                                    force_mono = TRUE, crop_signal_to = NULL) {
 
-  fastaudio$core$config$AudioBlock$from_folder(
+  fastaudio()$core$config$AudioBlock$from_folder(
     path = path,
     sample_rate = as.integer(sample_rate),
     force_mono = force_mono,
@@ -71,7 +71,7 @@ preprocess_audio_folder <- function(path, folders = NULL, output_dir = NULL,
                                     sample_rate = 16000, force_mono = TRUE,
                                     crop_signal_to = NULL) {
 
-  fastaudio$core$config$preprocess_audio_folder(
+  fastaudio()$core$config$preprocess_audio_folder(
     path = path,
     folders = folders,
     output_dir = output_dir,
@@ -96,7 +96,7 @@ preprocess_audio_folder <- function(path, folders = NULL, output_dir = NULL,
 #' @export
 PreprocessAudio <- function(sample_rate = 16000, force_mono = TRUE, crop_signal_to = NULL) {
 
-  fastaudio$core$config$PreprocessAudio(
+  fastaudio()$core$config$PreprocessAudio(
     sample_rate = as.integer(sample_rate),
     force_mono = force_mono,
     crop_signal_to = crop_signal_to
@@ -126,7 +126,7 @@ PreprocessAudio <- function(sample_rate = 16000, force_mono = TRUE, crop_signal_
 #' @export
 BasicMelSpectrogram <- function(sample_rate = 16000, n_fft = 400, win_length = NULL,
                                 hop_length = NULL, f_min = 0.0, f_max = NULL,
-                                pad = 0, n_mels = 128, window_fn = torch$hann_window,
+                                pad = 0, n_mels = 128, window_fn = torch()$hann_window,
                                 power = 2.0, normalized = FALSE, wkwargs = NULL,
                                 mel = TRUE, to_db = TRUE) {
 
@@ -153,7 +153,7 @@ BasicMelSpectrogram <- function(sample_rate = 16000, n_fft = 400, win_length = N
   if(!is.null(args[['hop_length']]))
     args[['hop_length']] = as.integer(args[['hop_length']])
 
-  do.call(fastaudio$core$config$AudioConfig$BasicMelSpectrogram, args)
+  do.call(fastaudio()$core$config$AudioConfig$BasicMelSpectrogram, args)
 
 }
 
@@ -171,7 +171,7 @@ BasicMelSpectrogram <- function(sample_rate = 16000, n_fft = 400, win_length = N
 BasicMFCC <- function(sample_rate = 16000, n_mfcc = 40, dct_type = 2, norm = "ortho",
                       log_mels = FALSE, melkwargs = NULL) {
 
-  fastaudio$core$config$AudioConfig$BasicMFCC(
+  fastaudio()$core$config$AudioConfig$BasicMFCC(
     sample_rate = as.integer(sample_rate),
     n_mfcc = as.integer(n_mfcc),
     dct_type = as.integer(dct_type),
@@ -199,10 +199,10 @@ BasicMFCC <- function(sample_rate = 16000, n_mfcc = 40, dct_type = 2, norm = "or
 #' @return None
 #' @export
 BasicSpectrogram <- function(n_fft = 400, win_length = NULL, hop_length = NULL,
-                             pad = 0, window_fn = torch$hann_window, power = 2.0,
+                             pad = 0, window_fn = torch()$hann_window, power = 2.0,
                              normalized = FALSE, wkwargs = NULL, mel = FALSE, to_db = TRUE) {
 
-  fastaudio$core$config$AudioConfig$BasicSpectrogram(
+  fastaudio()$core$config$AudioConfig$BasicSpectrogram(
     n_fft = as.integer(n_fft),
     win_length = win_length,
     hop_length = hop_length,
@@ -238,7 +238,7 @@ BasicSpectrogram <- function(n_fft = 400, win_length = NULL, hop_length = NULL,
 #' @return None
 #' @export
 Voice <- function(sample_rate = 16000, n_fft = 1024, win_length = NULL, hop_length = 128,
-                  f_min = 50.0, f_max = 8000.0, pad = 0, n_mels = 128, window_fn = torch$hann_window,
+                  f_min = 50.0, f_max = 8000.0, pad = 0, n_mels = 128, window_fn = torch()$hann_window,
                   power = 2.0, normalized = FALSE, wkwargs = NULL, mel = TRUE, to_db = TRUE) {
 
   args <- list(
@@ -261,7 +261,7 @@ Voice <- function(sample_rate = 16000, n_fft = 1024, win_length = NULL, hop_leng
   if(!is.null(args[['win_length']]))
     args[['win_length']] = as.integer(args[['win_length']])
 
-  do.call(fastaudio$core$config$AudioConfig$Voice, args)
+  do.call(fastaudio()$core$config$AudioConfig$Voice, args)
 
 }
 

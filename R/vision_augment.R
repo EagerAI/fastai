@@ -13,7 +13,7 @@
 RandTransform <- function(p = 1.0, nm = NULL, before_call = NULL,
                           ...) {
 
-  vision$all$RandTransform(
+  vision()$all$RandTransform(
     p = p,
     nm = nm,
     before_call = before_call,
@@ -33,7 +33,7 @@ RandTransform <- function(p = 1.0, nm = NULL, before_call = NULL,
 #' @export
 FlipItem <- function(p = 0.5) {
 
-  vision$all$FlipItem(
+  vision()$all$FlipItem(
     p = p
   )
 
@@ -52,7 +52,7 @@ FlipItem <- function(p = 0.5) {
 #' @export
 DihedralItem <- function(p = 1.0, nm = NULL, before_call = NULL) {
 
-  vision$all$DihedralItem(
+  vision()$all$DihedralItem(
     p = p,
     nm = nm,
     before_call = before_call
@@ -72,7 +72,7 @@ DihedralItem <- function(p = 1.0, nm = NULL, before_call = NULL) {
 CropPad <- function(size, pad_mode = "zeros",
                     ...) {
 
-  vision$all$CropPad(
+  vision()$all$CropPad(
     size = size,
     pad_mode = pad_mode,
     ...
@@ -90,7 +90,7 @@ CropPad <- function(size, pad_mode = "zeros",
 #' @export
 RandomCrop <- function(size, ...) {
 
-  vision$all$RandomCrop(
+  vision()$all$RandomCrop(
     size = as.integer(size),
     ...
   )
@@ -110,7 +110,7 @@ RandomCrop <- function(size, ...) {
 #' @export
 OldRandomCrop <- function(size, pad_mode = "zeros", ...) {
 
-  vision$all$OldRandomCrop(
+  vision()$all$OldRandomCrop(
     size = size,
     pad_mode = pad_mode,
     ...
@@ -133,7 +133,7 @@ OldRandomCrop <- function(size, pad_mode = "zeros", ...) {
 RandomResizedCrop <- function(size, min_scale = 0.08, ratio = list(0.75, 1.3333333333333333),
                               resamples = list(2, 0), val_xtra = 0.14) {
 
-  vision$all$RandomResizedCrop(
+  vision()$all$RandomResizedCrop(
     size = as.integer(size),
     min_scale = min_scale,
     ratio = ratio,
@@ -156,7 +156,7 @@ RandomResizedCrop <- function(size, min_scale = 0.08, ratio = list(0.75, 1.33333
 RatioResize <- function(max_sz, resamples = list(2, 0),
                         ...) {
 
-  vision$all$RatioResize(
+  vision()$all$RatioResize(
     max_sz = max_sz,
     resamples = as.list(as.integer(unlist(resamples))),
     ...
@@ -174,7 +174,7 @@ RatioResize <- function(max_sz, resamples = list(2, 0),
 #' @export
 TensorImage <- function(x) {
 
-  vision$all$TensorImage(
+  vision()$all$TensorImage(
     x = x
   )
 
@@ -197,7 +197,7 @@ affine_coord <- function(x, mat = NULL, coord_tfm = NULL, sz = NULL,
                          mode = "bilinear", pad_mode = "reflection",
                          align_corners = TRUE, ...) {
 
-  vision$all$TensorImage$affine_coord(
+  vision()$all$TensorImage$affine_coord(
     x = x,
     mat = mat,
     coord_tfm = coord_tfm,
@@ -229,7 +229,7 @@ AffineCoordTfm <- function(aff_fs = NULL, coord_fs = NULL, size = NULL,
                            mode = "bilinear", pad_mode = "reflection",
                            mode_mask = "nearest", align_corners = NULL) {
 
-  vision$all$AffineCoordTfm(
+  vision()$all$AffineCoordTfm(
     aff_fs = aff_fs,
     coord_fs = coord_fs,
     size = size,
@@ -256,7 +256,7 @@ AffineCoordTfm <- function(aff_fs = NULL, coord_fs = NULL, size = NULL,
 RandomResizedCropGPU <- function(size, min_scale = 0.08, ratio = list(0.75, 1.3333333333333333),
                                  mode = "bilinear", valid_scale = 1.0) {
 
-  vision$all$RandomResizedCropGPU(
+  vision()$all$RandomResizedCropGPU(
     size = size,
     min_scale = min_scale,
     ratio = ratio,
@@ -273,7 +273,7 @@ RandomResizedCropGPU <- function(size, min_scale = 0.08, ratio = list(0.75, 1.33
 #' @return None
 #' @export
 affine_mat = function(...) {
-  vision$all$affine_mat(...)
+  vision()$all$affine_mat(...)
 }
 
 
@@ -291,7 +291,7 @@ affine_mat = function(...) {
 #' @export
 mask_tensor <- function(x, p = 0.5, neutral = 0.0, batch = FALSE) {
 
-  vision$all$mask_tensor(
+  vision()$all$mask_tensor(
     x = x,
     p = p,
     neutral = neutral,
@@ -314,7 +314,7 @@ mask_tensor <- function(x, p = 0.5, neutral = 0.0, batch = FALSE) {
 #' @export
 flip_mat <- function(x, p = 0.5, draw = NULL, batch = FALSE) {
 
-  vision$all$flip_mat(
+  vision()$all$flip_mat(
     x = x,
     p = p,
     draw = draw,
@@ -330,7 +330,7 @@ flip_mat <- function(x, p = 0.5, draw = NULL, batch = FALSE) {
 #' @export
 DeterministicDraw <- function(vals) {
 
-  vision$all$DeterministicDraw(
+  vision()$all$DeterministicDraw(
     vals = vals
   )
 
@@ -352,7 +352,7 @@ DeterministicFlip <- function(size = NULL, mode = "bilinear",
                               pad_mode = "reflection", align_corners = TRUE,
                               ...) {
 
-  vision$all$DeterministicFlip(
+  vision()$all$DeterministicFlip(
     size = size,
     mode = mode,
     pad_mode = pad_mode,
@@ -374,7 +374,7 @@ DeterministicFlip <- function(size = NULL, mode = "bilinear",
 #' @export
 dihedral_mat <- function(x, p = 0.5, draw = NULL, batch = FALSE) {
 
-  vision$all$dihedral_mat(
+  vision()$all$dihedral_mat(
     x = x,
     p = p,
     draw = draw,
@@ -401,7 +401,7 @@ dihedral_mat <- function(x, p = 0.5, draw = NULL, batch = FALSE) {
 Dihedral <- function(p = 0.5, draw = NULL, size = NULL, mode = "bilinear",
                      pad_mode = "reflection", align_corners = NULL, batch = FALSE) {
 
-  vision$all$Dihedral(
+  vision()$all$Dihedral(
     p = p,
     draw = draw,
     size = size,
@@ -427,7 +427,7 @@ Dihedral <- function(p = 0.5, draw = NULL, size = NULL, mode = "bilinear",
 DeterministicDihedral <- function(size = NULL, mode = "bilinear",
                                   pad_mode = "reflection", align_corners = NULL) {
 
-  vision$all$DeterministicDihedral(
+  vision()$all$DeterministicDihedral(
     size = size,
     mode = mode,
     pad_mode = pad_mode,
@@ -450,7 +450,7 @@ DeterministicDihedral <- function(size = NULL, mode = "bilinear",
 #' @export
 rotate_mat <- function(x, max_deg = 10, p = 0.5, draw = NULL, batch = FALSE) {
 
-  python_function_result <- vision$all$rotate_mat(
+  python_function_result <- vision()$all$rotate_mat(
     x = x,
     max_deg = as.integer(max_deg),
     p = p,
@@ -479,7 +479,7 @@ rotate_mat <- function(x, max_deg = 10, p = 0.5, draw = NULL, batch = FALSE) {
 zoom_mat <- function(x, min_zoom = 1.0, max_zoom = 1.1, p = 0.5, draw = NULL,
                      draw_x = NULL, draw_y = NULL, batch = FALSE) {
 
-  vision$all$zoom_mat(
+  vision()$all$zoom_mat(
     x = x,
     min_zoom = min_zoom,
     max_zoom = max_zoom,
@@ -504,7 +504,7 @@ zoom_mat <- function(x, min_zoom = 1.0, max_zoom = 1.1, p = 0.5, draw = NULL,
 #' @export
 find_coeffs <- function(p1, p2) {
 
-  vision$all$find_coeffs(
+  vision()$all$find_coeffs(
     p1 = p1,
     p2 = p2
   )
@@ -523,7 +523,7 @@ find_coeffs <- function(p1, p2) {
 #' @export
 apply_perspective <- function(coords, coeffs) {
 
-  vision$all$apply_perspective(
+  vision()$all$apply_perspective(
     coords = coords,
     coeffs = coeffs
   )
@@ -551,7 +551,7 @@ Warp <- function(magnitude = 0.2, p = 0.5, draw_x = NULL, draw_y = NULL,
                  size = NULL, mode = "bilinear", pad_mode = "reflection",
                  batch = FALSE, align_corners = TRUE) {
 
-  vision$all$Warp(
+  vision()$all$Warp(
     magnitude = magnitude,
     p = p,
     draw_x = draw_x,
@@ -578,7 +578,7 @@ Warp <- function(magnitude = 0.2, p = 0.5, draw_x = NULL, draw_y = NULL,
 LightingTfm <- function(fs, ...) {
 
 
-  vision$all$LightingTfm(
+  vision()$all$LightingTfm(
     fs = fs,
     ...
   )
@@ -598,7 +598,7 @@ LightingTfm <- function(fs, ...) {
 #' @export
 Contrast <- function(max_lighting = 0.2, p = 0.75, draw = NULL, batch = FALSE) {
 
-  vision$all$Contrast(
+  vision()$all$Contrast(
     max_lighting = max_lighting,
     p = p,
     draw = draw,
@@ -617,7 +617,7 @@ Contrast <- function(max_lighting = 0.2, p = 0.75, draw = NULL, batch = FALSE) {
 #' @export
 grayscale <- function(x) {
 
-  vision$all$grayscale(
+  vision()$all$grayscale(
     x = x
   )
 
@@ -637,7 +637,7 @@ grayscale <- function(x) {
 #' @export
 Saturation <- function(max_lighting = 0.2, p = 0.75, draw = NULL, batch = FALSE) {
 
-  vision$all$Saturation(
+  vision()$all$Saturation(
     max_lighting = max_lighting,
     p = p,
     draw = draw,
@@ -657,7 +657,7 @@ Saturation <- function(max_lighting = 0.2, p = 0.75, draw = NULL, batch = FALSE)
 #' @export
 rgb2hsv <- function(img) {
 
-  vision$all$rgb2hsv(
+  vision()$all$rgb2hsv(
     img = img
   )
 
@@ -673,7 +673,7 @@ rgb2hsv <- function(img) {
 #' @export
 hsv2rgb <- function(img) {
 
-  vision$all$hsv2rgb(
+  vision()$all$hsv2rgb(
     img = img
   )
 
@@ -692,7 +692,7 @@ hsv2rgb <- function(img) {
 #' @export
 Hue <- function(max_hue = 0.1, p = 0.75, draw = NULL, batch = FALSE) {
 
-  vision$all$Hue(
+  vision()$all$Hue(
     max_hue = max_hue,
     p = p,
     draw = draw,
@@ -716,7 +716,7 @@ Hue <- function(max_hue = 0.1, p = 0.75, draw = NULL, batch = FALSE) {
 #' @export
 RandomErasing <- function(p = 0.5, sl = 0.0, sh = 0.3, min_aspect = 0.3, max_count = 1) {
 
-  vision$all$RandomErasing(
+  vision()$all$RandomErasing(
     p = p,
     sl = sl,
     sh = sh,
@@ -737,7 +737,7 @@ RandomErasing <- function(p = 0.5, sl = 0.0, sh = 0.3, min_aspect = 0.3, max_cou
 #' @export
 cutout_gaussian <- function(x, areas) {
 
-  vision$all$cutout_gaussian(
+  vision()$all$cutout_gaussian(
     x = x,
     areas = areas
   )
@@ -757,7 +757,7 @@ cutout_gaussian <- function(x, areas) {
 #' @export
 norm_apply_denorm <- function(x, f, nrm) {
 
-  vision$all$norm_apply_denorm(
+  vision()$all$norm_apply_denorm(
     x = x,
     f = f,
     nrm = nrm
@@ -777,7 +777,7 @@ norm_apply_denorm <- function(x, f, nrm) {
 #' @export
 setup_aug_tfms <- function(tfms) {
 
-  vision$all$setup_aug_tfms(
+  vision()$all$setup_aug_tfms(
     tfms = tfms
   )
 
@@ -795,7 +795,7 @@ setup_aug_tfms <- function(tfms) {
 #' @export
 get_annotations <- function(fname, prefix = NULL) {
 
-  vision$all$get_annotations(
+  vision()$all$get_annotations(
     fname = fname,
     prefix = prefix
   )
@@ -814,7 +814,7 @@ get_annotations <- function(fname, prefix = NULL) {
 #' @export
 MultiCategorize <- function(vocab = NULL, add_na = FALSE) {
 
-  vision$all$MultiCategorize(
+  vision()$all$MultiCategorize(
     vocab = vocab,
     add_na = add_na
   )
@@ -832,7 +832,7 @@ MultiCategorize <- function(vocab = NULL, add_na = FALSE) {
 #' @export
 IntToFloatTensor <- function(div = 255.0, div_mask = 1) {
 
-  vision$all$IntToFloatTensor(
+  vision()$all$IntToFloatTensor(
     div = div,
     div_mask = as.integer(div_mask)
   )
@@ -850,7 +850,7 @@ IntToFloatTensor <- function(div = 255.0, div_mask = 1) {
 #' @export
 FuncSplitter <- function(func) {
 
-  vision$all$FuncSplitter(
+  vision()$all$FuncSplitter(
     func = func
   )
 
@@ -900,7 +900,7 @@ show_image <- function(im, ax = NULL, figsize = NULL, title = NULL, ctx = NULL,
     extent = extent
   )
 
-  do.call(vision$all$show_image, args)
+  do.call(vision()$all$show_image, args)
 
 }
 

@@ -59,7 +59,7 @@ CollabDataLoaders_from_df <- function(ratings, valid_pct = 0.2, user_name = NULL
     args$val_bs <- as.integer(args$val_bs)
   }
 
-  do.call(collab$CollabDataLoaders$from_df, args)
+  do.call(collab()$CollabDataLoaders$from_df, args)
 
 }
 
@@ -95,7 +95,7 @@ CollabDataLoaders_from_dblock <- function(dblock, source, path = ".", bs = 64,
     args$val_bs <- as.integer(args$val_bs)
   }
 
-  do.call(collab$CollabDataLoaders$from_dblock, args)
+  do.call(collab()$CollabDataLoaders$from_dblock, args)
 
 }
 
@@ -191,9 +191,9 @@ collab_learner <- function(dls, n_factors = 50, use_nn = FALSE,
 trainable_params <- function(m) {
 
  if(missing(m)) {
-   collab$trainable_params
+   collab()$trainable_params
  } else {
-   collab$trainable_params(
+   collab()$trainable_params(
      m = m
    )
  }

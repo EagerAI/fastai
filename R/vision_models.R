@@ -11,9 +11,9 @@ xresnet50_deep <- function(...) {
 
   args = list(...)
   if(length(args)>0) {
-    do.call(vision$all$xresnet50_deep, args)
+    do.call(vision()$all$xresnet50_deep, args)
   } else {
-    vision$all$xresnet50_deep
+    vision()$all$xresnet50_deep
   }
 }
 
@@ -26,9 +26,9 @@ xresnet50_deep <- function(...) {
 xresnet50 <- function(...) {
   args = list(...)
   if(length(args)>0) {
-    do.call(vision$all$xresnet50, args)
+    do.call(vision()$all$xresnet50, args)
   } else {
-    vision$all$xresnet50
+    vision()$all$xresnet50
   }
 }
 
@@ -41,9 +41,9 @@ xresnet50 <- function(...) {
 xresnet34_deep <- function(...) {
   args = list(...)
   if(length(args)>0){
-    do.call(vision$all$xresnet34_deep, args)
+    do.call(vision()$all$xresnet34_deep, args)
   } else {
-    vision$all$xresnet34_deep
+    vision()$all$xresnet34_deep
   }
 }
 
@@ -56,9 +56,9 @@ xresnet34_deep <- function(...) {
 xresnet34 <- function(...) {
   args = list(...)
   if(length(args)>0){
-    do.call(vision$all$xresnet34, args)
+    do.call(vision()$all$xresnet34, args)
   } else {
-    vision$all$xresnet34
+    vision()$all$xresnet34
   }
 }
 
@@ -71,9 +71,9 @@ xresnet34 <- function(...) {
 xresnet18_deep <- function(...) {
   args = list(...)
   if(length(args)>0){
-    do.call(vision$all$xresnet18_deep, args)
+    do.call(vision()$all$xresnet18_deep, args)
   } else {
-    vision$all$xresnet18_deep
+    vision()$all$xresnet18_deep
   }
 }
 
@@ -86,9 +86,9 @@ xresnet18_deep <- function(...) {
 xresnet18 <- function(...) {
   args = list(...)
   if(length(args)>0){
-    do.call(vision$all$xresnet18, args)
+    do.call(vision()$all$xresnet18, args)
   } else {
-    vision$all$xresnet18
+    vision()$all$xresnet18
   }
 }
 
@@ -101,9 +101,9 @@ xresnet18 <- function(...) {
 xresnet152 <- function(...) {
   args = list(...)
   if(length(args)>0){
-    do.call(vision$all$xresnet152, args)
+    do.call(vision()$all$xresnet152, args)
   } else {
-    vision$all$xresnet152
+    vision()$all$xresnet152
   }
 }
 
@@ -116,9 +116,9 @@ xresnet152 <- function(...) {
 xresnet101 <- function(...) {
   args = list(...)
   if(length(args)>0){
-    do.call(vision$all$xresnet101, args)
+    do.call(vision()$all$xresnet101, args)
   } else {
-    vision$all$xresnet101
+    vision()$all$xresnet101
   }
 }
 
@@ -132,9 +132,9 @@ xresnet101 <- function(...) {
 xresnet50_deep <- function(...) {
   args = list(...)
   if(length(args)>0) {
-    do.call(vision$all$xresnet50_deep, args)
+    do.call(vision()$all$xresnet50_deep, args)
   } else {
-    vision$all$xresnet50_deep
+    vision()$all$xresnet50_deep
   }
 }
 
@@ -162,9 +162,9 @@ xresnet50_deep <- function(...) {
 alexnet <- function(pretrained = FALSE, progress) {
 
   if(missing(progress)) {
-    vision$all$alexnet
+    vision()$all$alexnet
   } else {
-    vision$all$alexnet(
+    vision()$all$alexnet(
       pretrained = pretrained,
       progress = progress
     )
@@ -196,7 +196,7 @@ XResNet <- function(block, expansion, layers, c_in = 3, c_out = 1000,
     ...
   )
 
-  do.call(vision$all$XResNet, args)
+  do.call(vision()$all$XResNet, args)
 
 }
 
@@ -214,9 +214,9 @@ XResNet <- function(block, expansion, layers, c_in = 3, c_out = 1000,
 vgg19_bn <- function(pretrained = FALSE, progress) {
 
   if(missing(progress)) {
-    vision$all$vgg19_bn
+    vision()$all$vgg19_bn
   } else {
-    vision$all$vgg19_bn(
+    vision()$all$vgg19_bn(
       pretrained = pretrained,
       progress = progress
     )
@@ -238,9 +238,9 @@ vgg19_bn <- function(pretrained = FALSE, progress) {
 vgg16_bn <- function(pretrained = FALSE, progress) {
 
   if(missing(progress)) {
-    vision$all$vgg16_bn
+    vision()$all$vgg16_bn
   } else {
-    vision$all$vgg16_bn(
+    vision()$all$vgg16_bn(
       pretrained = pretrained,
       progress = progress
     )
@@ -262,9 +262,9 @@ vgg16_bn <- function(pretrained = FALSE, progress) {
 vgg13_bn <- function(pretrained = FALSE, progress) {
 
   if(missing(progress)) {
-    vision$all$vgg13_bn
+    vision()$all$vgg13_bn
   } else {
-    vision$all$vgg13_bn(
+    vision()$all$vgg13_bn(
       pretrained = pretrained,
       progress = progress
     )
@@ -286,9 +286,9 @@ vgg13_bn <- function(pretrained = FALSE, progress) {
 vgg11_bn <- function(pretrained = FALSE, progress) {
 
   if(missing(progress)) {
-    vision$all$vgg11_bn
+    vision()$all$vgg11_bn
   } else {
-    vision$all$vgg11_bn(
+    vision()$all$vgg11_bn(
       pretrained = pretrained,
       progress = progress
     )
@@ -312,9 +312,9 @@ vgg11_bn <- function(pretrained = FALSE, progress) {
 squeezenet1_1 <- function(pretrained = FALSE, progress) {
 
   if(missing(progress)) {
-    vision$all$squeezenet1_1
+    vision()$all$squeezenet1_1
   } else {
-    vision$all$squeezenet1_1(
+    vision()$all$squeezenet1_1(
       pretrained = pretrained,
       progress = progress
     )
@@ -337,9 +337,9 @@ squeezenet1_1 <- function(pretrained = FALSE, progress) {
 squeezenet1_0 <- function(pretrained = FALSE, progress) {
 
   if(missing(progress)) {
-    vision$all$squeezenet1_0
+    vision()$all$squeezenet1_0
   } else {
-    vision$all$squeezenet1_0(
+    vision()$all$squeezenet1_0(
       pretrained = pretrained,
       progress = progress
     )
@@ -361,7 +361,7 @@ squeezenet1_0 <- function(pretrained = FALSE, progress) {
 #' @export
 SqueezeNet <- function(version = "1_0", num_classes = 1000) {
 
-  vision$all$SqueezeNet(
+  vision()$all$SqueezeNet(
     version = version,
     num_classes = as.integer(num_classes)
   )
@@ -382,9 +382,9 @@ SqueezeNet <- function(version = "1_0", num_classes = 1000) {
 resnet50 <- function(pretrained = FALSE, progress) {
 
   if(missing(progress)) {
-    vision$all$resnet50
+    vision()$all$resnet50
   } else {
-    vision$all$resnet50(
+    vision()$all$resnet50(
       pretrained = pretrained,
       progress = progress
     )
@@ -406,9 +406,9 @@ resnet50 <- function(pretrained = FALSE, progress) {
 resnet34 <- function(pretrained = FALSE, progress) {
 
   if(missing(progress)) {
-    vision$all$resnet34
+    vision()$all$resnet34
   } else {
-    vision$all$resnet34(
+    vision()$all$resnet34(
       pretrained = pretrained,
       progress = progress
     )
@@ -429,9 +429,9 @@ resnet34 <- function(pretrained = FALSE, progress) {
 resnet18 <- function(pretrained = FALSE, progress) {
 
   if(missing(progress)) {
-    vision$all$resnet18
+    vision()$all$resnet18
   } else {
-    vision$all$resnet18(
+    vision()$all$resnet18(
       pretrained = pretrained,
       progress = progress
     )
@@ -452,9 +452,9 @@ resnet18 <- function(pretrained = FALSE, progress) {
 resnet152 <- function(pretrained = FALSE, progress) {
 
   if(missing(progress)) {
-    vision$all$resnet152
+    vision()$all$resnet152
   } else {
-    vision$all$resnet152(
+    vision()$all$resnet152(
       pretrained = pretrained,
       progress = progress
     )
@@ -475,9 +475,9 @@ resnet152 <- function(pretrained = FALSE, progress) {
 resnet101 <- function(pretrained = FALSE, progress) {
 
   if(missing(progress)) {
-    vision$all$resnet101
+    vision()$all$resnet101
   } else {
-    vision$all$resnet101(
+    vision()$all$resnet101(
       pretrained = pretrained,
       progress = progress
     )
@@ -514,7 +514,7 @@ ResNet <- function(block, layers, num_classes = 1000, zero_init_residual = FALSE
     norm_layer = norm_layer
   )
 
-   do.call(vision$all$ResNet, args)
+   do.call(vision()$all$ResNet, args)
 
 }
 
@@ -531,9 +531,9 @@ ResNet <- function(block, layers, num_classes = 1000, zero_init_residual = FALSE
 densenet121 <- function(pretrained = FALSE, progress) {
 
   if(missing(progress)) {
-    vision$all$densenet121
+    vision()$all$densenet121
   } else {
-    vision$all$densenet121(
+    vision()$all$densenet121(
       pretrained = pretrained,
       progress = progress
     )
@@ -554,9 +554,9 @@ densenet121 <- function(pretrained = FALSE, progress) {
 densenet161 <- function(pretrained = FALSE, progress) {
 
   if(missing(progress)) {
-    vision$all$densenet161
+    vision()$all$densenet161
   } else {
-    vision$all$densenet161(
+    vision()$all$densenet161(
       pretrained = pretrained,
       progress = progress
     )
@@ -577,9 +577,9 @@ densenet161 <- function(pretrained = FALSE, progress) {
 densenet169 <- function(pretrained = FALSE, progress) {
 
   if(missing(progress)) {
-    vision$all$densenet169
+    vision()$all$densenet169
   } else {
-    vision$all$densenet169(
+    vision()$all$densenet169(
       pretrained = pretrained,
       progress = progress
     )
@@ -600,9 +600,9 @@ densenet169 <- function(pretrained = FALSE, progress) {
 densenet201 <- function(pretrained = FALSE, progress) {
 
   if(missing(progress)) {
-    vision$all$densenet201
+    vision()$all$densenet201
   } else {
-    vision$all$densenet201(
+    vision()$all$densenet201(
       pretrained = pretrained,
       progress = progress
     )

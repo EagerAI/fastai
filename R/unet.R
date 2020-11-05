@@ -30,7 +30,7 @@ unet_config <- function(blur = FALSE, blur_final = TRUE, self_attention = FALSE,
     norm_type = norm_type
   )
 
-  do.call(vision$gan$unet_config, args)
+  do.call(vision()$gan$unet_config, args)
 
 }
 
@@ -57,7 +57,7 @@ unet_learner <- function(dls, arch, ...) {
   if(!is.null(args[['n_in']])) {
     args[['n_in']] = as.integer(args[['n_in']])
   }
-  do.call(vision$gan$unet_learner, args)
+  do.call(vision()$gan$unet_learner, args)
 
 }
 
@@ -121,7 +121,7 @@ UnetBlock <- function(up_in_c, x_in_c, hook, final_div = TRUE,
     padding_mode = padding_mode
   )
 
-  do.call(vision$gan$UnetBlock, args)
+  do.call(vision()$gan$UnetBlock, args)
 
 }
 
@@ -165,7 +165,7 @@ DynamicUnet <- function(encoder, n_classes, img_size, blur = FALSE,
     norm_type = norm_type
   )
 
-  do.call(vision$gan$DynamicUnet, args)
+  do.call(vision()$gan$DynamicUnet, args)
 
 }
 

@@ -20,13 +20,13 @@ generate_noise <- function(fn, size = 100) {
 
 
   if(missing(fn)) {
-    invisible(vision$gan$generate_noise)
+    invisible(vision()$gan$generate_noise)
   } else {
     args <- list(
       fn = fn,
       size = as.integer(size)
     )
-    do.call(vision$gan$generate_noise,args)
+    do.call(vision()$gan$generate_noise,args)
   }
 
 
@@ -43,12 +43,12 @@ generate_noise <- function(fn, size = 100) {
 IndexSplitter <- function(valid_idx) {
 
   if(missing(valid_idx)) {
-    invisible(vision$gan$IndexSplitter)
+    invisible(vision()$gan$IndexSplitter)
   } else {
     args <- list(
       valid_idx = valid_idx
     )
-    do.call(vision$gan$IndexSplitter,args)
+    do.call(vision()$gan$IndexSplitter,args)
   }
 
 
@@ -66,9 +66,9 @@ IndexSplitter <- function(valid_idx) {
 FileSplitter <- function(fname) {
 
   if(missing(fname)) {
-    vision$gan$FileSplitter
+    vision()$gan$FileSplitter
   } else {
-    vision$gan$FileSplitter(
+    vision()$gan$FileSplitter(
       fname = fname
     )
   }
@@ -163,7 +163,7 @@ basic_generator <- function(out_size, n_channels,
   }
 
 
-  do.call(vision$gan$basic_generator, args)
+  do.call(vision()$gan$basic_generator, args)
 }
 
 
@@ -214,7 +214,7 @@ basic_critic <- function(in_size, n_channels,
     }
   }
 
-  do.call(vision$gan$basic_critic, args)
+  do.call(vision()$gan$basic_critic, args)
 
 }
 
@@ -282,7 +282,7 @@ GANLearner_wgan <- function(dls, generator, critic, switcher = NULL, clip = 0.01
     moms = moms
   )
 
-  do.call(vision$gan$GANLearner$wgan, args)
+  do.call(vision()$gan$GANLearner$wgan, args)
 
 }
 
@@ -367,7 +367,7 @@ GANModule <- function(generator = NULL, critic = NULL, gen_mode = FALSE) {
     gen_mode = gen_mode
   )
 
-  do.call(vision$gan$GANModule, args)
+  do.call(vision()$gan$GANModule, args)
 
 }
 
@@ -382,7 +382,7 @@ GANModule <- function(generator = NULL, critic = NULL, gen_mode = FALSE) {
 #' @export
 GANDiscriminativeLR <- function(mult_lr = 5.0) {
 
-  vision$gan$GANDiscriminativeLR(
+  vision()$gan$GANDiscriminativeLR(
     mult_lr = mult_lr
   )
 
@@ -399,9 +399,9 @@ GANDiscriminativeLR <- function(mult_lr = 5.0) {
 MaskBlock <- function(codes = NULL) {
 
   if(is.null(codes)) {
-    vision$all$MaskBlock
+    vision()$all$MaskBlock
   } else {
-    vision$all$MaskBlock(
+    vision()$all$MaskBlock(
       codes = codes
     )
   }
@@ -419,7 +419,7 @@ MaskBlock <- function(codes = NULL) {
 #' @export
 AddChannels <- function(n_dim) {
 
-  vision$gan$AddChannels(
+  vision()$gan$AddChannels(
     n_dim = as.integer(n_dim)
   )
 
@@ -477,7 +477,7 @@ DenseResBlock <- function(nf, norm_type = 1,
     padding_mode = padding_mode
   )
 
-  do.call(vision$gan$DenseResBlock, args)
+  do.call(vision()$gan$DenseResBlock, args)
 
 }
 
@@ -494,7 +494,7 @@ DenseResBlock <- function(nf, norm_type = 1,
 #' @export
 gan_critic <- function(n_channels = 3, nf = 128, n_blocks = 3, p = 0.15) {
 
-  vision$gan$gan_critic(
+  vision()$gan$gan_critic(
     n_channels = as.integer(n_channels),
     nf = as.integer(nf),
     n_blocks = as.integer(n_blocks),
@@ -516,7 +516,7 @@ gan_critic <- function(n_channels = 3, nf = 128, n_blocks = 3, p = 0.15) {
 #' @export
 GANLoss <- function(gen_loss_func, crit_loss_func, gan_model) {
 
-  vision$gan$GANLoss(
+  vision()$gan$GANLoss(
     gen_loss_func = gen_loss_func,
     crit_loss_func = crit_loss_func,
     gan_model = gan_model
@@ -539,7 +539,7 @@ GANLoss <- function(gen_loss_func, crit_loss_func, gan_model) {
 #' @export
 accuracy_thresh_expand <- function(y_pred, y_true, thresh = 0.5, sigmoid = TRUE) {
 
-  vision$gan$accuracy_thresh_expand(
+  vision()$gan$accuracy_thresh_expand(
     y_pred = y_pred,
     y_true = y_true,
     thresh = thresh,
@@ -557,7 +557,7 @@ accuracy_thresh_expand <- function(y_pred, y_true, thresh = 0.5, sigmoid = TRUE)
 #' @export
 set_freeze_model <- function(m, rg) {
 
-  vision$gan$set_freeze_model(
+  vision()$gan$set_freeze_model(
     m = m,
     rg = rg
   )
@@ -579,7 +579,7 @@ set_freeze_model <- function(m, rg) {
 GANTrainer <- function(switch_eval = FALSE, clip = NULL, beta = 0.98,
                        gen_first = FALSE, show_img = TRUE) {
 
-  vision$gan$GANTrainer(
+  vision()$gan$GANTrainer(
     switch_eval = switch_eval,
     clip = clip,
     beta = beta,
@@ -601,7 +601,7 @@ GANTrainer <- function(switch_eval = FALSE, clip = NULL, beta = 0.98,
 #' @export
 FixedGANSwitcher <- function(n_crit = 1, n_gen = 1) {
 
-  vision$gan$FixedGANSwitcher(
+  vision()$gan$FixedGANSwitcher(
     n_crit = as.integer(n_crit),
     n_gen = as.integer(n_gen)
   )
@@ -619,7 +619,7 @@ FixedGANSwitcher <- function(n_crit = 1, n_gen = 1) {
 #' @export
 AdaptiveGANSwitcher <- function(gen_thresh = NULL, critic_thresh = NULL) {
 
-  vision$gan$AdaptiveGANSwitcher(
+  vision()$gan$AdaptiveGANSwitcher(
     gen_thresh = gen_thresh,
     critic_thresh = critic_thresh
   )
@@ -634,7 +634,7 @@ AdaptiveGANSwitcher <- function(gen_thresh = NULL, critic_thresh = NULL) {
 #' @export
 InvisibleTensor <- function(x) {
 
-  vision$gan$InvisibleTensor(
+  vision()$gan$InvisibleTensor(
     x = x
   )
 
@@ -652,7 +652,7 @@ InvisibleTensor <- function(x) {
 #' @export
 gan_loss_from_func <- function(loss_gen, loss_crit, weights_gen = NULL) {
 
-  vision$gan$gan_loss_from_func(
+  vision()$gan$gan_loss_from_func(
     loss_gen = loss_gen,
     loss_crit = loss_crit,
     weights_gen = weights_gen
@@ -717,7 +717,7 @@ GANLearner_from_learners <- function(gen_learn, crit_learn, switcher = NULL, wei
     moms = moms
   )
 
-  do.call(vision$gan$GANLearner$from_learners, args)
+  do.call(vision()$gan$GANLearner$from_learners, args)
 
 }
 
@@ -767,7 +767,7 @@ Learner = function(...) {
 #' @export
 get_c <- function(dls) {
 
-  vision$all$get_c(
+  vision()$all$get_c(
     dls = dls
   )
 

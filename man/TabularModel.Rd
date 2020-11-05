@@ -19,27 +19,27 @@ TabularModel(
 )
 }
 \arguments{
-\item{emb_szs}{emb_szs}
+\item{emb_szs}{embedding size}
 
-\item{n_cont}{n_cont}
+\item{n_cont}{number of cont}
 
-\item{out_sz}{out_sz}
+\item{out_sz}{output size}
 
 \item{layers}{layers}
 
 \item{ps}{ps}
 
-\item{embed_p}{embed_p}
+\item{embed_p}{embed proportion}
 
-\item{y_range}{y_range}
+\item{y_range}{y range}
 
-\item{use_bn}{use_bn}
+\item{use_bn}{use batch normalization}
 
-\item{bn_final}{bn_final}
+\item{bn_final}{batch normalization final}
 
-\item{bn_cont}{bn_cont}
+\item{bn_cont}{batch normalization cont}
 
-\item{act_cls}{act_cls}
+\item{act_cls}{activation}
 }
 \value{
 None

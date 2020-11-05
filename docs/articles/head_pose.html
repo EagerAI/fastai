@@ -159,7 +159,7 @@
 
       
 
-      </header><script src="head_pose_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="head_pose_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+      </header><script src="head_pose_files/header-attrs-2.5/header-attrs.js"></script><link href="head_pose_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
 <script src="head_pose_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -197,7 +197,9 @@
 <span class="va">fname</span> <span class="op">=</span> <span class="st">'09/frame_00667_rgb.jpg'</span>
 
 <span class="va">img</span> <span class="op">=</span> <span class="fu"><a href="../reference/Image_create.html">Image_create</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">path</span>,<span class="va">fname</span>,sep <span class="op">=</span> <span class="st">'/'</span><span class="op">)</span><span class="op">)</span>
-<span class="va">img</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/show.html">show</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<span class="va">img</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/show.html">show</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">cal</span> <span class="op">=</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_lines.html">read_lines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">path</span>,<span class="st">'01/rgb.cal'</span>,sep <span class="op">=</span> <span class="st">'/'</span><span class="op">)</span>, n_max <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/trimws.html">trimws</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/strsplit.html">strsplit</a></span><span class="op">(</span><span class="st">'\\s'</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html">do.call</a></span><span class="op">(</span><span class="va">rbind</span>,<span class="va">.</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">.</span>,<span class="fl">2</span>,<span class="va">as.numeric</span><span class="op">)</span></code></pre></div>
 <center>
 <p><img src="images/simple.png" alt="_" style="width: 600px;"></p>
 </center>

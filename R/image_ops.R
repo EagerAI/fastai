@@ -19,7 +19,7 @@ Resize <- function(size, method = "crop", pad_mode = "reflection", resamples = l
     resamples = as.list(as.integer(unlist(resamples)))
   )
 
-  do.call(vision$all$Resize, args)
+  do.call(vision()$all$Resize, args)
 
 }
 
@@ -103,7 +103,7 @@ aug_transforms <- function(mult = 1.0, do_flip = TRUE, flip_vert = FALSE,
     args$size = as.integer(args$size)
   }
 
-  aug = do.call(vision$all$aug_transforms, args)
+  aug = do.call(vision()$all$aug_transforms, args)
 
   if(length(aug)==2) {
     return(list(aug[[1]],aug[[2]]))
@@ -127,7 +127,7 @@ aug_transforms <- function(mult = 1.0, do_flip = TRUE, flip_vert = FALSE,
 #' @return vector
 #' @export
 imagenet_stats = function() {
-  res = vision$all$imagenet_stats
+  res = vision()$all$imagenet_stats
   return(list(res[[1]],res[[2]]))
 }
 
@@ -165,7 +165,7 @@ Normalize_from_stats <- function(mean, std, dim = 1, ndim = 4, cuda = TRUE) {
     )
   }
 
-  do.call(vision$all$Normalize$from_stats, args)
+  do.call(vision()$all$Normalize$from_stats, args)
 
 }
 
@@ -190,7 +190,7 @@ Rotate <- function(max_deg = 10, p = 0.5, draw = NULL, size = NULL,
                    mode = "bilinear", pad_mode = "reflection",
                    align_corners = TRUE, batch = FALSE) {
 
-  vision$all$Rotate(
+  vision()$all$Rotate(
     max_deg = as.integer(max_deg),
     p = p,
     draw = draw,
@@ -221,7 +221,7 @@ Flip <- function(p = 0.5, draw = NULL, size = NULL, mode = "bilinear",
                  pad_mode = "reflection", align_corners = TRUE,
                  batch = FALSE) {
 
-  vision$all$Flip(
+  vision()$all$Flip(
     p = p,
     draw = draw,
     size = size,
@@ -252,7 +252,7 @@ Dihedral <- function(p = 0.5, draw = NULL, size = NULL,
                      mode = "bilinear", pad_mode = "reflection",
                      align_corners = NULL, batch = FALSE) {
 
-  vision$all$Dihedral(
+  vision()$all$Dihedral(
     p = p,
     draw = draw,
     size = size,

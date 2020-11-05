@@ -1,7 +1,7 @@
 
 plot_confusion_matrix <- function(object, dataloader) {
   if(inherits(object,"fastai.learner.Learner")) {
-    interp = vision$all$ClassificationInterpretation$from_learner(object)
+    interp = vision()$all$ClassificationInterpretation$from_learner(object)
 
     conf=interp$confusion_matrix()
     conf=apply(conf, 2, as.integer)
@@ -41,7 +41,7 @@ plot_confusion_matrix <- function(object, dataloader) {
 #'
 #' @export
 get_confusion_matrix <- function(object) {
-  interp = vision$all$ClassificationInterpretation$from_learner(object)
+  interp = vision()$all$ClassificationInterpretation$from_learner(object)
 
   conf = interp$confusion_matrix()
   conf = apply(conf, 2, as.integer)
@@ -103,33 +103,6 @@ lr_find <- function(object, start_lr = 1e-07, end_lr = 10, num_it = 100,
 }
 
 
-
-#' @title Accuracy
-#'
-#' @description Compute accuracy with `targ` when `pred` is bs * n_classes
-#'
-#'
-#' @param inp predictions
-#' @param targ actuals
-#' @param axis axis
-#' @return tensor
-#' @export
-accuracy <- function(inp, targ, axis = -1) {
-
-  if(missing(inp) && missing(targ)){
-    tabular$accuracy
-  } else {
-    args <- list(inp = inp,
-                 targ = targ,
-                 axis = as.integer(axis)
-    )
-    do.call(tabular$accuracy,args)
-  }
-
-}
-
-attr(accuracy,"py_function_name") <- "accuracy"
-
 #' @title Perplexity
 #'
 #'
@@ -137,7 +110,7 @@ attr(accuracy,"py_function_name") <- "accuracy"
 #' @return None
 #' @export
 Perplexity <- function(...) {
-  invisible(text$Perplexity(...))
+  invisible(text()$Perplexity(...))
 }
 
 attr(Perplexity,"py_function_name") <- "Perplexity"
@@ -215,7 +188,7 @@ summary.fastai.learner.Learner <- function(object, ...) {
 #' @export
 get_files <- function(path, extensions = NULL, recurse = TRUE, folders = NULL, followlinks = TRUE) {
 
-  vision$all$get_files(
+  vision()$all$get_files(
     path = path,
     extensions = extensions,
     recurse = recurse,

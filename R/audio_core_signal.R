@@ -6,7 +6,7 @@
 #' @return vector
 #' @export
 audio_extensions = function() {
-  unlist(fastaudio$core$signal$audio_extensions)
+  unlist(fastaudio()$core$signal$audio_extensions)
 }
 
 
@@ -23,9 +23,9 @@ audio_extensions = function() {
 get_audio_files <- function(path, recurse = TRUE, folders = NULL) {
 
   if(missing(path)) {
-    fastaudio$core$signal$get_audio_files
+    fastaudio()$core$signal$get_audio_files
   } else {
-    fastaudio$core$signal$get_audio_files(
+    fastaudio()$core$signal$get_audio_files(
       path = path,
       recurse = recurse,
       folders = folders
@@ -47,7 +47,7 @@ get_audio_files <- function(path, recurse = TRUE, folders = NULL) {
 #' @export
 AudioGetter <- function(suf = "", recurse = TRUE, folders = NULL) {
 
-  fastaudio$core$signal$AudioGetter(
+  fastaudio()$core$signal$AudioGetter(
     suf = suf,
     recurse = recurse,
     folders = folders
@@ -67,7 +67,7 @@ AudioGetter <- function(suf = "", recurse = TRUE, folders = NULL) {
 #' @export
 tar_extract_at_filename <- function(fname, dest) {
 
-  fastaudio$core$signal$tar_extract_at_filename(
+  fastaudio()$core$signal$tar_extract_at_filename(
     fname = fname,
     dest = dest
   )
@@ -84,7 +84,7 @@ tar_extract_at_filename <- function(fname, dest) {
 #' @export
 AudioTensor <- function(x, sr = NULL) {
 
-  fastaudio$core$signal$AudioTensor(
+  fastaudio()$core$signal$AudioTensor(
     x = x,
     sr = sr
   )
@@ -115,7 +115,7 @@ AudioTensor_create <- function(fn, cache_folder = NULL, out = NULL,
 
 
   if(missing(fn)) {
-    fastaudio$core$signal$AudioTensor$create
+    fastaudio()$core$signal$AudioTensor$create
   } else {
     args = list(
       fn = fn,
@@ -130,7 +130,7 @@ AudioTensor_create <- function(fn, cache_folder = NULL, out = NULL,
       filetype = filetype
     )
 
-    do.call(fastaudio$core$signal$AudioTensor$create, args)
+    do.call(fastaudio()$core$signal$AudioTensor$create, args)
   }
 
 }
@@ -147,7 +147,7 @@ AudioTensor_create <- function(fn, cache_folder = NULL, out = NULL,
 #' @export
 OpenAudio <- function(items) {
 
-  fastaudio$core$signal$OpenAudio(
+  fastaudio()$core$signal$OpenAudio(
     items = items
   )
 

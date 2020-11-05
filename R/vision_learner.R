@@ -8,7 +8,7 @@
 #' @export
 has_pool_type <- function(m) {
 
-  vision$all$has_pool_type(
+  vision()$all$has_pool_type(
     m = m
   )
 
@@ -57,7 +57,7 @@ create_body <- function(...) {
 create_head <- function(nf, n_out, lin_ftrs = NULL, ps = 0.5, concat_pool = TRUE,
                         bn_final = FALSE, lin_first = FALSE, y_range = NULL) {
 
-  vision$all$create_head(
+  vision()$all$create_head(
     nf = as.integer(nf),
     n_out = as.integer(n_out),
     lin_ftrs = lin_ftrs,
@@ -81,7 +81,7 @@ create_head <- function(nf, n_out, lin_ftrs = NULL, ps = 0.5, concat_pool = TRUE
 #' @export
 default_split <- function(m) {
 
-  vision$all$default_split(
+  vision()$all$default_split(
     m = m
   )
 

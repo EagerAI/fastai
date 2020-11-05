@@ -10,6 +10,8 @@ knitr::opts_chunk$set(echo = TRUE,eval = FALSE,echo = T)
 #  
 #  img = Image_create(paste(path,fname,sep = '/'))
 #  img %>% show() %>% plot()
+#  cal = readr::read_lines(paste(path,'01/rgb.cal',sep = '/'), n_max = 3) %>% trimws() %>%
+#    strsplit('\\s') %>% do.call(rbind,.) %>% apply(.,2,as.numeric)
 
 ## -----------------------------------------------------------------------------
 #  img2txt_name <- function(f) {

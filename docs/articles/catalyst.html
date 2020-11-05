@@ -159,7 +159,7 @@
 
       
 
-      </header><script src="catalyst_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="catalyst_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+      </header><script src="catalyst_files/header-attrs-2.5/header-attrs.js"></script><link href="catalyst_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
 <script src="catalyst_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -193,6 +193,7 @@
 
 <span class="va">data</span> <span class="op">=</span> <span class="fu"><a href="../reference/Data_Loaders.html">Data_Loaders</a></span><span class="op">(</span><span class="va">loaders</span><span class="op">[</span><span class="st">'train'</span><span class="op">]</span>, <span class="va">loaders</span><span class="op">[</span><span class="st">'valid'</span><span class="op">]</span><span class="op">)</span><span class="op">$</span><span class="fu">cuda</span><span class="op">(</span><span class="op">)</span>
 
+<span class="va">nn</span> <span class="op">=</span> <span class="fu"><a href="../reference/nn.html">nn</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">model</span> <span class="op">=</span> <span class="va">nn</span><span class="op">$</span><span class="fu">Sequential</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="va">nn</span><span class="op">$</span><span class="fu">Flatten</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="va">nn</span><span class="op">$</span><span class="fu">Linear</span><span class="op">(</span><span class="fl">28L</span> <span class="op">*</span> <span class="fl">28L</span>, <span class="fl">10L</span><span class="op">)</span></code></pre></div>
@@ -207,7 +208,7 @@
 <a href="#fit" class="anchor"></a>Fit</h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">metrics</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">accuracy</span>,<span class="va">top_k_accuracy</span><span class="op">)</span>
-<span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/Learner.html">Learner</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">model</span>, loss_func <span class="op">=</span> <span class="cn">F</span><span class="op">$</span><span class="va">cross_entropy</span>, opt_func <span class="op">=</span> <span class="va">Adam</span>,
+<span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/Learner.html">Learner</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">model</span>, loss_func <span class="op">=</span> <span class="va">nn</span><span class="op">$</span><span class="va">functional</span><span class="op">$</span><span class="va">cross_entropy</span>, opt_func <span class="op">=</span> <span class="va">Adam</span>,
                 metrics <span class="op">=</span> <span class="va">metrics</span><span class="op">)</span>
 
 <span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0.02</span><span class="op">)</span></code></pre></div>

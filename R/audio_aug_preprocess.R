@@ -1,10 +1,5 @@
 
 
-#' RemoveType
-#' @return module
-#' @param ... parameters to pass
-#' @export
-RemoveType <- NULL
 
 
 #' @title Remove Silence
@@ -17,9 +12,9 @@ RemoveType <- NULL
 #' @param pad_ms pad milliseconds
 #' @return None
 #' @export
-RemoveSilence <- function(remove_type = RemoveType$Trim$value, threshold = 20, pad_ms = 20) {
+RemoveSilence <- function(remove_type = RemoveType()$Trim$value, threshold = 20, pad_ms = 20) {
 
-  fastaudio$augment$preprocess$RemoveSilence(
+  fastaudio()$augment$preprocess$RemoveSilence(
     remove_type = remove_type,
     threshold = as.integer(threshold),
     pad_ms = as.integer(pad_ms)
@@ -38,7 +33,7 @@ RemoveSilence <- function(remove_type = RemoveType$Trim$value, threshold = 20, p
 #' @export
 Resample <- function(sr_new) {
 
-  fastaudio$augment$preprocess$Resample(
+  fastaudio()$augment$preprocess$Resample(
     sr_new = sr_new
   )
 

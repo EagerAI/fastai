@@ -159,7 +159,7 @@
 
       
 
-      </header><script src="migrating_ignite_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="migrating_ignite_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+      </header><script src="migrating_ignite_files/header-attrs-2.5/header-attrs.js"></script><link href="migrating_ignite_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
 <script src="migrating_ignite_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -190,6 +190,7 @@
 
 <span class="va">data</span> <span class="op">=</span> <span class="fu"><a href="../reference/Data_Loaders.html">Data_Loaders</a></span><span class="op">(</span><span class="fu"><a href="../reference/get_data_loaders.html">get_data_loaders</a></span><span class="op">(</span><span class="fl">64</span>, <span class="fl">128</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="fu">cuda</span><span class="op">(</span><span class="op">)</span>
 
+<span class="va">nn</span> <span class="op">=</span> <span class="fu"><a href="../reference/nn.html">nn</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">opt_func</span> <span class="op">=</span> <span class="fu"><a href="../reference/partial.html">partial</a></span><span class="op">(</span><span class="va">SGD</span>, momentum<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span>
 <span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/Learner.html">Learner</a></span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="../reference/Net.html">Net</a></span><span class="op">(</span><span class="op">)</span>, loss_func <span class="op">=</span> <span class="va">nn</span><span class="op">$</span><span class="fu">NLLLoss</span><span class="op">(</span><span class="op">)</span>, opt_func <span class="op">=</span> <span class="va">opt_func</span>, metrics <span class="op">=</span> <span class="va">accuracy</span><span class="op">)</span>
 <span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0.01</span><span class="op">)</span></code></pre></div>

@@ -13,7 +13,7 @@ BasicMelSpectrogram(
   f_max = NULL,
   pad = 0,
   n_mels = 128,
-  window_fn = torch$hann_window,
+  window_fn = torch()$hann_window,
   power = 2,
   normalized = FALSE,
   wkwargs = NULL,

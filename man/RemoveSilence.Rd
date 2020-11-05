@@ -4,7 +4,11 @@
 \alias{RemoveSilence}
 \title{Remove Silence}
 \usage{
-RemoveSilence(remove_type = RemoveType$Trim$value, threshold = 20, pad_ms = 20)
+RemoveSilence(
+  remove_type = RemoveType()$Trim$value,
+  threshold = 20,
+  pad_ms = 20
+)
 }
 \arguments{
 \item{remove_type}{remove type from RemoveType module}

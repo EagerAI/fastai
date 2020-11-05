@@ -7,6 +7,7 @@ test_succeeds('dataset load', {
   URLs_ADULT_SAMPLE()
 
   df = data.table::fread('adult_sample/adult.csv')
+  df = df[1:2561,]
   dep_var = 'salary'
   cat_names = c('workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race')
   cont_names = c('age', 'fnlwgt', 'education-num')
@@ -27,7 +28,7 @@ test_succeeds('tabular ops Normalize', {
 test_succeeds('tabular ops dataloader', {
   procs = list(FillMissing(),Categorify(),Normalize())
   dls = TabularDataTable(df, procs, cat_names, cont_names,
-                         y_names="salary", splits = list(c(1:32000),c(32001:32561))) %>%
+                         y_names="salary", splits = list(c(1:2000),c(2001:2561))) %>%
     dataloaders(bs=10)
   expect_length(one_batch(dls, convert = FALSE), 3)
 })
@@ -44,7 +45,7 @@ test_succeeds('tabular ops dims==batch', {
   expect_equal(dim(list_1[[3]]), c(10,1))
 })
 
-test_succeeds('tabular ops train model', {
+test_succeeds('tabular ops bs find', {
   bss = model %>% bs_find(1e-3)
   model %>% plot_bs_find()
   expect_s3_class(bss, 'data.frame')
@@ -62,6 +63,7 @@ test_succeeds('tabular ops predict', {
 
 test_succeeds('tabular ops get optimal lr', {
   df = model %>% lr_find()
+  model %>% plot_lr_find()
   expect_true(is.data.frame(df))
 })
 
@@ -73,10 +75,41 @@ test_succeeds('tabular ops confusion matrix', {
   expect_equal(length(rownames(conf)),2)
 })
 
+test_succeeds('tabular ops confusion matrix via class-n interp', {
+  interp = ClassificationInterpretation_from_learner(model)
+  interp %>% plot_confusion_matrix(dpi = 90, figsize = c(6,6))
+})
+
+
+test_succeeds('tabular ops shap intep object', {
+  exp = ShapInterpretation(model,n_samples = 6)
+})
+
+
+test_succeeds('tabular ops shap decision plot', {
+  exp %>% decision_plot(class_id = 1, row_idx = 2)
+})
+
+
+test_succeeds('tabular ops shap dependence plot', {
+  exp %>% dependence_plot('age', class_id = 0)
+})
+
+
+test_succeeds('tabular ops shap summary plot', {
+  exp %>% summary_plot()
+})
 
 
 
+test_succeeds('tabular ops shap waterfall plot', {
+  exp %>% waterfall_plot(row_idx=2)
+})
 
+
+test_succeeds('tabular ops shap JS plot', {
+  #exp %>% force_plot(class_id = 0)
+})
 
 
 

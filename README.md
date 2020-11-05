@@ -1707,7 +1707,7 @@ img %>% plot(dpi = 250)
 Apply different cmaps:
 
 ```
-img %>% show(cmap = cm$gist_ncar, figsize = c(6,6))
+img %>% show(cmap = cm()$gist_ncar, figsize = c(6,6))
 img %>% plot()
 ```
 

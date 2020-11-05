@@ -30,7 +30,7 @@ ShapInterpretation <- function(learn, test_data = NULL, link = "identity", l1_re
     n_samples = as.integer(n_samples)
   )
 
-  do.call(fastinf$tabular$ShapInterpretation, args)
+  do.call(fastinf()$tabular$ShapInterpretation, args)
 
 }
 
@@ -216,7 +216,7 @@ force_plot = function(object, class_id = 0, ...) {
   fastai2$vision$all$plt$close()
   tempDir <- tempfile()
   dir.create(tempDir)
-  shap$save_html(paste(tempDir,'test.html',sep = '/'),
+  shap()$save_html(paste(tempDir,'test.html',sep = '/'),
                  object$force_plot(class_id = as.integer(class_id)), ...)
   htmlFile <- file.path(tempDir, "test.html")
   viewer <- getOption("viewer")

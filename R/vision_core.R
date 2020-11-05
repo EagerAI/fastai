@@ -8,7 +8,7 @@
 #' @export
 Image_open <- function(fp, mode = "r") {
 
-  vision$all$Image$open(
+  vision()$all$Image$open(
     fp = fp,
     mode = mode
   )
@@ -183,7 +183,7 @@ resize_max <- function(img, resample = 0, max_px = NULL, max_h = NULL, max_w = N
 #' @export
 to_image <- function(x) {
 
-  vision$all$to_image(
+  vision()$all$to_image(
     x = x
   )
 
@@ -200,7 +200,7 @@ to_image <- function(x) {
 #' @export
 load_image <- function(fn, mode = NULL) {
 
-  vision$all$load_image(
+  vision()$all$load_image(
     fn = fn,
     mode = mode
   )
@@ -218,7 +218,7 @@ load_image <- function(fn, mode = NULL) {
 #' @export
 image2tensor <- function(img) {
 
-  vision$all$image2tensor(
+  vision()$all$image2tensor(
     img = img
   )
 
@@ -234,9 +234,9 @@ image2tensor <- function(img) {
 Image_create <- function(fn) {
 
   if(missing(fn)) {
-    invisible(vision$all$PILImage$create)
+    invisible(vision()$all$PILImage$create)
   } else {
-    vision$all$PILImage$create(
+    vision()$all$PILImage$create(
       fn = fn
     )
   }
@@ -258,7 +258,7 @@ Image_create <- function(fn) {
 Mask_create <- function(enc = NULL, dec = NULL, split_idx = NULL, order = NULL) {
 
   if(is.null(enc) & is.null(dec) & is.null(split_idx) & is.null(order)) {
-    invisible(vision$all$PILMask$create)
+    invisible(vision()$all$PILMask$create)
   } else {
     args = list(
       enc = enc,
@@ -271,7 +271,7 @@ Mask_create <- function(enc = NULL, dec = NULL, split_idx = NULL, order = NULL) 
       args$split_idx = as.integer(args$split_idx)
     }
 
-    do.call(vision$all$PILMask$create, args)
+    do.call(vision()$all$PILMask$create, args)
   }
 
 }
@@ -302,9 +302,9 @@ Transform <- function(enc = NULL, dec = NULL, split_idx = NULL, order = NULL) {
   }
 
   if(is.null(enc) & is.null(dec) & is.null(split_idx) & is.null(order)) {
-    vision$all$Transform
+    vision()$all$Transform
   } else {
-    do.call(vision$all$Transform, args)
+    do.call(vision()$all$Transform, args)
   }
 
 }
@@ -318,7 +318,7 @@ Transform <- function(enc = NULL, dec = NULL, split_idx = NULL, order = NULL) {
 #' @export
 ImageBW_create <- function(fn) {
 
-  vision$all$PILImageBW$create(
+  vision()$all$PILImageBW$create(
     fn = fn
   )
 
@@ -341,14 +341,14 @@ TensorPoint_create <- function( ...) {
   )
 
   if(length(args)==0) {
-    invisible(vision$all$TensorPoint$create)
+    invisible(vision()$all$TensorPoint$create)
   } else {
 
     if(!is.null(args$split_idx)) {
       args$split_idx = as.integer(args$split_idx)
     }
 
-    do.call(vision$all$TensorPoint$create, args)
+    do.call(vision()$all$TensorPoint$create, args)
   }
 }
 
@@ -362,7 +362,7 @@ TensorPoint_create <- function( ...) {
 #' @export
 TensorBBox <- function(x) {
 
-  vision$all$TensorBBox(
+  vision()$all$TensorBBox(
     x = x
   )
 
@@ -377,7 +377,7 @@ TensorBBox <- function(x) {
 #' @export
 LabeledBBox <- function(...) {
 
-  vision$all$LabeledBBox(
+  vision()$all$LabeledBBox(
     ...
   )
 
@@ -396,7 +396,7 @@ LabeledBBox <- function(...) {
 #' @export
 ToTensor <- function(enc = NULL, dec = NULL, split_idx = NULL, order = NULL) {
 
-  vision$all$ToTensor(
+  vision()$all$ToTensor(
     enc = enc,
     dec = dec,
     split_idx = split_idx,
@@ -416,7 +416,7 @@ ToTensor <- function(enc = NULL, dec = NULL, split_idx = NULL, order = NULL) {
 #' @export
 Pipeline <- function(funcs = NULL, split_idx = NULL) {
 
-  vision$all$Pipeline(
+  vision()$all$Pipeline(
     funcs = funcs,
     split_idx = split_idx
   )
@@ -431,9 +431,9 @@ Pipeline <- function(funcs = NULL, split_idx = NULL) {
 TensorImageBW <- function(x) {
 
   if(missing(x)) {
-    invisible(vision$all$TensorImageBW)
+    invisible(vision()$all$TensorImageBW)
   } else {
-    vision$all$TensorImageBW(
+    vision()$all$TensorImageBW(
       x = x
     )
   }
@@ -469,7 +469,7 @@ Datasets <- function(items = NULL, tfms = NULL, tls = NULL, n_inp = NULL,
     n_inp = as.integer(n_inp)
   }
 
-  vision$all$Datasets(
+  vision()$all$Datasets(
     items = items,
     tfms = tfms,
     tls = tls,
@@ -497,7 +497,7 @@ Datasets <- function(items = NULL, tfms = NULL, tls = NULL, n_inp = NULL,
 Image = function(...) {
   args = list(...)
 
-  do.call(vision$all$PILImage, args)
+  do.call(vision()$all$PILImage, args)
 }
 
 
@@ -552,7 +552,7 @@ TfmdDL <- function(dataset, bs = 64, shuffle = FALSE, num_workers = NULL,
     args$after_batch <- unlist(args$after_batch)
   }
 
-  do.call(vision$all$TfmdDL, args)
+  do.call(vision()$all$TfmdDL, args)
 
 }
 
@@ -566,7 +566,7 @@ TfmdDL <- function(dataset, bs = 64, shuffle = FALSE, num_workers = NULL,
 #' @export
 PointScaler <- function(do_scale = TRUE, y_first = FALSE) {
 
-  vision$all$PointScaler(
+  vision()$all$PointScaler(
     do_scale = do_scale,
     y_first = y_first
   )
@@ -584,7 +584,7 @@ PointScaler <- function(do_scale = TRUE, y_first = FALSE) {
 #' @export
 tensor <- function(...) {
 
-  vision$all$tensor(
+  vision()$all$tensor(
     ...
   )
 
@@ -600,7 +600,7 @@ tensor <- function(...) {
 #' @export
 TensorPoint <- function(x) {
 
-  vision$all$TensorPoint(
+  vision()$all$TensorPoint(
     x = x
   )
 
@@ -623,7 +623,7 @@ TensorBBox_create <- function(x, img_size = NULL) {
     }
   }
 
-  vision$all$TensorBBox$create(
+  vision()$all$TensorBBox$create(
     x = x,
     img_size = img_size
   )
@@ -644,7 +644,7 @@ TensorBBox_create <- function(x, img_size = NULL) {
 #' @export
 BBoxLabeler <- function(enc = NULL, dec = NULL, split_idx = NULL, order = NULL) {
 
-  vision$all$BBoxLabeler(
+  vision()$all$BBoxLabeler(
     enc = enc,
     dec = dec,
     split_idx = split_idx,
@@ -661,7 +661,7 @@ BBoxLabeler <- function(enc = NULL, dec = NULL, split_idx = NULL, order = NULL) 
 #' @export
 TensorMultiCategory <- function(x) {
 
-  vision$all$TensorMultiCategory(
+  vision()$all$TensorMultiCategory(
     x = x
   )
 

@@ -45,7 +45,7 @@ TabularDataTable <- function(df, procs = NULL, cat_names = NULL, cont_names = NU
   if(!is.null(splits))
     args$splits = list(as.integer(splits[[1]]-1),as.integer(splits[[2]]-1))
 
-  do.call(tabular$TabularPandas, args)
+  do.call(tabular()$TabularPandas, args)
 
 }
 
@@ -61,9 +61,9 @@ TabularDataTable <- function(df, procs = NULL, cat_names = NULL, cont_names = NU
 trainable_params <- function(m) {
 
   if(missing(m)) {
-    tabular$trainable_params
+    tabular()$trainable_params
   } else {
-    tabular$trainable_params(
+    tabular()$trainable_params(
       m = m
     )
   }
@@ -134,7 +134,7 @@ tabular_learner <- function(dls, layers = NULL, emb_szs = NULL, config = NULL,
    args$layers <- as.integer(args$layers)
  }
 
- do.call(tabular$tabular_learner, args)
+ do.call(tabular()$tabular_learner, args)
 
 }
 

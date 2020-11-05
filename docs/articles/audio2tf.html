@@ -159,7 +159,7 @@
 
       
 
-      </header><script src="audio2tf_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="audio2tf_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+      </header><script src="audio2tf_files/header-attrs-2.5/header-attrs.js"></script><link href="audio2tf_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
 <script src="audio2tf_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -214,7 +214,8 @@
 <a href="#model" class="anchor"></a>Model</h2>
 <p>Before fitting, 3 channels to 1 channel:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">alter_learner</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">learn</span>, <span class="va">channels</span> <span class="op">=</span> <span class="fl">1L</span><span class="op">)</span> <span class="op">{</span>
+<code class="sourceCode R"><span class="va">torch</span> <span class="op">=</span> <span class="fu"><a href="../reference/torch.html">torch</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">alter_learner</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">learn</span>, <span class="va">channels</span> <span class="op">=</span> <span class="fl">1L</span><span class="op">)</span> <span class="op">{</span>
   <span class="kw"><a href="https://rdrr.io/r/base/try.html">try</a></span><span class="op">(</span><span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[[</span><span class="st">'in_channels'</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">channels</span>,
       silent <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
   <span class="kw"><a href="https://rdrr.io/r/base/try.html">try</a></span><span class="op">(</span><span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[[</span><span class="st">'weight'</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">torch</span><span class="op">$</span><span class="va">nn</span><span class="op">$</span><span class="va">parameter</span><span class="op">$</span><span class="fu">Parameter</span><span class="op">(</span><span class="va">torch</span><span class="op">$</span><span class="fu">narrow</span><span class="op">(</span><span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[[</span><span class="st">'weight'</span><span class="op">]</span><span class="op">]</span>,<span class="fl">1L</span>,<span class="fl">1L</span>,<span class="fl">1L</span><span class="op">)</span><span class="op">)</span>,

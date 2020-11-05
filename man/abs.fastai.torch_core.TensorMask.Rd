@@ -16,7 +16,7 @@ tensor
 Abs
 }
 \examples{
-\dontrun{
+\donttest{
 
 aa = tensor(-1:-10)
 abs(aa)

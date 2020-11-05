@@ -1,14 +1,5 @@
 
 
-#' @title AudioPadType
-#'
-#' @description An enumeration.
-#'
-#' @param ... parameters to pass
-#' @return module
-#' @export
-AudioPadType <- NULL
-
 
 #' @title Resize Signal
 #'
@@ -19,9 +10,9 @@ AudioPadType <- NULL
 #' @param pad_mode padding mode
 #' @return None
 #' @export
-ResizeSignal <- function(duration, pad_mode = AudioPadType$Zeros) {
+ResizeSignal <- function(duration, pad_mode = AudioPadType()$Zeros) {
 
-  fastaudio$augment$signal$ResizeSignal(
+  fastaudio()$augment$signal$ResizeSignal(
     duration = duration,
     pad_mode = pad_mode
   )
@@ -43,7 +34,7 @@ ResizeSignal <- function(duration, pad_mode = AudioPadType$Zeros) {
 #' @export
 SignalShifter <- function(p = 0.5, max_pct = 0.2, max_time = NULL, direction = 0, roll = FALSE) {
 
-  fastaudio$augment$signal$SignalShifter(
+  fastaudio()$augment$signal$SignalShifter(
     p = p,
     max_pct = max_pct,
     max_time = max_time,
@@ -54,13 +45,6 @@ SignalShifter <- function(p = 0.5, max_pct = 0.2, max_time = NULL, direction = 0
 }
 
 
-#' @title Noise Color
-#'
-#' @param ... parameters to pass
-#'
-#' @return module
-#' @export
-NoiseColor <- NULL
 
 
 #' @title Add Noise
@@ -74,7 +58,7 @@ NoiseColor <- NULL
 #' @export
 AddNoise <- function(noise_level = 0.05, color = 0) {
 
-  fastaudio$augment$signal$AddNoise(
+  fastaudio()$augment$signal$AddNoise(
     noise_level = noise_level,
     color = as.integer(color)
   )
@@ -93,7 +77,7 @@ AddNoise <- function(noise_level = 0.05, color = 0) {
 #' @export
 ChangeVolume <- function(p = 0.5, lower = 0.5, upper = 1.5) {
 
-  fastaudio$augment$signal$ChangeVolume(
+  fastaudio()$augment$signal$ChangeVolume(
     p = p,
     lower = lower,
     upper = upper
@@ -113,7 +97,7 @@ ChangeVolume <- function(p = 0.5, lower = 0.5, upper = 1.5) {
 #' @export
 SignalCutout <- function(p = 0.5, max_cut_pct = 0.15) {
 
-  fastaudio$augment$signal$SignalCutout(
+  fastaudio()$augment$signal$SignalCutout(
     p = p,
     max_cut_pct = max_cut_pct
   )
@@ -132,7 +116,7 @@ SignalCutout <- function(p = 0.5, max_cut_pct = 0.15) {
 #' @export
 SignalLoss <- function(p = 0.5, max_loss_pct = 0.15) {
 
-  fastaudio$augment$signal$SignalLoss(
+  fastaudio()$augment$signal$SignalLoss(
     p = p,
     max_loss_pct = max_loss_pct
   )
@@ -163,7 +147,7 @@ DownmixMono <- function(enc = NULL, dec = NULL, split_idx = NULL, order = NULL) 
     args[['split_idx']] = as.integer(args[['split_idx']])
   }
 
-  do.call(fastaudio$augment$signal$DownmixMono, args)
+  do.call(fastaudio()$augment$signal$DownmixMono, args)
 
 }
 

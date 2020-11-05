@@ -1,3 +1,17 @@
+
+
+#' @title Dicom class
+#'
+#'
+#' @return None
+#' @export
+Dicom = function() {
+  invisible(fastai2$medical$imaging$PILDicom)
+}
+
+
+
+
 #' @title get_dicom_files
 #'
 #' @description Get dicom files in `path` recursively, only in `folders`, if specified.
@@ -21,7 +35,7 @@
 #' @export
 get_dicom_files <- function(path, recurse = TRUE, folders = NULL) {
 
-  medical$get_dicom_files(
+  medical()$get_dicom_files(
     path = path,
     recurse = recurse,
     folders = folders
@@ -51,7 +65,7 @@ get_dicom_files <- function(path, recurse = TRUE, folders = NULL) {
 #' @export
 dcmread <- function(fn, force = FALSE) {
 
-  medical$Path$dcmread(
+  medical()$Path$dcmread(
     fn = fn,
     force = force
   )
@@ -92,14 +106,14 @@ print.pydicom.dataset.FileDataset <- function(x, ...) {
 #' @export
 get_dcm_matrix <- function(img, type = 'raw', scan = '', size = 50, convert = TRUE) {
 
-  obj = medical$dicom_windows
+  obj = medical()$dicom_windows
 
   fun = function() {
     if(scan=='uniform_blur2d') {
-      img = medical$uniform_blur2d(
+      img = medical()$uniform_blur2d(
         img$scaled_px$windowed(res[[1]], res[[2]]), as.integer(size))
     } else if(scan=='gauss_blur2d') {
-      img = medical$gauss_blur2d(
+      img = medical()$gauss_blur2d(
         img$scaled_px$windowed(res[[1]], res[[2]]), as.integer(size))
     } else {
       img = img$scaled_px$windowed(res[[1]], res[[2]])
@@ -149,10 +163,10 @@ get_dcm_matrix <- function(img, type = 'raw', scan = '', size = 50, convert = TR
     fun()
   } else if (type=='normalized') {
     if(scan=='uniform_blur2d') {
-      img = medical$uniform_blur2d(
+      img = medical()$uniform_blur2d(
         img$scaled_px$hist_scaled(), as.integer(size))
     } else if(scan=='gauss_blur2d') {
-      img = medical$gauss_blur2d(
+      img = medical()$gauss_blur2d(
         img$scaled_px$hist_scaled(), as.integer(size))
     } else {
       img = img$hist_scaled()
@@ -213,7 +227,7 @@ zoom <- function(img, ratio) {
 #' @export
 mask2bbox <- function(mask, convert = TRUE) {
 
-  res = medical$mask2bbox(
+  res = medical()$mask2bbox(
     mask = mask
   )
 
@@ -231,75 +245,75 @@ mask2bbox <- function(mask, convert = TRUE) {
 #' @return list
 #' @export
 win_abdoment_soft <- function() {
-  medical$dicom_windows$abdomen_soft
+  medical()$dicom_windows$abdomen_soft
 }
 
 #' @title Brain
 #' @return list
 #' @export
 win_brain <- function() {
-  medical$dicom_windows$brain
+  medical()$dicom_windows$brain
 }
 
 #' @title Brain bone
 #' @return list
 #' @export
 win_brain_bone <- function() {
-  medical$dicom_windows$brain_bone
+  medical()$dicom_windows$brain_bone
 }
 
 #' @title Brain soft
 #' @return list
 #' @export
 win_brain_soft <- function() {
-  medical$dicom_windows$brain_soft
+  medical()$dicom_windows$brain_soft
 }
 
 #' @title Liver
 #' @return list
 #' @export
 win_liver <- function() {
-  medical$dicom_windows$liver
+  medical()$dicom_windows$liver
 }
 
 #' @title Lungs
 #' @return list
 #' @export
 win_lungs <- function() {
-  medical$dicom_windows$lungs
+  medical()$dicom_windows$lungs
 }
 #' @title Mediastinum
 #' @return list
 #' @export
 win_mediastinum <- function() {
-  medical$dicom_windows$mediastinum
+  medical()$dicom_windows$mediastinum
 }
 
 #' @title Spine bone
 #' @return list
 #' @export
 win_spine_bone <- function() {
-  medical$dicom_windows$spine_bone
+  medical()$dicom_windows$spine_bone
 }
 #' @title Spine soft
 #' @return list
 #' @export
 win_spine_soft <- function() {
-  medical$dicom_windows$spine_soft
+  medical()$dicom_windows$spine_soft
 }
 
 #' @title Stroke
 #' @return list
 #' @export
 win_stroke <- function() {
-  medical$dicom_windows$stroke
+  medical()$dicom_windows$stroke
 }
 
 #' @title Subdural
 #' @return list
 #' @export
 win_subdural <- function() {
-  medical$dicom_windows$subdural
+  medical()$dicom_windows$subdural
 }
 
 

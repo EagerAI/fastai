@@ -8,9 +8,9 @@
 spec_add_spaces <- function(t) {
 
   if(missing(t)) {
-    invisible(text$spec_add_spaces)
+    invisible(text()$spec_add_spaces)
   } else {
-    text$spec_add_spaces(
+    text()$spec_add_spaces(
       t = t
     )
   }
@@ -38,9 +38,9 @@ rm_useless_spaces <- function(t) {
 
 
   if(missing(t)) {
-    invisible(text$rm_useless_spaces)
+    invisible(text()$rm_useless_spaces)
   } else {
-    text$rm_useless_spaces(
+    text()$rm_useless_spaces(
       t = t
     )
   }
@@ -60,9 +60,9 @@ replace_rep <- function(t) {
 
 
   if(missing(t)) {
-    invisible(text$replace_rep)
+    invisible(text()$replace_rep)
   } else {
-    text$replace_rep(
+    text()$replace_rep(
       t = t
     )
   }
@@ -83,9 +83,9 @@ replace_rep <- function(t) {
 replace_wrep <- function(t) {
 
   if(missing(t)) {
-    invisible( text$replace_wrep)
+    invisible( text()$replace_wrep)
   } else {
-    text$replace_wrep(
+    text()$replace_wrep(
       t = t
     )
   }
@@ -105,9 +105,9 @@ fix_html <- function(x) {
 
 
   if(missing(x)) {
-    invisible(text$fix_html)
+    invisible(text()$fix_html)
   } else {
-    text$fix_html(
+    text()$fix_html(
       x = x
     )
   }
@@ -126,9 +126,9 @@ replace_all_caps <- function(t) {
 
 
   if(missing(t)) {
-    invisible(text$replace_all_caps)
+    invisible(text()$replace_all_caps)
   } else {
-    text$replace_all_caps(
+    text()$replace_all_caps(
       t = t
     )
   }
@@ -146,9 +146,9 @@ replace_all_caps <- function(t) {
 #' @export
 replace_maj <- function(t) {
   if(missing(t)) {
-    invisible(text$replace_maj)
+    invisible(text()$replace_maj)
   } else {
-    text$replace_maj(
+    text()$replace_maj(
       t = t
     )
   }
@@ -165,7 +165,7 @@ replace_maj <- function(t) {
 #' @export
 BaseTokenizer <- function(split_char = " ") {
 
-  text$BaseTokenizer(
+  text()$BaseTokenizer(
     split_char = split_char
   )
 
@@ -184,7 +184,7 @@ BaseTokenizer <- function(split_char = " ") {
 #' @export
 SpacyTokenizer <- function(lang = "en", special_toks = NULL, buf_sz = 5000) {
 
-  text$SpacyTokenizer(
+  text()$SpacyTokenizer(
     lang = lang,
     special_toks = special_toks,
     buf_sz = as.integer(buf_sz)
@@ -205,7 +205,7 @@ SpacyTokenizer <- function(lang = "en", special_toks = NULL, buf_sz = 5000) {
 #' @export
 TokenizeWithRules <- function(tok, rules = NULL, post_rules = NULL) {
 
-  text$TokenizeWithRules(
+  text()$TokenizeWithRules(
     tok = tok,
     rules = rules,
     post_rules = post_rules
@@ -226,7 +226,7 @@ TokenizeWithRules <- function(tok, rules = NULL, post_rules = NULL) {
 #' @export
 tokenize1 <- function(text, tok, rules = NULL, post_rules = NULL) {
 
-  text$tokenize1(
+  text()$tokenize1(
     text = text,
     tok = tok,
     rules = rules,
@@ -248,7 +248,7 @@ tokenize1 <- function(text, tok, rules = NULL, post_rules = NULL) {
 #' @export
 parallel_tokenize <- function(items, tok = NULL, rules = NULL, n_workers = 6) {
 
-  text$parallel_tokenize(
+  text()$parallel_tokenize(
     items = items,
     tok = tok,
     rules = rules,
@@ -291,7 +291,7 @@ tokenize_csv <- function(fname, text_cols, outname = NULL, n_workers = 4,
     chunksize = as.integer(chunksize)
   )
 
-  do.call(text$tokenize_csv, args)
+  do.call(text()$tokenize_csv, args)
 
 }
 
@@ -323,7 +323,7 @@ tokenize_df <- function(df, text_cols, n_workers = 6, rules = NULL,
     res_col_name = res_col_name
   )
 
-  do.call( text$tokenize_df,args)
+  do.call( text()$tokenize_df,args)
 
 }
 
@@ -359,7 +359,7 @@ tokenize_files <- function(files, path, output_dir, output_names = NULL,
     skip_if_exists = skip_if_exists
   )
 
- do.call(text$tokenize_files, args)
+ do.call(text()$tokenize_files, args)
 
 }
 
@@ -398,7 +398,7 @@ tokenize_folder <- function(path, extensions = NULL, folders = NULL,
     encoding = encoding
   )
 
-  do.call(text$tokenize_folder, args)
+  do.call(text()$tokenize_folder, args)
 
 }
 
@@ -422,7 +422,7 @@ tokenize_texts <- function(texts, n_workers = 6, rules = NULL, tok = NULL) {
     tok = tok
   )
 
-  do.call(text$tokenize_texts, args)
+  do.call(text()$tokenize_texts, args)
 
 }
 
@@ -436,7 +436,7 @@ tokenize_texts <- function(texts, n_workers = 6, rules = NULL, tok = NULL) {
 #' @export
 load_tokenized_csv <- function(fname) {
 
-  text$load_tokenized_csv(
+  text()$load_tokenized_csv(
     fname = fname
   )
 
@@ -459,7 +459,7 @@ load_tokenized_csv <- function(fname) {
 Tokenizer <- function(tok, rules = NULL, counter = NULL, lengths = NULL, mode = NULL, sep = " ") {
 
   if(missing(tok)) {
-    text$Tokenizer
+    text()$Tokenizer
   } else {
     args <- list(
       tok = tok,
@@ -469,7 +469,7 @@ Tokenizer <- function(tok, rules = NULL, counter = NULL, lengths = NULL, mode = 
       mode = mode,
       sep = sep
     )
-    do.call(text$Tokenizer, args)
+    do.call(text()$Tokenizer, args)
   }
 
 }
@@ -505,7 +505,7 @@ SentencePieceTokenizer <- function(lang = "en", special_toks = NULL,
     cache_dir = cache_dir
   )
 
-  do.call(text$SentencePieceTokenizer, args)
+  do.call(text()$SentencePieceTokenizer, args)
 
 }
 
@@ -520,9 +520,9 @@ SentencePieceTokenizer <- function(lang = "en", special_toks = NULL,
 fa_collate <- function(t) {
 
   if(missing(t)) {
-    text$fa_collate
+    text()$fa_collate
   } else {
-    text$fa_collate(
+    text()$fa_collate(
       t = t
     )
   }
@@ -538,9 +538,9 @@ fa_collate <- function(t) {
 fa_convert <- function(t) {
 
   if(missing(t)) {
-    text$fa_convert
+    text()$fa_convert
   } else {
-    text$fa_convert(
+    text()$fa_convert(
       t = t
     )
   }
@@ -564,7 +564,7 @@ TfmdLists <- function(...) {
   if(!is.null(args$splits) & length(args$splits) == 2)
     args$splits = list(as.integer(args$splits[[1]]-1),as.integer(args$splits[[2]]-1))
 
-  do.call(text$TfmdLists, args)
+  do.call(text()$TfmdLists, args)
 
 }
 

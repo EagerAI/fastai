@@ -25,7 +25,7 @@ FillMissing <- function(cat_names, cont_names, fill_strategy = FillStrategy_MEDI
 
   if (missing(cat_names) & missing(cont_names)) {
 
-    tabular$FillMissing
+    tabular()$FillMissing
   } else {
     args <- list(
       cat_names = cat_names,
@@ -35,7 +35,7 @@ FillMissing <- function(cat_names, cont_names, fill_strategy = FillStrategy_MEDI
       fill_val = fill_val
     )
 
-    do.call(tabular$FillMissing, args)
+    do.call(tabular()$FillMissing, args)
   }
 
 }
@@ -54,14 +54,14 @@ FillMissing <- function(cat_names, cont_names, fill_strategy = FillStrategy_MEDI
 Normalize <- function(cat_names, cont_names) {
 
   if(missing(cat_names) & missing(cont_names)) {
-    tabular$Normalize
+    tabular()$Normalize
   } else {
     args <- list(
       cat_names = cat_names,
       cont_names = cont_names
     )
 
-    do.call(tabular$Normalize, args)
+    do.call(tabular()$Normalize, args)
   }
 
 }
@@ -79,14 +79,14 @@ Normalize <- function(cat_names, cont_names) {
 Categorify <- function(cat_names, cont_names) {
 
   if(missing(cat_names) & missing(cont_names)) {
-    tabular$Categorify
+    tabular()$Categorify
   } else {
     args <- list(
       cat_names = cat_names,
       cont_names = cont_names
     )
 
-    do.call(tabular$Categorify, args)
+    do.call(tabular()$Categorify, args)
   }
 
 }
@@ -98,7 +98,7 @@ Categorify <- function(cat_names, cont_names) {
 #' @return None
 #' @export
 FillStrategy_MEDIAN <- function() {
-  tabular$FillStrategy$MEDIAN
+  tabular()$FillStrategy$MEDIAN
 }
 
 
@@ -109,7 +109,7 @@ FillStrategy_MEDIAN <- function() {
 #' @return None
 #' @export
 FillStrategy_COMMON <- function() {
-  tabular$FillStrategy$COMMON
+  tabular()$FillStrategy$COMMON
 }
 
 
@@ -119,7 +119,7 @@ FillStrategy_COMMON <- function() {
 #' @return None
 #' @export
 FillStrategy_CONSTANT <- function() {
-  tabular$FillStrategy$CONSTANT
+  tabular()$FillStrategy$CONSTANT
 }
 
 
@@ -146,7 +146,7 @@ add_datepart <- function(df, field_name, prefix = NULL, drop = TRUE, time = FALS
     time = time
   )
 
-  do.call(tabular$add_datepart, args)
+  do.call(tabular()$add_datepart, args)
 
 }
 
@@ -174,7 +174,7 @@ add_cyclic_datepart <- function(df, field_name, prefix = NULL, drop = TRUE, time
     add_linear = add_linear
   )
 
-  do.call(tabular$add_cyclic_datepart, args)
+  do.call(tabular()$add_cyclic_datepart, args)
 
 }
 

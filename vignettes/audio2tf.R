@@ -26,6 +26,7 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 #  audio_dbunch %>% show_batch(figsize = c(15, 8.5), nrows = 3, ncols = 3, max_n = 9, dpi = 180)
 
 ## -----------------------------------------------------------------------------
+#  torch = torch()
 #  alter_learner = function(learn, channels = 1L) {
 #    try(learn$model[0][0][['in_channels']] <- channels,
 #        silent = TRUE)

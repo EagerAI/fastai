@@ -34,6 +34,11 @@ a.anchor-section::before {content: '#';}
 </style>
 <script>// Anchor sections v1.0 written by Atsushi Yasumoto on Oct 3rd, 2020.
 document.addEventListener('DOMContentLoaded', function() {
+  // Do nothing if AnchorJS is used
+  if (typeof window.anchors === 'object' && anchors.hasOwnProperty('hasAnchorJSLink')) {
+    return;
+  }
+
   const h = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
 
   // Do nothing if sections are already anchored
@@ -262,7 +267,7 @@ pre, code {
 background-color: #f7f7f7;
 border-radius: 3px;
 color: #333;
-white-space: pre-wrap;
+white-space: pre-wrap; 
 }
 pre {
 border-radius: 3px;
@@ -330,18 +335,18 @@ text-decoration: underline; }
 a[href^="https:"] {
 text-decoration: underline; }
 
-code > span.kw { color: #555; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #d14; }
-code > span.fl { color: #d14; }
-code > span.ch { color: #d14; }
-code > span.st { color: #d14; }
-code > span.co { color: #888888; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #900; font-weight: bold; }
-code > span.er { color: #a61717; background-color: #e3d2d2; }
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
 </style>
 
 
@@ -390,19 +395,20 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div id="model" class="section level2">
 <h2>Model</h2>
 <p>Before fitting, 3 channels to 1 channel:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>alter_learner <span class="ot">=</span> <span class="cf">function</span>(learn, <span class="at">channels =</span> 1L) {</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">try</span>(learn<span class="sc">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;in_channels&#39;</span>]] <span class="ot">&lt;-</span> channels,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">silent =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">try</span>(learn<span class="sc">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;weight&#39;</span>]] <span class="ot">&lt;-</span> torch<span class="sc">$</span>nn<span class="sc">$</span>parameter<span class="sc">$</span><span class="fu">Parameter</span>(torch<span class="sc">$</span><span class="fu">narrow</span>(learn<span class="sc">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;weight&#39;</span>]],1L,1L,1L)),</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">silent =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>torch <span class="ot">=</span> <span class="fu">torch</span>()</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>alter_learner <span class="ot">=</span> <span class="cf">function</span>(learn, <span class="at">channels =</span> 1L) {</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">try</span>(learn<span class="sc">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;in_channels&#39;</span>]] <span class="ot">&lt;-</span> channels,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">silent =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">try</span>(learn<span class="sc">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;weight&#39;</span>]] <span class="ot">&lt;-</span> torch<span class="sc">$</span>nn<span class="sc">$</span>parameter<span class="sc">$</span><span class="fu">Parameter</span>(torch<span class="sc">$</span><span class="fu">narrow</span>(learn<span class="sc">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;weight&#39;</span>]],1L,1L,1L)),</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">silent =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>learn <span class="ot">=</span> <span class="fu">Learner</span>(audio_dbunch, <span class="fu">xresnet18</span>(<span class="at">pretrained =</span> <span class="cn">FALSE</span>), nn<span class="sc">$</span><span class="fu">CrossEntropyLoss</span>(), <span class="at">metrics=</span>accuracy)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>nnchannels <span class="ot">=</span> audio_dbunch <span class="sc">%&gt;%</span> <span class="fu">one_batch</span>() <span class="sc">%&gt;%</span> .[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span> .<span class="sc">$</span>shape <span class="sc">%&gt;%</span> .[<span class="dv">1</span>]</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">alter_learner</span>(learn, nnchannels)</span></code></pre></div>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>learn <span class="ot">=</span> <span class="fu">Learner</span>(audio_dbunch, <span class="fu">xresnet18</span>(<span class="at">pretrained =</span> <span class="cn">FALSE</span>), nn<span class="sc">$</span><span class="fu">CrossEntropyLoss</span>(), <span class="at">metrics=</span>accuracy)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>nnchannels <span class="ot">=</span> audio_dbunch <span class="sc">%&gt;%</span> <span class="fu">one_batch</span>() <span class="sc">%&gt;%</span> .[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span> .<span class="sc">$</span>shape <span class="sc">%&gt;%</span> .[<span class="dv">1</span>]</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="fu">alter_learner</span>(learn, nnchannels)</span></code></pre></div>
 </div>
 <div id="add-callbacks" class="section level2">
 <h2>Add callbacks</h2>
@@ -422,14 +428,14 @@ wandb: Run `wandb off` to turn off syncing.</code></pre>
 <h2>Conclusion</h2>
 <p>Now we can train our model:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>learn <span class="sc">%&gt;%</span> <span class="fu">fit_one_cycle</span>(<span class="dv">3</span>, <span class="at">lr_max=</span><span class="fu">slice</span>(<span class="fl">1e-2</span>), <span class="at">cbs =</span> <span class="fu">list</span>(<span class="fu">WandbCallback</span>()))</span></code></pre></div>
-<pre><code>epoch   train_loss   valid_loss   accuracy   time
+<pre><code>epoch   train_loss   valid_loss   accuracy   time 
 ------  -----------  -----------  ---------  -----
-epoch   train_loss   valid_loss   accuracy   time
+epoch   train_loss   valid_loss   accuracy   time 
 ------  -----------  -----------  ---------  -----
 WandbCallback requires use of &quot;SaveModelCallback&quot; to log best model
-0       0.590236     0.728817     0.787121   04:18
+0       0.590236     0.728817     0.787121   04:18 
 WandbCallback was not able to get prediction samples -&gt; wandb.log must be passed a dictionary
-1       0.288492     0.310335     0.908490   04:19
+1       0.288492     0.310335     0.908490   04:19 
 2       0.182899     0.196792     0.941088   04:10 </code></pre>
 <p>See beautiful dashboard here:</p>
 <pre><code>https://wandb.ai/henry090/speech_recognition_from_R/runs/2sjw3juv?workspace=user-henry090</code></pre>

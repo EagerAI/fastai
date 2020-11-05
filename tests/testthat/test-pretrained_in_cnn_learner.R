@@ -86,6 +86,10 @@ test_succeeds('download PETS', {
   )
 })
 
+test_succeeds('pet show batch', {
+  show_batch(dls)
+})
+
 test_succeeds('pet load alexnet', {
   learn = cnn_learner(dls, alexnet(), metrics = accuracy)
   summary(learn)

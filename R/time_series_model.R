@@ -12,7 +12,7 @@
 #' @export
 create_mlp <- function(ni, nout, linear_sizes = c(500, 500, 500)) {
 
-  tms$models$create_mlp(
+  tms()$models$create_mlp(
     ni = as.integer(ni),
     nout = as.integer(nout),
     linear_sizes = as.integer(linear_sizes)
@@ -35,7 +35,7 @@ create_mlp <- function(ni, nout, linear_sizes = c(500, 500, 500)) {
 #' @export
 create_fcn <- function(ni, nout, ks = 9, conv_sizes = c(128, 256, 128), stride = 1) {
 
-  tms$models$create_fcn(
+  tms()$models$create_fcn(
     ni = ni,
     nout = nout,
     ks = as.integer(ks),
@@ -57,7 +57,7 @@ create_fcn <- function(ni, nout, ks = 9, conv_sizes = c(128, 256, 128), stride =
 #' @export
 res_block_1d <- function(nf, ks = c(5, 3)) {
 
-  tms$models$res_block_1d(
+  tms()$models$res_block_1d(
     nf = as.integer(nf),
     ks = as.integer(ks)
   )
@@ -79,7 +79,7 @@ res_block_1d <- function(nf, ks = c(5, 3)) {
 #' @export
 create_resnet <- function(ni, nout, kss = c(9, 5, 3), conv_sizes = c(64, 128, 128), stride = 1) {
 
-  tms$models$create_resnet(
+  tms()$models$create_resnet(
     ni = as.integer(ni),
     nout = as.integer(nout),
     kss = as.integer(kss),
@@ -104,7 +104,7 @@ create_resnet <- function(ni, nout, kss = c(9, 5, 3), conv_sizes = c(64, 128, 12
 #' @export
 InceptionModule <- function(ni, nb_filters = 32, kss = c(39, 19, 9), bottleneck_size = 32, stride = 1) {
 
-  tms$models$InceptionModule(
+  tms()$models$InceptionModule(
     ni = as.integer(ni),
     nb_filters = as.integer(nb_filters),
     kss = as.integer(kss),
@@ -127,7 +127,7 @@ InceptionModule <- function(ni, nb_filters = 32, kss = c(39, 19, 9), bottleneck_
 #' @export
 Shortcut <- function(ni, nf, act_fn = nn$ReLU(inplace = TRUE)) {
 
-  tms$models$Shortcut(
+  tms()$models$Shortcut(
     ni = as.integer(ni),
     nf = as.integer(nf),
     act_fn = act_fn
@@ -153,7 +153,7 @@ Shortcut <- function(ni, nf, act_fn = nn$ReLU(inplace = TRUE)) {
 create_inception <- function(ni, nout, kss = c(39, 19, 9), depth = 6,
                              bottleneck_size = 32, nb_filters = 32, head = TRUE) {
 
-  tms$models$create_inception(
+  tms()$models$create_inception(
     ni = as.integer(ni),
     nout = as.integer(nout),
     kss = as.integer(kss),

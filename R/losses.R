@@ -27,7 +27,7 @@ error_rate <- function(inp, targ, axis = -1) {
       axis = as.integer(axis)
     )
 
-    do.call(vision$all$error_rate, args)
+    do.call(vision()$all$error_rate, args)
   } else {
     vision$all$error_rate
   }

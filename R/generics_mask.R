@@ -7,7 +7,7 @@
 #'
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'
 #' aa = tensor(1:10)
 #' aa == aa
@@ -49,7 +49,7 @@
 #' @return tensor
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'
 #' aa = tensor(1:10)
 #' aa >= aa
@@ -100,7 +100,7 @@
 #' @return tensor
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'
 #' aa = tensor(1:10)
 #' max(aa)
@@ -129,7 +129,7 @@
 #' @return tensor
 #' @export
 "dim.fastai.torch_core.TensorMask" <- function(x) {
-  bt$list(x$shape)
+  bt()$list(x$shape)
 }
 
 
@@ -217,7 +217,7 @@
 #' @return tensor
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'
 #' aa = tensor(-1:-10)
 #' abs(aa)

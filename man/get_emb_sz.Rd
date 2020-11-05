@@ -9,7 +9,7 @@ get_emb_sz(to, sz_dict = NULL)
 \arguments{
 \item{to}{to}
 
-\item{sz_dict}{sz_dict}
+\item{sz_dict}{dictionary size}
 }
 \value{
 None

@@ -14,9 +14,9 @@ TSBlock <- function(...) {
   args = list(...)
 
   if(length(args)>0) {
-    do.call(tms$data$TSBlock, args)
+    do.call(tms()$data$TSBlock, args)
   } else {
-    tms$data$TSBlock
+    tms()$data$TSBlock
   }
 
 }
@@ -35,9 +35,9 @@ TSeries <- function(...) {
   args = list(...)
 
   if(length(args)>0) {
-    do.call(tms$data$TSeries, args)
+    do.call(tms()$data$TSeries, args)
   } else {
-    tms$data$TSeries
+    tms()$data$TSeries
   }
 
 }
@@ -53,7 +53,7 @@ TSeries <- function(...) {
 #' @export
 stack_train_valid <- function(df_train, df_valid) {
 
-  tms$data$stack_train_valid(
+  tms()$data$stack_train_valid(
     df_train = df_train,
     df_valid = df_valid
   )
@@ -108,7 +108,7 @@ TSDataLoaders_from_dfs <- function(df_train, df_valid, path = ".", x_cols = NULL
   }
 
 
-  do.call(tms$data$TSDataLoaders$from_dfs, args)
+  do.call(tms()$data$TSDataLoaders$from_dfs, args)
 
 }
 

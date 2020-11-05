@@ -11,7 +11,7 @@
 #' @export
 maybe_unsqueeze <- function(x) {
 
-  tms$core$maybe_unsqueeze(
+  tms()$core$maybe_unsqueeze(
     x = x
   )
 
@@ -46,7 +46,7 @@ maybe_unsqueeze <- function(x) {
 #' @export
 show_array <- function(array, ax = NULL, figsize = NULL, title = NULL, ctx = NULL, tx = NULL) {
 
-  tms$core$show_array(
+  tms()$core$show_array(
     array = array,
     ax = ax,
     figsize = figsize,
@@ -80,7 +80,7 @@ show_array <- function(array, ax = NULL, figsize = NULL, title = NULL, ctx = NUL
 #' @export
 TSeries_create <- function(x, ...) {
 
-  tms$core$TSeries$create(
+  tms()$core$TSeries$create(
     x = x,
     ...
   )
