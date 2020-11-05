@@ -561,6 +561,6 @@ show_results <- function(object, ds_idx = 1, dl = NULL, max_n = 9, shuffle = TRU
 #' @export
 partial <- function(...) {
 
-  vision$gan$partial(...)
+  vision()$gan$partial(...)
 
 }

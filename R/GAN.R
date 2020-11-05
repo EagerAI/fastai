@@ -746,7 +746,7 @@ GANLearner_from_learners <- function(gen_learn, crit_learn, switcher = NULL, wei
 Learner = function(...) {
   args = list(...)
 
-  do.call(fastai2$vision()$all$Learner, args)
+  do.call(fastai2$vision$all$Learner, args)
 }
 
 

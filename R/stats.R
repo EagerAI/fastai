@@ -110,7 +110,7 @@ lr_find <- function(object, start_lr = 1e-07, end_lr = 10, num_it = 100,
 #' @return None
 #' @export
 Perplexity <- function(...) {
-  invisible(text$Perplexity(...))
+  invisible(text()$Perplexity(...))
 }
 
 attr(Perplexity,"py_function_name") <- "Perplexity"

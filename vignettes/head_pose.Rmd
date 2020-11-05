@@ -35,6 +35,8 @@ fname = '09/frame_00667_rgb.jpg'
 
 img = Image_create(paste(path,fname,sep = '/'))
 img %>% show() %>% plot()
+cal = readr::read_lines(paste(path,'01/rgb.cal',sep = '/'), n_max = 3) %>% trimws() %>%
+  strsplit('\\s') %>% do.call(rbind,.) %>% apply(.,2,as.numeric)
 ```
 
 

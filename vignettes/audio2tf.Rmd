@@ -63,6 +63,7 @@ audio_dbunch %>% show_batch(figsize = c(15, 8.5), nrows = 3, ncols = 3, max_n = 
 Before fitting, 3 channels to 1 channel:
 
 ```{r}
+torch = torch()
 alter_learner = function(learn, channels = 1L) {
   try(learn$model[0][0][['in_channels']] <- channels,
       silent = TRUE)
