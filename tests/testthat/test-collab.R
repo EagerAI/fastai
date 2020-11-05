@@ -14,11 +14,14 @@ test_succeeds('download movie lens data', {
 })
 
 
-test_succeeds('read movie lens data//prepare dls', {
+test_succeeds('read movie lens datas', {
   ratings = fread('ml-100k/u.data', col.names = c(user,item,'rating','timestamp'))
   movies = fread('ml-100k/u.item', col.names = c(item, 'title', 'date', 'N', 'url',
                                                  paste('g',1:19,sep = '')))
   rating_movie = ratings[movies[, .SD, .SDcols=c(item,title)], on = item]
+})
+
+test_succeeds('movie lens prepare dls', {
   dls = CollabDataLoaders_from_df(rating_movie, seed=42, valid_pct=0.1, bs=64, item_name=title, path='ml-100k')
 })
 
