@@ -58,7 +58,7 @@ torch <- NULL
 
       if(reticulate::py_module_available('timm')) {
         timm <<- reticulate::import('timm')
-        load_pre_models <<- reticulate::import_from_path('pretrained_timm_models', path = python_path)
+        load_pre_models <<- reticulate::import_from_path('fastaibuilt', path = python_path)$pretrained_timm_models
       }
 
       if(reticulate::py_module_available('transformers') &

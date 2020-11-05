@@ -31,5 +31,6 @@ horse2zebra/
 wandb/
 SPEECHCOMMANDS/
 h2z-preds/
-
+^.*\.pyc$
+^.*__pycache__$
 

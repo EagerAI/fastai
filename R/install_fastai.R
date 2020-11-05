@@ -16,9 +16,14 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   required_py_pkgs <- c('IPython', 'torch', 'torchvision', 'fastai',
                        'pydicom', 'kornia', 'cv2',
                        'skimage')
+  # if git is available
+  git = try(suppressWarnings(system('which git', intern = TRUE)), TRUE)
+
+  # audio, time-series, cycle-GAN, transformers integration==blurr
+  git_pkgs = c('fastaudio', 'timeseries_fastai', 'blurr', 'upit')
 
   if(length(extra_pkgs) > 0) {
-    required_py_pkgs = c(required_py_pkgs, extra_pkgs)
+    required_py_pkgs = c(required_py_pkgs, extra_pkgs, git_pkgs)
   }
 
   res_ = list()
@@ -30,7 +35,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   which_pkgs <- which(res_ == FALSE)
 
   if(overwrite)
-    required_py_pkgs = c(required_py_pkgs, extra_pkgs)
+    required_py_pkgs = c(required_py_pkgs, extra_pkgs, git_pkgs)
   else
     required_py_pkgs <- required_py_pkgs[which_pkgs]
 
@@ -43,6 +48,12 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="ignite", "pytorch-ignite")
   #required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="torchaudio", "torchaudio==0.6.0")
   required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="shap", "shap==0.35.0")
+
+  # git pkgs
+  required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastaudio", "git+https://github.com/fastaudio/fastaudio.git")
+  required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="timeseries_fastai", "git+https://github.com/tcapelle/timeseries_fastai.git")
+  required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="blurr", "git+https://github.com/ohmeow/blurr.git")
+  required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="upit", "git+https://github.com/tmabraham/UPIT.git")
 
   if(missing(version)) {
     required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastai", "fastai")
