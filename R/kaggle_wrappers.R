@@ -16,7 +16,7 @@
 #' @export
 competition_list_files <- function(competition) {
 
-  kg$api$competition_list_files(
+  kg()$api$competition_list_files(
     competition = competition
   )
 
@@ -56,7 +56,7 @@ competition_list_files <- function(competition) {
 #' @export
 competition_download_file <- function(competition, file_name, path = NULL, force = FALSE, quiet = FALSE) {
 
-  kg$api$competition_download_file(
+  kg()$api$competition_download_file(
     competition = competition,
     file_name = file_name,
     path = path,
@@ -78,7 +78,7 @@ competition_download_file <- function(competition, file_name, path = NULL, force
 competition_download_files <- function(competition, path = NULL, force = FALSE, quiet = FALSE,
                                        unzip = FALSE) {
 
-  kg$api$competition_download_files(
+  kg()$api$competition_download_files(
     competition = competition,
     path = path,
     force = force,
@@ -108,7 +108,7 @@ competition_download_files <- function(competition, path = NULL, force = FALSE, 
 #' @export
 competition_leaderboard_download <- function(competition, path, quiet = TRUE) {
 
-  res = kg$api$competition_leaderboard_download(
+  res = kg()$api$competition_leaderboard_download(
     competition = competition,
     path = path,
     quiet = quiet
@@ -130,7 +130,7 @@ competition_leaderboard_download <- function(competition, path, quiet = TRUE) {
 #' @export
 competitions_list <- function(group = NULL, category = NULL, sort_by = NULL, page = 1, search = NULL) {
 
-  kg$api$competitions_list(
+  kg()$api$competitions_list(
     group = group,
     category = category,
     sort_by = sort_by,
@@ -152,7 +152,7 @@ competitions_list <- function(group = NULL, category = NULL, sort_by = NULL, pag
 #' @export
 competition_submit <- function(file_name, message, competition, quiet = FALSE) {
 
-  kg$api$competition_submit(
+  kg()$api$competition_submit(
     file_name = file_name,
     message = message,
     competition = competition,

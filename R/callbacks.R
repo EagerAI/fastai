@@ -34,7 +34,7 @@ WandbCallback <- function(log = "gradients", log_preds = TRUE, log_model = TRUE,
     reorder = reorder
   )
 
-  do.call(fastai2$callback$wandb$WandbCallback, args)
+  do.call(fastai2$callback$wandb()$WandbCallback, args)
 
 }
 
@@ -55,7 +55,7 @@ WandbCallback <- function(log = "gradients", log_preds = TRUE, log_model = TRUE,
 #' @export
 login <- function(anonymous = NULL, key = NULL, relogin = NULL, host = NULL, force = NULL) {
 
- wandb$login(
+ wandb()$login(
     anonymous = anonymous,
     key = key,
     relogin = relogin,
@@ -79,7 +79,7 @@ login <- function(anonymous = NULL, key = NULL, relogin = NULL, host = NULL, for
 #' @export
 init <- function(...) {
 
-  wandb$init(
+  wandb()$init(
     ...
   )
 

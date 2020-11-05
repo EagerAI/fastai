@@ -21,7 +21,7 @@ TabularTS <- function(df, procs = NULL, x_names = NULL, y_names = NULL,
                       block_y = NULL, splits = NULL, do_setup = TRUE,
                       device = NULL, inplace = FALSE) {
 
-  tms$tabular$TabularTS(
+  tms()$tabular$TabularTS(
     df = df,
     procs = procs,
     x_names = x_names,
@@ -71,7 +71,7 @@ TSDataTable <- function(df, procs = NULL, x_names = NULL, y_names = NULL,
   if(!is.null(splits))
     args$splits = list(as.integer(splits[[1]]-1),as.integer(splits[[2]]-1))
 
-  do.call(tms$tabular$TSPandas, args)
+  do.call(tms()$tabular$TSPandas, args)
 
 }
 
@@ -100,7 +100,7 @@ NormalizeTS <- function(enc = NULL, dec = NULL, split_idx = NULL, order = NULL) 
     args[['split_idx']] = as.integer(args[['split_idx']])
   }
 
-  do.call(tms$tabular$NormalizeTS, args)
+  do.call(tms()$tabular$NormalizeTS, args)
 
 }
 
@@ -115,7 +115,7 @@ NormalizeTS <- function(enc = NULL, dec = NULL, split_idx = NULL, order = NULL) 
 #' @export
 ReadTSBatch <- function(to) {
 
-  tms$tabular$ReadTSBatch(
+  tms()$tabular$ReadTSBatch(
     to = to
   )
 
@@ -169,7 +169,7 @@ TabularTSDataloader <- function(dataset, bs = 16, shuffle = FALSE, after_batch =
   if(!is.null(args[['batch_size']]))
     args[['batch_size']] = as.integer(args[['batch_size']])
 
-  do.call(tms$tabular$TabularTSDataloader, args)
+  do.call(tms()$tabular$TabularTSDataloader, args)
 
 }
 

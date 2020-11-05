@@ -12,9 +12,9 @@
 flatten_check <- function(inp, targ) {
 
   if(missing(inp) & missing(targ)) {
-    metrics$flatten_check
+    metrics()$flatten_check
   } else {
-    metrics$flatten_check(
+    metrics()$flatten_check(
       inp = inp,
       targ = targ
     )
@@ -54,7 +54,7 @@ AccumMetric <- function(func, dim_argmax = NULL, activation = "no",
     ...
   )
 
-  do.call(metrics$AccumMetric, args)
+  do.call(metrics()$AccumMetric, args)
 
 }
 
@@ -84,7 +84,7 @@ skm_to_fastai <- function(func, is_class = TRUE, thresh = NULL,
     ...
   )
 
-  do.call(metrics$skm_to_fastai, args)
+  do.call(metrics()$skm_to_fastai, args)
 
 }
 
@@ -114,7 +114,7 @@ optim_metric <- function(f, argname, bounds,
     get_x = get_x
   )
 
-  do.call(metrics$optim_metric, args)
+  do.call(metrics()$optim_metric, args)
 
 }
 
@@ -132,14 +132,14 @@ optim_metric <- function(f, argname, bounds,
 accuracy <- function(inp, targ, axis = -1) {
 
   if(missing(inp) & missing(targ)) {
-    metrics$accuracy
+    metrics()$accuracy
   } else {
     args <- list(
       inp = inp,
       targ = targ,
       axis = as.integer(axis)
     )
-    do.call(metrics$accuracy, args)
+    do.call(metrics()$accuracy, args)
   }
 
 }
@@ -178,7 +178,7 @@ top_k_accuracy <- function(inp, targ, k = 5, axis = -1) {
 
 
   if(missing(inp) & missing(targ)) {
-    metrics$top_k_accuracy
+    metrics()$top_k_accuracy
   } else {
     args <- list(
       inp = inp,
@@ -187,7 +187,7 @@ top_k_accuracy <- function(inp, targ, k = 5, axis = -1) {
       axis = as.integer(axis)
     )
 
-    do.call(metrics$top_k_accuracy, args)
+    do.call(metrics()$top_k_accuracy, args)
   }
 
 }
@@ -214,7 +214,7 @@ APScoreBinary <- function(axis = -1, average = "macro", pos_label = 1, sample_we
     sample_weight = sample_weight
   )
 
-  do.call(metrics$APScoreBinary, args)
+  do.call(metrics()$APScoreBinary, args)
 
 }
 
@@ -236,7 +236,7 @@ BalancedAccuracy <- function(axis = -1, sample_weight = NULL, adjusted = FALSE) 
     adjusted = adjusted
   )
 
-  do.call(metrics$BalancedAccuracy, args)
+  do.call(metrics()$BalancedAccuracy, args)
 
 }
 
@@ -259,7 +259,7 @@ BrierScore <- function(axis = -1, sample_weight = NULL, pos_label = NULL) {
     pos_label = pos_label
   )
 
-  do.call(metrics$BrierScore, args)
+  do.call(metrics()$BrierScore, args)
 
 }
 
@@ -284,7 +284,7 @@ CohenKappa <- function(axis = -1, labels = NULL, weights = NULL, sample_weight =
     sample_weight = sample_weight
   )
 
-  do.call(metrics$CohenKappa, args)
+  do.call(metrics()$CohenKappa, args)
 
 }
 
@@ -312,7 +312,7 @@ F1Score <- function(axis = -1, labels = NULL, pos_label = 1, average = "binary",
     sample_weight = sample_weight
   )
 
-  do.call(metrics$F1Score, args)
+  do.call(metrics()$F1Score, args)
 
 }
 
@@ -333,7 +333,7 @@ FBeta <- function(beta, axis = -1, labels = NULL, pos_label = 1, average = "bina
 
 
   if(missing(beta)) {
-    metrics$FBeta
+    metrics()$FBeta
   } else {
     args <- list(
       beta = beta,
@@ -344,7 +344,7 @@ FBeta <- function(beta, axis = -1, labels = NULL, pos_label = 1, average = "bina
       sample_weight = sample_weight
     )
 
-    do.call(metrics$FBeta, args)
+    do.call(metrics()$FBeta, args)
   }
 
 }
@@ -365,7 +365,7 @@ HammingLoss <- function(axis = -1, sample_weight = NULL) {
     sample_weight = sample_weight
   )
 
-  do.call(metrics$HammingLoss, args)
+  do.call(metrics()$HammingLoss, args)
 
 }
 
@@ -393,7 +393,7 @@ Jaccard <- function(axis = -1, labels = NULL, pos_label = 1,
     sample_weight = sample_weight
   )
 
-  do.call(metrics$Jaccard, args)
+  do.call(metrics()$Jaccard, args)
 
 }
 
@@ -421,7 +421,7 @@ Precision <- function(axis = -1, labels = NULL, pos_label = 1,
     sample_weight = sample_weight
   )
 
-  do.call(metrics$Precision, args)
+  do.call(metrics()$Precision, args)
 
 }
 
@@ -449,7 +449,7 @@ Recall <- function(axis = -1, labels = NULL, pos_label = 1,
     sample_weight = sample_weight
   )
 
-  do.call(metrics$Recall, args)
+  do.call(metrics()$Recall, args)
 
 }
 
@@ -478,7 +478,7 @@ RocAuc <- function(axis = -1, average = "macro",
     multi_class = multi_class
   )
 
-  do.call(metrics$RocAuc, args)
+  do.call(metrics()$RocAuc, args)
 
 }
 
@@ -519,7 +519,7 @@ RocAucBinary <- function(axis = -1, average = "macro",
     multi_class = multi_class
   )
 
-  do.call(metrics$RocAucBinary, args)
+  do.call(metrics()$RocAucBinary, args)
 
 }
 
@@ -535,9 +535,9 @@ MatthewsCorrCoef <- function( ...) {
   args = list(...)
 
   if(length(args)>0){
-    metrics$MatthewsCorrCoef(...)
+    metrics()$MatthewsCorrCoef(...)
   } else {
-    metrics$MatthewsCorrCoef
+    metrics()$MatthewsCorrCoef
   }
 
 }
@@ -555,9 +555,9 @@ preplexity = function(...) {
   args = list(...)
 
   if(length(args)>0) {
-    do.call( metrics$perplexity,args)
+    do.call( metrics()$perplexity,args)
   } else {
-    metrics$perplexity
+    metrics()$perplexity
   }
 
 }
@@ -576,7 +576,7 @@ preplexity = function(...) {
 accuracy_multi <- function(inp, targ, thresh = 0.5, sigmoid = TRUE) {
 
   if(missing(inp) & missing(targ)) {
-    metrics$accuracy_multi
+    metrics()$accuracy_multi
   } else {
     args <- list(
       inp = inp,
@@ -584,7 +584,7 @@ accuracy_multi <- function(inp, targ, thresh = 0.5, sigmoid = TRUE) {
       thresh = thresh,
       sigmoid = sigmoid
     )
-    do.call(metrics$accuracy_multi, args)
+    do.call(metrics()$accuracy_multi, args)
   }
 
 }
@@ -611,7 +611,7 @@ APScoreMulti <- function(sigmoid = TRUE, average = "macro",
     sample_weight = sample_weight
   )
 
-  do.call(metrics$APScoreMulti, args)
+  do.call(metrics()$APScoreMulti, args)
 
 }
 
@@ -630,7 +630,7 @@ APScoreMulti <- function(sigmoid = TRUE, average = "macro",
 BrierScoreMulti <- function(thresh = 0.5, sigmoid = TRUE,
                             sample_weight = NULL, pos_label = NULL) {
 
-  metrics$BrierScoreMulti(
+  metrics()$BrierScoreMulti(
     thresh = thresh,
     sigmoid = sigmoid,
     sample_weight = sample_weight,
@@ -657,7 +657,7 @@ F1ScoreMulti <- function(thresh = 0.5, sigmoid = TRUE, labels = NULL,
                          pos_label = 1, average = "macro",
                          sample_weight = NULL) {
 
-  metrics$F1ScoreMulti(
+  metrics()$F1ScoreMulti(
     thresh = thresh,
     sigmoid = sigmoid,
     labels = labels,
@@ -686,7 +686,7 @@ F1ScoreMulti <- function(thresh = 0.5, sigmoid = TRUE, labels = NULL,
 FBetaMulti <- function(beta, thresh = 0.5, sigmoid = TRUE, labels = NULL,
                        pos_label = 1, average = "macro", sample_weight = NULL) {
 
-  metrics$FBetaMulti(
+  metrics()$FBetaMulti(
     beta = beta,
     thresh = thresh,
     sigmoid = sigmoid,
@@ -718,7 +718,7 @@ JaccardMulti <- function(thresh = 0.5, sigmoid = TRUE,
                          labels = NULL, pos_label = 1,
                          average = "macro", sample_weight = NULL) {
 
-  python_function_result <- metrics$JaccardMulti(
+  python_function_result <- metrics()$JaccardMulti(
     thresh = thresh,
     sigmoid = sigmoid,
     labels = labels,
@@ -742,7 +742,7 @@ JaccardMulti <- function(thresh = 0.5, sigmoid = TRUE,
 #' @export
 MatthewsCorrCoefMulti <- function(thresh = 0.5, sigmoid = TRUE, sample_weight = NULL) {
 
-  metrics$MatthewsCorrCoefMulti(
+  metrics()$MatthewsCorrCoefMulti(
     thresh = thresh,
     sigmoid = sigmoid,
     sample_weight = sample_weight
@@ -767,7 +767,7 @@ PrecisionMulti <- function(thresh = 0.5, sigmoid = TRUE, labels = NULL,
                            pos_label = 1, average = "macro",
                            sample_weight = NULL) {
 
-  metrics$PrecisionMulti(
+  metrics()$PrecisionMulti(
     thresh = thresh,
     sigmoid = sigmoid,
     labels = labels,
@@ -795,7 +795,7 @@ RecallMulti <- function(thresh = 0.5, sigmoid = TRUE, labels = NULL,
                         pos_label = 1, average = "macro",
                         sample_weight = NULL) {
 
-  metrics$RecallMulti(
+  metrics()$RecallMulti(
     thresh = thresh,
     sigmoid = sigmoid,
     labels = labels,
@@ -820,7 +820,7 @@ RecallMulti <- function(thresh = 0.5, sigmoid = TRUE, labels = NULL,
 RocAucMulti <- function(sigmoid = TRUE, average = "macro",
                         sample_weight = NULL, max_fpr = NULL) {
 
-  metrics$RocAucMulti(
+  metrics()$RocAucMulti(
     sigmoid = sigmoid,
     average = average,
     sample_weight = sample_weight,
@@ -852,9 +852,9 @@ RocAucMulti <- function(sigmoid = TRUE, average = "macro",
 mse <- function(inp, targ) {
 
   if(missing(inp) & missing(targ)) {
-    metrics$mse
+    metrics()$mse
   } else {
-    metrics$mse(
+    metrics()$mse(
       inp = inp,
       targ = targ
     )
@@ -886,9 +886,9 @@ mse <- function(inp, targ) {
 rmse <- function(preds, targs) {
 
   if(missing(preds) & missing(targs)) {
-    metrics$rmse
+    metrics()$rmse
   } else {
-    metrics$rmse(
+    metrics()$rmse(
       preds = preds,
       targs = targs
     )
@@ -908,9 +908,9 @@ rmse <- function(preds, targs) {
 mae <- function(inp, targ) {
 
   if(missing(inp) & missing(targ)) {
-    metrics$mae
+    metrics()$mae
   } else {
-    metrics$mae(
+    metrics()$mae(
       inp = inp,
       targ = targ
     )
@@ -930,9 +930,9 @@ mae <- function(inp, targ) {
 msle <- function(inp, targ) {
 
   if(missing(inp) & missing(targ)) {
-    metrics$msle
+    metrics()$msle
   } else {
-    metrics$msle(
+    metrics()$msle(
       inp = inp,
       targ = targ
     )
@@ -952,9 +952,9 @@ msle <- function(inp, targ) {
 exp_rmspe <- function(preds, targs) {
 
   if(missing(preds) & missing(targs)) {
-    metrics$exp_rmspe
+    metrics()$exp_rmspe
   } else {
-    metrics$exp_rmspe(
+    metrics()$exp_rmspe(
       preds = preds,
       targs = targs
     )
@@ -973,7 +973,7 @@ exp_rmspe <- function(preds, targs) {
 #' @export
 ExplainedVariance <- function(sample_weight = NULL) {
 
-  metrics$ExplainedVariance(
+  metrics()$ExplainedVariance(
     sample_weight = sample_weight
   )
 
@@ -989,7 +989,7 @@ ExplainedVariance <- function(sample_weight = NULL) {
 #' @export
 R2Score <- function(sample_weight = NULL) {
 
-  metrics$R2Score(
+  metrics()$R2Score(
     sample_weight = sample_weight
   )
 
@@ -1012,7 +1012,7 @@ R2Score <- function(sample_weight = NULL) {
 PearsonCorrCoef <- function(dim_argmax = NULL, activation = "no",
                             thresh = NULL, to_np = FALSE, invert_arg = FALSE, flatten = TRUE) {
 
-  metrics$PearsonCorrCoef(
+  metrics()$PearsonCorrCoef(
     dim_argmax = dim_argmax,
     activation = activation,
     thresh = thresh,
@@ -1043,7 +1043,7 @@ SpearmanCorrCoef <- function(dim_argmax = NULL, axis = 0, nan_policy = "propagat
                              activation = "no", thresh = NULL, to_np = FALSE,
                              invert_arg = FALSE, flatten = TRUE) {
 
-  python_function_result <- metrics$SpearmanCorrCoef(
+  python_function_result <- metrics()$SpearmanCorrCoef(
     dim_argmax = dim_argmax,
     axis = as.integer(axis),
     nan_policy = nan_policy,
@@ -1073,9 +1073,9 @@ foreground_acc <- function(inp, targ, bkg_idx = 0, axis = 1) {
 
 
   if(missing(inp) & missing(targ)) {
-    metrics$foreground_acc
+    metrics()$foreground_acc
   } else {
-    metrics$foreground_acc(
+    metrics()$foreground_acc(
       inp = inp,
       targ = targ,
       bkg_idx = as.integer(bkg_idx),
@@ -1095,7 +1095,7 @@ foreground_acc <- function(inp, targ, bkg_idx = 0, axis = 1) {
 #' @export
 Dice <- function(axis = 1) {
 
-  metrics$Dice(
+  metrics()$Dice(
     axis = as.integer(axis)
   )
 
@@ -1111,7 +1111,7 @@ Dice <- function(axis = 1) {
 #' @export
 JaccardCoeff <- function(axis = 1) {
 
-  metrics$JaccardCoeff(
+  metrics()$JaccardCoeff(
     axis = as.integer(axis)
   )
 
@@ -1128,7 +1128,7 @@ JaccardCoeff <- function(axis = 1) {
 #' @export
 CorpusBLEUMetric <- function(vocab_sz = 5000, axis = -1) {
 
-  python_function_result <- metrics$CorpusBLEUMetric(
+  python_function_result <- metrics()$CorpusBLEUMetric(
     vocab_sz = as.integer(vocab_sz),
     axis = as.integer(axis)
   )
@@ -1146,7 +1146,7 @@ CorpusBLEUMetric <- function(vocab_sz = 5000, axis = -1) {
 #' @export
 LossMetric <- function(attr, nm = NULL) {
 
-  metrics$LossMetric(
+  metrics()$LossMetric(
     attr = attr,
     nm = nm
   )

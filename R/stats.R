@@ -1,7 +1,7 @@
 
 plot_confusion_matrix <- function(object, dataloader) {
   if(inherits(object,"fastai.learner.Learner")) {
-    interp = vision$all$ClassificationInterpretation$from_learner(object)
+    interp = vision()$all$ClassificationInterpretation$from_learner(object)
 
     conf=interp$confusion_matrix()
     conf=apply(conf, 2, as.integer)
@@ -41,7 +41,7 @@ plot_confusion_matrix <- function(object, dataloader) {
 #'
 #' @export
 get_confusion_matrix <- function(object) {
-  interp = vision$all$ClassificationInterpretation$from_learner(object)
+  interp = vision()$all$ClassificationInterpretation$from_learner(object)
 
   conf = interp$confusion_matrix()
   conf = apply(conf, 2, as.integer)
@@ -215,7 +215,7 @@ summary.fastai.learner.Learner <- function(object, ...) {
 #' @export
 get_files <- function(path, extensions = NULL, recurse = TRUE, folders = NULL, followlinks = TRUE) {
 
-  vision$all$get_files(
+  vision()$all$get_files(
     path = path,
     extensions = extensions,
     recurse = recurse,

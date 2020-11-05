@@ -74,7 +74,7 @@ cnn_learner <- function(dls, arch, loss_func = NULL, pretrained = TRUE, cut = NU
   )
 
 
- do.call(vision$all$cnn_learner,args)
+ do.call(vision()$all$cnn_learner,args)
 
 }
 
@@ -165,7 +165,7 @@ cnn_config <- function(cut = NULL, pretrained = TRUE, n_in = 3,
     y_range = y_range
   )
 
-  do.call(vision$all$cnn_config, args)
+  do.call(vision()$all$cnn_config, args)
 
 }
 
@@ -211,7 +211,7 @@ create_cnn_model <- function(arch, n_out, cut = NULL, pretrained = TRUE,
     y_range = y_range
   )
 
-  do.call(vision$all$create_cnn_model, args)
+  do.call(vision()$all$create_cnn_model, args)
 
 }
 

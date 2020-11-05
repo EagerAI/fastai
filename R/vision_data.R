@@ -38,7 +38,7 @@ get_grid <- function(n, nrows = NULL, ncols = NULL, add_vert = 0,
     args$ncols <- as.integer(args$ncols)
   }
 
-  do.call(vision$all$get_grid, args)
+  do.call(vision()$all$get_grid, args)
 
 }
 
@@ -53,7 +53,7 @@ get_grid <- function(n, nrows = NULL, ncols = NULL, add_vert = 0,
 #' @export
 clip_remove_empty <- function(bbox, label) {
 
-  vision$all$clip_remove_empty(
+  vision()$all$clip_remove_empty(
     bbox = bbox,
     label = label
   )
@@ -72,7 +72,7 @@ clip_remove_empty <- function(bbox, label) {
 #' @export
 bb_pad <- function(samples, pad_idx = 0) {
 
-  vision$all$bb_pad(
+  vision()$all$bb_pad(
     samples = samples,
     pad_idx = as.integer(pad_idx)
   )
@@ -88,7 +88,7 @@ bb_pad <- function(samples, pad_idx = 0) {
 #' @return None
 #' @export
 PointBlock <- function() {
-  invisible(vision$all$PointBlock)
+  invisible(vision()$all$PointBlock)
 }
 
 
@@ -100,7 +100,7 @@ PointBlock <- function() {
 #' @return None
 #' @export
 BBoxBlock <- function() {
-  invisible(vision$all$BBoxBlock)
+  invisible(vision()$all$BBoxBlock)
 }
 
 
@@ -154,7 +154,7 @@ BBoxBlock <- function() {
 #' @export
 BBoxLblBlock <- function(vocab = NULL, add_na = TRUE) {
 
-  vision$all$BBoxLblBlock(
+  vision()$all$BBoxLblBlock(
     vocab = vocab,
     add_na = add_na
   )
@@ -205,7 +205,7 @@ SegmentationDataLoaders_from_label_func <- function(path, fnames, label_func, va
   }
 
 
-  do.call(vision$all$SegmentationDataLoaders$from_label_func, args)
+  do.call(vision()$all$SegmentationDataLoaders$from_label_func, args)
 
 }
 

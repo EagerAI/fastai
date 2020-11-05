@@ -12,7 +12,7 @@
 #' @export
 timm_learner <- function(dls, arch, ...) {
 
-  load_pre_models$timm_learner(
+  load_pre_models()$timm_learner(
     dls = dls,
     arch = arch,
     ...
@@ -30,6 +30,6 @@ timm_list_models <- function(...) {
 
   args = list(...)
 
-  do.call(timm$list_models, args)
+  do.call(timm()$list_models, args)
 }
 

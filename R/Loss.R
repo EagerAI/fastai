@@ -10,7 +10,7 @@
 MSELossFlat = function(...) {
   args = list(...)
 
-  do.call(vision$all$MSELossFlat, args)
+  do.call(vision()$all$MSELossFlat, args)
 }
 
 
@@ -25,7 +25,7 @@ MSELossFlat = function(...) {
 L1LossFlat = function(...) {
   args = list(...)
 
-  do.call(vision$all$L1LossFlat, args)
+  do.call(vision()$all$L1LossFlat, args)
 }
 
 
@@ -40,7 +40,7 @@ L1LossFlat = function(...) {
 BCELossFlat = function(...) {
   args = list(...)
 
-  do.call(vision$all$BCELossFlat, args)
+  do.call(vision()$all$BCELossFlat, args)
 }
 
 
@@ -56,7 +56,7 @@ BCELossFlat = function(...) {
 AvgLoss = function(...) {
   args = list(...)
 
-  do.call(vision$all$AvgLoss, args)
+  do.call(vision()$all$AvgLoss, args)
 }
 
 
@@ -70,7 +70,7 @@ AvgLoss = function(...) {
 BaseLoss = function(...) {
   args = list(...)
 
-  do.call(vision$all$BaseLoss, args)
+  do.call(vision()$all$BaseLoss, args)
 }
 
 
@@ -89,7 +89,7 @@ BaseLoss = function(...) {
 #' @export
 HammingLoss <- function(axis = -1, sample_weight = NULL) {
 
-  vision$all$HammingLoss(
+  vision()$all$HammingLoss(
     axis = as.integer(axis),
     sample_weight = sample_weight
   )
@@ -108,7 +108,7 @@ HammingLoss <- function(axis = -1, sample_weight = NULL) {
 #' @export
 AdaptiveLoss <- function(crit) {
 
-  vision$gan$AdaptiveLoss(
+  vision()$gan$AdaptiveLoss(
     crit = crit
   )
 
@@ -150,7 +150,7 @@ HammingLossMulti <- function(thresh = 0.5, sigmoid = TRUE, labels = NULL, sample
 #' @export
 AvgSmoothLoss <- function(beta = 0.98) {
 
-  vision$all$AvgSmoothLoss(
+  vision()$all$AvgSmoothLoss(
     beta = beta
   )
 
@@ -165,7 +165,7 @@ AvgSmoothLoss <- function(beta = 0.98) {
 BCEWithLogitsLossFlat = function(...) {
   args = list(...)
 
-  do.call(vision$all$BCEWithLogitsLossFlat, args)
+  do.call(vision()$all$BCEWithLogitsLossFlat, args)
 }
 
 
@@ -181,7 +181,7 @@ BCEWithLogitsLossFlat = function(...) {
 #' @export
 LabelSmoothingCrossEntropy <- function(eps = 0.1, reduction = "mean") {
 
-  vision$all$LabelSmoothingCrossEntropy(
+  vision()$all$LabelSmoothingCrossEntropy(
     eps = eps,
     reduction = reduction
   )
@@ -201,7 +201,7 @@ LabelSmoothingCrossEntropy <- function(eps = 0.1, reduction = "mean") {
 #' @export
 LabelSmoothingCrossEntropyFlat <- function(...) {
 
-  vision$all$LabelSmoothingCrossEntropyFlat(
+  vision()$all$LabelSmoothingCrossEntropyFlat(
     ...
   )
 
@@ -220,7 +220,7 @@ LabelSmoothingCrossEntropyFlat <- function(...) {
 #' @export
 CrossEntropyLossFlat <- function(...) {
 
-  vision$all$CrossEntropyLossFlat(
+  vision()$all$CrossEntropyLossFlat(
     ...
   )
 

@@ -12,7 +12,7 @@
 #' @export
 match_embeds <- function(old_wgts, old_vocab, new_vocab) {
 
-  text$match_embeds(
+  text()$match_embeds(
     old_wgts = old_wgts,
     old_vocab = old_vocab,
     new_vocab = new_vocab
@@ -32,7 +32,7 @@ match_embeds <- function(old_wgts, old_vocab, new_vocab) {
 #' @export
 load_ignore_keys <- function(model, wgts) {
 
-  text$load_ignore_keys(
+  text()$load_ignore_keys(
     model = model,
     wgts = wgts
   )
@@ -48,7 +48,7 @@ load_ignore_keys <- function(model, wgts) {
 #' @export
 clean_raw_keys <- function(wgts) {
 
-  text$clean_raw_keys(
+  text()$clean_raw_keys(
     wgts = wgts
   )
 
@@ -70,7 +70,7 @@ clean_raw_keys <- function(wgts) {
 #' @export
 load_model_text <- function(file, model, opt, with_opt = NULL, device = NULL, strict = TRUE) {
 
-  text$load_model_text(
+  text()$load_model_text(
     file = file,
     model = model,
     opt = opt,
@@ -130,7 +130,7 @@ TextLearner <- function(dls, model, alpha = 2.0, beta = 1.0,
     train_bn = train_bn
   )
 
-  do.call(text$TextLearner, args)
+  do.call(text()$TextLearner, args)
 
 }
 
@@ -147,7 +147,7 @@ TextLearner <- function(dls, model, alpha = 2.0, beta = 1.0,
 #' @export
 TextLearner_load_pretrained <- function(wgts_fname, vocab_fname, model = NULL) {
 
-  text$TextLearner$load_pretrained(
+  text()$TextLearner$load_pretrained(
     wgts_fname = wgts_fname,
     vocab_fname = vocab_fname,
     model = model
@@ -166,7 +166,7 @@ TextLearner_load_pretrained <- function(wgts_fname, vocab_fname, model = NULL) {
 #' @export
 TextLearner_save_encoder <- function(file) {
 
-  text$TextLearner$save_encoder(
+  text()$TextLearner$save_encoder(
     file = file
   )
 
@@ -183,7 +183,7 @@ TextLearner_save_encoder <- function(file) {
 #' @export
 TextLearner_load_encoder <- function(file, device = NULL) {
 
-  text$TextLearner$load_encoder(
+  text()$TextLearner$load_encoder(
     file = file,
     device = device
   )
@@ -200,7 +200,7 @@ TextLearner_load_encoder <- function(file, device = NULL) {
 #' @export
 decode_spec_tokens <- function(tokens) {
 
-  text$decode_spec_tokens(
+  text()$decode_spec_tokens(
     tokens = tokens
   )
 
@@ -236,7 +236,7 @@ LMLearner <- function(dls, model, alpha = 2.0, beta = 1.0, moms = list(0.8, 0.7,
                       path = NULL, model_dir = "models", wd = NULL,
                       wd_bn_bias = FALSE, train_bn = TRUE) {
 
-  text$LMLearner(
+  text()$LMLearner(
     dls = dls,
     model = model,
     alpha = alpha,
@@ -275,7 +275,7 @@ LMLearner_predict <- function(text, n_words = 1, no_unk = TRUE,
                               temperature = 1.0, min_p = NULL, no_bar = FALSE,
                               decoder = decode_spec_tokens(), only_last_word = FALSE) {
 
- text$LMLearner$predict(
+ text()$LMLearner$predict(
     text = text,
     n_words = as.integer(n_words),
     no_unk = no_unk,
@@ -360,7 +360,7 @@ text_classifier_learner <- function(dls, arch, seq_len = 72,
     moms = moms
   )
 
-  do.call(text$text_classifier_learner, args)
+  do.call(text()$text_classifier_learner, args)
 
 }
 

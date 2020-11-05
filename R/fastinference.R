@@ -30,7 +30,7 @@ ShapInterpretation <- function(learn, test_data = NULL, link = "identity", l1_re
     n_samples = as.integer(n_samples)
   )
 
-  do.call(fastinf$tabular$ShapInterpretation, args)
+  do.call(fastinf()$tabular$ShapInterpretation, args)
 
 }
 

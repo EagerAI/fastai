@@ -9,7 +9,7 @@
 #' @export
 emb_sz_rule <- function(n_cat) {
 
-  tabular$emb_sz_rule(
+  tabular()$emb_sz_rule(
     n_cat = n_cat
   )
 
@@ -22,12 +22,12 @@ emb_sz_rule <- function(n_cat) {
 #'
 #'
 #' @param to to
-#' @param sz_dict sz_dict
+#' @param sz_dict dictionary size
 #' @return None
 #' @export
 get_emb_sz <- function(to, sz_dict = NULL) {
 
-  tabular$get_emb_sz(
+  tabular()$get_emb_sz(
     to = to,
     sz_dict = sz_dict
   )
@@ -41,19 +41,19 @@ get_emb_sz <- function(to, sz_dict = NULL) {
 #'
 #'
 #' @param ps ps
-#' @param embed_p embed_p
+#' @param embed_p embed proportion
 #' @param y_range y_range
-#' @param use_bn use_bn
-#' @param bn_final bn_final
-#' @param bn_cont bn_cont
-#' @param act_cls act_cls
+#' @param use_bn use batch normalization
+#' @param bn_final batch normalization final
+#' @param bn_cont batch normalization
+#' @param act_cls activation
 #' @return None
 #' @export
 tabular_config <- function(ps = NULL, embed_p = 0.0, y_range = NULL,
                            use_bn = TRUE, bn_final = FALSE,
                            bn_cont = TRUE, act_cls = nn$ReLU(inplace = TRUE)) {
 
-  tabular$tabular_config(
+  tabular()$tabular_config(
     ps = ps,
     embed_p = embed_p,
     y_range = y_range,
@@ -71,17 +71,17 @@ tabular_config <- function(ps = NULL, embed_p = 0.0, y_range = NULL,
 #' @description Basic model for tabular data.
 #'
 #'
-#' @param emb_szs emb_szs
-#' @param n_cont n_cont
-#' @param out_sz out_sz
+#' @param emb_szs embedding size
+#' @param n_cont number of cont
+#' @param out_sz output size
 #' @param layers layers
 #' @param ps ps
-#' @param embed_p embed_p
-#' @param y_range y_range
-#' @param use_bn use_bn
-#' @param bn_final bn_final
-#' @param bn_cont bn_cont
-#' @param act_cls act_cls
+#' @param embed_p embed proportion
+#' @param y_range y range
+#' @param use_bn use batch normalization
+#' @param bn_final batch normalization final
+#' @param bn_cont batch normalization cont
+#' @param act_cls activation
 #' @return None
 #' @export
 TabularModel <- function(emb_szs, n_cont, out_sz, layers, ps = NULL,
@@ -89,7 +89,7 @@ TabularModel <- function(emb_szs, n_cont, out_sz, layers, ps = NULL,
                          bn_cont = TRUE, act_cls = nn$ReLU(inplace = TRUE)) {
 
   if(missing(emb_szs) & missing(n_cont) & missing(out_sz) & layers) {
-    invisible(tabular$TabularModel)
+    invisible(tabular()$TabularModel)
   } else {
     args <- list(
       emb_szs = emb_szs,
@@ -105,7 +105,7 @@ TabularModel <- function(emb_szs, n_cont, out_sz, layers, ps = NULL,
       act_cls = act_cls
     )
 
-    do.call(tabular$TabularModel, args)
+    do.call(tabular()$TabularModel, args)
   }
 
 }

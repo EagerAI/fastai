@@ -9,9 +9,9 @@ reverse_text <- function(x) {
 
 
   if(missing(x)) {
-    text$reverse_text
+    text()$reverse_text
   } else {
-    text$reverse_text(
+    text()$reverse_text(
       x = x
     )
   }
@@ -37,7 +37,7 @@ make_vocab <- function(count, min_freq = 3, max_vocab = 60000, special_toks = NU
     special_toks = special_toks
   )
 
-  do.call(text$make_vocab, args)
+  do.call(text()$make_vocab, args)
 
 }
 
@@ -64,7 +64,7 @@ Numericalize <- function(vocab = NULL, min_freq = 3, max_vocab = 60000, special_
     pad_tok = pad_tok
   )
 
-  do.call(text$Numericalize, args)
+  do.call(text()$Numericalize, args)
 
 }
 
@@ -99,7 +99,7 @@ LMDataLoader <- function(dataset, lens = NULL, cache = 2, bs = 64,
 
 
   if(missing(dataset)) {
-    text$LMDataLoader
+    text()$LMDataLoader
   } else {
     args <- list(
       dataset = dataset,
@@ -120,7 +120,7 @@ LMDataLoader <- function(dataset, lens = NULL, cache = 2, bs = 64,
       device = device
     )
 
-    do.call(text$LMDataLoader, args)
+    do.call(text()$LMDataLoader, args)
   }
 
 }
@@ -174,7 +174,7 @@ LMLearner <- function(dls, model, alpha = 2.0, beta = 1.0,
     train_bn = train_bn
   )
 
-  do.call(text$LMLearner, args)
+  do.call(text()$LMLearner, args)
 
 }
 
@@ -200,7 +200,7 @@ pad_input <- function(samples, pad_idx = 1, pad_fields = 0, pad_first = FALSE, b
     backwards = backwards
   )
 
-  do.call(text$pad_input, args)
+  do.call(text()$pad_input, args)
 
 }
 
@@ -225,7 +225,7 @@ pad_input_chunk <- function(samples, pad_idx = 1, pad_first = TRUE, seq_len = 72
     seq_len = as.integer(seq_len)
   )
 
-  do.call(text$pad_input_chunk, args)
+  do.call(text()$pad_input_chunk, args)
 
 }
 
@@ -280,7 +280,7 @@ SortedDL <- function(dataset, sort_func = NULL, res = NULL, bs = 64,
     args$batch_size = as.integer(args$batch_size)
   }
 
-  do.call(text$SortedDL, args)
+  do.call(text()$SortedDL, args)
 
 }
 
@@ -317,7 +317,7 @@ TextBlock <- function(tok_tfm, vocab = NULL, is_lm = FALSE, seq_len = 72,
     pad_tok = pad_tok
   )
 
-  do.call(text$TextBlock, args)
+  do.call(text()$TextBlock, args)
 
 }
 
@@ -362,7 +362,7 @@ TextBlock_from_df <- function(text_cols, vocab = NULL, is_lm = FALSE,
     res_col_name = res_col_name
   )
 
-  do.call(text$TextBlock$from_df, args)
+  do.call(text()$TextBlock$from_df, args)
 
 }
 
@@ -415,7 +415,7 @@ TextBlock_from_folder <- function(path, vocab = NULL, is_lm = FALSE, seq_len = 7
     encoding = encoding
   )
 
-  do.call(text$TextBlock$from_folder, args)
+  do.call(text()$TextBlock$from_folder, args)
 
 }
 
@@ -437,9 +437,9 @@ TextBlock_from_folder <- function(path, vocab = NULL, is_lm = FALSE, seq_len = 7
 ColReader <- function(cols, pref = "", suff = "", label_delim = NULL) {
 
   if(missing(cols)) {
-    text$ColReader
+    text()$ColReader
   } else {
-    text$ColReader(
+    text()$ColReader(
       cols = cols,
       pref = pref,
       suff = suff,
@@ -462,7 +462,7 @@ ColReader <- function(cols, pref = "", suff = "", label_delim = NULL) {
 #' @export
 ColSplitter <- function(col = "is_valid") {
 
-  text$ColSplitter(
+  text()$ColSplitter(
     col = col
   )
 
@@ -528,7 +528,7 @@ TextDataLoaders_from_df <- function(df, path = ".", valid_pct = 0.2, seed = NULL
   if(!is.null(args$val_bs))
     args$val_bs = as.integer(args$val_bs)
 
-  do.call(text$TextDataLoaders$from_df, args)
+  do.call(text()$TextDataLoaders$from_df, args)
 
 }
 
@@ -582,7 +582,7 @@ TextDataLoaders_from_folder <- function(path, train = "train", valid = "valid",
   if(!is.null(args$val_bs))
     args$val_bs = as.integer(args$val_bs)
 
-  do.call(text$TextDataLoaders$from_folder, args)
+  do.call(text()$TextDataLoaders$from_folder, args)
 
 }
 
@@ -647,7 +647,7 @@ TextDataLoaders_from_csv <- function(path, csv_fname = "labels.csv",
   if(!is.null(args$val_bs))
     args$val_bs = as.integer(args$val_bs)
 
-  do.call(text$TextDataLoaders$from_csv, args)
+  do.call(text()$TextDataLoaders$from_csv, args)
 
 }
 
@@ -664,7 +664,7 @@ TextDataLoaders_from_csv <- function(path, csv_fname = "labels.csv",
 #' @export
 RandomSplitter <- function(valid_pct = 0.2, seed = NULL) {
 
-  text$RandomSplitter(
+  text()$RandomSplitter(
     valid_pct = valid_pct,
     seed = seed
   )
@@ -686,7 +686,7 @@ RandomSplitter <- function(valid_pct = 0.2, seed = NULL) {
 Tokenizer_from_df <- function(text_cols, tok = NULL, rules = NULL, sep = " ", n_workers = 6,
                               mark_fields = NULL, res_col_name = "text") {
 
-  text$Tokenizer$from_df(
+  text()$Tokenizer$from_df(
     text_cols = text_cols,
     tok = tok,
     rules = rules,

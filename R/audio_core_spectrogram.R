@@ -1,11 +1,6 @@
 
 
 
-#' @title AudioSpectrogram
-#' @return module
-#' @param ... parameters to pass
-#' @export
-AudioSpectrogram <- NULL
 
 
 
@@ -18,7 +13,7 @@ AudioSpectrogram <- NULL
 #' @export
 AudioToSpec_from_cfg <- function(audio_cfg) {
 
-  fastaudio$core$spectrogram$AudioToSpec$from_cfg(
+  fastaudio()$core$spectrogram$AudioToSpec$from_cfg(
     audio_cfg = audio_cfg
   )
 
@@ -37,7 +32,7 @@ AudioToSpec_from_cfg <- function(audio_cfg) {
 #' @export
 SpectrogramTransformer <- function(mel = TRUE, to_db = TRUE) {
 
-  fastaudio$core$spectrogram$SpectrogramTransformer(
+  fastaudio()$core$spectrogram$SpectrogramTransformer(
     mel = mel,
     to_db = to_db
   )
@@ -78,7 +73,7 @@ AudioToMFCC <- function(sample_rate = 16000, n_mfcc = 40, dct_type = 2,
     }
   }
 
-  do.call(fastaudio$core$spectrogram$AudioToMFCC, args)
+  do.call(fastaudio()$core$spectrogram$AudioToMFCC, args)
 
 }
 
@@ -93,7 +88,7 @@ AudioToMFCC <- function(sample_rate = 16000, n_mfcc = 40, dct_type = 2,
 #' @export
 AudioToMFCC_from_cfg <- function(audio_cfg) {
 
-  fastaudio$core$spectrogram$AudioToMFCC$from_cfg(
+  fastaudio()$core$spectrogram$AudioToMFCC$from_cfg(
     audio_cfg = audio_cfg
   )
 

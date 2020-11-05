@@ -27,9 +27,9 @@ bs_find(
 \item{show_plot}{show plot or not}
 }
 \description{
-Launch a mock training to find a good batch size to minimaze training time.
+Launch a mock training to find a good batch size to minimize training time.
 }
 \details{
 However, it may not be a good batch size to minimize the validation loss. A good batch size is where the Simple Noise Scale converge ignoring the small growing trend with the number of iterations if exists. The optimal batch size is about an order the magnitud
-where Simple Noise scale converge. Typically, the optimial batch size in image classification problems will be 2-3 times lower where
+where Simple Noise scale converge. Typically, the optimal batch size in image classification problems will be 2-3 times lower where
 }

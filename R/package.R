@@ -1,50 +1,10 @@
 
-bs_finder <- NULL
-hug <- NULL
-wandb <- NULL
-load_pre_models <- NULL
-timm <- NULL
-upit <- NULL
-fp <- NULL
-shap <- NULL
-warnings <- NULL
-fastinf <- NULL
-matplot <- NULL
-tms <- NULL
-fastaudio <- NULL
-AudioSpectrogram <- NULL
-NoiseColor <- NULL
-AudioPadType <- NULL
-RemoveType <- NULL
-dicom_windows <- NULL
-nn <- NULL
+
 fastai2 <- NULL
-tabular <- NULL
-vision <- NULL
-text <- NULL
-Module <- NULL
-medical <- NULL
-collab <- NULL
-kg <- NULL
-metrics <- NULL
-cm <- NULL
-colors <- NULL
-fastaip <- NULL
-Callback <- NULL
-bt <- NULL
-crap <- NULL
-migrating_pytorch <- NULL
-migrating_lightning <- NULL
-migrating_ignite <- NULL
-catalyst <- NULL
-F <- NULL
-Dicom <- NULL
-retinanet <- NULL
-torch <- NULL
 
-.onLoad <- function(libname, pkgname) {
+.onLoad <<- function(libname, pkgname) {
 
-  fastai2 <<- reticulate::import("fastai", delay_load = list(
+  fastai2 <- reticulate::import("fastai", delay_load = list(
     priority = 10,
     environment = "r-fastai",
 
@@ -54,192 +14,27 @@ torch <- NULL
 
 
       if(cran_) {
-        python_path <- system.file("python", package = "fastai")
-        #python_path <- system.file("python", package = "fastai")
 
-        # bs finder
-        bs_finder <<- reticulate::import_from_path('fastaibuilt', path = python_path)$bs_finder
-
-        if(reticulate::py_module_available('timm')) {
-          timm <<- reticulate::import('timm')
-          load_pre_models <<- reticulate::import_from_path('fastaibuilt', path = python_path)$pretrained_timm_models
+        if(reticulate::py_module_available('matplotlib')) {
+          matplot <- reticulate::import('matplotlib')
+          matplot$use('Agg')
+          warnings <- reticulate::import('warnings')
+          warnings$filterwarnings("ignore")
         }
 
-        if(reticulate::py_module_available('transformers') &
-           reticulate::py_module_available('IPython') &
-           reticulate::py_module_available('fastai')) {
+        if(reticulate::py_module_available('fastprogress')) {
+          # remove fill
+          fastaip <- reticulate::import('fastprogress')
 
-          hug <<- reticulate::import_from_path('fastaibuilt', path = python_path)$Transformer
+          fastaip$progress_bar$fill = ''
 
+          fix_fit()
         }
 
 
-        if(reticulate::py_module_available('ignite') &
-           reticulate::py_module_available('pytorch_lightning') &
-           reticulate::py_module_available('catalyst')) {
-
-          crap <<- reticulate::import_from_path('fastaibuilt', path = python_path)$crappify
-
-          migrating_ignite <<- reticulate::import_from_path('fastaibuilt', path = python_path)$migrating_ignite
-
-          migrating_lightning <<- reticulate::import_from_path('fastaibuilt', path = python_path)$migrating_lightning
-
-          migrating_pytorch <<- reticulate::import_from_path('fastaibuilt', path = python_path)$migrating_pytorch
-
-          catalyst <<- reticulate::import_from_path('fastaibuilt', path = python_path)$migrating_catalyst
-
-          retinanet <<- reticulate::import_from_path('fastaibuilt', path = python_path)$retinanet
-
-        }
       }
     }
   ))
-
-
-  #cran_ = identical(Sys.getenv("NOT_CRAN", unset = "true"), "true")
-  cran_ = !file.exists("C:/Users/ligges/AppData/Local/r-miniconda/envs/r-reticulate/python.exe")
-
-  if(cran_) {
-
-    py_av = reticulate::py_available(initialize = TRUE)
-
-    if(py_av) {
-
-      if(reticulate::py_module_available('IPython') &
-         reticulate::py_module_available('torch') &
-         reticulate::py_module_available('torchvision') &
-         reticulate::py_module_available('fastai')) {
-
-        # torch module
-        torch <<- fastai2$torch_basics$torch
-
-        # tabular module
-        tabular <<- fastai2$tabular$all
-
-        # vision module
-        vision <<- fastai2$vision
-
-        # collab module
-        collab <<- fastai2$collab
-
-        # text module
-        text <<- fastai2$text$all
-
-        # Torch module
-        nn <<- fastai2$torch_core$nn
-
-        # Metrics
-        metrics <<- fastai2$metrics
-
-        # Module
-        Module <<- fastai2$vision$all$Module
-
-        # Medical
-        medical <<- fastai2$medical$imaging
-
-        # windows
-        dicom_windows <<- fastai2$medical$imaging$dicom_windows
-
-        # cmap
-        cm <<- fastai2$vision$all$plt$cm
-
-        # colors
-        colors <<- fastai2$vision$all$matplotlib$colors
-
-
-        # callback class
-        Callback <<- fastai2$callback$all$Callback
-
-        #builtins
-        bt <<- reticulate::import_builtins()
-
-        # Functional interface
-        F <<- fastai2$torch_core$F
-
-        # Dicom
-        Dicom <<- medical$PILDicom
-
-        if(reticulate::py_module_available('timm')) {
-          timm <<- reticulate::import('timm')
-          #load_pre_models <<- reticulate::import_from_path('pretrained_timm_models', path = python_path)
-        }
-
-      }
-
-      if(reticulate::py_module_available('matplotlib')) {
-        matplot <<- reticulate::import('matplotlib')
-        matplot$use('Agg')
-        warnings <<- reticulate::import('warnings')
-        warnings$filterwarnings("ignore")
-      }
-
-      if(reticulate::py_module_available('wandb')) {
-        wandb <<- reticulate::import('wandb')
-      }
-
-      if(reticulate::py_module_available('transformers') &
-         reticulate::py_module_available('IPython') &
-         reticulate::py_module_available('fastai')) {
-
-        #hug <<- reticulate::import_from_path('Transformer', path = python_path)
-
-      }
-
-
-      if(reticulate::py_module_available('fastinference') &
-         reticulate::py_module_available('shap')) {
-        fastinf <<- reticulate::import('fastinference')
-      }
-
-
-
-      if(reticulate::py_module_available('shap')) {
-        shap <<- reticulate::import('shap')
-      }
-
-      if(reticulate::py_module_available('fastaudio')){
-
-        # main module
-        fastaudio <<- reticulate::import('fastaudio')
-
-        # RemoveType
-        RemoveType <<- fastaudio$augment$preprocess$RemoveType
-
-        # AudioPadType
-        AudioPadType <<- fastaudio$augment$signal$AudioPadType
-
-        # NoiseColor
-        NoiseColor <<- fastaudio$augment$signal$NoiseColor
-
-        # AudioSpectrogram
-        AudioSpectrogram <<- fastaudio$core$spectrogram$AudioSpectrogram
-      }
-
-      if(reticulate::py_module_available('fastprogress')) {
-        # remove fill
-        fastaip <<- reticulate::import('fastprogress')
-
-        fastaip$progress_bar$fill = ''
-
-        fix_fit()
-      }
-
-
-      if(reticulate::py_module_available('kaggle')) {
-        kg <<- reticulate::import('kaggle')
-      }
-
-      if(reticulate::py_module_available('upit')) {
-        upit <<- reticulate::import('upit')
-      }
-
-      if(reticulate::py_module_available('timeseries_fastai')) {
-        tms <<- reticulate::import('timeseries_fastai')
-      }
-
-
-    }
-  }
 }
 
 

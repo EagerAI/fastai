@@ -20,7 +20,7 @@ AWD_LSTM <- function(vocab_sz, emb_sz, n_hid, n_layers, pad_token = 1,
                      weight_p = 0.5, bidir = FALSE) {
 
   if(missing(vocab_sz) & missing(emb_sz) & missing(n_hid) & missing(n_layers)) {
-    text$AWD_LSTM
+    text()$AWD_LSTM
   } else {
     args <- list(
       vocab_sz = vocab_sz,
@@ -35,7 +35,7 @@ AWD_LSTM <- function(vocab_sz, emb_sz, n_hid, n_layers, pad_token = 1,
       bidir = bidir
     )
 
-    do.call(text$AWD_LSTM, args)
+    do.call(text()$AWD_LSTM, args)
   }
 
 }
@@ -96,7 +96,7 @@ language_model_learner <- function(dls, arch, config = NULL, drop_mult = 1.0,
     ...
   )
 
-  do.call(text$language_model_learner, args)
+  do.call(text()$language_model_learner, args)
 
 }
 
@@ -113,9 +113,9 @@ language_model_learner <- function(dls, arch, config = NULL, drop_mult = 1.0,
 get_text_files <- function(path, recurse = TRUE, folders = NULL) {
 
   if(missing(path)) {
-    text$get_text_files
+    text()$get_text_files
   } else {
-    text$get_text_files(
+    text()$get_text_files(
       path = path,
       recurse = recurse,
       folders = folders
@@ -139,7 +139,7 @@ get_text_files <- function(path, recurse = TRUE, folders = NULL) {
 #' @export
 LinearDecoder <- function(n_out, n_hid, output_p = 0.1, tie_encoder = NULL, bias = TRUE) {
 
-  text$LinearDecoder(
+  text()$LinearDecoder(
     n_out = n_out,
     n_hid = n_hid,
     output_p = output_p,
@@ -159,7 +159,7 @@ LinearDecoder <- function(n_out, n_hid, output_p = 0.1, tie_encoder = NULL, bias
 SequentialRNN <- function(...) {
   args = list(...)
 
-  do.call(text$SequentialRNN, args)
+  do.call(text()$SequentialRNN, args)
 }
 
 
@@ -176,7 +176,7 @@ SequentialRNN <- function(...) {
 #' @export
 get_language_model <- function(arch, vocab_sz, config = NULL, drop_mult = 1.0) {
 
-  text$get_language_model(
+  text()$get_language_model(
     arch = arch,
     vocab_sz = vocab_sz,
     config = config,
@@ -199,7 +199,7 @@ get_language_model <- function(arch, vocab_sz, config = NULL, drop_mult = 1.0) {
 #' @export
 SentenceEncoder <- function(bptt, module, pad_idx = 1, max_len = NULL) {
 
-  text$SentenceEncoder(
+  text()$SentenceEncoder(
     bptt = bptt,
     module = module,
     pad_idx = as.integer(pad_idx),
@@ -221,7 +221,7 @@ SentenceEncoder <- function(bptt, module, pad_idx = 1, max_len = NULL) {
 #' @export
 masked_concat_pool <- function(output, mask, bptt) {
 
-  text$masked_concat_pool(
+  text()$masked_concat_pool(
     output = output,
     mask = mask,
     bptt = bptt
@@ -242,7 +242,7 @@ masked_concat_pool <- function(output, mask, bptt) {
 #' @export
 PoolingLinearClassifier <- function(dims, ps, bptt, y_range = NULL) {
 
-  text$PoolingLinearClassifier(
+  text()$PoolingLinearClassifier(
     dims = dims,
     ps = ps,
     bptt = bptt,
@@ -275,7 +275,7 @@ get_text_classifier <- function(arch, vocab_sz, n_class, seq_len = 72,
                                 pad_idx = 1, max_len = 1440,
                                 y_range = NULL) {
 
-  text$get_text_classifier(
+  text()$get_text_classifier(
     arch = arch,
     vocab_sz = vocab_sz,
     n_class = n_class,
@@ -304,7 +304,7 @@ get_text_classifier <- function(arch, vocab_sz, n_class, seq_len = 72,
 #' @export
 dropout_mask <- function(x, sz, p) {
 
-  text$dropout_mask(
+  text()$dropout_mask(
     x = x,
     sz = sz,
     p = p
@@ -324,7 +324,7 @@ dropout_mask <- function(x, sz, p) {
 #' @export
 RNNDropout <- function(p = 0.5) {
 
-  text$RNNDropout(
+  text()$RNNDropout(
     p = p
   )
 
@@ -343,7 +343,7 @@ RNNDropout <- function(p = 0.5) {
 #' @export
 WeightDropout <- function(module, weight_p, layer_names = "weight_hh_l0") {
 
-  text$WeightDropout(
+  text()$WeightDropout(
     module = module,
     weight_p = weight_p,
     layer_names = layer_names
@@ -364,7 +364,7 @@ WeightDropout <- function(module, weight_p, layer_names = "weight_hh_l0") {
 #' @export
 EmbeddingDropout <- function(emb, embed_p) {
 
-  text$EmbeddingDropout(
+  text()$EmbeddingDropout(
     emb = emb,
     embed_p = embed_p
   )
@@ -381,7 +381,7 @@ EmbeddingDropout <- function(emb, embed_p) {
 #' @export
 awd_lstm_lm_split <- function(model) {
 
-  text$awd_lstm_lm_split(
+  text()$awd_lstm_lm_split(
     model = model
   )
 
@@ -398,7 +398,7 @@ awd_lstm_lm_split <- function(model) {
 #' @export
 awd_lstm_clas_split <- function(model) {
 
-  text$awd_lstm_clas_split(
+  text()$awd_lstm_clas_split(
     model = model
   )
 
@@ -426,7 +426,7 @@ AWD_QRNN <- function(vocab_sz, emb_sz, n_hid, n_layers, pad_token = 1,
                      hidden_p = 0.2, input_p = 0.6, embed_p = 0.1,
                      weight_p = 0.5, bidir = FALSE) {
 
-  python_function_result <- text$AWD_QRNN(
+  python_function_result <- text()$AWD_QRNN(
     vocab_sz = as.integer(vocab_sz),
     emb_sz = as.integer(emb_sz),
     n_hid = as.integer(n_hid),

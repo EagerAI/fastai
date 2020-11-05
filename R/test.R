@@ -168,7 +168,7 @@ plot_top_losses <- function(interp, k, largest = TRUE, figsize = c(19.2,10.8),
     ...
   )
 
-  tmp_d = proj_name = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
+  tmp_d = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
 
   if(is.null(dpi)) {
     fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'))
@@ -285,7 +285,7 @@ plot_lr_find <- function(object, skip_end = 5, dpi = 250) {
     skip_end = as.integer(skip_end)
   )
 
-  tmp_d = proj_name = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
+  tmp_d = gsub(tempdir(), replacement = '/', pattern = '\\', fixed = TRUE)
   fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi))
 
   img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
@@ -432,7 +432,7 @@ show_images <- function(ims, nrows = 1, ncols = NULL,
   }
 
 
-  do.call(medical$show_images, args)
+  do.call(medical()$show_images, args)
 
 }
 
@@ -448,7 +448,7 @@ show_images <- function(ims, nrows = 1, ncols = NULL,
 #' @export
 uniform_blur2d <- function(x, s) {
 
-  medical$uniform_blur2d(
+  medical()$uniform_blur2d(
     x = x,
     s = as.integer(s)
   )

@@ -8,9 +8,9 @@ Adam <- function(...) {
   args = list(...)
 
   if(is.null(unlist(args))) {
-    vision$all$Adam
+    vision()$all$Adam
   } else {
-    do.call(vision$all$Adam, args)
+    do.call(vision()$all$Adam, args)
   }
 
 }
@@ -28,9 +28,9 @@ RAdam <- function(...) {
   args = list(...)
 
   if(is.null(unlist(args))) {
-    vision$all$RAdam
+    vision()$all$RAdam
   } else {
-    do.call(vision$all$RAdam, args)
+    do.call(vision()$all$RAdam, args)
   }
 
 }
@@ -47,9 +47,9 @@ SGD <- function(...) {
   args = list(...)
 
   if(is.null(unlist(args))) {
-    vision$all$SGD
+    vision()$all$SGD
   } else {
-    do.call(vision$all$SGD, args)
+    do.call(vision()$all$SGD, args)
   }
 
 }
@@ -67,9 +67,9 @@ RMSProp <- function(...) {
   args = list(...)
 
   if(is.null(unlist(args))) {
-    vision$all$RMSProp
+    vision()$all$RMSProp
   } else {
-    do.call(vision$all$RMSProp, args)
+    do.call(vision()$all$RMSProp, args)
   }
 
 }
@@ -87,9 +87,9 @@ QHAdam <- function(...) {
   args = list(...)
 
   if(is.null(unlist(args))) {
-    vision$all$QHAdam
+    vision()$all$QHAdam
   } else {
-    do.call(vision$all$QHAdam, args)
+    do.call(vision()$all$QHAdam, args)
   }
 
 }
@@ -107,9 +107,9 @@ Larc <- function(...) {
   args = list(...)
 
   if(is.null(unlist(args))) {
-    vision$all$Larc
+    vision()$all$Larc
   } else {
-    do.call(vision$all$Larc, args)
+    do.call(vision()$all$Larc, args)
   }
 
 }
@@ -124,9 +124,9 @@ Lamb <- function(...) {
   args = list(...)
 
   if(is.null(unlist(args))) {
-    vision$all$Lamb
+    vision()$all$Lamb
   } else {
-    do.call(vision$all$Lamb, args)
+    do.call(vision()$all$Lamb, args)
   }
 
 }
@@ -143,9 +143,9 @@ Lookahead <- function(...) {
   args = list(...)
 
   if(is.null(unlist(args))) {
-    vision$all$Lookahead
+    vision()$all$Lookahead
   } else {
-    do.call(vision$all$Lookahead, args)
+    do.call(vision()$all$Lookahead, args)
   }
 
 }
@@ -161,9 +161,9 @@ OptimWrapper <- function(...) {
   args = list(...)
 
   if(is.null(unlist(args))) {
-    vision$all$OptimWrapper
+    vision()$all$OptimWrapper
   } else {
-    do.call(vision$all$OptimWrapper, args)
+    do.call(vision()$all$OptimWrapper, args)
   }
 
 }
@@ -179,9 +179,9 @@ Optimizer <- function(...) {
   args = list(...)
 
   if(is.null(unlist(args))) {
-    vision$all$Optimizer
+    vision()$all$Optimizer
   } else {
-    do.call(vision$all$Optimizer, args)
+    do.call(vision()$all$Optimizer, args)
   }
 
 }
@@ -197,11 +197,11 @@ noop <- function(...) {
 
   args = list(...)
   if(length(args)>0) {
-    vision$all$noop(
+    vision()$all$noop(
       ...
     )
   } else {
-    vision$all$noop
+    vision()$all$noop
   }
 
 }
@@ -246,7 +246,7 @@ sgd_step <- function(p, lr, ...) {
     ...
   )
 
-  do.call(vision$all$sgd_step, args)
+  do.call(vision()$all$sgd_step, args)
 
 }
 
@@ -295,7 +295,7 @@ weight_decay <- function(p, lr, wd, do_wd = TRUE, ...) {
     ...
   )
 
-  do.call(vision$all$weight_decay, args)
+  do.call(vision()$all$weight_decay, args)
 
 }
 
@@ -345,7 +345,7 @@ l2_reg <- function(p, lr, wd, do_wd = TRUE, ...) {
     ...
   )
 
-  do.call(vision$all$l2_reg, args)
+  do.call(vision()$all$l2_reg, args)
 
 }
 
@@ -372,7 +372,7 @@ average_grad <- function(p, mom, dampening = FALSE, grad_avg = NULL, ...) {
     ...
   )
 
-  do.call(vision$all$average_grad, args)
+  do.call(vision()$all$average_grad, args)
 
 }
 
@@ -397,7 +397,7 @@ average_sqr_grad <- function(p, sqr_mom, dampening = TRUE, sqr_avg = NULL, ...) 
     ...
   )
 
-  do.call(vision$all$average_sqr_grad, args)
+  do.call(vision()$all$average_sqr_grad, args)
 
 }
 
@@ -422,7 +422,7 @@ momentum_step <- function(p, lr, grad_avg, ...) {
     ...
   )
 
-  do.call(vision$all$momentum_step, args)
+  do.call(vision()$all$momentum_step, args)
 
 }
 
@@ -451,7 +451,7 @@ rms_prop_step <- function(p, lr, sqr_avg, eps, grad_avg = NULL, ...) {
     ...
   )
 
-  do.call(vision$all$rms_prop_step, args)
+  do.call(vision()$all$rms_prop_step, args)
 
 }
 
@@ -474,7 +474,7 @@ step_stat <- function(p, step = 0, ...) {
     ...
   )
 
-  do.call(vision$all$step_stat, args)
+  do.call(vision()$all$step_stat, args)
 
 }
 
@@ -494,7 +494,7 @@ debias <- function(mom, damp, step) {
     step = step
   )
 
-  do.call(vision$all$debias, args)
+  do.call(vision()$all$debias, args)
 
 }
 
@@ -529,7 +529,7 @@ adam_step <- function(p, lr, mom, step, sqr_mom, grad_avg, sqr_avg, eps, ...) {
     ...
   )
 
-  do.call(vision$all$adam_step, args)
+  do.call(vision()$all$adam_step, args)
 
 }
 
@@ -566,7 +566,7 @@ radam_step <- function(p, lr, mom, step, sqr_mom, grad_avg, sqr_avg, eps, beta, 
     ...
   )
 
-  do.call(vision$all$radam_step, args)
+  do.call(vision()$all$radam_step, args)
 
 }
 
@@ -602,7 +602,7 @@ qhadam_step <- function(p, lr, mom, sqr_mom, sqr_avg, nu_1, nu_2, step, grad_avg
     ...
   )
 
-  do.call(vision$all$qhadam_step, args)
+  do.call(vision()$all$qhadam_step, args)
 
 }
 
@@ -633,7 +633,7 @@ larc_layer_lr <- function(p, lr, trust_coeff, wd, eps, clip = TRUE, ...) {
     ...
   )
 
-  do.call(vision$all$larc_layer_lr, args)
+  do.call(vision()$all$larc_layer_lr, args)
 
 }
 
@@ -658,7 +658,7 @@ larc_step <- function(p, local_lr, grad_avg = NULL, ...) {
     ...
   )
 
-  do.call(vision$all$larc_step, args)
+  do.call(vision()$all$larc_step, args)
 
 }
 
@@ -692,7 +692,7 @@ lamb_step <- function(p, lr, mom, step, sqr_mom, grad_avg, sqr_avg, eps, ...) {
     ...
   )
 
-  do.call(vision$all$lamb_step, args)
+  do.call(vision()$all$lamb_step, args)
 
 }
 
@@ -726,7 +726,7 @@ ranger <- function(p, lr, mom = 0.95, wd = 0.01, eps = 1e-06,
     decouple_wd = decouple_wd
   )
 
-  do.call(vision$all$ranger, args)
+  do.call(vision()$all$ranger, args)
 
 }
 
@@ -739,7 +739,7 @@ ranger <- function(p, lr, mom = 0.95, wd = 0.01, eps = 1e-06,
 #' @export
 detuplify_pg <- function(d) {
 
-  vision$all$detuplify_pg(
+  vision()$all$detuplify_pg(
     d = d
   )
 
@@ -756,7 +756,7 @@ detuplify_pg <- function(d) {
 #' @export
 set_item_pg <- function(pg, k, v) {
 
-  vision$all$set_item_pg(
+  vision()$all$set_item_pg(
     pg = pg,
     k = k,
     v = v

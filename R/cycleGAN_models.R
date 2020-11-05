@@ -23,7 +23,7 @@ convT_norm_relu <- function(ch_in, ch_out, norm_layer, ks = 3, stride = 2, bias 
     bias = bias
   )
 
-  do.call(upit$models$cyclegan$convT_norm_relu, args)
+  do.call(upit()$models$cyclegan$convT_norm_relu, args)
 
 }
 
@@ -62,7 +62,7 @@ pad_conv_norm_relu <- function(ch_in, ch_out, pad_mode, norm_layer, ks = 3,
     init_gain = init_gain
   )
 
-  do.call(upit$models$cyclegan$pad_conv_norm_relu, args)
+  do.call(upit()$models$cyclegan$pad_conv_norm_relu, args)
 
 }
 
@@ -83,7 +83,7 @@ ResnetBlock <- function(dim, pad_mode = "reflection", norm_layer = NULL, dropout
 
 
   if(missing( dim) ) {
-    upit$models$cyclegan$ResnetBlock
+    upit()$models$cyclegan$ResnetBlock
   } else {
     args <- list(
       dim = as.integer(dim),
@@ -93,7 +93,7 @@ ResnetBlock <- function(dim, pad_mode = "reflection", norm_layer = NULL, dropout
       bias = bias
     )
 
-    do.call(upit$models$cyclegan$ResnetBlock, args)
+    do.call(upit()$models$cyclegan$ResnetBlock, args)
   }
 }
 
@@ -124,7 +124,7 @@ resnet_generator <- function(ch_in, ch_out, n_ftrs = 64, norm_layer = NULL,
     pad_mode = pad_mode
   )
 
-  do.call(upit$models$cyclegan$resnet_generator, args)
+  do.call(upit()$models$cyclegan$resnet_generator, args)
 
 }
 
@@ -164,7 +164,7 @@ conv_norm_lr <- function(ch_in, ch_out, norm_layer = NULL, ks = 3, bias = TRUE,
     init_gain = init_gain
   )
 
-  do.call(upit$models$cyclegan$conv_norm_lr, args)
+  do.call(upit()$models$cyclegan$conv_norm_lr, args)
 
 }
 
@@ -181,7 +181,7 @@ conv_norm_lr <- function(ch_in, ch_out, norm_layer = NULL, ks = 3, bias = TRUE,
 #' @export
 discriminator <- function(ch_in, n_ftrs = 64, n_layers = 3, norm_layer = NULL, sigmoid = FALSE) {
 
-  python_function_result <- upit$models$cyclegan$discriminator(
+  python_function_result <- upit()$models$cyclegan$discriminator(
     ch_in = as.integer(ch_in),
     n_ftrs = as.integer(n_ftrs),
     n_layers = as.integer(n_layers),
@@ -223,7 +223,7 @@ CycleGAN <- function(ch_in = 3, ch_out = 3, n_features = 64, disc_layers = 3,
     norm_layer = norm_layer
   )
 
-  do.call(upit$models$cyclegan$CycleGAN, args)
+  do.call(upit()$models$cyclegan$CycleGAN, args)
 
 }
 
@@ -238,7 +238,7 @@ CycleGAN <- function(ch_in = 3, ch_out = 3, n_features = 64, disc_layers = 3,
 #' @export
 RandPair <- function(itemsB) {
 
-  upit$data$unpaired$RandPair(
+  upit()$data$unpaired$RandPair(
     itemsB = itemsB
   )
 
@@ -283,7 +283,7 @@ get_dls <- function(pathA, pathB, num_A = NULL, num_B = NULL,
  if(!is.null(args[['num_B']]))
    args[['num_B']] = as.integer(args[['num_B']])
 
- do.call(upit$data$unpaired$get_dls, args)
+ do.call(upit()$data$unpaired$get_dls, args)
 
 }
 
@@ -316,7 +316,7 @@ get_dls <- function(pathA, pathB, num_A = NULL, num_B = NULL,
 #' @export
 CycleGANLoss <- function(cgan, l_A = 10.0, l_B = 10, l_idt = 0.5, lsgan = TRUE) {
 
-  upit$train$cyclegan$CycleGANLoss(
+  upit()$train$cyclegan$CycleGANLoss(
     cgan = cgan,
     l_A = l_A,
     l_B = l_B,
@@ -335,7 +335,7 @@ CycleGANLoss <- function(cgan, l_A = 10.0, l_B = 10, l_idt = 0.5, lsgan = TRUE) 
 #' @return None
 CycleGANTrainer = function(...) {
   args = list(...)
-  do.call(upit$train$cyclegan$CycleGANTrainer, args)
+  do.call(upit()$train$cyclegan$CycleGANTrainer, args)
 }
 
 #' @title ShowCycleGANImgsCallback
@@ -350,7 +350,7 @@ CycleGANTrainer = function(...) {
 #' @export
 ShowCycleGANImgsCallback <- function(imgA = FALSE, imgB = TRUE, show_img_interval = 10) {
 
-  upit$train$cyclegan$ShowCycleGANImgsCallback(
+  upit()$train$cyclegan$ShowCycleGANImgsCallback(
     imgA = imgA,
     imgB = imgB,
     show_img_interval = as.integer(show_img_interval)
@@ -375,7 +375,7 @@ ShowCycleGANImgsCallback <- function(imgA = FALSE, imgB = TRUE, show_img_interva
 #' @export
 combined_flat_anneal <- function(pct, start_lr, end_lr = 0, curve_type = "linear") {
 
-  upit$train$cyclegan$combined_flat_anneal(
+  upit()$train$cyclegan$combined_flat_anneal(
     pct = pct,
     start_lr = start_lr,
     end_lr = end_lr,
@@ -418,7 +418,7 @@ cycle_learner <- function(dls, m, opt_func = Adam(), show_imgs = TRUE,
     ...
   )
 
-  do.call(upit$train$cyclegan$cycle_learner, args)
+  do.call(upit()$train$cyclegan$cycle_learner, args)
 
 }
 
@@ -456,7 +456,7 @@ URLs_HORSE_2_ZEBRA <- function(filename = 'horse2zebra', unzip = TRUE) {
 #' @export
 FolderDataset <- function(path, transforms = NULL) {
 
-  upit$inference$cyclegan$FolderDataset(
+  upit()$inference$cyclegan$FolderDataset(
     path = path,
     transforms = transforms
   )
@@ -475,7 +475,7 @@ FolderDataset <- function(path, transforms = NULL) {
 #' @export
 load_dataset <- function(test_path, bs = 4, num_workers = 4) {
 
-  upit$inference$cyclegan$load_dataset(
+  upit()$inference$cyclegan$load_dataset(
     test_path = test_path,
     bs = as.integer(bs),
     num_workers = as.integer(num_workers)
@@ -500,7 +500,7 @@ load_dataset <- function(test_path, bs = 4, num_workers = 4) {
 #' @export
 get_preds_cyclegan <- function(learn, test_path, pred_path, bs = 4, num_workers = 4, suffix = "tif") {
 
-  upit$inference$cyclegan$get_preds_cyclegan(
+  upit()$inference$cyclegan$get_preds_cyclegan(
     learn = learn,
     test_path = test_path,
     pred_path = pred_path,
@@ -522,7 +522,7 @@ get_preds_cyclegan <- function(learn, test_path, pred_path, bs = 4, num_workers 
 #' @export
 export_generator <- function(learn, generator_name = "generator", path = '.', convert_to = "B") {
 
-  upit$inference$cyclegan$export_generator(
+  upit()$inference$cyclegan$export_generator(
     learn = learn,
     generator_name = generator_name,
     path = path,

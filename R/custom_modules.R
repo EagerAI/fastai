@@ -16,7 +16,7 @@
 #'
 #' @export
 Net = function() {
-  migrating_pytorch$Net()
+  migrating_pytorch()$Net()
 }
 
 
@@ -32,7 +32,7 @@ Net = function() {
 #' @return loader
 #' @export
 train_loader = function() {
-  invisible(migrating_pytorch$train_loader)
+  invisible(migrating_pytorch()$train_loader)
 }
 
 
@@ -47,7 +47,7 @@ train_loader = function() {
 #' @return loader
 #' @export
 test_loader = function() {
-  migrating_pytorch$test_loader
+  migrating_pytorch()$test_loader
 }
 
 
@@ -60,7 +60,7 @@ test_loader = function() {
 #' @export
 get_data_loaders <- function(train_batch_size, val_batch_size) {
 
-  migrating_ignite$get_data_loaders(
+  migrating_ignite()$get_data_loaders(
     train_batch_size = as.integer(train_batch_size),
     val_batch_size = as.integer(val_batch_size)
   )
@@ -74,7 +74,7 @@ get_data_loaders <- function(train_batch_size, val_batch_size) {
 #' @return model
 #' @export
 LitModel = function() {
-  migrating_lightning$LitModel()
+  migrating_lightning()$LitModel()
 }
 
 
@@ -93,7 +93,7 @@ LitModel = function() {
 #'
 #' @export
 loaders = function() {
-  catalyst$loaders()
+  catalyst()$loaders()
 }
 
 
@@ -102,7 +102,7 @@ loaders = function() {
 #' @return model
 #' @export
 catalyst_model = function() {
-  catalyst$model
+  catalyst()$model
 }
 
 

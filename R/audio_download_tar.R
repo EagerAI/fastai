@@ -19,7 +19,7 @@
 #' @export
 URLs_SPEAKERS10 <- function(filename = 'SPEAKERS10', untar = TRUE) {
 
-  download.file(paste(fastaudio$core$all$URLs$SPEAKERS10,sep = ''),
+  download.file(paste(fastaudio()$core$all$URLs$SPEAKERS10,sep = ''),
                 destfile = paste(filename,'.tgz',sep = ''))
 
   if(untar) {

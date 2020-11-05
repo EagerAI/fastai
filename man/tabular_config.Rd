@@ -17,17 +17,17 @@ tabular_config(
 \arguments{
 \item{ps}{ps}
 
-\item{embed_p}{embed_p}
+\item{embed_p}{embed proportion}
 
 \item{y_range}{y_range}
 
-\item{use_bn}{use_bn}
+\item{use_bn}{use batch normalization}
 
-\item{bn_final}{bn_final}
+\item{bn_final}{batch normalization final}
 
-\item{bn_cont}{bn_cont}
+\item{bn_cont}{batch normalization}
 
-\item{act_cls}{act_cls}
+\item{act_cls}{activation}
 }
 \value{
 None

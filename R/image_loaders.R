@@ -61,7 +61,7 @@ ImageDataLoaders_from_name_re <- function(path, fnames, pat, bs = 64,
     args$val_bs <- as.integer(args$val_bs)
   }
 
-  do.call(vision$all$ImageDataLoaders$from_name_re,args)
+  do.call(vision()$all$ImageDataLoaders$from_name_re,args)
 
 }
 
@@ -94,14 +94,14 @@ get_image_files <- function(path, recurse = TRUE, folders = NULL) {
 
 
   if(missing(path)) {
-    invisible(vision$all$get_image_files)
+    invisible(vision()$all$get_image_files)
   } else {
     args <- list(
       path = path,
       recurse = recurse,
       folders = folders
     )
-    do.call(vision$all$get_image_files, args)
+    do.call(vision()$all$get_image_files, args)
   }
 
 
@@ -183,7 +183,7 @@ ImageDataLoaders_from_folder <- function(path, train = "train", valid = "valid",
     args$val_bs <- as.integer(args$val_bs)
   }
 
-  do.call(vision$all$ImageDataLoaders$from_folder, args)
+  do.call(vision()$all$ImageDataLoaders$from_folder, args)
 
 }
 
@@ -260,7 +260,7 @@ ImageDataLoaders_from_csv <- function(path, csv_fname = "labels.csv", header = "
     args$val_bs = as.integer(args$val_bs)
   }
 
-  do.call(vision$all$ImageDataLoaders$from_csv, args)
+  do.call(vision()$all$ImageDataLoaders$from_csv, args)
 }
 
 
@@ -307,7 +307,7 @@ ImageDataLoaders_from_dblock <- function(dblock, source, path = ".",
     args$val_bs = as.integer(args$val_bs)
   }
 
-  do.call(vision$all$ImageDataLoaders$from_dblock, args)
+  do.call(vision()$all$ImageDataLoaders$from_dblock, args)
 
 }
 
@@ -376,7 +376,7 @@ ImageDataLoaders_from_df <- function(df, path = ".", valid_pct = 0.2, seed = NUL
     args$val_bs = as.integer(args$val_bs)
   }
 
-  do.call(vision$all$ImageDataLoaders$from_df, args)
+  do.call(vision()$all$ImageDataLoaders$from_df, args)
 
 }
 
@@ -434,7 +434,7 @@ ImageDataLoaders_from_lists <- function(path, fnames, labels, valid_pct = 0.2,
     args$val_bs = as.integer(args$val_bs)
   }
 
-  do.call(vision$all$ImageDataLoaders$from_lists, args)
+  do.call(vision()$all$ImageDataLoaders$from_lists, args)
 
 }
 
@@ -491,7 +491,7 @@ ImageDataLoaders_from_path_func <- function(path, fnames, label_func,
     args$val_bs = as.integer(args$val_bs)
   }
 
-  do.call(vision$all$ImageDataLoaders$from_path_func, args)
+  do.call(vision()$all$ImageDataLoaders$from_path_func, args)
 
 }
 
@@ -547,5 +547,5 @@ ImageDataLoaders_from_path_re <- function(path, fnames, pat, valid_pct = 0.2,
     args$val_bs = as.integer(args$val_bs)
   }
 
-  do.call(vision$all$ImageDataLoaders$from_path_re, args)
+  do.call(vision()$all$ImageDataLoaders$from_path_re, args)
 }

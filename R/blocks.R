@@ -12,7 +12,7 @@
 #' @export
 SEBlock <- function(expansion, ni, nf, groups = 1, reduction = 16, stride = 1) {
 
-  vision$all$SEBlock(
+  vision()$all$SEBlock(
     expansion = expansion,
     ni = ni,
     nf = nf,
@@ -36,7 +36,7 @@ SEBlock <- function(expansion, ni, nf, groups = 1, reduction = 16, stride = 1) {
 #' @export
 SEResNeXtBlock <- function(expansion, ni, nf, groups = 32, reduction = 16, stride = 1, base_width = 4) {
 
-  vision$all$SEResNeXtBlock(
+  vision()$all$SEResNeXtBlock(
     expansion = expansion,
     ni = ni,
     nf = nf,
@@ -62,7 +62,7 @@ SEResNeXtBlock <- function(expansion, ni, nf, groups = 32, reduction = 16, strid
 #' @export
 SeparableBlock <- function(expansion, ni, nf, reduction = 16, stride = 1, base_width = 4) {
 
-  vision$all$SeparableBlock(
+  vision()$all$SeparableBlock(
     expansion = expansion,
     ni = ni,
     nf = nf,
@@ -114,7 +114,7 @@ ResBlock <- function(expansion, ni, nf, stride = 1, groups = 1,
                      padding = NULL, bias = NULL, bn_1st = TRUE, transpose = FALSE, init = "auto",
                      xtra = NULL, bias_std = 0.01, dilation = 1, padding_mode = "zeros") {
 
-  vision$all$ResBlock(
+  vision()$all$ResBlock(
     expansion = expansion,
     ni = ni,
     nf = nf,
@@ -160,7 +160,7 @@ ResBlock <- function(expansion, ni, nf, stride = 1, groups = 1,
 #' @export
 AvgPool <- function(ks = 2, stride = NULL, padding = 0, ndim = 2, ceil_mode = FALSE) {
 
-  vision$all$AvgPool(
+  vision()$all$AvgPool(
     ks = as.integer(ks),
     stride = stride,
     padding = as.integer(padding),
@@ -184,7 +184,7 @@ AvgPool <- function(ks = 2, stride = NULL, padding = 0, ndim = 2, ceil_mode = FA
 #' @export
 MaxPool <- function(ks = 2, stride = NULL, padding = 0, ndim = 2, ceil_mode = FALSE) {
 
-  vision$all$MaxPool(
+  vision()$all$MaxPool(
     ks = as.integer(ks),
     stride = stride,
     padding = as.integer(padding),
@@ -208,7 +208,7 @@ MaxPool <- function(ks = 2, stride = NULL, padding = 0, ndim = 2, ceil_mode = FA
 #' @export
 SeparableBlock <- function(expansion, ni, nf, reduction = 16, stride = 1, base_width = 4) {
 
-  vision$all$SeparableBlock(
+  vision()$all$SeparableBlock(
     expansion = expansion,
     ni = ni,
     nf = nf,
@@ -232,7 +232,7 @@ SeparableBlock <- function(expansion, ni, nf, reduction = 16, stride = 1, base_w
 #' @export
 CategoryBlock <- function(vocab = NULL, sort = TRUE, add_na = FALSE) {
 
-  text$CategoryBlock(
+  text()$CategoryBlock(
     vocab = vocab,
     sort = sort,
     add_na = add_na
@@ -256,7 +256,7 @@ CategoryBlock <- function(vocab = NULL, sort = TRUE, add_na = FALSE) {
 #' @export
 SEResNeXtBlock <- function(expansion, ni, nf, groups = 32, reduction = 16, stride = 1, base_width = 4) {
 
-  vision$all$SEResNeXtBlock(
+  vision()$all$SEResNeXtBlock(
     expansion = expansion,
     ni = ni,
     nf = nf,
@@ -280,7 +280,7 @@ SEResNeXtBlock <- function(expansion, ni, nf, groups = 32, reduction = 16, strid
 #' @export
 RegressionBlock <- function(n_out = NULL) {
 
-  vision$all$RegressionBlock(
+  vision()$all$RegressionBlock(
     n_out = n_out
   )
 
@@ -298,7 +298,7 @@ RegressionBlock <- function(n_out = NULL) {
 #' @export
 MultiCategoryBlock <- function(encoded = FALSE, vocab = NULL, add_na = FALSE) {
 
-  vision$all$MultiCategoryBlock(
+  vision()$all$MultiCategoryBlock(
     encoded = encoded,
     vocab = vocab,
     add_na = add_na
@@ -346,7 +346,7 @@ DataBlock <- function(blocks = NULL, dl_type = NULL, getters = NULL,
     args$n_inp <- as.integer(args$n_inp)
   }
 
-  do.call(vision$gan$DataBlock, args)
+  do.call(vision()$gan$DataBlock, args)
 
 }
 
@@ -371,7 +371,7 @@ TransformBlock <- function(type_tfms = NULL, item_tfms = NULL,
 
 
   if(missing(type_tfms) & missing(item_tfms) & missing(batch_tfms) & missing(dl_type) & missing(dls_kwargs)) {
-    invisible(vision$gan$TransformBlock)
+    invisible(vision()$gan$TransformBlock)
   } else {
     args <- list(
       type_tfms = type_tfms,
@@ -380,7 +380,7 @@ TransformBlock <- function(type_tfms = NULL, item_tfms = NULL,
       dl_type = dl_type,
       dls_kwargs = dls_kwargs
     )
-    do.call(vision$gan$TransformBlock, args)
+    do.call(vision()$gan$TransformBlock, args)
   }
 
 
@@ -395,7 +395,7 @@ TransformBlock <- function(type_tfms = NULL, item_tfms = NULL,
 #' @export
 ImageBlock <- function(...) {
 
-  invisible(vision$gan$ImageBlock(...))
+  invisible(vision()$gan$ImageBlock(...))
 
 }
 
