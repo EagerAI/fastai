@@ -172,3 +172,15 @@ test_succeeds('pet load densenet201', {
   learn = cnn_learner(dls, densenet201(), metrics = accuracy)
   summary(learn)
 })
+
+
+test_succeeds('cnn densenet201 change n_channels', {
+  learn = cnn_learner(dls, densenet201(), metrics = accuracy)
+  learn$model[0][0][0][['in_channels']] %f% 1L
+  expect_equal(learn$model[0][0][0][['in_channels']], 1L)
+})
+
+
+
+
+
