@@ -10,12 +10,6 @@ test_succeeds('download URLs_HORSE_2_ZEBRA', {
   }
 })
 
-test_succeeds('dataloader URLs_HORSE_2_ZEBRA', {
-  if(!dir.exists('horse2zebra')) {
-    URLs_HORSE_2_ZEBRA()
-  }
-})
-
 
 test_succeeds('dataloader URLs_HORSE_2_ZEBRA', {
   horse2zebra = 'horse2zebra'
