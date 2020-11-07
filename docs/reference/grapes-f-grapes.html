@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>UnetBlock — UnetBlock • fastai</title>
+<title>Fastai assignment — %f% • fastai</title>
 
 
 <!-- jquery -->
@@ -45,8 +45,8 @@
 
 
 
-<meta property="og:title" content="UnetBlock — UnetBlock" />
-<meta property="og:description" content="A quasi-UNet block, using `PixelShuffle_ICNR upsampling`." />
+<meta property="og:title" content="Fastai assignment — %f%" />
+<meta property="og:description" content="The assignment has to be used for safe modification of the values inside tensors/layers" />
 
 
 
@@ -207,125 +207,27 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>UnetBlock</h1>
-    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/unet.R'><code>R/unet.R</code></a></small>
-    <div class="hidden name"><code>UnetBlock.Rd</code></div>
+    <h1>Fastai assignment</h1>
+    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/experimental.R'><code>R/experimental.R</code></a></small>
+    <div class="hidden name"><code>grapes-f-grapes.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>A quasi-UNet block, using `PixelShuffle_ICNR upsampling`.</p>
+    <p>The assignment has to be used for safe modification of the values inside tensors/layers</p>
     </div>
 
-    <pre class="usage"><span class='fu'>UnetBlock</span><span class='op'>(</span>
-  <span class='va'>up_in_c</span>,
-  <span class='va'>x_in_c</span>,
-  <span class='va'>hook</span>,
-  final_div <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  blur <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  act_cls <span class='op'>=</span> <span class='fu'><a href='nn.html'>nn</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>$</span><span class='va'>ReLU</span>,
-  self_attention <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  init <span class='op'>=</span> <span class='fu'><a href='nn.html'>nn</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>$</span><span class='va'>init</span><span class='op'>$</span><span class='va'>kaiming_normal_</span>,
-  norm_type <span class='op'>=</span> <span class='cn'>NULL</span>,
-  ks <span class='op'>=</span> <span class='fl'>3</span>,
-  stride <span class='op'>=</span> <span class='fl'>1</span>,
-  padding <span class='op'>=</span> <span class='cn'>NULL</span>,
-  bias <span class='op'>=</span> <span class='cn'>NULL</span>,
-  ndim <span class='op'>=</span> <span class='fl'>2</span>,
-  bn_1st <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  transpose <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  xtra <span class='op'>=</span> <span class='cn'>NULL</span>,
-  bias_std <span class='op'>=</span> <span class='fl'>0.01</span>,
-  dilation <span class='op'>=</span> <span class='fl'>1</span>,
-  groups <span class='op'>=</span> <span class='fl'>1</span>,
-  padding_mode <span class='op'>=</span> <span class='st'>"zeros"</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='va'>left</span> <span class='op'>%f%</span> <span class='va'>right</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>up_in_c</th>
-      <td><p>up_in_c parameter</p></td>
+      <th>left</th>
+      <td><p>left side object</p></td>
     </tr>
     <tr>
-      <th>x_in_c</th>
-      <td><p>x_in_c parameter</p></td>
-    </tr>
-    <tr>
-      <th>hook</th>
-      <td><p>The hook is set to this intermediate layer to store the output needed for this block.</p></td>
-    </tr>
-    <tr>
-      <th>final_div</th>
-      <td><p>final div</p></td>
-    </tr>
-    <tr>
-      <th>blur</th>
-      <td><p>blur is used to avoid checkerboard artifacts at each layer.</p></td>
-    </tr>
-    <tr>
-      <th>act_cls</th>
-      <td><p>activation</p></td>
-    </tr>
-    <tr>
-      <th>self_attention</th>
-      <td><p>self_attention determines if we use a self-attention layer</p></td>
-    </tr>
-    <tr>
-      <th>init</th>
-      <td><p>initializer</p></td>
-    </tr>
-    <tr>
-      <th>norm_type</th>
-      <td><p>normalization type</p></td>
-    </tr>
-    <tr>
-      <th>ks</th>
-      <td><p>kernel size</p></td>
-    </tr>
-    <tr>
-      <th>stride</th>
-      <td><p>stride</p></td>
-    </tr>
-    <tr>
-      <th>padding</th>
-      <td><p>padding mode</p></td>
-    </tr>
-    <tr>
-      <th>bias</th>
-      <td><p>bias</p></td>
-    </tr>
-    <tr>
-      <th>ndim</th>
-      <td><p>number of dimensions</p></td>
-    </tr>
-    <tr>
-      <th>bn_1st</th>
-      <td><p>batch normalization 1st</p></td>
-    </tr>
-    <tr>
-      <th>transpose</th>
-      <td><p>transpose</p></td>
-    </tr>
-    <tr>
-      <th>xtra</th>
-      <td><p>xtra</p></td>
-    </tr>
-    <tr>
-      <th>bias_std</th>
-      <td><p>bias standard deviation</p></td>
-    </tr>
-    <tr>
-      <th>dilation</th>
-      <td><p>dilation</p></td>
-    </tr>
-    <tr>
-      <th>groups</th>
-      <td><p>groups</p></td>
-    </tr>
-    <tr>
-      <th>padding_mode</th>
-      <td><p>The mode of padding</p></td>
+      <th>right</th>
+      <td><p>right side object</p></td>
     </tr>
     </table>
 
