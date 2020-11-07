@@ -21,20 +21,12 @@ test_succeeds('movie lens data model fit', {
 
 
 test_succeeds('top movies bias/weights', {
-  top_movies = head(unique(rating_movie[ , count := .N, by = .(title)]
-                           [order(count,decreasing = T)]
-                           [, c('title','count')]),
-                    1e3)[['title']]
-  mean_ratings = unique(rating_movie[ , .(mean = mean(rating)), by = title])
+  top_movies = unique(rating_movie$title)
 
   movie_bias = learn %>% get_bias(top_movies, is_item = TRUE)
 
   result = data.table(bias = movie_bias,
                       title = top_movies)
-
-  res = merge(result, mean_ratings, all.y = FALSE)
-
-  res[order(bias, decreasing = TRUE)]
 
   movie_w = learn %>% get_weights(top_movies, is_item = TRUE, convert = TRUE)
 })
