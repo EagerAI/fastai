@@ -16,7 +16,7 @@
 #' @export
 unet_config <- function(blur = FALSE, blur_final = TRUE, self_attention = FALSE,
                         y_range = NULL, last_cross = TRUE, bottle = FALSE,
-                        act_cls = nn$ReLU, init = nn$init$kaiming_normal_, norm_type = NULL) {
+                        act_cls = nn()$ReLU, init = nn()$init$kaiming_normal_, norm_type = NULL) {
 
   args <- list(
     blur = blur,
@@ -91,8 +91,8 @@ unet_learner <- function(dls, arch, ...) {
 #' @return None
 #' @export
 UnetBlock <- function(up_in_c, x_in_c, hook, final_div = TRUE,
-                      blur = FALSE, act_cls = nn$ReLU, self_attention = FALSE,
-                      init = nn$init$kaiming_normal_, norm_type = NULL, ks = 3,
+                      blur = FALSE, act_cls = nn()$ReLU, self_attention = FALSE,
+                      init = nn()$init$kaiming_normal_, norm_type = NULL, ks = 3,
                       stride = 1, padding = NULL, bias = NULL, ndim = 2,
                       bn_1st = TRUE, transpose = FALSE, xtra = NULL, bias_std = 0.01,
                       dilation = 1, groups = 1, padding_mode = "zeros") {
@@ -148,7 +148,7 @@ UnetBlock <- function(up_in_c, x_in_c, hook, final_div = TRUE,
 DynamicUnet <- function(encoder, n_classes, img_size, blur = FALSE,
                         blur_final = TRUE, self_attention = FALSE,
                         y_range = NULL, last_cross = TRUE, bottle = FALSE,
-                        act_cls = nn$ReLU, init = nn$init$kaiming_normal_, norm_type = NULL) {
+                        act_cls = nn()$ReLU, init = nn()$init$kaiming_normal_, norm_type = NULL) {
 
   args <- list(
     encoder = encoder,

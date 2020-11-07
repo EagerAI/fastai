@@ -11,8 +11,8 @@ unet_config(
   y_range = NULL,
   last_cross = TRUE,
   bottle = FALSE,
-  act_cls = nn$ReLU,
-  init = nn$init$kaiming_normal_,
+  act_cls = nn()$ReLU,
+  init = nn()$init$kaiming_normal_,
   norm_type = NULL
 )
 }

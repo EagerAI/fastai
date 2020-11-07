@@ -212,7 +212,7 @@ get_files <- function(path, extensions = NULL, recurse = TRUE, folders = NULL, f
 #' @export
 parallel <- function(f, items, ...) {
 
-  tabular$parallel(
+  tabular()$parallel(
     f = f,
     items = items,
     ...
