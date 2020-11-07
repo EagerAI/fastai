@@ -159,8 +159,7 @@
 
       
 
-      </header><script src="audio_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="audio_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="audio_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><script src="audio_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Audio Classification</h1>
@@ -182,33 +181,33 @@
 <h2 class="hasAnchor">
 <a href="#fastaudio" class="anchor"></a>FastAudio</h2>
 <p>For now, the library can be installed via <code>git</code>. However, later it will be available on <code>pypi</code>:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/reticulate/man/py_install.html">py_install</a></span><span class="op">(</span><span class="st">'git+https://github.com/fastaudio/fastaudio.git'</span>, pip <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/reticulate/man/py_install.html">py_install</a></span><span class="op">(</span><span class="st">'git+https://github.com/fastaudio/fastaudio.git'</span>, pip <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></pre></div>
 </div>
 <div id="dataset" class="section level2">
 <h2 class="hasAnchor">
 <a href="#dataset" class="anchor"></a>Dataset</h2>
 <p>Grab data:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/URLs_SPEAKERS10.html">URLs_SPEAKERS10</a></span><span class="op">(</span><span class="op">)</span>
-<span class="va">path_dig</span> <span class="op">=</span> <span class="st">'SPEAKERS10'</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="fu"><a href="../reference/URLs_SPEAKERS10.html">URLs_SPEAKERS10</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">path_dig</span> <span class="op">=</span> <span class="st">'SPEAKERS10'</span></pre></div>
 <p>See audio extensions:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/audio_extensions.html">audio_extensions</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span>
-<span class="co">#[1] ".aif"  ".aifc" ".aiff" ".au"   ".m3u"  ".mp2" </span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="fu"><a href="../reference/audio_extensions.html">audio_extensions</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span>
+<span class="co">#[1] ".aif"  ".aifc" ".aiff" ".au"   ".m3u"  ".mp2" </span></pre></div>
 <p>Read files:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">fnames</span> <span class="op">=</span> <span class="fu"><a href="../reference/get_files.html">get_files</a></span><span class="op">(</span><span class="va">path_dig</span>, extensions <span class="op">=</span> <span class="fu"><a href="../reference/audio_extensions.html">audio_extensions</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-<span class="co"># (#3842) [Path('SPEAKERS10/f0004_us_f0004_00414.wav')...]</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="va">fnames</span> <span class="op">=</span> <span class="fu"><a href="../reference/get_files.html">get_files</a></span><span class="op">(</span><span class="va">path_dig</span>, extensions <span class="op">=</span> <span class="fu"><a href="../reference/audio_extensions.html">audio_extensions</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<span class="co"># (#3842) [Path('SPEAKERS10/f0004_us_f0004_00414.wav')...]</span></pre></div>
 </div>
 <div id="visualize" class="section level2">
 <h2 class="hasAnchor">
 <a href="#visualize" class="anchor"></a>Visualize</h2>
 <p>Read audio data and visualize a tensor:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">at</span> <span class="op">=</span> <span class="fu"><a href="../reference/AudioTensor_create.html">AudioTensor_create</a></span><span class="op">(</span><span class="va">fnames</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span>
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="va">at</span> <span class="op">=</span> <span class="fu"><a href="../reference/AudioTensor_create.html">AudioTensor_create</a></span><span class="op">(</span><span class="va">fnames</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span>
 <span class="va">at</span>; <span class="va">at</span><span class="op">$</span><span class="va">shape</span>
-<span class="va">at</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/show.html">show</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></code></pre></div>
+<span class="va">at</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/show.html">show</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></pre></div>
 <center>
 <p><img src="images/voice.png" alt="_" style="width: 700px;"></p>
 </center>
@@ -224,28 +223,28 @@
 <li>Voice</li>
 </ul>
 <p>Voice module is the most suitable because it contains human voices.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">cfg</span> <span class="op">=</span> <span class="fu"><a href="../reference/Voice.html">Voice</a></span><span class="op">(</span><span class="op">)</span>
+<div class="sourceCode" id="cb6"><pre class="downlit">
+<span class="va">cfg</span> <span class="op">=</span> <span class="fu"><a href="../reference/Voice.html">Voice</a></span><span class="op">(</span><span class="op">)</span>
 
 <span class="va">cfg</span><span class="op">$</span><span class="va">f_max</span>; <span class="va">cfg</span><span class="op">$</span><span class="va">sample_rate</span>
 <span class="co">#[1] 8000 # frequency range</span>
-<span class="co">#[1] 16000 # the sampling rate</span></code></pre></div>
+<span class="co">#[1] 16000 # the sampling rate</span></pre></div>
 <p>Turn data into spectrogram and crop signal:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">aud2spec</span> <span class="op">=</span> <span class="fu"><a href="../reference/AudioToSpec_from_cfg.html">AudioToSpec_from_cfg</a></span><span class="op">(</span><span class="va">cfg</span><span class="op">)</span>
+<div class="sourceCode" id="cb7"><pre class="downlit">
+<span class="va">aud2spec</span> <span class="op">=</span> <span class="fu"><a href="../reference/AudioToSpec_from_cfg.html">AudioToSpec_from_cfg</a></span><span class="op">(</span><span class="va">cfg</span><span class="op">)</span>
 
-<span class="va">crop1s</span> <span class="op">=</span> <span class="fu"><a href="../reference/ResizeSignal.html">ResizeSignal</a></span><span class="op">(</span><span class="fl">1000</span><span class="op">)</span></code></pre></div>
+<span class="va">crop1s</span> <span class="op">=</span> <span class="fu"><a href="../reference/ResizeSignal.html">ResizeSignal</a></span><span class="op">(</span><span class="fl">1000</span><span class="op">)</span></pre></div>
 <p>Create a pipeline and see the result:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">pipe</span> <span class="op">=</span> <span class="fu"><a href="../reference/Pipeline.html">Pipeline</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">AudioTensor_create</span>, <span class="va">crop1s</span>, <span class="va">aud2spec</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/connections.html">pipe</a></span><span class="op">(</span><span class="va">fnames</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/show.html">show</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit">
+<span class="va">pipe</span> <span class="op">=</span> <span class="fu"><a href="../reference/Pipeline.html">Pipeline</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">AudioTensor_create</span>, <span class="va">crop1s</span>, <span class="va">aud2spec</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/connections.html">pipe</a></span><span class="op">(</span><span class="va">fnames</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/show.html">show</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></pre></div>
 </div>
 <div id="dataloader" class="section level2">
 <h2 class="hasAnchor">
 <a href="#dataloader" class="anchor"></a>Dataloader</h2>
 <p>As usual, prepare a datalaoder:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">item_tfms</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="../reference/ResizeSignal.html">ResizeSignal</a></span><span class="op">(</span><span class="fl">1000</span><span class="op">)</span>, <span class="va">aud2spec</span><span class="op">)</span>
+<div class="sourceCode" id="cb9"><pre class="downlit">
+<span class="va">item_tfms</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="../reference/ResizeSignal.html">ResizeSignal</a></span><span class="op">(</span><span class="fl">1000</span><span class="op">)</span>, <span class="va">aud2spec</span><span class="op">)</span>
 
 <span class="va">get_y</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/substr.html">substring</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">name</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>
 
@@ -257,36 +256,37 @@
 
 <span class="va">dls</span> <span class="op">=</span> <span class="va">aud_digit</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/dataloaders.html">dataloaders</a></span><span class="op">(</span>source <span class="op">=</span> <span class="va">path_dig</span>, bs <span class="op">=</span> <span class="fl">64</span><span class="op">)</span>
 
-<span class="va">dls</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/show_batch.html">show_batch</a></span><span class="op">(</span>figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">8.5</span><span class="op">)</span>, nrows <span class="op">=</span> <span class="fl">3</span>, ncols <span class="op">=</span> <span class="fl">3</span>, max_n <span class="op">=</span> <span class="fl">9</span>, dpi <span class="op">=</span> <span class="fl">180</span><span class="op">)</span></code></pre></div>
+<span class="va">dls</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/show_batch.html">show_batch</a></span><span class="op">(</span>figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">8.5</span><span class="op">)</span>, nrows <span class="op">=</span> <span class="fl">3</span>, ncols <span class="op">=</span> <span class="fl">3</span>, max_n <span class="op">=</span> <span class="fl">9</span>, dpi <span class="op">=</span> <span class="fl">180</span><span class="op">)</span></pre></div>
 </div>
 <div id="pretrained-model" class="section level2">
 <h2 class="hasAnchor">
 <a href="#pretrained-model" class="anchor"></a>Pretrained model</h2>
 <p>We will use a pretrained ResNet model. However, the channel number and weight dimension have to be changed:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">alter_learner</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">learn</span>, <span class="va">channels</span> <span class="op">=</span> <span class="fl">1L</span><span class="op">)</span> <span class="op">{</span>
-  <span class="kw"><a href="https://rdrr.io/r/base/try.html">try</a></span><span class="op">(</span><span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[[</span><span class="st">'in_channels'</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">channels</span>,
-      silent <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-  <span class="kw"><a href="https://rdrr.io/r/base/try.html">try</a></span><span class="op">(</span><span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[[</span><span class="st">'weight'</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">torch</span><span class="op">$</span><span class="va">nn</span><span class="op">$</span><span class="va">parameter</span><span class="op">$</span><span class="fu">Parameter</span><span class="op">(</span><span class="va">torch</span><span class="op">$</span><span class="fu">narrow</span><span class="op">(</span><span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[[</span><span class="st">'weight'</span><span class="op">]</span><span class="op">]</span>,<span class="fl">1L</span>,<span class="fl">1L</span>,<span class="fl">1L</span><span class="op">)</span><span class="op">)</span>,
-      silent <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="op">}</span>
+<div class="sourceCode" id="cb10"><pre class="downlit">
+<span class="va">torch</span> <span class="op">=</span> <span class="fu"><a href="../reference/torch.html">torch</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">nn</span> <span class="op">=</span> <span class="fu"><a href="../reference/nn.html">nn</a></span><span class="op">(</span><span class="op">)</span>
 
+<span class="va">alter_learner</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">learn</span>, <span class="va">channels</span> <span class="op">=</span> <span class="fl">1L</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[[</span><span class="st">'in_channels'</span><span class="op">]</span><span class="op">]</span> <span class="op">%f%</span> <span class="va">channels</span>
+  <span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[[</span><span class="st">'weight'</span><span class="op">]</span><span class="op">]</span> <span class="op">%f%</span> <span class="va">torch</span><span class="op">$</span><span class="va">nn</span><span class="op">$</span><span class="va">parameter</span><span class="op">$</span><span class="fu">Parameter</span><span class="op">(</span><span class="va">torch</span><span class="op">$</span><span class="fu">narrow</span><span class="op">(</span>
+    <span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[[</span><span class="st">'weight'</span><span class="op">]</span><span class="op">]</span>,<span class="fl">1L</span>,<span class="fl">1L</span>,<span class="fl">1L</span><span class="op">)</span><span class="op">)</span>
+<span class="op">}</span>
 
 <span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/Learner.html">Learner</a></span><span class="op">(</span><span class="va">dls</span>, <span class="fu"><a href="../reference/xresnet18.html">xresnet18</a></span><span class="op">(</span>pretrained <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>, <span class="va">nn</span><span class="op">$</span><span class="fu">CrossEntropyLoss</span><span class="op">(</span><span class="op">)</span>, metrics<span class="op">=</span><span class="va">accuracy</span><span class="op">)</span>
 
 <span class="va">nnchannels</span> <span class="op">=</span> <span class="va">dls</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/one_batch.html">one_batch</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="va">.</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op">%&gt;%</span> <span class="va">.</span><span class="op">$</span><span class="va">shape</span> <span class="op">%&gt;%</span> <span class="va">.</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>
-<span class="fu">alter_learner</span><span class="op">(</span><span class="va">learn</span>, <span class="va">nnchannels</span><span class="op">)</span></code></pre></div>
+<span class="fu">alter_learner</span><span class="op">(</span><span class="va">learn</span>, <span class="va">nnchannels</span><span class="op">)</span></pre></div>
 <p>Find <code>lr</code>:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">lrs</span> <span class="op">=</span> <span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/lr_find.html">lr_find</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#SuggestedLRs(lr_min=0.03019951581954956, lr_steep=0.0030199517495930195)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit">
+<span class="va">lrs</span> <span class="op">=</span> <span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/lr_find.html">lr_find</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#SuggestedLRs(lr_min=0.03019951581954956, lr_steep=0.0030199517495930195)</span></pre></div>
 </div>
 <div id="conclusion" class="section level2">
 <h2 class="hasAnchor">
 <a href="#conclusion" class="anchor"></a>Conclusion</h2>
 <p>And <code>fit</code>:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">1e-3</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit">
+<span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">1e-3</span><span class="op">)</span></pre></div>
 <pre><code>epoch     train_loss  valid_loss  accuracy  time    
 0         5.494162    3.295561    0.632812  00:06     
 1         1.962470    0.236809    0.877604  00:06     
