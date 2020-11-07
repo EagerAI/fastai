@@ -95,15 +95,15 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   cpu_windows = c('torch==1.7.0+cpu torchvision==0.8.1+cpu torchaudio===0.7.0 -f https://download.pytorch.org/whl/torch_stable.html')
 
   if('torch' %in% required_py_pkgs ) {
-    required_py_pkgs = required_py_pkgs[!required_py_pkgs %in% 'torch']
     torch_r = 'torch' %in% required_py_pkgs
+    required_py_pkgs = required_py_pkgs[!required_py_pkgs %in% 'torch']
   } else {
     torch_r = character()
   }
 
   if('torchvision' %in% required_py_pkgs ) {
-    required_py_pkgs = required_py_pkgs[!required_py_pkgs %in% 'torchvision']
     torch_vision_r = 'torchvision' %in% required_py_pkgs
+    required_py_pkgs = required_py_pkgs[!required_py_pkgs %in% 'torchvision']
   } else {
     torch_vision_r = character()
   }
