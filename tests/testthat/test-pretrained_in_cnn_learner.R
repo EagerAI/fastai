@@ -96,11 +96,11 @@ test_succeeds('pet load alexnet', {
 })
 
 
-test_succeeds('alexnet change n_channels to 1L', {
-  learn = cnn_learner(dls, alexnet(), metrics = accuracy)
-  learn$model[0][0][0][['in_channels']] %f% 1L
-  expect_equal(learn$model[0][0][0][['in_channels']], 1L)
-})
+#test_succeeds('alexnet change n_channels to 1L', {
+#  learn = cnn_learner(dls, alexnet(), metrics = accuracy)
+#  learn$model[0][0][0][['in_channels']] %f% 1L
+#  expect_equal(learn$model[0][0][0][['in_channels']], 1L)
+#})
 
 test_succeeds('pet load vgg19_bn', {
   learn = cnn_learner(dls, vgg19_bn(), metrics = accuracy)
