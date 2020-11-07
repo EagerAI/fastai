@@ -5,19 +5,13 @@
 \title{Xresnet50_deep}
 \usage{
 xresnet50_deep(...)
-
-xresnet50_deep(...)
 }
 \arguments{
 \item{...}{parameters to pass}
 }
 \value{
 model
-
-model
 }
 \description{
-Load model architecture
-
 Load model architecture
 }

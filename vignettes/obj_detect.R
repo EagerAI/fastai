@@ -36,6 +36,8 @@ knitr::opts_chunk$set(echo = TRUE,eval = FALSE,echo = T)
 #  
 #  crit = RetinaNetFocalLoss(scales = scales, ratios = ratios)
 #  
+#  nn = nn()
+#  
 #  retinanet_split = function(m) {
 #    L(m$encoder,nn$Sequential(m$c5top6, m$p6top7, m$merges,
 #                         m$smoothers, m$classifier, m$box_regressor))$map(params())

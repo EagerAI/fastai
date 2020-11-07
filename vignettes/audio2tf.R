@@ -27,13 +27,13 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 
 ## -----------------------------------------------------------------------------
 #  torch = torch()
-#  alter_learner = function(learn, channels = 1L) {
-#    try(learn$model[0][0][['in_channels']] <- channels,
-#        silent = TRUE)
-#    try(learn$model[0][0][['weight']] <- torch$nn$parameter$Parameter(torch$narrow(learn$model[0][0][['weight']],1L,1L,1L)),
-#        silent = TRUE)
-#  }
+#  nn = nn()
 #  
+#  alter_learner = function(learn, channels = 1L) {
+#    learn$model[0][0][['in_channels']] %f% channels
+#    learn$model[0][0][['weight']] %f% torch$nn$parameter$Parameter(torch$narrow(
+#      learn$model[0][0][['weight']],1L,1L,1L))
+#  }
 #  
 #  learn = Learner(audio_dbunch, xresnet18(pretrained = FALSE), nn$CrossEntropyLoss(), metrics=accuracy)
 #  

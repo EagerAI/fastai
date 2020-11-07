@@ -50,26 +50,6 @@ TabularDataTable <- function(df, procs = NULL, cat_names = NULL, cont_names = NU
 }
 
 
-#' @title Trainable_params
-#'
-#' @description Return all trainable parameters of `m`
-#'
-#'
-#' @param m parameters
-#' @return None
-#' @export
-trainable_params <- function(m) {
-
-  if(missing(m)) {
-    tabular()$trainable_params
-  } else {
-    tabular()$trainable_params(
-      m = m
-    )
-  }
-
-}
-
 #' @title Tabular learner
 #'
 #' @description Get a `Learner` using `dls`, with `metrics`, including a `TabularModel` created using the remaining params.

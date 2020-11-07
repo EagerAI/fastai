@@ -13,16 +13,6 @@ SEResNeXtBlock(
   stride = 1,
   base_width = 4
 )
-
-SEResNeXtBlock(
-  expansion,
-  ni,
-  nf,
-  groups = 32,
-  reduction = 16,
-  stride = 1,
-  base_width = 4
-)
 }
 \arguments{
 \item{expansion}{decoder}
@@ -41,11 +31,7 @@ SEResNeXtBlock(
 }
 \value{
 Block object
-
-Block object
 }
 \description{
-SEResNeXtBlock
-
 SEResNeXtBlock
 }

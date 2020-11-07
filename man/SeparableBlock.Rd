@@ -5,29 +5,23 @@
 \title{SeparableBlock}
 \usage{
 SeparableBlock(expansion, ni, nf, reduction = 16, stride = 1, base_width = 4)
-
-SeparableBlock(expansion, ni, nf, reduction = 16, stride = 1, base_width = 4)
 }
 \arguments{
 \item{expansion}{decoder}
 
-\item{ni}{number of linear inputs}
+\item{ni}{number of inputs}
 
 \item{nf}{number of features}
 
-\item{reduction}{reduction number}
+\item{reduction}{number of reduction}
 
-\item{stride}{stride number}
+\item{stride}{number of stride}
 
-\item{base_width}{int, base width}
+\item{base_width}{base width}
 }
 \value{
 Block object
-
-Block object
 }
 \description{
-SeparableBlock
-
 SeparableBlock
 }

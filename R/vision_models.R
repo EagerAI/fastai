@@ -123,22 +123,6 @@ xresnet101 <- function(...) {
 }
 
 
-#' @title Xresnet50_deep
-#'
-#' @description Load model architecture
-#' @param ... parameters to pass
-#' @return model
-#' @export
-xresnet50_deep <- function(...) {
-  args = list(...)
-  if(length(args)>0) {
-    do.call(vision()$all$xresnet50_deep, args)
-  } else {
-    vision()$all$xresnet50_deep
-  }
-}
-
-
 
 #' @title Alexnet
 #'

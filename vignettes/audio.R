@@ -53,13 +53,14 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 #  dls %>% show_batch(figsize = c(15, 8.5), nrows = 3, ncols = 3, max_n = 9, dpi = 180)
 
 ## -----------------------------------------------------------------------------
-#  alter_learner = function(learn, channels = 1L) {
-#    try(learn$model[0][0][['in_channels']] <- channels,
-#        silent = TRUE)
-#    try(learn$model[0][0][['weight']] <- torch$nn$parameter$Parameter(torch$narrow(learn$model[0][0][['weight']],1L,1L,1L)),
-#        silent = TRUE)
-#  }
+#  torch = torch()
+#  nn = nn()
 #  
+#  alter_learner = function(learn, channels = 1L) {
+#    learn$model[0][0][['in_channels']] %f% channels
+#    learn$model[0][0][['weight']] %f% torch$nn$parameter$Parameter(torch$narrow(
+#      learn$model[0][0][['weight']],1L,1L,1L))
+#  }
 #  
 #  learn = Learner(dls, xresnet18(pretrained = FALSE), nn$CrossEntropyLoss(), metrics=accuracy)
 #  

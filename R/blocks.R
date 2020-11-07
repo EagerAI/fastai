@@ -23,31 +23,6 @@ SEBlock <- function(expansion, ni, nf, groups = 1, reduction = 16, stride = 1) {
 
 }
 
-#' @title SEResNeXtBlock
-#'
-#' @param expansion decoder
-#' @param ni number of inputs
-#' @param nf number of features
-#' @param groups number of groups
-#' @param reduction number of reduction
-#' @param stride number of strides
-#' @param base_width base width
-#' @return Block object
-#' @export
-SEResNeXtBlock <- function(expansion, ni, nf, groups = 32, reduction = 16, stride = 1, base_width = 4) {
-
-  vision()$all$SEResNeXtBlock(
-    expansion = expansion,
-    ni = ni,
-    nf = nf,
-    groups = as.integer(),
-    reduction = as.integer(reduction),
-    stride = as.integer(stride),
-    base_width = as.integer(base_width)
-  )
-
-}
-
 #' @title SeparableBlock
 #'
 #'
@@ -190,31 +165,6 @@ MaxPool <- function(ks = 2, stride = NULL, padding = 0, ndim = 2, ceil_mode = FA
     padding = as.integer(padding),
     ndim = as.integer(ndim),
     ceil_mode = ceil_mode
-  )
-
-}
-
-
-#' @title SeparableBlock
-#'
-#'
-#' @param expansion decoder
-#' @param ni number of linear inputs
-#' @param nf number of features
-#' @param reduction reduction number
-#' @param stride stride number
-#' @param base_width int, base width
-#' @return Block object
-#' @export
-SeparableBlock <- function(expansion, ni, nf, reduction = 16, stride = 1, base_width = 4) {
-
-  vision()$all$SeparableBlock(
-    expansion = expansion,
-    ni = ni,
-    nf = nf,
-    reduction = as.integer(reduction),
-    stride = as.integer(stride),
-    base_width = as.integer(base_width)
   )
 
 }
