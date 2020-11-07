@@ -13,10 +13,10 @@ test_succeeds('download movie lens data', {
 
 
 test_succeeds('read movie lens datas', {
-  ratings = fread('ml-100k/u.data', col.names = c(user,item,'rating','timestamp'))
-  movies = fread('ml-100k/u.item', col.names = c(item, 'title', 'date', 'N', 'url',
+  ratings = fread('ml-100k/u.data', col.names = c('userId','movieId','rating','timestamp'))
+  movies = fread('ml-100k/u.item', col.names = c('movieId', 'title', 'date', 'N', 'url',
                                                  paste('g',1:19,sep = '')))
-  rating_movie = ratings[movies[, .SD, .SDcols=c(item,title)], on = item]
+  rating_movie = ratings[movies[, .SD, .SDcols=c('movieId','title')], on = 'movieId']
 })
 
 test_succeeds('movie lens prepare dls', {
