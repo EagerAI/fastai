@@ -4,23 +4,13 @@ context("collab")
 
 source("utils.R")
 
-test_succeeds('download movie lens data', {
-  URLs_MOVIE_LENS_ML_100k()
-  user = 'userId'
-  item = 'movieId'
-  title = 'title'
-})
-
 
 test_succeeds('read movie lens datas', {
-  ratings = fread('ml-100k/u.data', col.names = c('userId','movieId','rating','timestamp'))
-  movies = fread('ml-100k/u.item', col.names = c('movieId', 'title', 'date', 'N', 'url',
-                                                 paste('g',1:19,sep = '')))
-  rating_movie = ratings[movies[, .SD, .SDcols=c('movieId','title')], on = 'movieId']
+  rating_movie = fread('files/rating_movie.csv')
 })
 
 test_succeeds('movie lens prepare dls', {
-  dls = CollabDataLoaders_from_df(rating_movie, seed=42, valid_pct=0.1, bs=64, item_name=title, path='ml-100k')
+  dls = CollabDataLoaders_from_df(rating_movie, seed=42, valid_pct=0.1, bs=64, item_name='title')
 })
 
 test_succeeds('movie lens data model fit', {
