@@ -8,8 +8,7 @@ test_succeeds('modify scalar tensor', {
   init = tensor(list(list(c(1, 2, 3), c(4, 5, 6), c(7, 8, 9)),list(c(10, 11, 12), c(13, 14, 15), c(16, 17, 18))))
   value = as.numeric(12)
   x3[0][0][1] %f% value
-  expect_equal(init[0][0][1]$cpu()$numpy() + 10, x3[0][0][1]$cpu()$numpy())
-  expect_equal(init[0][0][1] + 10, x3[0][0][1])
+  expect_equal(tensor(12), x3[0][0][1])
 })
 
 
