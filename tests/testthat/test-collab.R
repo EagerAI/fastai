@@ -6,7 +6,7 @@ source("utils.R")
 
 
 test_succeeds('read movie lens datas', {
-  rating_movie = fread('files/rating_movie.csv')
+  rating_movie = fread('https://raw.githubusercontent.com/henry090/fastai/master/files/rating_movie.csv')
 })
 
 test_succeeds('movie lens prepare dls', {
