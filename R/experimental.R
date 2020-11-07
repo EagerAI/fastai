@@ -26,14 +26,14 @@
     lng = as.integer(length(left) - 1)
 
     if(inherits(cls,'numeric')) {
-      left$put_(tensor(0L:lng),tensor(right))
+      left$put_(tensor(list(0L:lng)),tensor(right))
     } else if (inherits(cls,'integer')) {
-      left$put_(tensor(0L:lng),tensor(as.integer(right)))
+      left$put_(tensor(list(0L:lng)),tensor(as.integer(right)))
     } else if(inherits(cls, 'torch.Tensor')) {
       if(right$dtype$is_floating_point != left$dtype$is_floating_point) {
         stop('Cannot assign integer to numeric tensor', call. = FALSE)
       } else {
-        left$put_(tensor(0L:lng), right)
+        left$put_(tensor(list(0L:lng)), right)
       }
     }
     return(invisible(left))
