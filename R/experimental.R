@@ -48,13 +48,13 @@
 #' @export
 E = function(tensor) {
   # get slice
-  string = deparse(substitute(a[,,,1]))
+  string = deparse(substitute(tensor))
 
   string = gsub(" ", "", string, fixed = TRUE)
 
   string = gsub(",", ":,:", string)
 
-  string = gsub('(.)\\1+', '\\1', string)
+  string = gsub('([[:punct:]])\\1+', '\\1', string)
 
   # get tensor object
   a2 = sub("\\[.*", "", string)
@@ -65,16 +65,18 @@ E = function(tensor) {
   temp = tempdir()
   torch()$save(a, paste(temp,'torch_a',sep = '/'))
 
-  reticulate::py_run_string(glue::glue("
+  py_str = paste('a',gsub(a2,"",string),sep = '')
+
+  py_string = glue::glue("
 import torch
 a = torch.load('{temp}/torch_a')
-a = {string}
+a = {py_str}
 torch.save(a, '{temp}/torch_a')
-                          "))
+                          ")
+  reticulate::py_run_string(py_string)
   left = torch()$load(paste(temp,'torch_a',sep = '/'))
   return(left)
 }
-
 
 
 
