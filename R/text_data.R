@@ -582,6 +582,10 @@ TextDataLoaders_from_folder <- function(path, train = "train", valid = "valid",
   if(!is.null(args$val_bs))
     args$val_bs = as.integer(args$val_bs)
 
+  if(!is.null(args[['seed']])) {
+    args[['seed']] = as.integer(args[['seed']])
+  }
+
   do.call(text()$TextDataLoaders$from_folder, args)
 
 }
@@ -647,6 +651,10 @@ TextDataLoaders_from_csv <- function(path, csv_fname = "labels.csv",
   if(!is.null(args$val_bs))
     args$val_bs = as.integer(args$val_bs)
 
+  if(!is.null(args[['seed']])) {
+    args[['seed']] = as.integer(args[['seed']])
+  }
+
   do.call(text()$TextDataLoaders$from_csv, args)
 
 }
@@ -664,10 +672,16 @@ TextDataLoaders_from_csv <- function(path, csv_fname = "labels.csv",
 #' @export
 RandomSplitter <- function(valid_pct = 0.2, seed = NULL) {
 
-  text()$RandomSplitter(
+  args = list(
     valid_pct = valid_pct,
     seed = seed
   )
+
+  if(!is.null(args[['seed']])) {
+    args[['seed']] = as.integer(args[['seed']])
+  }
+
+  do.call(text()$RandomSplitter, args)
 
 }
 
