@@ -159,7 +159,8 @@
 
       
 
-      </header><script src="data_aug_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="data_aug_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="data_aug_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="data_aug_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Data augmentation</h1>
@@ -182,11 +183,11 @@
 <a href="#dataset" class="anchor"></a>Dataset</h2>
 <p>Data augmentation plays a huge role while working on Computer Vision task. Because the proper image transformation can drastically improve the generalization while building a deep learning model.</p>
 <p>Read image:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="va">img</span> <span class="op">=</span> <span class="fu">fastai</span><span class="fu">::</span><span class="fu"><a href="../reference/Image_create.html">Image_create</a></span><span class="op">(</span><span class="st">'files/cat.jpeg'</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">img</span> <span class="op">=</span> <span class="fu">fastai</span><span class="fu">::</span><span class="fu"><a href="../reference/Image_create.html">Image_create</a></span><span class="op">(</span><span class="st">'files/cat.jpeg'</span><span class="op">)</span></code></pre></div>
 <p>Plot it:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="va">img</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/show.html">show</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">img</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/show.html">show</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>&lt;center&gt;
 
 &lt;img src="images/cat.png" alt="_" style="width: 350px;"/&gt;
@@ -196,8 +197,8 @@
 <div id="flipped" class="section level2">
 <h2 class="hasAnchor">
 <a href="#flipped" class="anchor"></a>Flipped</h2>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="va">img_res</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">img</span>, <span class="va">img</span><span class="op">$</span><span class="fu">flip_lr</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">img_res</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">img</span>, <span class="va">img</span><span class="op">$</span><span class="fu">flip_lr</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="va">titles</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'original'</span>, <span class="st">'flipped'</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">fig</span>, <span class="va">axs</span><span class="op">)</span> <span class="op">%&lt;-%</span> <span class="fu"><a href="../reference/subplots.html">subplots</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>
@@ -207,7 +208,7 @@
                title<span class="op">=</span><span class="va">titles</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span>
 <span class="op">}</span>
 
-<span class="va">img</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></pre></div>
+<span class="va">img</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></code></pre></div>
 <pre><code>&lt;center&gt;
 
 &lt;img src="images/flip.png" alt="_" style="width: 350px;"/&gt;
@@ -217,14 +218,14 @@
 <div id="dihedral" class="section level2">
 <h2 class="hasAnchor">
 <a href="#dihedral" class="anchor"></a>Dihedral</h2>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">fig</span>, <span class="va">axs</span><span class="op">)</span> <span class="op">%&lt;-%</span> <span class="fu"><a href="../reference/subplots.html">subplots</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">fig</span>, <span class="va">axs</span><span class="op">)</span> <span class="op">%&lt;-%</span> <span class="fu"><a href="../reference/subplots.html">subplots</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span>
 
 <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">8</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="../reference/show_image.html">show_image</a></span><span class="op">(</span><span class="fu"><a href="../reference/DihedralItem.html">DihedralItem</a></span><span class="op">(</span>p <span class="op">=</span> <span class="fl">1.</span><span class="op">)</span><span class="op">(</span><span class="va">img</span>, split_idx <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>, ctx <span class="op">=</span> <span class="va">axs</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
 <span class="op">}</span>
 
-<span class="va">img</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></pre></div>
+<span class="va">img</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></code></pre></div>
 <pre><code>&lt;center&gt;
 
 &lt;img src="images/dihedral.png" alt="_" style="width: 350px;"/&gt;
@@ -234,8 +235,8 @@
 <div id="croppad" class="section level2">
 <h2 class="hasAnchor">
 <a href="#croppad" class="anchor"></a>CropPad</h2>
-<div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="va">sz</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">300L</span>, <span class="fl">500L</span>, <span class="fl">700L</span><span class="op">)</span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sz</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">300L</span>, <span class="fl">500L</span>, <span class="fl">700L</span><span class="op">)</span>
 <span class="va">size</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">'Size'</span>, <span class="va">sz</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">fig</span>, <span class="va">axs</span><span class="op">)</span> <span class="op">%&lt;-%</span> <span class="fu"><a href="../reference/subplots.html">subplots</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">12</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span>
@@ -244,7 +245,7 @@
   <span class="fu"><a href="../reference/show_image.html">show_image</a></span><span class="op">(</span><span class="va">img</span><span class="op">$</span><span class="fu">crop_pad</span><span class="op">(</span><span class="va">sz</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span>, ctx <span class="op">=</span> <span class="va">axs</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, title <span class="op">=</span> <span class="va">size</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span>
 <span class="op">}</span>
 
-<span class="va">img</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></pre></div>
+<span class="va">img</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></code></pre></div>
 <pre><code>&lt;center&gt;
 
 &lt;img src="images/crop.png" alt="_" style="width: 350px;"/&gt;
@@ -254,8 +255,8 @@
 <div id="padmodes" class="section level1">
 <h1 class="hasAnchor">
 <a href="#padmodes" class="anchor"></a>PadModes</h1>
-<div class="sourceCode" id="cb10"><pre class="downlit">
-<span class="va">pad_modes</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'border'</span>, <span class="st">'reflection'</span>, <span class="st">'zeros'</span><span class="op">)</span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pad_modes</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'border'</span>, <span class="st">'reflection'</span>, <span class="st">'zeros'</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">fig</span>, <span class="va">axs</span><span class="op">)</span> <span class="op">%&lt;-%</span> <span class="fu"><a href="../reference/subplots.html">subplots</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">12</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span>
 
@@ -264,7 +265,7 @@
              ctx <span class="op">=</span> <span class="va">axs</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, title <span class="op">=</span> <span class="va">pad_modes</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span>
 <span class="op">}</span>
 
-<span class="va">img</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></pre></div>
+<span class="va">img</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></code></pre></div>
 <pre><code>&lt;center&gt;
 
 &lt;img src="images/modes.png" alt="_" style="width: 350px;"/&gt;
@@ -273,8 +274,8 @@
 <div id="randomcrop" class="section level2">
 <h2 class="hasAnchor">
 <a href="#randomcrop" class="anchor"></a>RandomCrop</h2>
-<div class="sourceCode" id="cb12"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">fig</span>, <span class="va">axs</span><span class="op">)</span> <span class="op">%&lt;-%</span> <span class="fu"><a href="../reference/subplots.html">subplots</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">12</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">fig</span>, <span class="va">axs</span><span class="op">)</span> <span class="op">%&lt;-%</span> <span class="fu"><a href="../reference/subplots.html">subplots</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">12</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">ff</span> <span class="op">=</span> <span class="fu"><a href="../reference/RandomCrop.html">RandomCrop</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>
 
@@ -282,7 +283,7 @@
   <span class="fu"><a href="../reference/show_image.html">show_image</a></span><span class="op">(</span><span class="fu">ff</span><span class="op">(</span><span class="va">img</span><span class="op">)</span>, ctx <span class="op">=</span> <span class="va">axs</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
 <span class="op">}</span>
 
-<span class="va">img</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></pre></div>
+<span class="va">img</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></code></pre></div>
 <pre><code>&lt;center&gt;
 
 &lt;img src="images/random_crop.png" alt="_" style="width: 350px;"/&gt;
@@ -292,8 +293,8 @@
 <div id="centercrop" class="section level2">
 <h2 class="hasAnchor">
 <a href="#centercrop" class="anchor"></a>CenterCrop</h2>
-<div class="sourceCode" id="cb14"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">fig</span>, <span class="va">axs</span><span class="op">)</span> <span class="op">%&lt;-%</span> <span class="fu"><a href="../reference/subplots.html">subplots</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">12</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">fig</span>, <span class="va">axs</span><span class="op">)</span> <span class="op">%&lt;-%</span> <span class="fu"><a href="../reference/subplots.html">subplots</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">12</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">ff</span> <span class="op">=</span> <span class="fu"><a href="../reference/RandomCrop.html">RandomCrop</a></span><span class="op">(</span><span class="fl">100L</span><span class="op">)</span>
 
@@ -301,7 +302,7 @@
   <span class="fu"><a href="../reference/show_image.html">show_image</a></span><span class="op">(</span><span class="fu">ff</span><span class="op">(</span><span class="va">img</span>, split_idx <span class="op">=</span> <span class="fl">1L</span><span class="op">)</span>, ctx <span class="op">=</span> <span class="va">axs</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
 <span class="op">}</span>
 
-<span class="va">img</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></pre></div>
+<span class="va">img</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></code></pre></div>
 <pre><code>&lt;center&gt;
 
 &lt;img src="images/center_crop.png" alt="_" style="width: 350px;"/&gt;
@@ -311,8 +312,8 @@
 <div id="resize-method" class="section level2">
 <h2 class="hasAnchor">
 <a href="#resize-method" class="anchor"></a>Resize method</h2>
-<div class="sourceCode" id="cb16"><pre class="downlit">
-<span class="va">resize</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'squish'</span>, <span class="st">'pad'</span>, <span class="st">'crop'</span><span class="op">)</span>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">resize</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'squish'</span>, <span class="st">'pad'</span>, <span class="st">'crop'</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">fig</span>, <span class="va">axs</span><span class="op">)</span> <span class="op">%&lt;-%</span> <span class="fu"><a href="../reference/subplots.html">subplots</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">12</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span>
 
@@ -321,7 +322,7 @@
   <span class="fu"><a href="../reference/show_image.html">show_image</a></span><span class="op">(</span><span class="fu">rsz</span><span class="op">(</span><span class="va">img</span>, split_idx <span class="op">=</span> <span class="fl">0L</span><span class="op">)</span>, ctx <span class="op">=</span> <span class="va">axs</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, title <span class="op">=</span> <span class="va">resize</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span>
 <span class="op">}</span>
 
-<span class="va">img</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></pre></div>
+<span class="va">img</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></code></pre></div>
 <pre><code>&lt;center&gt;
 
 &lt;img src="images/resize.png" alt="_" style="width: 350px;"/&gt;
@@ -331,8 +332,8 @@
 <div id="randomresizecrop" class="section level2">
 <h2 class="hasAnchor">
 <a href="#randomresizecrop" class="anchor"></a>RandomResizeCrop</h2>
-<div class="sourceCode" id="cb18"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">fig</span>, <span class="va">axs</span><span class="op">)</span> <span class="op">%&lt;-%</span> <span class="fu"><a href="../reference/subplots.html">subplots</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">3</span>, figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">9</span>, <span class="fl">9</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">fig</span>, <span class="va">axs</span><span class="op">)</span> <span class="op">%&lt;-%</span> <span class="fu"><a href="../reference/subplots.html">subplots</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">3</span>, figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">9</span>, <span class="fl">9</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">ff</span> <span class="op">=</span> <span class="fu"><a href="../reference/RandomResizedCrop.html">RandomResizedCrop</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>
 
@@ -340,7 +341,7 @@
   <span class="fu"><a href="../reference/show_image.html">show_image</a></span><span class="op">(</span><span class="fu">ff</span><span class="op">(</span><span class="va">img</span><span class="op">)</span>, ctx <span class="op">=</span> <span class="va">axs</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
 <span class="op">}</span>
 
-<span class="va">img</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></pre></div>
+<span class="va">img</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></code></pre></div>
 <pre><code>&lt;center&gt;
 
 &lt;img src="images/random_resize.png" alt="_" style="width: 350px;"/&gt;

@@ -159,7 +159,8 @@
 
       
 
-      </header><script src="Basic_Tabular_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="Basic_Tabular_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="Basic_Tabular_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="Basic_Tabular_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Basic Tabular</h1>
@@ -181,11 +182,11 @@
 <h2 class="hasAnchor">
 <a href="#tabular" class="anchor"></a>Tabular</h2>
 <p>Tabular data can be downloaded from <a href="https://www.kaggle.com/jacksonchou/hr-data-for-analytics">Kaggle</a>. It is a basic binary classification case which contains both categorical and coninuous columns. Below one can see the structure of the dataset.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">magrittr</span><span class="op">)</span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">magrittr</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/henry090/fastai">fastai</a></span><span class="op">)</span>
 <span class="va">df</span> <span class="op">=</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">'datasets_236694_503227_HR_comma_sep.csv'</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></code></pre></div>
 <pre><code>&gt; str(df)
 Classes ‘data.table’ and 'data.frame':  14999 obs. of  10 variables:
  $ satisfaction_level   : num  0.38 0.8 0.11 0.72 0.37 0.41 0.1 0.92 0.89 0.42 ...
@@ -200,28 +201,28 @@ Classes ‘data.table’ and 'data.frame':  14999 obs. of  10 variables:
  $ salary               : chr  "low" "medium" "medium" "low" ...
  - attr(*, ".internal.selfref")=&lt;externalptr&gt; </code></pre>
 <p>Output column is <code>left</code> which is integer. Output has to be converted to character/factor.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="va">df</span><span class="op">[[</span><span class="st">'left'</span><span class="op">]</span><span class="op">]</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">df</span><span class="op">[[</span><span class="st">'left'</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df</span><span class="op">[[</span><span class="st">'left'</span><span class="op">]</span><span class="op">]</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">df</span><span class="op">[[</span><span class="st">'left'</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></code></pre></div>
 <p>Later, we need to divide column names into 2 groups:</p>
 <ul>
 <li>Categorical columns</li>
 <li>Continuous columns</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="va">dep_var</span> <span class="op">=</span> <span class="st">'left'</span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dep_var</span> <span class="op">=</span> <span class="st">'left'</span>
 <span class="va">cat_names</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'sales'</span>, <span class="st">'salary'</span><span class="op">)</span>
 <span class="va">cont_names</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"satisfaction_level"</span>, <span class="st">"last_evaluation"</span>, <span class="st">"number_project"</span>,
                <span class="st">"average_montly_hours"</span>, <span class="st">"time_spend_company"</span>,
-               <span class="st">"Work_accident"</span>, <span class="st">"promotion_last_5years"</span><span class="op">)</span></pre></div>
+               <span class="st">"Work_accident"</span>, <span class="st">"promotion_last_5years"</span><span class="op">)</span></code></pre></div>
 <p>Alternatively, it is easier to differentiate 2 types of columns (<code>integer/numeric</code> vs. <code>character/factor</code>) with <code><a href="https://dplyr.tidyverse.org/reference/select_all.html">dplyr::select_if(is.character)</a></code>.</p>
 <p>Next step is to split data into 2 parts. However, we need to randomly select indices not rows because the latter will be done by <code>tabular_learner</code>.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="va">tot</span> <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tot</span> <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span>
 <span class="va">tr_idx</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span>, <span class="fl">0.8</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span><span class="op">)</span>
-<span class="va">ts_idx</span> <span class="op">=</span> <span class="va">tot</span><span class="op">[</span><span class="op">!</span><span class="va">tot</span> <span class="op">%in%</span> <span class="va">tr_idx</span><span class="op">]</span></pre></div>
+<span class="va">ts_idx</span> <span class="op">=</span> <span class="va">tot</span><span class="op">[</span><span class="op">!</span><span class="va">tot</span> <span class="op">%in%</span> <span class="va">tr_idx</span><span class="op">]</span></code></pre></div>
 <p>The dataset can contain missing/large values. Therefore, <code>fill missing</code> and <code>normalize</code> functions from <code>fastai</code> can quickly handle these situations.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="va">procs</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="../reference/FillMissing.html">FillMissing</a></span><span class="op">(</span><span class="op">)</span>,<span class="fu"><a href="../reference/Categorify.html">Categorify</a></span><span class="op">(</span><span class="op">)</span>,<span class="fu"><a href="../reference/Normalize.html">Normalize</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">procs</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="../reference/FillMissing.html">FillMissing</a></span><span class="op">(</span><span class="op">)</span>,<span class="fu"><a href="../reference/Categorify.html">Categorify</a></span><span class="op">(</span><span class="op">)</span>,<span class="fu"><a href="../reference/Normalize.html">Normalize</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>In addition, filling missing values can be done in different ways:</p>
 <ul>
 <li>filling value by default is 0</li>
@@ -232,17 +233,17 @@ Classes ‘data.table’ and 'data.frame':  14999 obs. of  10 variables:
 <h2 class="hasAnchor">
 <a href="#dataloaders" class="anchor"></a>Dataloaders</h2>
 <p>Define data loaders and specify <code>batch_size</code>, <code>cat_names</code>, <code>cont_names</code> and etc:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit">
-<span class="va">dls</span> <span class="op">=</span> <span class="fu"><a href="../reference/TabularDataTable.html">TabularDataTable</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">procs</span>, <span class="va">cat_names</span>, <span class="va">cont_names</span>,
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dls</span> <span class="op">=</span> <span class="fu"><a href="../reference/TabularDataTable.html">TabularDataTable</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">procs</span>, <span class="va">cat_names</span>, <span class="va">cont_names</span>,
                        y_names <span class="op">=</span> <span class="va">dep_var</span>, splits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">tr_idx</span>, <span class="va">ts_idx</span><span class="op">)</span> <span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/dataloaders.html">dataloaders</a></span><span class="op">(</span>bs <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></pre></div>
+  <span class="fu"><a href="../reference/dataloaders.html">dataloaders</a></span><span class="op">(</span>bs <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></code></pre></div>
 <p>A deep learning model which contains embedding layers for categorical columns and linear for continuous ones. At the same time, define metrics:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="va">model</span> <span class="op">=</span> <span class="va">dls</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/tabular_learner.html">tabular_learner</a></span><span class="op">(</span>layers<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">200</span>,<span class="fl">100</span>,<span class="fl">100</span>,<span class="fl">200</span><span class="op">)</span>,
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">model</span> <span class="op">=</span> <span class="va">dls</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/tabular_learner.html">tabular_learner</a></span><span class="op">(</span>layers<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">200</span>,<span class="fl">100</span>,<span class="fl">100</span>,<span class="fl">200</span><span class="op">)</span>,
                                 config <span class="op">=</span> <span class="fu"><a href="../reference/tabular_config.html">tabular_config</a></span><span class="op">(</span>embed_p <span class="op">=</span> <span class="fl">0.3</span>, use_bn <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,
                                 metrics <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">accuracy</span>, <span class="fu"><a href="../reference/RocAucBinary.html">RocAucBinary</a></span><span class="op">(</span><span class="op">)</span>,
                                              <span class="fu"><a href="../reference/Precision.html">Precision</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="../reference/Recall.html">Recall</a></span><span class="op">(</span><span class="op">)</span>,
-                                             <span class="fu"><a href="../reference/F1Score.html">F1Score</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></pre></div>
+                                             <span class="fu"><a href="../reference/F1Score.html">F1Score</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>&gt; model
 TabularModel(
   (embeds): ModuleList(
@@ -274,11 +275,11 @@ TabularModel(
   )
 )</code></pre>
 <p>Before fitting model find optimal learning rate:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit">
-<span class="va">lrs</span> <span class="op">=</span> <span class="va">model</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/lr_find.html">lr_find</a></span><span class="op">(</span><span class="op">)</span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lrs</span> <span class="op">=</span> <span class="va">model</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/lr_find.html">lr_find</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co"># SuggestedLRs(lr_min=0.002754228748381138, lr_steep=1.5848931980144698e-06)</span>
 
-<span class="va">model</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot_lr_find.html">plot_lr_find</a></span><span class="op">(</span><span class="op">)</span></pre></div>
+<span class="va">model</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot_lr_find.html">plot_lr_find</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <center>
 <p><img src="images/loss_vig_tab.png" alt="_" style="width: 700px;"></p>
 </center>
@@ -287,8 +288,8 @@ TabularModel(
 <h2 class="hasAnchor">
 <a href="#fit" class="anchor"></a>Fit</h2>
 <p>And finally, fit the model:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit">
-<span class="va">res</span> <span class="op">=</span> <span class="va">model</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://generics.r-lib.org/reference/fit.html">fit</a></span><span class="op">(</span><span class="fl">5</span>, lr <span class="op">=</span> <span class="fl">0.005</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">res</span> <span class="op">=</span> <span class="va">model</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://generics.r-lib.org/reference/fit.html">fit</a></span><span class="op">(</span><span class="fl">5</span>, lr <span class="op">=</span> <span class="fl">0.005</span><span class="op">)</span></code></pre></div>
 <pre><code>epoch     train_loss  valid_loss  accuracy  roc_auc_score  precision_score  recall_score
 0         0.173383    0.189803    0.950333  0.969118       0.900000         0.893793   
 1         0.151623    0.132094    0.960000  0.980776       0.924264         0.908966    
@@ -296,11 +297,11 @@ TabularModel(
 3         0.149708    0.127625    0.958667  0.982307       0.916782         0.911724  
 4         0.132304    0.103252    0.967667  0.986488       0.964497         0.899310  </code></pre>
 <p>Plot confusion matrix:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit">
-<span class="va">model</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/get_confusion_matrix.html">get_confusion_matrix</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">model</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/get_confusion_matrix.html">get_confusion_matrix</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/r/graphics/fourfoldplot.html">fourfoldplot</a></span><span class="op">(</span>conf.level <span class="op">=</span> <span class="fl">0</span>, color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#ed3b3b"</span>, <span class="st">"#0099ff"</span><span class="op">)</span>,
              margin <span class="op">=</span> <span class="fl">1</span>,main <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Confusion Matrix"</span>,
-                                     <span class="fu"><a href="../reference/round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">*</span><span class="fl">100</span>,<span class="fl">0</span><span class="op">)</span>,<span class="st">"%"</span>,sep <span class="op">=</span> <span class="st">' '</span><span class="op">)</span><span class="op">)</span></pre></div>
+                                     <span class="fu"><a href="../reference/round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">*</span><span class="fl">100</span>,<span class="fl">0</span><span class="op">)</span>,<span class="st">"%"</span>,sep <span class="op">=</span> <span class="st">' '</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <center>
 <p><img src="images/conf_tab.png" alt="_" style="width: 700px;"></p>
 </center>
@@ -309,8 +310,8 @@ TabularModel(
 <h2 class="hasAnchor">
 <a href="#conclusion" class="anchor"></a>Conclusion</h2>
 <p>Let’s make predictions:</p>
-<div class="sourceCode" id="cb14"><pre class="downlit">
-<span class="va">model</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">df</span><span class="op">[</span><span class="fl">1000</span><span class="op">:</span><span class="fl">1010</span>,<span class="op">]</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">model</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">df</span><span class="op">[</span><span class="fl">1000</span><span class="op">:</span><span class="fl">1010</span>,<span class="op">]</span><span class="op">)</span></code></pre></div>
 <pre><code>        0           1         class
 1  0.004488660 0.99551141       1
 2  0.819206953 0.18079305       0
