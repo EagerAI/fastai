@@ -25,7 +25,8 @@ Imports:
     generics,
     png,
     ggplot2,
-    ggpubr
+    ggpubr,
+    glue
 Suggests:
     knitr,
     testthat,
