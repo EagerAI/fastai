@@ -59,7 +59,7 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 #  alter_learner = function(learn, channels = 1L) {
 #    learn$model[0][0][['in_channels']] %f% channels
 #    learn$model[0][0][0][['weight']] %f% torch$nn$parameter$Parameter(
-#    learn$model[0][0][0]$weight %>% narrow('[:,1,:,:]')
+#    (learn$model[0][0][0]$weight %>% narrow('[:,1,:,:]'))$unsqueeze(1L)
 #  )
 #  }
 #  

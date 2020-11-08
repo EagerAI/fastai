@@ -471,7 +471,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <span id="cb10-4"><a href="#cb10-4"></a>alter_learner =<span class="st"> </span><span class="cf">function</span>(learn, <span class="dt">channels =</span> 1L) {</span>
 <span id="cb10-5"><a href="#cb10-5"></a>  learn<span class="op">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;in_channels&#39;</span>]] <span class="op">%f%</span><span class="st"> </span>channels</span>
 <span id="cb10-6"><a href="#cb10-6"></a>  learn<span class="op">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;weight&#39;</span>]] <span class="op">%f%</span><span class="st"> </span>torch<span class="op">$</span>nn<span class="op">$</span>parameter<span class="op">$</span><span class="kw">Parameter</span>(</span>
-<span id="cb10-7"><a href="#cb10-7"></a>  learn<span class="op">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>]<span class="op">$</span>weight <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">narrow</span>(<span class="st">&#39;[:,1,:,:]&#39;</span>)</span>
+<span id="cb10-7"><a href="#cb10-7"></a>  (learn<span class="op">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>]<span class="op">$</span>weight <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">narrow</span>(<span class="st">&#39;[:,1,:,:]&#39;</span>))<span class="op">$</span><span class="kw">unsqueeze</span>(1L)</span>
 <span id="cb10-8"><a href="#cb10-8"></a>)</span>
 <span id="cb10-9"><a href="#cb10-9"></a>}</span>
 <span id="cb10-10"><a href="#cb10-10"></a></span>
