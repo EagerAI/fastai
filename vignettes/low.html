@@ -12,7 +12,7 @@
 
 
 
-<title>Speech Recognition</title>
+<title>Low-level ops</title>
 
 <script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
 // v0.0.1
@@ -387,7 +387,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 
 
-<h1 class="title toc-ignore">Speech Recognition</h1>
+<h1 class="title toc-ignore">Low-level ops</h1>
 
 
 
@@ -395,79 +395,62 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <h2>Intro</h2>
 <p>The <a href="https://github.com/fastai/fastai">fastai</a> library simplifies training fast and accurate neural nets using modern best practices. See the fastai website to get started. The library is based on research into deep learning best practices undertaken at <code>fast.ai</code>, and includes “out of the box” support for <code>vision</code>, <code>text</code>, <code>tabular</code>, and <code>collab</code> (collaborative filtering) models.</p>
 </div>
-<div id="dataset" class="section level2">
-<h2>Dataset</h2>
-<p>Grab data from TensorFlow Speech Commands (2.3 GB):</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>commands_path =<span class="st"> &quot;SPEECHCOMMANDS&quot;</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>audio_files =<span class="st"> </span><span class="kw">get_audio_files</span>(commands_path)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">length</span>(audio_files<span class="op">$</span>items)</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># [1] 105835</span></span></code></pre></div>
-</div>
-<div id="preprocess" class="section level2">
-<h2>Preprocess</h2>
-<p>Prepare dataset and put into data loader:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>DBMelSpec =<span class="st"> </span><span class="kw">SpectrogramTransformer</span>(<span class="dt">mel=</span><span class="ot">TRUE</span>, <span class="dt">to_db=</span><span class="ot">TRUE</span>)</span>
-<span id="cb2-2"><a href="#cb2-2"></a>a2s =<span class="st"> </span><span class="kw">DBMelSpec</span>()</span>
-<span id="cb2-3"><a href="#cb2-3"></a>crop_4000ms =<span class="st"> </span><span class="kw">ResizeSignal</span>(<span class="dv">4000</span>)</span>
-<span id="cb2-4"><a href="#cb2-4"></a>tfms =<span class="st"> </span><span class="kw">list</span>(crop_4000ms, a2s)</span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>auds =<span class="st"> </span><span class="kw">DataBlock</span>(<span class="dt">blocks =</span> <span class="kw">list</span>(<span class="kw">AudioBlock</span>(), <span class="kw">CategoryBlock</span>()),  </span>
-<span id="cb3-2"><a href="#cb3-2"></a>                 <span class="dt">get_items =</span> get_audio_files, </span>
-<span id="cb3-3"><a href="#cb3-3"></a>                 <span class="dt">splitter =</span> <span class="kw">RandomSplitter</span>(),</span>
-<span id="cb3-4"><a href="#cb3-4"></a>                 <span class="dt">item_tfms =</span> tfms,</span>
-<span id="cb3-5"><a href="#cb3-5"></a>                 <span class="dt">get_y =</span> parent_label)</span>
-<span id="cb3-6"><a href="#cb3-6"></a></span>
-<span id="cb3-7"><a href="#cb3-7"></a>audio_dbunch =<span class="st"> </span>auds <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">dataloaders</span>(commands_path, <span class="dt">item_tfms =</span> tfms, <span class="dt">bs =</span> <span class="dv">20</span>)</span></code></pre></div>
-<p>See batch:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>audio_dbunch <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">show_batch</span>(<span class="dt">figsize =</span> <span class="kw">c</span>(<span class="dv">15</span>, <span class="fl">8.5</span>), <span class="dt">nrows =</span> <span class="dv">3</span>, <span class="dt">ncols =</span> <span class="dv">3</span>, <span class="dt">max_n =</span> <span class="dv">9</span>, <span class="dt">dpi =</span> <span class="dv">180</span>)</span></code></pre></div>
-</div>
-<div id="model" class="section level2">
-<h2>Model</h2>
-<p>Before fitting, 3 channels to 1 channel:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>torch =<span class="st"> </span><span class="kw">torch</span>()</span>
-<span id="cb5-2"><a href="#cb5-2"></a>nn =<span class="st"> </span><span class="kw">nn</span>()</span>
-<span id="cb5-3"><a href="#cb5-3"></a></span>
-<span id="cb5-4"><a href="#cb5-4"></a>alter_learner =<span class="st"> </span><span class="cf">function</span>(learn, <span class="dt">channels =</span> 1L) {</span>
-<span id="cb5-5"><a href="#cb5-5"></a>  learn<span class="op">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;in_channels&#39;</span>]] <span class="op">%f%</span><span class="st"> </span>channels</span>
-<span id="cb5-6"><a href="#cb5-6"></a>  learn<span class="op">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;weight&#39;</span>]] <span class="op">%f%</span><span class="st"> </span>torch<span class="op">$</span>nn<span class="op">$</span>parameter<span class="op">$</span><span class="kw">Parameter</span>(</span>
-<span id="cb5-7"><a href="#cb5-7"></a>  (learn<span class="op">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>]<span class="op">$</span>weight <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">narrow</span>(<span class="st">&#39;[:,1,:,:]&#39;</span>))<span class="op">$</span><span class="kw">unsqueeze</span>(1L)</span>
-<span id="cb5-8"><a href="#cb5-8"></a>)</span>
-<span id="cb5-9"><a href="#cb5-9"></a>}</span>
-<span id="cb5-10"><a href="#cb5-10"></a></span>
-<span id="cb5-11"><a href="#cb5-11"></a>learn =<span class="st"> </span><span class="kw">Learner</span>(audio_dbunch, <span class="kw">xresnet18</span>(<span class="dt">pretrained =</span> <span class="ot">FALSE</span>), nn<span class="op">$</span><span class="kw">CrossEntropyLoss</span>(), <span class="dt">metrics=</span>accuracy)</span>
-<span id="cb5-12"><a href="#cb5-12"></a></span>
-<span id="cb5-13"><a href="#cb5-13"></a>nnchannels =<span class="st"> </span>audio_dbunch <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">one_batch</span>() <span class="op">%&gt;%</span><span class="st"> </span>.[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span>.<span class="op">$</span>shape <span class="op">%&gt;%</span><span class="st"> </span>.[<span class="dv">1</span>]</span>
-<span id="cb5-14"><a href="#cb5-14"></a></span>
-<span id="cb5-15"><a href="#cb5-15"></a><span class="kw">alter_learner</span>(learn, nnchannels)</span></code></pre></div>
-</div>
-<div id="add-callbacks" class="section level2">
-<h2>Add callbacks</h2>
-<p>Weights and biases could be save and visualized on <a href="https://wandb.ai/">wandb.ai</a>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># login for the 1st time then remove it</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="kw">login</span>(<span class="st">&quot;API_key_from_wandb_dot_ai&quot;</span>)</span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="kw">init</span>(<span class="dt">project=</span><span class="st">&#39;R&#39;</span>)</span></code></pre></div>
-<pre><code>wandb: Currently logged in as: henry090 (use `wandb login --relogin` to force relogin)
-wandb: Tracking run with wandb version 0.10.8
-wandb: Syncing run macabre-zombie-2
-wandb: ⭐️ View project at https://wandb.ai/henry090/speech_recognition_from_R
-wandb: 🚀 View run at https://wandb.ai/henry090/speech_recognition_from_R/runs/2sjw3juv
-wandb: Run data is saved locally in wandb/run-20201030_224503-2sjw3juv
-wandb: Run `wandb off` to turn off syncing.</code></pre>
-</div>
-<div id="conclusion" class="section level2">
-<h2>Conclusion</h2>
-<p>Now we can train our model:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>learn <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fit_one_cycle</span>(<span class="dv">3</span>, <span class="dt">lr_max=</span><span class="kw">slice</span>(<span class="fl">1e-2</span>), <span class="dt">cbs =</span> <span class="kw">list</span>(<span class="kw">WandbCallback</span>()))</span></code></pre></div>
-<pre><code>epoch   train_loss   valid_loss   accuracy   time 
-------  -----------  -----------  ---------  -----
-epoch   train_loss   valid_loss   accuracy   time 
-------  -----------  -----------  ---------  -----
-WandbCallback requires use of &quot;SaveModelCallback&quot; to log best model
-0       0.590236     0.728817     0.787121   04:18 
-WandbCallback was not able to get prediction samples -&gt; wandb.log must be passed a dictionary
-1       0.288492     0.310335     0.908490   04:19 
-2       0.182899     0.196792     0.941088   04:10 </code></pre>
-<p>See beautiful dashboard here:</p>
-<pre><code>https://wandb.ai/henry090/speech_recognition_from_R/runs/2sjw3juv?workspace=user-henry090</code></pre>
+<div id="get-model" class="section level2">
+<h2>Get model</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">URLs_MNIST_SAMPLE</span>()</span>
+<span id="cb1-2"><a href="#cb1-2"></a>tfms =<span class="st"> </span><span class="kw">aug_transforms</span>(<span class="dt">do_flip =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a>path =<span class="st"> &#39;mnist_sample&#39;</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>bs =<span class="st"> </span><span class="dv">20</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>data =<span class="st"> </span><span class="kw">ImageDataLoaders_from_folder</span>(path, <span class="dt">batch_tfms =</span> tfms, <span class="dt">size =</span> <span class="dv">26</span>, <span class="dt">bs =</span> bs)</span>
+<span id="cb1-6"><a href="#cb1-6"></a>learn =<span class="st"> </span><span class="kw">cnn_learner</span>(data, <span class="kw">xresnet50_deep</span>(), <span class="dt">metrics =</span> accuracy)</span></code></pre></div>
+<p>Modify channels to 1:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>init =<span class="st"> </span>learn<span class="op">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;in_channels&#39;</span>]]</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">print</span>(init)</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># 3</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>learn<span class="op">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;in_channels&#39;</span>]] <span class="op">%f%</span><span class="st"> </span>1L</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="kw">print</span>(learn<span class="op">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;in_channels&#39;</span>]])</span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="co"># 1</span></span></code></pre></div>
+<p>Here, one can observe a special assignment <code>%f%</code>. It helps for safe modification of layer parameters.</p>
+<p>How to see and modify other parameters of the layer? First see names:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">names</span>(learn<span class="op">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>])</span></code></pre></div>
+<pre><code> [1] &quot;add_module&quot;                &quot;apply&quot;                     &quot;bfloat16&quot;                 
+ [4] &quot;bias&quot;                      &quot;buffers&quot;                   &quot;children&quot;                 
+ [7] &quot;cpu&quot;                       &quot;cuda&quot;                      &quot;dilation&quot;                 
+[10] &quot;double&quot;                    &quot;dump_patches&quot;              &quot;eval&quot;                     
+[13] &quot;extra_repr&quot;                &quot;float&quot;                     &quot;forward&quot;                  
+[16] &quot;groups&quot;                    &quot;half&quot;                      &quot;has_children&quot;             
+[19] &quot;in_channels&quot;               &quot;kernel_size&quot;               &quot;load_state_dict&quot;          
+[22] &quot;modules&quot;                   &quot;named_buffers&quot;             &quot;named_children&quot;           
+[25] &quot;named_modules&quot;             &quot;named_parameters&quot;          &quot;out_channels&quot;             
+[28] &quot;output_padding&quot;            &quot;padding&quot;                   &quot;padding_mode&quot;             
+[31] &quot;parameters&quot;                &quot;register_backward_hook&quot;    &quot;register_buffer&quot;          
+[34] &quot;register_forward_hook&quot;     &quot;register_forward_pre_hook&quot; &quot;register_parameter&quot;       
+[37] &quot;requires_grad_&quot;            &quot;reset_parameters&quot;          &quot;share_memory&quot;             
+[40] &quot;state_dict&quot;                &quot;stride&quot;                    &quot;T_destination&quot;            
+[43] &quot;to&quot;                        &quot;train&quot;                     &quot;training&quot;                 
+[46] &quot;transposed&quot;                &quot;type&quot;                      &quot;weight&quot;                   
+[49] &quot;zero_grad&quot;   </code></pre>
+<p>Kernel size from <code>(3, 3)</code> to 9.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">print</span>(learn<span class="op">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>])</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="co"># Conv2d(3, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False))</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>learn<span class="op">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;kernel_size&#39;</span>]] <span class="op">%f%</span><span class="st">  </span>reticulate<span class="op">::</span><span class="kw">tuple</span>(<span class="kw">list</span>(9L,9L))</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co"># Conv2d(1, 32, kernel_size=(9, 9), stride=(2, 2), padding=(1, 1), bias=False)</span></span></code></pre></div>
+<p>In addition, one could replace values inside tensors with the same assignment.</p>
+<p>For single in-place value modification:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>x =<span class="st"> </span><span class="kw">tensor</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>))</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="kw">print</span>(x[<span class="dv">0</span>][<span class="dv">0</span>])</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co"># tensor(1.)</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co"># Now change it to 99.</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>x[<span class="dv">0</span>][<span class="dv">0</span>] <span class="op">%f%</span><span class="st"> </span><span class="dv">99</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="kw">print</span>(x[<span class="dv">0</span>][<span class="dv">0</span>])</span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="co"># tensor(99.)</span></span></code></pre></div>
+<p>Modify 2 or more values:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">print</span>(x[<span class="dv">0</span>])</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="co"># tensor([99.,  2.])</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co"># change to 55, 55</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>x[<span class="dv">0</span>] <span class="op">%f%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">55</span>,<span class="dv">55</span>)</span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="co"># tensor([55., 55.])</span></span></code></pre></div>
 </div>
 
 

@@ -1,0 +1,109 @@
+---
+title: "Low-level ops"
+output:
+  rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Low-level ops}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,eval = FALSE,echo = T)
+```
+
+## Intro
+
+The [fastai](https://github.com/fastai/fastai) library simplifies training fast and accurate neural nets using modern best practices. See the fastai website to get started. The library is based on research into deep learning best practices undertaken at ```fast.ai```, and includes "out of the box" support for ```vision```, ```text```, ```tabular```, and ```collab``` (collaborative filtering) models. 
+
+
+## Get model
+
+```{r}
+URLs_MNIST_SAMPLE()
+tfms = aug_transforms(do_flip = FALSE)
+path = 'mnist_sample'
+bs = 20
+data = ImageDataLoaders_from_folder(path, batch_tfms = tfms, size = 26, bs = bs)
+learn = cnn_learner(data, xresnet50_deep(), metrics = accuracy)
+```
+
+Modify channels to 1:
+
+```{r}
+init = learn$model[0][0][0][['in_channels']]
+print(init)
+# 3
+learn$model[0][0][0][['in_channels']] %f% 1L
+print(learn$model[0][0][0][['in_channels']])
+# 1
+```
+
+Here, one can observe a special assignment ```%f%```. It helps for safe modification of layer parameters.
+
+How to see and modify other parameters of the layer?
+First see names:
+
+```{r}
+names(learn$model[0][0][0])
+```
+
+```
+ [1] "add_module"                "apply"                     "bfloat16"                 
+ [4] "bias"                      "buffers"                   "children"                 
+ [7] "cpu"                       "cuda"                      "dilation"                 
+[10] "double"                    "dump_patches"              "eval"                     
+[13] "extra_repr"                "float"                     "forward"                  
+[16] "groups"                    "half"                      "has_children"             
+[19] "in_channels"               "kernel_size"               "load_state_dict"          
+[22] "modules"                   "named_buffers"             "named_children"           
+[25] "named_modules"             "named_parameters"          "out_channels"             
+[28] "output_padding"            "padding"                   "padding_mode"             
+[31] "parameters"                "register_backward_hook"    "register_buffer"          
+[34] "register_forward_hook"     "register_forward_pre_hook" "register_parameter"       
+[37] "requires_grad_"            "reset_parameters"          "share_memory"             
+[40] "state_dict"                "stride"                    "T_destination"            
+[43] "to"                        "train"                     "training"                 
+[46] "transposed"                "type"                      "weight"                   
+[49] "zero_grad"   
+```
+
+Kernel size from ```(3, 3)``` to 9.
+
+```{r}
+print(learn$model[0][0][0])
+# Conv2d(3, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False))
+learn$model[0][0][0][['kernel_size']] %f%  reticulate::tuple(list(9L,9L))
+# Conv2d(1, 32, kernel_size=(9, 9), stride=(2, 2), padding=(1, 1), bias=False)
+```
+
+In addition, one could replace values inside tensors with  the same assignment.
+
+For single in-place value modification:
+
+```{r}
+x = tensor(c(1,2), c(3,4))
+print(x[0][0])
+# tensor(1.)
+
+# Now change it to 99.
+x[0][0] %f% 99
+print(x[0][0])
+# tensor(99.)
+```
+
+Modify 2 or more values:
+
+```{r}
+print(x[0])
+# tensor([99.,  2.])
+# change to 55, 55
+x[0] %f% c(55,55)
+# tensor([55., 55.])
+```
+
+
+
+
+
+

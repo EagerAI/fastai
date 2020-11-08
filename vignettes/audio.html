@@ -470,14 +470,15 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <span id="cb10-3"><a href="#cb10-3"></a></span>
 <span id="cb10-4"><a href="#cb10-4"></a>alter_learner =<span class="st"> </span><span class="cf">function</span>(learn, <span class="dt">channels =</span> 1L) {</span>
 <span id="cb10-5"><a href="#cb10-5"></a>  learn<span class="op">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;in_channels&#39;</span>]] <span class="op">%f%</span><span class="st"> </span>channels</span>
-<span id="cb10-6"><a href="#cb10-6"></a>  learn<span class="op">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;weight&#39;</span>]] <span class="op">%f%</span><span class="st"> </span>torch<span class="op">$</span>nn<span class="op">$</span>parameter<span class="op">$</span><span class="kw">Parameter</span>(torch<span class="op">$</span><span class="kw">narrow</span>(</span>
-<span id="cb10-7"><a href="#cb10-7"></a>    learn<span class="op">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;weight&#39;</span>]],1L,1L,1L))</span>
-<span id="cb10-8"><a href="#cb10-8"></a>}</span>
-<span id="cb10-9"><a href="#cb10-9"></a></span>
-<span id="cb10-10"><a href="#cb10-10"></a>learn =<span class="st"> </span><span class="kw">Learner</span>(dls, <span class="kw">xresnet18</span>(<span class="dt">pretrained =</span> <span class="ot">FALSE</span>), nn<span class="op">$</span><span class="kw">CrossEntropyLoss</span>(), <span class="dt">metrics=</span>accuracy)</span>
-<span id="cb10-11"><a href="#cb10-11"></a></span>
-<span id="cb10-12"><a href="#cb10-12"></a>nnchannels =<span class="st"> </span>dls <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">one_batch</span>() <span class="op">%&gt;%</span><span class="st"> </span>.[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span>.<span class="op">$</span>shape <span class="op">%&gt;%</span><span class="st"> </span>.[<span class="dv">1</span>]</span>
-<span id="cb10-13"><a href="#cb10-13"></a><span class="kw">alter_learner</span>(learn, nnchannels)</span></code></pre></div>
+<span id="cb10-6"><a href="#cb10-6"></a>  learn<span class="op">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;weight&#39;</span>]] <span class="op">%f%</span><span class="st"> </span>torch<span class="op">$</span>nn<span class="op">$</span>parameter<span class="op">$</span><span class="kw">Parameter</span>(</span>
+<span id="cb10-7"><a href="#cb10-7"></a>  (learn<span class="op">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>]<span class="op">$</span>weight <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">narrow</span>(<span class="st">&#39;[:,1,:,:]&#39;</span>))<span class="op">$</span><span class="kw">unsqueeze</span>(1L)</span>
+<span id="cb10-8"><a href="#cb10-8"></a>)</span>
+<span id="cb10-9"><a href="#cb10-9"></a>}</span>
+<span id="cb10-10"><a href="#cb10-10"></a></span>
+<span id="cb10-11"><a href="#cb10-11"></a>learn =<span class="st"> </span><span class="kw">Learner</span>(dls, <span class="kw">xresnet18</span>(<span class="dt">pretrained =</span> <span class="ot">FALSE</span>), nn<span class="op">$</span><span class="kw">CrossEntropyLoss</span>(), <span class="dt">metrics=</span>accuracy)</span>
+<span id="cb10-12"><a href="#cb10-12"></a></span>
+<span id="cb10-13"><a href="#cb10-13"></a>nnchannels =<span class="st"> </span>dls <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">one_batch</span>() <span class="op">%&gt;%</span><span class="st"> </span>.[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span>.<span class="op">$</span>shape <span class="op">%&gt;%</span><span class="st"> </span>.[<span class="dv">1</span>]</span>
+<span id="cb10-14"><a href="#cb10-14"></a><span class="kw">alter_learner</span>(learn, nnchannels)</span></code></pre></div>
 <p>Find <code>lr</code>:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>lrs =<span class="st"> </span>learn <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">lr_find</span>()</span>
 <span id="cb11-2"><a href="#cb11-2"></a><span class="co">#SuggestedLRs(lr_min=0.03019951581954956, lr_steep=0.0030199517495930195)</span></span></code></pre></div>
