@@ -112,6 +112,10 @@ dataloaders <- function(object, ...) {
     my_list[['seq_len']] = as.integer(my_list[['seq_len']])
   }
 
+  if(!is.null(my_list[['num_workers']])) {
+    my_list[['num_workers']] = as.integer(my_list[['num_workers']])
+  }
+
   do.call(object$dataloaders,my_list)
 }
 
