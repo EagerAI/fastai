@@ -40,8 +40,9 @@ test_succeeds('mnist_sample cnn xresnet50_deep channel modify', {
 
 test_succeeds('tensor slice', {
   abb = torch()$rand(list(3L,3L,3L))
-  E(abb[0,1,1])
+  narrow(abb,'[:,:,1]')
 })
+
 
 
 
