@@ -13,6 +13,7 @@ articles:
   gpt: gpt.html
   head_pose: head_pose.html
   lightning: lightning.html
+  low: low.html
   medical_dcm: medical_dcm.html
   migrating_ignite: migrating_ignite.html
   migrating_pytorch: migrating_pytorch.html
@@ -20,7 +21,7 @@ articles:
   optimizer: optimizer.html
   super_res_gan: super_res_gan.html
   time_series: time_series.html
-last_built: 2020-11-08T15:15Z
+last_built: 2020-11-09T15:20Z
 urls:
   reference: https://henry090.github.io/fastai//reference
   article: https://henry090.github.io/fastai//articles

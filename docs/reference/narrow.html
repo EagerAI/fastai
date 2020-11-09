@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Articles • fastai</title>
+<title>Modify tensor — narrow • fastai</title>
 
 
 <!-- jquery -->
@@ -45,7 +45,8 @@
 
 
 
-<meta property="og:title" content="Articles" />
+<meta property="og:title" content="Modify tensor — narrow" />
+<meta property="og:description" content="Modify tensor" />
 
 
 
@@ -64,7 +65,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-article-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -206,54 +207,39 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Articles</h1>
+    <h1>Modify tensor</h1>
+    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/experimental.R'><code>R/experimental.R</code></a></small>
+    <div class="hidden name"><code>narrow.Rd</code></div>
     </div>
 
-    <div class="section ">
-      <h3>All vignettes</h3>
-      <p class="section-desc"></p>
-
-      <dl>
-        <dt><a href="Basic_Tabular.html">Basic Tabular</a></dt>
-        <dd></dt>
-        <dt><a href="audio.html">Audio Classification</a></dt>
-        <dd></dt>
-        <dt><a href="audio2tf.html">Speech Recognition</a></dt>
-        <dd></dt>
-        <dt><a href="basic_img_class.html">Basic Image Classification</a></dt>
-        <dd></dt>
-        <dt><a href="callbacks.html">Callbacks</a></dt>
-        <dd></dt>
-        <dt><a href="catalyst.html">Migrating from Catalyst</a></dt>
-        <dd></dt>
-        <dt><a href="custom_img.html">Custom Image Classification</a></dt>
-        <dd></dt>
-        <dt><a href="data_aug.html">Data augmentation</a></dt>
-        <dd></dt>
-        <dt><a href="gpt.html">GPT2</a></dt>
-        <dd></dt>
-        <dt><a href="head_pose.html">Head pose</a></dt>
-        <dd></dt>
-        <dt><a href="lightning.html">Migrating from Lightning</a></dt>
-        <dd></dt>
-        <dt><a href="low.html">Low-level ops</a></dt>
-        <dd></dt>
-        <dt><a href="medical_dcm.html">Medical image</a></dt>
-        <dd></dt>
-        <dt><a href="migrating_ignite.html">Migrating from Ignite</a></dt>
-        <dd></dt>
-        <dt><a href="migrating_pytorch.html">Migrating from Pytorch</a></dt>
-        <dd></dt>
-        <dt><a href="obj_detect.html">Object detection</a></dt>
-        <dd></dt>
-        <dt><a href="optimizer.html">Optimizer</a></dt>
-        <dd></dt>
-        <dt><a href="super_res_gan.html">Super-Resolution GAN</a></dt>
-        <dd></dt>
-        <dt><a href="time_series.html">Time-Series</a></dt>
-        <dd></dt>
-      </dl>
+    <div class="ref-description">
+    <p>Modify tensor</p>
     </div>
+
+    <pre class="usage"><span class='fu'>narrow</span><span class='op'>(</span><span class='va'>tensor</span>, <span class='va'>slice</span><span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>tensor</th>
+      <td><p>torch tensor</p></td>
+    </tr>
+    <tr>
+      <th>slice</th>
+      <td><p>dimension</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>tensor</p>
+
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
