@@ -57,6 +57,8 @@ a = torch.load('{temp}/torch_a')
 a = a{slice}
 torch.save(a, '{temp}/torch_a')
                           ")
+  # fix windows
+  py_string = gsub(py_string, replacement = '/',pattern = '\\',fixed=TRUE)
   reticulate::py_run_string(py_string)
   left = torch()$load(paste(temp,'torch_a',sep = '/'))
   return(left)
