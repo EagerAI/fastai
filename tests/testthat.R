@@ -5,6 +5,6 @@ library(fastai)
 library(reticulate)
 library(magrittr)
 library(data.table)
-library(magrittr)
+
 test_check("fastai")
 

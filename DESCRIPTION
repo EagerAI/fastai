@@ -37,6 +37,5 @@ Suggests:
     vctrs,
     stats,
     utils,
-    R.utils,
-    magrittr
+    R.utils
 VignetteBuilder: knitr

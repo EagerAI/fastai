@@ -11,14 +11,13 @@ test_succeeds('download MNIST pickler', {
 })
 
 test_succeeds('fit nn_module MNIST', {
-  c(c(x_train, y_train), c(x_valid, y_valid), res) %<-%
-    py_load_object('mnist.pkl', encoding='latin-1')
+  object = reticulate::py_load_object('mnist.pkl', encoding='latin-1')
 
-  x_train = x_train[1:500,1:784]
-  x_valid = x_valid[1:500,1:784]
+  x_train = object[[1]][[1]][1:500,1:784]
+  x_valid = object[[2]][[1]][1:500,1:784]
 
-  y_train = as.integer(y_train)[1:500]
-  y_valid = as.integer(y_valid)[1:500]
+  y_train = as.integer(object[[1]][[2]])[1:500]
+  y_valid = as.integer(object[[2]][[2]])[1:500]
 
   example = array_reshape(x_train[1,], c(28,28))
 
