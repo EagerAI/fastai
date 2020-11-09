@@ -244,9 +244,6 @@
     <loc>https://henry090.github.io/fastai//reference/DynamicUnet.html</loc>
   </url>
   <url>
-    <loc>https://henry090.github.io/fastai//reference/E.html</loc>
-  </url>
-  <url>
     <loc>https://henry090.github.io/fastai//reference/EarlyStoppingCallback.html</loc>
   </url>
   <url>
@@ -500,6 +497,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/Module.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/Module_test.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/MultiCategorize.html</loc>
@@ -1735,7 +1735,13 @@
     <loc>https://henry090.github.io/fastai//reference/n_px.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/narrow.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/nn.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/nn_module.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/noop.html</loc>
@@ -2255,6 +2261,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//articles/lightning.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//articles/low.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//articles/medical_dcm.html</loc>

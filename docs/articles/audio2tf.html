@@ -130,6 +130,9 @@
     <li>
       <a href="../articles/callbacks.html">Callbacks</a>
     </li>
+    <li>
+      <a href="../articles/low.html">Low-level API</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -159,7 +162,7 @@
 
       
 
-      </header><script src="audio2tf_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="audio2tf_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+      </header><script src="audio2tf_files/header-attrs-2.5/header-attrs.js"></script><link href="audio2tf_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
 <script src="audio2tf_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -219,8 +222,9 @@
 
 <span class="va">alter_learner</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">learn</span>, <span class="va">channels</span> <span class="op">=</span> <span class="fl">1L</span><span class="op">)</span> <span class="op">{</span>
   <span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[[</span><span class="st">'in_channels'</span><span class="op">]</span><span class="op">]</span> <span class="op">%f%</span> <span class="va">channels</span>
-  <span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[[</span><span class="st">'weight'</span><span class="op">]</span><span class="op">]</span> <span class="op">%f%</span> <span class="va">torch</span><span class="op">$</span><span class="va">nn</span><span class="op">$</span><span class="va">parameter</span><span class="op">$</span><span class="fu">Parameter</span><span class="op">(</span><span class="va">torch</span><span class="op">$</span><span class="fu">narrow</span><span class="op">(</span>
-    <span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[[</span><span class="st">'weight'</span><span class="op">]</span><span class="op">]</span>,<span class="fl">1L</span>,<span class="fl">1L</span>,<span class="fl">1L</span><span class="op">)</span><span class="op">)</span>
+  <span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[[</span><span class="st">'weight'</span><span class="op">]</span><span class="op">]</span> <span class="op">%f%</span> <span class="va">torch</span><span class="op">$</span><span class="va">nn</span><span class="op">$</span><span class="va">parameter</span><span class="op">$</span><span class="fu">Parameter</span><span class="op">(</span>
+  <span class="op">(</span><span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">$</span><span class="va">weight</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/narrow.html">narrow</a></span><span class="op">(</span><span class="st">'[:,1,:,:]'</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="fu">unsqueeze</span><span class="op">(</span><span class="fl">1L</span><span class="op">)</span>
+<span class="op">)</span>
 <span class="op">}</span>
 
 <span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/Learner.html">Learner</a></span><span class="op">(</span><span class="va">audio_dbunch</span>, <span class="fu"><a href="../reference/xresnet18.html">xresnet18</a></span><span class="op">(</span>pretrained <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>, <span class="va">nn</span><span class="op">$</span><span class="fu">CrossEntropyLoss</span><span class="op">(</span><span class="op">)</span>, metrics<span class="op">=</span><span class="va">accuracy</span><span class="op">)</span>
