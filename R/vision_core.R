@@ -549,6 +549,10 @@ TfmdDL <- function(dataset, bs = 64, shuffle = FALSE, num_workers = NULL,
   )
 
   if(os()=='windows' & is.null(args$num_workers)) {
+    args$num_workers = 0L
+  }
+
+  if(!is.null(args$num_workers)){
     args$num_workers = as.integer(args$num_workers)
   }
 
