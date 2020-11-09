@@ -33,13 +33,15 @@ test_succeeds('fit nn_module MNIST', {
   dls = Data_Loaders(train_dl, valid_dl)
 
 
-  c(x,y) %<-% one_batch(dls)
+  one = one_batch(dls)
+  x = one[[1]]
+  y = one[[2]]
   x$shape; y$shape
 
   nn = nn()
   Functional = torch()$nn$functional
 
-  my_module = function(self) {
+  model = nn_module(function(self) {
 
     self$lin1 = nn$Linear(784L, 50L, bias=TRUE)
     self$lin2 = nn$Linear(50L, 10L, bias=TRUE)
@@ -49,9 +51,7 @@ test_succeeds('fit nn_module MNIST', {
       x = Functional$relu(x)
       self$lin2(x)
     }
-  }
-
-  model = nn_module(my_module)
+  })
 
   learn = Learner(dls, model, loss_func=nn$CrossEntropyLoss(), metrics=accuracy)
 
