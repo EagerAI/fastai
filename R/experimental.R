@@ -78,7 +78,7 @@ nn_module = function(model_fn) {
   if(torch()$cuda$is_available()) {
     model <- Module_test()$RModel()$cuda()
   } else {
-    Module_test()$RModel()
+    model <- Module_test()$RModel()
   }
   r_model_call <- model_fn(model)
   model$`_r_call` <- r_model_call
