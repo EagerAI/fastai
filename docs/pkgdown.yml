@@ -21,6 +21,7 @@ articles:
   optimizer: optimizer.html
   super_res_gan: super_res_gan.html
   time_series: time_series.html
+last_built: 2020-11-09T17:25Z
 urls:
   reference: https://henry090.github.io/fastai//reference
   article: https://henry090.github.io/fastai//articles
