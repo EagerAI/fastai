@@ -80,7 +80,7 @@ nn_module = function(model_fn) {
   } else {
     Module_test()$RModel()
   }
-  r_model_call <- my_module(model)
+  r_model_call <- model_fn(model)
   model$`_r_call` <- r_model_call
   model
 }
