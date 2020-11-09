@@ -136,6 +136,9 @@
     <li>
       <a href="articles/callbacks.html">Callbacks</a>
     </li>
+    <li>
+      <a href="articles/low.html">Low-level API</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -224,7 +227,7 @@
 <pre><code><a href="https://rdrr.io/pkg/reticulate/man/install_miniconda.html">reticulate::install_miniconda()
 reticulate::py_config()</a></code></pre>
 <p><strong>2. The dev version:</strong></p>
-<pre><code>devtools::install_github('henry090/fastai')</code></pre>
+<pre><code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">devtools::install_github('henry090/fastai')</a></code></pre>
 <p><strong>3. Later, you need to install the python module <code>fastai</code>:</strong></p>
 <pre><code><a href="reference/install_fastai.html">install_fastai(gpu = FALSE, cuda_version = '10.1', overwrite = FALSE)</a></code></pre>
 <p><strong>4. Restart RStudio!</strong></p>
@@ -236,14 +239,14 @@ reticulate::py_config()</a></code></pre>
 <div id="tabular-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#tabular-data" class="anchor"></a>Tabular data</h2>
-<pre><code><a href="https://rdrr.io/r/base/library.html">library(magrittr)
+<pre><code>library(magrittr)
 library(fastai)
 
 # download
 URLs_ADULT_SAMPLE()
 
 # read data
-df = data.table::fread('adult_sample/adult.csv')</a></code></pre>
+df = data.table::fread('adult_sample/adult.csv')</code></pre>
 <p>Variables:</p>
 <pre><code>dep_var = 'salary'
 cat_names = c('workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race')
@@ -1373,7 +1376,7 @@ learn %&gt;% fit_one_cycle(2, lr, pct_start = 0.9, wd = wd)</code></pre>
 <h2 class="hasAnchor">
 <a href="#collab-collaborative-filtering" class="anchor"></a>Collab (Collaborative filtering)</h2>
 <p>Call libraries:</p>
-<pre><code><a href="https://rdrr.io/r/base/library.html">library(zeallot)
+<pre><code><a href="https://github.com/nteetor/zeallot">library(zeallot)
 library(magrittr)</a></code></pre>
 <p>Get data:</p>
 <pre><code><a href="reference/URLs_MOVIE_LENS_ML_100k.html">URLs_MOVIE_LENS_ML_100k()</a></code></pre>
@@ -1578,7 +1581,7 @@ data
 5 0.0000002089296 5.043181
 6 0.0000002511886 5.023340</code></pre>
 <p>Visualize:</p>
-<pre><code>highcharter::hchart(data, "line", highcharter::hcaes(y = losses, x = lr_rates ))</code></pre>
+<pre><code><a href="http://jkunst.com/highcharter/reference/hchart.html">highcharter::hchart(data, "line", highcharter::hcaes(y = losses, x = lr_rates ))</a></code></pre>
 <p align="center">
 <img src="files/lr.png" height="500" align="center" alt="Learning_rates"></p>
 </div>
@@ -1598,7 +1601,7 @@ magick::image_read(batch[[1]][[9]])</code></pre>
 <h3 class="hasAnchor">
 <a href="#mask" class="anchor"></a>Mask</h3>
 <p>Visualize mask:</p>
-<pre><code><a href="https://rdrr.io/r/base/library.html">library(magrittr)
+<pre><code>library(magrittr)
 library(fastai)
 
 # original image
@@ -1615,7 +1618,7 @@ mask = tmask(mask_fn)
 
 # visualize
 mask %&gt;% to_matrix() %&gt;%
-  nandb::matrix_raster_plot(colours = viridis::plasma(3)) + theme(legend.position = "none")</a></code></pre>
+  nandb::matrix_raster_plot(colours = viridis::plasma(3)) + theme(legend.position = "none")</code></pre>
 <p align="center">
 <img src="files/mask.png" height="500" align="center" alt="Mask"></p>
 </div>
@@ -1649,7 +1652,7 @@ pnt_img %&gt;% to_matrix() %&gt;% nandb::matrix_raster_plot(colours = c('white',
 <div id="annotations-on-tiny-coco" class="section level3">
 <h3 class="hasAnchor">
 <a href="#annotations-on-tiny-coco" class="anchor"></a>Annotations on Tiny COCO</h3>
-<pre><code><a href="https://rdrr.io/r/base/library.html">library(magrittr)
+<pre><code>library(magrittr)
 library(zeallot)
 library(fastai)
 
@@ -1663,11 +1666,11 @@ c(coco_fn,bbox) %&lt;-% list(paste('coco_tiny/train',images[[idx]],sep = '/'),
 coco_img = timg(coco_fn)
 
 tbbox = LabeledBBox(TensorBBox(bbox[[1]]), bbox[[2]])
-</a></code></pre>
+</code></pre>
 <pre><code>(#2) [TensorBBox([[ 91.3000,  77.9400, 102.4300,  82.4700],
         [ 27.5800,  77.6500,  40.7600,  82.3400]]),['tv', 'tv']]</code></pre>
 <p>Visualize:</p>
-<pre><code><a href="https://rdrr.io/r/base/library.html">library(imager)
+<pre><code><a href="http://dahtah.github.io/imager">library(imager)
 coco = imager::load.image(coco_fn)
 plot(coco,axes=F)
 

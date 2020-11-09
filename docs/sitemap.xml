@@ -499,6 +499,9 @@
     <loc>https://henry090.github.io/fastai//reference/Module.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/Module_test.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/MultiCategorize.html</loc>
   </url>
   <url>
@@ -1738,6 +1741,9 @@
     <loc>https://henry090.github.io/fastai//reference/nn.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/nn_module.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/noop.html</loc>
   </url>
   <url>
@@ -1760,6 +1766,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/or_mask.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/os.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/pad_conv_norm_relu.html</loc>

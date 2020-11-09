@@ -507,9 +507,9 @@ Image = function(...) {
 #'
 #'
 #' @param dataset dataset
-#' @param bs bs
+#' @param bs batch size
 #' @param shuffle shuffle
-#' @param num_workers num_workers
+#' @param num_workers number of workers
 #' @param verbose verbose
 #' @param do_setup do setup
 #' @param pin_memory pin memory
@@ -547,6 +547,14 @@ TfmdDL <- function(dataset, bs = 64, shuffle = FALSE, num_workers = NULL,
     after_batch = after_batch,
     ...
   )
+
+  if(os()=='windows' & is.null(args$num_workers)) {
+    args$num_workers = 0L
+  }
+
+  if(!is.null(args$num_workers)){
+    args$num_workers = as.integer(args$num_workers)
+  }
 
   if(!is.null(args$after_batch)) {
     args$after_batch <- unlist(args$after_batch)

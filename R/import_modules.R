@@ -8,6 +8,12 @@ python_path <- function() {
   system.file("python", package = "fastai")
 }
 
+#' @title NN module
+#'
+#'
+#'
+#' @return None
+Module_test <- function() try(reticulate::import_from_path('fastaibuilt', path = python_path())$Module_test, TRUE)
 
 #' @title Bs finder
 #'

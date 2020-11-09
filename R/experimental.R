@@ -65,4 +65,42 @@ torch.save(a, '{temp}/torch_a')
 }
 
 
+#' @title Fastai NN module
+#'
+#'
+#' @param model_fn pass custom model function
+#'
+#' @return None
+#' @export
+nn_module = function(model_fn) {
+
+  # if GPU is available move to gpu
+  if(torch()$cuda$is_available()) {
+    model <- Module_test()$RModel()$cuda()
+  } else {
+    model <- Module_test()$RModel()
+  }
+  r_model_call <- model_fn(model)
+  model$`_r_call` <- r_model_call
+  model
+}
+
+#' Operating system
+#'
+#'
+#' @return vector
+#' @export
+os = function() {
+  os = switch(Sys.info()[['sysname']],
+              Windows= 'windows',
+              Linux  = 'linux',
+              Darwin = 'mac')
+  os
+}
+
+
+
+
+
+
 

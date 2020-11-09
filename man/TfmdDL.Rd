@@ -25,11 +25,11 @@ TfmdDL(
 \arguments{
 \item{dataset}{dataset}
 
-\item{bs}{bs}
+\item{bs}{batch size}
 
 \item{shuffle}{shuffle}
 
-\item{num_workers}{num_workers}
+\item{num_workers}{number of workers}
 
 \item{verbose}{verbose}
 
