@@ -130,9 +130,6 @@
     <li>
       <a href="../articles/callbacks.html">Callbacks</a>
     </li>
-    <li>
-      <a href="../articles/low.html">Low-level API</a>
-    </li>
   </ul>
 </li>
 <li>
@@ -162,7 +159,6 @@
 
       
 
-      </header><script src="low_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Low-level ops</h1>
@@ -183,25 +179,16 @@
 <div id="get-model" class="section level2">
 <h2 class="hasAnchor">
 <a href="#get-model" class="anchor"></a>Get model</h2>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="../reference/URLs_MNIST_SAMPLE.html">URLs_MNIST_SAMPLE</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">tfms</span> <span class="op">=</span> <span class="fu"><a href="../reference/aug_transforms.html">aug_transforms</a></span><span class="op">(</span>do_flip <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="va">path</span> <span class="op">=</span> <span class="st">'mnist_sample'</span>
 <span class="va">bs</span> <span class="op">=</span> <span class="fl">20</span>
 <span class="va">data</span> <span class="op">=</span> <span class="fu"><a href="../reference/ImageDataLoaders_from_folder.html">ImageDataLoaders_from_folder</a></span><span class="op">(</span><span class="va">path</span>, batch_tfms <span class="op">=</span> <span class="va">tfms</span>, size <span class="op">=</span> <span class="fl">26</span>, bs <span class="op">=</span> <span class="va">bs</span><span class="op">)</span>
-<span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/cnn_learner.html">cnn_learner</a></span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="../reference/xresnet50_deep.html">xresnet50_deep</a></span><span class="op">(</span><span class="op">)</span>, metrics <span class="op">=</span> <span class="va">accuracy</span><span class="op">)</span></pre></div>
-<p>Modify channels to 1:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="va">init</span> <span class="op">=</span> <span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[[</span><span class="st">'in_channels'</span><span class="op">]</span><span class="op">]</span>
+
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">init</span><span class="op">)</span>
 <span class="co"># 3</span>
 <span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[[</span><span class="st">'in_channels'</span><span class="op">]</span><span class="op">]</span> <span class="op">%f%</span> <span class="fl">1L</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[[</span><span class="st">'in_channels'</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
-<span class="co"># 1</span></pre></div>
-<p>Here, one can observe a special assignment <code><a href="../reference/%f%.html">%f%</a></code>. It helps for safe modification of layer parameters.</p>
-<p>How to see and modify other parameters of the layer? First see names:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span></pre></div>
+
 <pre><code> [1] "add_module"                "apply"                     "bfloat16"                 
  [4] "bias"                      "buffers"                   "children"                 
  [7] "cpu"                       "cuda"                      "dilation"                 
@@ -220,29 +207,14 @@
 [46] "transposed"                "type"                      "weight"                   
 [49] "zero_grad"   </code></pre>
 <p>Kernel size from <code>(3, 3)</code> to 9.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span>
-<span class="co"># Conv2d(3, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False))</span>
-<span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[[</span><span class="st">'kernel_size'</span><span class="op">]</span><span class="op">]</span> <span class="op">%f%</span>  <span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/reticulate/man/tuple.html">tuple</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">9L</span>,<span class="fl">9L</span><span class="op">)</span><span class="op">)</span>
-<span class="co"># Conv2d(1, 32, kernel_size=(9, 9), stride=(2, 2), padding=(1, 1), bias=False)</span></pre></div>
-<p>In addition, one could replace values inside tensors with the same assignment.</p>
-<p>For single in-place value modification:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="../reference/tensor.html">tensor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">4</span><span class="op">)</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span>
 <span class="co"># tensor(1.)</span>
 
 <span class="co"># Now change it to 99.</span>
 <span class="va">x</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span> <span class="op">%f%</span> <span class="fl">99</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span>
-<span class="co"># tensor(99.)</span></pre></div>
-<p>Modify 2 or more values:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span>
-<span class="co"># tensor([99.,  2.])</span>
-<span class="co"># change to 55, 55</span>
-<span class="va">x</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span> <span class="op">%f%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">55</span>,<span class="fl">55</span><span class="op">)</span>
-<span class="co"># tensor([55., 55.])</span></pre></div>
+
 </div>
   </div>
 
