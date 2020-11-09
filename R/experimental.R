@@ -85,7 +85,18 @@ nn_module = function(model_fn) {
   model
 }
 
-
+#' Operating system
+#'
+#'
+#' @return vector
+#' @export
+os = function() {
+  os = switch(Sys.info()[['sysname']],
+              Windows= 'windows',
+              Linux  = 'linux',
+              Darwin = 'mac')
+  os
+}
 
 
 
