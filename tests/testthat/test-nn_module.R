@@ -57,7 +57,15 @@ test_succeeds('fit nn_module MNIST', {
 
   learn %>% summary()
 
-  learn %>% fit_one_cycle(1, 1e-2)
+  # get os
+  os = switch(Sys.info()[['sysname']],
+              Windows= 'windows',
+              Linux  = 'linux',
+              Darwin = 'mac')
+
+  if(os != 'windows') {
+    learn %>% fit_one_cycle(1, 1e-2)
+  }
 })
 
 
