@@ -162,7 +162,8 @@
 
       
 
-      </header><script src="low_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="low_files/header-attrs-2.5/header-attrs.js"></script><link href="low_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="low_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Low-level ops</h1>
@@ -180,28 +181,30 @@
 <a href="#intro" class="anchor"></a>Intro</h2>
 <p>The <a href="https://github.com/fastai/fastai">fastai</a> library simplifies training fast and accurate neural nets using modern best practices. See the fastai website to get started. The library is based on research into deep learning best practices undertaken at <code>fast.ai</code>, and includes “out of the box” support for <code>vision</code>, <code>text</code>, <code>tabular</code>, and <code>collab</code> (collaborative filtering) models.</p>
 </div>
-<div id="get-model" class="section level2">
+<div id="dataset" class="section level2">
 <h2 class="hasAnchor">
-<a href="#get-model" class="anchor"></a>Get model</h2>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="../reference/URLs_MNIST_SAMPLE.html">URLs_MNIST_SAMPLE</a></span><span class="op">(</span><span class="op">)</span>
+<a href="#dataset" class="anchor"></a>Dataset</h2>
+<p>Get dataset and build <code>cnn_learner</code>.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/URLs_MNIST_SAMPLE.html">URLs_MNIST_SAMPLE</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">tfms</span> <span class="op">=</span> <span class="fu"><a href="../reference/aug_transforms.html">aug_transforms</a></span><span class="op">(</span>do_flip <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="va">path</span> <span class="op">=</span> <span class="st">'mnist_sample'</span>
 <span class="va">bs</span> <span class="op">=</span> <span class="fl">20</span>
 <span class="va">data</span> <span class="op">=</span> <span class="fu"><a href="../reference/ImageDataLoaders_from_folder.html">ImageDataLoaders_from_folder</a></span><span class="op">(</span><span class="va">path</span>, batch_tfms <span class="op">=</span> <span class="va">tfms</span>, size <span class="op">=</span> <span class="fl">26</span>, bs <span class="op">=</span> <span class="va">bs</span><span class="op">)</span>
-<span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/cnn_learner.html">cnn_learner</a></span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="../reference/xresnet50_deep.html">xresnet50_deep</a></span><span class="op">(</span><span class="op">)</span>, metrics <span class="op">=</span> <span class="va">accuracy</span><span class="op">)</span></pre></div>
+<span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/cnn_learner.html">cnn_learner</a></span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="../reference/xresnet50_deep.html">xresnet50_deep</a></span><span class="op">(</span><span class="op">)</span>, metrics <span class="op">=</span> <span class="va">accuracy</span><span class="op">)</span></code></pre></div>
 <p>Modify channels to 1:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="va">init</span> <span class="op">=</span> <span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[[</span><span class="st">'in_channels'</span><span class="op">]</span><span class="op">]</span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">init</span> <span class="op">=</span> <span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[[</span><span class="st">'in_channels'</span><span class="op">]</span><span class="op">]</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">init</span><span class="op">)</span>
 <span class="co"># 3</span>
 <span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[[</span><span class="st">'in_channels'</span><span class="op">]</span><span class="op">]</span> <span class="op">%f%</span> <span class="fl">1L</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[[</span><span class="st">'in_channels'</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
-<span class="co"># 1</span></pre></div>
+<span class="co"># 1</span></code></pre></div>
 <p>Here, one can observe a special assignment <code><a href="../reference/%f%.html">%f%</a></code>. It helps for safe modification of layer parameters.</p>
 <p>How to see and modify other parameters of the layer? First see names:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span></code></pre></div>
+<p>Cnn layer parameters:</p>
 <pre><code> [1] "add_module"                "apply"                     "bfloat16"                 
  [4] "bias"                      "buffers"                   "children"                 
  [7] "cpu"                       "cuda"                      "dilation"                 
@@ -220,29 +223,231 @@
 [46] "transposed"                "type"                      "weight"                   
 [49] "zero_grad"   </code></pre>
 <p>Kernel size from <code>(3, 3)</code> to 9.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span>
-<span class="co"># Conv2d(3, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False))</span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span>
+<span class="co"># Conv2d(1, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False))</span>
 <span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[[</span><span class="st">'kernel_size'</span><span class="op">]</span><span class="op">]</span> <span class="op">%f%</span>  <span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/reticulate/man/tuple.html">tuple</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">9L</span>,<span class="fl">9L</span><span class="op">)</span><span class="op">)</span>
-<span class="co"># Conv2d(1, 32, kernel_size=(9, 9), stride=(2, 2), padding=(1, 1), bias=False)</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span>
+<span class="co"># Conv2d(1, 32, kernel_size=(9, 9), stride=(2, 2), padding=(1, 1), bias=False)</span></code></pre></div>
+</div>
+<div id="inplace-tensor-ops" class="section level2">
+<h2 class="hasAnchor">
+<a href="#inplace-tensor-ops" class="anchor"></a>Inplace tensor ops</h2>
 <p>In addition, one could replace values inside tensors with the same assignment.</p>
 <p>For single in-place value modification:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="../reference/tensor.html">tensor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">4</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="../reference/tensor.html">tensor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">4</span><span class="op">)</span><span class="op">)</span>
+<span class="co"># tensor([[1., 2.],</span>
+<span class="co">#         [3., 4.]])</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span>
 <span class="co"># tensor(1.)</span>
 
 <span class="co"># Now change it to 99.</span>
 <span class="va">x</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span> <span class="op">%f%</span> <span class="fl">99</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span>
-<span class="co"># tensor(99.)</span></pre></div>
+<span class="co"># tensor(99.)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="co"># tensor([[99.,  2.],</span>
+<span class="co">#         [ 3.,  4.]])</span></code></pre></div>
 <p>Modify 2 or more values:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span>
 <span class="co"># tensor([99.,  2.])</span>
 <span class="co"># change to 55, 55</span>
 <span class="va">x</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span> <span class="op">%f%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">55</span>,<span class="fl">55</span><span class="op">)</span>
-<span class="co"># tensor([55., 55.])</span></pre></div>
+<span class="co"># tensor([55., 55.])</span></code></pre></div>
+</div>
+<div id="slicing" class="section level2">
+<h2 class="hasAnchor">
+<a href="#slicing" class="anchor"></a>Slicing</h2>
+<p>How to slice tensors? For less confusion, the slicing is the same as in python. <code>narrow</code> function requires a tensor and its dimensions. Let’s see an example:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">a</span> <span class="op">=</span> <span class="fu"><a href="../reference/tensor.html">tensor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/array.html">array</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">100</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">3</span>,<span class="fl">3</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="va">a</span><span class="op">$</span><span class="va">shape</span>
+<span class="co"># torch.Size([3, 3, 3, 3])</span></code></pre></div>
+<p>We can extract and play with tensor dimensions:</p>
+<div id="no-change" class="section level3">
+<h3 class="hasAnchor">
+<a href="#no-change" class="anchor"></a>No change</h3>
+<p>First lets understand the tensor:</p>
+<pre><code>a %&gt;% narrow('[:,:,:,:]')</code></pre>
+<pre><code>tensor([[[[ 1, 28, 55],
+          [10, 37, 64],
+          [19, 46, 73]],
+
+         [[ 4, 31, 58],
+          [13, 40, 67],
+          [22, 49, 76]],
+
+         [[ 7, 34, 61],
+          [16, 43, 70],
+          [25, 52, 79]]],
+
+
+        [[[ 2, 29, 56],
+          [11, 38, 65],
+          [20, 47, 74]],
+
+         [[ 5, 32, 59],
+          [14, 41, 68],
+          [23, 50, 77]],
+
+         [[ 8, 35, 62],
+          [17, 44, 71],
+          [26, 53, 80]]],
+
+
+        [[[ 3, 30, 57],
+          [12, 39, 66],
+          [21, 48, 75]],
+
+         [[ 6, 33, 60],
+          [15, 42, 69],
+          [24, 51, 78]],
+
+         [[ 9, 36, 63],
+          [18, 45, 72],
+          [27, 54, 81]]]], dtype=torch.int32)</code></pre>
+<p>We could imagine that the tensor contains 3 R lists and each list contain 3 matrices with 3 rows and 3 columns.</p>
+<p><code><a href="https://rdrr.io/r/base/Colon.html">:</a></code> without any indicated value before or after <code><a href="https://rdrr.io/r/base/Colon.html">:</a></code> will not modify the tensor.</p>
+</div>
+<div id="st-list" class="section level3">
+<h3 class="hasAnchor">
+<a href="#st-list" class="anchor"></a>1st list</h3>
+<p>How to extract 1st list from the tensor? Very simple:</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">a</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/narrow.html">narrow</a></span><span class="op">(</span><span class="st">'[0,:,:,:]'</span><span class="op">)</span></code></pre></div>
+<pre><code>tensor([[[[ 1, 28, 55],
+          [10, 37, 64],
+          [19, 46, 73]],
+
+         [[ 4, 31, 58],
+          [13, 40, 67],
+          [22, 49, 76]],
+
+         [[ 7, 34, 61],
+          [16, 43, 70],
+          [25, 52, 79]]]], dtype=torch.int32)</code></pre>
+<p>Why from <code>0</code>? Because indexing starts from 0 not from 1.</p>
+</div>
+<div id="st-matrix" class="section level3">
+<h3 class="hasAnchor">
+<a href="#st-matrix" class="anchor"></a>1st matrix</h3>
+<p>We could extract 1st matrix from all 3 lists.</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">a</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/narrow.html">narrow</a></span><span class="op">(</span><span class="st">"[:,0,:,:]"</span><span class="op">)</span></code></pre></div>
+<pre><code>tensor([[[ 1, 28, 55],
+         [10, 37, 64],
+         [19, 46, 73]],
+
+        [[ 2, 29, 56],
+         [11, 38, 65],
+         [20, 47, 74]],
+
+        [[ 3, 30, 57],
+         [12, 39, 66],
+         [21, 48, 75]]], dtype=torch.int32)</code></pre>
+</div>
+<div id="st-matrix-1st-row" class="section level3">
+<h3 class="hasAnchor">
+<a href="#st-matrix-1st-row" class="anchor"></a>1st matrix 1st row</h3>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">a</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/narrow.html">narrow</a></span><span class="op">(</span><span class="st">'[:,0,0,:]'</span><span class="op">)</span></code></pre></div>
+<pre><code>tensor([[ 1, 28, 55],
+        [ 2, 29, 56],
+        [ 3, 30, 57]], dtype=torch.int32)</code></pre>
+</div>
+<div id="nd-list-2nd-matrix-2nd-row" class="section level3">
+<h3 class="hasAnchor">
+<a href="#nd-list-2nd-matrix-2nd-row" class="anchor"></a>2nd list 2nd matrix 2nd row</h3>
+<p>Extract 2nd list, 2nd matrix, and 2nd row:</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">a</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/narrow.html">narrow</a></span><span class="op">(</span><span class="st">"[1,1,1,:]"</span><span class="op">)</span></code></pre></div>
+<pre><code>tensor([14, 41, 68], dtype=torch.int32)</code></pre>
+</div>
+</div>
+<div id="nn-module" class="section level2">
+<h2 class="hasAnchor">
+<a href="#nn-module" class="anchor"></a>NN module</h2>
+<p>How to build a model with fastai <code>Module</code> class? Simple!</p>
+<p>Prepare data:</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">magrittr</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/henry090/fastai">fastai</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/nteetor/zeallot">zeallot</a></span><span class="op">)</span>
+
+<span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/files.html">file.exists</a></span><span class="op">(</span><span class="st">'mnist.pkl.gz'</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span><span class="st">'http://deeplearning.net/data/mnist/mnist.pkl.gz'</span>,<span class="st">'mnist.pkl.gz'</span><span class="op">)</span>
+  <span class="fu">R.utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/R.utils/man/compressFile.html">gunzip</a></span><span class="op">(</span><span class="st">"mnist.pkl.gz"</span>, remove<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>
+<span class="op">}</span>
+  
+<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">x_train</span>, <span class="va">y_train</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">x_valid</span>, <span class="va">y_valid</span><span class="op">)</span>, <span class="va">res</span><span class="op">)</span> <span class="op">%&lt;-%</span>
+  <span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/reticulate/man/py_save_object.html">py_load_object</a></span><span class="op">(</span><span class="st">'mnist.pkl'</span>, encoding <span class="op">=</span> <span class="st">'latin-1'</span><span class="op">)</span>
+
+<span class="va">x_train</span> <span class="op">=</span> <span class="va">x_train</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">500</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">784</span><span class="op">]</span>
+<span class="va">x_valid</span> <span class="op">=</span> <span class="va">x_valid</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">500</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">784</span><span class="op">]</span>
+
+<span class="va">y_train</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="va">y_train</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">500</span><span class="op">]</span>
+<span class="va">y_valid</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="va">y_valid</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">500</span><span class="op">]</span></code></pre></div>
+<p>Plot example:</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">example</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/reticulate/man/array_reshape.html">array_reshape</a></span><span class="op">(</span><span class="va">x_train</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">28</span>,<span class="fl">28</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">example</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/show_image.html">show_image</a></span><span class="op">(</span>cmap <span class="op">=</span> <span class="st">'gray'</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div id="dataloaders" class="section level3">
+<h3 class="hasAnchor">
+<a href="#dataloaders" class="anchor"></a>Dataloaders</h3>
+<p>Prepare data loaders and build a model:</p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">TensorDataset</span> <span class="op">=</span> <span class="fu"><a href="../reference/torch.html">torch</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">utils</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">TensorDataset</span>
+
+<span class="va">bs</span> <span class="op">=</span> <span class="fl">32</span>
+<span class="va">train_ds</span> <span class="op">=</span> <span class="fu">TensorDataset</span><span class="op">(</span><span class="fu"><a href="../reference/tensor.html">tensor</a></span><span class="op">(</span><span class="va">x_train</span><span class="op">)</span>, <span class="fu"><a href="../reference/tensor.html">tensor</a></span><span class="op">(</span><span class="va">y_train</span><span class="op">)</span><span class="op">)</span>
+<span class="va">valid_ds</span> <span class="op">=</span> <span class="fu">TensorDataset</span><span class="op">(</span><span class="fu"><a href="../reference/tensor.html">tensor</a></span><span class="op">(</span><span class="va">x_valid</span><span class="op">)</span>, <span class="fu"><a href="../reference/tensor.html">tensor</a></span><span class="op">(</span><span class="va">y_valid</span><span class="op">)</span><span class="op">)</span>
+<span class="va">train_dl</span> <span class="op">=</span> <span class="fu"><a href="../reference/TfmdDL.html">TfmdDL</a></span><span class="op">(</span><span class="va">train_ds</span>, bs <span class="op">=</span> <span class="va">bs</span>, shuffle <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">valid_dl</span> <span class="op">=</span> <span class="fu"><a href="../reference/TfmdDL.html">TfmdDL</a></span><span class="op">(</span><span class="va">valid_ds</span>, bs <span class="op">=</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">bs</span><span class="op">)</span>
+<span class="va">dls</span> <span class="op">=</span> <span class="fu"><a href="../reference/Data_Loaders.html">Data_Loaders</a></span><span class="op">(</span><span class="va">train_dl</span>, <span class="va">valid_dl</span><span class="op">)</span>
+
+<span class="va">one</span> <span class="op">=</span> <span class="fu"><a href="../reference/one_batch.html">one_batch</a></span><span class="op">(</span><span class="va">dls</span><span class="op">)</span>
+<span class="va">x</span> <span class="op">=</span> <span class="va">one</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
+<span class="va">y</span> <span class="op">=</span> <span class="va">one</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>
+<span class="va">x</span><span class="op">$</span><span class="va">shape</span>; <span class="va">y</span><span class="op">$</span><span class="va">shape</span>
+
+<span class="va">nn</span> <span class="op">=</span> <span class="fu"><a href="../reference/nn.html">nn</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">Functional</span> <span class="op">=</span> <span class="fu"><a href="../reference/torch.html">torch</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">nn</span><span class="op">$</span><span class="va">functional</span></code></pre></div>
+</div>
+<div id="model" class="section level3">
+<h3 class="hasAnchor">
+<a href="#model" class="anchor"></a>Model</h3>
+<p>Put your model into <code>nn_module</code> function:</p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">model</span> <span class="op">=</span> <span class="fu"><a href="../reference/nn_module.html">nn_module</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">self</span><span class="op">)</span> <span class="op">{</span>
+  
+  <span class="va">self</span><span class="op">$</span><span class="va">lin1</span> <span class="op">=</span> <span class="va">nn</span><span class="op">$</span><span class="fu">Linear</span><span class="op">(</span><span class="fl">784L</span>, <span class="fl">50L</span>, bias<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
+  <span class="va">self</span><span class="op">$</span><span class="va">lin2</span> <span class="op">=</span> <span class="va">nn</span><span class="op">$</span><span class="fu">Linear</span><span class="op">(</span><span class="fl">50L</span>, <span class="fl">10L</span>, bias<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
+  
+  <span class="va">forward</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">y</span><span class="op">)</span> <span class="op">{</span>
+    <span class="va">x</span> <span class="op">=</span> <span class="va">self</span><span class="op">$</span><span class="fu">lin1</span><span class="op">(</span><span class="va">y</span><span class="op">)</span>
+    <span class="va">x</span> <span class="op">=</span> <span class="va">Functional</span><span class="op">$</span><span class="fu">relu</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+    <span class="va">self</span><span class="op">$</span><span class="fu">lin2</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+  <span class="op">}</span>
+<span class="op">}</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="conclusion" class="section level3">
+<h3 class="hasAnchor">
+<a href="#conclusion" class="anchor"></a>Conclusion</h3>
+<p>Fit the model:</p>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/Learner.html">Learner</a></span><span class="op">(</span><span class="va">dls</span>, <span class="va">model</span>, loss_func<span class="op">=</span><span class="va">nn</span><span class="op">$</span><span class="fu">CrossEntropyLoss</span><span class="op">(</span><span class="op">)</span>, metrics<span class="op">=</span><span class="va">accuracy</span><span class="op">)</span>
+
+<span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="op">)</span>
+
+<span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1e-2</span><span class="op">)</span></code></pre></div>
+<blockquote>
+<p>Note: if CUDA is available then the model will be automatically trained on GPU.</p>
+</blockquote>
+</div>
 </div>
   </div>
 

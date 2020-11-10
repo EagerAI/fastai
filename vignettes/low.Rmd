@@ -17,7 +17,9 @@ knitr::opts_chunk$set(echo = TRUE,eval = FALSE,echo = T)
 The [fastai](https://github.com/fastai/fastai) library simplifies training fast and accurate neural nets using modern best practices. See the fastai website to get started. The library is based on research into deep learning best practices undertaken at ```fast.ai```, and includes "out of the box" support for ```vision```, ```text```, ```tabular```, and ```collab``` (collaborative filtering) models. 
 
 
-## Get model
+## Dataset
+
+Get dataset and build ```cnn_learner```.
 
 ```{r}
 URLs_MNIST_SAMPLE()
@@ -47,6 +49,7 @@ First see names:
 ```{r}
 names(learn$model[0][0][0])
 ```
+Cnn layer parameters:
 
 ```
  [1] "add_module"                "apply"                     "bfloat16"                 
@@ -72,10 +75,13 @@ Kernel size from ```(3, 3)``` to 9.
 
 ```{r}
 print(learn$model[0][0][0])
-# Conv2d(3, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False))
+# Conv2d(1, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False))
 learn$model[0][0][0][['kernel_size']] %f%  reticulate::tuple(list(9L,9L))
+print(learn$model[0][0][0])
 # Conv2d(1, 32, kernel_size=(9, 9), stride=(2, 2), padding=(1, 1), bias=False)
 ```
+
+## Inplace tensor ops
 
 In addition, one could replace values inside tensors with  the same assignment.
 
@@ -83,6 +89,8 @@ For single in-place value modification:
 
 ```{r}
 x = tensor(c(1,2), c(3,4))
+# tensor([[1., 2.],
+#         [3., 4.]])
 print(x[0][0])
 # tensor(1.)
 
@@ -90,6 +98,10 @@ print(x[0][0])
 x[0][0] %f% 99
 print(x[0][0])
 # tensor(99.)
+
+print(x)
+# tensor([[99.,  2.],
+#         [ 3.,  4.]])
 ```
 
 Modify 2 or more values:
@@ -102,7 +114,230 @@ x[0] %f% c(55,55)
 # tensor([55., 55.])
 ```
 
+## Slicing
 
+How to slice tensors? For less confusion, the slicing is the same as in python. ```narrow``` function requires a tensor and its dimensions. Let's see an example:
+
+```{r}
+a = tensor(array(1:100, c(3,3,3,3)))
+a$shape
+# torch.Size([3, 3, 3, 3])
+```
+
+We can extract and play with tensor dimensions:
+
+### No change
+
+First lets understand the tensor:
+
+```{}
+a %>% narrow('[:,:,:,:]')
+```
+
+```
+tensor([[[[ 1, 28, 55],
+          [10, 37, 64],
+          [19, 46, 73]],
+
+         [[ 4, 31, 58],
+          [13, 40, 67],
+          [22, 49, 76]],
+
+         [[ 7, 34, 61],
+          [16, 43, 70],
+          [25, 52, 79]]],
+
+
+        [[[ 2, 29, 56],
+          [11, 38, 65],
+          [20, 47, 74]],
+
+         [[ 5, 32, 59],
+          [14, 41, 68],
+          [23, 50, 77]],
+
+         [[ 8, 35, 62],
+          [17, 44, 71],
+          [26, 53, 80]]],
+
+
+        [[[ 3, 30, 57],
+          [12, 39, 66],
+          [21, 48, 75]],
+
+         [[ 6, 33, 60],
+          [15, 42, 69],
+          [24, 51, 78]],
+
+         [[ 9, 36, 63],
+          [18, 45, 72],
+          [27, 54, 81]]]], dtype=torch.int32)
+```
+
+We could imagine that the tensor contains 3 R lists and each list contain 3 matrices with 3 rows and 3 columns.
+
+```:``` without any indicated value before or after ```:``` will not modify the tensor. 
+
+### 1st list
+
+How to extract 1st list from the tensor? Very simple:
+
+```{r}
+a %>% narrow('[0,:,:,:]')
+```
+
+```
+tensor([[[[ 1, 28, 55],
+          [10, 37, 64],
+          [19, 46, 73]],
+
+         [[ 4, 31, 58],
+          [13, 40, 67],
+          [22, 49, 76]],
+
+         [[ 7, 34, 61],
+          [16, 43, 70],
+          [25, 52, 79]]]], dtype=torch.int32)
+```
+
+Why from ```0```? Because indexing starts from 0 not from 1.
+
+### 1st matrix
+
+We could extract 1st matrix from all 3 lists.
+
+```{r}
+a %>% narrow("[:,0,:,:]")
+```
+
+```
+tensor([[[ 1, 28, 55],
+         [10, 37, 64],
+         [19, 46, 73]],
+
+        [[ 2, 29, 56],
+         [11, 38, 65],
+         [20, 47, 74]],
+
+        [[ 3, 30, 57],
+         [12, 39, 66],
+         [21, 48, 75]]], dtype=torch.int32)
+```
+
+### 1st matrix 1st row
+
+```{r}
+a %>% narrow('[:,0,0,:]')
+```
+
+```
+tensor([[ 1, 28, 55],
+        [ 2, 29, 56],
+        [ 3, 30, 57]], dtype=torch.int32)
+```
+
+### 2nd list 2nd matrix 2nd row
+
+Extract 2nd list, 2nd matrix, and 2nd row:
+
+```{r}
+a %>% narrow("[1,1,1,:]")
+```
+
+```
+tensor([14, 41, 68], dtype=torch.int32)
+```
+
+## NN module
+
+How to build a model with fastai ```Module``` class? Simple!
+
+Prepare data:
+
+```{r}
+library(magrittr)
+library(fastai)
+library(zeallot)
+
+if(!file.exists('mnist.pkl.gz')) {
+  download.file('http://deeplearning.net/data/mnist/mnist.pkl.gz','mnist.pkl.gz')
+  R.utils::gunzip("mnist.pkl.gz", remove=FALSE)
+}
+  
+c(c(x_train, y_train), c(x_valid, y_valid), res) %<-%
+  reticulate::py_load_object('mnist.pkl', encoding = 'latin-1')
+
+x_train = x_train[1:500,1:784]
+x_valid = x_valid[1:500,1:784]
+
+y_train = as.integer(y_train)[1:500]
+y_valid = as.integer(y_valid)[1:500]
+
+```
+
+Plot example:
+
+```{r}
+example = array_reshape(x_train[1,], c(28,28))
+
+example %>% show_image(cmap = 'gray') %>% plot()
+```
+
+### Dataloaders
+
+Prepare data loaders and build a model:
+
+```{r}
+TensorDataset = torch()$utils$data$TensorDataset
+
+bs = 32
+train_ds = TensorDataset(tensor(x_train), tensor(y_train))
+valid_ds = TensorDataset(tensor(x_valid), tensor(y_valid))
+train_dl = TfmdDL(train_ds, bs = bs, shuffle = TRUE)
+valid_dl = TfmdDL(valid_ds, bs = 2 * bs)
+dls = Data_Loaders(train_dl, valid_dl)
+
+one = one_batch(dls)
+x = one[[1]]
+y = one[[2]]
+x$shape; y$shape
+
+nn = nn()
+Functional = torch()$nn$functional
+```
+
+### Model
+
+Put your model into ```nn_module``` function:
+
+```{r}
+model = nn_module(function(self) {
+  
+  self$lin1 = nn$Linear(784L, 50L, bias=TRUE)
+  self$lin2 = nn$Linear(50L, 10L, bias=TRUE)
+  
+  forward = function(y) {
+    x = self$lin1(y)
+    x = Functional$relu(x)
+    self$lin2(x)
+  }
+})
+```
+
+### Conclusion
+
+Fit the model:
+
+```{r}
+learn = Learner(dls, model, loss_func=nn$CrossEntropyLoss(), metrics=accuracy)
+
+learn %>% summary()
+
+learn %>% fit_one_cycle(1, 1e-2)
+```
+
+
+> Note: if CUDA is available then the model will be automatically trained on GPU.
 
 
 

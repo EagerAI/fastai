@@ -14,20 +14,56 @@
 
 <title>Low-level ops</title>
 
-<script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
-// v0.0.1
-// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
-
-document.addEventListener('DOMContentLoaded', function() {
-  const codeList = document.getElementsByClassName("sourceCode");
-  for (var i = 0; i < codeList.length; i++) {
-    var linkList = codeList[i].getElementsByTagName('a');
-    for (var j = 0; j < linkList.length; j++) {
-      if (linkList[j].innerHTML === "") {
-        linkList[j].setAttribute('aria-hidden', 'true');
-      }
-    }
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
   }
+});
+</script>
+<style type="text/css">
+a.anchor-section {margin-left: 10px; visibility: hidden; color: inherit;}
+a.anchor-section::before {content: '#';}
+.hasAnchor:hover a.anchor-section {visibility: visible;}
+</style>
+<script>// Anchor sections v1.0 written by Atsushi Yasumoto on Oct 3rd, 2020.
+document.addEventListener('DOMContentLoaded', function() {
+  // Do nothing if AnchorJS is used
+  if (typeof window.anchors === 'object' && anchors.hasOwnProperty('hasAnchorJSLink')) {
+    return;
+  }
+
+  const h = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+
+  // Do nothing if sections are already anchored
+  if (Array.from(h).some(x => x.classList.contains('hasAnchor'))) {
+    return null;
+  }
+
+  // Use section id when pandoc runs with --section-divs
+  const section_id = function(x) {
+    return ((x.classList.contains('section') || (x.tagName === 'SECTION'))
+            ? x.id : '');
+  };
+
+  // Add anchors
+  h.forEach(function(x) {
+    const id = x.id || section_id(x.parentElement);
+    if (id === '') {
+      return null;
+    }
+    let anchor = document.createElement('a');
+    anchor.href = '#' + id;
+    anchor.classList = ['anchor-section'];
+    x.classList.add('hasAnchor');
+    x.appendChild(anchor);
+  });
 });
 </script>
 
@@ -38,87 +74,23 @@ document.addEventListener('DOMContentLoaded', function() {
   div.column{display: inline-block; vertical-align: top; width: 50%;}
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   ul.task-list{list-style: none;}
-      code.sourceCode > span { display: inline-block; line-height: 1.25; }
-  code.sourceCode > span { color: inherit; text-decoration: inherit; }
-  code.sourceCode > span:empty { height: 1.2em; }
-  .sourceCode { overflow: visible; }
-  code.sourceCode { white-space: pre; position: relative; }
-  div.sourceCode { margin: 1em 0; }
-  pre.sourceCode { margin: 0; }
-  @media screen {
-  div.sourceCode { overflow: auto; }
-  }
-  @media print {
-  code.sourceCode { white-space: pre-wrap; }
-  code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-  }
-  pre.numberSource code
-    { counter-reset: source-line 0; }
-  pre.numberSource code > span
-    { position: relative; left: -4em; counter-increment: source-line; }
-  pre.numberSource code > span > a:first-child::before
-    { content: counter(source-line);
-      position: relative; left: -1em; text-align: right; vertical-align: baseline;
-      border: none; display: inline-block;
-      -webkit-touch-callout: none; -webkit-user-select: none;
-      -khtml-user-select: none; -moz-user-select: none;
-      -ms-user-select: none; user-select: none;
-      padding: 0 4px; width: 4em;
-      color: #aaaaaa;
-    }
-  pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-  div.sourceCode
-    {   }
-  @media screen {
-  code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-  }
-  code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-  code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-  code span.at { color: #7d9029; } /* Attribute */
-  code span.bn { color: #40a070; } /* BaseN */
-  code span.bu { } /* BuiltIn */
-  code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-  code span.ch { color: #4070a0; } /* Char */
-  code span.cn { color: #880000; } /* Constant */
-  code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-  code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-  code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-  code span.dt { color: #902000; } /* DataType */
-  code span.dv { color: #40a070; } /* DecVal */
-  code span.er { color: #ff0000; font-weight: bold; } /* Error */
-  code span.ex { } /* Extension */
-  code span.fl { color: #40a070; } /* Float */
-  code span.fu { color: #06287e; } /* Function */
-  code span.im { } /* Import */
-  code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-  code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-  code span.op { color: #666666; } /* Operator */
-  code span.ot { color: #007020; } /* Other */
-  code span.pp { color: #bc7a00; } /* Preprocessor */
-  code span.sc { color: #4070a0; } /* SpecialChar */
-  code span.ss { color: #bb6688; } /* SpecialString */
-  code span.st { color: #4070a0; } /* String */
-  code span.va { color: #19177c; } /* Variable */
-  code span.vs { color: #4070a0; } /* VerbatimString */
-  code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
     </style>
 
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -138,7 +110,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -395,24 +367,26 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <h2>Intro</h2>
 <p>The <a href="https://github.com/fastai/fastai">fastai</a> library simplifies training fast and accurate neural nets using modern best practices. See the fastai website to get started. The library is based on research into deep learning best practices undertaken at <code>fast.ai</code>, and includes “out of the box” support for <code>vision</code>, <code>text</code>, <code>tabular</code>, and <code>collab</code> (collaborative filtering) models.</p>
 </div>
-<div id="get-model" class="section level2">
-<h2>Get model</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">URLs_MNIST_SAMPLE</span>()</span>
-<span id="cb1-2"><a href="#cb1-2"></a>tfms =<span class="st"> </span><span class="kw">aug_transforms</span>(<span class="dt">do_flip =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb1-3"><a href="#cb1-3"></a>path =<span class="st"> &#39;mnist_sample&#39;</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a>bs =<span class="st"> </span><span class="dv">20</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>data =<span class="st"> </span><span class="kw">ImageDataLoaders_from_folder</span>(path, <span class="dt">batch_tfms =</span> tfms, <span class="dt">size =</span> <span class="dv">26</span>, <span class="dt">bs =</span> bs)</span>
-<span id="cb1-6"><a href="#cb1-6"></a>learn =<span class="st"> </span><span class="kw">cnn_learner</span>(data, <span class="kw">xresnet50_deep</span>(), <span class="dt">metrics =</span> accuracy)</span></code></pre></div>
+<div id="dataset" class="section level2">
+<h2>Dataset</h2>
+<p>Get dataset and build <code>cnn_learner</code>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">URLs_MNIST_SAMPLE</span>()</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>tfms <span class="ot">=</span> <span class="fu">aug_transforms</span>(<span class="at">do_flip =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>path <span class="ot">=</span> <span class="st">&#39;mnist_sample&#39;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>bs <span class="ot">=</span> <span class="dv">20</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">ImageDataLoaders_from_folder</span>(path, <span class="at">batch_tfms =</span> tfms, <span class="at">size =</span> <span class="dv">26</span>, <span class="at">bs =</span> bs)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>learn <span class="ot">=</span> <span class="fu">cnn_learner</span>(data, <span class="fu">xresnet50_deep</span>(), <span class="at">metrics =</span> accuracy)</span></code></pre></div>
 <p>Modify channels to 1:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>init =<span class="st"> </span>learn<span class="op">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;in_channels&#39;</span>]]</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">print</span>(init)</span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># 3</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a>learn<span class="op">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;in_channels&#39;</span>]] <span class="op">%f%</span><span class="st"> </span>1L</span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="kw">print</span>(learn<span class="op">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;in_channels&#39;</span>]])</span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="co"># 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>init <span class="ot">=</span> learn<span class="sc">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;in_channels&#39;</span>]]</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(init)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 3</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>learn<span class="sc">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;in_channels&#39;</span>]] <span class="sc">%f%</span> 1L</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(learn<span class="sc">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;in_channels&#39;</span>]])</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 1</span></span></code></pre></div>
 <p>Here, one can observe a special assignment <code>%f%</code>. It helps for safe modification of layer parameters.</p>
 <p>How to see and modify other parameters of the layer? First see names:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">names</span>(learn<span class="op">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(learn<span class="sc">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>])</span></code></pre></div>
+<p>Cnn layer parameters:</p>
 <pre><code> [1] &quot;add_module&quot;                &quot;apply&quot;                     &quot;bfloat16&quot;                 
  [4] &quot;bias&quot;                      &quot;buffers&quot;                   &quot;children&quot;                 
  [7] &quot;cpu&quot;                       &quot;cuda&quot;                      &quot;dilation&quot;                 
@@ -431,26 +405,207 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 [46] &quot;transposed&quot;                &quot;type&quot;                      &quot;weight&quot;                   
 [49] &quot;zero_grad&quot;   </code></pre>
 <p>Kernel size from <code>(3, 3)</code> to 9.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">print</span>(learn<span class="op">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>])</span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="co"># Conv2d(3, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False))</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>learn<span class="op">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;kernel_size&#39;</span>]] <span class="op">%f%</span><span class="st">  </span>reticulate<span class="op">::</span><span class="kw">tuple</span>(<span class="kw">list</span>(9L,9L))</span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="co"># Conv2d(1, 32, kernel_size=(9, 9), stride=(2, 2), padding=(1, 1), bias=False)</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(learn<span class="sc">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>])</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Conv2d(1, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False))</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>learn<span class="sc">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;kernel_size&#39;</span>]] <span class="sc">%f%</span>  reticulate<span class="sc">::</span><span class="fu">tuple</span>(<span class="fu">list</span>(9L,9L))</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(learn<span class="sc">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>])</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Conv2d(1, 32, kernel_size=(9, 9), stride=(2, 2), padding=(1, 1), bias=False)</span></span></code></pre></div>
+</div>
+<div id="inplace-tensor-ops" class="section level2">
+<h2>Inplace tensor ops</h2>
 <p>In addition, one could replace values inside tensors with the same assignment.</p>
 <p>For single in-place value modification:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>x =<span class="st"> </span><span class="kw">tensor</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>))</span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="kw">print</span>(x[<span class="dv">0</span>][<span class="dv">0</span>])</span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="co"># tensor(1.)</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="co"># Now change it to 99.</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a>x[<span class="dv">0</span>][<span class="dv">0</span>] <span class="op">%f%</span><span class="st"> </span><span class="dv">99</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a><span class="kw">print</span>(x[<span class="dv">0</span>][<span class="dv">0</span>])</span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="co"># tensor(99.)</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">tensor</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># tensor([[1., 2.],</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#         [3., 4.]])</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(x[<span class="dv">0</span>][<span class="dv">0</span>])</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># tensor(1.)</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Now change it to 99.</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">0</span>][<span class="dv">0</span>] <span class="sc">%f%</span> <span class="dv">99</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(x[<span class="dv">0</span>][<span class="dv">0</span>])</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># tensor(99.)</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(x)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># tensor([[99.,  2.],</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#         [ 3.,  4.]])</span></span></code></pre></div>
 <p>Modify 2 or more values:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">print</span>(x[<span class="dv">0</span>])</span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="co"># tensor([99.,  2.])</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="co"># change to 55, 55</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a>x[<span class="dv">0</span>] <span class="op">%f%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">55</span>,<span class="dv">55</span>)</span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="co"># tensor([55., 55.])</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(x[<span class="dv">0</span>])</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># tensor([99.,  2.])</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># change to 55, 55</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">0</span>] <span class="sc">%f%</span> <span class="fu">c</span>(<span class="dv">55</span>,<span class="dv">55</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># tensor([55., 55.])</span></span></code></pre></div>
+</div>
+<div id="slicing" class="section level2">
+<h2>Slicing</h2>
+<p>How to slice tensors? For less confusion, the slicing is the same as in python. <code>narrow</code> function requires a tensor and its dimensions. Let’s see an example:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">tensor</span>(<span class="fu">array</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>)))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>a<span class="sc">$</span>shape</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># torch.Size([3, 3, 3, 3])</span></span></code></pre></div>
+<p>We can extract and play with tensor dimensions:</p>
+<div id="no-change" class="section level3">
+<h3>No change</h3>
+<p>First lets understand the tensor:</p>
+<pre><code>a %&gt;% narrow(&#39;[:,:,:,:]&#39;)</code></pre>
+<pre><code>tensor([[[[ 1, 28, 55],
+          [10, 37, 64],
+          [19, 46, 73]],
+
+         [[ 4, 31, 58],
+          [13, 40, 67],
+          [22, 49, 76]],
+
+         [[ 7, 34, 61],
+          [16, 43, 70],
+          [25, 52, 79]]],
+
+
+        [[[ 2, 29, 56],
+          [11, 38, 65],
+          [20, 47, 74]],
+
+         [[ 5, 32, 59],
+          [14, 41, 68],
+          [23, 50, 77]],
+
+         [[ 8, 35, 62],
+          [17, 44, 71],
+          [26, 53, 80]]],
+
+
+        [[[ 3, 30, 57],
+          [12, 39, 66],
+          [21, 48, 75]],
+
+         [[ 6, 33, 60],
+          [15, 42, 69],
+          [24, 51, 78]],
+
+         [[ 9, 36, 63],
+          [18, 45, 72],
+          [27, 54, 81]]]], dtype=torch.int32)</code></pre>
+<p>We could imagine that the tensor contains 3 R lists and each list contain 3 matrices with 3 rows and 3 columns.</p>
+<p><code>:</code> without any indicated value before or after <code>:</code> will not modify the tensor.</p>
+</div>
+<div id="st-list" class="section level3">
+<h3>1st list</h3>
+<p>How to extract 1st list from the tensor? Very simple:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">%&gt;%</span> <span class="fu">narrow</span>(<span class="st">&#39;[0,:,:,:]&#39;</span>)</span></code></pre></div>
+<pre><code>tensor([[[[ 1, 28, 55],
+          [10, 37, 64],
+          [19, 46, 73]],
+
+         [[ 4, 31, 58],
+          [13, 40, 67],
+          [22, 49, 76]],
+
+         [[ 7, 34, 61],
+          [16, 43, 70],
+          [25, 52, 79]]]], dtype=torch.int32)</code></pre>
+<p>Why from <code>0</code>? Because indexing starts from 0 not from 1.</p>
+</div>
+<div id="st-matrix" class="section level3">
+<h3>1st matrix</h3>
+<p>We could extract 1st matrix from all 3 lists.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">%&gt;%</span> <span class="fu">narrow</span>(<span class="st">&quot;[:,0,:,:]&quot;</span>)</span></code></pre></div>
+<pre><code>tensor([[[ 1, 28, 55],
+         [10, 37, 64],
+         [19, 46, 73]],
+
+        [[ 2, 29, 56],
+         [11, 38, 65],
+         [20, 47, 74]],
+
+        [[ 3, 30, 57],
+         [12, 39, 66],
+         [21, 48, 75]]], dtype=torch.int32)</code></pre>
+</div>
+<div id="st-matrix-1st-row" class="section level3">
+<h3>1st matrix 1st row</h3>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">%&gt;%</span> <span class="fu">narrow</span>(<span class="st">&#39;[:,0,0,:]&#39;</span>)</span></code></pre></div>
+<pre><code>tensor([[ 1, 28, 55],
+        [ 2, 29, 56],
+        [ 3, 30, 57]], dtype=torch.int32)</code></pre>
+</div>
+<div id="nd-list-2nd-matrix-2nd-row" class="section level3">
+<h3>2nd list 2nd matrix 2nd row</h3>
+<p>Extract 2nd list, 2nd matrix, and 2nd row:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">%&gt;%</span> <span class="fu">narrow</span>(<span class="st">&quot;[1,1,1,:]&quot;</span>)</span></code></pre></div>
+<pre><code>tensor([14, 41, 68], dtype=torch.int32)</code></pre>
+</div>
+</div>
+<div id="nn-module" class="section level2">
+<h2>NN module</h2>
+<p>How to build a model with fastai <code>Module</code> class? Simple!</p>
+<p>Prepare data:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fastai)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(zeallot)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">file.exists</span>(<span class="st">&#39;mnist.pkl.gz&#39;</span>)) {</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">download.file</span>(<span class="st">&#39;http://deeplearning.net/data/mnist/mnist.pkl.gz&#39;</span>,<span class="st">&#39;mnist.pkl.gz&#39;</span>)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  R.utils<span class="sc">::</span><span class="fu">gunzip</span>(<span class="st">&quot;mnist.pkl.gz&quot;</span>, <span class="at">remove=</span><span class="cn">FALSE</span>)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">c</span>(x_train, y_train), <span class="fu">c</span>(x_valid, y_valid), res) <span class="sc">%&lt;-%</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  reticulate<span class="sc">::</span><span class="fu">py_load_object</span>(<span class="st">&#39;mnist.pkl&#39;</span>, <span class="at">encoding =</span> <span class="st">&#39;latin-1&#39;</span>)</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>x_train <span class="ot">=</span> x_train[<span class="dv">1</span><span class="sc">:</span><span class="dv">500</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">784</span>]</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>x_valid <span class="ot">=</span> x_valid[<span class="dv">1</span><span class="sc">:</span><span class="dv">500</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">784</span>]</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>y_train <span class="ot">=</span> <span class="fu">as.integer</span>(y_train)[<span class="dv">1</span><span class="sc">:</span><span class="dv">500</span>]</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>y_valid <span class="ot">=</span> <span class="fu">as.integer</span>(y_valid)[<span class="dv">1</span><span class="sc">:</span><span class="dv">500</span>]</span></code></pre></div>
+<p>Plot example:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>example <span class="ot">=</span> <span class="fu">array_reshape</span>(x_train[<span class="dv">1</span>,], <span class="fu">c</span>(<span class="dv">28</span>,<span class="dv">28</span>))</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>example <span class="sc">%&gt;%</span> <span class="fu">show_image</span>(<span class="at">cmap =</span> <span class="st">&#39;gray&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">plot</span>()</span></code></pre></div>
+<div id="dataloaders" class="section level3">
+<h3>Dataloaders</h3>
+<p>Prepare data loaders and build a model:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>TensorDataset <span class="ot">=</span> <span class="fu">torch</span>()<span class="sc">$</span>utils<span class="sc">$</span>data<span class="sc">$</span>TensorDataset</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>bs <span class="ot">=</span> <span class="dv">32</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>train_ds <span class="ot">=</span> <span class="fu">TensorDataset</span>(<span class="fu">tensor</span>(x_train), <span class="fu">tensor</span>(y_train))</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>valid_ds <span class="ot">=</span> <span class="fu">TensorDataset</span>(<span class="fu">tensor</span>(x_valid), <span class="fu">tensor</span>(y_valid))</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>train_dl <span class="ot">=</span> <span class="fu">TfmdDL</span>(train_ds, <span class="at">bs =</span> bs, <span class="at">shuffle =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>valid_dl <span class="ot">=</span> <span class="fu">TfmdDL</span>(valid_ds, <span class="at">bs =</span> <span class="dv">2</span> <span class="sc">*</span> bs)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>dls <span class="ot">=</span> <span class="fu">Data_Loaders</span>(train_dl, valid_dl)</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>one <span class="ot">=</span> <span class="fu">one_batch</span>(dls)</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> one[[<span class="dv">1</span>]]</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> one[[<span class="dv">2</span>]]</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>shape; y<span class="sc">$</span>shape</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>nn <span class="ot">=</span> <span class="fu">nn</span>()</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>Functional <span class="ot">=</span> <span class="fu">torch</span>()<span class="sc">$</span>nn<span class="sc">$</span>functional</span></code></pre></div>
+</div>
+<div id="model" class="section level3">
+<h3>Model</h3>
+<p>Put your model into <code>nn_module</code> function:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">=</span> <span class="fu">nn_module</span>(<span class="cf">function</span>(self) {</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  self<span class="sc">$</span>lin1 <span class="ot">=</span> nn<span class="sc">$</span><span class="fu">Linear</span>(784L, 50L, <span class="at">bias=</span><span class="cn">TRUE</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  self<span class="sc">$</span>lin2 <span class="ot">=</span> nn<span class="sc">$</span><span class="fu">Linear</span>(50L, 10L, <span class="at">bias=</span><span class="cn">TRUE</span>)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  forward <span class="ot">=</span> <span class="cf">function</span>(y) {</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">=</span> self<span class="sc">$</span><span class="fu">lin1</span>(y)</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">=</span> Functional<span class="sc">$</span><span class="fu">relu</span>(x)</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    self<span class="sc">$</span><span class="fu">lin2</span>(x)</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+</div>
+<div id="conclusion" class="section level3">
+<h3>Conclusion</h3>
+<p>Fit the model:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>learn <span class="ot">=</span> <span class="fu">Learner</span>(dls, model, <span class="at">loss_func=</span>nn<span class="sc">$</span><span class="fu">CrossEntropyLoss</span>(), <span class="at">metrics=</span>accuracy)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>learn <span class="sc">%&gt;%</span> <span class="fu">summary</span>()</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>learn <span class="sc">%&gt;%</span> <span class="fu">fit_one_cycle</span>(<span class="dv">1</span>, <span class="fl">1e-2</span>)</span></code></pre></div>
+<blockquote>
+<p>Note: if CUDA is available then the model will be automatically trained on GPU.</p>
+</blockquote>
+</div>
 </div>
 
 

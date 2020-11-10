@@ -162,7 +162,8 @@
 
       
 
-      </header><script src="time_series_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="time_series_files/header-attrs-2.5/header-attrs.js"></script><link href="time_series_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="time_series_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Time-Series</h1>
@@ -183,18 +184,18 @@
 <div id="install-package" class="section level2">
 <h2 class="hasAnchor">
 <a href="#install-package" class="anchor"></a>Install package</h2>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/reticulate/man/py_install.html">py_install</a></span><span class="op">(</span><span class="st">'git+https://github.com/tcapelle/timeseries_fastai.git'</span>, pip <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/reticulate/man/py_install.html">py_install</a></span><span class="op">(</span><span class="st">'git+https://github.com/tcapelle/timeseries_fastai.git'</span>, pip <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="grab-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#grab-data" class="anchor"></a>Grab data</h2>
 <p>Download the data from Facebook Github page (Prophet):</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/henry090/fastai">fastai</a></span><span class="op">)</span>
 
-<span class="va">df</span> <span class="op">=</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">'https://raw.githubusercontent.com/facebook/prophet/master/examples/example_wp_log_peyton_manning.csv'</span><span class="op">)</span></pre></div>
+<span class="va">df</span> <span class="op">=</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">'https://raw.githubusercontent.com/facebook/prophet/master/examples/example_wp_log_peyton_manning.csv'</span><span class="op">)</span></code></pre></div>
 <pre><code>           ds        y
 1: 2007-12-10 9.590761
 2: 2007-12-11 8.519590
@@ -207,8 +208,8 @@
 <h2 class="hasAnchor">
 <a href="#preprocess" class="anchor"></a>Preprocess</h2>
 <p>Scale and fill NA’s:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="va">split_idx</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">ds</span><span class="op">==</span><span class="st">'2016-01-01'</span><span class="op">)</span> <span class="co"># take 1 year for validation</span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">split_idx</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">ds</span><span class="op">==</span><span class="st">'2016-01-01'</span><span class="op">)</span> <span class="co"># take 1 year for validation</span>
 
 <span class="va">y</span> <span class="op">=</span> <span class="va">df</span><span class="op">$</span><span class="va">y</span>
 
@@ -218,7 +219,7 @@
   <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html">as.data.table</a></span><span class="op">(</span><span class="op">)</span>
 
 <span class="va">df</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span><span class="op">]</span><span class="op">=</span><span class="fl">0</span>
-<span class="va">df</span><span class="op">$</span><span class="va">y</span> <span class="op">=</span> <span class="va">y</span></pre></div>
+<span class="va">df</span><span class="op">$</span><span class="va">y</span> <span class="op">=</span> <span class="va">y</span></code></pre></div>
 </div>
 <div id="split" class="section level2">
 <h2 class="hasAnchor">
@@ -228,24 +229,24 @@
 <li>train</li>
 <li>test</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="va">df_train</span> <span class="op">=</span> <span class="va">df</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="va">split_idx</span>,<span class="op">]</span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df_train</span> <span class="op">=</span> <span class="va">df</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="va">split_idx</span>,<span class="op">]</span>
 <span class="va">df_test</span> <span class="op">=</span> <span class="va">df</span><span class="op">[</span><span class="op">(</span><span class="va">split_idx</span><span class="op">+</span><span class="fl">1</span><span class="op">)</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span>,<span class="op">]</span>
 
-<span class="va">x_cols</span> <span class="op">=</span> <span class="fu"><a href="https://generics.r-lib.org/reference/setops.html">setdiff</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">df_train</span><span class="op">)</span>,<span class="st">'y'</span><span class="op">)</span></pre></div>
+<span class="va">x_cols</span> <span class="op">=</span> <span class="fu"><a href="https://generics.r-lib.org/reference/setops.html">setdiff</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">df_train</span><span class="op">)</span>,<span class="st">'y'</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="dataloader-and-inception-model" class="section level2">
 <h2 class="hasAnchor">
 <a href="#dataloader-and-inception-model" class="anchor"></a>Dataloader and Inception model</h2>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="va">dls</span> <span class="op">=</span> <span class="fu"><a href="../reference/TSDataLoaders_from_dfs.html">TSDataLoaders_from_dfs</a></span><span class="op">(</span><span class="va">df_train</span>, <span class="va">df_test</span>, x_cols <span class="op">=</span> <span class="va">x_cols</span>, label_col <span class="op">=</span> <span class="st">'y'</span>, bs<span class="op">=</span><span class="fl">60</span>,
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dls</span> <span class="op">=</span> <span class="fu"><a href="../reference/TSDataLoaders_from_dfs.html">TSDataLoaders_from_dfs</a></span><span class="op">(</span><span class="va">df_train</span>, <span class="va">df_test</span>, x_cols <span class="op">=</span> <span class="va">x_cols</span>, label_col <span class="op">=</span> <span class="st">'y'</span>, bs<span class="op">=</span><span class="fl">60</span>,
                              y_block <span class="op">=</span> <span class="fu"><a href="../reference/RegressionBlock.html">RegressionBlock</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">dls</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/show_batch.html">show_batch</a></span><span class="op">(</span><span class="op">)</span>
 
 <span class="va">inception</span> <span class="op">=</span> <span class="fu"><a href="../reference/create_inception.html">create_inception</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>
 
-<span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/Learner.html">Learner</a></span><span class="op">(</span><span class="va">dls</span>, <span class="va">inception</span>, metrics<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="../reference/mae.html">mae</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="../reference/rmse.html">rmse</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></pre></div>
+<span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/Learner.html">Learner</a></span><span class="op">(</span><span class="va">dls</span>, <span class="va">inception</span>, metrics<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="../reference/mae.html">mae</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="../reference/rmse.html">rmse</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>Sequential(
   (0): SequentialEx(
     (layers): ModuleList(
@@ -396,19 +397,19 @@
 <h2 class="hasAnchor">
 <a href="#optimal-lr" class="anchor"></a>Optimal LR</h2>
 <p>Find suitable learning rate and plot:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="va">lrs</span> <span class="op">=</span> <span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/lr_find.html">lr_find</a></span><span class="op">(</span><span class="op">)</span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lrs</span> <span class="op">=</span> <span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/lr_find.html">lr_find</a></span><span class="op">(</span><span class="op">)</span>
 
-<span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot_lr_find.html">plot_lr_find</a></span><span class="op">(</span><span class="op">)</span></pre></div>
+<span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot_lr_find.html">plot_lr_find</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="conclusion" class="section level2">
 <h2 class="hasAnchor">
 <a href="#conclusion" class="anchor"></a>Conclusion</h2>
 <p>Fit and include early stopping:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">1e-5</span>, cbs <span class="op">=</span> <span class="fu"><a href="../reference/EarlyStoppingCallback.html">EarlyStoppingCallback</a></span><span class="op">(</span>patience <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">1e-5</span>, cbs <span class="op">=</span> <span class="fu"><a href="../reference/EarlyStoppingCallback.html">EarlyStoppingCallback</a></span><span class="op">(</span>patience <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>
 
-<span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">df_test</span><span class="op">)</span></pre></div>
+<span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">df_test</span><span class="op">)</span></code></pre></div>
 <pre><code>          y
 1  5.925275
 2  5.925579

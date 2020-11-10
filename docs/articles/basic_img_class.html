@@ -162,7 +162,8 @@
 
       
 
-      </header><script src="basic_img_class_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="basic_img_class_files/header-attrs-2.5/header-attrs.js"></script><link href="basic_img_class_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="basic_img_class_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Basic Image Classification</h1>
@@ -184,31 +185,31 @@
 <h2 class="hasAnchor">
 <a href="#image-data" class="anchor"></a>Image data</h2>
 <p>Image dataset can be downloaded and extracted directly via the following function:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="../reference/URLs_PETS.html">URLs_PETS</a></span><span class="op">(</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/URLs_PETS.html">URLs_PETS</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>Later, we need to specify image folders and build a data loader object:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="va">path</span> <span class="op">=</span> <span class="st">'oxford-iiit-pet'</span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">path</span> <span class="op">=</span> <span class="st">'oxford-iiit-pet'</span>
 <span class="va">path_anno</span> <span class="op">=</span> <span class="st">'oxford-iiit-pet/annotations'</span>
 <span class="va">path_img</span> <span class="op">=</span> <span class="st">'oxford-iiit-pet/images'</span>
-<span class="va">fnames</span> <span class="op">=</span> <span class="fu"><a href="../reference/get_image_files.html">get_image_files</a></span><span class="op">(</span><span class="va">path_img</span><span class="op">)</span></pre></div>
+<span class="va">fnames</span> <span class="op">=</span> <span class="fu"><a href="../reference/get_image_files.html">get_image_files</a></span><span class="op">(</span><span class="va">path_img</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="dataloader" class="section level2">
 <h2 class="hasAnchor">
 <a href="#dataloader" class="anchor"></a>Dataloader</h2>
 <p>Data loader is one of the most important parts of the image classification part. Because here we apply different image transformations which can drastically improve the accuracy of the model.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="va">dls</span> <span class="op">=</span> <span class="fu"><a href="../reference/ImageDataLoaders_from_name_re.html">ImageDataLoaders_from_name_re</a></span><span class="op">(</span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dls</span> <span class="op">=</span> <span class="fu"><a href="../reference/ImageDataLoaders_from_name_re.html">ImageDataLoaders_from_name_re</a></span><span class="op">(</span>
   <span class="va">path</span>, <span class="va">fnames</span>, pat<span class="op">=</span><span class="st">'(.+)_\\d+.jpg$'</span>,
   item_tfms <span class="op">=</span> <span class="fu"><a href="../reference/RandomResizedCrop.html">RandomResizedCrop</a></span><span class="op">(</span><span class="fl">460</span>, min_scale<span class="op">=</span><span class="fl">0.75</span><span class="op">)</span>, bs <span class="op">=</span> <span class="fl">10</span>,
   batch_tfms <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="../reference/aug_transforms.html">aug_transforms</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">299</span>, max_warp <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>,
                   <span class="fu"><a href="../reference/Normalize_from_stats.html">Normalize_from_stats</a></span><span class="op">(</span> <span class="fu"><a href="../reference/imagenet_stats.html">imagenet_stats</a></span><span class="op">(</span><span class="op">)</span> <span class="op">)</span>
   <span class="op">)</span>,
   device <span class="op">=</span> <span class="st">'cuda'</span>
-<span class="op">)</span></pre></div>
+<span class="op">)</span></code></pre></div>
 <p>See batch:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="va">dls</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/show_batch.html">show_batch</a></span><span class="op">(</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dls</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/show_batch.html">show_batch</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <center>
 <p><img src="images/img_batch.png" alt="_" style="width: 700px;"></p>
 </center>
@@ -217,8 +218,8 @@
 <h2 class="hasAnchor">
 <a href="#resnet50" class="anchor"></a>ResNet50</h2>
 <p>Let’s load a pretrained ResNet50 model and construct a <code>cnn_learner</code>:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/cnn_learner.html">cnn_learner</a></span><span class="op">(</span><span class="va">dls</span>, <span class="fu"><a href="../reference/resnet50.html">resnet50</a></span><span class="op">(</span><span class="op">)</span>, metrics <span class="op">=</span> <span class="va">error_rate</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/cnn_learner.html">cnn_learner</a></span><span class="op">(</span><span class="va">dls</span>, <span class="fu"><a href="../reference/resnet50.html">resnet50</a></span><span class="op">(</span><span class="op">)</span>, metrics <span class="op">=</span> <span class="va">error_rate</span><span class="op">)</span></code></pre></div>
 <pre><code>Downloading: "https://download.pytorch.org/models/resnet50-19c8e357.pth" to /home/turgut/.cache/torch/hub/checkpoints/resnet50-19c8e357.pth
 100%|██████████| 97.8M/97.8M [00:43&lt;00:00, 2.36MB/s]</code></pre>
 </div>
@@ -226,8 +227,8 @@
 <h2 class="hasAnchor">
 <a href="#fit" class="anchor"></a>Fit</h2>
 <p>It is time to fit the ResNet model:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit">
-<span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span>n_epoch <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span>n_epoch <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></code></pre></div>
 <pre><code>epoch     train_loss  valid_loss  error_rate  time    
 0         0.741927    0.342162    0.103518    01:15     
 1         0.713688    0.286085    0.100812    01:15     
@@ -238,18 +239,18 @@
 6         0.154269    0.213939    0.062246    01:16     
 7         0.127354    0.211825    0.064953    01:16 </code></pre>
 <p>Unfreeze the blocks and train again:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="va">learn</span><span class="op">$</span><span class="fu">unfreeze</span><span class="op">(</span><span class="op">)</span>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">learn</span><span class="op">$</span><span class="fu">unfreeze</span><span class="op">(</span><span class="op">)</span>
 
-<span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">3</span>, lr_max <span class="op">=</span> <span class="fu"><a href="../reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1e-6</span>,<span class="fl">1e-4</span><span class="op">)</span><span class="op">)</span></pre></div>
+<span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">3</span>, lr_max <span class="op">=</span> <span class="fu"><a href="../reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1e-6</span>,<span class="fl">1e-4</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>epoch     train_loss  valid_loss  error_rate  time    
 0         0.162769    0.204167    0.061570    01:42     
 1         0.168877    0.211312    0.071042    01:42     
 2         0.178176    0.202088    0.062923    01:43 </code></pre>
 <p>Extraction of most confused:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit">
-<span class="va">interp</span> <span class="op">=</span> <span class="fu"><a href="../reference/ClassificationInterpretation_from_learner.html">ClassificationInterpretation_from_learner</a></span><span class="op">(</span><span class="va">learn</span><span class="op">)</span>
-<span class="va">interp</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/most_confused.html">most_confused</a></span><span class="op">(</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">interp</span> <span class="op">=</span> <span class="fu"><a href="../reference/ClassificationInterpretation_from_learner.html">ClassificationInterpretation_from_learner</a></span><span class="op">(</span><span class="va">learn</span><span class="op">)</span>
+<span class="va">interp</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/most_confused.html">most_confused</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>                           V1                         V2 V3
 1   american_pit_bull_terrier staffordshire_bull_terrier 10
 2                     Ragdoll                     Birman  6
@@ -309,8 +310,8 @@
 <h2 class="hasAnchor">
 <a href="#conclusion" class="anchor"></a>Conclusion</h2>
 <p>And get predictions on new data. For this purpose, specify the name of the files:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit">
-<span class="va">fls</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">path</span>,<span class="st">'images'</span>,sep <span class="op">=</span> <span class="st">'/'</span><span class="op">)</span>,full.names <span class="op">=</span> <span class="cn">TRUE</span>, recursive <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">250</span>,<span class="fl">500</span>,<span class="fl">700</span><span class="op">)</span><span class="op">]</span>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fls</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">path</span>,<span class="st">'images'</span>,sep <span class="op">=</span> <span class="st">'/'</span><span class="op">)</span>,full.names <span class="op">=</span> <span class="cn">TRUE</span>, recursive <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">250</span>,<span class="fl">500</span>,<span class="fl">700</span><span class="op">)</span><span class="op">]</span>
 <span class="va">fls</span>
 
 <span class="co">#[1] "oxford-iiit-pet/images/american_bulldog_142.jpg"          "oxford-iiit-pet/images/american_pit_bull_terrier_188.jpg"</span>
@@ -318,7 +319,7 @@
 
 <span class="va">result</span> <span class="op">=</span> <span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">fls</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">result</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">result</span><span class="op">)</span></code></pre></div>
 <pre><code>List of 2
  $ probabilities:'data.frame':  3 obs. of  37 variables:
   ..$ Abyssinian                : num [1:3] 1.89e-09 2.28e-05 9.32e-09
