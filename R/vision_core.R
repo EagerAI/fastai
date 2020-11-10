@@ -552,6 +552,10 @@ TfmdDL <- function(dataset, bs = 64, shuffle = FALSE, num_workers = NULL,
     args$num_workers = 0L
   }
 
+  if(os()=='mac' & is.null(args$num_workers)) {
+    args$num_workers = 0L
+  }
+
   if(!is.null(args$num_workers)){
     args$num_workers = as.integer(args$num_workers)
   }
