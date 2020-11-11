@@ -70,7 +70,7 @@ fit_flat_lin <- function(object, n_epochs = 100, n_epochs_decay = 100,
 #' @param pct_start start percentage
 #' @param wd weight decay
 #' @param cbs callbacks
-#' @param reset_ops reset optimizer
+#' @param reset_opt reset optimizer
 #' @return None
 #'
 #'
@@ -126,7 +126,7 @@ fit_flat_cos = function(object, n_epoch, lr=NULL, div_final=100000.0,
 #' @param cycle_len length of cycle
 #' @param wd weight decay
 #' @param cbs callbacks
-#' @param reset_ops reset optimizer
+#' @param reset_opt reset optimizer
 #' @return None
 #'
 #'
@@ -184,7 +184,7 @@ fit_sgdr = function(object, n_cycles, cycle_len, lr_max=NULL,
 #' @param lr_mult learning rate multiply
 #' @param pct_start start percentage
 #' @param div divide
-#' @param param ... additional arguments
+#' @param ... additional arguments
 #' @return None
 #' @export
 fine_tune <- function(object, epochs, base_lr = 0.002, freeze_epochs = 1,

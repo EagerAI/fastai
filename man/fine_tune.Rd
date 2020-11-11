@@ -30,7 +30,7 @@ fine_tune(
 
 \item{div}{divide}
 
-\item{param}{... additional arguments}
+\item{...}{additional arguments}
 }
 \value{
 None

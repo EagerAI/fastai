@@ -28,9 +28,9 @@ fit_sgdr(
 
 \item{cbs}{callbacks}
 
-\item{wd}{weight decay}
+\item{reset_opt}{reset optimizer}
 
-\item{reset_ops}{reset optimizer}
+\item{wd}{weight decay}
 }
 \value{
 None

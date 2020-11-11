@@ -30,7 +30,7 @@ fit_flat_cos(
 
 \item{cbs}{callbacks}
 
-\item{reset_ops}{reset optimizer}
+\item{reset_opt}{reset optimizer}
 }
 \value{
 None
