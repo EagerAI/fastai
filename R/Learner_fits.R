@@ -36,19 +36,196 @@ fit_flat_lin <- function(object, n_epochs = 100, n_epochs_decay = 100,
   )
 
   do.call(object$fit_flat_lin, args)
+  if (length(length(object$recorder$values))==1) {
+    history = data.frame(values = do.call(rbind,lapply(1:length(object$recorder$values),
+                                                       function(x) object$recorder$values[[x]]$items))
+    )
+  } else {
+    history = data.frame(values = t(do.call(rbind,lapply(1:length(object$recorder$values),
+                                                         function(x) object$recorder$values[[x]]$items)))
+    )
+  }
+
+  nm = object$recorder$metric_names$items
+  colnames(history) = nm[!nm %in% c('epoch','time')]
+
+  if(nrow(history)==1) {
+    history['epoch'] = 0
+  } else {
+    history['epoch'] = 0:(nrow(history)-1)
+  }
+
+  history = history[,c(which(colnames(history)=="epoch"),which(colnames(history)!="epoch"))]
+  invisible(history)
+
+}
+
+
+#' @title Fit_flat_cos
+#'
+#' @param object learner/model
+#' @param n_epoch number of epochs
+#' @param lr learning rate
+#' @param div_final divide final value
+#' @param pct_start start percentage
+#' @param wd weight decay
+#' @param cbs callbacks
+#' @param reset_ops reset optimizer
+#' @return None
+#'
+#'
+#' @export
+fit_flat_cos = function(object, n_epoch, lr=NULL, div_final=100000.0,
+                        pct_start=0.75, wd=NULL, cbs=NULL, reset_opt=FALSE) {
+
+  args = list(
+    n_epoch = as.integer(n_epoch),
+    lr = lr,
+    div_final = div_final,
+    pct_start = pct_start,
+    wd = wd,
+    cbs = cbs,
+    reset_opt = reset_opt
+  )
+
+  do.call(object$fit_flat_cos, args)
+
+  if (length(length(object$recorder$values))==1) {
+    history = data.frame(values = do.call(rbind,lapply(1:length(object$recorder$values),
+                                                       function(x) object$recorder$values[[x]]$items))
+    )
+  } else {
+    history = data.frame(values = t(do.call(rbind,lapply(1:length(object$recorder$values),
+                                                         function(x) object$recorder$values[[x]]$items)))
+    )
+  }
+
+  nm = object$recorder$metric_names$items
+  colnames(history) = nm[!nm %in% c('epoch','time')]
+
+  if(nrow(history)==1) {
+    history['epoch'] = 0
+  } else {
+    history['epoch'] = 0:(nrow(history)-1)
+  }
+
+  history = history[,c(which(colnames(history)=="epoch"),which(colnames(history)!="epoch"))]
+  invisible(history)
 
 }
 
 
 
 
+#' @title Fit_sgdr
+#'
+#' @param object learner/model
+#' @param n_cycles number of cycles
+#' @param lr_max maximum learning rate
+#' @param cycle_mult cycle mult
+#' @param cycle_len length of cycle
+#' @param wd weight decay
+#' @param cbs callbacks
+#' @param reset_ops reset optimizer
+#' @return None
+#'
+#'
+#' @export
+fit_sgdr = function(object, n_cycles, cycle_len, lr_max=NULL,
+                        cycle_mult=2, cbs=NULL, reset_opt=FALSE, wd=NULL) {
+
+  args = list(
+    n_cycles = as.integer(n_cycles),
+    cycle_len = as.integer(cycle_len),
+    lr_max = lr_max,
+    cycle_mult = as.integer(cycle_mult),
+    cbs = cbs,
+    reset_opt = reset_opt,
+    wd = wd
+  )
+
+  do.call(object$fit_sgdr, args)
+
+  if (length(length(object$recorder$values))==1) {
+    history = data.frame(values = do.call(rbind,lapply(1:length(object$recorder$values),
+                                                       function(x) object$recorder$values[[x]]$items))
+    )
+  } else {
+    history = data.frame(values = t(do.call(rbind,lapply(1:length(object$recorder$values),
+                                                         function(x) object$recorder$values[[x]]$items)))
+    )
+  }
+
+  nm = object$recorder$metric_names$items
+  colnames(history) = nm[!nm %in% c('epoch','time')]
+
+  if(nrow(history)==1) {
+    history['epoch'] = 0
+  } else {
+    history['epoch'] = 0:(nrow(history)-1)
+  }
+
+  history = history[,c(which(colnames(history)=="epoch"),which(colnames(history)!="epoch"))]
+  invisible(history)
+
+}
 
 
 
+#' @title Fine_tune
+#'
+#' @description Fine tune with `freeze` for `freeze_epochs` then
+#' with `unfreeze` from `epochs` using discriminative LR
+#'
+#' @param object learner/model
+#' @param epochs epoch number
+#' @param base_lr base learning rate
+#' @param freeze_epochs freeze epochs number
+#' @param lr_mult learning rate multiply
+#' @param pct_start start percentage
+#' @param div divide
+#' @param param ... additional arguments
+#' @return None
+#' @export
+fine_tune <- function(object, epochs, base_lr = 0.002, freeze_epochs = 1,
+                      lr_mult = 100, pct_start = 0.3, div = 5.0,
+                      ...) {
 
+  args <- list(
+    epochs = as.integer(epochs),
+    base_lr = base_lr,
+    freeze_epochs = as.integer(freeze_epochs),
+    lr_mult = as.integer(lr_mult),
+    pct_start = pct_start,
+    div = div,
+    ...
+  )
 
+  do.call(object$fine_tune, args)
 
+  if (length(length(object$recorder$values))==1) {
+    history = data.frame(values = do.call(rbind,lapply(1:length(object$recorder$values),
+                                                       function(x) object$recorder$values[[x]]$items))
+    )
+  } else {
+    history = data.frame(values = t(do.call(rbind,lapply(1:length(object$recorder$values),
+                                                         function(x) object$recorder$values[[x]]$items)))
+    )
+  }
 
+  nm = object$recorder$metric_names$items
+  colnames(history) = nm[!nm %in% c('epoch','time')]
+
+  if(nrow(history)==1) {
+    history['epoch'] = 0
+  } else {
+    history['epoch'] = 0:(nrow(history)-1)
+  }
+
+  history = history[,c(which(colnames(history)=="epoch"),which(colnames(history)!="epoch"))]
+  invisible(history)
+
+}
 
 
 

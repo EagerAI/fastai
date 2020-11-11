@@ -126,6 +126,27 @@ fit_one_cycle <- function(object, ...) {
   }
 
   do.call(object$fit_one_cycle, args)
+  if (length(length(object$recorder$values))==1) {
+    history = data.frame(values = do.call(rbind,lapply(1:length(object$recorder$values),
+                                                       function(x) object$recorder$values[[x]]$items))
+    )
+  } else {
+    history = data.frame(values = t(do.call(rbind,lapply(1:length(object$recorder$values),
+                                                         function(x) object$recorder$values[[x]]$items)))
+    )
+  }
+
+  nm = object$recorder$metric_names$items
+  colnames(history) = nm[!nm %in% c('epoch','time')]
+
+  if(nrow(history)==1) {
+    history['epoch'] = 0
+  } else {
+    history['epoch'] = 0:(nrow(history)-1)
+  }
+
+  history = history[,c(which(colnames(history)=="epoch"),which(colnames(history)!="epoch"))]
+  invisible(history)
 }
 
 
