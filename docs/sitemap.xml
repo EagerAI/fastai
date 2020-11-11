@@ -1387,6 +1387,9 @@
     <loc>https://henry090.github.io/fastai//reference/find_coeffs.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/fine_tune.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/fit.fastai.learner.Learner.html</loc>
   </url>
   <url>
@@ -1396,10 +1399,16 @@
     <loc>https://henry090.github.io/fastai//reference/fit.fastai.vision.gan.GANLearner.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/fit_flat_cos.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/fit_flat_lin.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/fit_one_cycle.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/fit_sgdr.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/fix_fit.html</loc>
