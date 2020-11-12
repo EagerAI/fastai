@@ -9,6 +9,9 @@ get_hf_objects(...)
 \arguments{
 \item{...}{parameters to pass}
 }
+\value{
+None
+}
 \description{
 Returns the architecture (str), config (obj), tokenizer (obj), and model (obj) given at minimum a
 }

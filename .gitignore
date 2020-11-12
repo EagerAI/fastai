@@ -33,4 +33,6 @@ SPEECHCOMMANDS/
 h2z-preds/
 ^.*\.pyc$
 ^.*__pycache__$
+imdb_sample/
+
 

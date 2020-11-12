@@ -31,40 +31,36 @@ HF_BaseInput <- function(...) {
 #'
 #' @param hf_arch achitecture
 #' @param hf_tokenizer tokenizer
-#' @param hf_batch_tfm batch transformation
 #' @param max_length maximum length
 #' @param padding padding or not
 #' @param truncation truncation or not
 #' @param is_split_into_words to split into words or not
-#' @param n_tok_inps number of tok inps
-#' @param tok_kwargs tokenizer additional arguments
-#' @param hf_input_return_type input return type
-#' @param dl_type dataloader type
-#' @param batch_kwargs batch additional arguments
+#' @param n_tok_inps number of tok inp
+#' @param ... additional arguments
 #' @return None
 #' @export
-HF_TextBlock <- function(hf_arch=NULL, hf_tokenizer=NULL, before_batch_tfms=NULL, after_batch_tfms=NULL,
+HF_TextBlock <- function(hf_arch=NULL, hf_tokenizer=NULL,
                          max_length=512, padding=TRUE, truncation=TRUE, is_split_into_words=FALSE,
-                         n_tok_inps=1, tok_kwargs=list(), input_return_type=HF_BaseInput(), dl_type=SortedDL(),
-                         before_batch_kwargs=list(), after_batch_kwargs=list(), ...) {
+                         n_tok_inps=1, ...) {
 
   args <- list(
     hf_arch=hf_arch,
     hf_tokenizer=hf_tokenizer,
-    before_batch_tfms=before_batch_tfms,
-    after_batch_tfms=after_batch_tfms,
     max_length=as.integer(max_length),
     padding=padding,
     truncation=truncation,
     is_split_into_words=is_split_into_words,
     n_tok_inps=n_tok_inps,
-    tok_kwargs=tok_kwargs,
-    input_return_type=input_return_type,
-    dl_type=dl_type,
-    before_batch_kwargs=before_batch_kwargs,
-    after_batch_kwargs=after_batch_kwargs,
     ...
   )
+
+  if(!is.null(args$max_length)) {
+    args$max_length = as.integer(args$max_length)
+  }
+
+  if(!is.null(args$n_tok_inps)) {
+    args$n_tok_inps = as.integer(args$n_tok_inps)
+  }
 
   do.call(blurr()$data$all$HF_TextBlock, args)
 
@@ -94,7 +90,7 @@ HF_TASKS_AUTO <- function() {
 #' related kwargs for each) to get as specific as you want w/r/t what huggingface objects are returned.
 #'
 #' @param ... parameters to pass
-#'
+#' @return None
 #' @export
 get_hf_objects <- function(...) {
 

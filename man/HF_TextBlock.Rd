@@ -7,18 +7,11 @@
 HF_TextBlock(
   hf_arch = NULL,
   hf_tokenizer = NULL,
-  before_batch_tfms = NULL,
-  after_batch_tfms = NULL,
   max_length = 512,
   padding = TRUE,
   truncation = TRUE,
   is_split_into_words = FALSE,
   n_tok_inps = 1,
-  tok_kwargs = list(),
-  input_return_type = HF_BaseInput(),
-  dl_type = SortedDL(),
-  before_batch_kwargs = list(),
-  after_batch_kwargs = list(),
   ...
 )
 }
@@ -35,17 +28,9 @@ HF_TextBlock(
 
 \item{is_split_into_words}{to split into words or not}
 
-\item{n_tok_inps}{number of tok inps}
+\item{n_tok_inps}{number of tok inp}
 
-\item{tok_kwargs}{tokenizer additional arguments}
-
-\item{dl_type}{dataloader type}
-
-\item{hf_batch_tfm}{batch transformation}
-
-\item{hf_input_return_type}{input return type}
-
-\item{batch_kwargs}{batch additional arguments}
+\item{...}{additional arguments}
 }
 \value{
 None
