@@ -1050,12 +1050,13 @@ Custom accuracy function:
 
 ```
 acc_camvid <- function(input, target) {
- # exclude/filter void label
+  target = target$squeeze(1L)
+  # exclude/filter void label
   mask = target != void_code
   return(
-    (input$argmax(dim=1L)[mask] == target[mask]) %>%
-            float() %>% mean()
-    )
+    (input$argmax(dim=1L)[mask]$eq(target[mask])) %>%
+      float() %>% mean()
+  )
 }
 
 attr(acc_camvid, "py_function_name") <- 'acc_camvid'
@@ -1492,7 +1493,7 @@ And finally, fit:
 lr = 3e-3
 wd = 1e-2
 
-learn %>% fit_one_cycle(2, lr, pct_start = 0.9, wd = wd)
+learn %>% fit_one_cycle(2, slice(lr), pct_start = 0.9, wd = wd)
 ```
 
 ```

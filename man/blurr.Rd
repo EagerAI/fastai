@@ -2,13 +2,19 @@
 % Please edit documentation in R/import_modules.R
 \name{blurr}
 \alias{blurr}
-\title{Blurr module}
+\title{Hugging Face module}
 \usage{
+blurr()
+
 blurr()
 }
 \value{
 None
+
+None
 }
 \description{
+Hugging Face module
+
 Blurr module
 }

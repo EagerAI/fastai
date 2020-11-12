@@ -102,6 +102,11 @@ shap <- function() try(reticulate::import('shap'), TRUE)
 #' @return None
 fastaudio <- function() try(reticulate::import('fastaudio'), TRUE)
 
+#' @title Hugging Face module
+#'
+#' @return None
+blurr <- function() try(reticulate::import('blurr'), TRUE)
+
 #' @title Kaggle module
 #' @export
 #' @return None

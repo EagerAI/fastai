@@ -258,29 +258,34 @@ SortedDL <- function(dataset, sort_func = NULL, res = NULL, bs = 64,
                      batch_size = NULL, drop_last = FALSE, indexed = NULL,
                      n = NULL, device = NULL) {
 
-  args <- list(
-    dataset = dataset,
-    sort_func = sort_func,
-    res = res,
-    bs = as.integer(bs),
-    shuffle = shuffle,
-    num_workers = num_workers,
-    verbose = verbose,
-    do_setup = do_setup,
-    pin_memory = pin_memory,
-    timeout = as.integer(timeout),
-    batch_size = batch_size,
-    drop_last = drop_last,
-    indexed = indexed,
-    n = n,
-    device = device
-  )
 
-  if(!is.null(args$batch_size)) {
-    args$batch_size = as.integer(args$batch_size)
+  if(missing(dataset)) {
+    text()$SortedDL
+  } else {
+    args <- list(
+      dataset = dataset,
+      sort_func = sort_func,
+      res = res,
+      bs = as.integer(bs),
+      shuffle = shuffle,
+      num_workers = num_workers,
+      verbose = verbose,
+      do_setup = do_setup,
+      pin_memory = pin_memory,
+      timeout = as.integer(timeout),
+      batch_size = batch_size,
+      drop_last = drop_last,
+      indexed = indexed,
+      n = n,
+      device = device
+    )
+
+    if(!is.null(args$batch_size)) {
+      args$batch_size = as.integer(args$batch_size)
+    }
+
+    do.call(text()$SortedDL, args)
   }
-
-  do.call(text()$SortedDL, args)
 
 }
 

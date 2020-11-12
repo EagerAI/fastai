@@ -11,7 +11,8 @@
 #' @export
 install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrite = FALSE,
                            extra_pkgs = c('kaggle', 'transformers', 'pytorch_lightning', 'timm',
-                                          'catalyst', 'ignite', 'tensorboard', 'fastinference', 'shap')) {
+                                          'catalyst', 'ignite', 'tensorboard', 'fastinference', 'shap',
+                                          'blurr')) {
 
   required_py_pkgs <- c('IPython', 'torch', 'torchvision', 'fastai',
                        'pydicom', 'kornia', 'cv2',
@@ -24,6 +25,10 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
               Windows= 'windows',
               Linux  = 'linux',
               Darwin = 'mac')
+
+  if(os == 'windows') {
+    extra_pkgs = extra_pkgs[!extra_pkgs %in% 'blurr']
+  }
 
   # audio, time-series, cycle-GAN, transformers integration==blurr
   # skip windows because of:
@@ -61,6 +66,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="ignite", "pytorch-ignite")
   #required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="torchaudio", "torchaudio==0.6.0")
   required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="shap", "shap==0.35.0")
+  required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="blurr", "ohmeow-blurr")
 
   # git pkgs
   required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastaudio", "git+https://github.com/fastaudio/fastaudio.git")
