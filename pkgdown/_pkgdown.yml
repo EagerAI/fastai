@@ -65,6 +65,10 @@ navbar:
           href: articles/callbacks.html
         - text: "Low-level API"
           href: articles/low.html
+    - text: "NLP"
+      menu:
+        - text: "RoBERTa binary classification"
+          href: articles/textclassification.html
     - text: "Reference"
       href: reference/index.html
 
