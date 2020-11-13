@@ -169,7 +169,12 @@ one_batch <- function(object, convert = FALSE) {
 #'
 #' @export
 summary.fastai.learner.Learner <- function(object, ...) {
-  object$summary()
+  res = !inherits(try(object$blurr_summary, TRUE), "try-error")
+  if(res) {
+    object$blurr_summary()
+  } else {
+    object$summary()
+  }
 }
 
 
