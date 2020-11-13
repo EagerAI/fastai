@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">fastai</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.2</span>
       </span>
     </div>
 
@@ -141,6 +141,18 @@
     </li>
   </ul>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    NLP
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/textclassification.html">RoBERTa binary classification</a>
+    </li>
+  </ul>
+</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -227,7 +239,7 @@
 <pre><code><a href="https://rdrr.io/pkg/reticulate/man/install_miniconda.html">reticulate::install_miniconda()
 reticulate::py_config()</a></code></pre>
 <p><strong>2. The dev version:</strong></p>
-<pre><code>devtools::install_github('henry090/fastai')</code></pre>
+<pre><code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">devtools::install_github('henry090/fastai')</a></code></pre>
 <p><strong>3. Later, you need to install the python module <code>fastai</code>:</strong></p>
 <pre><code><a href="reference/install_fastai.html">install_fastai(gpu = FALSE, cuda_version = '10.1', overwrite = FALSE)</a></code></pre>
 <p><strong>4. Restart RStudio!</strong></p>
@@ -488,7 +500,9 @@ dls = ImageDataLoaders_from_name_re(
 learn = timm_learner(dls, 'cspdarknet53', metrics = list(accuracy, error_rate))
 
 learn %&gt;% summary()</a></code></pre>
-<details><summary>Model summary</summary><p>
+<details><summary>
+Model summary
+</summary><p>
 </p>
 <pre><code>Sequential (Input shape: ['10 x 3 x 224 x 224'])
 ================================================================
@@ -968,16 +982,19 @@ List of 32
  $ Wall             : int 32</code></pre>
 <p>Custom accuracy function:</p>
 <pre><code>acc_camvid &lt;- function(input, target) {
- # exclude/filter void label
+  target = target$squeeze(1L)
+  # exclude/filter void label
   mask = target != void_code
   return(
-    (input$argmax(dim=1L)[mask] == target[mask]) %&gt;%
-            float() %&gt;% mean()
-    )
+    (input$argmax(dim=1L)[mask]$eq(target[mask])) %&gt;%
+      float() %&gt;% mean()
+  )
 }
 
 attr(acc_camvid, "py_function_name") &lt;- 'acc_camvid'</code></pre>
-<details><summary>Debug acc_camvid manually</summary><p>
+<details><summary>
+Debug acc_camvid manually
+</summary><p>
 </p>
 <pre><code>batch = dls %&gt;% one_batch(convert = FALSE)</code></pre>
 <pre><code>[[1]]
@@ -1365,7 +1382,7 @@ tensor(0.0011, device='cuda:0')</code></pre>
 <pre><code>lr = 3e-3
 wd = 1e-2
 
-learn %&gt;% fit_one_cycle(2, lr, pct_start = 0.9, wd = wd)</code></pre>
+learn %&gt;% fit_one_cycle(2, slice(lr), pct_start = 0.9, wd = wd)</code></pre>
 <pre><code>epoch     train_loss  valid_loss  acc_camvid  time
 0         1.367869    1.239496    0.666145    00:25
 1         0.929434    0.661407    0.839969    00:23</code></pre>
@@ -1376,7 +1393,7 @@ learn %&gt;% fit_one_cycle(2, lr, pct_start = 0.9, wd = wd)</code></pre>
 <h2 class="hasAnchor">
 <a href="#collab-collaborative-filtering" class="anchor"></a>Collab (Collaborative filtering)</h2>
 <p>Call libraries:</p>
-<pre><code><a href="https://rdrr.io/r/base/library.html">library(zeallot)
+<pre><code><a href="https://github.com/nteetor/zeallot">library(zeallot)
 library(magrittr)</a></code></pre>
 <p>Get data:</p>
 <pre><code><a href="reference/URLs_MOVIE_LENS_ML_100k.html">URLs_MOVIE_LENS_ML_100k()</a></code></pre>
@@ -1581,7 +1598,7 @@ data
 5 0.0000002089296 5.043181
 6 0.0000002511886 5.023340</code></pre>
 <p>Visualize:</p>
-<pre><code>highcharter::hchart(data, "line", highcharter::hcaes(y = losses, x = lr_rates ))</code></pre>
+<pre><code><a href="http://jkunst.com/highcharter/reference/hchart.html">highcharter::hchart(data, "line", highcharter::hcaes(y = losses, x = lr_rates ))</a></code></pre>
 <p align="center">
 <img src="files/lr.png" height="500" align="center" alt="Learning_rates"></p>
 </div>
@@ -1670,7 +1687,7 @@ tbbox = LabeledBBox(TensorBBox(bbox[[1]]), bbox[[2]])
 <pre><code>(#2) [TensorBBox([[ 91.3000,  77.9400, 102.4300,  82.4700],
         [ 27.5800,  77.6500,  40.7600,  82.3400]]),['tv', 'tv']]</code></pre>
 <p>Visualize:</p>
-<pre><code><a href="https://rdrr.io/r/base/library.html">library(imager)
+<pre><code><a href="http://dahtah.github.io/imager">library(imager)
 coco = imager::load.image(coco_fn)
 plot(coco,axes=F)
 

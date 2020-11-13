@@ -76,6 +76,9 @@
     <loc>https://henry090.github.io/fastai//reference/AudioToSpec_from_cfg.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/AutoConfig.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/AvgLoss.html</loc>
   </url>
   <url>
@@ -329,6 +332,24 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/GrandparentSplitter.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/HF_BaseInput.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/HF_BaseModelCallback.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/HF_BaseModelWrapper.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/HF_TASKS_ALL.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/HF_TASKS_AUTO.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/HF_TextBlock.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/HammingLoss.html</loc>
@@ -1501,6 +1522,9 @@
     <loc>https://henry090.github.io/fastai//reference/get_grid.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/get_hf_objects.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/get_image_files.html</loc>
   </url>
   <url>
@@ -1544,6 +1568,12 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/has_pool_type.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/helper.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/hf_splitter.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/hsv2rgb.html</loc>
@@ -2071,6 +2101,9 @@
     <loc>https://henry090.github.io/fastai//reference/tensor_eq.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/tensor_eq_img.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/test_loader.html</loc>
   </url>
   <url>
@@ -2294,6 +2327,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//articles/super_res_gan.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//articles/textclassification.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//articles/time_series.html</loc>
