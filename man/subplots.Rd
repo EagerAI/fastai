@@ -4,7 +4,7 @@
 \alias{subplots}
 \title{Subplots}
 \usage{
-subplots(nrows = 2, ncols = 2, figsize = NULL, imsize = 4, add_vert = 0)
+subplots(nrows = 2, ncols = 2, figsize = NULL, imsize = 4)
 }
 \arguments{
 \item{nrows}{number of rows}
@@ -14,8 +14,6 @@ subplots(nrows = 2, ncols = 2, figsize = NULL, imsize = 4, add_vert = 0)
 \item{figsize}{figure size}
 
 \item{imsize}{image size}
-
-\item{add_vert}{add vertical}
 }
 \value{
 plot object

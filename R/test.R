@@ -329,17 +329,15 @@ most_confused <- function(interp, min_val = 1) {
 #' @param ncols number of columns
 #' @param figsize figure size
 #' @param imsize image size
-#' @param add_vert add vertical
 #' @return plot object
 #' @export
-subplots <- function(nrows = 2, ncols = 2, figsize = NULL, imsize = 4, add_vert = 0) {
+subplots <- function(nrows = 2, ncols = 2, figsize = NULL, imsize = 4) {
   fastai2$vision$all$plt$close()
   args <- list(
     nrows = as.integer(nrows),
     ncols = as.integer(ncols),
     figsize = figsize,
-    imsize = as.integer(imsize),
-    add_vert = as.integer(add_vert)
+    imsize = as.integer(imsize)
   )
 
   do.call(fastai2$medical$imaging$subplots, args)
