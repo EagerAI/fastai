@@ -34,6 +34,11 @@ a.anchor-section::before {content: '#';}
 </style>
 <script>// Anchor sections v1.0 written by Atsushi Yasumoto on Oct 3rd, 2020.
 document.addEventListener('DOMContentLoaded', function() {
+  // Do nothing if AnchorJS is used
+  if (typeof window.anchors === 'object' && anchors.hasOwnProperty('hasAnchorJSLink')) {
+    return;
+  }
+
   const h = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
 
   // Do nothing if sections are already anchored
@@ -426,7 +431,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <p>Prepare dataloader and see batch:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> data.table<span class="sc">::</span><span class="fu">fread</span>(<span class="st">&quot;siim_small/labels.csv&quot;</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>pneumothorax <span class="ot">=</span> <span class="fu">DataBlock</span>(<span class="at">blocks =</span> <span class="fu">list</span>(<span class="fu">ImageBlock</span>(<span class="at">cls =</span> Dicom), <span class="fu">CategoryBlock</span>()),</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>pneumothorax <span class="ot">=</span> <span class="fu">DataBlock</span>(<span class="at">blocks =</span> <span class="fu">list</span>(<span class="fu">ImageBlock</span>(<span class="at">cls =</span> <span class="fu">Dicom</span>()), <span class="fu">CategoryBlock</span>()),</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">get_x =</span> <span class="cf">function</span>(x) {<span class="fu">paste</span>(<span class="st">&#39;siim_small&#39;</span>, x[[<span class="dv">1</span>]], <span class="at">sep =</span> <span class="st">&#39;/&#39;</span>)},</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">get_y =</span> <span class="cf">function</span>(x) {<span class="fu">paste</span>(x[[<span class="dv">2</span>]])},</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">batch_tfms =</span> <span class="fu">aug_transforms</span>(<span class="at">size =</span> <span class="dv">224</span>))</span>

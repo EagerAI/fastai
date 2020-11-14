@@ -3,6 +3,7 @@
 
 Hugging Face integration, prediction
 ```one_batch()``` add more arguments
+no need to call ```options(reticulate.useImportHook = FALSE)```
 
 
 

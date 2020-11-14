@@ -36,7 +36,7 @@ knitr::opts_chunk$set(echo = TRUE,eval = FALSE,echo = T)
 ## -----------------------------------------------------------------------------
 #  df = data.table::fread("siim_small/labels.csv")
 #  
-#  pneumothorax = DataBlock(blocks = list(ImageBlock(cls = Dicom), CategoryBlock()),
+#  pneumothorax = DataBlock(blocks = list(ImageBlock(cls = Dicom()), CategoryBlock()),
 #                           get_x = function(x) {paste('siim_small', x[[1]], sep = '/')},
 #                           get_y = function(x) {paste(x[[2]])},
 #                           batch_tfms = aug_transforms(size = 224))

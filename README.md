@@ -57,11 +57,6 @@ install_fastai(gpu = FALSE, cuda_version = '10.1', overwrite = FALSE)
 
 **4. Restart RStudio!**
 
-> Note: for GPU version, ensure this is run before reticulate is loaded:
-
-```
-options(reticulate.useImportHook = FALSE)
-```
 
 ## Tabular data
 
@@ -447,8 +442,6 @@ Exciting!
 Now, load and train pets dataset:
 
 ```
-options(reticulate.useImportHook = FALSE) # fix multiple workers issue
-
 library(magrittr)
 library(fastai)
 
