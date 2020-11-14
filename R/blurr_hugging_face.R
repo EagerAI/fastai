@@ -238,14 +238,15 @@ AutoConfig = function() {
 #' @param ignore_verifications ignore verifications or not
 #' @param save_infos save information or not
 #' @param script_version script version
+#' @param ... additional arguments
 #'
 #' @return data frame
 #'
 #' @export
-load_dataset <- function(path, name = NULL, data_dir = NULL, data_files = NULL,
+HF_load_dataset <- function(path, name = NULL, data_dir = NULL, data_files = NULL,
                          split = NULL, cache_dir = NULL, features = NULL,
                          download_config = NULL, download_mode = NULL,
-                         ignore_verifications = FALSE, save_infos = FALSE, script_version = NULL) {
+                         ignore_verifications = FALSE, save_infos = FALSE, script_version = NULL, ...) {
 
   if(reticulate::py_module_available('datasets')) {
     datasets_hug = reticulate::import('datasets')
@@ -262,7 +263,8 @@ load_dataset <- function(path, name = NULL, data_dir = NULL, data_files = NULL,
       download_mode = download_mode,
       ignore_verifications = ignore_verifications,
       save_infos = save_infos,
-      script_version = script_version
+      script_version = script_version,
+      ...
     )
 
     raw_data = do.call(datasets_hug$load_dataset, args)
