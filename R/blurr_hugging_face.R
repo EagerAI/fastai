@@ -208,3 +208,74 @@ AutoConfig = function() {
 
 
 
+#' @title Load_dataset
+#'
+#' @description Load a dataset
+#'
+#' @details This method does the following under the hood:
+#' 1. Download and import in the library the dataset loading script from ``path`` if it's not
+#' already cached inside the library. Processing scripts are small python scripts that define
+#' the citation, info and format of the dataset, contain the URL to the original data files and
+#' the code to load examples from the original data files. You can find some of the scripts
+#' here: https://github.com/huggingface/datasets/datasets and easily upload yours to share
+#' them using the CLI ``datasets-cli``.
+#' 2. Run the dataset loading script which will: * Download the dataset file from the original
+#' URL (see the script) if it's not already downloaded and cached. * Process and cache
+#' the dataset in typed Arrow tables for caching. Arrow table are arbitrarily long, typed
+#' tables which can store nested objects and be mapped to numpy/pandas/python standard types.
+#' They can be directly access from drive, loaded in RAM or even streamed over the web.
+#' 3. Return a dataset build from the requested splits in ``split`` (default: all).
+#'
+#' @param path path
+#' @param name name
+#' @param data_dir dataset dir
+#' @param data_files dataset files
+#' @param split split
+#' @param cache_dir cache directory
+#' @param features features
+#' @param download_config download configuration
+#' @param download_mode download mode
+#' @param ignore_verifications ignore verifications or not
+#' @param save_infos save information or not
+#' @param script_version script version
+#'
+#' @return data frame
+#'
+#' @export
+load_dataset <- function(path, name = NULL, data_dir = NULL, data_files = NULL,
+                         split = NULL, cache_dir = NULL, features = NULL,
+                         download_config = NULL, download_mode = NULL,
+                         ignore_verifications = FALSE, save_infos = FALSE, script_version = NULL) {
+
+  if(reticulate::py_module_available('datasets')) {
+    datasets_hug = reticulate::import('datasets')
+    #raw_data = datasets_hug$load_dataset('civil_comments', split='train[:1%]')
+    args <- list(
+      path = path,
+      name = name,
+      data_dir = data_dir,
+      data_files = data_files,
+      split = split,
+      cache_dir = cache_dir,
+      features = features,
+      download_config = download_config,
+      download_mode = download_mode,
+      ignore_verifications = ignore_verifications,
+      save_infos = save_infos,
+      script_version = script_version
+    )
+
+    raw_data = do.call(datasets_hug$load_dataset, args)
+  }
+
+
+  invisible(raw_data$data$to_pandas())
+
+}
+
+
+
+
+
+
+
