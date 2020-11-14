@@ -1,4 +1,11 @@
 
+## 2.0.2
+
+Hugging Face integration, prediction
+```one_batch()``` add more arguments
+
+
+
 ## 2.0.1
 
 ```nn_module``` for model construction

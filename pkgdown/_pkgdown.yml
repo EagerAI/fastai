@@ -69,6 +69,8 @@ navbar:
       menu:
         - text: "RoBERTa binary classification"
           href: articles/textclassification.html
+        - text: "Multilabel classification"
+          href: articles/multilabel.html
     - text: "Reference"
       href: reference/index.html
 

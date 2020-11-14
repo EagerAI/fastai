@@ -118,6 +118,7 @@ attr(Perplexity,"py_function_name") <- "Perplexity"
 #' @title One batch
 #'
 #' @param convert to R matrix
+#' @param ... additional parameters to pass
 #' @param object data loader
 #' @return tensor
 #'
@@ -131,8 +132,8 @@ attr(Perplexity,"py_function_name") <- "Perplexity"
 #' }
 #'
 #' @export
-one_batch <- function(object, convert = FALSE) {
-  obj = object$one_batch()
+one_batch <- function(object, ..., convert = FALSE) {
+  obj = object$one_batch(...)
 
   if(inherits(obj,'fastai.tabular.data.TabularDataLoaders')) {
     obj

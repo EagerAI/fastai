@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Multilabel classification</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+<style type="text/css">
+a.anchor-section {margin-left: 10px; visibility: hidden; color: inherit;}
+a.anchor-section::before {content: '#';}
+.hasAnchor:hover a.anchor-section {visibility: visible;}
+</style>
+<script>// Anchor sections v1.0 written by Atsushi Yasumoto on Oct 3rd, 2020.
+document.addEventListener('DOMContentLoaded', function() {
+  // Do nothing if AnchorJS is used
+  if (typeof window.anchors === 'object' && anchors.hasOwnProperty('hasAnchorJSLink')) {
+    return;
+  }
+
+  const h = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+
+  // Do nothing if sections are already anchored
+  if (Array.from(h).some(x => x.classList.contains('hasAnchor'))) {
+    return null;
+  }
+
+  // Use section id when pandoc runs with --section-divs
+  const section_id = function(x) {
+    return ((x.classList.contains('section') || (x.tagName === 'SECTION'))
+            ? x.id : '');
+  };
+
+  // Add anchors
+  h.forEach(function(x) {
+    const id = x.id || section_id(x.parentElement);
+    if (id === '') {
+      return null;
+    }
+    let anchor = document.createElement('a');
+    anchor.href = '#' + id;
+    anchor.classList = ['anchor-section'];
+    x.classList.add('hasAnchor');
+    x.appendChild(anchor);
+  });
+});
+</script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Multilabel classification</h1>
+
+
+
+<div id="intro" class="section level2">
+<h2>Intro</h2>
+<p>The <a href="https://github.com/fastai/fastai">fastai</a> library simplifies training fast and accurate neural nets using modern best practices. See the fastai website to get started. The library is based on research into deep learning best practices undertaken at <code>fast.ai</code>, and includes “out of the box” support for <code>vision</code>, <code>text</code>, <code>tabular</code>, and <code>collab</code> (collaborative filtering) models.</p>
+</div>
+<div id="multilabel" class="section level2">
+<h2>Multilabel</h2>
+<p>Grab data and take 1 % for fast training:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">reticulate.useImportHook =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fastai)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(zeallot)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">HF_load_dataset</span>(<span class="st">&#39;civil_comments&#39;</span>, <span class="at">split=</span><span class="st">&#39;train[:1%]&#39;</span>)</span></code></pre></div>
+</div>
+<div id="preprocess" class="section level2">
+<h2>Preprocess</h2>
+<p>Select multiple outputs/columns:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> data.table<span class="sc">::</span><span class="fu">as.data.table</span>(df)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>lbl_cols <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;severe_toxicity&#39;</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>             <span class="st">&#39;obscene&#39;</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>             <span class="st">&#39;threat&#39;</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>             <span class="st">&#39;insult&#39;</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>             <span class="st">&#39;identity_attack&#39;</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>             <span class="st">&#39;sexual_explicit&#39;</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df[,(lbl_cols) <span class="sc">:</span><span class="er">=</span> <span class="fu">round</span>(.SD,<span class="dv">0</span>), .SDcols<span class="ot">=</span>lbl_cols]</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df[, (lbl_cols) <span class="sc">:</span><span class="er">=</span> <span class="fu">lapply</span>(.SD, as.integer), .SDcols<span class="ot">=</span>lbl_cols]</span></code></pre></div>
+</div>
+<div id="pretrained-model" class="section level2">
+<h2>Pretrained model</h2>
+<p>Load distill RoBERTa:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>task <span class="ot">=</span> <span class="fu">HF_TASKS_ALL</span>()<span class="sc">$</span>SequenceClassification</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>pretrained_model_name <span class="ot">=</span> <span class="st">&quot;distilroberta-base&quot;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>config <span class="ot">=</span> <span class="fu">AutoConfig</span>()<span class="sc">$</span><span class="fu">from_pretrained</span>(pretrained_model_name)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>config<span class="sc">$</span>num_labels <span class="ot">=</span> <span class="fu">length</span>(lbl_cols)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(hf_arch, hf_config, hf_tokenizer, hf_model) <span class="sc">%&lt;-%</span> <span class="fu">get_hf_objects</span>(pretrained_model_name,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>                                                                               <span class="at">task=</span>task,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>                                                                               <span class="at">config=</span>config)</span></code></pre></div>
+<pre><code>Downloading: 100%|██████████| 899k/899k [00:00&lt;00:00, 961kB/s]
+Downloading: 100%|██████████| 456k/456k [00:00&lt;00:00, 597kB/s]
+Downloading: 100%|██████████| 331M/331M [03:26&lt;00:00, 1.61MB/s]</code></pre>
+</div>
+<div id="datablock" class="section level2">
+<h2>Datablock</h2>
+<p>Create data blocks:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>blocks <span class="ot">=</span> <span class="fu">list</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">HF_TextBlock</span>(<span class="at">hf_arch=</span>hf_arch, <span class="at">hf_tokenizer=</span>hf_tokenizer),</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">MultiCategoryBlock</span>(<span class="at">encoded=</span><span class="cn">TRUE</span>, <span class="at">vocab=</span>lbl_cols)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>dblock <span class="ot">=</span> <span class="fu">DataBlock</span>(<span class="at">blocks=</span>blocks,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">get_x=</span><span class="fu">ColReader</span>(<span class="st">&#39;text&#39;</span>), <span class="at">get_y=</span><span class="fu">ColReader</span>(lbl_cols),</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                   <span class="at">splitter=</span><span class="fu">RandomSplitter</span>())</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>dls <span class="ot">=</span> dblock <span class="sc">%&gt;%</span> <span class="fu">dataloaders</span>(df, <span class="at">bs=</span><span class="dv">8</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>dls <span class="sc">%&gt;%</span> <span class="fu">one_batch</span>()</span></code></pre></div>
+<pre><code>[[1]]
+[[1]]$input_ids
+tensor([[    0, 24268,  5257,  ...,     1,     1,     1],
+        [    0,   287,  4505,  ...,     1,     1,     1],
+        [    0,    38,   437,  ...,     1,     1,     1],
+        ...,
+        [    0,   152,  1129,  ...,     1,     1,     1],
+        [    0,    85,    18,  ...,     1,     1,     1],
+        [    0, 22014,    31,  ...,     1,     1,     1]], device=&#39;cuda:0&#39;)
+
+[[1]]$attention_mask
+tensor([[1, 1, 1,  ..., 0, 0, 0],
+        [1, 1, 1,  ..., 0, 0, 0],
+        [1, 1, 1,  ..., 0, 0, 0],
+        ...,
+        [1, 1, 1,  ..., 0, 0, 0],
+        [1, 1, 1,  ..., 0, 0, 0],
+        [1, 1, 1,  ..., 0, 0, 0]], device=&#39;cuda:0&#39;)
+
+
+[[2]]
+TensorMultiCategory([[0., 0., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 0., 0.]], device=&#39;cuda:0&#39;)</code></pre>
+</div>
+<div id="model" class="section level2">
+<h2>Model</h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">=</span> <span class="fu">HF_BaseModelWrapper</span>(hf_model)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>learn <span class="ot">=</span> <span class="fu">Learner</span>(dls,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                model,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">opt_func=</span><span class="fu">partial</span>(Adam),</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">loss_func=</span><span class="fu">BCEWithLogitsLossFlat</span>(),</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">metrics=</span><span class="fu">partial</span>(<span class="fu">accuracy_multi</span>(), <span class="at">thresh=</span><span class="fl">0.2</span>),</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">cbs=</span><span class="fu">HF_BaseModelCallback</span>(),</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">splitter=</span><span class="fu">hf_splitter</span>())</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>learn<span class="sc">$</span>loss_func<span class="sc">$</span>thresh <span class="ot">=</span> <span class="fl">0.2</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>learn<span class="sc">$</span><span class="fu">create_opt</span>()             <span class="co"># -&gt; will create your layer groups based on your &quot;splitter&quot; function</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>learn<span class="sc">$</span><span class="fu">freeze</span>()</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>learn <span class="sc">%&gt;%</span> <span class="fu">summary</span>()</span></code></pre></div>
+<p>See summary:</p>
+<pre><code>epoch   train_loss   valid_loss   accuracy_multi   time  
+------  -----------  -----------  ---------------  ------
+HF_BaseModelWrapper (Input shape: 8 x 391)
+================================================================
+Layer (type)         Output Shape         Param #    Trainable 
+================================================================
+Embedding            8 x 391 x 768        38,603,520 False     
+________________________________________________________________
+Embedding            8 x 391 x 768        394,752    False     
+________________________________________________________________
+Embedding            8 x 391 x 768        768        False     
+________________________________________________________________
+LayerNorm            8 x 391 x 768        1,536      True      
+________________________________________________________________
+Dropout              8 x 391 x 768        0          False     
+________________________________________________________________
+Linear               8 x 391 x 768        590,592    False     
+________________________________________________________________
+Linear               8 x 391 x 768        590,592    False     
+________________________________________________________________
+Linear               8 x 391 x 768        590,592    False     
+________________________________________________________________
+Dropout              8 x 12 x 391 x 391   0          False     
+________________________________________________________________
+Linear               8 x 391 x 768        590,592    False     
+________________________________________________________________
+LayerNorm            8 x 391 x 768        1,536      True      
+________________________________________________________________
+Dropout              8 x 391 x 768        0          False     
+________________________________________________________________
+Linear               8 x 391 x 3072       2,362,368  False     
+________________________________________________________________
+Linear               8 x 391 x 768        2,360,064  False     
+________________________________________________________________
+LayerNorm            8 x 391 x 768        1,536      True      
+________________________________________________________________
+Dropout              8 x 391 x 768        0          False     
+________________________________________________________________
+Linear               8 x 391 x 768        590,592    False     
+________________________________________________________________
+Linear               8 x 391 x 768        590,592    False     
+________________________________________________________________
+Linear               8 x 391 x 768        590,592    False     
+________________________________________________________________
+Dropout              8 x 12 x 391 x 391   0          False     
+________________________________________________________________
+Linear               8 x 391 x 768        590,592    False     
+________________________________________________________________
+LayerNorm            8 x 391 x 768        1,536      True      
+________________________________________________________________
+Dropout              8 x 391 x 768        0          False     
+________________________________________________________________
+Linear               8 x 391 x 3072       2,362,368  False     
+________________________________________________________________
+Linear               8 x 391 x 768        2,360,064  False     
+________________________________________________________________
+LayerNorm            8 x 391 x 768        1,536      True      
+________________________________________________________________
+Dropout              8 x 391 x 768        0          False     
+________________________________________________________________
+Linear               8 x 391 x 768        590,592    False     
+________________________________________________________________
+Linear               8 x 391 x 768        590,592    False     
+________________________________________________________________
+Linear               8 x 391 x 768        590,592    False     
+________________________________________________________________
+Dropout              8 x 12 x 391 x 391   0          False     
+________________________________________________________________
+Linear               8 x 391 x 768        590,592    False     
+________________________________________________________________
+LayerNorm            8 x 391 x 768        1,536      True      
+________________________________________________________________
+Dropout              8 x 391 x 768        0          False     
+________________________________________________________________
+Linear               8 x 391 x 3072       2,362,368  False     
+________________________________________________________________
+Linear               8 x 391 x 768        2,360,064  False     
+________________________________________________________________
+LayerNorm            8 x 391 x 768        1,536      True      
+________________________________________________________________
+Dropout              8 x 391 x 768        0          False     
+________________________________________________________________
+Linear               8 x 391 x 768        590,592    False     
+________________________________________________________________
+Linear               8 x 391 x 768        590,592    False     
+________________________________________________________________
+Linear               8 x 391 x 768        590,592    False     
+________________________________________________________________
+Dropout              8 x 12 x 391 x 391   0          False     
+________________________________________________________________
+Linear               8 x 391 x 768        590,592    False     
+________________________________________________________________
+LayerNorm            8 x 391 x 768        1,536      True      
+________________________________________________________________
+Dropout              8 x 391 x 768        0          False     
+________________________________________________________________
+Linear               8 x 391 x 3072       2,362,368  False     
+________________________________________________________________
+Linear               8 x 391 x 768        2,360,064  False     
+________________________________________________________________
+LayerNorm            8 x 391 x 768        1,536      True      
+________________________________________________________________
+Dropout              8 x 391 x 768        0          False     
+________________________________________________________________
+Linear               8 x 391 x 768        590,592    False     
+________________________________________________________________
+Linear               8 x 391 x 768        590,592    False     
+________________________________________________________________
+Linear               8 x 391 x 768        590,592    False     
+________________________________________________________________
+Dropout              8 x 12 x 391 x 391   0          False     
+________________________________________________________________
+Linear               8 x 391 x 768        590,592    False     
+________________________________________________________________
+LayerNorm            8 x 391 x 768        1,536      True      
+________________________________________________________________
+Dropout              8 x 391 x 768        0          False     
+________________________________________________________________
+Linear               8 x 391 x 3072       2,362,368  False     
+________________________________________________________________
+Linear               8 x 391 x 768        2,360,064  False     
+________________________________________________________________
+LayerNorm            8 x 391 x 768        1,536      True      
+________________________________________________________________
+Dropout              8 x 391 x 768        0          False     
+________________________________________________________________
+Linear               8 x 391 x 768        590,592    False     
+________________________________________________________________
+Linear               8 x 391 x 768        590,592    False     
+________________________________________________________________
+Linear               8 x 391 x 768        590,592    False     
+________________________________________________________________
+Dropout              8 x 12 x 391 x 391   0          False     
+________________________________________________________________
+Linear               8 x 391 x 768        590,592    False     
+________________________________________________________________
+LayerNorm            8 x 391 x 768        1,536      True      
+________________________________________________________________
+Dropout              8 x 391 x 768        0          False     
+________________________________________________________________
+Linear               8 x 391 x 3072       2,362,368  False     
+________________________________________________________________
+Linear               8 x 391 x 768        2,360,064  False     
+________________________________________________________________
+LayerNorm            8 x 391 x 768        1,536      True      
+________________________________________________________________
+Dropout              8 x 391 x 768        0          False     
+________________________________________________________________
+Linear               8 x 768              590,592    True      
+________________________________________________________________
+Dropout              8 x 768              0          False     
+________________________________________________________________
+Linear               8 x 6                4,614      True      
+________________________________________________________________
+
+Total params: 82,123,014
+Total trainable params: 615,174
+Total non-trainable params: 81,507,840
+
+Optimizer used: functools.partial(&lt;function make_python_function.&lt;locals&gt;.python_function at 0x7fee7e8166a8&gt;)
+Loss function: FlattenedLoss of BCEWithLogitsLoss()
+
+Model frozen up to parameter group #2
+
+Callbacks:
+  - TrainEvalCallback
+  - Recorder
+  - ProgressCallback
+  - HF_BaseModelCallback</code></pre>
+</div>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<p>Finally, fit the model:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>lrs <span class="ot">=</span> learn <span class="sc">%&gt;%</span> <span class="fu">lr_find</span>(<span class="at">suggestions=</span><span class="cn">TRUE</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>learn <span class="sc">%&gt;%</span> <span class="fu">fit_one_cycle</span>(<span class="dv">1</span>, <span class="at">lr_max=</span><span class="fl">1e-2</span>)</span></code></pre></div>
+<pre><code>epoch   train_loss   valid_loss   accuracy_multi   time  
+------  -----------  -----------  ---------------  ------
+0       0.040617     0.034286     0.993257         01:21 </code></pre>
+<p>Predict:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>learn<span class="sc">$</span>loss_func<span class="sc">$</span>thresh <span class="ot">=</span> <span class="fl">0.02</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>learn <span class="sc">%&gt;%</span> <span class="fu">predict</span>(<span class="st">&quot;Those damned affluent white people should only eat their own food, like cod cakes and boiled potatoes.</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="st">No enchiladas for them!&quot;</span>)</span></code></pre></div>
+<pre><code>$probabilities
+  severe_toxicity     obscene       threat     insult identity_attack sexual_explicit
+1    9.302437e-07 0.004268706 0.0007849637 0.02687055     0.003282947      0.00232468
+
+$labels
+[1] &quot;insult&quot;</code></pre>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
