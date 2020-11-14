@@ -352,6 +352,9 @@
     <loc>https://henry090.github.io/fastai//reference/HF_TextBlock.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/HF_load_dataset.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/HammingLoss.html</loc>
   </url>
   <url>
@@ -2318,6 +2321,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//articles/migrating_pytorch.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//articles/multilabel.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//articles/obj_detect.html</loc>
