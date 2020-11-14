@@ -34,5 +34,5 @@ h2z-preds/
 ^.*\.pyc$
 ^.*__pycache__$
 imdb_sample/
-
+adult_sample/
 

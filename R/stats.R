@@ -132,8 +132,9 @@ attr(Perplexity,"py_function_name") <- "Perplexity"
 #' }
 #'
 #' @export
-one_batch <- function(object, ..., convert = FALSE) {
-  obj = object$one_batch(...)
+one_batch <- function(object, convert = FALSE, ... ) {
+  args = list(...)
+  obj = do.call(object$one_batch, args)
 
   if(inherits(obj,'fastai.tabular.data.TabularDataLoaders')) {
     obj
