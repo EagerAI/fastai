@@ -287,11 +287,15 @@ HF_load_dataset <- function(path, name = NULL, data_dir = NULL, data_files = NUL
 #' @export
 pre_process_squad <- function(row, hf_arch, hf_tokenizer) {
 
-  blurr()$data$all$pre_process_squad(
-    row = row,
-    hf_arch = hf_arch,
-    hf_tokenizer = hf_tokenizer
-  )
+  if(missing(row)) {
+    blurr()$data$all$pre_process_squad
+  } else {
+    blurr()$data$all$pre_process_squad(
+      row = row,
+      hf_arch = hf_arch,
+      hf_tokenizer = hf_tokenizer
+    )
+  }
 
 }
 
@@ -372,9 +376,10 @@ MultiTargetLoss <- function(...) {
 
   if(!is.null(args[['weights']]) & is.list(args[['weights']])) {
     args[['weights']] <- as.list(as.integer(unlist(args[['weights']])))
-  } else {
-    args[['weights']] <- as.list(as.integer(args[['weights']]))
   }
+
+  if(!is.null(args[['weights']]) & is.vector(args[['weights']]))
+    args[['weights']] <- as.list(as.integer(args[['weights']]))
 
   do.call(blurr()$modeling$all$MultiTargetLoss, args)
 
@@ -437,7 +442,19 @@ HF_QABeforeBatchTransform <- function(hf_arch, hf_tokenizer, max_length = NULL,
 }
 
 
-
+#' @title Py_apply
+#'
+#' @description Pandas apply
+#' @param df dataframe
+#' @param ... additional arguments
+#' @return dataframe
+#' @export
+py_apply = function(df, ...) {
+  py_df = reticulate::r_to_py(df)
+  args = list(preprocess)
+  py_df = py_df$apply(unlist(args),axis = 1L)
+  invisible(reticulate::py_to_r(py_df))
+}
 
 
 
