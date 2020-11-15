@@ -451,7 +451,7 @@ HF_QABeforeBatchTransform <- function(hf_arch, hf_tokenizer, max_length = NULL,
 #' @export
 py_apply = function(df, ...) {
   py_df = reticulate::r_to_py(df)
-  args = list(preprocess)
+  args = list(...)
   py_df = py_df$apply(unlist(args),axis = 1L)
   invisible(reticulate::py_to_r(py_df))
 }
