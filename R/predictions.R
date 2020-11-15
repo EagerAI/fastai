@@ -24,17 +24,24 @@ predict.fastai.learner.Learner <- function(object, row, ...) {
   if(!inherits(cats,'try-error')) {
     test_dl = object$dls$test_dl(row)
     predictions = object$get_preds(dl = test_dl, with_decoded = TRUE)
-    if(is.logical(as.vector(predictions[[3]]$cpu()$numpy()))) {
-      which_true = which(as.vector(predictions[[3]]$cpu()$numpy())==TRUE)
-      res_cat = cats[which_true]
-      res_matrix = as.data.frame(predictions[[1]]$cpu()$numpy())
-      names(res_matrix) = cats
-      output = list(probabilities = res_matrix, labels = res_cat)
+    if(!is.null(predictions[[3]]$cpu)) {
+      if(is.logical(as.vector(predictions[[3]]$cpu()$numpy()))) {
+        which_true = which(as.vector(predictions[[3]]$cpu()$numpy())==TRUE)
+        res_cat = cats[which_true]
+        res_matrix = as.data.frame(predictions[[1]]$cpu()$numpy())
+        names(res_matrix) = cats
+        output = list(probabilities = res_matrix, labels = res_cat)
+      } else {
+        res_cat = cats[predictions[[3]]$cpu()$numpy()+1]
+        res_matrix = as.data.frame(predictions[[1]]$cpu()$numpy())
+        names(res_matrix) = cats
+        output = list(probabilities = res_matrix, labels = res_cat)
+      }
     } else {
-      res_cat = cats[predictions[[3]]$cpu()$numpy()+1]
-      res_matrix = as.data.frame(predictions[[1]]$cpu()$numpy())
-      names(res_matrix) = cats
-      output = list(probabilities = res_matrix, labels = res_cat)
+
+      res_matrix = lapply(1:length(predictions[[3]]), function(x) predictions[[3]][[x]]$cpu()$numpy())
+      output = list(
+                    labels = res_matrix)
     }
 
   } else {
