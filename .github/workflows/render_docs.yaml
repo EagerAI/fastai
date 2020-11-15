@@ -15,7 +15,7 @@ jobs:
       fail-fast: false
       matrix:
         config:
-        - { os: macOS-latest }
+        - { os: windows-latest }
 
     steps:
       - uses: actions/checkout@v1
