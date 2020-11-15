@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Contributing to fastai • fastai</title>
+<title>HF_QABatchTransform — HF_QABatchTransform • fastai</title>
 
 
 <!-- jquery -->
@@ -18,8 +18,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
 <!-- bootstrap-toc -->
-<link rel="stylesheet" href="bootstrap-toc.css">
-<script src="bootstrap-toc.js"></script>
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
@@ -33,19 +33,21 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script>
+<link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script>
 
 
 <!-- docsearch -->
-<script src="docsearch.js"></script>
+<script src="../docsearch.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
-<link href="docsearch.css" rel="stylesheet">
+<link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
 
-<meta property="og:title" content="Contributing to fastai" />
+<meta property="og:title" content="HF_QABatchTransform — HF_QABatchTransform" />
+<meta property="og:description" content="Handles everything you need to assemble a mini-batch of inputs and targets,
+as well as decode the dictionary produced" />
 
 
 
@@ -64,7 +66,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-title-body">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -76,7 +78,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">fastai</a>
+        <a class="navbar-link" href="../index.html">fastai</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.2</span>
       </span>
     </div>
@@ -84,7 +86,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">Home</a>
+  <a href="../index.html">Home</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -94,31 +96,31 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="articles/Basic_Tabular.html">Basic Tabular</a>
+      <a href="../articles/Basic_Tabular.html">Basic Tabular</a>
     </li>
     <li>
-      <a href="articles/basic_img_class.html">Basic Image classification</a>
+      <a href="../articles/basic_img_class.html">Basic Image classification</a>
     </li>
     <li>
-      <a href="articles/head_pose.html">Head pose</a>
+      <a href="../articles/head_pose.html">Head pose</a>
     </li>
     <li>
-      <a href="articles/super_res_gan.html">Super-Resolution GAN</a>
+      <a href="../articles/super_res_gan.html">Super-Resolution GAN</a>
     </li>
     <li>
-      <a href="articles/medical_dcm.html">Medical image classification</a>
+      <a href="../articles/medical_dcm.html">Medical image classification</a>
     </li>
     <li>
-      <a href="articles/data_aug.html">Data augmentation</a>
+      <a href="../articles/data_aug.html">Data augmentation</a>
     </li>
     <li>
-      <a href="articles/obj_detect.html">Object detection</a>
+      <a href="../articles/obj_detect.html">Object detection</a>
     </li>
     <li>
-      <a href="articles/audio.html">Audio classification</a>
+      <a href="../articles/audio.html">Audio classification</a>
     </li>
     <li>
-      <a href="articles/time_series.html">Time series</a>
+      <a href="../articles/time_series.html">Time series</a>
     </li>
   </ul>
 </li>
@@ -130,16 +132,16 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="articles/migrating_pytorch.html">Plain Pytorch</a>
+      <a href="../articles/migrating_pytorch.html">Plain Pytorch</a>
     </li>
     <li>
-      <a href="articles/migrating_ignite.html">Ignite</a>
+      <a href="../articles/migrating_ignite.html">Ignite</a>
     </li>
     <li>
-      <a href="articles/lightning.html">Lightning</a>
+      <a href="../articles/lightning.html">Lightning</a>
     </li>
     <li>
-      <a href="articles/catalyst.html">Catalyst</a>
+      <a href="../articles/catalyst.html">Catalyst</a>
     </li>
   </ul>
 </li>
@@ -151,13 +153,13 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="articles/custom_img.html">Image Classification</a>
+      <a href="../articles/custom_img.html">Image Classification</a>
     </li>
     <li>
-      <a href="articles/audio2tf.html">Speech Recognition</a>
+      <a href="../articles/audio2tf.html">Speech Recognition</a>
     </li>
     <li>
-      <a href="articles/gpt.html">GPT2</a>
+      <a href="../articles/gpt.html">GPT2</a>
     </li>
   </ul>
 </li>
@@ -169,13 +171,13 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="articles/optimizer.html">Optimizers</a>
+      <a href="../articles/optimizer.html">Optimizers</a>
     </li>
     <li>
-      <a href="articles/callbacks.html">Callbacks</a>
+      <a href="../articles/callbacks.html">Callbacks</a>
     </li>
     <li>
-      <a href="articles/low.html">Low-level API</a>
+      <a href="../articles/low.html">Low-level API</a>
     </li>
   </ul>
 </li>
@@ -187,15 +189,15 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="articles/textclassification.html">RoBERTa binary classification</a>
+      <a href="../articles/textclassification.html">RoBERTa binary classification</a>
     </li>
     <li>
-      <a href="articles/multilabel.html">Multilabel classification</a>
+      <a href="../articles/multilabel.html">Multilabel classification</a>
     </li>
   </ul>
 </li>
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -222,61 +224,85 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Contributing to fastai</h1>
+    <h1>HF_QABatchTransform</h1>
+    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/blurr_hugging_face.R'><code>R/blurr_hugging_face.R</code></a></small>
+    <div class="hidden name"><code>HF_QABatchTransform.Rd</code></div>
     </div>
 
-<div id="contributing-to-fastai" class="section level1">
+    <div class="ref-description">
+    <p>Handles everything you need to assemble a mini-batch of inputs and targets,
+as well as decode the dictionary produced</p>
+    </div>
 
-<p>This outlines how to propose a change to fastai.</p>
-<div id="fixing-typos" class="section level2">
-<h2 class="hasAnchor">
-<a href="#fixing-typos" class="anchor"></a>Fixing typos</h2>
-<p>You can fix typos, spelling mistakes, or grammatical errors in the documentation directly using the GitHub web interface, as long as the changes are made in the <em>source</em> file. This generally means you’ll need to edit <a href="https://roxygen2.r-lib.org/articles/roxygen2.html">roxygen2 comments</a> in an <code>.R</code>, not a <code>.Rd</code> file. You can find the <code>.R</code> file that generates the <code>.Rd</code> by reading the comment in the first line.</p>
-</div>
-<div id="bigger-changes" class="section level2">
-<h2 class="hasAnchor">
-<a href="#bigger-changes" class="anchor"></a>Bigger changes</h2>
-<p>If you want to make a bigger change, it’s a good idea to first file an issue and make sure someone from the team agrees that it’s needed. If you’ve found a bug, please file an issue that illustrates the bug with a minimal <a href="https://www.tidyverse.org/help/#reprex">reprex</a> (this will also help you write a unit test, if needed).</p>
-<div id="pull-request-process" class="section level3">
-<h3 class="hasAnchor">
-<a href="#pull-request-process" class="anchor"></a>Pull request process</h3>
-<ul>
-<li><p>Fork the package and clone onto your computer. If you haven’t done this before, we recommend using <code>usethis::create_from_github("henry090/fastai", fork = TRUE)</code>.</p></li>
-<li><p>Install all development dependences with <code>devtools::install_dev_deps()</code>, and then make sure the package passes R CMD check by running <code>devtools::check()</code>. If R CMD check doesn’t pass cleanly, it’s a good idea to ask for help before continuing.</p></li>
-<li><p>Create a Git branch for your pull request (PR). We recommend using <code>usethis::pr_init("brief-description-of-change")</code>.</p></li>
-<li><p>Make your changes, commit to git, and then create a PR by running <code>usethis::pr_push()</code>, and following the prompts in your browser. The title of your PR should briefly describe the change. The body of your PR should contain <code>Fixes #issue-number</code>.</p></li>
-<li><p>For user-facing changes, add a bullet to the top of <code>NEWS.md</code> (i.e. just below the first header). Follow the style described in <a href="https://style.tidyverse.org/news.html" class="uri">https://style.tidyverse.org/news.html</a>.</p></li>
-</ul>
-</div>
-<div id="code-style" class="section level3">
-<h3 class="hasAnchor">
-<a href="#code-style" class="anchor"></a>Code style</h3>
-<ul>
-<li><p>New code should follow the tidyverse <a href="https://style.tidyverse.org">style guide</a>. You can use the <a href="https://CRAN.R-project.org/package=styler">styler</a> package to apply these styles, but please don’t restyle code that has nothing to do with your PR.</p></li>
-<li><p>We use <a href="https://cran.r-project.org/package=roxygen2">roxygen2</a>, with <a href="https://cran.r-project.org/web/packages/roxygen2/vignettes/rd-formatting.html">Markdown syntax</a>, for documentation.</p></li>
-<li><p>We use <a href="https://cran.r-project.org/package=testthat">testthat</a> for unit tests. Contributions with test cases included are easier to accept.</p></li>
-</ul>
-</div>
-</div>
-<div id="code-of-conduct" class="section level2">
-<h2 class="hasAnchor">
-<a href="#code-of-conduct" class="anchor"></a>Code of Conduct</h2>
-<p>Please note that the fastai project is released with a <a href="CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project you agree to abide by its terms.</p>
-</div>
-</div>
+    <pre class="usage"><span class='fu'>HF_QABatchTransform</span><span class='op'>(</span>
+  <span class='va'>hf_arch</span>,
+  <span class='va'>hf_tokenizer</span>,
+  max_length <span class='op'>=</span> <span class='cn'>NULL</span>,
+  padding <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  truncation <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  is_split_into_words <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  n_tok_inps <span class='op'>=</span> <span class='fl'>1</span>,
+  hf_input_return_type <span class='op'>=</span> <span class='fu'><a href='HF_QuestionAnswerInput.html'>HF_QuestionAnswerInput</a></span><span class='op'>(</span><span class='op'>)</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>hf_arch</th>
+      <td><p>architecture</p></td>
+    </tr>
+    <tr>
+      <th>hf_tokenizer</th>
+      <td><p>tokenizer</p></td>
+    </tr>
+    <tr>
+      <th>max_length</th>
+      <td><p>maximum length</p></td>
+    </tr>
+    <tr>
+      <th>padding</th>
+      <td><p>padding</p></td>
+    </tr>
+    <tr>
+      <th>truncation</th>
+      <td><p>truncation</p></td>
+    </tr>
+    <tr>
+      <th>is_split_into_words</th>
+      <td><p>to split into words or not</p></td>
+    </tr>
+    <tr>
+      <th>n_tok_inps</th>
+      <td><p>number of tok inputs</p></td>
+    </tr>
+    <tr>
+      <th>hf_input_return_type</th>
+      <td><p>input return type</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>additional arguments</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>None</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>as a byproduct of the tokenization process in the `encodes` method.</p>
 
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
-
 </div>
-
 
 
       <footer>

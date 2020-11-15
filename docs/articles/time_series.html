@@ -177,7 +177,7 @@
 
       
 
-      </header><script src="time_series_files/header-attrs-2.5/header-attrs.js"></script><link href="time_series_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+      </header><script src="time_series_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="time_series_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
 <script src="time_series_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -228,7 +228,7 @@
 
 <span class="va">y</span> <span class="op">=</span> <span class="va">df</span><span class="op">$</span><span class="va">y</span>
 
-<span class="va">df</span> <span class="op">=</span> <span class="fu">timetk</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/timetk/man/tk_augment_timeseries.html">tk_augment_timeseries_signature</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<span class="va">df</span> <span class="op">=</span> <span class="fu">timetk</span><span class="fu">::</span><span class="fu">tk_augment_timeseries_signature</span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_if</a></span><span class="op">(</span><span class="va">is.factor</span>,  <span class="va">as.numeric</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">ds</span>, <span class="op">-</span><span class="va">hour</span>, <span class="op">-</span><span class="va">minute</span>, <span class="op">-</span><span class="va">second</span>, <span class="op">-</span><span class="va">hour12</span>, <span class="op">-</span><span class="va">am.pm</span>, <span class="op">-</span><span class="va">y</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html">as.data.table</a></span><span class="op">(</span><span class="op">)</span>
