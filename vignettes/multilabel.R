@@ -2,8 +2,6 @@
 knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 
 ## -----------------------------------------------------------------------------
-#  options(reticulate.useImportHook = FALSE)
-#  
 #  library(fastai)
 #  library(magrittr)
 #  library(zeallot)

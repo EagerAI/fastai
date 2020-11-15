@@ -277,6 +277,166 @@ HF_load_dataset <- function(path, name = NULL, data_dir = NULL, data_files = NUL
 
 
 
+#' @title Pre_process_squad
+#'
+#'
+#' @param row row in dataframe
+#' @param hf_arch architecture
+#' @param hf_tokenizer tokenizer
+#' @return None
+#' @export
+pre_process_squad <- function(row, hf_arch, hf_tokenizer) {
+
+  blurr()$data$all$pre_process_squad(
+    row = row,
+    hf_arch = hf_arch,
+    hf_tokenizer = hf_tokenizer
+  )
+
+}
+
+#' @title HF_QABatchTransform
+#'
+#' @description Handles everything you need to assemble a mini-batch of inputs and targets,
+#' as well as decode the dictionary produced
+#'
+#' @details as a byproduct of the tokenization process in the `encodes` method.
+#'
+#' @param hf_arch architecture
+#' @param hf_tokenizer tokenizer
+#' @param max_length maximum length
+#' @param padding padding
+#' @param truncation truncation
+#' @param is_split_into_words to split into words or not
+#' @param n_tok_inps number of tok inputs
+#' @param hf_input_return_type input return type
+#' @param ... additional arguments
+#' @return None
+#' @export
+HF_QABatchTransform <- function(hf_arch, hf_tokenizer, max_length = NULL,
+                                padding = TRUE, truncation = TRUE, is_split_into_words = FALSE,
+                                n_tok_inps = 1, hf_input_return_type = HF_QuestionAnswerInput(), ...) {
+
+  args <- list(
+    hf_arch = hf_arch,
+    hf_tokenizer = hf_tokenizer,
+    max_length = max_length,
+    padding = padding,
+    truncation = truncation,
+    is_split_into_words = is_split_into_words,
+    n_tok_inps = as.integer(n_tok_inps),
+    hf_input_return_type = hf_input_return_type,
+    ...
+  )
+
+  if(!is.null(args[['max_length']])) {
+    args[['max_length']] <- as.integer(args[['max_length']])
+  }
+
+  do.call(blurr()$data$all$HF_QABatchTransform, args)
+
+}
+
+#' @title HF_QuestionAnswerInput
+#'
+#'
+#' @param ... parameters to apss
+#' @return None
+#' @export
+HF_QuestionAnswerInput <- function(...) {
+
+  args = list(...)
+
+  if(length(args)>0) {
+    do.call(blurr$data$all$HF_QuestionAnswerInput, args)
+  } else {
+    blurr$data$all$HF_QuestionAnswerInput
+  }
+
+}
+
+
+#' @title MultiTargetLoss
+#'
+#' @description Provides the ability to apply different loss functions to multi-modal targets/predictions
+#'
+#'
+#' @param ... additional arguments
+#' @return None
+#' @export
+MultiTargetLoss <- function(...) {
+
+  args <- list(
+    ...
+  )
+
+  if(!is.null(args[['weights']]) & is.list(args[['weights']])) {
+    args[['weights']] <- as.list(as.integer(unlist(args[['weights']])))
+  } else {
+    args[['weights']] <- as.list(as.integer(args[['weights']]))
+  }
+
+  do.call(blurr()$modeling$all$MultiTargetLoss, args)
+
+}
+
+#' HF_QstAndAnsModelCallback
+#' @param ... parameters to pass
+#'
+#' @return None
+#' @export
+HF_QstAndAnsModelCallback <- function(...) {
+  args = list(...)
+  if(length(args) > 0) {
+    do.call(blurr()$modeling$all$HF_QstAndAnsModelCallback, args)
+  } else {
+    blurr()$modeling$all$HF_QstAndAnsModelCallback
+  }
+}
+
+
+
+#' @title HF_QABeforeBatchTransform
+#'
+#' @description Handles everything you need to assemble a mini-batch of inputs and targets,
+#' as well as decode the dictionary produced
+#'
+#' @details as a byproduct of the tokenization process in the `encodes` method.
+#'
+#' @param hf_arch architecture
+#' @param hf_tokenizer tokenizer
+#' @param max_length maximum length
+#' @param padding padding or not
+#' @param truncation truncation or not
+#' @param is_split_into_words into split into words or not
+#' @param n_tok_inps number of tok inputs
+#' @param ... additional arguments
+#' @return None
+#' @export
+HF_QABeforeBatchTransform <- function(hf_arch, hf_tokenizer, max_length = NULL,
+                                      padding = TRUE, truncation = TRUE, is_split_into_words = FALSE,
+                                      n_tok_inps = 1, ...) {
+
+  args <- list(
+    hf_arch = hf_arch,
+    hf_tokenizer = hf_tokenizer,
+    max_length = max_length,
+    padding = padding,
+    truncation = truncation,
+    is_split_into_words = is_split_into_words,
+    n_tok_inps = as.integer(n_tok_inps),
+    ...
+  )
+
+  if(!is.null(args[['max_length']]))
+    args[['max_length']] <- as.integer(args[['max_length']])
+
+
+  do.call(blurr()$data$all$HF_QABeforeBatchTransform, args)
+
+}
+
+
 
 
 

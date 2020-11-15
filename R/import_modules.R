@@ -149,6 +149,12 @@ slice <- function(...) {
 
 }
 
+#' @title Transformers
+#'
+#'
+#' @return None
+#' @export
+transformers = function() try(reticulate::import('transformers'), TRUE)
 
 
 #' @title TransformersTokenizer
