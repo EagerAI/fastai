@@ -48,7 +48,8 @@ predict.fastai.learner.Learner <- function(object, row, ...) {
     test_dl = object$dls$test_dl(row)
     predictions = object$get_preds(dl = test_dl, with_decoded = TRUE)
     output = as.data.frame(predictions[[1]]$cpu()$numpy())
-    names(output) = object$dls$cols$items[1]
+    if(!inherits( try(object$dls$cols$items[1]) ,"try-error"))
+      names(output) = object$dls$cols$items[1]
   }
 
   return(output)
