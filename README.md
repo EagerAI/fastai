@@ -1679,6 +1679,7 @@ Visualize data with different
 [windowing effects](https://radiopaedia.org/articles/windowing-ct):
 
 ```
+dicom_windows = dicom_windows()
 scale = list(FALSE, TRUE, dicom_windows$brain, dicom_windows$subdural)
 titles = c('raw','normalized','brain windowed','subdural windowed')
 
