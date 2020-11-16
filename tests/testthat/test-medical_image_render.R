@@ -19,7 +19,9 @@ test_succeeds('render dcm file GITHUB', {
   titles = c('raw','normalized','brain windowed','subdural windowed')
 
   library(zeallot)
-  c(fig, axs) %<-% subplots()
+  one = subplots()
+  fig = one[[1]]
+  axs = one[[2]]
 
   for (i in 1:4) {
     img %>% show(scale = scale[[i]],

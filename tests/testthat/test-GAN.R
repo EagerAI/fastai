@@ -31,20 +31,7 @@ test_succeeds('CycleGAN model', {
 })
 
 
-test_succeeds('CycleGAN model predict', {
-  if(reticulate::py_module_available('upit')) {
-    learn %>% get_preds_cyclegan(testA_path, './h2z-preds')
-    expect_true(dir.exists('h2z-preds'))
-    learn %>% show_results()
-  }
-})
 
-test_succeeds('CycleGAN model predict folder exists', {
-  if(reticulate::py_module_available('upit')) {
-    expect_true(dir.exists('h2z-preds'))
-    learn %>% show_results()
-  }
-})
 
 
 
