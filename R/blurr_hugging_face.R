@@ -352,9 +352,9 @@ HF_QuestionAnswerInput <- function(...) {
   args = list(...)
 
   if(length(args)>0) {
-    do.call(blurr$data$all$HF_QuestionAnswerInput, args)
+    do.call(blurr()$data$all$HF_QuestionAnswerInput, args)
   } else {
-    blurr$data$all$HF_QuestionAnswerInput
+    blurr()$data$all$HF_QuestionAnswerInput
   }
 
 }
@@ -455,6 +455,370 @@ py_apply = function(df, ...) {
   py_df = py_df$apply(unlist(args),axis = 1L)
   invisible(reticulate::py_to_r(py_df))
 }
+
+
+
+#' @title HF_ARCHITECTURES
+#'
+#' @description An enumeration.
+#'
+#' @return None
+#'
+#' @export
+HF_ARCHITECTURES <- function() {
+
+  blurr()$data$all$HF_ARCHITECTURES
+
+}
+
+
+
+
+#' @title HF_BeforeBatchTransform
+#'
+#' @description Handles everything you need to assemble a mini-batch of inputs and targets,
+#' as well as decode the dictionary produced
+#'
+#' @details as a byproduct of the tokenization process in the `encodes` method.
+#'
+#' @param hf_arch architecture
+#' @param hf_tokenizer tokenizer
+#' @param max_length maximum length
+#' @param padding padding or not
+#' @param truncation truncation or not
+#' @param is_split_into_words to split into words
+#' @param n_tok_inps number tok inputs
+#' @param ... additional arguments
+#' @return None
+#' @export
+HF_BeforeBatchTransform <- function(hf_arch, hf_tokenizer, max_length = NULL,
+                                    padding = TRUE, truncation = TRUE,
+                                    is_split_into_words = FALSE, n_tok_inps = 1, ...) {
+
+  args <- list(
+    hf_arch = hf_arch,
+    hf_tokenizer = hf_tokenizer,
+    max_length = max_length,
+    padding = padding,
+    truncation = truncation,
+    is_split_into_words = is_split_into_words,
+    n_tok_inps = as.integer(n_tok_inps),
+    ...
+  )
+
+  if(!is.null(args[['max_length']]))
+    args[['max_length']] <- as.integer(args[['max_length']])
+
+
+  do.call(blurr()$data$all$HF_BeforeBatchTransform, args)
+
+}
+
+#' @title HF_ARCHITECTURES
+#'
+#' @description An enumeration.
+#'
+#' @return None
+#' @export
+HF_ARCHITECTURES <- function() {
+
+  blurr()$data$all$HF_ARCHITECTURES
+
+}
+
+
+#' @title HF_CausalLMBeforeBatchTransform
+#'
+#' @description Handles everything you need to assemble a mini-batch of inputs and targets,
+#' as well as decode the dictionary produced
+#'
+#' @details as a byproduct of the tokenization process in the `encodes` method.
+#'
+#' @param hf_arch architecture
+#' @param hf_tokenizer tokenizer
+#' @param max_length maximum length
+#' @param padding padding or not
+#' @param truncation truncation or not
+#' @param is_split_into_words to split into words
+#' @param n_tok_inps number tok inputs
+#' @param ignore_token_id ignore token id
+#' @param ... additional arguments
+#' @return None
+#' @export
+HF_CausalLMBeforeBatchTransform <- function(hf_arch, hf_tokenizer, max_length = NULL,
+                                            padding = TRUE, truncation = TRUE, is_split_into_words = FALSE,
+                                            n_tok_inps = 1, ignore_token_id = -100, ...) {
+
+  args <- list(
+    hf_arch = hf_arch,
+    hf_tokenizer = hf_tokenizer,
+    max_length = max_length,
+    padding = padding,
+    truncation = truncation,
+    is_split_into_words = is_split_into_words,
+    n_tok_inps = as.integer(n_tok_inps),
+    ignore_token_id = as.integer(ignore_token_id),
+    ...
+  )
+
+
+  if(!is.null(args[['max_length']]))
+    args[['max_length']] <- as.integer(args[['max_length']])
+
+  do.call(blurr()$data$all$HF_CausalLMBeforeBatchTransform, args)
+
+}
+
+
+#' @title HF_SummarizationBeforeBatchTransform
+#'
+#' @description Handles everything you need to assemble a mini-batch of inputs and targets,
+#' as well as decode the dictionary produced
+#'
+#' @details as a byproduct of the tokenization process in the `encodes` method.
+#'
+#' @param hf_arch architecture
+#' @param hf_tokenizer tokenizer
+#' @param max_length maximum length
+#' @param padding padding or not
+#' @param truncation truncation or not
+#' @param is_split_into_words to split into words
+#' @param n_tok_inps number tok inputs
+#' @param ignore_token_id ignore token id
+#' @param ... additional arguments
+#'
+#'
+#' @return None
+#' @export
+HF_SummarizationBeforeBatchTransform <- function(hf_arch, hf_tokenizer, max_length = NULL,
+                                                 padding = TRUE, truncation = TRUE,
+                                                 is_split_into_words = FALSE, n_tok_inps = 2,
+                                                 ignore_token_id = -100, ...) {
+
+  args <- list(
+    hf_arch = hf_arch,
+    hf_tokenizer = hf_tokenizer,
+    max_length = max_length,
+    padding = padding,
+    truncation = truncation,
+    is_split_into_words = is_split_into_words,
+    n_tok_inps = as.integer(n_tok_inps),
+    ignore_token_id = as.integer(ignore_token_id),
+    ...
+  )
+
+  if(!is.null(args[['max_length']]))
+    args[['max_length']] <- as.integer(args[['max_length']])
+
+  do.call(blurr()$data$all$HF_SummarizationBeforeBatchTransform, args)
+
+}
+
+
+#' @title HF_SummarizationInput
+#' @return None
+#'
+#' @export
+HF_SummarizationInput <- function() {
+
+  blurr()$data$all$HF_SummarizationInput
+
+}
+
+
+#' @title HF_TASKS_ALL
+#'
+#' @description An enumeration.
+#' @return None
+#'
+#' @export
+HF_TASKS_ALL <- function() {
+
+  blurr()$data$all$HF_TASKS_ALL
+
+}
+
+
+#' @title HF_TASKS_AUTO
+#'
+#' @description An enumeration.
+#' @return None
+#'
+#' @export
+HF_TASKS_AUTO <- function() {
+
+  blurr()$data$all$HF_TASKS_AUTO
+
+}
+
+
+#' @title HF_Text2TextAfterBatchTransform
+#'
+#' @description Delegates (`__call__`,`decode`,`setup`) to (<code>encodes</code>,<code>decodes</code>,<code>setups</code>) if `split_idx` matches
+#'
+#'
+#' @param hf_tokenizer tokenizer
+#' @param input_return_type input return type
+#' @return None
+#' @export
+HF_Text2TextAfterBatchTransform <- function(hf_tokenizer, input_return_type = HF_BaseInput()) {
+
+  blurr()$data$all$HF_Text2TextAfterBatchTransform(
+    hf_tokenizer = hf_tokenizer,
+    input_return_type = input_return_type
+  )
+
+}
+
+
+#' @title HF_Text2TextBlock
+#'
+#' @description A basic wrapper that links defaults transforms for the data block API
+#'
+#' @param ... parameters to pass
+#' @return None
+#'
+#' @export
+HF_Text2TextBlock <- function(...) {
+
+  args = list(...)
+
+  if(!is.null(args[['max_length']]))
+    args[['max_length']] <- as.integer(args[['max_length']])
+
+  if(!is.null(args[['n_tok_inps']]))
+    args[['n_tok_inps']] <- as.integer(args[['n_tok_inps']])
+
+  if(!is.null(args[['ignore_token_id']]))
+    args[['ignore_token_id']] <- as.integer(args[['ignore_token_id']])
+
+  do.call(blurr()$data$all$HF_Text2TextBlock, args)
+
+}
+
+
+#' @title HF_TokenCategorize
+#'
+#' @description Reversible transform of a list of category string to `vocab` id
+#'
+#'
+#' @param vocab vocabulary
+#' @param ignore_token ignore token
+#' @param ignore_token_id ignore token id
+#' @return None
+#' @export
+HF_TokenCategorize <- function(vocab = NULL, ignore_token = NULL, ignore_token_id = NULL) {
+
+  args <- list(
+    vocab = vocab,
+    ignore_token = ignore_token,
+    ignore_token_id = ignore_token_id
+  )
+
+  if(!is.null(args[['ignore_token_id']]))
+    args[['ignore_token_id']] <- as.integer(args[['ignore_token_id']])
+
+
+  do.call(blurr()$data$all$HF_TokenCategorize, args)
+
+}
+
+
+
+#' @title HF_TokenCategoryBlock
+#'
+#' @description `TransformBlock` for single-label categorical targets
+#'
+#' @param vocab vocabulary
+#' @param ignore_token ignore token
+#' @param ignore_token_id ignore token id
+#' @return None
+#' @export
+HF_TokenCategoryBlock <- function(vocab = NULL, ignore_token = NULL, ignore_token_id = NULL) {
+
+  args <- list(
+    vocab = vocab,
+    ignore_token = ignore_token,
+    ignore_token_id = ignore_token_id
+  )
+
+  if(!is.null(args[['ignore_token_id']]))
+    args[['ignore_token_id']] <- as.integer(args[['ignore_token_id']])
+
+  do.call(blurr()$data$all$HF_TokenCategoryBlock, args)
+
+}
+
+
+#' @title HF_TokenClassBeforeBatchTransform
+#'
+#' @description Handles everything you need to assemble a mini-batch of inputs and targets,
+#' as well as decode the dictionary produced
+#'
+#' @details as a byproduct of the tokenization process in the `encodes` method.
+#'
+#' @param hf_arch architecture
+#' @param hf_tokenizer tokenizer
+#' @param ignore_token_id ignore token id
+#' @param max_length maximum length
+#' @param padding padding or not
+#' @param truncation truncation or not
+#' @param is_split_into_words to split into_words
+#' @param n_tok_inps number tok inputs
+#' @param ... additional arguments
+#' @return None
+#' @export
+HF_TokenClassBeforeBatchTransform <- function(hf_arch, hf_tokenizer, ignore_token_id = -100, max_length = NULL,
+                                              padding = TRUE, truncation = TRUE, is_split_into_words = TRUE,
+                                              n_tok_inps = 1, ...) {
+
+  args <- list(
+    hf_arch = hf_arch,
+    hf_tokenizer = hf_tokenizer,
+    ignore_token_id = ignore_token_id,
+    max_length = max_length,
+    padding = padding,
+    truncation = truncation,
+    is_split_into_words = is_split_into_words,
+    n_tok_inps = n_tok_inps,
+    ...
+  )
+
+  if(!is.null(args[['max_length']]))
+    args[['max_length']] <- as.integer(args[['max_length']])
+
+  if(!is.null(args[['n_tok_inps']]))
+    args[['n_tok_inps']] <- as.integer(args[['n_tok_inps']])
+
+  if(!is.null(args[['ignore_token_id']]))
+    args[['ignore_token_id']] <- as.integer(args[['ignore_token_id']])
+
+  do.call(blurr()$data$all$HF_TokenClassBeforeBatchTransform, args)
+
+}
+
+
+#' @title HF_TokenClassInput
+#' @return None
+#'
+#' @export
+HF_TokenClassInput <- function() {
+
+  blurr()$data$all$HF_TokenClassInput
+
+}
+
+#' @title HF_TokenTensorCategory
+#' @return None
+#'
+#' @export
+HF_TokenTensorCategory <- function() {
+
+  blurr()$data$all$HF_TokenTensorCategory
+
+}
+
+
 
 
 
