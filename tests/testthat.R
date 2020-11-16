@@ -1,5 +1,5 @@
 
-options(reticulate.useImportHook = FALSE)
+
 library(testthat)
 library(fastai)
 library(reticulate)
