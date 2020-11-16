@@ -116,6 +116,14 @@ dataloaders <- function(object, ...) {
     my_list[['num_workers']] = as.integer(my_list[['num_workers']])
   }
 
+  if(is.null(my_list[['num_workers']]) & os()=='windows') {
+    my_list[['num_workers']] = 0L
+  }
+
+  if(is.null(my_list[['num_workers']]) & os()=='mac') {
+    my_list[['num_workers']] = 0L
+  }
+
   do.call(object$dataloaders,my_list)
 }
 
