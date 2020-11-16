@@ -23,7 +23,7 @@ articles:
   super_res_gan: super_res_gan.html
   textclassification: textclassification.html
   time_series: time_series.html
-last_built: 2020-11-15T15:21Z
+last_built: 2020-11-16T15:26Z
 urls:
   reference: https://henry090.github.io/fastai//reference
   article: https://henry090.github.io/fastai//articles

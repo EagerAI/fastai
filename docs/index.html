@@ -1386,7 +1386,7 @@ learn %&gt;% fit_one_cycle(2, slice(lr), pct_start = 0.9, wd = wd)</code></pre>
 <h2 class="hasAnchor">
 <a href="#collab-collaborative-filtering" class="anchor"></a>Collab (Collaborative filtering)</h2>
 <p>Call libraries:</p>
-<pre><code><a href="https://rdrr.io/r/base/library.html">library(zeallot)
+<pre><code><a href="https://github.com/nteetor/zeallot">library(zeallot)
 library(magrittr)</a></code></pre>
 <p>Get data:</p>
 <pre><code><a href="reference/URLs_MOVIE_LENS_ML_100k.html">URLs_MOVIE_LENS_ML_100k()</a></code></pre>
@@ -1482,7 +1482,8 @@ learn %&gt;% fit_one_cycle(1, 2e-2, moms = c(0.8, 0.7, 0.8))</code></pre>
 <p><a href="https://www.kaggle.com/c/rsna-intracranial-hemorrhage-detection/overview">Import dicom data</a>:</p>
 <pre><code>img = dcmread('hemorrhage.dcm')</code></pre>
 <p>Visualize data with different <a href="https://radiopaedia.org/articles/windowing-ct">windowing effects</a>:</p>
-<pre><code>scale = list(FALSE, TRUE, dicom_windows$brain, dicom_windows$subdural)
+<pre><code>dicom_windows = dicom_windows()
+scale = list(FALSE, TRUE, dicom_windows$brain, dicom_windows$subdural)
 titles = c('raw','normalized','brain windowed','subdural windowed')
 
 library(zeallot)

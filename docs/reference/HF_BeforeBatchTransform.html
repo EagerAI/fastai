@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>HF_TASKS_AUTO — HF_TASKS_AUTO • fastai</title>
+<title>HF_BeforeBatchTransform — HF_BeforeBatchTransform • fastai</title>
 
 
 <!-- jquery -->
@@ -45,9 +45,9 @@
 
 
 
-<meta property="og:title" content="HF_TASKS_AUTO — HF_TASKS_AUTO" />
-<meta property="og:description" content="An enumeration.
-An enumeration." />
+<meta property="og:title" content="HF_BeforeBatchTransform — HF_BeforeBatchTransform" />
+<meta property="og:description" content="Handles everything you need to assemble a mini-batch of inputs and targets,
+as well as decode the dictionary produced" />
 
 
 
@@ -226,25 +226,70 @@ An enumeration." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>HF_TASKS_AUTO</h1>
+    <h1>HF_BeforeBatchTransform</h1>
     <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/blurr_hugging_face.R'><code>R/blurr_hugging_face.R</code></a></small>
-    <div class="hidden name"><code>HF_TASKS_AUTO.Rd</code></div>
+    <div class="hidden name"><code>HF_BeforeBatchTransform.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>An enumeration.</p>
-<p>An enumeration.</p>
+    <p>Handles everything you need to assemble a mini-batch of inputs and targets,
+as well as decode the dictionary produced</p>
     </div>
 
-    <pre class="usage"><span class='fu'>HF_TASKS_AUTO</span><span class='op'>(</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>HF_BeforeBatchTransform</span><span class='op'>(</span>
+  <span class='va'>hf_arch</span>,
+  <span class='va'>hf_tokenizer</span>,
+  max_length <span class='op'>=</span> <span class='cn'>NULL</span>,
+  padding <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  truncation <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  is_split_into_words <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  n_tok_inps <span class='op'>=</span> <span class='fl'>1</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
-<span class='fu'>HF_TASKS_AUTO</span><span class='op'>(</span><span class='op'>)</span></pre>
-
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>hf_arch</th>
+      <td><p>architecture</p></td>
+    </tr>
+    <tr>
+      <th>hf_tokenizer</th>
+      <td><p>tokenizer</p></td>
+    </tr>
+    <tr>
+      <th>max_length</th>
+      <td><p>maximum length</p></td>
+    </tr>
+    <tr>
+      <th>padding</th>
+      <td><p>padding or not</p></td>
+    </tr>
+    <tr>
+      <th>truncation</th>
+      <td><p>truncation or not</p></td>
+    </tr>
+    <tr>
+      <th>is_split_into_words</th>
+      <td><p>to split into words</p></td>
+    </tr>
+    <tr>
+      <th>n_tok_inps</th>
+      <td><p>number tok inputs</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>additional arguments</p></td>
+    </tr>
+    </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>None</p>
-<p>None</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>as a byproduct of the tokenization process in the `encodes` method.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -802,6 +802,9 @@
     <loc>https://henry090.github.io/fastai//reference/helper.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/HF_ARCHITECTURES.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/HF_BaseInput.html</loc>
   </url>
   <url>
@@ -809,6 +812,12 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/HF_BaseModelWrapper.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/HF_BeforeBatchTransform.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/HF_CausalLMBeforeBatchTransform.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/HF_load_dataset.html</loc>
@@ -829,13 +838,40 @@
     <loc>https://henry090.github.io/fastai//reference/hf_splitter.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/HF_SummarizationBeforeBatchTransform.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/HF_SummarizationInput.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/HF_TASKS_ALL.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/HF_TASKS_AUTO.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/HF_Text2TextAfterBatchTransform.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/HF_Text2TextBlock.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/HF_TextBlock.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/HF_TokenCategorize.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/HF_TokenCategoryBlock.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/HF_TokenClassBeforeBatchTransform.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/HF_TokenClassInput.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/HF_TokenTensorCategory.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/HookCallback.html</loc>
