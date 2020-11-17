@@ -17,8 +17,6 @@ navbar:
   title: "fastai for R"
   type: inverse
   left:
-    - text: "Home"
-      href: index.html
     - text: "Tutorials"
       menu:
         - text: "Basic Tabular"
@@ -39,7 +37,7 @@ navbar:
           href: articles/audio.html
         - text: "Time series"
           href: articles/time_series.html
-    - text: "Migrating"
+    - text: "Migrate"
       menu:
         - text: "Plain Pytorch"
           href: articles/migrating_pytorch.html
@@ -49,7 +47,7 @@ navbar:
           href: articles/lightning.html
         - text: "Catalyst"
           href: articles/catalyst.html
-    - text: "Experiments"
+    - text: "Learn"
       menu:
         - text: "Image Classification"
           href: articles/custom_img.html
@@ -71,8 +69,10 @@ navbar:
           href: articles/textclassification.html
         - text: "Multilabel classification"
           href: articles/multilabel.html
-    - text: "Reference"
+    - text: "Refer"
       href: reference/index.html
+    - text: "News"
+      href: news/index.html
 
 
 
