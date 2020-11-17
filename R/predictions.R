@@ -26,7 +26,15 @@ predict.fastai.learner.Learner <- function(object, row, ...) {
 
 }
 
-
+#' @title As_array
+#'
+#' @param tensor tensor object
+#' @return array
+#'
+#' @export
+as_array = function(tensor) {
+  as.array(tensor$cpu()$numpy())
+}
 
 
 
