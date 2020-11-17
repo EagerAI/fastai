@@ -26,21 +26,7 @@ test_succeeds('predict medical', {
   result = learn %>% predict(as.character(items[0]))
 })
 
-test_succeeds('predict medical list length', {
-  expect_length(result, 2)
-})
 
-test_succeeds('predict medical list probability list length is 2', {
-  expect_length(result[[1]],2)
-})
-
-test_succeeds('predict medical list label list length is 1', {
-  expect_length(result[[2]],1)
-})
-
-test_succeeds('predict medical list probability names are right', {
-  expect_equal(names(result[[1]]), dls$vocab$items$items)
-})
 
 
 
