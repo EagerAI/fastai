@@ -16,7 +16,7 @@ ClassificationInterpretation_from_learner(
 
 \item{ds_idx}{ds by index}
 
-\item{dl}{DL application}
+\item{dl}{dataloader}
 
 \item{act}{activation}
 }

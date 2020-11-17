@@ -119,7 +119,7 @@ show_batch <- function(dls, b = NULL, max_n = 9, ctxs = NULL,
 #'
 #' @param learn learner/model
 #' @param ds_idx ds by index
-#' @param dl DL application
+#' @param dl dataloader
 #' @param act activation
 #' @return interpretation object
 #' @export
@@ -481,7 +481,7 @@ gauss_blur2d <- function(x, s) {
 #'
 #' @param object model
 #' @param ds_idx ds by index
-#' @param dl DL application
+#' @param dl dataloader
 #' @param max_n maximum number of images
 #' @param shuffle shuffle or not
 #' @return None

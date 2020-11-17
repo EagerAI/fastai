@@ -19,7 +19,7 @@ show_results(
 
 \item{ds_idx}{ds by index}
 
-\item{dl}{DL application}
+\item{dl}{dataloader}
 
 \item{max_n}{maximum number of images}
 
