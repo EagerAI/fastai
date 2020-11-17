@@ -5,16 +5,10 @@
 \title{HF_TASKS_ALL}
 \usage{
 HF_TASKS_ALL()
-
-HF_TASKS_ALL()
 }
 \value{
 None
-
-None
 }
 \description{
-An enumeration.
-
 An enumeration.
 }

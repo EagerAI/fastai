@@ -67,17 +67,6 @@ HF_TextBlock <- function(hf_arch=NULL, hf_tokenizer=NULL,
 }
 
 
-#' @title HF_TASKS_AUTO
-#'
-#' @description An enumeration.
-#'
-#' @return None
-#' @export
-HF_TASKS_AUTO <- function() {
-
-  blurr()$data$all$HF_TASKS_AUTO
-
-}
 
 
 
@@ -176,19 +165,6 @@ hf_splitter <- function(m) {
 #' @export
 helper = function() {
   blurr()$data$all$BLURR_MODEL_HELPER
-}
-
-
-#' @title HF_TASKS_ALL
-#'
-#' @description An enumeration.
-#'
-#' @return None
-#' @export
-HF_TASKS_ALL <- function() {
-
-  blurr()$data$all$HF_TASKS_ALL
-
 }
 
 
@@ -514,17 +490,6 @@ HF_BeforeBatchTransform <- function(hf_arch, hf_tokenizer, max_length = NULL,
 
 }
 
-#' @title HF_ARCHITECTURES
-#'
-#' @description An enumeration.
-#'
-#' @return None
-#' @export
-HF_ARCHITECTURES <- function() {
-
-  blurr()$data$all$HF_ARCHITECTURES
-
-}
 
 
 #' @title HF_CausalLMBeforeBatchTransform

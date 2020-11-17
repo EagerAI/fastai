@@ -5,16 +5,10 @@
 \title{HF_ARCHITECTURES}
 \usage{
 HF_ARCHITECTURES()
-
-HF_ARCHITECTURES()
 }
 \value{
 None
-
-None
 }
 \description{
-An enumeration.
-
 An enumeration.
 }
