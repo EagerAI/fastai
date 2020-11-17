@@ -45,9 +45,12 @@ get_confusion_matrix <- function(object) {
 
   conf = interp$confusion_matrix()
   conf = apply(conf, 2, as.integer)
-  itms = interp$vocab$items$items
-  colnames(conf)=itms
-  rownames(conf)=itms
+
+  if(!is.null(interp$vocab$items$items)) {
+    itms = interp$vocab$items$items
+    colnames(conf)=itms
+    rownames(conf)=itms
+  }
   conf
 }
 

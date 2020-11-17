@@ -20,10 +20,11 @@ articles:
   multilabel: multilabel.html
   obj_detect: obj_detect.html
   optimizer: optimizer.html
+  question_answering: question_answering.html
   super_res_gan: super_res_gan.html
   textclassification: textclassification.html
   time_series: time_series.html
-last_built: 2020-11-17T09:06Z
+last_built: 2020-11-17T12:22Z
 urls:
   reference: https://henry090.github.io/fastai//reference
   article: https://henry090.github.io/fastai//articles
