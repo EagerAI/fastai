@@ -25,6 +25,12 @@
 Data_Loaders = function(...) {
 
   args = list(...)
+
+  # put into GPU
+  if(torch()$cuda$is_available() & is.null(args$device)) {
+    args = append(args, list(device = 'cuda'))
+  }
+
   args = unlist(args)
 
   if(is.list(args[[1]]) & length(args[[1]])==2) {
