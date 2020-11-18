@@ -47,5 +47,4 @@ knitr::opts_chunk$set(echo = TRUE,eval = FALSE,echo = T)
 #  
 #  result = learn %>% predict(fls)
 #  
-#  str(result)
 

@@ -29,18 +29,14 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 #  torch = torch()
 #  nn = nn()
 #  
-#  alter_learner = function(learn, channels = 1L) {
-#    learn$model[0][0][['in_channels']] %f% channels
-#    learn$model[0][0][0][['weight']] %f% torch$nn$parameter$Parameter(
-#    (learn$model[0][0][0]$weight %>% narrow('[:,1,:,:]'))$unsqueeze(1L)
-#  )
-#  }
+#  # channel from 3 to 1
+#  learn$model[0][0][['in_channels']] %f% 1L
+#  # reshape
+#  new_weight_shape <- torch$nn$parameter$Parameter(
+#    (learn$model[0][0]$weight %>% narrow('[:,1,:,:]'))$unsqueeze(1L))
 #  
-#  learn = Learner(audio_dbunch, xresnet18(pretrained = FALSE), nn$CrossEntropyLoss(), metrics=accuracy)
-#  
-#  nnchannels = audio_dbunch %>% one_batch() %>% .[[1]] %>% .$shape %>% .[1]
-#  
-#  alter_learner(learn, nnchannels)
+#  # assign with %f%
+#  learn$model[0][0][['weight']] %f% new_weight_shape
 
 ## -----------------------------------------------------------------------------
 #  # login for the 1st time then remove it
