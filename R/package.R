@@ -166,7 +166,7 @@ fix_fit = function(disable_graph = FALSE) {
                 p1 = column_fun(names(metrics_)[!names(metrics_) %in% 'epoch'], metrics_, 'Metrics', 'darkgreen')
                 p2 = column_fun(names(losses)[!names(losses) %in% 'epoch'], losses, 'Loss', 'red')
 
-                figure <- ggpubr::ggarrange(p1, p2,
+                figure <- ggpubr::ggarrange(p2, p1,
                                             labels = c("", ""),
                                             ncol = 1, nrow = 2)
                 print(figure)

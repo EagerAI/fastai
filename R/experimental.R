@@ -13,13 +13,13 @@
 `%f%` <- function(left, right) {
 
   if(inherits(left, "torch.Tensor" ) & inherits(right, "torch.Tensor")) {
-    left_expr = paste(deparse(substitute(left),width.cutoff=500),
+    left_expr <- paste(deparse(substitute(left),width.cutoff=500),
                       deparse(substitute(right),width.cutoff =500), sep = '<-')
-    return(try(eval(parse(text = left_expr)), TRUE))
+    try(eval(parse(text = left_expr)), TRUE)
   } else if(!inherits(left, "torch.Tensor" ) & !inherits(right, "torch.Tensor")) {
-    left_expr = paste(deparse(substitute(left),width.cutoff=500),
+    left_expr <- paste(deparse(substitute(left),width.cutoff=500),
                       deparse(substitute(right),width.cutoff=500), sep = '<-')
-    return(try(eval(parse(text = left_expr)), TRUE))
+    try(eval(parse(text = left_expr)), TRUE)
   }  else {
     #deparse(substitute(x))
 
@@ -36,7 +36,6 @@
 
     return(invisible(left))
   }
-
 }
 
 #' @title Modify tensor
