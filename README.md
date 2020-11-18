@@ -57,6 +57,15 @@ install_fastai(gpu = FALSE, cuda_version = '10.1', overwrite = FALSE)
 
 **4. Restart RStudio!**
 
+## Kaggle
+
+We currently prepare the examples of usage of the fastai from R in Kaggle competitions:
+
+- [Introduction](https://www.kaggle.com/henry090/r-interface-to-fastai)
+- [MNIST with Pytorch and fastai](https://www.kaggle.com/henry090/r-and-fastai)
+- [NLP Binary Classification](https://www.kaggle.com/henry090/r-fastai-and-transformers)
+
+> Contributions are very welcome! 
 
 ## Tabular data
 
