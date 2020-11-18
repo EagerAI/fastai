@@ -785,5 +785,79 @@ HF_TokenTensorCategory <- function() {
 
 
 
+#' @title Calculate_rouge
+#'
+#'
+#' @param predicted_txts predicted texts
+#' @param reference_txts reference texts
+#' @param rouge_keys rouge keys
+#' @param use_stemmer use stemmer or not
+#' @return None
+#'
+#' @export
+calculate_rouge <- function(predicted_txts, reference_txts,
+                            rouge_keys = c("rouge1", "rouge2", "rougeL"),
+                            use_stemmer = TRUE) {
 
+
+  if(missing(predicted_txts) & missing(reference_txts)) {
+    blurr()$modeling$all$calculate_rouge
+  } else {
+    args <- list(
+      predicted_txts = predicted_txts,
+      reference_txts = reference_txts,
+      rouge_keys = rouge_keys,
+      use_stemmer = use_stemmer
+    )
+
+    do.call(blurr()$modeling$all$calculate_rouge, args)
+  }
+
+}
+
+#' @title HF_SummarizationModelCallback
+#'
+#' @description Basic class handling tweaks of the training loop by changing a `Learner` in various events
+#'
+#'
+#' @param rouge_metrics rouge metrics
+#' @param ignore_token_id integer, ignore token id
+#' @param ... additional arguments
+#' @return None
+#' @export
+HF_SummarizationModelCallback <- function(rouge_metrics = c("rouge1", "rouge2", "rougeL"),
+                                          ignore_token_id = -100, ...) {
+
+  args <- list(
+    rouge_metrics = rouge_metrics,
+    ignore_token_id = as.integer(ignore_token_id),
+    ...
+  )
+
+
+  do.call(blurr()$modeling$all$HF_SummarizationModelCallback, args)
+
+}
+
+#' @title Summarization_splitter
+#'
+#' @description Custom param splitter for summarization models
+#'
+#'
+#' @param m splitter parameter
+#' @param arch architecture
+#' @return None
+#' @export
+summarization_splitter <- function(m, arch) {
+
+  if(missing(m) & missing(arch)) {
+    blurr()$modeling$all$summarization_splitter
+  } else {
+    blurr()$modeling$all$summarization_splitter(
+      m = m,
+      arch = arch
+    )
+  }
+
+}
 
