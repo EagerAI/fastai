@@ -2,7 +2,7 @@
 ## 2.0.2 (Unreleased)
 
 - Hugging Face integration, prediction
-- ```one_batch()``` add more arguments
+- ```one_batch()``` ability to add more arguments
 - no need to call ```options(reticulate.useImportHook = FALSE)```
 
 

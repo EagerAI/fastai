@@ -56,8 +56,7 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 #  learn %>% fit_one_cycle(1, lr_max=4e-5)
 
 ## -----------------------------------------------------------------------------
-#  test_article = "
-#  About 10 men armed with pistols and small machine guns raided a casino in Switzerland
+#  test_article = c("About 10 men armed with pistols and small machine guns raided a casino in Switzerland
 #  and made off into France with several hundred thousand Swiss francs in the early hours
 #  of Sunday morning, police said. The men, dressed in black clothes and black ski masks,
 #  split into two groups during the raid on the Grand Casino Basel, Chief Inspector Peter
@@ -74,7 +73,7 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 #  the police officer said. Swiss authorities are working closely with French authorities,
 #  Gill said. The robbers spoke French and drove vehicles with French lRicense plates.
 #  CNN's Andreena Narayan contributed to this report.
-#  "
+#  ")
 
 ## -----------------------------------------------------------------------------
 #  outputs = learn$blurr_summarize(test_article, num_return_sequences=3L)
