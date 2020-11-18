@@ -6,7 +6,7 @@
 ^pkgdown$
 ^\.github/workflows$
 ^cran-comments\.md$
-^NEWS\.md$
+
 ^CRAN-RELEASE$
 ^Dockerfile$
 ^\.github$

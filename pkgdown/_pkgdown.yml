@@ -71,6 +71,8 @@ navbar:
           href: articles/multilabel.html
         - text: "Question-answering"
           href: articles/question_answering.html
+        - text: "Text-summarization"
+          href: articles/textsummarize.html
     - text: "Refer"
       href: reference/index.html
     - text: "News"
