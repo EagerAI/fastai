@@ -29,6 +29,8 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 #  torch = torch()
 #  nn = nn()
 #  
+#  learn = Learner(dls, xresnet18(pretrained = FALSE), nn$CrossEntropyLoss(), metrics=accuracy)
+#  
 #  # channel from 3 to 1
 #  learn$model[0][0][['in_channels']] %f% 1L
 #  # reshape

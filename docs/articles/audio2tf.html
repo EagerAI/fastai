@@ -183,7 +183,7 @@
 
       
 
-      </header><script src="audio2tf_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="audio2tf_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+      </header><script src="audio2tf_files/header-attrs-2.5/header-attrs.js"></script><link href="audio2tf_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
 <script src="audio2tf_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -240,6 +240,8 @@
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">torch</span> <span class="op">=</span> <span class="fu"><a href="../reference/torch.html">torch</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">nn</span> <span class="op">=</span> <span class="fu"><a href="../reference/nn.html">nn</a></span><span class="op">(</span><span class="op">)</span>
+
+<span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/Learner.html">Learner</a></span><span class="op">(</span><span class="va">dls</span>, <span class="fu"><a href="../reference/xresnet18.html">xresnet18</a></span><span class="op">(</span>pretrained <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>, <span class="va">nn</span><span class="op">$</span><span class="fu">CrossEntropyLoss</span><span class="op">(</span><span class="op">)</span>, metrics<span class="op">=</span><span class="va">accuracy</span><span class="op">)</span>
 
 <span class="co"># channel from 3 to 1</span>
 <span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[[</span><span class="st">'in_channels'</span><span class="op">]</span><span class="op">]</span> <span class="op">%f%</span> <span class="fl">1L</span>

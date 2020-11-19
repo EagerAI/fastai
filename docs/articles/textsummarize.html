@@ -183,7 +183,7 @@
 
       
 
-      </header><script src="textsummarize_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="textsummarize_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+      </header><script src="textsummarize_files/header-attrs-2.5/header-attrs.js"></script><link href="textsummarize_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
 <script src="textsummarize_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -208,7 +208,7 @@
 <p>Get dataset from the link:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/henry090/fastai">fastai</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org">magrittr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">magrittr</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/nteetor/zeallot">zeallot</a></span><span class="op">)</span>
 
 <span class="va">cnndm_df</span> <span class="op">=</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">'https://raw.githubusercontent.com/ohmeow/blurr/master/nbs/cnndm_sample.csv'</span><span class="op">)</span></code></pre></div>
@@ -408,7 +408,7 @@ tensor([[ 1625,  4452,     7,    62,     7,   158,   135,     9,    70,   684,
 <a href="#conclusion" class="anchor"></a>Conclusion</h2>
 <p>Predict a new text:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">test_article</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">[1449 chars quoted with '"']</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">test_article</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">[1448 chars quoted with '"']</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">outputs</span> <span class="op">=</span> <span class="va">learn</span><span class="op">$</span><span class="fu">blurr_summarize</span><span class="op">(</span><span class="va">test_article</span>, num_return_sequences<span class="op">=</span><span class="fl">3L</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="va">outputs</span><span class="op">)</span></code></pre></div>

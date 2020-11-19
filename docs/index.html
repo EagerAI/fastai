@@ -248,7 +248,7 @@
 <pre><code><a href="https://rdrr.io/pkg/reticulate/man/install_miniconda.html">reticulate::install_miniconda()
 reticulate::py_config()</a></code></pre>
 <p><strong>2. The dev version:</strong></p>
-<pre><code>devtools::install_github('henry090/fastai')</code></pre>
+<pre><code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">devtools::install_github('henry090/fastai')</a></code></pre>
 <p><strong>3. Later, you need to install the python module <code>fastai</code>:</strong></p>
 <pre><code><a href="reference/install_fastai.html">install_fastai(gpu = FALSE, cuda_version = '10.1', overwrite = FALSE)</a></code></pre>
 <p><strong>4. Restart RStudio!</strong></p>
@@ -269,7 +269,7 @@ reticulate::py_config()</a></code></pre>
 <div id="tabular-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#tabular-data" class="anchor"></a>Tabular data</h2>
-<pre><code><a href="https://magrittr.tidyverse.org">library(magrittr)
+<pre><code><a href="https://rdrr.io/r/base/library.html">library(magrittr)
 library(fastai)
 
 # download
@@ -496,7 +496,7 @@ List of 10
  $ : chr "densenet121"</code></pre>
 <p>Exciting!</p>
 <p>Now, load and train pets dataset:</p>
-<pre><code><a href="https://magrittr.tidyverse.org">library(magrittr)
+<pre><code><a href="https://rdrr.io/r/base/library.html">library(magrittr)
 library(fastai)
 
 path = 'oxford-iiit-pet'
@@ -516,7 +516,9 @@ dls = ImageDataLoaders_from_name_re(
 learn = timm_learner(dls, 'cspdarknet53', metrics = list(accuracy, error_rate))
 
 learn %&gt;% summary()</a></code></pre>
-<details><summary>Model summary</summary><p>
+<details><summary>
+Model summary
+</summary><p>
 </p>
 <pre><code>Sequential (Input shape: ['10 x 3 x 224 x 224'])
 ================================================================
@@ -1006,7 +1008,9 @@ List of 32
 }
 
 attr(acc_camvid, "py_function_name") &lt;- 'acc_camvid'</code></pre>
-<details><summary>Debug acc_camvid manually</summary><p>
+<details><summary>
+Debug acc_camvid manually
+</summary><p>
 </p>
 <pre><code>batch = dls %&gt;% one_batch(convert = FALSE)</code></pre>
 <pre><code>[[1]]
@@ -1611,7 +1615,7 @@ data
 5 0.0000002089296 5.043181
 6 0.0000002511886 5.023340</code></pre>
 <p>Visualize:</p>
-<pre><code>highcharter::hchart(data, "line", highcharter::hcaes(y = losses, x = lr_rates ))</code></pre>
+<pre><code><a href="http://jkunst.com/highcharter/reference/hchart.html">highcharter::hchart(data, "line", highcharter::hcaes(y = losses, x = lr_rates ))</a></code></pre>
 <p align="center">
 <img src="files/lr.png" height="500" align="center" alt="Learning_rates"></p>
 </div>
@@ -1631,7 +1635,7 @@ magick::image_read(batch[[1]][[9]])</code></pre>
 <h3 class="hasAnchor">
 <a href="#mask" class="anchor"></a>Mask</h3>
 <p>Visualize mask:</p>
-<pre><code><a href="https://magrittr.tidyverse.org">library(magrittr)
+<pre><code><a href="https://rdrr.io/r/base/library.html">library(magrittr)
 library(fastai)
 
 # original image
@@ -1682,7 +1686,7 @@ pnt_img %&gt;% to_matrix() %&gt;% nandb::matrix_raster_plot(colours = c('white',
 <div id="annotations-on-tiny-coco" class="section level3">
 <h3 class="hasAnchor">
 <a href="#annotations-on-tiny-coco" class="anchor"></a>Annotations on Tiny COCO</h3>
-<pre><code><a href="https://magrittr.tidyverse.org">library(magrittr)
+<pre><code><a href="https://rdrr.io/r/base/library.html">library(magrittr)
 library(zeallot)
 library(fastai)
 
@@ -1700,7 +1704,7 @@ tbbox = LabeledBBox(TensorBBox(bbox[[1]]), bbox[[2]])
 <pre><code>(#2) [TensorBBox([[ 91.3000,  77.9400, 102.4300,  82.4700],
         [ 27.5800,  77.6500,  40.7600,  82.3400]]),['tv', 'tv']]</code></pre>
 <p>Visualize:</p>
-<pre><code><a href="https://rdrr.io/r/base/library.html">library(imager)
+<pre><code><a href="http://dahtah.github.io/imager">library(imager)
 coco = imager::load.image(coco_fn)
 plot(coco,axes=F)
 

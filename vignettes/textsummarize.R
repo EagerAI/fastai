@@ -72,8 +72,7 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 #  guest on the Casino floor was kicked in the head by one of the robbers when he moved,
 #  the police officer said. Swiss authorities are working closely with French authorities,
 #  Gill said. The robbers spoke French and drove vehicles with French lRicense plates.
-#  CNN's Andreena Narayan contributed to this report.
-#  ")
+#  CNN's Andreena Narayan contributed to this report.")
 
 ## -----------------------------------------------------------------------------
 #  outputs = learn$blurr_summarize(test_article, num_return_sequences=3L)

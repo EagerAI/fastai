@@ -398,14 +398,16 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>torch <span class="ot">=</span> <span class="fu">torch</span>()</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>nn <span class="ot">=</span> <span class="fu">nn</span>()</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># channel from 3 to 1</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>learn<span class="sc">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;in_channels&#39;</span>]] <span class="sc">%f%</span> 1L</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># reshape</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>new_weight_shape <span class="ot">&lt;-</span> torch<span class="sc">$</span>nn<span class="sc">$</span>parameter<span class="sc">$</span><span class="fu">Parameter</span>(</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  (learn<span class="sc">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>]<span class="sc">$</span>weight <span class="sc">%&gt;%</span> <span class="fu">narrow</span>(<span class="st">&#39;[:,1,:,:]&#39;</span>))<span class="sc">$</span><span class="fu">unsqueeze</span>(1L))</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># assign with %f%</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>learn<span class="sc">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;weight&#39;</span>]] <span class="sc">%f%</span> new_weight_shape</span></code></pre></div>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>learn <span class="ot">=</span> <span class="fu">Learner</span>(dls, <span class="fu">xresnet18</span>(<span class="at">pretrained =</span> <span class="cn">FALSE</span>), nn<span class="sc">$</span><span class="fu">CrossEntropyLoss</span>(), <span class="at">metrics=</span>accuracy)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># channel from 3 to 1</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>learn<span class="sc">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;in_channels&#39;</span>]] <span class="sc">%f%</span> 1L</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># reshape</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>new_weight_shape <span class="ot">&lt;-</span> torch<span class="sc">$</span>nn<span class="sc">$</span>parameter<span class="sc">$</span><span class="fu">Parameter</span>(</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  (learn<span class="sc">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>]<span class="sc">$</span>weight <span class="sc">%&gt;%</span> <span class="fu">narrow</span>(<span class="st">&#39;[:,1,:,:]&#39;</span>))<span class="sc">$</span><span class="fu">unsqueeze</span>(1L))</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># assign with %f%</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>learn<span class="sc">$</span>model[<span class="dv">0</span>][<span class="dv">0</span>][[<span class="st">&#39;weight&#39;</span>]] <span class="sc">%f%</span> new_weight_shape</span></code></pre></div>
 </div>
 <div id="add-callbacks" class="section level2">
 <h2>Add callbacks</h2>
