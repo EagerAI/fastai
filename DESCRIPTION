@@ -26,8 +26,7 @@ Imports:
     png,
     ggplot2,
     ggpubr,
-    glue,
-    ParBayesianOptimization
+    glue
 Suggests:
     knitr,
     testthat,
