@@ -51,7 +51,7 @@ get_emb_sz <- function(to, sz_dict = NULL) {
 #' @export
 tabular_config <- function(ps = NULL, embed_p = 0.0, y_range = NULL,
                            use_bn = TRUE, bn_final = FALSE,
-                           bn_cont = TRUE, act_cls = nn$ReLU(inplace = TRUE)) {
+                           bn_cont = TRUE, act_cls = nn()$ReLU(inplace = TRUE)) {
 
   tabular()$tabular_config(
     ps = ps,

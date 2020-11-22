@@ -6,7 +6,7 @@ source("utils.R")
 
 
 test_succeeds('download MNIST pickler', {
-  download.file('http://deeplearning.net/data/mnist/mnist.pkl.gz','mnist.pkl.gz')
+  download.file('https://github.com/henry090/fastai/raw/master/files/mnist.pkl.gz','mnist.pkl.gz')
   R.utils::gunzip("mnist.pkl.gz", remove=FALSE)
 })
 
