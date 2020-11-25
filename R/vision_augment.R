@@ -460,6 +460,45 @@ rotate_mat <- function(x, max_deg = 10, p = 0.5, draw = NULL, batch = FALSE) {
 
 }
 
+#' @title Zoom
+#'
+#' @description Apply a random zoom of at most `max_zoom` with probability `p` to a batch of images
+#'
+#'
+#' @param min_zoom minimum zoom
+#' @param max_zoom maximum zoom
+#' @param p probability
+#' @param draw draw
+#' @param draw_x draw x
+#' @param draw_y draw y
+#' @param size size
+#' @param mode mode
+#' @param pad_mode pad mode
+#' @param batch batch
+#' @param align_corners align  corners or not
+#' @return None
+#' @export
+Zoom_ <- function(min_zoom = 1.0, max_zoom = 1.1, p = 0.5, draw = NULL, draw_x = NULL,
+                 draw_y = NULL, size = NULL, mode = "bilinear", pad_mode = "reflection",
+                 batch = FALSE, align_corners = TRUE) {
+
+  args = list(
+    min_zoom = min_zoom,
+    max_zoom = max_zoom,
+    p = p,
+    draw = draw,
+    draw_x = draw_x,
+    draw_y = draw_y,
+    size = size,
+    mode = mode,
+    pad_mode = pad_mode,
+    batch = batch,
+    align_corners = align_corners
+  )
+
+  do.call(fastai2$vision$all$Zoom, args)
+
+}
 
 #' @title Zoom_mat
 #'
