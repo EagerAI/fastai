@@ -48,7 +48,7 @@ jobs:
         run: |
           Rscript -e "reticulate::py_config()"
           Rscript -e "remotes::install_local()"
-          Rscript -e "fastai::install_fastai()"
+          Rscript -e "fastai::install_fastai('2.1.5')"
 
       - name: Check
         continue-on-error: ${{ matrix.config.allow_failure }}
