@@ -11,7 +11,7 @@
 #' @export
 install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrite = FALSE,
                            extra_pkgs = c('kaggle', 'transformers', 'pytorch_lightning', 'timm',
-                                          'catalyst', 'ignite', 'tensorboard', 'fastinference', 'shap',
+                                          'catalyst', 'ignite', 'tensorboard', 'fastinference[interp]', 'shap',
                                           'blurr', 'datasets')) {
 
   required_py_pkgs <- c('IPython', 'torch', 'torchvision', 'fastai',
@@ -140,22 +140,22 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
       if (os %in% 'linux' & !length(required_py_pkgs) == 0) {
         if(os %in% 'linux' & gpu & cuda_version %in% '9.2' & torch_r & !length(required_py_pkgs) == 0) {
           py_install(packages = c(required_py_pkgs, cuda_linux[1]), pip = TRUE)
-          py_install('fastinference[interp]', pip = TRUE)
+          #py_install('fastinference[interp]', pip = TRUE)
         } else if (os %in% 'linux' & gpu & cuda_version %in% '10.1' & torch_r & !length(required_py_pkgs) == 0) {
           py_install(packages = c(required_py_pkgs, cuda_linux[2]), pip = TRUE)
-          py_install('fastinference[interp]', pip = TRUE)
+          #py_install('fastinference[interp]', pip = TRUE)
         } else if (os %in% 'linux' & gpu & cuda_version %in% '10.2' & torch_r & !length(required_py_pkgs) == 0) {
           py_install(packages = c(required_py_pkgs, cuda_linux[3]), pip = TRUE)
-          py_install('fastinference[interp]', pip = TRUE)
+          #py_install('fastinference[interp]', pip = TRUE)
         } else if (os %in% 'linux' & gpu & cuda_version %in% '11' & torch_r & !length(required_py_pkgs) == 0) {
           py_install(packages = c(required_py_pkgs, cuda_linux[4]), pip = TRUE)
-          py_install('fastinference[interp]', pip = TRUE)
+          #py_install('fastinference[interp]', pip = TRUE)
         } else if(!gpu & torch_r & !length(required_py_pkgs) == 0) {
           py_install(packages = c(linux_cpu, required_py_pkgs), pip = TRUE)
-          py_install('fastinference[interp]', pip = TRUE)
+          #py_install('fastinference[interp]', pip = TRUE)
         } else if (!torch_r & !length(required_py_pkgs) == 0) {
           py_install(packages = c(required_py_pkgs), pip = TRUE)
-          py_install('fastinference[interp]', pip = TRUE)
+          #py_install('fastinference[interp]', pip = TRUE)
         } else {
           print('Fastai is installed!')
         }
@@ -168,19 +168,19 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
           print(cuda_windows[1])
         } else if (os %in% 'windows' & gpu & cuda_version %in% '10.1' & torch_r & !length(required_py_pkgs) == 0) {
           py_install(packages = c(required_py_pkgs, cuda_windows[2]), pip = TRUE)
-          py_install('fastinference[interp]', pip = TRUE)
+          #py_install('fastinference[interp]', pip = TRUE)
         } else if (os %in% 'windows' & gpu & cuda_version %in% '10.2' & torch_r & !length(required_py_pkgs) == 0) {
           py_install(packages = c(required_py_pkgs, cuda_windows[3]), pip = TRUE)
-          py_install('fastinference[interp]', pip = TRUE)
+         #py_install('fastinference[interp]', pip = TRUE)
         } else if (os %in% 'windows' & gpu & cuda_version %in% '11' & torch_r & !length(required_py_pkgs) == 0) {
           py_install(packages = c(required_py_pkgs, cuda_windows[4]), pip = TRUE)
-          py_install('fastinference[interp]', pip = TRUE)
+         #py_install('fastinference[interp]', pip = TRUE)
         } else if(!gpu & torch_r & !length(required_py_pkgs) == 0) {
           py_install(packages = c(cpu_windows, required_py_pkgs), pip = TRUE)
-          py_install('fastinference[interp]', pip = TRUE)
+          #py_install('fastinference[interp]', pip = TRUE)
         } else if (!torch_r & !length(required_py_pkgs) == 0) {
           py_install(packages = c(required_py_pkgs), pip = TRUE)
-          py_install('fastinference[interp]', pip = TRUE)
+          #py_install('fastinference[interp]', pip = TRUE)
         } else {
           print('Fastai is installed')
         }
@@ -190,10 +190,10 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
 
       if (os %in% 'mac' & !length(required_py_pkgs) == 0 & torch_r) {
         py_install(packages = c('torch torchvision torchaudio', required_py_pkgs), pip = TRUE)
-        py_install('fastinference[interp]', pip = TRUE)
+        #py_install('fastinference[interp]', pip = TRUE)
       } else if (os %in% 'mac' & !length(required_py_pkgs) == 0 & !torch_r){
         py_install(packages = c(required_py_pkgs), pip = TRUE)
-        py_install('fastinference[interp]', pip = TRUE)
+        #py_install('fastinference[interp]', pip = TRUE)
       } else {
         print('Fastai is installed!')
       }
