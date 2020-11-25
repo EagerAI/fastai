@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Show_image — show_image • fastai</title>
+<title>Zoom — Zoom_ • fastai</title>
 
 
 <!-- jquery -->
@@ -45,8 +45,8 @@
 
 
 
-<meta property="og:title" content="Show_image — show_image" />
-<meta property="og:description" content="Show a PIL or PyTorch image on `ax`." />
+<meta property="og:title" content="Zoom — Zoom_" />
+<meta property="og:description" content="Apply a random zoom of at most `max_zoom` with probability `p` to a batch of images" />
 
 
 
@@ -231,93 +231,81 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Show_image</h1>
+    <h1>Zoom</h1>
     <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/vision_augment.R'><code>R/vision_augment.R</code></a></small>
-    <div class="hidden name"><code>show_image.Rd</code></div>
+    <div class="hidden name"><code>Zoom_.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Show a PIL or PyTorch image on `ax`.</p>
+    <p>Apply a random zoom of at most `max_zoom` with probability `p` to a batch of images</p>
     </div>
 
-    <pre class="usage"><span class='fu'>show_image</span><span class='op'>(</span>
-  <span class='va'>im</span>,
-  ax <span class='op'>=</span> <span class='cn'>NULL</span>,
-  figsize <span class='op'>=</span> <span class='cn'>NULL</span>,
-  title <span class='op'>=</span> <span class='cn'>NULL</span>,
-  ctx <span class='op'>=</span> <span class='cn'>NULL</span>,
-  cmap <span class='op'>=</span> <span class='cn'>NULL</span>,
-  norm <span class='op'>=</span> <span class='cn'>NULL</span>,
-  aspect <span class='op'>=</span> <span class='cn'>NULL</span>,
-  interpolation <span class='op'>=</span> <span class='cn'>NULL</span>,
-  alpha <span class='op'>=</span> <span class='cn'>NULL</span>,
-  vmin <span class='op'>=</span> <span class='cn'>NULL</span>,
-  vmax <span class='op'>=</span> <span class='cn'>NULL</span>,
-  origin <span class='op'>=</span> <span class='cn'>NULL</span>,
-  extent <span class='op'>=</span> <span class='cn'>NULL</span>
+    <pre class="usage"><span class='fu'>Zoom_</span><span class='op'>(</span>
+  min_zoom <span class='op'>=</span> <span class='fl'>1</span>,
+  max_zoom <span class='op'>=</span> <span class='fl'>1.1</span>,
+  p <span class='op'>=</span> <span class='fl'>0.5</span>,
+  draw <span class='op'>=</span> <span class='cn'>NULL</span>,
+  draw_x <span class='op'>=</span> <span class='cn'>NULL</span>,
+  draw_y <span class='op'>=</span> <span class='cn'>NULL</span>,
+  size <span class='op'>=</span> <span class='cn'>NULL</span>,
+  mode <span class='op'>=</span> <span class='st'>"bilinear"</span>,
+  pad_mode <span class='op'>=</span> <span class='st'>"reflection"</span>,
+  batch <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  align_corners <span class='op'>=</span> <span class='cn'>TRUE</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>im</th>
-      <td><p>im</p></td>
+      <th>min_zoom</th>
+      <td><p>minimum zoom</p></td>
     </tr>
     <tr>
-      <th>ax</th>
-      <td><p>axis</p></td>
+      <th>max_zoom</th>
+      <td><p>maximum zoom</p></td>
     </tr>
     <tr>
-      <th>figsize</th>
-      <td><p>figure size</p></td>
+      <th>p</th>
+      <td><p>probability</p></td>
     </tr>
     <tr>
-      <th>title</th>
-      <td><p>title</p></td>
+      <th>draw</th>
+      <td><p>draw</p></td>
     </tr>
     <tr>
-      <th>ctx</th>
-      <td><p>ctx</p></td>
+      <th>draw_x</th>
+      <td><p>draw x</p></td>
     </tr>
     <tr>
-      <th>cmap</th>
-      <td><p>color maps</p></td>
+      <th>draw_y</th>
+      <td><p>draw y</p></td>
     </tr>
     <tr>
-      <th>norm</th>
-      <td><p>normalization</p></td>
+      <th>size</th>
+      <td><p>size</p></td>
     </tr>
     <tr>
-      <th>aspect</th>
-      <td><p>aspect</p></td>
+      <th>mode</th>
+      <td><p>mode</p></td>
     </tr>
     <tr>
-      <th>interpolation</th>
-      <td><p>interpolation</p></td>
+      <th>pad_mode</th>
+      <td><p>pad mode</p></td>
     </tr>
     <tr>
-      <th>alpha</th>
-      <td><p>alpha value</p></td>
+      <th>batch</th>
+      <td><p>batch</p></td>
     </tr>
     <tr>
-      <th>vmin</th>
-      <td><p>value min</p></td>
-    </tr>
-    <tr>
-      <th>vmax</th>
-      <td><p>value max</p></td>
-    </tr>
-    <tr>
-      <th>origin</th>
-      <td><p>origin</p></td>
-    </tr>
-    <tr>
-      <th>extent</th>
-      <td><p>extent</p></td>
+      <th>align_corners</th>
+      <td><p>align  corners or not</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>None</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
