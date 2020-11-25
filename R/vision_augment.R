@@ -73,7 +73,7 @@ CropPad <- function(size, pad_mode = "zeros",
                     ...) {
 
   vision()$all$CropPad(
-    size = size,
+    size = as.integer(size),
     pad_mode = pad_mode,
     ...
   )
@@ -111,7 +111,7 @@ RandomCrop <- function(size, ...) {
 OldRandomCrop <- function(size, pad_mode = "zeros", ...) {
 
   vision()$all$OldRandomCrop(
-    size = size,
+    size = as.integer(size),
     pad_mode = pad_mode,
     ...
   )
@@ -157,7 +157,7 @@ RatioResize <- function(max_sz, resamples = list(2, 0),
                         ...) {
 
   vision()$all$RatioResize(
-    max_sz = max_sz,
+    max_sz = as.integer(max_sz),
     resamples = as.list(as.integer(unlist(resamples))),
     ...
   )
@@ -229,7 +229,7 @@ AffineCoordTfm <- function(aff_fs = NULL, coord_fs = NULL, size = NULL,
                            mode = "bilinear", pad_mode = "reflection",
                            mode_mask = "nearest", align_corners = NULL) {
 
-  vision()$all$AffineCoordTfm(
+  args = list(
     aff_fs = aff_fs,
     coord_fs = coord_fs,
     size = size,
@@ -238,6 +238,11 @@ AffineCoordTfm <- function(aff_fs = NULL, coord_fs = NULL, size = NULL,
     mode_mask = mode_mask,
     align_corners = align_corners
   )
+
+  if(!is.null(args$size))
+    args$size <- as.integer(args$size)
+
+  do.call(vision()$all$AffineCoordTfm, args)
 
 }
 
@@ -257,7 +262,7 @@ RandomResizedCropGPU <- function(size, min_scale = 0.08, ratio = list(0.75, 1.33
                                  mode = "bilinear", valid_scale = 1.0) {
 
   vision()$all$RandomResizedCropGPU(
-    size = size,
+    size = as.integer(size),
     min_scale = min_scale,
     ratio = ratio,
     mode = mode,
@@ -352,13 +357,19 @@ DeterministicFlip <- function(size = NULL, mode = "bilinear",
                               pad_mode = "reflection", align_corners = TRUE,
                               ...) {
 
-  vision()$all$DeterministicFlip(
+  args = list(
     size = size,
     mode = mode,
     pad_mode = pad_mode,
     align_corners = align_corners,
     ...
   )
+
+  if(!is.null(args$size))
+    args$size <- as.integer(args$size)
+
+
+  do.call(vision()$all$DeterministicFlip, args)
 
 }
 
@@ -401,7 +412,7 @@ dihedral_mat <- function(x, p = 0.5, draw = NULL, batch = FALSE) {
 Dihedral <- function(p = 0.5, draw = NULL, size = NULL, mode = "bilinear",
                      pad_mode = "reflection", align_corners = NULL, batch = FALSE) {
 
-  vision()$all$Dihedral(
+  args = list(
     p = p,
     draw = draw,
     size = size,
@@ -411,6 +422,10 @@ Dihedral <- function(p = 0.5, draw = NULL, size = NULL, mode = "bilinear",
     batch = batch
   )
 
+  if(!is.null(args$size))
+    args$size <- as.integer(args$size)
+
+  do.call(vision()$all$Dihedral, args)
 }
 
 #' @title DeterministicDihedral
@@ -427,13 +442,17 @@ Dihedral <- function(p = 0.5, draw = NULL, size = NULL, mode = "bilinear",
 DeterministicDihedral <- function(size = NULL, mode = "bilinear",
                                   pad_mode = "reflection", align_corners = NULL) {
 
-  vision()$all$DeterministicDihedral(
+  args = list(
     size = size,
     mode = mode,
     pad_mode = pad_mode,
     align_corners = align_corners
   )
 
+  if(!is.null(args$size))
+    args$size <- as.integer(args$size)
+
+  do.call(vision()$all$DeterministicDihedral, args)
 }
 
 #' @title Rotate_mat
@@ -450,7 +469,7 @@ DeterministicDihedral <- function(size = NULL, mode = "bilinear",
 #' @export
 rotate_mat <- function(x, max_deg = 10, p = 0.5, draw = NULL, batch = FALSE) {
 
-  python_function_result <- vision()$all$rotate_mat(
+  vision()$all$rotate_mat(
     x = x,
     max_deg = as.integer(max_deg),
     p = p,
@@ -495,6 +514,9 @@ Zoom_ <- function(min_zoom = 1.0, max_zoom = 1.1, p = 0.5, draw = NULL, draw_x =
     batch = batch,
     align_corners = align_corners
   )
+
+  if(!is.null(args$size))
+    args$size <- as.integer(args$size)
 
   do.call(fastai2$vision$all$Zoom, args)
 
@@ -590,7 +612,7 @@ Warp <- function(magnitude = 0.2, p = 0.5, draw_x = NULL, draw_y = NULL,
                  size = NULL, mode = "bilinear", pad_mode = "reflection",
                  batch = FALSE, align_corners = TRUE) {
 
-  vision()$all$Warp(
+  args = list(
     magnitude = magnitude,
     p = p,
     draw_x = draw_x,
@@ -602,6 +624,10 @@ Warp <- function(magnitude = 0.2, p = 0.5, draw_x = NULL, draw_y = NULL,
     align_corners = align_corners
   )
 
+  if(!is.null(args$size))
+    args$size <- as.integer(args$size)
+
+  do.call(vision()$all$Warp, args)
 }
 
 
@@ -897,7 +923,7 @@ FuncSplitter <- function(func) {
 
 
 
-#' @title show_image
+#' @title Show_image
 #'
 #' @description Show a PIL or PyTorch image on `ax`.
 #'

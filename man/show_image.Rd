@@ -2,7 +2,7 @@
 % Please edit documentation in R/vision_augment.R
 \name{show_image}
 \alias{show_image}
-\title{show_image}
+\title{Show_image}
 \usage{
 show_image(
   im,
