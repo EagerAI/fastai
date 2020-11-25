@@ -64,6 +64,7 @@ We currently prepare the examples of usage of the fastai from R in Kaggle compet
 - [Introduction](https://www.kaggle.com/henry090/r-interface-to-fastai)
 - [MNIST with Pytorch and fastai](https://www.kaggle.com/henry090/r-and-fastai)
 - [NLP Binary Classification](https://www.kaggle.com/henry090/r-fastai-and-transformers)
+- [Audio classification](https://www.kaggle.com/henry090/fast-ai-from-r)
 
 > Contributions are very welcome! 
 
