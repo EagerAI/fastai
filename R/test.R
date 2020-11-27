@@ -516,10 +516,18 @@ show_results <- function(object, ds_idx = 1, dl = NULL, max_n = 9, shuffle = TRU
     preds = object$get_preds(dl=list(b), with_decoded=TRUE)
     preds = preds[[3]]
 
-    show_batch(dls, list(
-      torch()$stack(list(b[[1]][2],b[[1]][3]),0L)$cpu(),
-      torch()$stack(list(preds[[2]][2],preds[[2]][3]),0L)
-    ), nrows = 2, ncols = 1, dpi = 120)
+
+    if(object$dls$bs <= 3) {
+      show_batch(dls, list(
+        torch()$stack(list(b[[1]][0],b[[1]][1]),0L)$cpu(),
+        torch()$stack(list(preds[[2]][0],preds[[2]][1]),0L)
+      ), nrows = 2, ncols = 1, dpi = as.integer(dpi))
+    } else {
+      show_batch(dls, list(
+        torch()$stack(list(b[[1]][2],b[[1]][3]),0L)$cpu(),
+        torch()$stack(list(preds[[2]][2],preds[[2]][3]),0L)
+      ), nrows = 2, ncols = 1, dpi = as.integer(dpi))
+    }
 
   } else {
     do.call(object$show_results, args)
