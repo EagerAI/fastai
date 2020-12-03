@@ -12,11 +12,11 @@
 install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrite = FALSE,
                            extra_pkgs = c('kaggle', 'transformers', 'pytorch_lightning', 'timm',
                                           'catalyst', 'ignite', 'tensorboard', 'fastinference[interp]', 'shap',
-                                          'blurr', 'datasets')) {
+                                          'blurr', 'datasets', 'colorednoise', 'librosa')) {
 
   required_py_pkgs <- c('IPython', 'torch', 'torchvision', 'fastai',
-                       'pydicom', 'kornia', 'cv2',
-                       'skimage')
+                        'pydicom', 'kornia', 'cv2',
+                        'skimage')
   # if git is available
   git = try(suppressWarnings(system('which git', intern = TRUE)), TRUE)
 
@@ -35,7 +35,8 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   #  UnicodeDecodeError: 'charmap' codec can't decode byte 0x9d in position 13891: character maps to <undefined>
   # https://github.com/henry090/fastai/pull/58/checks?check_run_id=1367643542
   if(length(git)>0 ) { #& os!='windows'
-    git_pkgs = c('fastaudio', 'timeseries_fastai', 'upit') #, 'blurr'
+    git_pkgs = c(#'fastaudio',
+      'timeseries_fastai', 'upit') #, 'blurr'
   } else {
     git_pkgs = character()
   }
@@ -75,7 +76,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="upit", "git+https://github.com/tmabraham/UPIT.git")
 
   if(missing(version)) {
-    required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastai", "fastai==2.1.5")
+    required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastai", "fastai==2.1.8")
   } else {
     required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastai", paste("fastai",version,sep = "=="))
   }
@@ -140,22 +141,22 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
       if (os %in% 'linux' & !length(required_py_pkgs) == 0) {
         if(os %in% 'linux' & gpu & cuda_version %in% '9.2' & torch_r & !length(required_py_pkgs) == 0) {
           py_install(packages = c(required_py_pkgs, cuda_linux[1]), pip = TRUE)
-          #py_install('fastinference[interp]', pip = TRUE)
+          py_install("-U --no-deps git+https://github.com/fastaudio/fastaudio.git", pip = TRUE)
         } else if (os %in% 'linux' & gpu & cuda_version %in% '10.1' & torch_r & !length(required_py_pkgs) == 0) {
           py_install(packages = c(required_py_pkgs, cuda_linux[2]), pip = TRUE)
-          #py_install('fastinference[interp]', pip = TRUE)
+          py_install("-U --no-deps git+https://github.com/fastaudio/fastaudio.git", pip = TRUE)
         } else if (os %in% 'linux' & gpu & cuda_version %in% '10.2' & torch_r & !length(required_py_pkgs) == 0) {
           py_install(packages = c(required_py_pkgs, cuda_linux[3]), pip = TRUE)
-          #py_install('fastinference[interp]', pip = TRUE)
+          py_install("-U --no-deps git+https://github.com/fastaudio/fastaudio.git", pip = TRUE)
         } else if (os %in% 'linux' & gpu & cuda_version %in% '11' & torch_r & !length(required_py_pkgs) == 0) {
           py_install(packages = c(required_py_pkgs, cuda_linux[4]), pip = TRUE)
-          #py_install('fastinference[interp]', pip = TRUE)
+          py_install("-U --no-deps git+https://github.com/fastaudio/fastaudio.git", pip = TRUE)
         } else if(!gpu & torch_r & !length(required_py_pkgs) == 0) {
           py_install(packages = c(linux_cpu, required_py_pkgs), pip = TRUE)
-          #py_install('fastinference[interp]', pip = TRUE)
+          py_install("-U --no-deps git+https://github.com/fastaudio/fastaudio.git", pip = TRUE)
         } else if (!torch_r & !length(required_py_pkgs) == 0) {
           py_install(packages = c(required_py_pkgs), pip = TRUE)
-          #py_install('fastinference[interp]', pip = TRUE)
+          py_install("-U --no-deps git+https://github.com/fastaudio/fastaudio.git", pip = TRUE)
         } else {
           print('Fastai is installed!')
         }
@@ -168,19 +169,19 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
           print(cuda_windows[1])
         } else if (os %in% 'windows' & gpu & cuda_version %in% '10.1' & torch_r & !length(required_py_pkgs) == 0) {
           py_install(packages = c(required_py_pkgs, cuda_windows[2]), pip = TRUE)
-          #py_install('fastinference[interp]', pip = TRUE)
+          py_install("-U --no-deps git+https://github.com/fastaudio/fastaudio.git", pip = TRUE)
         } else if (os %in% 'windows' & gpu & cuda_version %in% '10.2' & torch_r & !length(required_py_pkgs) == 0) {
           py_install(packages = c(required_py_pkgs, cuda_windows[3]), pip = TRUE)
-         #py_install('fastinference[interp]', pip = TRUE)
+          py_install("-U --no-deps git+https://github.com/fastaudio/fastaudio.git", pip = TRUE)
         } else if (os %in% 'windows' & gpu & cuda_version %in% '11' & torch_r & !length(required_py_pkgs) == 0) {
           py_install(packages = c(required_py_pkgs, cuda_windows[4]), pip = TRUE)
-         #py_install('fastinference[interp]', pip = TRUE)
+          py_install("-U --no-deps git+https://github.com/fastaudio/fastaudio.git", pip = TRUE)
         } else if(!gpu & torch_r & !length(required_py_pkgs) == 0) {
           py_install(packages = c(cpu_windows, required_py_pkgs), pip = TRUE)
-          #py_install('fastinference[interp]', pip = TRUE)
+          py_install("-U --no-deps git+https://github.com/fastaudio/fastaudio.git", pip = TRUE)
         } else if (!torch_r & !length(required_py_pkgs) == 0) {
           py_install(packages = c(required_py_pkgs), pip = TRUE)
-          #py_install('fastinference[interp]', pip = TRUE)
+          py_install("-U --no-deps git+https://github.com/fastaudio/fastaudio.git", pip = TRUE)
         } else {
           print('Fastai is installed')
         }
@@ -190,10 +191,10 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
 
       if (os %in% 'mac' & !length(required_py_pkgs) == 0 & torch_r) {
         py_install(packages = c('torch torchvision torchaudio', required_py_pkgs), pip = TRUE)
-        #py_install('fastinference[interp]', pip = TRUE)
+        py_install("-U --no-deps git+https://github.com/fastaudio/fastaudio.git", pip = TRUE)
       } else if (os %in% 'mac' & !length(required_py_pkgs) == 0 & !torch_r){
         py_install(packages = c(required_py_pkgs), pip = TRUE)
-        #py_install('fastinference[interp]', pip = TRUE)
+        py_install("-U --no-deps git+https://github.com/fastaudio/fastaudio.git", pip = TRUE)
       } else {
         print('Fastai is installed!')
       }
