@@ -35,7 +35,8 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   #  UnicodeDecodeError: 'charmap' codec can't decode byte 0x9d in position 13891: character maps to <undefined>
   # https://github.com/henry090/fastai/pull/58/checks?check_run_id=1367643542
   if(length(git)>0 ) { #& os!='windows'
-    git_pkgs = c('fastaudio', 'timeseries_fastai', 'upit') #, 'blurr'
+    git_pkgs = c(#'fastaudio',
+                 'timeseries_fastai', 'upit') #, 'blurr'
   } else {
     git_pkgs = character()
   }
