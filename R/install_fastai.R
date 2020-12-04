@@ -42,6 +42,9 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
     git_pkgs = character()
   }
 
+  if(!os=='windows')
+    git_pkgs = append(git_pkgs, "blurr")
+
   # only linux and mac, fix when https://github.com/fastaudio/fastaudio/issues/71
   #fastaudio_ = function() if (!reticulate::py_module_available('fastaudio') & !os=='windows' & !skip_git_pkgs) reticulate::py_install('git+https://github.com/fastaudio/fastaudio.git', pip = TRUE)
 
