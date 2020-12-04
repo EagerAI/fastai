@@ -24,6 +24,8 @@ install_fastai(
 \item{overwrite}{will install all the dependencies}
 
 \item{extra_pkgs}{character vector of additional packages}
+
+\item{skip_git_pkgs}{skip installation from Github}
 }
 \value{
 None
