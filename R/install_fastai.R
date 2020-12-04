@@ -13,7 +13,7 @@
 install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrite = FALSE,
                            extra_pkgs = c('kaggle', 'transformers', 'pytorch_lightning', 'timm',
                                           'catalyst', 'ignite', 'tensorboard', 'fastinference[interp]', 'shap',
-                                          'blurr', 'datasets'), skip_git_pkgs = FALSE) {
+                                          'blurr'), skip_git_pkgs = FALSE) {
 
   required_py_pkgs <- c('IPython', 'torch', 'torchvision', 'fastai',
                        'pydicom', 'kornia', 'cv2',
