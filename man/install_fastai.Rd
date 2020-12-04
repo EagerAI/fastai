@@ -11,7 +11,7 @@ install_fastai(
   overwrite = FALSE,
   extra_pkgs = c("kaggle", "transformers", "pytorch_lightning", "timm", "catalyst",
     "ignite", "tensorboard", "fastinference[interp]", "shap", "blurr"),
-  skip_git_pkgs = FALSE
+  skip_git_pkgs = TRUE
 )
 }
 \arguments{
