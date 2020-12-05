@@ -18,7 +18,6 @@ test_succeeds('render dcm file GITHUB', {
   scale = list(FALSE, TRUE, dicom_windows$brain, dicom_windows$subdural)
   titles = c('raw','normalized','brain windowed','subdural windowed')
 
-  library(zeallot)
   one = subplots()
   fig = one[[1]]
   axs = one[[2]]
@@ -80,7 +79,7 @@ test_succeeds('ggplot for dcm file GITHUB', {
     } else if (i==4) {
 
       img2 = img
-      img2 %>% zoom(0.25)
+      expect_error(img2 %>% zoom(0.25))
       p = nandb::matrix_raster_plot(img2 %>% get_dcm_matrix(type = types[i],
                                                             scan = scan),
                                     colours = colors[[i]])

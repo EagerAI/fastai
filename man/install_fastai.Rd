@@ -10,7 +10,8 @@ install_fastai(
   cuda_version = "10.1",
   overwrite = FALSE,
   extra_pkgs = c("kaggle", "transformers", "pytorch_lightning", "timm", "catalyst",
-    "ignite", "tensorboard", "fastinference[interp]", "shap", "blurr", "datasets")
+    "ignite", "tensorboard", "fastinference[interp]", "shap", "blurr"),
+  skip_git_pkgs = FALSE
 )
 }
 \arguments{
@@ -23,6 +24,8 @@ install_fastai(
 \item{overwrite}{will install all the dependencies}
 
 \item{extra_pkgs}{character vector of additional packages}
+
+\item{skip_git_pkgs}{skip installation from Github}
 }
 \value{
 None

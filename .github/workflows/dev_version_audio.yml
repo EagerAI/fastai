@@ -1,18 +1,19 @@
-on: [push, pull_request]
+on: [pull_request]
 
-name: ubuntu_20
+name: dev_version_audio
 
 jobs:
   R-CMD:
     runs-on: ${{ matrix.config.os }}
 
-    name: (fastai ${{ matrix.config.fastai }})
+    name: ${{ matrix.config.os }} (fastai ${{ matrix.config.fastai }})
 
     strategy:
       fail-fast: false
       matrix:
         config:
-        - { os: ubuntu-20.04,  cran: "https://demo.rstudiopm.com/all/__linux__/focal/latest",  fastai: '2.0.0'}
+        - { os: macOS-latest, fastai: 'git+git://github.com/fastai/fastai@master'}
+        - { os: ubuntu-16.04,  cran: "https://demo.rstudiopm.com/all/__linux__/xenial/latest", fastai: 'git+git://github.com/fastai/fastai@master'}
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       PIP_NO_WARN_SCRIPT_LOCATION: false
@@ -27,12 +28,7 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@master
 
-      - name: Install dependencies if Linux
-        if: runner.os == 'Linux'
-        run: |
-          sudo apt-get install curl
-
-      - name: Install Linux
+      - name: Install MacOS/Windows/Linux
         run: |
           Rscript -e "install.packages('remotes')"
           Rscript -e "remotes::install_deps(dependencies =  TRUE)"
@@ -42,13 +38,12 @@ jobs:
         run: |
           Rscript -e "remotes::install_github('rstudio/reticulate')"
           Rscript -e "try(reticulate::install_miniconda())"
-
-
+          Rscript -e "reticulate::conda_create('r-reticulate', packages = 'python==3.6.10')"
       - name: Install FASTAI
         run: |
           Rscript -e "reticulate::py_config()"
           Rscript -e "remotes::install_local()"
-          Rscript -e "fastai::install_fastai('2.1.8', skip_git_pkgs = TRUE)"
+          Rscript -e "fastai::install_fastai()"
 
       - name: Check
         continue-on-error: ${{ matrix.config.allow_failure }}
@@ -56,4 +51,3 @@ jobs:
 
 
         run: Rscript -e "rcmdcheck::rcmdcheck(args = '--no-manual', error_on = 'error', check_dir = 'check')"
-
