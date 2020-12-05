@@ -55,6 +55,12 @@ devtools::install_github('henry090/fastai')
 install_fastai(gpu = FALSE, cuda_version = '10.1', overwrite = FALSE)
 ```
 
+> Note: Windows users should skip installation of packages from github (for now). They could be installed separately:
+
+```
+install_fastai(gpu = FALSE, cuda_version = '10.1', overwrite = FALSE, skip_git_pkgs = TRUE)
+```
+
 **4. Restart RStudio!**
 
 ## Kaggle
