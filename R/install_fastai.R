@@ -42,8 +42,6 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
     git_pkgs = character()
   }
 
-  if(!os=='windows')
-    git_pkgs = append(git_pkgs, "blurr")
 
   # only linux and mac, fix when https://github.com/fastaudio/fastaudio/issues/71
   fastaudio_ = function() if (!reticulate::py_module_available('fastaudio') & !os=='windows' & !skip_git_pkgs) reticulate::py_install('git+https://github.com/fastaudio/fastaudio.git', pip = TRUE)
@@ -51,6 +49,8 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   if(length(extra_pkgs) > 0) {
     required_py_pkgs = c(required_py_pkgs, extra_pkgs, git_pkgs)
   }
+
+  required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastinference[interp]", "fastinference")
 
   res_ = list()
   for (i in 1:length(required_py_pkgs)) {
@@ -75,6 +75,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   #required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="torchaudio", "torchaudio==0.6.0")
   required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="shap", "shap==0.35.0")
   required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="blurr", "ohmeow-blurr")
+  required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastinference", "fastinference[interp]")
 
   # git pkgs
   required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastaudio", "git+https://github.com/fastaudio/fastaudio.git")
