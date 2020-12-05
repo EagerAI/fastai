@@ -36,8 +36,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   #  UnicodeDecodeError: 'charmap' codec can't decode byte 0x9d in position 13891: character maps to <undefined>
   # https://github.com/henry090/fastai/pull/58/checks?check_run_id=1367643542
   if(length(git)>0 & !skip_git_pkgs) { #& os!='windows'
-    git_pkgs = c(#'fastaudio',
-                 'timeseries_fastai', 'upit') #, 'blurr'
+    git_pkgs = c('fastaudio','timeseries_fastai', 'upit') #, 'blurr'
   } else {
     git_pkgs = character()
   }
@@ -46,7 +45,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
     git_pkgs = append(git_pkgs, "blurr")
 
   # only linux and mac, fix when https://github.com/fastaudio/fastaudio/issues/71
-  #fastaudio_ = function() if (!reticulate::py_module_available('fastaudio') & !os=='windows' & !skip_git_pkgs) reticulate::py_install('git+https://github.com/fastaudio/fastaudio.git', pip = TRUE)
+  fastaudio_ = function() if (!reticulate::py_module_available('fastaudio') & !os=='windows' & !skip_git_pkgs) reticulate::py_install('git+https://github.com/fastaudio/fastaudio.git', pip = TRUE)
 
   if(length(extra_pkgs) > 0) {
     required_py_pkgs = c(required_py_pkgs, extra_pkgs, git_pkgs)
