@@ -1,7 +1,5 @@
 url: https://henry090.github.io/fastai/
 
-destination: docs
-
 template:
   params:
     bootswatch: readable
