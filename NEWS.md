@@ -1,5 +1,9 @@
 
-## 2.0.2 (Unreleased)
+## 2.0.3 (Unreleased)
+
+* .
+
+## 2.0.2 
 
 * Hugging Face integration, prediction
 * ```one_batch()``` ability to add more arguments
