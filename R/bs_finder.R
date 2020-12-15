@@ -51,7 +51,7 @@ plot_bs_find <- function(object, ..., dpi = 250) {
   fastai2$tabular$all$plt$savefig(paste(tmp_d, 'test.png', sep = '/'), dpi = as.integer(dpi))
 
   img <- png::readPNG(paste(tmp_d, 'test.png', sep = '/'))
-  if(!is_rmarkdown()) {
+  if(interactive()) {
     try(dev.off(),TRUE)
   }
   grid::grid.raster(img)
