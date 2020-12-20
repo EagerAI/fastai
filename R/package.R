@@ -76,7 +76,7 @@ fix_fit = function(disable_graph = FALSE) {
         df = knitr::kable(df, format = "pandoc")
         cat(df[1:2], sep="\n")
 
-        if(!is_rmarkdown()) {
+        if(interactive()) {
           try(dev.off(), TRUE)
         }
 
@@ -185,7 +185,7 @@ fix_fit = function(disable_graph = FALSE) {
             paste('done plot')
           }
 
-          if(!is_rmarkdown()){
+          if(interactive()){
             try(result_fun(), TRUE)
           }
 
