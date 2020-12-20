@@ -16,7 +16,7 @@ Nothing
 Freeze a model
 }
 \examples{
-\donrun{
+\dontrun{
 learnR \%>\% freeze()
 }
 }

@@ -6,7 +6,7 @@
 #' @export
 #'
 #' @examples
-#' \donrun{
+#' \dontrun{
 #' learnR %>% freeze()
 #' }
 freeze <- function(object){
@@ -27,7 +27,7 @@ freeze <- function(object){
 #'
 #' @examples
 #' 
-#' \donrun{
+#' \dontrun{
 #' learnR %>% unfreeze()
 #' }
 unfreeze <- function(object){
