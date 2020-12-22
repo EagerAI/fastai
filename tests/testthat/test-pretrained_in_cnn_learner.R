@@ -21,51 +21,51 @@ test_succeeds('mnist_sample dataloader', {
 
 test_succeeds('mnist_sample load xresnet50_deep', {
   learn = cnn_learner(data, xresnet50_deep(), metrics = accuracy)
-  #expect_error(summary(learn))
+  summary(learn)
 })
 
 test_succeeds('mnist_sample load xresnet50', {
   learn = cnn_learner(data, xresnet50(), metrics = accuracy)
-  #expect_error(summary(learn))
+  summary(learn)
 })
 
 
 test_succeeds('mnist_sample load xresnet34_deep', {
   learn = cnn_learner(data, xresnet34_deep(), metrics = accuracy)
-  #expect_error(summary(learn))
+  summary(learn)
 })
 
 test_succeeds('mnist_sample load xresnet34', {
   learn = cnn_learner(data, xresnet34(), metrics = accuracy)
-  #expect_error(summary(learn))
+  summary(learn)
 })
 
 test_succeeds('mnist_sample load xresnet18_deep', {
   learn = cnn_learner(data, xresnet18_deep(), metrics = accuracy)
-  #expect_error(summary(learn))
+  summary(learn)
 })
 
 
 test_succeeds('mnist_sample load xresnet18', {
   learn = cnn_learner(data, xresnet18(), metrics = accuracy)
-  #expect_error(summary(learn))
+  summary(learn)
 })
 
 
 test_succeeds('mnist_sample load xresnet152', {
   learn = cnn_learner(data, xresnet152(), metrics = accuracy)
-  #expect_error(summary(learn))
+  summary(learn)
 })
 
 test_succeeds('mnist_sample load xresnet101', {
   learn = cnn_learner(data, xresnet101(), metrics = accuracy)
-  #expect_error(summary(learn))
+  summary(learn)
 })
 
 
 test_succeeds('mnist_sample load xresnet50_deep', {
   learn = cnn_learner(data, xresnet50_deep(), metrics = accuracy)
-  #expect_error(summary(learn))
+  summary(learn)
 })
 
 test_succeeds('download PETS', {
@@ -92,7 +92,7 @@ test_succeeds('pet show batch', {
 
 test_succeeds('pet load alexnet', {
   learn = cnn_learner(dls, alexnet(), metrics = accuracy)
-  #expect_error(summary(learn))
+  summary(learn)
 })
 
 
@@ -104,80 +104,80 @@ test_succeeds('pet load alexnet', {
 
 test_succeeds('pet load vgg19_bn', {
   learn = cnn_learner(dls, vgg19_bn(), metrics = accuracy)
-  #expect_error(summary(learn))
+  summary(learn)
 })
 
 test_succeeds('pet load vgg16_bn', {
   learn = cnn_learner(dls, vgg16_bn(), metrics = accuracy)
-  #expect_error(summary(learn))
+  summary(learn)
 })
 
 test_succeeds('pet load vgg13_bn', {
   learn = cnn_learner(dls, vgg13_bn(), metrics = accuracy)
-  #expect_error(summary(learn))
+  summary(learn)
 })
 
 
 test_succeeds('pet load vgg11_bn', {
   learn = cnn_learner(dls, vgg11_bn(), metrics = accuracy)
-  #expect_error(summary(learn))
+  summary(learn)
 })
 
 test_succeeds('pet load squeezenet1_1', {
   learn = cnn_learner(dls, squeezenet1_1(), metrics = accuracy)
-  #expect_error(summary(learn))
+  summary(learn)
 })
 
 
 test_succeeds('pet load squeezenet1_0', {
   learn = cnn_learner(dls, squeezenet1_0(), metrics = accuracy)
-  #expect_error(summary(learn))
+  summary(learn)
 })
 
 test_succeeds('pet load resnet50', {
   learn = cnn_learner(dls, resnet50(), metrics = accuracy)
-  #expect_error(summary(learn))
+  summary(learn)
 })
 
 test_succeeds('pet load resnet34', {
   learn = cnn_learner(dls, resnet34(), metrics = accuracy)
-  #expect_error(summary(learn))
+  summary(learn)
 })
 
 test_succeeds('pet load resnet18', {
   learn = cnn_learner(dls, resnet18(), metrics = accuracy)
-  #expect_error(summary(learn))
+  summary(learn)
 })
 
 test_succeeds('pet load resnet152', {
   learn = cnn_learner(dls, resnet152(), metrics = accuracy)
-  #expect_error(summary(learn))
+  summary(learn)
 })
 
 test_succeeds('pet load resnet101', {
   learn = cnn_learner(dls, resnet101(), metrics = accuracy)
-  #expect_error(summary(learn))
+  summary(learn)
 })
 
 
 test_succeeds('pet load densenet121', {
   learn = cnn_learner(dls, densenet121(), metrics = accuracy)
-  #expect_error(summary(learn))
+  summary(learn)
 })
 
 test_succeeds('pet load densenet161', {
   learn = cnn_learner(dls, densenet161(), metrics = accuracy)
-  #expect_error(summary(learn))
+  summary(learn)
 })
 
 test_succeeds('pet load densenet169', {
   learn = cnn_learner(dls, densenet169(), metrics = accuracy)
-  #expect_error(summary(learn))
+  summary(learn)
 })
 
 test_succeeds('pet load densenet201', {
   learn = cnn_learner(dls, densenet201(), metrics = accuracy)
-  #expect_error(summary(learn))
+  summary(learn)
 })
 
 
