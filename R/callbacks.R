@@ -133,9 +133,14 @@ CSVLogger <- function(fname = "history.csv", append = FALSE) {
 #' @export
 CudaCallback <- function(device = NULL) {
 
-  fastai2$callback$all$CudaCallback(
-    device = device
-  )
+  if(is.null(device)) {
+    fastai2$callback$all$CudaCallback
+  } else {
+    fastai2$callback$all$CudaCallback(
+      device = device
+    )
+  }
+
 
 }
 
