@@ -216,3 +216,19 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   }
 
 }
+
+
+#' @title Fastai version
+#'
+#'
+#'
+#' @return None
+#' @export
+fastai_version = function() {
+  fastai2$`__version__`
+}
+
+
+
+
+
