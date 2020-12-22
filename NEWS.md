@@ -1,7 +1,9 @@
 
 ## 2.0.3 (Unreleased)
 
-* .
+* current stable version of ```fast.ai``` is ```2.1.5```
+* lots of new callback ops
+* [freeze and unfreeze](https://github.com/henry090/fastai/pull/86) a model
 
 ## 2.0.2 
 
