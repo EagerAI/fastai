@@ -16,7 +16,7 @@ predict.fastai.learner.Learner <- function(object, row, ...) {
   error_check = try(object$metrics[0],silent = TRUE)
 
   if(!inherits(error_check,'try-error')) {
-    object$metrics <- error_check
+    object$metrics <- object$metrics[0]
   }
 
   test_dl = object$dls$test_dl(row)
