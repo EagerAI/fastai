@@ -12,7 +12,7 @@
 #' @export
 install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrite = FALSE,
                            extra_pkgs = c('kaggle', 'transformers', 'pytorch_lightning', 'timm',
-                                          'catalyst', 'ignite', 'tensorboard', 'fastinference[interp]', 'shap',
+                                          'catalyst', 'ignite', 'fastinference[interp]', 'shap',
                                           'blurr'), skip_git_pkgs = FALSE) {
 
   required_py_pkgs <- c('IPython', 'torch', 'torchvision', 'fastai',
@@ -43,7 +43,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
 
 
   # only linux and mac, fix when https://github.com/fastaudio/fastaudio/issues/71
-  fastaudio_ = function() if (!reticulate::py_module_available('fastaudio') & !skip_git_pkgs) reticulate::py_install('fastaudio', pip = TRUE)
+  fastaudio_ = function() if (!reticulate::py_module_available('fastaudio')) reticulate::py_install('fastaudio', pip = TRUE)
 
   if(length(extra_pkgs) > 0) {
     required_py_pkgs = c(required_py_pkgs, extra_pkgs, git_pkgs)
@@ -83,13 +83,13 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="upit", "git+https://github.com/tmabraham/UPIT.git")
 
   if(missing(version)) {
-    required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastai", "fastai==2.1.8")
+    required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastai", "fastai==2.1.9")
   } else {
     required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastai", paste("fastai",version,sep = "=="))
   }
 
   # kaggle import is different. We cannot check it with py module available.
-  # Insteat try this:
+  # Instead, try this:
   kgg = try(reticulate::import('kaggle'),TRUE)
   kgg = grepl("Could not find kaggle.json", kgg, fixed = TRUE)
 
