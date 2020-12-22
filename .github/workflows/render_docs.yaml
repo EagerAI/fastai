@@ -46,7 +46,7 @@ jobs:
         run: |
           Rscript -e "reticulate::py_config()"
           Rscript -e "remotes::install_local()"
-          Rscript -e "fastai::install_fastai('2.1.9')"
+          Rscript -e "fastai::install_fastai('2.1.5')"
 
       - name: Render site
         run: |
