@@ -391,6 +391,9 @@
     <loc>https://henry090.github.io/fastai//reference/CudaCallback.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/CutMix.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/cutout_gaussian.html</loc>
   </url>
   <url>
@@ -505,6 +508,9 @@
     <loc>https://henry090.github.io/fastai//reference/dropout_mask.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/dummy_eval.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/DynamicUnet.html</loc>
   </url>
   <url>
@@ -548,6 +554,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/F1ScoreMulti.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/fastai_version.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/fastaudio.html</loc>
@@ -769,6 +778,9 @@
     <loc>https://henry090.github.io/fastai//reference/get_weights.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/GradientAccumulation.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/GrandparentSplitter.html</loc>
   </url>
   <url>
@@ -800,6 +812,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/HammingLossMulti.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/has_params.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/has_pool_type.html</loc>
@@ -883,7 +898,19 @@
     <loc>https://henry090.github.io/fastai//reference/HF_TokenTensorCategory.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/Hook.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/HookCallback.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/Hooks.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/hook_output.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/hook_outputs.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/hsv2rgb.html</loc>
@@ -1028,6 +1055,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/larc_step.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/layer_info.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/Learner.html</loc>
@@ -1180,6 +1210,9 @@
     <loc>https://henry090.github.io/fastai//reference/maybe_unsqueeze.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/MCDropoutCallback.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/mean.fastai.torch_core.TensorMask.html</loc>
   </url>
   <url>
@@ -1217,6 +1250,18 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/Mish_.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/MixHandler.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/MixUp.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/ModelResetter.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/model_sizes.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/Module.html</loc>
@@ -1297,6 +1342,9 @@
     <loc>https://henry090.github.io/fastai//reference/Numericalize.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/num_features_model.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/n_px.html</loc>
   </url>
   <url>
@@ -1342,10 +1390,16 @@
     <loc>https://henry090.github.io/fastai//reference/params.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/ParamScheduler.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/parent_label.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/partial.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/PartialDL.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/PartialLambda.html</loc>
@@ -1612,6 +1666,9 @@
     <loc>https://henry090.github.io/fastai//reference/RNNDropout.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/RNNRegularizer.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/RocAuc.html</loc>
   </url>
   <url>
@@ -1637,6 +1694,21 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/SaveModelCallback.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/SchedCos.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/SchedExp.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/SchedLin.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/SchedNo.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/SchedPoly.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/SEBlock.html</loc>
@@ -1996,6 +2068,9 @@
     <loc>https://henry090.github.io/fastai//reference/torch.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/total_params.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/ToTensor.html</loc>
   </url>
   <url>
@@ -2279,6 +2354,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/WeightDropout.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/WeightedDL.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/weight_decay.html</loc>

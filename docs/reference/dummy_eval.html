@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ShortEpochCallback — ShortEpochCallback • fastai</title>
+<title>Dummy_eval — dummy_eval • fastai</title>
 
 
 <!-- jquery -->
@@ -45,8 +45,8 @@
 
 
 
-<meta property="og:title" content="ShortEpochCallback — ShortEpochCallback" />
-<meta property="og:description" content="Fit just `pct` of an epoch, then stop" />
+<meta property="og:title" content="Dummy_eval — dummy_eval" />
+<meta property="og:description" content="Evaluate `m` on a dummy input of a certain `size`" />
 
 
 
@@ -231,27 +231,27 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>ShortEpochCallback</h1>
-    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/callbacks_training.R'><code>R/callbacks_training.R</code></a></small>
-    <div class="hidden name"><code>ShortEpochCallback.Rd</code></div>
+    <h1>Dummy_eval</h1>
+    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/callbacks_hook.R'><code>R/callbacks_hook.R</code></a></small>
+    <div class="hidden name"><code>dummy_eval.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Fit just `pct` of an epoch, then stop</p>
+    <p>Evaluate `m` on a dummy input of a certain `size`</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ShortEpochCallback</span><span class='op'>(</span>pct <span class='op'>=</span> <span class='fl'>0.01</span>, short_valid <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>dummy_eval</span><span class='op'>(</span><span class='va'>m</span>, size <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fl'>64</span>, <span class='fl'>64</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>pct</th>
-      <td><p>percentage</p></td>
+      <th>m</th>
+      <td><p>m parameter</p></td>
     </tr>
     <tr>
-      <th>short_valid</th>
-      <td><p>short_valid or not</p></td>
+      <th>size</th>
+      <td><p>size</p></td>
     </tr>
     </table>
 

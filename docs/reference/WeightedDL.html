@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ShortEpochCallback — ShortEpochCallback • fastai</title>
+<title>WeightedDL — WeightedDL • fastai</title>
 
 
 <!-- jquery -->
@@ -45,8 +45,8 @@
 
 
 
-<meta property="og:title" content="ShortEpochCallback — ShortEpochCallback" />
-<meta property="og:description" content="Fit just `pct` of an epoch, then stop" />
+<meta property="og:title" content="WeightedDL — WeightedDL" />
+<meta property="og:description" content="Transformed `DataLoader`" />
 
 
 
@@ -231,27 +231,95 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>ShortEpochCallback</h1>
-    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/callbacks_training.R'><code>R/callbacks_training.R</code></a></small>
-    <div class="hidden name"><code>ShortEpochCallback.Rd</code></div>
+    <h1>WeightedDL</h1>
+    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/callbacks_data.R'><code>R/callbacks_data.R</code></a></small>
+    <div class="hidden name"><code>WeightedDL.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Fit just `pct` of an epoch, then stop</p>
+    <p>Transformed `DataLoader`</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ShortEpochCallback</span><span class='op'>(</span>pct <span class='op'>=</span> <span class='fl'>0.01</span>, short_valid <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>WeightedDL</span><span class='op'>(</span>
+  dataset <span class='op'>=</span> <span class='cn'>NULL</span>,
+  bs <span class='op'>=</span> <span class='cn'>NULL</span>,
+  wgts <span class='op'>=</span> <span class='cn'>NULL</span>,
+  shuffle <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  num_workers <span class='op'>=</span> <span class='cn'>NULL</span>,
+  verbose <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  do_setup <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  pin_memory <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  timeout <span class='op'>=</span> <span class='fl'>0</span>,
+  batch_size <span class='op'>=</span> <span class='cn'>NULL</span>,
+  drop_last <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  indexed <span class='op'>=</span> <span class='cn'>NULL</span>,
+  n <span class='op'>=</span> <span class='cn'>NULL</span>,
+  device <span class='op'>=</span> <span class='cn'>NULL</span>,
+  persistent_workers <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>pct</th>
-      <td><p>percentage</p></td>
+      <th>dataset</th>
+      <td><p>dataset</p></td>
     </tr>
     <tr>
-      <th>short_valid</th>
-      <td><p>short_valid or not</p></td>
+      <th>bs</th>
+      <td><p>bs</p></td>
+    </tr>
+    <tr>
+      <th>wgts</th>
+      <td><p>weights</p></td>
+    </tr>
+    <tr>
+      <th>shuffle</th>
+      <td><p>shuffle</p></td>
+    </tr>
+    <tr>
+      <th>num_workers</th>
+      <td><p>number of workers</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>verbose</p></td>
+    </tr>
+    <tr>
+      <th>do_setup</th>
+      <td><p>do_setup</p></td>
+    </tr>
+    <tr>
+      <th>pin_memory</th>
+      <td><p>pin_memory</p></td>
+    </tr>
+    <tr>
+      <th>timeout</th>
+      <td><p>timeout</p></td>
+    </tr>
+    <tr>
+      <th>batch_size</th>
+      <td><p>batch_size</p></td>
+    </tr>
+    <tr>
+      <th>drop_last</th>
+      <td><p>drop_last</p></td>
+    </tr>
+    <tr>
+      <th>indexed</th>
+      <td><p>indexed</p></td>
+    </tr>
+    <tr>
+      <th>n</th>
+      <td><p>n</p></td>
+    </tr>
+    <tr>
+      <th>device</th>
+      <td><p>device</p></td>
+    </tr>
+    <tr>
+      <th>persistent_workers</th>
+      <td><p>persistent_workers</p></td>
     </tr>
     </table>
 
