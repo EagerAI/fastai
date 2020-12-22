@@ -288,15 +288,6 @@ TrainEvalCallback <- function(...) {
   fastai2$callback$all$TrainEvalCallback(...)
 }
 
-#' @title ShortEpochCallback
-#'
-#' @param ... parameters to pass
-#' @return None
-#' @export
-ShortEpochCallback <- function(...) {
-  fastai2$callback$all$ShortEpochCallback(...)
-}
-
 
 
 #' @title GatherPredsCallback

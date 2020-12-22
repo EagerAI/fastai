@@ -30,4 +30,3 @@ test_succeeds('predict medical', {
 
 
 
-
