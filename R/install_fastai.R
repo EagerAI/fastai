@@ -13,7 +13,7 @@
 install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrite = FALSE,
                            extra_pkgs = c('kaggle', 'transformers', 'pytorch_lightning', 'timm',
                                           'catalyst', 'ignite', 'fastinference[interp]', 'shap',
-                                          'blurr'), skip_git_pkgs = FALSE) {
+                                          'blurr', 'resnest', 'icevision'), skip_git_pkgs = FALSE) {
 
   required_py_pkgs <- c('IPython', 'torch', 'torchvision', 'fastai',
                        'pydicom', 'kornia', 'cv2',
@@ -21,8 +21,8 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   # if git is available
   git = try(suppressWarnings(system('which git', intern = TRUE)), TRUE)
 
-  if(os() == 'windows' | os() == 'mac') {
-    extra_pkgs = extra_pkgs[!extra_pkgs %in% 'blurr']
+  if(os() == 'windows') {
+    extra_pkgs = extra_pkgs[!extra_pkgs %in% c('blurr', 'icevision')]
   }
 
   # audio, time-series, cycle-GAN, transformers integration==blurr
