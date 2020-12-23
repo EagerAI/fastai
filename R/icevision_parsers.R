@@ -11,7 +11,7 @@
 #' @param cache_filepath Path to save records in pickle format. Defaults to NULL, e.g. if the user does not specify a path, no saving nor loading happens.
 #' @return A list of records for each split defined by data_splitter.
 #' @export
-parse <- function(data_splitter = NULL, idmap = NULL, autofix = TRUE,
+icevision_parse <- function(data_splitter = NULL, idmap = NULL, autofix = TRUE,
                   show_pbar = TRUE, cache_filepath = NULL) {
 
   args <- list(

@@ -355,6 +355,61 @@ PadIfNeeded <- function(min_height = 1024, min_width = 1024, pad_height_divisor 
 }
 
 
+#' @title Adapter
+#'
+#' @description Adapter that enables the use of albumentations transforms.
+#'
+#'
+#' @param tfms `Sequence` of albumentation transforms.
+#' @return None
+#' @export
+icevision_Adapter <- function(tfms) {
+
+  icevision$tfms$albumentations$Adapter(
+    tfms = tfms
+  )
+
+}
+
+
+
+#' @title HueSaturationValue
+#'
+#' @description Randomly change hue, saturation and value of the input image.
+#'
+#'
+#' @param hue_shift_limit hue_shift_limit
+#' @param sat_shift_limit sat_shift_limit
+#' @param val_shift_limit val_shift_limit
+#' @param always_apply always_apply
+#' @param p p
+#'
+#' @section Targets:
+#' image
+#'
+#' @section Image types:
+#' uint8, float32
+#' @return None
+#' @export
+HueSaturationValue <- function(hue_shift_limit = 20,
+                               sat_shift_limit = 30,
+                               val_shift_limit = 20,
+                               always_apply = FALSE, p = 0.5) {
+
+  icevision$tfms$albumentations$transforms$HueSaturationValue(
+    hue_shift_limit = as.integer(hue_shift_limit),
+    sat_shift_limit = as.integer(sat_shift_limit),
+    val_shift_limit = as.integer(val_shift_limit),
+    always_apply = always_apply,
+    p = p
+  )
+
+}
+
+
+
+
+
 
 
 
