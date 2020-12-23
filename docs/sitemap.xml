@@ -205,6 +205,9 @@
     <loc>https://henry090.github.io/fastai//reference/BCEWithLogitsLossFlat.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/Blur.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/blurr.html</loc>
   </url>
   <url>
@@ -508,6 +511,9 @@
     <loc>https://henry090.github.io/fastai//reference/dropout_mask.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/DualTransform.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/dummy_eval.html</loc>
   </url>
   <url>
@@ -680,6 +686,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/forget_mult_CPU.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/freeze.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/FuncSplitter.html</loc>
@@ -913,13 +922,37 @@
     <loc>https://henry090.github.io/fastai//reference/hook_outputs.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/HorizontalFlip.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/hsv2rgb.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/Hue.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/HueSaturationValue.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/hug.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_Adapter.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_aug_tfms.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_Dataset.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_Dataset_from_images.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_parse.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/icnr_init.html</loc>
@@ -1372,6 +1405,9 @@
     <loc>https://henry090.github.io/fastai//reference/os.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/PadIfNeeded.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/pad_conv_norm_relu.html</loc>
   </url>
   <url>
@@ -1394,6 +1430,36 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/parent_label.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/parsers_AreasMixin.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/parsers_BBoxesMixin.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/parsers_FasterRCNN.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/parsers_FilepathMixin.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/parsers_ImageidMixin.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/parsers_IsCrowdsMixin.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/parsers_LabelsMixin.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/parsers_MaskRCNN.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/parsers_MasksMixin.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/parsers_SizeMixin.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/partial.html</loc>
@@ -1525,6 +1591,9 @@
     <loc>https://henry090.github.io/fastai//reference/radam_step.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/RandomBrightnessContrast.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/RandomCrop.html</loc>
   </url>
   <url>
@@ -1535,6 +1604,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/RandomResizedCropGPU.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/RandomSizedBBoxSafeCrop.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/RandomSplitter.html</loc>
@@ -1649,6 +1721,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/rgb2hsv.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/RGBShift.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/rmse.html</loc>
@@ -1769,6 +1844,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/ShapInterpretation.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/ShiftScaleRotate.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/Shortcut.html</loc>
@@ -2138,6 +2216,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/unet_learner.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/unfreeze.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/uniform_blur2d.html</loc>

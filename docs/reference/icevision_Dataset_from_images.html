@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Crop Time — CropTime • fastai</title>
+<title>Icevision Dataset from images — icevision_Dataset_from_images • fastai</title>
 
 
 <!-- jquery -->
@@ -45,8 +45,8 @@
 
 
 
-<meta property="og:title" content="Crop Time — CropTime" />
-<meta property="og:description" content="Random crops full spectrogram to be length specified in ms by crop_duration" />
+<meta property="og:title" content="Icevision Dataset from images — icevision_Dataset_from_images" />
+<meta property="og:description" content="Creates a `Dataset` from a list of images." />
 
 
 
@@ -231,27 +231,31 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Crop Time</h1>
-    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/audio_aug_spectrogram.R'><code>R/audio_aug_spectrogram.R</code></a></small>
-    <div class="hidden name"><code>CropTime.Rd</code></div>
+    <h1>Icevision Dataset from images</h1>
+    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/icevision_dataset.R'><code>R/icevision_dataset.R</code></a></small>
+    <div class="hidden name"><code>icevision_Dataset_from_images.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Random crops full spectrogram to be length specified in ms by crop_duration</p>
+    <p>Creates a `Dataset` from a list of images.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>CropTime</span><span class='op'>(</span><span class='va'>duration</span>, pad_mode <span class='op'>=</span> <span class='fu'><a href='AudioPadType.html'>AudioPadType</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>$</span><span class='va'>Zeros</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>icevision_Dataset_from_images</span><span class='op'>(</span><span class='va'>images</span>, tfm <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>duration</th>
-      <td><p>int, duration</p></td>
+      <th>images</th>
+      <td><p>`Sequence` of images in memory (numpy arrays).</p></td>
     </tr>
     <tr>
-      <th>pad_mode</th>
-      <td><p>padding mode, by default `AudioPadType$Zeros`</p></td>
+      <th>tfm</th>
+      <td><p>Transforms to be applied to each item.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>additional arguments</p></td>
     </tr>
     </table>
 

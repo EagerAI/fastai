@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Crop Time — CropTime • fastai</title>
+<title>Faster RCNN — parsers_FasterRCNN • fastai</title>
 
 
 <!-- jquery -->
@@ -45,8 +45,8 @@
 
 
 
-<meta property="og:title" content="Crop Time — CropTime" />
-<meta property="og:description" content="Random crops full spectrogram to be length specified in ms by crop_duration" />
+<meta property="og:title" content="Faster RCNN — parsers_FasterRCNN" />
+<meta property="og:description" content="Parser with required mixins for Faster RCNN." />
 
 
 
@@ -231,27 +231,23 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Crop Time</h1>
-    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/audio_aug_spectrogram.R'><code>R/audio_aug_spectrogram.R</code></a></small>
-    <div class="hidden name"><code>CropTime.Rd</code></div>
+    <h1>Faster RCNN</h1>
+    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/icevision_parsers.R'><code>R/icevision_parsers.R</code></a></small>
+    <div class="hidden name"><code>parsers_FasterRCNN.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Random crops full spectrogram to be length specified in ms by crop_duration</p>
+    <p>Parser with required mixins for Faster RCNN.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>CropTime</span><span class='op'>(</span><span class='va'>duration</span>, pad_mode <span class='op'>=</span> <span class='fu'><a href='AudioPadType.html'>AudioPadType</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>$</span><span class='va'>Zeros</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>parsers_FasterRCNN</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>duration</th>
-      <td><p>int, duration</p></td>
-    </tr>
-    <tr>
-      <th>pad_mode</th>
-      <td><p>padding mode, by default `AudioPadType$Zeros`</p></td>
+      <th>...</th>
+      <td><p>arguments to pass</p></td>
     </tr>
     </table>
 

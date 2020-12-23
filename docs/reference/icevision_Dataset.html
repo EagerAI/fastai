@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Crop Time — CropTime • fastai</title>
+<title>Dataset — icevision_Dataset • fastai</title>
 
 
 <!-- jquery -->
@@ -45,8 +45,8 @@
 
 
 
-<meta property="og:title" content="Crop Time — CropTime" />
-<meta property="og:description" content="Random crops full spectrogram to be length specified in ms by crop_duration" />
+<meta property="og:title" content="Dataset — icevision_Dataset" />
+<meta property="og:description" content="Container for a list of records and transforms." />
 
 
 
@@ -231,33 +231,39 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Crop Time</h1>
-    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/audio_aug_spectrogram.R'><code>R/audio_aug_spectrogram.R</code></a></small>
-    <div class="hidden name"><code>CropTime.Rd</code></div>
+    <h1>Dataset</h1>
+    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/icevision_dataset.R'><code>R/icevision_dataset.R</code></a></small>
+    <div class="hidden name"><code>icevision_Dataset.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Random crops full spectrogram to be length specified in ms by crop_duration</p>
+    <p>Container for a list of records and transforms.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>CropTime</span><span class='op'>(</span><span class='va'>duration</span>, pad_mode <span class='op'>=</span> <span class='fu'><a href='AudioPadType.html'>AudioPadType</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>$</span><span class='va'>Zeros</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>icevision_Dataset</span><span class='op'>(</span><span class='va'>records</span>, tfm <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>duration</th>
-      <td><p>int, duration</p></td>
+      <th>records</th>
+      <td><p>A list of records.</p></td>
     </tr>
     <tr>
-      <th>pad_mode</th>
-      <td><p>padding mode, by default `AudioPadType$Zeros`</p></td>
+      <th>tfm</th>
+      <td><p>Transforms to be applied to each item.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>None</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Steps each time an item is requested (normally via directly indexing the `Dataset`):
+Grab a record from the internal list of records.
+Prepare the record (open the image, open the mask, add metadata).
+Apply transforms to the record.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
