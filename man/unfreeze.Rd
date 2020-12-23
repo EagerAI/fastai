@@ -4,7 +4,7 @@
 \alias{unfreeze}
 \title{Unfreeze a model}
 \usage{
-unfreeze(object)
+unfreeze(object, ...)
 }
 \arguments{
 \item{object}{A model}

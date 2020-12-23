@@ -9,12 +9,12 @@
 #' \dontrun{
 #' learnR %>% freeze()
 #' }
-freeze <- function(object){
+freeze <- function(object, ...){
   
-  args <- list()
+  args <- list(...)
   
   do.call(object$freeze, args)
-  message("The model has been freezed")
+  message("The model has been frozen")
   
 }
 
@@ -30,12 +30,12 @@ freeze <- function(object){
 #' \dontrun{
 #' learnR %>% unfreeze()
 #' }
-unfreeze <- function(object){
+unfreeze <- function(object, ...){
   
-  args <- list()
+  args <- list(...)
   
   do.call(object$unfreeze, args)
-  message("The model has been unfreezed")
+  message("The model has been unfrozen")
   
 }
   

@@ -4,7 +4,7 @@
 \alias{freeze}
 \title{Freeze a model}
 \usage{
-freeze(object)
+freeze(object, ...)
 }
 \arguments{
 \item{object}{A model}
