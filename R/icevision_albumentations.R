@@ -365,7 +365,7 @@ PadIfNeeded <- function(min_height = 1024, min_width = 1024, pad_height_divisor 
 #' @export
 icevision_Adapter <- function(tfms) {
 
-  icevision$tfms$albumentations$Adapter(
+  icevision()$tfms$albumentations$Adapter(
     tfms = tfms
   )
 
@@ -396,7 +396,7 @@ HueSaturationValue <- function(hue_shift_limit = 20,
                                val_shift_limit = 20,
                                always_apply = FALSE, p = 0.5) {
 
-  icevision$tfms$albumentations$transforms$HueSaturationValue(
+  icevision()$tfms$albumentations$transforms$HueSaturationValue(
     hue_shift_limit = as.integer(hue_shift_limit),
     sat_shift_limit = as.integer(sat_shift_limit),
     val_shift_limit = as.integer(val_shift_limit),
