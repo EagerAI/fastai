@@ -10,7 +10,7 @@
 #' @param pad_mode padding mode, by default `AudioPadType$Zeros`
 #' @return None
 #' @export
-CropTime <- function(duration, pad_mode = AudioPadType$Zeros) {
+CropTime <- function(duration, pad_mode = AudioPadType()$Zeros) {
 
   fastaudio()$augment$spectrogram$CropTime(
     duration = duration,
