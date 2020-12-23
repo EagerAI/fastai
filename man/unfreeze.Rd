@@ -8,9 +8,11 @@ unfreeze(object, ...)
 }
 \arguments{
 \item{object}{A model}
+
+\item{...}{Additional parameters}
 }
 \value{
-Nothing
+None
 }
 \description{
 Unfreeze a model

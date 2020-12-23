@@ -1,8 +1,9 @@
 #' Freeze a model
 #'
 #' @param object A model 
+#' @param ... Additional parameters
 #'
-#' @return Nothing
+#' @return None
 #' @export
 #'
 #' @examples
@@ -20,9 +21,10 @@ freeze <- function(object, ...){
 
 #' Unfreeze a model
 #'
-#' @param object A model 
+#' @param object A model
+#' @param ... Additional parameters
 #'
-#' @return Nothing
+#' @return None
 #' @export
 #'
 #' @examples

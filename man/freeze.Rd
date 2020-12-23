@@ -8,9 +8,11 @@ freeze(object, ...)
 }
 \arguments{
 \item{object}{A model}
+
+\item{...}{Additional parameters}
 }
 \value{
-Nothing
+None
 }
 \description{
 Freeze a model
