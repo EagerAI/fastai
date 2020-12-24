@@ -17,6 +17,20 @@ icevision_ShiftScaleRotate(
   always_apply = FALSE,
   p = 0.5
 )
+
+icevision_ShiftScaleRotate(
+  shift_limit = 0.0625,
+  scale_limit = 0.1,
+  rotate_limit = 45,
+  interpolation = 1,
+  border_mode = 4,
+  value = NULL,
+  mask_value = NULL,
+  shift_limit_x = NULL,
+  shift_limit_y = NULL,
+  always_apply = FALSE,
+  p = 0.5
+)
 }
 \arguments{
 \item{shift_limit}{shift_limit}
@@ -43,16 +57,26 @@ icevision_ShiftScaleRotate(
 }
 \value{
 None
+
+None
 }
 \description{
+Randomly apply affine transforms: translate, scale and rotate the input.
+
 Randomly apply affine transforms: translate, scale and rotate the input.
 }
 \section{Targets}{
 
 image, mask, keypoints
+
+
+image, mask, keypoints
 }
 
 \section{Image types}{
+
+uint8, float32
+
 
 uint8, float32
 }
