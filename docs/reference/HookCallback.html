@@ -46,7 +46,8 @@
 
 
 <meta property="og:title" content="HookCallback — HookCallback" />
-<meta property="og:description" content="`Callback` that can be used to register hooks on `modules`" />
+<meta property="og:description" content="`Callback` that can be used to register hooks on `modules`
+`Callback` that can be used to register hooks on `modules`" />
 
 
 
@@ -232,15 +233,25 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>HookCallback</h1>
-    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/callbacks.R'><code>R/callbacks.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/callbacks.R'><code>R/callbacks.R</code></a>, <a href='https://github.com/henry090/fastai/blob/master/R/callbacks_hook.R'><code>R/callbacks_hook.R</code></a></small>
     <div class="hidden name"><code>HookCallback.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>`Callback` that can be used to register hooks on `modules`</p>
+<p>`Callback` that can be used to register hooks on `modules`</p>
     </div>
 
     <pre class="usage"><span class='fu'>HookCallback</span><span class='op'>(</span>
+  modules <span class='op'>=</span> <span class='cn'>NULL</span>,
+  every <span class='op'>=</span> <span class='cn'>NULL</span>,
+  remove_end <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  is_forward <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  detach <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  cpu <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span>
+
+<span class='fu'>HookCallback</span><span class='op'>(</span>
   modules <span class='op'>=</span> <span class='cn'>NULL</span>,
   every <span class='op'>=</span> <span class='cn'>NULL</span>,
   remove_end <span class='op'>=</span> <span class='cn'>TRUE</span>,
@@ -254,33 +265,34 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>modules</th>
-      <td><p>the modules</p></td>
+      <td><p>modules</p></td>
     </tr>
     <tr>
       <th>every</th>
-      <td><p>int, every epoch</p></td>
+      <td><p>every</p></td>
     </tr>
     <tr>
       <th>remove_end</th>
-      <td><p>logical, remove_end</p></td>
+      <td><p>remove_end or not</p></td>
     </tr>
     <tr>
       <th>is_forward</th>
-      <td><p>logical, is_forward</p></td>
+      <td><p>is_forward or not</p></td>
     </tr>
     <tr>
       <th>detach</th>
-      <td><p>detach</p></td>
+      <td><p>detach or not</p></td>
     </tr>
     <tr>
       <th>cpu</th>
-      <td><p>to cpu or not</p></td>
+      <td><p>cpu or not</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>None</p>
+<p>None</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

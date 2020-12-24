@@ -9,7 +9,7 @@ modern best practices. See the
 is based on research into deep learning best practices undertaken at `fast.ai`,
 and includes "out of the box" support for `vision`, `text`, `tabular`,
 [audio](https://github.com/fastaudio/fastaudio),
-[time-series](https://github.com/tcapelle/timeseries_fastai) and `collab`
+[time-series](https://github.com/tcapelle/timeseries_fastai), [object detection](https://github.com/airctic/icevision) and `collab`
 (collaborative filtering) models.
 
 <img src="files/fastai.png" width=200 align=right style="margin-left: 15px;" alt="fastai"/>
