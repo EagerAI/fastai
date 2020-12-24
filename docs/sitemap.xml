@@ -205,9 +205,6 @@
     <loc>https://henry090.github.io/fastai//reference/BCEWithLogitsLossFlat.html</loc>
   </url>
   <url>
-    <loc>https://henry090.github.io/fastai//reference/Blur.html</loc>
-  </url>
-  <url>
     <loc>https://henry090.github.io/fastai//reference/blurr.html</loc>
   </url>
   <url>
@@ -509,9 +506,6 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/dropout_mask.html</loc>
-  </url>
-  <url>
-    <loc>https://henry090.github.io/fastai//reference/DualTransform.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/dummy_eval.html</loc>
@@ -922,16 +916,10 @@
     <loc>https://henry090.github.io/fastai//reference/hook_outputs.html</loc>
   </url>
   <url>
-    <loc>https://henry090.github.io/fastai//reference/HorizontalFlip.html</loc>
-  </url>
-  <url>
     <loc>https://henry090.github.io/fastai//reference/hsv2rgb.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/Hue.html</loc>
-  </url>
-  <url>
-    <loc>https://henry090.github.io/fastai//reference/HueSaturationValue.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/hug.html</loc>
@@ -946,13 +934,262 @@
     <loc>https://henry090.github.io/fastai//reference/icevision_aug_tfms.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_BasicIAATransform.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_BasicTransform.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_Blur.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_ChannelDropout.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_ChannelShuffle.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_CLAHE.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_CoarseDropout.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_ColorJitter.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_Compose.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_Crop.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_CropNonEmptyMaskIfExists.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_Cutout.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/icevision_Dataset.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/icevision_Dataset_from_images.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_Downscale.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_DualIAATransform.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_DualTransform.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_ElasticTransform.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_Equalize.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_FancyPCA.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_FDA.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_Flip.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_FromFloat.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_GaussianBlur.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_GaussNoise.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_GlassBlur.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_GridDistortion.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_GridDropout.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_HistogramMatching.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_HorizontalFlip.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_HueSaturationValue.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_IAAAdditiveGaussianNoise.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_IAAAffine.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_IAACropAndPad.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_IAAEmboss.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_IAAFliplr.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_IAAFlipud.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_IAAPerspective.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_IAAPiecewiseAffine.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_IAASharpen.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_IAASuperpixels.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_ImageCompression.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_ImageOnlyIAATransform.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_ImageOnlyTransform.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_InvertImg.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_ISONoise.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_JpegCompression.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_LongestMaxSize.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_MaskDropout.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_MedianBlur.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_MotionBlur.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_MultiplicativeNoise.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_Normalize.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_OpticalDistortion.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_PadIfNeeded.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/icevision_parse.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_Posterize.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_RandomBrightnessContrast.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_RandomContrast.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_RandomCrop.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_RandomCropNearBBox.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_RandomFog.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_RandomGamma.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_RandomGridShuffle.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_RandomRain.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_RandomResizedCrop.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_RandomRotate90.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_RandomScale.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_RandomShadow.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_RandomSizedBBoxSafeCrop.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_RandomSizedCrop.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_RandomSnow.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_RandomSunFlare.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_read_bgr_image.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_read_rgb_image.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_Resize.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_RGBShift.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_Rotate.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_ShiftScaleRotate.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_SmallestMaxSize.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_Solarize.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_ToFloat.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_ToGray.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_ToSepia.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_Transpose.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_VerticalFlip.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/icnr_init.html</loc>
@@ -1405,9 +1642,6 @@
     <loc>https://henry090.github.io/fastai//reference/os.html</loc>
   </url>
   <url>
-    <loc>https://henry090.github.io/fastai//reference/PadIfNeeded.html</loc>
-  </url>
-  <url>
     <loc>https://henry090.github.io/fastai//reference/pad_conv_norm_relu.html</loc>
   </url>
   <url>
@@ -1591,9 +1825,6 @@
     <loc>https://henry090.github.io/fastai//reference/radam_step.html</loc>
   </url>
   <url>
-    <loc>https://henry090.github.io/fastai//reference/RandomBrightnessContrast.html</loc>
-  </url>
-  <url>
     <loc>https://henry090.github.io/fastai//reference/RandomCrop.html</loc>
   </url>
   <url>
@@ -1604,9 +1835,6 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/RandomResizedCropGPU.html</loc>
-  </url>
-  <url>
-    <loc>https://henry090.github.io/fastai//reference/RandomSizedBBoxSafeCrop.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/RandomSplitter.html</loc>
@@ -1721,9 +1949,6 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/rgb2hsv.html</loc>
-  </url>
-  <url>
-    <loc>https://henry090.github.io/fastai//reference/RGBShift.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/rmse.html</loc>
@@ -1844,9 +2069,6 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/ShapInterpretation.html</loc>
-  </url>
-  <url>
-    <loc>https://henry090.github.io/fastai//reference/ShiftScaleRotate.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/Shortcut.html</loc>
@@ -2491,16 +2713,85 @@
     <loc>https://henry090.github.io/fastai//reference/xresnet18_deep.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/xresnet18_deeper.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/xresnet34.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/xresnet34_deep.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/xresnet34_deeper.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/xresnet50.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/xresnet50_deep.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/xresnet50_deeper.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/xresnext101.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/xresnext18.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/xresnext34.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/xresnext50.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/xsenet154.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/xse_resnet101.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/xse_resnet152.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/xse_resnet18.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/xse_resnet34.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/xse_resnet50.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/xse_resnext101.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/xse_resnext18.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/xse_resnext18_deep.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/xse_resnext18_deeper.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/xse_resnext34.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/xse_resnext34_deep.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/xse_resnext34_deeper.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/xse_resnext50.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/xse_resnext50_deep.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/xse_resnext50_deeper.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/zoom.html</loc>

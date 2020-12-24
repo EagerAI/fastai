@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Aug_tfms — icevision_aug_tfms • fastai</title>
+<title>MaskDropout — icevision_MaskDropout • fastai</title>
 
 
 <!-- jquery -->
@@ -45,8 +45,8 @@
 
 
 
-<meta property="og:title" content="Aug_tfms — icevision_aug_tfms" />
-<meta property="og:description" content="Collection of useful augmentation transforms." />
+<meta property="og:title" content="MaskDropout — icevision_MaskDropout" />
+<meta property="og:description" content="Image &amp;amp; mask augmentation that zero out mask and image regions corresponding" />
 
 
 
@@ -231,77 +231,55 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Aug_tfms</h1>
+    <h1>MaskDropout</h1>
     <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/icevision_albumentations.R'><code>R/icevision_albumentations.R</code></a></small>
-    <div class="hidden name"><code>icevision_aug_tfms.Rd</code></div>
+    <div class="hidden name"><code>icevision_MaskDropout.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Collection of useful augmentation transforms.</p>
+    <p>Image &amp; mask augmentation that zero out mask and image regions corresponding</p>
     </div>
 
-    <pre class="usage"><span class='fu'>icevision_aug_tfms</span><span class='op'>(</span>
-  <span class='va'>size</span>,
-  presize <span class='op'>=</span> <span class='cn'>NULL</span>,
-  horizontal_flip <span class='op'>=</span> <span class='fu'><a href='icevision_HorizontalFlip.html'>icevision_HorizontalFlip</a></span><span class='op'>(</span>always_apply <span class='op'>=</span> <span class='cn'>FALSE</span>, p <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>,
-  shift_scale_rotate <span class='op'>=</span> <span class='fu'><a href='icevision_ShiftScaleRotate.html'>icevision_ShiftScaleRotate</a></span><span class='op'>(</span>always_apply <span class='op'>=</span> <span class='cn'>FALSE</span>, p <span class='op'>=</span> <span class='fl'>0.5</span>,
-    shift_limit_x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0.0625</span>, <span class='fl'>0.0625</span><span class='op'>)</span>, shift_limit_y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0.0625</span>, <span class='fl'>0.0625</span><span class='op'>)</span>, scale_limit <span class='op'>=</span>
-    <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0.1</span>, <span class='fl'>0.1</span><span class='op'>)</span>, rotate_limit <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>45</span>, <span class='fl'>45</span><span class='op'>)</span>, interpolation <span class='op'>=</span> <span class='fl'>1</span>, border_mode <span class='op'>=</span> <span class='fl'>4</span>, value <span class='op'>=</span>
-    <span class='cn'>NULL</span>, mask_value <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>,
-  rgb_shift <span class='op'>=</span> <span class='fu'><a href='icevision_RGBShift.html'>icevision_RGBShift</a></span><span class='op'>(</span>always_apply <span class='op'>=</span> <span class='cn'>FALSE</span>, p <span class='op'>=</span> <span class='fl'>0.5</span>, r_shift_limit <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>20</span>,
-    <span class='fl'>20</span><span class='op'>)</span>, g_shift_limit <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>20</span>, <span class='fl'>20</span><span class='op'>)</span>, b_shift_limit <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>20</span>, <span class='fl'>20</span><span class='op'>)</span><span class='op'>)</span>,
-  lightning <span class='op'>=</span> <span class='fu'><a href='icevision_RandomBrightnessContrast.html'>icevision_RandomBrightnessContrast</a></span><span class='op'>(</span>always_apply <span class='op'>=</span> <span class='cn'>FALSE</span>, p <span class='op'>=</span> <span class='fl'>0.5</span>,
-    brightness_limit <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0.2</span>, <span class='fl'>0.2</span><span class='op'>)</span>, contrast_limit <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0.2</span>, <span class='fl'>0.2</span><span class='op'>)</span>, brightness_by_max <span class='op'>=</span>
-    <span class='cn'>TRUE</span><span class='op'>)</span>,
-  blur <span class='op'>=</span> <span class='fu'><a href='icevision_Blur.html'>icevision_Blur</a></span><span class='op'>(</span>always_apply <span class='op'>=</span> <span class='cn'>FALSE</span>, p <span class='op'>=</span> <span class='fl'>0.5</span>, blur_limit <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>,
-  crop_fn <span class='op'>=</span> <span class='fu'><a href='partial.html'>partial</a></span><span class='op'>(</span><span class='va'>icevision_RandomSizedBBoxSafeCrop</span>, p <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>,
-  pad <span class='op'>=</span> <span class='fu'><a href='partial.html'>partial</a></span><span class='op'>(</span><span class='va'>icevision_PadIfNeeded</span>, border_mode <span class='op'>=</span> <span class='fl'>0</span>, value <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fl'>124</span>, <span class='fl'>116</span>, <span class='fl'>104</span><span class='op'>)</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>icevision_MaskDropout</span><span class='op'>(</span>
+  max_objects <span class='op'>=</span> <span class='fl'>1</span>,
+  image_fill_value <span class='op'>=</span> <span class='fl'>0</span>,
+  mask_fill_value <span class='op'>=</span> <span class='fl'>0</span>,
+  always_apply <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  p <span class='op'>=</span> <span class='fl'>0.5</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>size</th>
-      <td><p>The final size of the image. If an `int` is given, the maximum size of the image is rescaled, maintaing aspect ratio. If a `list` is given, the image is rescaled to have that exact size (height, width).</p></td>
+      <th>max_objects</th>
+      <td><p>max_objects</p></td>
     </tr>
     <tr>
-      <th>presize</th>
-      <td><p>presize</p></td>
+      <th>image_fill_value</th>
+      <td><p>image_fill_value</p></td>
     </tr>
     <tr>
-      <th>horizontal_flip</th>
-      <td><p>Flip around the y-axis. If `NULL` this transform is not applied.</p></td>
+      <th>mask_fill_value</th>
+      <td><p>mask_fill_value</p></td>
     </tr>
     <tr>
-      <th>shift_scale_rotate</th>
-      <td><p>Randomly shift, scale, and rotate. If `NULL` this transform is not applied.</p></td>
+      <th>always_apply</th>
+      <td><p>always_apply</p></td>
     </tr>
     <tr>
-      <th>rgb_shift</th>
-      <td><p>Randomly shift values for each channel of RGB image. If `NULL` this transform is not applied.</p></td>
-    </tr>
-    <tr>
-      <th>lightning</th>
-      <td><p>Randomly changes Brightness and Contrast. If `NULL` this transform is not applied.</p></td>
-    </tr>
-    <tr>
-      <th>blur</th>
-      <td><p>Randomly blur the image. If `NULL` this transform is not applied.</p></td>
-    </tr>
-    <tr>
-      <th>crop_fn</th>
-      <td><p>Randomly crop the image. If `NULL` this transform is not applied. Use `partial` to saturate other parameters of the class.</p></td>
-    </tr>
-    <tr>
-      <th>pad</th>
-      <td><p>Pad the image to `size`, squaring the image if `size` is an `int`. If `NULL` this transform is not applied. Use `partial` to sature other parameters of the class.</p></td>
+      <th>p</th>
+      <td><p>p</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>None</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>to randomly chosen object instance from mask. Mask must be single-channel image, zero values treated as background.
+Image can be any number of channels. Inspired by https://www.kaggle.com/c/severstal-steel-defect-detection/discussion/114254</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
