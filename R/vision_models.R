@@ -1,129 +1,3 @@
-
-
-
-#' @title Xresnet50_deep
-#'
-#' @description Load model architecture
-#' @param ... parameters to pass
-#' @return model
-#' @export
-xresnet50_deep <- function(...) {
-
-  args = list(...)
-  if(length(args)>0) {
-    do.call(vision()$all$xresnet50_deep, args)
-  } else {
-    vision()$all$xresnet50_deep
-  }
-}
-
-#' @title Xresnet50
-#'
-#' @description Load model architecture
-#' @param ... parameters to pass
-#' @return model
-#' @export
-xresnet50 <- function(...) {
-  args = list(...)
-  if(length(args)>0) {
-    do.call(vision()$all$xresnet50, args)
-  } else {
-    vision()$all$xresnet50
-  }
-}
-
-#' @title Xresnet34_deep
-#'
-#' @description Load model architecture
-#' @param ... parameters to pass
-#' @return model
-#' @export
-xresnet34_deep <- function(...) {
-  args = list(...)
-  if(length(args)>0){
-    do.call(vision()$all$xresnet34_deep, args)
-  } else {
-    vision()$all$xresnet34_deep
-  }
-}
-
-#' @title Xresnet34
-#'
-#' @description Load model architecture
-#' @param ... parameters to pass
-#' @return model
-#' @export
-xresnet34 <- function(...) {
-  args = list(...)
-  if(length(args)>0){
-    do.call(vision()$all$xresnet34, args)
-  } else {
-    vision()$all$xresnet34
-  }
-}
-
-#' @title Xresnet18_deep
-#'
-#' @description Load model architecture
-#' @param ... parameters to pass
-#' @return model
-#' @export
-xresnet18_deep <- function(...) {
-  args = list(...)
-  if(length(args)>0){
-    do.call(vision()$all$xresnet18_deep, args)
-  } else {
-    vision()$all$xresnet18_deep
-  }
-}
-
-#' @title Xresnet18
-#'
-#' @description Load model architecture
-#' @param ... parameters to pass
-#' @return model
-#' @export
-xresnet18 <- function(...) {
-  args = list(...)
-  if(length(args)>0){
-    do.call(vision()$all$xresnet18, args)
-  } else {
-    vision()$all$xresnet18
-  }
-}
-
-#' @title Xresnet152
-#'
-#' @description Load model architecture
-#' @param ... parameters to pass
-#' @return model
-#' @export
-xresnet152 <- function(...) {
-  args = list(...)
-  if(length(args)>0){
-    do.call(vision()$all$xresnet152, args)
-  } else {
-    vision()$all$xresnet152
-  }
-}
-
-#' @title Xresnet101
-#'
-#' @description Load model architecture
-#' @param ... parameters to pass
-#' @return model
-#' @export
-xresnet101 <- function(...) {
-  args = list(...)
-  if(length(args)>0){
-    do.call(vision()$all$xresnet101, args)
-  } else {
-    vision()$all$xresnet101
-  }
-}
-
-
-
 #' @title Alexnet
 #'
 #' @description AlexNet model architecture
@@ -593,6 +467,259 @@ densenet201 <- function(pretrained = FALSE, progress) {
   }
 
 }
+
+####
+
+#' @title Xresnet18
+#'
+#' @description Load model architecture
+#' @param ... parameters to pass
+#' @return model
+#' @export
+xresnet18 <- function(...) {
+  args = list(...)
+  if(length(args)>0){
+    do.call(vision()$all$xresnet18, args)
+  } else {
+    vision()$all$xresnet18
+  }
+}
+
+#' @title Xresnet34
+#'
+#' @description Load model architecture
+#' @param ... parameters to pass
+#' @return model
+#' @export
+xresnet34 <- function(...) {
+  args = list(...)
+  if(length(args)>0){
+    do.call(vision()$all$xresnet34, args)
+  } else {
+    vision()$all$xresnet34
+  }
+}
+
+#' @title Xresnet50
+#'
+#' @description Load model architecture
+#' @param ... parameters to pass
+#' @return model
+#' @export
+xresnet50 <- function(...) {
+  args = list(...)
+  if(length(args)>0) {
+    do.call(vision()$all$xresnet50, args)
+  } else {
+    vision()$all$xresnet50
+  }
+}
+
+#' @title Xresnet101
+#'
+#' @description Load model architecture
+#' @param ... parameters to pass
+#' @return model
+#' @export
+xresnet101 <- function(...) {
+  args = list(...)
+  if(length(args)>0){
+    do.call(vision()$all$xresnet101, args)
+  } else {
+    vision()$all$xresnet101
+  }
+}
+
+#' @title Xresnet152
+#'
+#' @description Load model architecture
+#' @param ... parameters to pass
+#' @return model
+#' @export
+xresnet152 <- function(...) {
+  args = list(...)
+  if(length(args)>0){
+    do.call(vision()$all$xresnet152, args)
+  } else {
+    vision()$all$xresnet152
+  }
+}
+
+#' @title Xresnet18_deep
+#'
+#' @description Load model architecture
+#' @param ... parameters to pass
+#' @return model
+#' @export
+xresnet18_deep <- function(...) {
+  args = list(...)
+  if(length(args)>0){
+    do.call(vision()$all$xresnet18_deep, args)
+  } else {
+    vision()$all$xresnet18_deep
+  }
+}
+
+#' @title Xresnet34_deep
+#'
+#' @description Load model architecture
+#' @param ... parameters to pass
+#' @return model
+#' @export
+xresnet34_deep <- function(...) {
+  args = list(...)
+  if(length(args)>0){
+    do.call(vision()$all$xresnet34_deep, args)
+  } else {
+    vision()$all$xresnet34_deep
+  }
+}
+
+#' @title Xresnet50_deep
+#'
+#' @description Load model architecture
+#' @param ... parameters to pass
+#' @return model
+#' @export
+xresnet50_deep <- function(...) {
+
+  args = list(...)
+  if(length(args)>0) {
+    do.call(vision()$all$xresnet50_deep, args)
+  } else {
+    vision()$all$xresnet50_deep
+  }
+}
+
+#' @title Xresnet18_deeper
+#'
+#' @description Load model architecture
+#' @param ... parameters to pass
+#' @return model
+#' @export
+xresnet18_deeper <- function(...) {
+  args = list(...)
+  if(length(args)>0){
+    do.call(vision()$all$xresnet18_deeper, args)
+  } else {
+    vision()$all$xresnet18_deeper
+  }
+}
+
+#' @title Xresnet34_deeper
+#'
+#' @description Load model architecture
+#' @param ... parameters to pass
+#' @return model
+#' @export
+xresnet34_deeper <- function(...) {
+  args = list(...)
+  if(length(args)>0){
+    do.call(vision()$all$xresnet34_deeper, args)
+  } else {
+    vision()$all$xresnet34_deeper
+  }
+}
+
+#' @title Xresnet50_deeper
+#'
+#' @description Load model architecture
+#' @param ... parameters to pass
+#' @return model
+#' @export
+xresnet50_deeper <- function(...) {
+
+  args = list(...)
+  if(length(args)>0) {
+    do.call(vision()$all$xresnet50_deeper, args)
+  } else {
+    vision()$all$xresnet50_deeper
+  }
+}
+
+#' @title xse_resnet18
+#'
+#' @description Load model architecture
+#' @param ... parameters to pass
+#' @return model
+#' @export
+xse_resnet18 <- function(...) {
+  args = list(...)
+  if(length(args)>0){
+    do.call(vision()$all$xse_resnet18, args)
+  } else {
+    vision()$all$xse_resnet18
+  }
+}
+
+#' @title xse_resnext18
+#'
+#' @description Load model architecture
+#' @param ... parameters to pass
+#' @return model
+#' @export
+xse_resnext18 <- function(...) {
+  args = list(...)
+  if(length(args)>0){
+    do.call(vision()$all$xse_resnext18, args)
+  } else {
+    vision()$all$xse_resnext18
+  }
+}
+
+#' @title xresnext18
+#'
+#' @description Load model architecture
+#' @param ... parameters to pass
+#' @return model
+#' @export
+xresnext18 <- function(...) {
+  args = list(...)
+  if(length(args)>0){
+    do.call(vision()$all$xresnext18, args)
+  } else {
+    vision()$all$xresnext18
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
