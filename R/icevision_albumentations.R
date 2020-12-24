@@ -1355,7 +1355,7 @@ icevision_GridDropout <- function(ratio = 0.5, unit_size_min = NULL,
 #' @return None
 #' @export
 icevision_HistogramMatching <- function(reference_images, blend_ratio = list(0.5, 1.0),
-                              read_fn = read_rgb_image(), always_apply = FALSE, p = 0.5) {
+                              read_fn = icevision_read_rgb_image(), always_apply = FALSE, p = 0.5) {
 
   args <- list(
     reference_images = reference_images,

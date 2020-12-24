@@ -7,7 +7,7 @@
 icevision_HistogramMatching(
   reference_images,
   blend_ratio = list(0.5, 1),
-  read_fn = read_rgb_image(),
+  read_fn = icevision_read_rgb_image(),
   always_apply = FALSE,
   p = 0.5
 )
