@@ -23,9 +23,6 @@ icevision_ChannelDropout(
 \description{
 Randomly Drop Channels in the input Image.
 }
-\details{
-
-}
 \section{Targets}{
 
 image

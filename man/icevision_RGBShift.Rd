@@ -11,6 +11,14 @@ icevision_RGBShift(
   always_apply = FALSE,
   p = 0.5
 )
+
+icevision_RGBShift(
+  r_shift_limit = 20,
+  g_shift_limit = 20,
+  b_shift_limit = 20,
+  always_apply = FALSE,
+  p = 0.5
+)
 }
 \arguments{
 \item{r_shift_limit}{r_shift_limit}
@@ -25,16 +33,26 @@ icevision_RGBShift(
 }
 \value{
 None
+
+None
 }
 \description{
+Randomly shift values for each channel of the input RGB image.
+
 Randomly shift values for each channel of the input RGB image.
 }
 \section{Targets}{
 
 image
+
+
+image
 }
 
 \section{Image types}{
+
+uint8, float32
+
 
 uint8, float32
 }

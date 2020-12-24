@@ -12,6 +12,15 @@ icevision_RandomSizedBBoxSafeCrop(
   always_apply = FALSE,
   p = 1
 )
+
+icevision_RandomSizedBBoxSafeCrop(
+  height,
+  width,
+  erosion_rate = 0,
+  interpolation = 1,
+  always_apply = FALSE,
+  p = 1
+)
 }
 \arguments{
 \item{height}{height}
@@ -28,16 +37,26 @@ icevision_RandomSizedBBoxSafeCrop(
 }
 \value{
 None
+
+None
 }
 \description{
+Crop a random part of the input and rescale it to some size without loss of bboxes.
+
 Crop a random part of the input and rescale it to some size without loss of bboxes.
 }
 \section{Targets}{
 
 image, mask, bboxes
+
+
+image, mask, bboxes
 }
 
 \section{Image types}{
+
+uint8, float32
+
 
 uint8, float32
 }

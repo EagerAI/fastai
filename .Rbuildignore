@@ -20,5 +20,5 @@
 ^files$
 ^.*\.pyc$
 ^.*__pycache__$
-
+^inst/python/fastaibuilt/pycache/bs_finder\.cpython-36\.pyc^
 
