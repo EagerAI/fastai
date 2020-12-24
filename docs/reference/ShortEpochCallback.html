@@ -46,7 +46,7 @@
 
 
 <meta property="og:title" content="ShortEpochCallback — ShortEpochCallback" />
-<meta property="og:description" content="ShortEpochCallback" />
+<meta property="og:description" content="Fit just `pct` of an epoch, then stop" />
 
 
 
@@ -232,22 +232,26 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>ShortEpochCallback</h1>
-    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/callbacks.R'><code>R/callbacks.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/callbacks_training.R'><code>R/callbacks_training.R</code></a></small>
     <div class="hidden name"><code>ShortEpochCallback.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>ShortEpochCallback</p>
+    <p>Fit just `pct` of an epoch, then stop</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ShortEpochCallback</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>ShortEpochCallback</span><span class='op'>(</span>pct <span class='op'>=</span> <span class='fl'>0.01</span>, short_valid <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>...</th>
-      <td><p>parameters to pass</p></td>
+      <th>pct</th>
+      <td><p>percentage</p></td>
+    </tr>
+    <tr>
+      <th>short_valid</th>
+      <td><p>short_valid or not</p></td>
     </tr>
     </table>
 

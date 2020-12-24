@@ -1,7 +1,10 @@
 
 ## 2.0.3 (Unreleased)
 
-* .
+* current stable version of ```fast.ai``` is ```2.1.5```
+* lots of new callback ops
+* [freeze and unfreeze](https://github.com/henry090/fastai/pull/86) a model
+* object detection module - [icevision](https://github.com/henry090/fastai/issues/89)
 
 ## 2.0.2 
 

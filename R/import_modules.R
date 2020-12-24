@@ -50,7 +50,10 @@ hug <- function() try(reticulate::import_from_path('fastaibuilt', path = python_
 #' @return None
 crap <- function() try(reticulate::import_from_path('fastaibuilt', path = python_path())$crappify, TRUE)
 
-
+#' @title Icevision module
+#'
+#' @return None
+icevision <- function() try(reticulate::import("icevision"), TRUE)
 
 #' @title Ignite module
 #'
