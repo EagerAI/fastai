@@ -446,7 +446,6 @@ icevision_BasicTransform <- function(always_apply = FALSE, p = 0.5) {
 #'
 #' @description Randomly Drop Channels in the input Image.
 #'
-#' @details
 #'
 #' @param channel_drop_range channel_drop_range
 #' @param fill_value fill_value
