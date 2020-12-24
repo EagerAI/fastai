@@ -15,23 +15,24 @@
 #' @param pad Pad the image to `size`, squaring the image if `size` is an `int`. If `NULL` this transform is not applied. Use `partial` to sature other parameters of the class.
 #' @return None
 #' @export
-icevision_aug_tfms <- function(size, presize = NULL, horizontal_flip = HorizontalFlip(always_apply=FALSE, p=0.5),
-                     shift_scale_rotate = ShiftScaleRotate(always_apply=FALSE, p=0.5,
+icevision_aug_tfms <- function(size, presize = NULL,
+                               horizontal_flip = icevision_HorizontalFlip(always_apply=FALSE, p=0.5),
+                     shift_scale_rotate = icevision_ShiftScaleRotate(always_apply=FALSE, p=0.5,
                                                            shift_limit_x=c(-0.0625, 0.0625),
                                                            shift_limit_y=c(-0.0625, 0.0625),
                                                            scale_limit=c(-0.09999999999999998,
                                                                          0.10000000000000009),
                                                            rotate_limit=c(-45, 45), interpolation=1,
                                                            border_mode=4, value=NULL, mask_value=NULL),
-                     rgb_shift = RGBShift(always_apply=FALSE, p=0.5, r_shift_limit=c(-20, 20),
+                     rgb_shift = icevision_RGBShift(always_apply=FALSE, p=0.5, r_shift_limit=c(-20, 20),
                                           g_shift_limit=c(-20, 20), b_shift_limit=c(-20, 20)),
-                     lightning = RandomBrightnessContrast(always_apply=FALSE, p=0.5,
+                     lightning = icevision_RandomBrightnessContrast(always_apply=FALSE, p=0.5,
                                                           brightness_limit=c(-0.2, 0.2),
                                                           contrast_limit=c(-0.2, 0.2),
                                                           brightness_by_max=TRUE),
-                     blur = Blur(always_apply=FALSE, p=0.5, blur_limit=c(1, 3)),
-                     crop_fn = partial(RandomSizedBBoxSafeCrop, p=0.5),
-                     pad = partial(PadIfNeeded, border_mode=0, value=list(124, 116, 104))) {
+                     blur = icevision_Blur(always_apply=FALSE, p=0.5, blur_limit=c(1, 3)),
+                     crop_fn = partial(icevision_RandomSizedBBoxSafeCrop, p=0.5),
+                     pad = partial(icevision_PadIfNeeded, border_mode=0, value=list(124, 116, 104))) {
 
   args <- list(
     size = as.integer(size),
@@ -64,7 +65,7 @@ icevision_aug_tfms <- function(size, presize = NULL, horizontal_flip = Horizonta
 #' uint8, float32
 #' @return None
 #' @export
-HorizontalFlip <- function(always_apply = FALSE, p = 0.5) {
+icevision_HorizontalFlip <- function(always_apply = FALSE, p = 0.5) {
 
   icevision()$tfms$albumentations$transforms$HorizontalFlip(
     always_apply = always_apply,
@@ -98,7 +99,7 @@ HorizontalFlip <- function(always_apply = FALSE, p = 0.5) {
 #' uint8, float32
 #' @return None
 #' @export
-ShiftScaleRotate <- function(shift_limit = 0.0625, scale_limit = 0.1, rotate_limit = 45,
+icevision_ShiftScaleRotate <- function(shift_limit = 0.0625, scale_limit = 0.1, rotate_limit = 45,
                              interpolation = 1, border_mode = 4, value = NULL, mask_value = NULL,
                              shift_limit_x = NULL, shift_limit_y = NULL, always_apply = FALSE, p = 0.5) {
 
@@ -153,7 +154,7 @@ ShiftScaleRotate <- function(shift_limit = 0.0625, scale_limit = 0.1, rotate_lim
 #' uint8, float32
 #' @return None
 #' @export
-RGBShift <- function(r_shift_limit = 20, g_shift_limit = 20, b_shift_limit = 20,
+icevision_RGBShift <- function(r_shift_limit = 20, g_shift_limit = 20, b_shift_limit = 20,
                      always_apply = FALSE, p = 0.5) {
 
   args <- list(
@@ -188,7 +189,7 @@ RGBShift <- function(r_shift_limit = 20, g_shift_limit = 20, b_shift_limit = 20,
 #' uint8, float32
 #' @return None
 #' @export
-RandomBrightnessContrast <- function(brightness_limit = 0.2, contrast_limit = 0.2,
+icevision_RandomBrightnessContrast <- function(brightness_limit = 0.2, contrast_limit = 0.2,
                                      brightness_by_max = TRUE, always_apply = FALSE,
                                      p = 0.5) {
 
@@ -222,7 +223,7 @@ RandomBrightnessContrast <- function(brightness_limit = 0.2, contrast_limit = 0.
 #' uint8, float32
 #' @return None
 #' @export
-Blur <- function(blur_limit = 7, always_apply = FALSE, p = 0.5) {
+icevision_Blur <- function(blur_limit = 7, always_apply = FALSE, p = 0.5) {
 
   args <- list(
     blur_limit = as.integer(blur_limit),
@@ -244,7 +245,7 @@ Blur <- function(blur_limit = 7, always_apply = FALSE, p = 0.5) {
 #' @param p p
 #' @return None
 #' @export
-DualTransform <- function(always_apply = FALSE, p = 0.5) {
+icevision_DualTransform <- function(always_apply = FALSE, p = 0.5) {
 
   icevision()$tfms$albumentations$core$transforms_interface$DualTransform(
     always_apply = always_apply,
@@ -274,7 +275,7 @@ DualTransform <- function(always_apply = FALSE, p = 0.5) {
 #' uint8, float32
 #' @return None
 #' @export
-RandomSizedBBoxSafeCrop <- function(height, width, erosion_rate = 0.0, interpolation = 1,
+icevision_RandomSizedBBoxSafeCrop <- function(height, width, erosion_rate = 0.0, interpolation = 1,
                                     always_apply = FALSE, p = 1.0) {
 
   if(missing(height) & missing(width)) {
@@ -318,7 +319,7 @@ RandomSizedBBoxSafeCrop <- function(height, width, erosion_rate = 0.0, interpola
 #' uint8, float32
 #'
 #' @export
-PadIfNeeded <- function(min_height = 1024, min_width = 1024, pad_height_divisor = NULL,
+icevision_PadIfNeeded <- function(min_height = 1024, min_width = 1024, pad_height_divisor = NULL,
                         pad_width_divisor = NULL, border_mode = 4, value = NULL,
                         mask_value = NULL, always_apply = FALSE, p = 1.0) {
 
@@ -391,7 +392,7 @@ icevision_Adapter <- function(tfms) {
 #' uint8, float32
 #' @return None
 #' @export
-HueSaturationValue <- function(hue_shift_limit = 20,
+icevision_HueSaturationValue <- function(hue_shift_limit = 20,
                                sat_shift_limit = 30,
                                val_shift_limit = 20,
                                always_apply = FALSE, p = 0.5) {
@@ -406,7 +407,255 @@ HueSaturationValue <- function(hue_shift_limit = 20,
 
 }
 
+#' @title BasicIAATransform
+#'
+#'
+#' @param always_apply always_apply
+#' @param p p
+#' @return None
+#' @export
+icevision_BasicIAATransform <- function(always_apply = FALSE, p = 0.5) {
 
+  icevision()$tfms$albumentations$BasicIAATransform(
+    always_apply = always_apply,
+    p = p
+  )
+
+}
+
+
+#' @title BasicTransform
+#'
+#'
+#' @param always_apply always_apply
+#' @param p p
+#' @return None
+#' @export
+icevision_BasicTransform <- function(always_apply = FALSE, p = 0.5) {
+
+  icevision()$tfms$albumentations$BasicTransform(
+    always_apply = always_apply,
+    p = p
+  )
+
+}
+
+
+
+#' @title ChannelDropout
+#'
+#' @description Randomly Drop Channels in the input Image.
+#'
+#' @details
+#'
+#' @param channel_drop_range channel_drop_range
+#' @param fill_value fill_value
+#' @param always_apply always_apply
+#' @param p p
+#'
+#' @section Targets:
+#' image
+#'
+#' @section Image types:
+#' uint8, uint16, unit32, float32
+#'
+#' @export
+icevision_ChannelDropout <- function(channel_drop_range = list(1, 1), fill_value = 0, always_apply = FALSE, p = 0.5) {
+
+  icevision()$tfms$albumentations$ChannelDropout(
+    channel_drop_range = as.list(as.integer(unlist(channel_drop_range))),
+    fill_value = as.integer(fill_value),
+    always_apply = always_apply,
+    p = p
+  )
+
+}
+
+#' @title ChannelShuffle
+#'
+#' @description Randomly rearrange channels of the input RGB image.
+#'
+#' @param always_apply always_apply
+#' @param p p
+#'
+#' @section Targets:
+#' image
+#'
+#' @section Image types:
+#' uint8, float32
+#' @return None
+#' @export
+icevision_ChannelShuffle <- function(always_apply = FALSE, p = 0.5) {
+
+  icevision()$tfms$albumentations$ChannelShuffle(
+    always_apply = always_apply,
+    p = p
+  )
+
+}
+
+
+#' @title CoarseDropout
+#'
+#' @description CoarseDropout of the rectangular regions in the image.
+#'
+#'
+#' @param max_holes max_holes
+#' @param max_height max_height
+#' @param max_width max_width
+#' @param min_holes min_holes
+#' @param min_height min_height
+#' @param min_width min_width
+#' @param fill_value fill_value
+#' @param mask_fill_value mask_fill_value
+#' @param always_apply always_apply
+#' @param p p
+#'
+#' @section Targets:
+#' image, mask
+#'
+#' @section Image types:
+#' uint8, float32
+#'
+#' @section Reference:
+#' | https://arxiv.org/abs/1708.04552 | https://github.com/uoguelph-mlrg/Cutout/blob/master/util/cutout.py | https://github.com/aleju/imgaug/blob/master/imgaug/augmenters/arithmetic.py
+#' @return None
+#' @export
+icevision_CoarseDropout <- function(max_holes = 8, max_height = 8,
+                          max_width = 8, min_holes = NULL,
+                          min_height = NULL, min_width = NULL, fill_value = 0,
+                          mask_fill_value = NULL, always_apply = FALSE, p = 0.5) {
+
+  args <- list(
+    max_holes = as.integer(max_holes),
+    max_height = as.integer(max_height),
+    max_width = as.integer(max_width),
+    min_holes = min_holes,
+    min_height = min_height,
+    min_width = min_width,
+    fill_value = as.integer(fill_value),
+    mask_fill_value = mask_fill_value,
+    always_apply = always_apply,
+    p = p
+  )
+
+  if(is.null(args$min_holes))
+    args$min_holes <- NULL
+  else
+    args$min_holes <- as.integer(args$min_holes)
+
+  if(is.null(args$min_height))
+    args$min_height <- NULL
+  else
+    args$min_height <- as.integer(args$min_height)
+
+  if(is.null(args$min_width))
+    args$min_width <- NULL
+  else
+    args$min_width <- as.integer(args$min_width)
+
+  if(is.null(args$mask_fill_value))
+    args$mask_fill_value <- NULL
+  else
+    args$mask_fill_value <- as.integer(args$mask_fill_value)
+
+  do.call(icevision()$tfms$albumentations$CoarseDropout, args)
+
+}
+
+
+#' @title ColorJitter
+#'
+#' @description Randomly changes the brightness, contrast, and saturation of an image. Compared to ColorJitter from torchvision,
+#'
+#' @details this transform gives a little bit different results because Pillow (used in torchvision) and OpenCV (used in
+#' Albumentations) transform an image to HSV format by different formulas. Another difference - Pillow uses uint8
+#' overflow, but we use value saturation.
+#'
+#' @param brightness brightness
+#' @param contrast contrast
+#' @param saturation saturation
+#' @param hue hue
+#' @param always_apply always_apply
+#' @param p p
+#' @return None
+#' @export
+icevision_ColorJitter <- function(brightness = 0.2, contrast = 0.2, saturation = 0.2,
+                        hue = 0.2, always_apply = FALSE, p = 0.5) {
+
+  icevision()$tfms$albumentations$ColorJitter(
+    brightness = brightness,
+    contrast = contrast,
+    saturation = saturation,
+    hue = hue,
+    always_apply = always_apply,
+    p = p
+  )
+
+}
+
+#' @title CLAHE
+#'
+#' @description Apply Contrast Limited Adaptive Histogram Equalization to the input image.
+#'
+#' @details
+#'
+#' @param clip_limit clip_limit
+#' @param tile_grid_size tile_grid_size
+#' @param always_apply always_apply
+#' @param p p
+#'
+#' @section Targets:
+#' image
+#'
+#' @section Image types:
+#' uint8
+#' @return None
+#' @export
+icevision_CLAHE <- function(clip_limit = 4.0, tile_grid_size = list(8, 8), always_apply = FALSE, p = 0.5) {
+
+  icevision()$tfms$albumentations$CLAHE(
+    clip_limit = clip_limit,
+    tile_grid_size = as.list(as.integer(unlist(tile_grid_size))),
+    always_apply = always_apply,
+    p = p
+  )
+
+}
+
+
+#' @title Crop
+#'
+#' @description Crop region from image.
+#'
+#' @details
+#'
+#' @param x_min x_min
+#' @param y_min y_min
+#' @param x_max x_max
+#' @param y_max y_max
+#' @param always_apply always_apply
+#' @param p p
+#'
+#' @section Targets:
+#' image, mask, bboxes, keypoints
+#'
+#' @section Image types:
+#' uint8, float32
+#'
+#' @export
+icevision_Crop <- function(x_min = 0, y_min = 0, x_max = 1024, y_max = 1024, always_apply = FALSE, p = 1.0) {
+
+  icevision()$tfms$albumentations$Crop(
+    x_min = as.integer(x_min),
+    y_min = as.integer(y_min),
+    x_max = as.integer(x_max),
+    y_max = as.integer(y_max),
+    always_apply = always_apply,
+    p = p
+  )
+
+}
 
 
 

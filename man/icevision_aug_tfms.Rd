@@ -7,18 +7,19 @@
 icevision_aug_tfms(
   size,
   presize = NULL,
-  horizontal_flip = HorizontalFlip(always_apply = FALSE, p = 0.5),
-  shift_scale_rotate = ShiftScaleRotate(always_apply = FALSE, p = 0.5, shift_limit_x =
-    c(-0.0625, 0.0625), shift_limit_y = c(-0.0625, 0.0625), scale_limit = c(-0.1, 0.1),
-    rotate_limit = c(-45, 45), interpolation = 1, border_mode = 4, value = NULL,
-    mask_value = NULL),
-  rgb_shift = RGBShift(always_apply = FALSE, p = 0.5, r_shift_limit = c(-20, 20),
-    g_shift_limit = c(-20, 20), b_shift_limit = c(-20, 20)),
-  lightning = RandomBrightnessContrast(always_apply = FALSE, p = 0.5, brightness_limit
-    = c(-0.2, 0.2), contrast_limit = c(-0.2, 0.2), brightness_by_max = TRUE),
-  blur = Blur(always_apply = FALSE, p = 0.5, blur_limit = c(1, 3)),
-  crop_fn = partial(RandomSizedBBoxSafeCrop, p = 0.5),
-  pad = partial(PadIfNeeded, border_mode = 0, value = list(124, 116, 104))
+  horizontal_flip = icevision_HorizontalFlip(always_apply = FALSE, p = 0.5),
+  shift_scale_rotate = icevision_ShiftScaleRotate(always_apply = FALSE, p = 0.5,
+    shift_limit_x = c(-0.0625, 0.0625), shift_limit_y = c(-0.0625, 0.0625), scale_limit =
+    c(-0.1, 0.1), rotate_limit = c(-45, 45), interpolation = 1, border_mode = 4, value =
+    NULL, mask_value = NULL),
+  rgb_shift = icevision_RGBShift(always_apply = FALSE, p = 0.5, r_shift_limit = c(-20,
+    20), g_shift_limit = c(-20, 20), b_shift_limit = c(-20, 20)),
+  lightning = icevision_RandomBrightnessContrast(always_apply = FALSE, p = 0.5,
+    brightness_limit = c(-0.2, 0.2), contrast_limit = c(-0.2, 0.2), brightness_by_max =
+    TRUE),
+  blur = icevision_Blur(always_apply = FALSE, p = 0.5, blur_limit = c(1, 3)),
+  crop_fn = partial(icevision_RandomSizedBBoxSafeCrop, p = 0.5),
+  pad = partial(icevision_PadIfNeeded, border_mode = 0, value = list(124, 116, 104))
 )
 }
 \arguments{
