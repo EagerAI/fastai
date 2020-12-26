@@ -2,9 +2,6 @@
 knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 
 ## -----------------------------------------------------------------------------
-#  reticulate::py_install('git+https://github.com/fastaudio/fastaudio.git', pip = TRUE)
-
-## -----------------------------------------------------------------------------
 #  URLs_SPEAKERS10()
 #  path_dig = 'SPEAKERS10'
 
