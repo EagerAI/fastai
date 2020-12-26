@@ -274,6 +274,9 @@
     <loc>https://henry090.github.io/fastai//reference/cnn_learner.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/COCOMetric.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/CohenKappa.html</loc>
   </url>
   <url>
@@ -517,6 +520,18 @@
     <loc>https://henry090.github.io/fastai//reference/EarlyStoppingCallback.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/efficientdet_learner.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/efficientdet_model.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/efficientdet_train_dl.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/efficientdet_valid_dl.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/Embedding.html</loc>
   </url>
   <url>
@@ -560,6 +575,18 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/fastaudio.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/faster_rcnn_learner.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/faster_rcnn_model.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/faster_rcnn_train_dl.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/faster_rcnn_valid_dl.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/fastinf.html</loc>
@@ -1454,6 +1481,18 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/mask_from_blur.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/mask_rcnn_learner.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/mask_rcnn_model.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/mask_rcnn_train_dl.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/mask_rcnn_valid_dl.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/mask_tensor.html</loc>
