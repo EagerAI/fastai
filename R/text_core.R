@@ -291,6 +291,15 @@ tokenize_csv <- function(fname, text_cols, outname = NULL, n_workers = 4,
     chunksize = as.integer(chunksize)
   )
 
+  if(is.null(args$outname))
+    args$outname <- NULL
+
+  if(is.null(args$rules))
+    args$rules <- NULL
+
+  if(is.null(args$mark_fields))
+    args$mark_fields <- NULL
+
   do.call(text()$tokenize_csv, args)
 
 }
@@ -322,6 +331,15 @@ tokenize_df <- function(df, text_cols, n_workers = 6, rules = NULL,
     tok = tok,
     res_col_name = res_col_name
   )
+
+  if(is.null(args$tok))
+    args$tok <- NULL
+
+  if(is.null(args$rules))
+    args$rules <- NULL
+
+  if(is.null(args$mark_fields))
+    args$mark_fields <- NULL
 
   do.call( text()$tokenize_df,args)
 
@@ -358,6 +376,15 @@ tokenize_files <- function(files, path, output_dir, output_names = NULL,
     encoding = encoding,
     skip_if_exists = skip_if_exists
   )
+
+ if(is.null(args$tok))
+   args$tok <- NULL
+
+ if(is.null(args$rules))
+   args$rules <- NULL
+
+ if(is.null(args$output_names))
+   args$output_names <- NULL
 
  do.call(text()$tokenize_files, args)
 
@@ -398,6 +425,13 @@ tokenize_folder <- function(path, extensions = NULL, folders = NULL,
     encoding = encoding
   )
 
+  strings = c('extensions','folders','output_dir','output_names','tok','rules')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
+
   do.call(text()$tokenize_folder, args)
 
 }
@@ -421,6 +455,13 @@ tokenize_texts <- function(texts, n_workers = 6, rules = NULL, tok = NULL) {
     rules = rules,
     tok = tok
   )
+
+  strings = c('tok','rules')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
 
   do.call(text()$tokenize_texts, args)
 
@@ -469,6 +510,14 @@ Tokenizer <- function(tok, rules = NULL, counter = NULL, lengths = NULL, mode = 
       mode = mode,
       sep = sep
     )
+
+    strings = c('rules', 'counter', 'lengths', 'mode')
+
+    for(i in 1:length(strings)) {
+      if(is.null(args[[strings[i]]]))
+        args[[strings[i]]] <- NULL
+    }
+
     do.call(text()$Tokenizer, args)
   }
 
@@ -491,7 +540,7 @@ Tokenizer <- function(tok, rules = NULL, counter = NULL, lengths = NULL, mode = 
 #' @export
 SentencePieceTokenizer <- function(lang = "en", special_toks = NULL,
                                    sp_model = NULL, vocab_sz = NULL,
-                                   max_vocab_sz = 30000L, model_type = "unigram",
+                                   max_vocab_sz = 30000, model_type = "unigram",
                                    char_coverage = NULL, cache_dir = "tmp") {
 
   args <- list(
@@ -499,11 +548,21 @@ SentencePieceTokenizer <- function(lang = "en", special_toks = NULL,
     special_toks = special_toks,
     sp_model = sp_model,
     vocab_sz = vocab_sz,
-    max_vocab_sz = max_vocab_sz,
+    max_vocab_sz = as.integer(max_vocab_sz),
     model_type = model_type,
     char_coverage = char_coverage,
     cache_dir = cache_dir
   )
+
+  strings = c('special_toks', 'sp_model', 'vocab_sz', 'char_coverage')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
+
+  if(!is.null(args$vocab_sz))
+    args$vocab_sz <- as.integer(args$vocab_sz)
 
   do.call(text()$SentencePieceTokenizer, args)
 

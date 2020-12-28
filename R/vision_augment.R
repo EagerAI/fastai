@@ -239,7 +239,16 @@ AffineCoordTfm <- function(aff_fs = NULL, coord_fs = NULL, size = NULL,
     align_corners = align_corners
   )
 
-  if(!is.null(args$size))
+  strings = c('aff_fs', 'coord_f', 'align_corners')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
+
+  if(is.null(args$size))
+    args$size <- NULL
+  else
     args$size <- as.integer(args$size)
 
   do.call(vision()$all$AffineCoordTfm, args)
@@ -365,7 +374,9 @@ DeterministicFlip <- function(size = NULL, mode = "bilinear",
     ...
   )
 
-  if(!is.null(args$size))
+  if(is.null(args$size))
+    args$size <- NULL
+  else
     args$size <- as.integer(args$size)
 
 
@@ -422,7 +433,16 @@ Dihedral <- function(p = 0.5, draw = NULL, size = NULL, mode = "bilinear",
     batch = batch
   )
 
-  if(!is.null(args$size))
+  strings = c('draw', 'size', 'align_corners')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
+
+  if(is.null(args$size))
+    args$size <- NULL
+  else
     args$size <- as.integer(args$size)
 
   do.call(vision()$all$Dihedral, args)
@@ -449,7 +469,12 @@ DeterministicDihedral <- function(size = NULL, mode = "bilinear",
     align_corners = align_corners
   )
 
-  if(!is.null(args$size))
+  if(is.null(args$align_corners))
+    args$align_corners <- NULL
+
+  if(is.null(args$size))
+    args$size <- NULL
+  else
     args$size <- as.integer(args$size)
 
   do.call(vision()$all$DeterministicDihedral, args)
@@ -515,7 +540,16 @@ Zoom_ <- function(min_zoom = 1.0, max_zoom = 1.1, p = 0.5, draw = NULL, draw_x =
     align_corners = align_corners
   )
 
-  if(!is.null(args$size))
+  strings = c('draw', 'draw_x')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
+
+  if(is.null(args$size))
+    args$size <- NULL
+  else
     args$size <- as.integer(args$size)
 
   do.call(fastai2$vision$all$Zoom, args)
@@ -624,7 +658,16 @@ Warp <- function(magnitude = 0.2, p = 0.5, draw_x = NULL, draw_y = NULL,
     align_corners = align_corners
   )
 
-  if(!is.null(args$size))
+  strings = c('draw', 'draw_x', 'draw_y')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
+
+  if(is.null(args$size))
+    args$size <- NULL
+  else
     args$size <- as.integer(args$size)
 
   do.call(vision()$all$Warp, args)

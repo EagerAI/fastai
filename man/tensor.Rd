@@ -13,5 +13,5 @@ tensor(...)
 None
 }
 \description{
-Like `torch.as_tensor`, but handle lists too, and can pass multiple vector elements directly.
+Like `torch()$as_tensor`, but handle lists too, and can pass multiple vector elements directly.
 }

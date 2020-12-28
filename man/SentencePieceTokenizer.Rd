@@ -9,7 +9,7 @@ SentencePieceTokenizer(
   special_toks = NULL,
   sp_model = NULL,
   vocab_sz = NULL,
-  max_vocab_sz = 30000L,
+  max_vocab_sz = 30000,
   model_type = "unigram",
   char_coverage = NULL,
   cache_dir = "tmp"

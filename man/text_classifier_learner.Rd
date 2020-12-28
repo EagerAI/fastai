@@ -18,7 +18,7 @@ text_classifier_learner(
   max_len = 1440,
   y_range = NULL,
   loss_func = NULL,
-  opt_func = Adam,
+  opt_func = Adam(),
   lr = 0.001,
   splitter = trainable_params,
   cbs = NULL,

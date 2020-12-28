@@ -30,6 +30,13 @@ unet_config <- function(blur = FALSE, blur_final = TRUE, self_attention = FALSE,
     norm_type = norm_type
   )
 
+  strings = c('norm_type', 'y_range')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
+
   do.call(vision()$gan$unet_config, args)
 
 }
@@ -57,6 +64,12 @@ unet_learner <- function(dls, arch, ...) {
   if(!is.null(args[['n_in']])) {
     args[['n_in']] = as.integer(args[['n_in']])
   }
+
+  if(!is.null(args[['n_out']])) {
+    args[['n_out']] = as.integer(args[['n_out']])
+  }
+
+
   do.call(vision()$gan$unet_learner, args)
 
 }
@@ -121,6 +134,13 @@ UnetBlock <- function(up_in_c, x_in_c, hook, final_div = TRUE,
     padding_mode = padding_mode
   )
 
+  strings = c('norm_type', 'padding', 'bias', 'xtra')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
+
   do.call(vision()$gan$UnetBlock, args)
 
 }
@@ -164,6 +184,13 @@ DynamicUnet <- function(encoder, n_classes, img_size, blur = FALSE,
     init = init,
     norm_type = norm_type
   )
+
+  strings = c('norm_type', 'y_range')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
 
   do.call(vision()$gan$DynamicUnet, args)
 

@@ -37,6 +37,13 @@ Image_resize <- function(img, size, resample = 3, box = NULL, reducing_gap = NUL
     reducing_gap = reducing_gap
   )
 
+  strings = c('box', 'reducing_gap')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
+
   if(is.list(size)) {
     args$size = as.list(as.integer(unlist(args$size)))
   }
@@ -166,7 +173,12 @@ resize_max <- function(img, resample = 0, max_px = NULL, max_h = NULL, max_w = N
     max_w = max_w
   )
 
+  strings = c('max_px', 'max_h', 'max_w')
 
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
 
   do.call(img$resize_max, args)
 
@@ -298,7 +310,7 @@ Transform <- function(enc = NULL, dec = NULL, split_idx = NULL, order = NULL) {
   )
 
   if(!is.null(split_idx)) {
-    args$split_idx = as.integer(args$split_idx)
+    args$split_idx = as.integer(unlist(args$split_idx))
   }
 
   if(is.null(enc) & is.null(dec) & is.null(split_idx) & is.null(order)) {
@@ -548,6 +560,13 @@ TfmdDL <- function(dataset, bs = 64, shuffle = FALSE, num_workers = NULL,
     ...
   )
 
+  strings = c('batch_size', 'n', 'device', 'indexed', 'after_batch')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
+
   if(os()=='windows' & is.null(args$num_workers)) {
     args$num_workers = 0L
   }
@@ -588,7 +607,7 @@ PointScaler <- function(do_scale = TRUE, y_first = FALSE) {
 
 #' @title Tensor
 #'
-#' @description Like `torch.as_tensor`, but handle lists too, and can pass multiple vector elements directly.
+#' @description Like `torch()$as_tensor`, but handle lists too, and can pass multiple vector elements directly.
 #'
 #'
 #' @param ... image

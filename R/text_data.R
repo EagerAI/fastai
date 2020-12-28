@@ -37,6 +37,9 @@ make_vocab <- function(count, min_freq = 3, max_vocab = 60000, special_toks = NU
     special_toks = special_toks
   )
 
+  if(is.null(args$special_toks))
+    args$special_toks <- NULL
+
   do.call(text()$make_vocab, args)
 
 }
@@ -63,6 +66,13 @@ Numericalize <- function(vocab = NULL, min_freq = 3, max_vocab = 60000, special_
     special_toks = special_toks,
     pad_tok = pad_tok
   )
+
+  strings = c('special_toks', 'pad_tok')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
 
   do.call(text()$Numericalize, args)
 
@@ -120,6 +130,13 @@ LMDataLoader <- function(dataset, lens = NULL, cache = 2, bs = 64,
       device = device
     )
 
+    strings = c('lens', 'batch_size',  'indexed', 'n', 'device')
+
+    for(i in 1:length(strings)) {
+      if(is.null(args[[strings[i]]]))
+        args[[strings[i]]] <- NULL
+    }
+
     do.call(text()$LMDataLoader, args)
   }
 
@@ -173,6 +190,13 @@ LMLearner <- function(dls, model, alpha = 2.0, beta = 1.0,
     wd_bn_bias = wd_bn_bias,
     train_bn = train_bn
   )
+
+  strings = c( 'cbs', 'metrics', 'path', 'wd')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
 
   do.call(text()$LMLearner, args)
 
@@ -280,8 +304,30 @@ SortedDL <- function(dataset, sort_func = NULL, res = NULL, bs = 64,
       device = device
     )
 
-    if(!is.null(args$batch_size)) {
-      args$batch_size = as.integer(args$batch_size)
+    if(is.null(args$batch_size)) {
+      args$batch_size <- NULL
+    } else {
+      args$batch_size <- as.integer(args$batch_size)
+    }
+
+
+    if(os()=='windows' & is.null(args$num_workers)) {
+      args$num_workers = 0L
+    }
+
+    if(os()=='mac' & is.null(args$num_workers)) {
+      args$num_workers = 0L
+    }
+
+    if(!is.null(args$num_workers)){
+      args$num_workers = as.integer(args$num_workers)
+    }
+
+    strings = c('n', 'device', 'indexed')
+
+    for(i in 1:length(strings)) {
+      if(is.null(args[[strings[i]]]))
+        args[[strings[i]]] <- NULL
     }
 
     do.call(text()$SortedDL, args)
@@ -321,6 +367,13 @@ TextBlock <- function(tok_tfm, vocab = NULL, is_lm = FALSE, seq_len = 72,
     special_toks = special_toks,
     pad_tok = pad_tok
   )
+
+  strings = c('special_toks', 'pad_tok')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
 
   do.call(text()$TextBlock, args)
 
@@ -366,6 +419,13 @@ TextBlock_from_df <- function(text_cols, vocab = NULL, is_lm = FALSE,
     mark_fields = mark_fields,
     res_col_name = res_col_name
   )
+
+  strings = c('vocab','tok','rules','mark_fields')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
 
   do.call(text()$TextBlock$from_df, args)
 
@@ -419,6 +479,13 @@ TextBlock_from_folder <- function(path, vocab = NULL, is_lm = FALSE, seq_len = 7
     n_workers = as.integer(n_workers),
     encoding = encoding
   )
+
+  strings = c('vocab', 'backwards', 'tok', 'rules', 'extensions', 'folders', 'output_dir', 'output_name')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
 
   do.call(text()$TextBlock$from_folder, args)
 
@@ -510,8 +577,8 @@ TextDataLoaders_from_df <- function(df, path = ".", valid_pct = 0.2, seed = NULL
     path = path,
     valid_pct = valid_pct,
     seed = seed,
-    text_col = text_col,
-    label_col = label_col,
+    text_col = as.integer(text_col),
+    label_col = as.integer(label_col),
     label_delim = label_delim,
     y_block = y_block,
     text_vocab = text_vocab,
@@ -526,12 +593,22 @@ TextDataLoaders_from_df <- function(df, path = ".", valid_pct = 0.2, seed = NULL
     device = device
   )
 
-  if(is.numeric(text_col))
-    args$text_col <- as.integer(args$text_col)
-  if(is.numeric(label_col))
-    args$label_col <- as.integer(args$label_col)
-  if(!is.null(args$val_bs))
-    args$val_bs = as.integer(args$val_bs)
+  if(is.null(args$seed))
+    args$seed <- NULL
+  else
+    args$seed <- as.integer(args$seed)
+
+  if(is.null(args$val_bs))
+    args$val_bs <- NULL
+  else
+    args$val_bs <- as.integer(args$val_bs)
+
+  strings = c('label_delim', 'y_block', 'text_vocab', 'valid_col', 'tok_tfm', 'device')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
 
   do.call(text()$TextDataLoaders$from_df, args)
 
@@ -584,11 +661,21 @@ TextDataLoaders_from_folder <- function(path, train = "train", valid = "valid",
     device = device
   )
 
-  if(!is.null(args$val_bs))
-    args$val_bs = as.integer(args$val_bs)
+  if(is.null(args$seed))
+    args$seed <- NULL
+  else
+    args$seed <- as.integer(args$seed)
 
-  if(!is.null(args[['seed']])) {
-    args[['seed']] = as.integer(args[['seed']])
+  if(is.null(args$val_bs))
+    args$val_bs <- NULL
+  else
+    args$val_bs <- as.integer(args$val_bs)
+
+  strings = c('vocab', 'valid_pct', 'text_vocab', 'device')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
   }
 
   do.call(text()$TextDataLoaders$from_folder, args)
@@ -653,13 +740,22 @@ TextDataLoaders_from_csv <- function(path, csv_fname = "labels.csv",
     device = device
   )
 
-  if(!is.null(args$val_bs))
-    args$val_bs = as.integer(args$val_bs)
+  if(is.null(args$seed))
+    args$seed <- NULL
+  else
+    args$seed <- as.integer(args$seed)
 
-  if(!is.null(args[['seed']])) {
-    args[['seed']] = as.integer(args[['seed']])
+  if(is.null(args$val_bs))
+    args$val_bs <- NULL
+  else
+    args$val_bs <- as.integer(args$val_bs)
+
+  strings = c('delimiter', 'label_delim', 'y_block', 'text_vocab', 'valid_col', 'tok_tfm', 'device')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
   }
-
   do.call(text()$TextDataLoaders$from_csv, args)
 
 }
@@ -705,7 +801,7 @@ RandomSplitter <- function(valid_pct = 0.2, seed = NULL) {
 Tokenizer_from_df <- function(text_cols, tok = NULL, rules = NULL, sep = " ", n_workers = 6,
                               mark_fields = NULL, res_col_name = "text") {
 
-  text()$Tokenizer$from_df(
+  args = list(
     text_cols = text_cols,
     tok = tok,
     rules = rules,
@@ -715,6 +811,15 @@ Tokenizer_from_df <- function(text_cols, tok = NULL, rules = NULL, sep = " ", n_
     res_col_name = res_col_name
   )
 
+  strings = c('mark_fields', 'tok', 'rules')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
+
+
+  do.call(text()$Tokenizer$from_df, args)
 }
 
 

@@ -99,12 +99,22 @@ TSDataLoaders_from_dfs <- function(df_train, df_valid, path = ".", x_cols = NULL
     device = device
   )
 
+  strings = c('x_cols', 'label_col',
+              'y_block', 'item_tfms', 'batch_tfms', 'device')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
+
   if(!is.null(args$batch_tfms)) {
     args$batch_tfms <- unlist(args$batch_tfms)
   }
 
-  if(!is.null(args[['val_bs']])) {
-    args[['val_bs']] = as.integer(args[['val_bs']])
+  if(is.null(args[['val_bs']])) {
+    args[['val_bs']] <- NULL
+  } else {
+    args[['val_bs']] <- as.integer(args[['val_bs']])
   }
 
 

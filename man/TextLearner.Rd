@@ -11,7 +11,7 @@ TextLearner(
   beta = 1,
   moms = list(0.8, 0.7, 0.8),
   loss_func = NULL,
-  opt_func = Adam,
+  opt_func = Adam(),
   lr = 0.001,
   splitter = trainable_params(),
   cbs = NULL,

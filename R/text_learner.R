@@ -107,7 +107,7 @@ load_model_text <- function(file, model, opt, with_opt = NULL, device = NULL, st
 #' @export
 TextLearner <- function(dls, model, alpha = 2.0, beta = 1.0,
                         moms = list(0.8, 0.7, 0.8), loss_func = NULL,
-                        opt_func = Adam, lr = 0.001, splitter = trainable_params(),
+                        opt_func = Adam(), lr = 0.001, splitter = trainable_params(),
                         cbs = NULL, metrics = NULL, path = NULL, model_dir = "models",
                         wd = NULL, wd_bn_bias = FALSE, train_bn = TRUE) {
 
@@ -129,6 +129,13 @@ TextLearner <- function(dls, model, alpha = 2.0, beta = 1.0,
     wd_bn_bias = wd_bn_bias,
     train_bn = train_bn
   )
+
+  strings = c('cbs', 'metrics', 'path', 'wd')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
 
   do.call(text()$TextLearner, args)
 
@@ -236,7 +243,7 @@ LMLearner <- function(dls, model, alpha = 2.0, beta = 1.0, moms = list(0.8, 0.7,
                       path = NULL, model_dir = "models", wd = NULL,
                       wd_bn_bias = FALSE, train_bn = TRUE) {
 
-  text()$LMLearner(
+  args = list(
     dls = dls,
     model = model,
     alpha = alpha,
@@ -254,6 +261,15 @@ LMLearner <- function(dls, model, alpha = 2.0, beta = 1.0, moms = list(0.8, 0.7,
     wd_bn_bias = wd_bn_bias,
     train_bn = train_bn
   )
+
+  strings = c('loss_func', 'cbs', 'metrics', 'path', 'wd')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
+
+  do.call(text()$LMLearner, args)
 
 }
 
@@ -275,7 +291,7 @@ LMLearner_predict <- function(text, n_words = 1, no_unk = TRUE,
                               temperature = 1.0, min_p = NULL, no_bar = FALSE,
                               decoder = decode_spec_tokens(), only_last_word = FALSE) {
 
- text()$LMLearner$predict(
+ args = list(
     text = text,
     n_words = as.integer(n_words),
     no_unk = no_unk,
@@ -286,6 +302,10 @@ LMLearner_predict <- function(text, n_words = 1, no_unk = TRUE,
     only_last_word = only_last_word
   )
 
+  if(is.null(args$min_p))
+    args$min_p <- NULL
+
+  do.call(text()$LMLearner$predict, args)
 }
 
 
@@ -327,7 +347,7 @@ text_classifier_learner <- function(dls, arch, seq_len = 72,
                                     pretrained = TRUE, drop_mult = 0.5,
                                     n_out = NULL, lin_ftrs = NULL, ps = NULL,
                                     max_len = 1440, y_range = NULL,
-                                    loss_func = NULL, opt_func = Adam, lr = 0.001,
+                                    loss_func = NULL, opt_func = Adam(), lr = 0.001,
                                     splitter = trainable_params, cbs = NULL,
                                     metrics = NULL, path = NULL, model_dir = "models",
                                     wd = NULL, wd_bn_bias = FALSE, train_bn = TRUE,
@@ -359,6 +379,14 @@ text_classifier_learner <- function(dls, arch, seq_len = 72,
     train_bn = train_bn,
     moms = moms
   )
+
+  strings = c('config', 'n_out', 'lin_ftrs', 'ps', 'y_range', 'loss_func', 'cbs', 'metrics', 'path', 'wd')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
+
 
   do.call(text()$text_classifier_learner, args)
 

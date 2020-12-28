@@ -68,6 +68,14 @@ TSDataTable <- function(df, procs = NULL, x_names = NULL, y_names = NULL,
     inplace = inplace
   )
 
+  strings = c('procs', 'x_names', 'y_names',
+              'block_y', 'splits', 'device')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
+
   if(!is.null(splits))
     args$splits = list(as.integer(splits[[1]]-1),as.integer(splits[[2]]-1))
 
@@ -96,8 +104,18 @@ NormalizeTS <- function(enc = NULL, dec = NULL, split_idx = NULL, order = NULL) 
     order = order
   )
 
-  if(!is.null(args[['split_idx']])) {
-    args[['split_idx']] = as.integer(args[['split_idx']])
+  strings = c('enc', 'dec', 'order')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
+
+
+  if(is.null(args[['split_idx']])) {
+    args[['split_idx']] <- NULL
+  } else {
+    args[['split_idx']] <- as.integer(args[['split_idx']])
   }
 
   do.call(tms()$tabular$NormalizeTS, args)
@@ -166,8 +184,17 @@ TabularTSDataloader <- function(dataset, bs = 16, shuffle = FALSE, after_batch =
     device = device
   )
 
-  if(!is.null(args[['batch_size']]))
-    args[['batch_size']] = as.integer(args[['batch_size']])
+  strings = c('after_batch', 'indexed', 'n', 'device')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
+
+  if(is.null(args[['batch_size']]))
+    args[['batch_size']] <- NULL
+  else
+    args[['batch_size']] <- as.integer(args[['batch_size']])
 
   do.call(tms()$tabular$TabularTSDataloader, args)
 

@@ -96,6 +96,13 @@ language_model_learner <- function(dls, arch, config = NULL, drop_mult = 1.0,
     ...
   )
 
+  strings = c('config', 'pretrained_fnames', 'cbs', 'metrics', 'path', 'wd')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
+
   do.call(text()$language_model_learner, args)
 
 }
@@ -199,13 +206,19 @@ get_language_model <- function(arch, vocab_sz, config = NULL, drop_mult = 1.0) {
 #' @export
 SentenceEncoder <- function(bptt, module, pad_idx = 1, max_len = NULL) {
 
-  text()$SentenceEncoder(
+  args = list(
     bptt = bptt,
     module = module,
     pad_idx = as.integer(pad_idx),
     max_len = max_len
   )
 
+  if(is.null(args$max_len))
+    args$max_len <- NULL
+  else
+    args$max_len <- as.integer(args$max_len)
+
+  do.call(text()$SentenceEncoder, args)
 }
 
 
@@ -242,12 +255,18 @@ masked_concat_pool <- function(output, mask, bptt) {
 #' @export
 PoolingLinearClassifier <- function(dims, ps, bptt, y_range = NULL) {
 
-  text()$PoolingLinearClassifier(
+  args =list(
     dims = dims,
     ps = ps,
     bptt = bptt,
     y_range = y_range
   )
+
+  if(is.null(args$y_range))
+    args$y_range <- NULL
+
+
+  do.call(text()$PoolingLinearClassifier, args)
 
 }
 
@@ -275,7 +294,7 @@ get_text_classifier <- function(arch, vocab_sz, n_class, seq_len = 72,
                                 pad_idx = 1, max_len = 1440,
                                 y_range = NULL) {
 
-  text()$get_text_classifier(
+  args = list(
     arch = arch,
     vocab_sz = vocab_sz,
     n_class = n_class,
@@ -289,6 +308,15 @@ get_text_classifier <- function(arch, vocab_sz, n_class, seq_len = 72,
     y_range = y_range
   )
 
+  strings = c('config', 'ps', 'lin_ftrs', 'y_range')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
+
+
+  do.call(text()$get_text_classifier, args)
 }
 
 
@@ -458,13 +486,19 @@ AWD_QRNN <- function(vocab_sz, emb_sz, n_hid, n_layers, pad_token = 1,
 #' @export
 forget_mult_CPU <- function(x, f, first_h = NULL, batch_first = TRUE, backward = FALSE) {
 
-  fastai2$text$models$qrnn$forget_mult_CPU(
+  args= list(
     x = x,
     f = f,
     first_h = first_h,
     batch_first = batch_first,
     backward = backward
   )
+
+  if(is.null(args$first_h))
+    args$first_h <- NULL
+
+
+  do.call(fastai2$text$models$qrnn$forget_mult_CPU, args)
 
 }
 
@@ -502,7 +536,7 @@ QRNNLayer <- function(input_size, hidden_size = NULL, save_prev_x = FALSE,
                       zoneout = 0, window = 1, output_gate = TRUE,
                       batch_first = TRUE, backward = FALSE) {
 
-  fastai2$text$models$qrnn$QRNNLayer(
+  args = list(
     input_size = input_size,
     hidden_size = hidden_size,
     save_prev_x = save_prev_x,
@@ -513,6 +547,10 @@ QRNNLayer <- function(input_size, hidden_size = NULL, save_prev_x = FALSE,
     backward = backward
   )
 
+  if(is.null(args$hidden_size))
+    args$hidden_size <- NULL
+
+  do.call(fastai2$text$models$qrnn$QRNNLayer, args)
 }
 
 
@@ -537,7 +575,7 @@ QRNN <- function(input_size, hidden_size, n_layers = 1, batch_first = TRUE,
                  dropout = 0, bidirectional = FALSE, save_prev_x = FALSE,
                  zoneout = 0, window = NULL, output_gate = TRUE) {
 
-  fastai2$text$models$qrnn$QRNN(
+  args = list(
     input_size = input_size,
     hidden_size = hidden_size,
     n_layers = as.integer(n_layers),
@@ -549,6 +587,11 @@ QRNN <- function(input_size, hidden_size, n_layers = 1, batch_first = TRUE,
     window = window,
     output_gate = output_gate
   )
+
+  if(is.null(args$window))
+    args$window <- NULL
+
+  do.call(fastai2$text$models$qrnn$QRNN, args)
 
 }
 
