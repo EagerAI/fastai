@@ -146,6 +146,9 @@ add_datepart <- function(df, field_name, prefix = NULL, drop = TRUE, time = FALS
     time = time
   )
 
+  if(is.null(args$prefix))
+    args$prefix <- NULL
+
   do.call(tabular()$add_datepart, args)
 
 }
@@ -173,6 +176,10 @@ add_cyclic_datepart <- function(df, field_name, prefix = NULL, drop = TRUE, time
     time = time,
     add_linear = add_linear
   )
+
+  if(is.null(args$prefix))
+    args$prefix <- NULL
+
 
   do.call(tabular()$add_cyclic_datepart, args)
 

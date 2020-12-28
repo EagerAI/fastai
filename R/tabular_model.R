@@ -53,7 +53,7 @@ tabular_config <- function(ps = NULL, embed_p = 0.0, y_range = NULL,
                            use_bn = TRUE, bn_final = FALSE,
                            bn_cont = TRUE, act_cls = nn()$ReLU(inplace = TRUE)) {
 
-  tabular()$tabular_config(
+  args = list(
     ps = ps,
     embed_p = embed_p,
     y_range = y_range,
@@ -62,6 +62,14 @@ tabular_config <- function(ps = NULL, embed_p = 0.0, y_range = NULL,
     bn_cont = bn_cont,
     act_cls = act_cls
   )
+
+  if(is.null(args$ps))
+    args$ps <- NULL
+
+  if(is.null(args$y_range))
+    args$y_range <- NULL
+
+  do.call(tabular()$tabular_config, args)
 
 }
 
@@ -86,7 +94,7 @@ tabular_config <- function(ps = NULL, embed_p = 0.0, y_range = NULL,
 #' @export
 TabularModel <- function(emb_szs, n_cont, out_sz, layers, ps = NULL,
                          embed_p = 0.0, y_range = NULL, use_bn = TRUE, bn_final = FALSE,
-                         bn_cont = TRUE, act_cls = nn$ReLU(inplace = TRUE)) {
+                         bn_cont = TRUE, act_cls = nn()$ReLU(inplace = TRUE)) {
 
   if(missing(emb_szs) & missing(n_cont) & missing(out_sz) & layers) {
     invisible(tabular()$TabularModel)
@@ -104,6 +112,13 @@ TabularModel <- function(emb_szs, n_cont, out_sz, layers, ps = NULL,
       bn_cont = bn_cont,
       act_cls = act_cls
     )
+
+    if(is.null(args$ps))
+      args$ps <- NULL
+
+    if(is.null(args$y_range))
+      args$y_range <- NULL
+
 
     do.call(tabular()$TabularModel, args)
   }

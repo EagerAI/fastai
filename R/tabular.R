@@ -42,6 +42,14 @@ TabularDataTable <- function(df, procs = NULL, cat_names = NULL, cont_names = NU
     ...
   )
 
+  strings = c('procs', 'cat_names', 'cont_names',
+              'y_names', 'y_block', 'splits', 'device')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
+
   if(!is.null(splits))
     args$splits = list(as.integer(splits[[1]]-1),as.integer(splits[[2]]-1))
 
@@ -104,14 +112,15 @@ tabular_learner <- function(dls, layers = NULL, emb_szs = NULL, config = NULL,
     moms = moms
   )
 
- if(is.list(layers)) {
-   args$layers <- as.list(
-     as.integer(
-       unlist(args$layers)
-     )
-   )
- } else{
-   args$layers <- as.integer(args$layers)
+ strings = c('layers', 'emb_szs', 'config', 'n_out', 'y_range', 'loss_func', 'cbs', 'metrics', 'path', 'wd')
+
+ for(i in 1:length(strings)) {
+   if(is.null(args[[strings[i]]]))
+     args[[strings[i]]] <- NULL
+ }
+
+ if(!is.null(layers)) {
+   args$layers <- as.integer(unlist(args$layers))
  }
 
  do.call(tabular()$tabular_learner, args)

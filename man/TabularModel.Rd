@@ -15,7 +15,7 @@ TabularModel(
   use_bn = TRUE,
   bn_final = FALSE,
   bn_cont = TRUE,
-  act_cls = nn$ReLU(inplace = TRUE)
+  act_cls = nn()$ReLU(inplace = TRUE)
 )
 }
 \arguments{

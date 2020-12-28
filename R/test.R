@@ -158,7 +158,7 @@ ClassificationInterpretation_from_learner <- function(learn, ds_idx = 1, dl = NU
 #'
 #' @export
 plot_top_losses <- function(interp, k, largest = TRUE, figsize = c(19.2,10.8),
-                            ..., dpi = NULL) {
+                            ..., dpi = 90) {
 
   fastai2$vision$all$plt$close()
   interp$plot_top_losses(
@@ -427,7 +427,15 @@ show_images <- function(ims, nrows = 1, ncols = NULL,
 
   if(!is.null(ncols)) {
     args$ncols = as.integer(args$ncols)
+  } else {
+    args$ncols <- NULL
   }
+
+  if(is.null(args$titles))
+    args$titles <- NULL
+
+  if(is.null(args$figsize))
+    args$figsize <- NULL
 
 
   do.call(medical()$show_images, args)
@@ -498,6 +506,9 @@ show_results <- function(object, ds_idx = 1, dl = NULL, max_n = 9, shuffle = TRU
     shuffle = shuffle,
     ...
   )
+
+  if(is.null(args$dl))
+    args$dl <- NULL
 
   if(!is.null(args[['vmin']])) {
     args[['vmin']] = as.integer(args[['vmin']])
