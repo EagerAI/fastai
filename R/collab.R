@@ -51,13 +51,29 @@ CollabDataLoaders_from_df <- function(ratings, valid_pct = 0.2, user_name = NULL
     device = device
   )
 
+  if(is.null(args$user_name))
+    args$user_name <- NULL
+
+  if(is.null(args$item_name))
+    args$item_name <- NULL
+
+  if(is.null(args$rating_name))
+    args$rating_name <- NULL
+
   if(!is.null(seed)) {
     args$seed <- as.integer(args$seed)
+  } else {
+    args$seed <- NULL
   }
 
   if(!is.null(val_bs)) {
     args$val_bs <- as.integer(args$val_bs)
+  } else {
+    args$val_bs <- NULL
   }
+
+  if(is.null(args$device))
+    args$device <- NULL
 
   do.call(collab()$CollabDataLoaders$from_df, args)
 
@@ -93,7 +109,13 @@ CollabDataLoaders_from_dblock <- function(dblock, source, path = ".", bs = 64,
 
   if(!is.null(val_bs)) {
     args$val_bs <- as.integer(args$val_bs)
+  } else {
+    args$val_bs <- NULL
   }
+
+
+  if(is.null(args$device))
+    args$device <- NULL
 
   do.call(collab()$CollabDataLoaders$from_dblock, args)
 
@@ -175,6 +197,38 @@ collab_learner <- function(dls, n_factors = 50, use_nn = FALSE,
     train_bn = train_bn,
     moms = moms
   )
+
+  if(is.null(args$emb_szs))
+    args$emb_szs <- NULL
+
+  if(is.null(args$layers))
+    args$layers <- NULL
+
+  if(is.null(args$config))
+    args$config <- NULL
+
+  if(is.null(args$y_range))
+    args$y_range <- NULL
+
+
+  if(is.null(args$loss_func))
+    args$loss_func <- NULL
+
+
+  if(is.null(args$cbs))
+    args$cbs <- NULL
+
+
+  if(is.null(args$metrics))
+    args$metrics <- NULL
+
+
+  if(is.null(args$path))
+    args$path <- NULL
+
+
+  if(is.null(args$wd))
+    args$wd <- NULL
 
   do.call(fastai2$collab$collab_learner, args)
 
