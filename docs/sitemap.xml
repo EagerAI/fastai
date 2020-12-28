@@ -1024,6 +1024,9 @@
     <loc>https://henry090.github.io/fastai//reference/icevision_FDA.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_FixedSplitter.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/icevision_Flip.html</loc>
   </url>
   <url>
@@ -1177,6 +1180,9 @@
     <loc>https://henry090.github.io/fastai//reference/icevision_RandomSnow.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_RandomSplitter.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/icevision_RandomSunFlare.html</loc>
   </url>
   <url>
@@ -1196,6 +1202,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/icevision_ShiftScaleRotate.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_SingleSplitSplitter.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/icevision_SmallestMaxSize.html</loc>
@@ -1220,6 +1229,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/icnr_init.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/IDMap.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/Image.html</loc>

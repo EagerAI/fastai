@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dense Res Block — DenseResBlock • fastai</title>
+<title>RandomSplitter — icevision_RandomSplitter • fastai</title>
 
 
 <!-- jquery -->
@@ -45,8 +45,8 @@
 
 
 
-<meta property="og:title" content="Dense Res Block — DenseResBlock" />
-<meta property="og:description" content="Resnet block of `nf` features. `conv_kwargs` are passed to `conv_layer`." />
+<meta property="og:title" content="RandomSplitter — icevision_RandomSplitter" />
+<meta property="og:description" content="Randomly splits items." />
 
 
 
@@ -231,106 +231,34 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Dense Res Block</h1>
-    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/GAN.R'><code>R/GAN.R</code></a></small>
-    <div class="hidden name"><code>DenseResBlock.Rd</code></div>
+    <h1>RandomSplitter</h1>
+    <small class="dont-index">Source: <a href='https://github.com/henry090/fastai/blob/master/R/icevision_datasplitters.R'><code>R/icevision_datasplitters.R</code></a></small>
+    <div class="hidden name"><code>icevision_RandomSplitter.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Resnet block of `nf` features. `conv_kwargs` are passed to `conv_layer`.</p>
+    <p>Randomly splits items.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>DenseResBlock</span><span class='op'>(</span>
-  <span class='va'>nf</span>,
-  norm_type <span class='op'>=</span> <span class='fl'>1</span>,
-  ks <span class='op'>=</span> <span class='fl'>3</span>,
-  stride <span class='op'>=</span> <span class='fl'>1</span>,
-  padding <span class='op'>=</span> <span class='cn'>NULL</span>,
-  bias <span class='op'>=</span> <span class='cn'>NULL</span>,
-  ndim <span class='op'>=</span> <span class='fl'>2</span>,
-  bn_1st <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  act_cls <span class='op'>=</span> <span class='fu'><a href='nn.html'>nn</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>$</span><span class='va'>ReLU</span>,
-  transpose <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  init <span class='op'>=</span> <span class='st'>"auto"</span>,
-  xtra <span class='op'>=</span> <span class='cn'>NULL</span>,
-  bias_std <span class='op'>=</span> <span class='fl'>0.01</span>,
-  dilation <span class='op'>=</span> <span class='fl'>1</span>,
-  groups <span class='op'>=</span> <span class='fl'>1</span>,
-  padding_mode <span class='op'>=</span> <span class='st'>"zeros"</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>icevision_RandomSplitter</span><span class='op'>(</span><span class='va'>probs</span>, seed <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>nf</th>
-      <td><p>number of features</p></td>
+      <th>probs</th>
+      <td><p>`Sequence` of probabilities that must sum to one. The length of
+the `Sequence` is the number of groups to to split the items into.</p></td>
     </tr>
     <tr>
-      <th>norm_type</th>
-      <td><p>normalization type</p></td>
-    </tr>
-    <tr>
-      <th>ks</th>
-      <td><p>kernel size</p></td>
-    </tr>
-    <tr>
-      <th>stride</th>
-      <td><p>stride</p></td>
-    </tr>
-    <tr>
-      <th>padding</th>
-      <td><p>padding</p></td>
-    </tr>
-    <tr>
-      <th>bias</th>
-      <td><p>bias</p></td>
-    </tr>
-    <tr>
-      <th>ndim</th>
-      <td><p>number of dimensions</p></td>
-    </tr>
-    <tr>
-      <th>bn_1st</th>
-      <td><p>batch normalization 1st</p></td>
-    </tr>
-    <tr>
-      <th>act_cls</th>
-      <td><p>activation</p></td>
-    </tr>
-    <tr>
-      <th>transpose</th>
-      <td><p>transpose</p></td>
-    </tr>
-    <tr>
-      <th>init</th>
-      <td><p>initizalier</p></td>
-    </tr>
-    <tr>
-      <th>xtra</th>
-      <td><p>xtra</p></td>
-    </tr>
-    <tr>
-      <th>bias_std</th>
-      <td><p>bias standard deviation</p></td>
-    </tr>
-    <tr>
-      <th>dilation</th>
-      <td><p>dilation number</p></td>
-    </tr>
-    <tr>
-      <th>groups</th>
-      <td><p>groups number</p></td>
-    </tr>
-    <tr>
-      <th>padding_mode</th>
-      <td><p>padding mode</p></td>
+      <th>seed</th>
+      <td><p>Internal seed used for shuffling the items. Define this if you need reproducible results.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>block</p>
+    <p>None</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
