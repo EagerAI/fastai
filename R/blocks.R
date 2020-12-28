@@ -89,7 +89,7 @@ ResBlock <- function(expansion, ni, nf, stride = 1, groups = 1,
                      padding = NULL, bias = NULL, bn_1st = TRUE, transpose = FALSE, init = "auto",
                      xtra = NULL, bias_std = 0.01, dilation = 1, padding_mode = "zeros") {
 
-  vision()$all$ResBlock(
+  args = list(
     expansion = expansion,
     ni = ni,
     nf = nf,
@@ -119,6 +119,26 @@ ResBlock <- function(expansion, ni, nf, stride = 1, groups = 1,
     padding_mode = padding_mode
   )
 
+  if(is.null(args$reduction))
+    args$reduction <- NULL
+
+  if(is.null(args$nh1))
+    args$nh1 <- NULL
+
+  if(is.null(args$nh2))
+    args$nh2 <- NULL
+
+  if(is.null(args$padding))
+    args$padding <- NULL
+
+  if(is.null(args$bias))
+    args$bias <- NULL
+
+  if(is.null(args$xtra))
+    args$xtra <- NULL
+
+  do.call(vision()$all$ResBlock, args)
+
 }
 
 #' @title AvgPool
@@ -135,13 +155,18 @@ ResBlock <- function(expansion, ni, nf, stride = 1, groups = 1,
 #' @export
 AvgPool <- function(ks = 2, stride = NULL, padding = 0, ndim = 2, ceil_mode = FALSE) {
 
-  vision()$all$AvgPool(
+  args = list(
     ks = as.integer(ks),
     stride = stride,
     padding = as.integer(padding),
     ndim = as.integer(ndim),
     ceil_mode = ceil_mode
   )
+
+  if(is.null(args$stride))
+    args$stride <- NULL
+
+  do.call(vision()$all$AvgPool, args)
 
 }
 
@@ -159,13 +184,19 @@ AvgPool <- function(ks = 2, stride = NULL, padding = 0, ndim = 2, ceil_mode = FA
 #' @export
 MaxPool <- function(ks = 2, stride = NULL, padding = 0, ndim = 2, ceil_mode = FALSE) {
 
-  vision()$all$MaxPool(
+  args = list(
     ks = as.integer(ks),
     stride = stride,
     padding = as.integer(padding),
     ndim = as.integer(ndim),
     ceil_mode = ceil_mode
   )
+
+
+  if(is.null(args$stride))
+    args$stride <- NULL
+
+  do.call(vision()$all$MaxPool, args)
 
 }
 
@@ -182,12 +213,16 @@ MaxPool <- function(ks = 2, stride = NULL, padding = 0, ndim = 2, ceil_mode = FA
 #' @export
 CategoryBlock <- function(vocab = NULL, sort = TRUE, add_na = FALSE) {
 
-  text()$CategoryBlock(
+  args = list(
     vocab = vocab,
     sort = sort,
     add_na = add_na
   )
 
+  if(is.null(args$vocab))
+    args$vocab <- NULL
+
+  do.call(text()$CategoryBlock, args)
 }
 
 
@@ -230,9 +265,14 @@ SEResNeXtBlock <- function(expansion, ni, nf, groups = 32, reduction = 16, strid
 #' @export
 RegressionBlock <- function(n_out = NULL) {
 
-  vision()$all$RegressionBlock(
+  args = list(
     n_out = n_out
   )
+
+  if(is.null(args$n_out))
+    args$n_out <- NULL
+
+  do.call(vision()$all$RegressionBlock, args)
 
 }
 
@@ -248,11 +288,16 @@ RegressionBlock <- function(n_out = NULL) {
 #' @export
 MultiCategoryBlock <- function(encoded = FALSE, vocab = NULL, add_na = FALSE) {
 
-  vision()$all$MultiCategoryBlock(
+  args = list(
     encoded = encoded,
     vocab = vocab,
     add_na = add_na
   )
+
+  if(is.null(args$vocab))
+    args$vocab <- NULL
+
+  do.call(vision()$all$MultiCategoryBlock, args)
 
 }
 
@@ -288,12 +333,31 @@ DataBlock <- function(blocks = NULL, dl_type = NULL, getters = NULL,
     ...
   )
 
+  if(is.null(args$blocks))
+    args$blocks <- NULL
+
+  if(is.null(args$dl_type))
+    args$dl_type <- NULL
+
+  if(is.null(args$getters))
+    args$getters <- NULL
+
   if(!is.null(args$batch_tfms)) {
     args$batch_tfms <- unlist(args$batch_tfms)
+  } else {
+    args$batch_tfms <- NULL
+  }
+
+  if(!is.null(args$item_tfms)) {
+    args$item_tfms <- unlist(args$item_tfms)
+  } else {
+    args$item_tfms <- NULL
   }
 
   if(!is.null(args$n_inp)) {
     args$n_inp <- as.integer(args$n_inp)
+  } else {
+    args$n_inp <- NULL
   }
 
   do.call(vision()$gan$DataBlock, args)
@@ -330,6 +394,32 @@ TransformBlock <- function(type_tfms = NULL, item_tfms = NULL,
       dl_type = dl_type,
       dls_kwargs = dls_kwargs
     )
+
+    if(!is.null(args$batch_tfms)) {
+      args$batch_tfms <- unlist(args$batch_tfms)
+    } else {
+      args$batch_tfms <- NULL
+    }
+
+    if(!is.null(args$item_tfms)) {
+      args$item_tfms <- unlist(args$item_tfms)
+    } else {
+      args$item_tfms <- NULL
+    }
+
+    if(!is.null(args$type_tfms )) {
+      args$type_tfms  <- unlist(args$type_tfms )
+    } else {
+      args$type_tfms <- NULL
+    }
+
+    if(is.null(args$dl_type))
+      args$dl_type <- NULL
+
+    if(is.null(args$dls_kwargs))
+      args$dls_kwargs <- NULL
+
+
     do.call(vision()$gan$TransformBlock, args)
   }
 
