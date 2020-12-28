@@ -37,8 +37,5 @@ None
 }
 \description{
 Handles everything you need to assemble a mini-batch of inputs and targets,
-as well as decode the dictionary produced
-}
-\details{
-as a byproduct of the tokenization process in the `encodes` method.
+as well as decode the dictionary produced as a byproduct of the tokenization process in the `encodes` method.
 }

@@ -311,6 +311,8 @@ HF_QABatchTransform <- function(hf_arch, hf_tokenizer, max_length = NULL,
 
   if(!is.null(args[['max_length']])) {
     args[['max_length']] <- as.integer(args[['max_length']])
+  } else {
+    args[['max_length']] <- NULL
   }
 
   do.call(blurr()$data$all$HF_QABatchTransform, args)
@@ -411,6 +413,8 @@ HF_QABeforeBatchTransform <- function(hf_arch, hf_tokenizer, max_length = NULL,
 
   if(!is.null(args[['max_length']]))
     args[['max_length']] <- as.integer(args[['max_length']])
+  else
+    args[['max_length']] <- NULL
 
 
   do.call(blurr()$data$all$HF_QABeforeBatchTransform, args)
@@ -453,9 +457,7 @@ HF_ARCHITECTURES <- function() {
 #' @title HF_BeforeBatchTransform
 #'
 #' @description Handles everything you need to assemble a mini-batch of inputs and targets,
-#' as well as decode the dictionary produced
-#'
-#' @details as a byproduct of the tokenization process in the `encodes` method.
+#' as well as decode the dictionary produced as a byproduct of the tokenization process in the `encodes` method.
 #'
 #' @param hf_arch architecture
 #' @param hf_tokenizer tokenizer
@@ -484,6 +486,8 @@ HF_BeforeBatchTransform <- function(hf_arch, hf_tokenizer, max_length = NULL,
 
   if(!is.null(args[['max_length']]))
     args[['max_length']] <- as.integer(args[['max_length']])
+  else
+    args[['max_length']] <- NULL
 
 
   do.call(blurr()$data$all$HF_BeforeBatchTransform, args)
@@ -529,6 +533,8 @@ HF_CausalLMBeforeBatchTransform <- function(hf_arch, hf_tokenizer, max_length = 
 
   if(!is.null(args[['max_length']]))
     args[['max_length']] <- as.integer(args[['max_length']])
+  else
+    args[['max_length']] <- NULL
 
   do.call(blurr()$data$all$HF_CausalLMBeforeBatchTransform, args)
 
@@ -538,9 +544,7 @@ HF_CausalLMBeforeBatchTransform <- function(hf_arch, hf_tokenizer, max_length = 
 #' @title HF_SummarizationBeforeBatchTransform
 #'
 #' @description Handles everything you need to assemble a mini-batch of inputs and targets,
-#' as well as decode the dictionary produced
-#'
-#' @details as a byproduct of the tokenization process in the `encodes` method.
+#' as well as decode the dictionary produced as a byproduct of the tokenization process in the `encodes` method.
 #'
 #' @param hf_arch architecture
 #' @param hf_tokenizer tokenizer
@@ -682,6 +686,14 @@ HF_TokenCategorize <- function(vocab = NULL, ignore_token = NULL, ignore_token_i
 
   if(!is.null(args[['ignore_token_id']]))
     args[['ignore_token_id']] <- as.integer(args[['ignore_token_id']])
+  else
+    args[['ignore_token_id']] <- NULL
+
+  if(is.null(args$ignore_token))
+    args$ignore_token <- NULL
+
+  if(is.null(args$vocab))
+    args$vocab <- NULL
 
 
   do.call(blurr()$data$all$HF_TokenCategorize, args)
@@ -709,6 +721,14 @@ HF_TokenCategoryBlock <- function(vocab = NULL, ignore_token = NULL, ignore_toke
 
   if(!is.null(args[['ignore_token_id']]))
     args[['ignore_token_id']] <- as.integer(args[['ignore_token_id']])
+  else
+    args[['ignore_token_id']] <- NULL
+
+  if(is.null(args$ignore_token))
+    args$ignore_token <- NULL
+
+  if(is.null(args$vocab))
+    args$vocab <- NULL
 
   do.call(blurr()$data$all$HF_TokenCategoryBlock, args)
 
@@ -751,6 +771,8 @@ HF_TokenClassBeforeBatchTransform <- function(hf_arch, hf_tokenizer, ignore_toke
 
   if(!is.null(args[['max_length']]))
     args[['max_length']] <- as.integer(args[['max_length']])
+  else
+    args[['max_length']] <- NULL
 
   if(!is.null(args[['n_tok_inps']]))
     args[['n_tok_inps']] <- as.integer(args[['n_tok_inps']])
