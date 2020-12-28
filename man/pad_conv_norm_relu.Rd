@@ -14,7 +14,7 @@ pad_conv_norm_relu(
   pad = 1,
   stride = 1,
   activ = TRUE,
-  init = nn$init$kaiming_normal_,
+  init = nn()$init$kaiming_normal_,
   init_gain = 0.02
 )
 }

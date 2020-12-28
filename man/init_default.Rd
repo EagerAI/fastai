@@ -4,7 +4,7 @@
 \alias{init_default}
 \title{Init_default}
 \usage{
-init_default(m, func = nn$init$kaiming_normal_)
+init_default(m, func = nn()$init$kaiming_normal_)
 }
 \arguments{
 \item{m}{parameters}

@@ -27,5 +27,5 @@ ResnetBlock(
 None
 }
 \description{
-nn$Module for the ResNet Block
+nn()$Module for the ResNet Block
 }

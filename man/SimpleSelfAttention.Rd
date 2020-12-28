@@ -17,5 +17,5 @@ SimpleSelfAttention(n_in, ks = 1, sym = FALSE)
 None
 }
 \description{
-Same as `nn$Module`, but no need for subclasses to call `super()$__init__`
+Same as `nn()$Module`, but no need for subclasses to call `super()$__init__`
 }

@@ -14,7 +14,7 @@ conv_norm_lr(
   stride = 1,
   activ = TRUE,
   slope = 0.2,
-  init = nn$init$normal_,
+  init = nn()$init$normal_,
   init_gain = 0.02
 )
 }

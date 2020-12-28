@@ -10,7 +10,7 @@ PixelShuffle_ICNR(
   scale = 2,
   blur = FALSE,
   norm_type = 3,
-  act_cls = nn$ReLU
+  act_cls = nn()$ReLU
 )
 }
 \arguments{

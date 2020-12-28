@@ -14,7 +14,7 @@ ConvLayer(
   ndim = 2,
   norm_type = 1,
   bn_1st = TRUE,
-  act_cls = nn$ReLU,
+  act_cls = nn()$ReLU,
   transpose = FALSE,
   init = "auto",
   xtra = NULL,

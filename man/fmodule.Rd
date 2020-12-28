@@ -16,5 +16,5 @@ None
 Module
 }
 \details{
-Decorator to create an nn$Module using f as forward method
+Decorator to create an nn()$Module using f as forward method
 }

@@ -89,10 +89,16 @@ BaseLoss = function(...) {
 #' @export
 HammingLoss <- function(axis = -1, sample_weight = NULL) {
 
-  vision()$all$HammingLoss(
+  args = list(
     axis = as.integer(axis),
     sample_weight = sample_weight
   )
+
+  if(is.null(args$sample_weight))
+    args$sample_weight <- NULL
+
+  do.call(vision()$all$HammingLoss, args)
+
 
 }
 
@@ -128,12 +134,20 @@ AdaptiveLoss <- function(crit) {
 #' @export
 HammingLossMulti <- function(thresh = 0.5, sigmoid = TRUE, labels = NULL, sample_weight = NULL) {
 
-  fastai2$vision$all$HammingLossMulti(
+  args = list(
     thresh = thresh,
     sigmoid = sigmoid,
     labels = labels,
     sample_weight = sample_weight
   )
+
+  if(is.null(args$labels))
+    args$labels <- NULL
+
+  if(is.null(args$sample_weight))
+    args$sample_weight <- NULL
+
+  do.call(fastai2$vision$all$HammingLossMulti, args)
 
 }
 

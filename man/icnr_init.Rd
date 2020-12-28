@@ -4,7 +4,7 @@
 \alias{icnr_init}
 \title{Icnr_init}
 \usage{
-icnr_init(x, scale = 2, init = nn$init$kaiming_normal_)
+icnr_init(x, scale = 2, init = nn()$init$kaiming_normal_)
 }
 \arguments{
 \item{x}{tensor}

@@ -13,7 +13,7 @@ DenseResBlock(
   bias = NULL,
   ndim = 2,
   bn_1st = TRUE,
-  act_cls = nn$ReLU,
+  act_cls = nn()$ReLU,
   transpose = FALSE,
   init = "auto",
   xtra = NULL,

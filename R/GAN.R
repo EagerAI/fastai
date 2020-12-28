@@ -193,7 +193,7 @@ basic_generator <- function(out_size, n_channels,
 #' \dontrun{
 #'
 #' critic    = basic_critic(in_size = 64, n_channels = 3, n_extra_layers = 1,
-#'                         act_cls = partial(nn$LeakyReLU, negative_slope = 0.2))
+#'                         act_cls = partial(nn()$LeakyReLU, negative_slope = 0.2))
 #'
 #' }
 #'
@@ -294,6 +294,21 @@ GANLearner_wgan <- function(dls, generator, critic, switcher = NULL, clip = 0.01
     moms = moms
   )
 
+  if(is.null(args$switcher))
+    args$switcher <- NULL
+
+  if(is.null(args$cbs))
+    args$cbs <- NULL
+
+  if(is.null(args$metrics))
+    args$metrics <- NULL
+
+  if(is.null(args$path))
+    args$path <- NULL
+
+  if(is.null(args$wd))
+    args$wd <- NULL
+
   do.call(vision()$gan$GANLearner$wgan, args)
 
 }
@@ -379,7 +394,12 @@ GANModule <- function(generator = NULL, critic = NULL, gen_mode = FALSE) {
     gen_mode = gen_mode
   )
 
-  do.call(vision()$gan$GANModule, args)
+  if(is.null(args$generator) & is.null(args$critic))
+    vision()$gan$GANModule
+  else
+    do.call(vision()$gan$GANModule, args)
+
+
 
 }
 
@@ -466,7 +486,7 @@ AddChannels <- function(n_dim) {
 DenseResBlock <- function(nf, norm_type = 1,
                           ks = 3, stride = 1, padding = NULL,
                           bias = NULL, ndim = 2, bn_1st = TRUE,
-                          act_cls = nn$ReLU, transpose = FALSE, init = "auto", xtra = NULL,
+                          act_cls = nn()$ReLU, transpose = FALSE, init = "auto", xtra = NULL,
                           bias_std = 0.01, dilation = 1, groups = 1,
                           padding_mode = "zeros") {
 
@@ -488,6 +508,15 @@ DenseResBlock <- function(nf, norm_type = 1,
     groups = as.integer(groups),
     padding_mode = padding_mode
   )
+
+  if(is.null(args$padding))
+    args$padding <- NULL
+
+  if(is.null(args$bias))
+    args$bias <- NULL
+
+  if(is.null(args$xtra))
+    args$xtra <- NULL
 
   do.call(vision()$gan$DenseResBlock, args)
 
@@ -591,13 +620,18 @@ set_freeze_model <- function(m, rg) {
 GANTrainer <- function(switch_eval = FALSE, clip = NULL, beta = 0.98,
                        gen_first = FALSE, show_img = TRUE) {
 
-  vision()$gan$GANTrainer(
+  args = list(
     switch_eval = switch_eval,
     clip = clip,
     beta = beta,
     gen_first = gen_first,
     show_img = show_img
   )
+
+  if(is.null(args$clip))
+    args$clip <- NULL
+
+  do.call(vision()$gan$GANTrainer, args)
 
 }
 
@@ -631,10 +665,10 @@ FixedGANSwitcher <- function(n_crit = 1, n_gen = 1) {
 #' @export
 AdaptiveGANSwitcher <- function(gen_thresh = NULL, critic_thresh = NULL) {
 
-  vision()$gan$AdaptiveGANSwitcher(
-    gen_thresh = gen_thresh,
-    critic_thresh = critic_thresh
-  )
+  if(is.null(gen_thresh) & is.null(critic_thresh))
+    vision()$gan$AdaptiveGANSwitcher
+  else
+    vision()$gan$AdaptiveGANSwitcher(gen_thresh = gen_thresh,critic_thresh = critic_thresh)
 
 }
 
@@ -664,11 +698,16 @@ InvisibleTensor <- function(x) {
 #' @export
 gan_loss_from_func <- function(loss_gen, loss_crit, weights_gen = NULL) {
 
-  vision()$gan$gan_loss_from_func(
+  args = list(
     loss_gen = loss_gen,
     loss_crit = loss_crit,
     weights_gen = weights_gen
   )
+
+  if(is.null(args$weights_gen))
+    args$weights_gen <- NULL
+
+  do.call(vision()$gan$gan_loss_from_func, args)
 
 }
 
@@ -728,6 +767,14 @@ GANLearner_from_learners <- function(gen_learn, crit_learn, switcher = NULL, wei
     train_bn = train_bn,
     moms = moms
   )
+
+  strings = c("switcher","weights_gen","clip","metrics","cbs","loss_func","path","wd")
+
+  for (i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]])) {
+      args[[strings[i]]] <- NULL
+    }
+  }
 
   do.call(vision()$gan$GANLearner$from_learners, args)
 

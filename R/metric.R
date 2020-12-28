@@ -54,6 +54,12 @@ AccumMetric <- function(func, dim_argmax = NULL, activation = "no",
     ...
   )
 
+  if(is.null(args$dim_argmax))
+    args$dim_argmax <- NULL
+
+  if(is.null(args$thresh))
+    args$thresh <- NULL
+
   do.call(metrics()$AccumMetric, args)
 
 }
@@ -83,6 +89,12 @@ skm_to_fastai <- function(func, is_class = TRUE, thresh = NULL,
     activation = activation,
     ...
   )
+
+  if(is.null(args$thresh))
+    args$thresh <- NULL
+
+  if(is.null(args$activation))
+    args$activation <- NULL
 
   do.call(metrics()$skm_to_fastai, args)
 
@@ -215,6 +227,10 @@ APScoreBinary <- function(axis = -1, average = "macro", pos_label = 1, sample_we
     sample_weight = sample_weight
   )
 
+  if(is.null(args$sample_weight))
+    args$sample_weight <- NULL
+
+
   do.call(metrics()$APScoreBinary, args)
 
 }
@@ -236,6 +252,9 @@ BalancedAccuracy <- function(axis = -1, sample_weight = NULL, adjusted = FALSE) 
     sample_weight = sample_weight,
     adjusted = adjusted
   )
+
+  if(is.null(args$sample_weight))
+    args$sample_weight <- NULL
 
   do.call(metrics()$BalancedAccuracy, args)
 
@@ -259,6 +278,12 @@ BrierScore <- function(axis = -1, sample_weight = NULL, pos_label = NULL) {
     sample_weight = sample_weight,
     pos_label = pos_label
   )
+
+  if(is.null(args$sample_weight))
+    args$sample_weight <- NULL
+
+  if(is.null(args$pos_label))
+    args$pos_label <- NULL
 
   do.call(metrics()$BrierScore, args)
 
@@ -284,6 +309,12 @@ CohenKappa <- function(axis = -1, labels = NULL, weights = NULL, sample_weight =
     weights = weights,
     sample_weight = sample_weight
   )
+
+  if(is.null(args$sample_weight))
+    args$sample_weight <- NULL
+
+  if(is.null(args$weights))
+    args$weights <- NULL
 
   do.call(metrics()$CohenKappa, args)
 
@@ -312,6 +343,9 @@ F1Score <- function(axis = -1, labels = NULL, pos_label = 1, average = "binary",
     average = average,
     sample_weight = sample_weight
   )
+
+  if(is.null(args$sample_weight))
+    args$sample_weight <- NULL
 
   do.call(metrics()$F1Score, args)
 
@@ -345,6 +379,9 @@ FBeta <- function(beta, axis = -1, labels = NULL, pos_label = 1, average = "bina
       sample_weight = sample_weight
     )
 
+    if(is.null(args$sample_weight))
+      args$sample_weight <- NULL
+
     do.call(metrics()$FBeta, args)
   }
 
@@ -365,6 +402,9 @@ HammingLoss <- function(axis = -1, sample_weight = NULL) {
     axis = as.integer(axis),
     sample_weight = sample_weight
   )
+
+  if(is.null(args$sample_weight))
+    args$sample_weight <- NULL
 
   do.call(metrics()$HammingLoss, args)
 
@@ -394,6 +434,9 @@ Jaccard <- function(axis = -1, labels = NULL, pos_label = 1,
     sample_weight = sample_weight
   )
 
+  if(is.null(args$sample_weight))
+    args$sample_weight <- NULL
+
   do.call(metrics()$Jaccard, args)
 
 }
@@ -421,6 +464,9 @@ Precision <- function(axis = -1, labels = NULL, pos_label = 1,
     average = average,
     sample_weight = sample_weight
   )
+
+  if(is.null(args$sample_weight))
+    args$sample_weight <- NULL
 
   do.call(metrics()$Precision, args)
 
@@ -450,6 +496,9 @@ Recall <- function(axis = -1, labels = NULL, pos_label = 1,
     sample_weight = sample_weight
   )
 
+  if(is.null(args$sample_weight))
+    args$sample_weight <- NULL
+
   do.call(metrics()$Recall, args)
 
 }
@@ -478,6 +527,12 @@ RocAuc <- function(axis = -1, average = "macro",
     max_fpr = max_fpr,
     multi_class = multi_class
   )
+
+  if(is.null(args$sample_weight))
+    args$sample_weight <- NULL
+
+  if(is.null(args$max_fpr))
+    args$max_fpr <- NULL
 
   do.call(metrics()$RocAuc, args)
 
@@ -519,6 +574,13 @@ RocAucBinary <- function(axis = -1, average = "macro",
     max_fpr = max_fpr,
     multi_class = multi_class
   )
+
+
+  if(is.null(args$sample_weight))
+    args$sample_weight <- NULL
+
+  if(is.null(args$max_fpr))
+    args$max_fpr <- NULL
 
   do.call(metrics()$RocAucBinary, args)
 
@@ -612,6 +674,9 @@ APScoreMulti <- function(sigmoid = TRUE, average = "macro",
     sample_weight = sample_weight
   )
 
+  if(is.null(args$sample_weight))
+    args$sample_weight <- NULL
+
   do.call(metrics()$APScoreMulti, args)
 
 }
@@ -631,12 +696,20 @@ APScoreMulti <- function(sigmoid = TRUE, average = "macro",
 BrierScoreMulti <- function(thresh = 0.5, sigmoid = TRUE,
                             sample_weight = NULL, pos_label = NULL) {
 
-  metrics()$BrierScoreMulti(
+  args = list(
     thresh = thresh,
     sigmoid = sigmoid,
     sample_weight = sample_weight,
     pos_label = pos_label
   )
+
+  if(is.null(args$sample_weight))
+    args$sample_weight <- NULL
+
+  if(is.null(args$pos_label))
+    args$pos_label <- NULL
+
+  do.call(metrics()$BrierScoreMulti, args)
 
 }
 
@@ -658,7 +731,7 @@ F1ScoreMulti <- function(thresh = 0.5, sigmoid = TRUE, labels = NULL,
                          pos_label = 1, average = "macro",
                          sample_weight = NULL) {
 
-  metrics()$F1ScoreMulti(
+  args = list(
     thresh = thresh,
     sigmoid = sigmoid,
     labels = labels,
@@ -666,6 +739,14 @@ F1ScoreMulti <- function(thresh = 0.5, sigmoid = TRUE, labels = NULL,
     average = average,
     sample_weight = sample_weight
   )
+
+  if(is.null(args$sample_weight))
+    args$sample_weight <- NULL
+
+  if(is.null(args$labels))
+    args$labels <- NULL
+
+  do.call(metrics()$F1ScoreMulti, args)
 
 }
 
@@ -687,7 +768,7 @@ F1ScoreMulti <- function(thresh = 0.5, sigmoid = TRUE, labels = NULL,
 FBetaMulti <- function(beta, thresh = 0.5, sigmoid = TRUE, labels = NULL,
                        pos_label = 1, average = "macro", sample_weight = NULL) {
 
-  metrics()$FBetaMulti(
+  args = list(
     beta = beta,
     thresh = thresh,
     sigmoid = sigmoid,
@@ -696,6 +777,14 @@ FBetaMulti <- function(beta, thresh = 0.5, sigmoid = TRUE, labels = NULL,
     average = average,
     sample_weight = sample_weight
   )
+
+  if(is.null(args$sample_weight))
+    args$sample_weight <- NULL
+
+  if(is.null(args$labels))
+    args$labels <- NULL
+
+  do.call(metrics()$FBetaMulti, args)
 
 }
 
@@ -719,7 +808,7 @@ JaccardMulti <- function(thresh = 0.5, sigmoid = TRUE,
                          labels = NULL, pos_label = 1,
                          average = "macro", sample_weight = NULL) {
 
-  python_function_result <- metrics()$JaccardMulti(
+  args = list(
     thresh = thresh,
     sigmoid = sigmoid,
     labels = labels,
@@ -728,6 +817,13 @@ JaccardMulti <- function(thresh = 0.5, sigmoid = TRUE,
     sample_weight = sample_weight
   )
 
+  if(is.null(args$sample_weight))
+    args$sample_weight <- NULL
+
+  if(is.null(args$labels))
+    args$labels <- NULL
+
+  do.call(metrics()$JaccardMulti, args)
 }
 
 
@@ -743,11 +839,16 @@ JaccardMulti <- function(thresh = 0.5, sigmoid = TRUE,
 #' @export
 MatthewsCorrCoefMulti <- function(thresh = 0.5, sigmoid = TRUE, sample_weight = NULL) {
 
-  metrics()$MatthewsCorrCoefMulti(
+  args = list(
     thresh = thresh,
     sigmoid = sigmoid,
     sample_weight = sample_weight
   )
+
+  if(is.null(args$sample_weight))
+    args$sample_weight <- NULL
+
+  do.call(metrics()$MatthewsCorrCoefMulti, args)
 
 }
 
@@ -768,7 +869,7 @@ PrecisionMulti <- function(thresh = 0.5, sigmoid = TRUE, labels = NULL,
                            pos_label = 1, average = "macro",
                            sample_weight = NULL) {
 
-  metrics()$PrecisionMulti(
+  args = list(
     thresh = thresh,
     sigmoid = sigmoid,
     labels = labels,
@@ -776,6 +877,14 @@ PrecisionMulti <- function(thresh = 0.5, sigmoid = TRUE, labels = NULL,
     average = average,
     sample_weight = sample_weight
   )
+
+  if(is.null(args$sample_weight))
+    args$sample_weight <- NULL
+
+  if(is.null(args$labels))
+    args$labels <- NULL
+
+  do.call(metrics()$PrecisionMulti, args)
 
 }
 
@@ -796,7 +905,7 @@ RecallMulti <- function(thresh = 0.5, sigmoid = TRUE, labels = NULL,
                         pos_label = 1, average = "macro",
                         sample_weight = NULL) {
 
-  metrics()$RecallMulti(
+  args = list(
     thresh = thresh,
     sigmoid = sigmoid,
     labels = labels,
@@ -804,6 +913,14 @@ RecallMulti <- function(thresh = 0.5, sigmoid = TRUE, labels = NULL,
     average = average,
     sample_weight = sample_weight
   )
+
+  if(is.null(args$sample_weight))
+    args$sample_weight <- NULL
+
+  if(is.null(args$labels))
+    args$labels <- NULL
+
+  do.call(metrics()$RecallMulti, args)
 
 }
 
@@ -821,12 +938,20 @@ RecallMulti <- function(thresh = 0.5, sigmoid = TRUE, labels = NULL,
 RocAucMulti <- function(sigmoid = TRUE, average = "macro",
                         sample_weight = NULL, max_fpr = NULL) {
 
-  metrics()$RocAucMulti(
+  args = list(
     sigmoid = sigmoid,
     average = average,
     sample_weight = sample_weight,
     max_fpr = max_fpr
   )
+
+  if(is.null(args$sample_weight))
+    args$sample_weight <- NULL
+
+  if(is.null(args$max_fpr))
+    args$max_fpr <- NULL
+
+  do.call(metrics()$RocAucMulti, args)
 
 }
 
@@ -974,9 +1099,14 @@ exp_rmspe <- function(preds, targs) {
 #' @export
 ExplainedVariance <- function(sample_weight = NULL) {
 
-  metrics()$ExplainedVariance(
+  args = list(
     sample_weight = sample_weight
   )
+
+  if(is.null(args$sample_weight))
+    args$sample_weight <- NULL
+
+  do.call(metrics()$ExplainedVariance, args)
 
 }
 
@@ -990,9 +1120,14 @@ ExplainedVariance <- function(sample_weight = NULL) {
 #' @export
 R2Score <- function(sample_weight = NULL) {
 
-  metrics()$R2Score(
+  args = list(
     sample_weight = sample_weight
   )
+
+  if(is.null(args$sample_weight))
+    args$sample_weight <- NULL
+
+  do.call(metrics()$R2Score, args)
 
 }
 
@@ -1013,7 +1148,7 @@ R2Score <- function(sample_weight = NULL) {
 PearsonCorrCoef <- function(dim_argmax = NULL, activation = "no",
                             thresh = NULL, to_np = FALSE, invert_arg = FALSE, flatten = TRUE) {
 
-  metrics()$PearsonCorrCoef(
+  args = list(
     dim_argmax = dim_argmax,
     activation = activation,
     thresh = thresh,
@@ -1021,6 +1156,14 @@ PearsonCorrCoef <- function(dim_argmax = NULL, activation = "no",
     invert_arg = invert_arg,
     flatten = flatten
   )
+
+  if(is.null(args$dim_argmax))
+    args$dim_argmax <- NULL
+
+  if(is.null(args$thresh))
+    args$thresh <- NULL
+
+  do.call(metrics()$PearsonCorrCoef, args)
 
 }
 
@@ -1044,7 +1187,7 @@ SpearmanCorrCoef <- function(dim_argmax = NULL, axis = 0, nan_policy = "propagat
                              activation = "no", thresh = NULL, to_np = FALSE,
                              invert_arg = FALSE, flatten = TRUE) {
 
-  python_function_result <- metrics()$SpearmanCorrCoef(
+  args <- list(
     dim_argmax = dim_argmax,
     axis = as.integer(axis),
     nan_policy = nan_policy,
@@ -1054,6 +1197,14 @@ SpearmanCorrCoef <- function(dim_argmax = NULL, axis = 0, nan_policy = "propagat
     invert_arg = invert_arg,
     flatten = flatten
   )
+
+  if(is.null(args$dim_argmax))
+    args$dim_argmax <- NULL
+
+  if(is.null(args$thresh))
+    args$thresh <- NULL
+
+  do.call(metrics()$SpearmanCorrCoef, args)
 
 }
 
@@ -1129,7 +1280,7 @@ JaccardCoeff <- function(axis = 1) {
 #' @export
 CorpusBLEUMetric <- function(vocab_sz = 5000, axis = -1) {
 
-  python_function_result <- metrics()$CorpusBLEUMetric(
+  metrics()$CorpusBLEUMetric(
     vocab_sz = as.integer(vocab_sz),
     axis = as.integer(axis)
   )

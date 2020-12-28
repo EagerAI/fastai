@@ -35,11 +35,17 @@ Dicom = function() {
 #' @export
 get_dicom_files <- function(path, recurse = TRUE, folders = NULL) {
 
-  medical()$get_dicom_files(
+  args = list(
     path = path,
     recurse = recurse,
     folders = folders
   )
+
+  if(is.null(args$folders))
+    args$folders <- NULL
+
+
+  do.call(medical()$get_dicom_files, args)
 
 }
 

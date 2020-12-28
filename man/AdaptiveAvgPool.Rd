@@ -12,5 +12,5 @@ AdaptiveAvgPool(sz = 1, ndim = 2)
 \item{ndim}{dimension size}
 }
 \description{
-nn$AdaptiveAvgPool layer for `ndim`
+nn()$AdaptiveAvgPool layer for `ndim`
 }

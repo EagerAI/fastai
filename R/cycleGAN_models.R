@@ -46,7 +46,7 @@ convT_norm_relu <- function(ch_in, ch_out, norm_layer, ks = 3, stride = 2, bias 
 #' @export
 pad_conv_norm_relu <- function(ch_in, ch_out, pad_mode, norm_layer, ks = 3,
                                bias = TRUE, pad = 1, stride = 1, activ = TRUE,
-                               init = nn$init$kaiming_normal_, init_gain = 0.02) {
+                               init = nn()$init$kaiming_normal_, init_gain = 0.02) {
 
   args <- list(
     ch_in = as.integer(ch_in),
@@ -69,7 +69,7 @@ pad_conv_norm_relu <- function(ch_in, ch_out, pad_mode, norm_layer, ks = 3,
 
 #' @title ResnetBlock
 #'
-#' @description nn$Module for the ResNet Block
+#' @description nn()$Module for the ResNet Block
 #'
 #'
 #' @param dim dimension
@@ -124,6 +124,9 @@ resnet_generator <- function(ch_in, ch_out, n_ftrs = 64, norm_layer = NULL,
     pad_mode = pad_mode
   )
 
+  if(is.null(args$norm_layer))
+    args$norm_layer <- NULL
+
   do.call(upit()$models$cyclegan$resnet_generator, args)
 
 }
@@ -148,7 +151,7 @@ resnet_generator <- function(ch_in, ch_out, n_ftrs = 64, norm_layer = NULL,
 #' @export
 conv_norm_lr <- function(ch_in, ch_out, norm_layer = NULL, ks = 3, bias = TRUE,
                          pad = 1, stride = 1, activ = TRUE, slope = 0.2,
-                         init = nn$init$normal_, init_gain = 0.02) {
+                         init = nn()$init$normal_, init_gain = 0.02) {
 
   args <- list(
     ch_in = as.integer(ch_in),
@@ -163,6 +166,9 @@ conv_norm_lr <- function(ch_in, ch_out, norm_layer = NULL, ks = 3, bias = TRUE,
     init = init,
     init_gain = init_gain
   )
+
+  if(is.null(args$norm_layer))
+    args$norm_layer <- NULL
 
   do.call(upit()$models$cyclegan$conv_norm_lr, args)
 
@@ -181,13 +187,18 @@ conv_norm_lr <- function(ch_in, ch_out, norm_layer = NULL, ks = 3, bias = TRUE,
 #' @export
 discriminator <- function(ch_in, n_ftrs = 64, n_layers = 3, norm_layer = NULL, sigmoid = FALSE) {
 
-  python_function_result <- upit()$models$cyclegan$discriminator(
+  args = list(
     ch_in = as.integer(ch_in),
     n_ftrs = as.integer(n_ftrs),
     n_layers = as.integer(n_layers),
     norm_layer = norm_layer,
     sigmoid = sigmoid
   )
+
+  if(is.null(args$norm_layer))
+    args$norm_layer <- NULL
+
+  do.call(upit()$models$cyclegan$discriminator,args)
 
 }
 
@@ -223,6 +234,9 @@ CycleGAN <- function(ch_in = 3, ch_out = 3, n_features = 64, disc_layers = 3,
     norm_layer = norm_layer
   )
 
+  if(is.null(args$norm_layer))
+    args$norm_layer <- NULL
+
   do.call(upit()$models$cyclegan$CycleGAN, args)
 
 }
@@ -230,7 +244,7 @@ CycleGAN <- function(ch_in = 3, ch_out = 3, n_features = 64, disc_layers = 3,
 
 #' @title RandPair
 #'
-#' @description Returns a random image from domain B, resulting in a random pair of images from domain A and B.
+#' @description a random image from domain B, resulting in a random pair of images from domain A and B.
 #'
 #'
 #' @param itemsB a random image from domain B
@@ -279,9 +293,13 @@ get_dls <- function(pathA, pathB, num_A = NULL, num_B = NULL,
 
  if(!is.null(args[['num_A']]))
    args[['num_A']] = as.integer(args[['num_A']])
+ else
+   args[['num_A']] <- NULL
 
  if(!is.null(args[['num_B']]))
    args[['num_B']] = as.integer(args[['num_B']])
+ else
+   args[['num_B']] <- NULL
 
  do.call(upit()$data$unpaired$get_dls, args)
 
@@ -456,10 +474,16 @@ URLs_HORSE_2_ZEBRA <- function(filename = 'horse2zebra', unzip = TRUE) {
 #' @export
 FolderDataset <- function(path, transforms = NULL) {
 
-  upit()$inference$cyclegan$FolderDataset(
+  args = list(
     path = path,
     transforms = transforms
   )
+
+  if(is.null(args$transforms))
+    args$transforms <- NULL
+
+
+  do.call(upit()$inference$cyclegan$FolderDataset, args)
 
 }
 

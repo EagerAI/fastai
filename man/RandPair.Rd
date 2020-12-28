@@ -13,5 +13,5 @@ RandPair(itemsB)
 None
 }
 \description{
-Returns a random image from domain B, resulting in a random pair of images from domain A and B.
+a random image from domain B, resulting in a random pair of images from domain A and B.
 }

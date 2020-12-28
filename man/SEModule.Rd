@@ -4,7 +4,7 @@
 \alias{SEModule}
 \title{SEModule}
 \usage{
-SEModule(ch, reduction, act_cls = nn$ReLU)
+SEModule(ch, reduction, act_cls = nn()$ReLU)
 }
 \arguments{
 \item{ch}{ch}

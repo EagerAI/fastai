@@ -2,7 +2,7 @@
 
 #' @title Module
 #'
-#' @details Decorator to create an nn$Module using f as forward method
+#' @details Decorator to create an nn()$Module using f as forward method
 #'
 #' @param ... parameters to pass
 #'
@@ -320,7 +320,7 @@ BatchNorm1dFlat <- function(num_features, eps = 1e-05, momentum = 0.1,
 #' @export
 LinBnDrop <- function(n_in, n_out, bn = TRUE, p = 0.0, act = NULL, lin_first = FALSE) {
 
-  fastai2$layers$LinBnDrop(
+  args = list(
     n_in = n_in,
     n_out = n_out,
     bn = bn,
@@ -328,6 +328,12 @@ LinBnDrop <- function(n_in, n_out, bn = TRUE, p = 0.0, act = NULL, lin_first = F
     act = act,
     lin_first = lin_first
   )
+
+  if(is.null(args$act))
+    args$act <- NULL
+
+
+  do.call(fastai2$layers$LinBnDrop, args)
 
 }
 
@@ -398,7 +404,7 @@ vleaky_relu <- function(input, inplace = TRUE) {
 #' @param func function
 #' @return None
 #' @export
-init_default <- function(m, func = nn$init$kaiming_normal_) {
+init_default <- function(m, func = nn()$init$kaiming_normal_) {
 
   fastai2$layers$init_default(
     m = m,
@@ -456,7 +462,7 @@ init_linear <- function(m, act_func = NULL, init = "auto", bias_std = 0.01) {
 #' @export
 ConvLayer <- function(ni, nf, ks = 3, stride = 1, padding = NULL, bias = NULL,
                       ndim = 2, norm_type = 1, bn_1st = TRUE,
-                      act_cls = nn$ReLU, transpose = FALSE, init = "auto", xtra = NULL,
+                      act_cls = nn()$ReLU, transpose = FALSE, init = "auto", xtra = NULL,
                       bias_std = 0.01, dilation = 1, groups = 1, padding_mode = "zeros") {
 
   args = list(
@@ -479,6 +485,15 @@ ConvLayer <- function(ni, nf, ks = 3, stride = 1, padding = NULL, bias = NULL,
     padding_mode = padding_mode
   )
 
+  if(is.null(args$padding))
+    args$padding <- NULL
+
+  if(is.null(args$bias))
+    args$bias <- NULL
+
+  if(is.null(args$xtra))
+    args$xtra <- NULL
+
   do.call(fastai2$layers$ConvLayer, args)
 
 }
@@ -487,7 +502,7 @@ ConvLayer <- function(ni, nf, ks = 3, stride = 1, padding = NULL, bias = NULL,
 
 #' @title AdaptiveAvgPool
 #'
-#' @description nn$AdaptiveAvgPool layer for `ndim`
+#' @description nn()$AdaptiveAvgPool layer for `ndim`
 #'
 #'
 #' @param sz size
@@ -580,7 +595,7 @@ PooledSelfAttention2d <- function(n_channels) {
 
 #' @title SimpleSelfAttention
 #'
-#' @description Same as `nn$Module`, but no need for subclasses to call `super()$__init__`
+#' @description Same as `nn()$Module`, but no need for subclasses to call `super()$__init__`
 #'
 #'
 #' @param n_in inputs
@@ -609,7 +624,7 @@ SimpleSelfAttention <- function(n_in, ks = 1, sym = FALSE) {
 #' @param init initializer
 #' @return None
 #' @export
-icnr_init <- function(x, scale = 2, init = nn$init$kaiming_normal_) {
+icnr_init <- function(x, scale = 2, init = nn()$init$kaiming_normal_) {
 
   fastai2$layers$icnr_init(
     x = x,
@@ -635,9 +650,9 @@ icnr_init <- function(x, scale = 2, init = nn$init$kaiming_normal_) {
 #' @return None
 #' @export
 PixelShuffle_ICNR <- function(ni, nf = NULL, scale = 2, blur = FALSE,
-                              norm_type = 3, act_cls = nn$ReLU) {
+                              norm_type = 3, act_cls = nn()$ReLU) {
 
-   fastai2$layers$PixelShuffle_ICNR(
+   args = list(
     ni = as.integer(ni),
     nf = nf,
     scale = as.integer(scale),
@@ -645,6 +660,11 @@ PixelShuffle_ICNR <- function(ni, nf = NULL, scale = 2, blur = FALSE,
     norm_type = as.integer(norm_type),
     act_cls = act_cls
   )
+
+  if(is.null(args$nf))
+    args$nf <- NULL
+
+  do.call(fastai2$layers$PixelShuffle_ICNR, args)
 
 }
 
@@ -735,6 +755,12 @@ SimpleCNN <- function(filters, kernel_szs = NULL, strides = NULL, bn = TRUE) {
     bn = bn
   )
 
+  if(is.null(args$kernel_szs))
+    args$kernel_szs <- NULL
+
+  if(is.null(args$strides))
+    args$strides <- NULL
+
   do.call(fastai2$layers$SimpleCNN, args)
 
 }
@@ -748,7 +774,7 @@ SimpleCNN <- function(filters, kernel_szs = NULL, strides = NULL, bn = TRUE) {
 #' @param act_cls activation
 #' @return None
 #' @export
-SEModule <- function(ch, reduction, act_cls = nn$ReLU) {
+SEModule <- function(ch, reduction, act_cls = nn()$ReLU) {
 
   fastai2$layers$SEModule(
     ch = ch,
@@ -777,7 +803,7 @@ swish <- function(x, inplace = FALSE) {
 
 #' @title Swish
 #'
-#' @description Same as nn$Module, but no need for subclasses to call super()$__init__
+#' @description Same as nn()$Module, but no need for subclasses to call super()$__init__
 #' @param ... parameters to pass
 #' @return None
 #' @export
@@ -829,9 +855,13 @@ mish <- function(x) {
 #' @export
 Mish_ <- function(...) {
 
-  fastai2$layers$Mish(
-    ...
-  )
+  args = list()
+
+  if(length(args) > 0 ) {
+    do.call(fastai2$layers$Mish, args)
+  } else {
+    fastai2$layers$Mish
+  }
 
 }
 
