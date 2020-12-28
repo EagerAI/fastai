@@ -73,6 +73,35 @@ cnn_learner <- function(dls, arch, loss_func = NULL, pretrained = TRUE, cut = NU
     moms = moms
   )
 
+ if(is.null(args$loss_func))
+   args$loss_func <- NULL
+
+ if(is.null(args$cut))
+   args$cut <- NULL
+
+ if(is.null(args$splitter))
+   args$splitter <- NULL
+
+ if(is.null(args$y_range))
+   args$y_range <- NULL
+
+ if(is.null(args$config))
+   args$config <- NULL
+
+ if(is.null(args$n_out))
+   args$n_out <- NULL
+
+ if(is.null(args$cbs))
+   args$cbs <- NULL
+
+ if(is.null(args$metrics))
+   args$metrics <- NULL
+
+ if(is.null(args$path))
+   args$path <- NULL
+
+ if(is.null(args$wd))
+   args$path <- NULL
 
  do.call(vision()$all$cnn_learner,args)
 
@@ -147,7 +176,7 @@ fit.fastai.learner.Learner <- function(object, ...) {
 #' @return None
 #' @export
 cnn_config <- function(cut = NULL, pretrained = TRUE, n_in = 3,
-                       init = nn$init$kaiming_normal_, custom_head = NULL,
+                       init = nn()$init$kaiming_normal_, custom_head = NULL,
                        concat_pool = TRUE, lin_ftrs = NULL, ps = 0.5,
                        bn_final = FALSE, lin_first = FALSE, y_range = NULL) {
 
@@ -164,6 +193,18 @@ cnn_config <- function(cut = NULL, pretrained = TRUE, n_in = 3,
     lin_first = lin_first,
     y_range = y_range
   )
+
+  if(is.null(args$cut))
+    args$cut <- NULL
+
+  if(is.null(args$custom_head))
+    args$custom_head <- NULL
+
+  if(is.null(args$lin_ftrs))
+    args$lin_ftrs <- NULL
+
+  if(is.null(args$y_range))
+    args$y_range <- NULL
 
   do.call(vision()$all$cnn_config, args)
 
@@ -190,7 +231,7 @@ cnn_config <- function(cut = NULL, pretrained = TRUE, n_in = 3,
 #' @return None
 #' @export
 create_cnn_model <- function(arch, n_out, cut = NULL, pretrained = TRUE,
-                             n_in = 3, init = nn$init$kaiming_normal_,
+                             n_in = 3, init = nn()$init$kaiming_normal_,
                              custom_head = NULL, concat_pool = TRUE,
                              lin_ftrs = NULL, ps = 0.5, bn_final = FALSE,
                              lin_first = FALSE, y_range = NULL) {
@@ -210,6 +251,18 @@ create_cnn_model <- function(arch, n_out, cut = NULL, pretrained = TRUE,
     lin_first = lin_first,
     y_range = y_range
   )
+
+  if(is.null(args$cut))
+    args$cut <- NULL
+
+  if(is.null(args$custom_head))
+    args$custom_head <- NULL
+
+  if(is.null(args$lin_ftrs))
+    args$lin_ftrs <- NULL
+
+  if(is.null(args$y_range))
+    args$y_range <- NULL
 
   do.call(vision()$all$create_cnn_model, args)
 

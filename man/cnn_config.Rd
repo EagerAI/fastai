@@ -8,7 +8,7 @@ cnn_config(
   cut = NULL,
   pretrained = TRUE,
   n_in = 3,
-  init = nn$init$kaiming_normal_,
+  init = nn()$init$kaiming_normal_,
   custom_head = NULL,
   concat_pool = TRUE,
   lin_ftrs = NULL,
