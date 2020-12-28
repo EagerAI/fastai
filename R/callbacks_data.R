@@ -75,12 +75,17 @@ WeightedDL <- function(dataset = NULL, bs = NULL, wgts = NULL, shuffle = FALSE,
   if(is.null(args$wgts))
     args$wgts <- NULL
 
-  if(is.null(args$num_workers) & os()=="linux")
-    args$num_workers<- NULL
-  else if (!is.null(args$num_workers) & os()=="linux")
-    args$num_workers <- as.integer(args$num_workers)
-  else
-    args$num_workers <- 0L
+  if(os()=='windows' & is.null(args$num_workers)) {
+    args$num_workers = 0L
+  }
+
+  if(os()=='mac' & is.null(args$num_workers)) {
+    args$num_workers = 0L
+  }
+
+  if(!is.null(args$num_workers)){
+    args$num_workers = as.integer(args$num_workers)
+  }
 
   if(is.null(args$batch_size))
     args$batch_size <- NULL
@@ -156,12 +161,17 @@ PartialDL <- function(dataset = NULL, bs = NULL, partial_n = NULL, shuffle = FAL
   if(is.null(args$partial_n))
     args$partial_n <- NULL
 
-  if(is.null(args$num_workers) & os()=="linux")
-    args$num_workers<- NULL
-  else if (!is.null(args$num_workers) & os()=="linux")
-    args$num_workers <- as.integer(args$num_workers)
-  else
-    args$num_workers <- 0L
+  if(os()=='windows' & is.null(args$num_workers)) {
+    args$num_workers = 0L
+  }
+
+  if(os()=='mac' & is.null(args$num_workers)) {
+    args$num_workers = 0L
+  }
+
+  if(!is.null(args$num_workers)){
+    args$num_workers = as.integer(args$num_workers)
+  }
 
   if(is.null(args$batch_size))
     args$batch_size <- NULL

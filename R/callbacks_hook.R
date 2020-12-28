@@ -47,19 +47,26 @@ Hook <- function(m, hook_func, is_forward = TRUE, detach = TRUE, cpu = FALSE, ga
 HookCallback <- function(modules = NULL, every = NULL, remove_end = TRUE,
                          is_forward = TRUE, detach = TRUE, cpu = TRUE) {
 
-  args <- list(
-    modules = modules,
-    every = every,
-    remove_end = remove_end,
-    is_forward = is_forward,
-    detach = detach,
-    cpu = cpu
-  )
 
-  if(is.null(args$modules))
+
+  if(is.null(args$modules)) {
     fastai2$callback$hook$HookCallback
-  else
+  } else {
+    args <- list(
+      modules = modules,
+      every = every,
+      remove_end = remove_end,
+      is_forward = is_forward,
+      detach = detach,
+      cpu = cpu
+    )
+
+    if(!is.null(args$every))
+      args$every <- NULL
+
     do.call(fastai2$callback$hook$HookCallback,args)
+  }
+
 
 }
 

@@ -34,6 +34,12 @@ WandbCallback <- function(log = "gradients", log_preds = TRUE, log_model = TRUE,
     reorder = reorder
   )
 
+  if(is.null(args$dataset_name))
+    args$dataset_name <- NULL
+
+  if(is.null(args$valid_dl))
+    args$valid_dl <- NULL
+
   do.call(fastai2$callback$wandb()$WandbCallback, args)
 
 }
@@ -55,13 +61,34 @@ WandbCallback <- function(log = "gradients", log_preds = TRUE, log_model = TRUE,
 #' @export
 login <- function(anonymous = NULL, key = NULL, relogin = NULL, host = NULL, force = NULL) {
 
- wandb()$login(
+ args = list(
     anonymous = anonymous,
     key = key,
     relogin = relogin,
     host = host,
     force = force
   )
+
+ if(is.null(args$anonymous))
+   args$anonymous <- NULL
+
+
+ if(is.null(args$key))
+   args$key <- NULL
+
+
+ if(is.null(args$relogin))
+   args$relogin <- NULL
+
+
+ if(is.null(args$host))
+   args$host <- NULL
+
+
+ if(is.null(args$force))
+   args$force <- NULL
+
+ do.call(wandb()$login, args)
 
 }
 
@@ -160,7 +187,7 @@ CudaCallback <- function(device = NULL) {
 HookCallback <- function(modules = NULL, every = NULL, remove_end = TRUE,
                          is_forward = TRUE, detach = TRUE, cpu = TRUE) {
 
-  fastai2$callback$all$HookCallback(
+  args = list(
     modules = modules,
     every = every,
     remove_end = remove_end,
@@ -168,6 +195,14 @@ HookCallback <- function(modules = NULL, every = NULL, remove_end = TRUE,
     detach = detach,
     cpu = cpu
   )
+
+  if(is.null(args$modules))
+    args$modules <- NULL
+
+  if(is.null(args$every))
+    args$every <- NULL
+
+  do.call(fastai2$callback$all$HookCallback, args)
 
 }
 
@@ -183,11 +218,16 @@ HookCallback <- function(modules = NULL, every = NULL, remove_end = TRUE,
 #' @export
 TrackerCallback <- function(monitor = "valid_loss", comp = NULL, min_delta = 0.0) {
 
-  fastai2$callback$all$TrackerCallback(
+  args = list(
     monitor = monitor,
     comp = comp,
     min_delta = min_delta
   )
+
+  if(is.null(args$comp))
+    args$comp <- NULL
+
+  do.call(fastai2$callback$all$TrackerCallback, args)
 
 }
 
@@ -246,7 +286,7 @@ ReduceLROnPlateau <- function(...) {
 FetchPredsCallback <- function(ds_idx = 1, dl = NULL, with_input = FALSE,
                                with_decoded = FALSE, cbs = NULL, reorder = TRUE) {
 
-  fastai2$callback$all$FetchPredsCallback(
+  args = list(
     ds_idx = as.integer(ds_idx),
     dl = dl,
     with_input = with_input,
@@ -254,6 +294,14 @@ FetchPredsCallback <- function(ds_idx = 1, dl = NULL, with_input = FALSE,
     cbs = cbs,
     reorder = reorder
   )
+
+  if(is.null(args$dl))
+    args$dl <- NULL
+
+  if(is.null(args$cbs))
+    args$cbs <- NULL
+
+  do.call(fastai2$callback$all$FetchPredsCallback, args)
 
 }
 
@@ -304,13 +352,21 @@ TrainEvalCallback <- function(...) {
 GatherPredsCallback <- function(with_input = FALSE, with_loss = FALSE,
                                 save_preds = NULL, save_targs = NULL, concat_dim = 0) {
 
-  fastai2$callback$all$GatherPredsCallback(
+  args = list(
     with_input = with_input,
     with_loss = with_loss,
     save_preds = save_preds,
     save_targs = save_targs,
     concat_dim = as.integer(concat_dim)
   )
+
+  if(is.null(args$save_preds))
+    args$save_preds <- NULL
+
+  if(is.null(args$save_targs))
+    args$save_targs <- NULL
+
+  do.call(fastai2$callback$all$GatherPredsCallback, args)
 
 }
 
