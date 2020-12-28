@@ -19,12 +19,17 @@ AudioBlock <- function(cache_folder = NULL, sample_rate = 16000,
   if(missing(cache_folder)) {
     fastaudio()$core$config$AudioBlock
   } else {
-    fastaudio()$core$config$AudioBlock(
+    args = list(
       cache_folder = cache_folder,
       sample_rate = as.integer(sample_rate),
       force_mono = force_mono,
       crop_signal_to = crop_signal_to
     )
+
+    if(is.null(args$crop_signal_to))
+      args$crop_signal_to <- NULL
+
+    do.call(fastaudio()$core$config$AudioBlock, args)
   }
 
 }
@@ -44,12 +49,17 @@ AudioBlock <- function(cache_folder = NULL, sample_rate = 16000,
 AudioBlock_from_folder <- function(path, sample_rate = 16000,
                                    force_mono = TRUE, crop_signal_to = NULL) {
 
-  fastaudio()$core$config$AudioBlock$from_folder(
+  args = list(
     path = path,
     sample_rate = as.integer(sample_rate),
     force_mono = force_mono,
     crop_signal_to = crop_signal_to
   )
+
+  if(is.null(args$crop_signal_to))
+    args$crop_signal_to <- NULL
+
+  do.call(fastaudio()$core$config$AudioBlock$from_folder, args)
 
 }
 
@@ -71,7 +81,7 @@ preprocess_audio_folder <- function(path, folders = NULL, output_dir = NULL,
                                     sample_rate = 16000, force_mono = TRUE,
                                     crop_signal_to = NULL) {
 
-  fastaudio()$core$config$preprocess_audio_folder(
+  args = list(
     path = path,
     folders = folders,
     output_dir = output_dir,
@@ -79,6 +89,18 @@ preprocess_audio_folder <- function(path, folders = NULL, output_dir = NULL,
     force_mono = force_mono,
     crop_signal_to = crop_signal_to
   )
+
+  if(is.null(args$folders))
+    args$folders <- NULL
+
+  if(is.null(args$output_dir))
+    args$output_dir <- NULL
+
+  if(is.null(args$crop_signal_to))
+    args$crop_signal_to <- NULL
+
+
+  do.call(fastaudio()$core$config$preprocess_audio_folder, args)
 
 }
 
@@ -96,11 +118,17 @@ preprocess_audio_folder <- function(path, folders = NULL, output_dir = NULL,
 #' @export
 PreprocessAudio <- function(sample_rate = 16000, force_mono = TRUE, crop_signal_to = NULL) {
 
-  fastaudio()$core$config$PreprocessAudio(
+  args = list(
     sample_rate = as.integer(sample_rate),
     force_mono = force_mono,
     crop_signal_to = crop_signal_to
   )
+
+  if(is.null(args$crop_signal_to))
+    args$crop_signal_to <- NULL
+
+  do.call(fastaudio()$core$config$PreprocessAudio, args)
+
 
 }
 
@@ -149,9 +177,21 @@ BasicMelSpectrogram <- function(sample_rate = 16000, n_fft = 400, win_length = N
 
   if(!is.null(args[['win_length']]))
     args[['win_length']] = as.integer(args[['win_length']])
+  else
+    args[['win_length']] <- NULL
 
   if(!is.null(args[['hop_length']]))
     args[['hop_length']] = as.integer(args[['hop_length']])
+  else
+    args[['hop_length']] <- NULL
+
+  if(!is.null(args[['f_max']]))
+    args[['f_max']] = as.integer(args[['f_max']])
+  else
+    args[['f_max']] <- NULL
+
+  if(is.null(args$wkwargs))
+    args$wkwargs <- NULL
 
   do.call(fastaudio()$core$config$AudioConfig$BasicMelSpectrogram, args)
 
@@ -171,7 +211,7 @@ BasicMelSpectrogram <- function(sample_rate = 16000, n_fft = 400, win_length = N
 BasicMFCC <- function(sample_rate = 16000, n_mfcc = 40, dct_type = 2, norm = "ortho",
                       log_mels = FALSE, melkwargs = NULL) {
 
-  fastaudio()$core$config$AudioConfig$BasicMFCC(
+  args = list(
     sample_rate = as.integer(sample_rate),
     n_mfcc = as.integer(n_mfcc),
     dct_type = as.integer(dct_type),
@@ -179,6 +219,11 @@ BasicMFCC <- function(sample_rate = 16000, n_mfcc = 40, dct_type = 2, norm = "or
     log_mels = log_mels,
     melkwargs = melkwargs
   )
+
+  if(is.null(args$melkwargs))
+    args$melkwargs <- NULL
+
+  do.call(fastaudio()$core$config$AudioConfig$BasicMFCC, args)
 
 }
 
@@ -202,7 +247,7 @@ BasicSpectrogram <- function(n_fft = 400, win_length = NULL, hop_length = NULL,
                              pad = 0, window_fn = torch()$hann_window, power = 2.0,
                              normalized = FALSE, wkwargs = NULL, mel = FALSE, to_db = TRUE) {
 
-  fastaudio()$core$config$AudioConfig$BasicSpectrogram(
+  args = list(
     n_fft = as.integer(n_fft),
     win_length = win_length,
     hop_length = hop_length,
@@ -214,6 +259,21 @@ BasicSpectrogram <- function(n_fft = 400, win_length = NULL, hop_length = NULL,
     mel = mel,
     to_db = to_db
   )
+
+  if(!is.null(args[['win_length']]))
+    args[['win_length']] = as.integer(args[['win_length']])
+  else
+    args[['win_length']] <- NULL
+
+  if(!is.null(args[['hop_length']]))
+    args[['hop_length']] = as.integer(args[['hop_length']])
+  else
+    args[['hop_length']] <- NULL
+
+  if(is.null(args$wkwargs))
+    args$wkwargs <- NULL
+
+  do.call(fastaudio()$core$config$AudioConfig$BasicSpectrogram, args)
 
 }
 
@@ -260,6 +320,16 @@ Voice <- function(sample_rate = 16000, n_fft = 1024, win_length = NULL, hop_leng
 
   if(!is.null(args[['win_length']]))
     args[['win_length']] = as.integer(args[['win_length']])
+  else
+    args[['win_length']] <- NULL
+
+  if(!is.null(args[['hop_length']]))
+    args[['hop_length']] = as.integer(args[['hop_length']])
+  else
+    args[['hop_length']] <- NULL
+
+  if(is.null(args$wkwargs))
+    args$wkwargs <- NULL
 
   do.call(fastaudio()$core$config$AudioConfig$Voice, args)
 

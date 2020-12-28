@@ -25,11 +25,16 @@ get_audio_files <- function(path, recurse = TRUE, folders = NULL) {
   if(missing(path)) {
     fastaudio()$core$signal$get_audio_files
   } else {
-    fastaudio()$core$signal$get_audio_files(
+    args = list(
       path = path,
       recurse = recurse,
       folders = folders
     )
+
+    if(is.null(args$folders))
+      args$folders <- NULL
+
+    do.call(fastaudio()$core$signal$get_audio_files, args)
   }
 
 }
@@ -47,11 +52,16 @@ get_audio_files <- function(path, recurse = TRUE, folders = NULL) {
 #' @export
 AudioGetter <- function(suf = "", recurse = TRUE, folders = NULL) {
 
-  fastaudio()$core$signal$AudioGetter(
+  args = list(
     suf = suf,
     recurse = recurse,
     folders = folders
   )
+
+  if(is.null(args$folders))
+    args$folders <- NULL
+
+  do.call(fastaudio()$core$signal$AudioGetter, args)
 
 }
 
@@ -84,10 +94,15 @@ tar_extract_at_filename <- function(fname, dest) {
 #' @export
 AudioTensor <- function(x, sr = NULL) {
 
-  fastaudio()$core$signal$AudioTensor(
+  args = list(
     x = x,
     sr = sr
   )
+
+  if(is.null(args$sr))
+    args$sr <- NULL
+
+  do.call(fastaudio()$core$signal$AudioTensor, args)
 
 }
 
@@ -129,6 +144,22 @@ AudioTensor_create <- function(fn, cache_folder = NULL, out = NULL,
       encodinginfo = encodinginfo,
       filetype = filetype
     )
+
+    if(is.null(args$cache_folder))
+      args$cache_folder <- NULL
+
+    if(is.null(args$out))
+      args$out <- NULL
+
+    if(is.null(args$signalinfo))
+      args$signalinfo <- NULL
+
+    if(is.null(args$encodinginfo))
+      args$encodinginfo <- NULL
+
+    if(is.null(args$filetype))
+      args$filetype <- NULL
+
 
     do.call(fastaudio()$core$signal$AudioTensor$create, args)
   }

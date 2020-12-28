@@ -34,13 +34,21 @@ ResizeSignal <- function(duration, pad_mode = AudioPadType()$Zeros) {
 #' @export
 SignalShifter <- function(p = 0.5, max_pct = 0.2, max_time = NULL, direction = 0, roll = FALSE) {
 
-  fastaudio()$augment$signal$SignalShifter(
+  args = list(
     p = p,
     max_pct = max_pct,
     max_time = max_time,
     direction = as.integer(direction),
     roll = roll
   )
+
+  if(is.null(args$max_time))
+    args$max_time <- NULL
+  else
+    args$max_time <- as.integer(args$max_time)
+
+
+  do.call(fastaudio()$augment$signal$SignalShifter, args)
 
 }
 
@@ -143,8 +151,20 @@ DownmixMono <- function(enc = NULL, dec = NULL, split_idx = NULL, order = NULL) 
     order = order
   )
 
+  if(is.null(args$enc))
+    args$enc <- NULL
+
+  if(is.null(args$dec))
+    args$dec <- NULL
+
+  if(is.null(args$split_idx))
+    args$split_idx <- NULL
+
+  if(is.null(args$order))
+    args$order <- NULL
+
   if(!is.null(args[['split_idx']])) {
-    args[['split_idx']] = as.integer(args[['split_idx']])
+    args[['split_idx']] = as.integer(unlist(args[['split_idx']]))
   }
 
   do.call(fastaudio()$augment$signal$DownmixMono, args)

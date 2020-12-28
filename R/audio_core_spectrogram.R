@@ -65,6 +65,9 @@ AudioToMFCC <- function(sample_rate = 16000, n_mfcc = 40, dct_type = 2,
     melkwargs = melkwargs
   )
 
+  if(is.null(args$melkwargs))
+    args$melkwargs <- NULL
+
   strings = c('sample_rate', 'n_fft', 'hop_length', 'win_length', 'pad', 'n_mels')
 
   for (i in 1:length(strings)) {
