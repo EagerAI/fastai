@@ -2955,7 +2955,22 @@ icevision_VerticalFlip <- function(always_apply = FALSE, p = 0.5) {
 }
 
 
+#' @title Resize_and_pad
+#'
+#'
+#' @param size size
+#' @param pad pad
+#' @return None
+#' @export
+icevision_resize_and_pad <- function(size,
+                                     pad = partial(icevision_PadIfNeeded, border_mode=0, value=c(124L, 116L, 104L))) {
 
+  icevision()$tfms$albumentations$resize_and_pad(
+    size = as.integer(size),
+    pad = pad
+  )
+
+}
 
 
 
