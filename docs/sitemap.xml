@@ -979,6 +979,9 @@
     <loc>https://henry090.github.io/fastai//reference/icevision_CLAHE.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_ClassMap.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/icevision_CoarseDropout.html</loc>
   </url>
   <url>
@@ -1193,6 +1196,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/icevision_Resize.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/icevision_resize_and_pad.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/icevision_RGBShift.html</loc>
@@ -1745,6 +1751,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/parsers_SizeMixin.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/parsers_voc.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/partial.html</loc>
