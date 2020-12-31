@@ -49,7 +49,7 @@ faster_rcnn_model <- function(num_classes, backbone = NULL, remove_internal_tran
     args$backbone <- NULL
 
 
-  do.call(icevision()$all$faster_rcnn$model, args)
+  do.call(icevision()$faster_rcnn$model, args)
 
 }
 
@@ -105,7 +105,7 @@ mask_rcnn_model <- function(num_classes, backbone = NULL, remove_internal_transf
   if(is.null(args$backbone))
     args$backbone <- NULL
 
-  do.call(icevision()$all$mask_rcnn$model, args)
+  do.call(icevision()$mask_rcnn$model, args)
 
 }
 
@@ -158,7 +158,7 @@ efficientdet_model <- function(model_name, num_classes, img_size, pretrained = T
     pretrained = pretrained
   )
 
-  do.call(icevision()$all$efficientdet$model, args)
+  do.call(icevision()$efficientdet$model, args)
 
 }
 

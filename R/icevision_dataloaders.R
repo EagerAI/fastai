@@ -39,7 +39,7 @@ faster_rcnn_train_dl <- function(dataset, batch_tfms = NULL, ...) {
     args$num_workers = as.integer(args$num_workers)
   }
 
-  do.call(icevision()$all$faster_rcnn$train_dl, args)
+  do.call(icevision()$faster_rcnn$train_dl, args)
 
 }
 
@@ -79,7 +79,7 @@ faster_rcnn_valid_dl <- function(dataset, batch_tfms = NULL, ...) {
     args$num_workers = as.integer(args$num_workers)
   }
 
-  do.call(icevision()$all$faster_rcnn$valid_dl, args)
+  do.call(icevision()$faster_rcnn$valid_dl, args)
 
 }
 
@@ -123,7 +123,7 @@ efficientdet_train_dl <- function(dataset, batch_tfms = NULL, ...) {
     args$num_workers = as.integer(args$num_workers)
   }
 
-  do.call(icevision()$all$efficientdet$train_dl, args)
+  do.call(icevision()$efficientdet$train_dl, args)
 
 }
 
@@ -163,7 +163,7 @@ efficientdet_valid_dl <- function(dataset, batch_tfms = NULL, ...) {
     args$num_workers = as.integer(args$num_workers)
   }
 
-  do.call(icevision()$all$efficientdet$valid_dl, args)
+  do.call(icevision()$efficientdet$valid_dl, args)
 
 }
 
@@ -209,7 +209,7 @@ mask_rcnn_train_dl <- function(dataset, batch_tfms = NULL, ...) {
     args$num_workers = as.integer(args$num_workers)
   }
 
-  do.call(icevision()$all$mask_rcnn$train_dl, args)
+  do.call(icevision()$mask_rcnn$train_dl, args)
 
 }
 
@@ -249,7 +249,7 @@ mask_rcnn_valid_dl <- function(dataset, batch_tfms = NULL, ...) {
     args$num_workers = as.integer(args$num_workers)
   }
 
-  do.call(icevision()$all$mask_rcnn$valid_dl, args)
+  do.call(icevision()$mask_rcnn$valid_dl, args)
 
 }
 

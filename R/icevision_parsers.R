@@ -139,12 +139,46 @@ parsers_IsCrowdsMixin = function(...) {
   icevision()$parsers$mixins$IsCrowdsMixin(...)
 }
 
+############################################################################
+
+#' @title ClassMap
+#'
+#' @description Utility class for mapping between class name and id.
+#'
+#'
+#' @param classes classes
+#' @param background background
+#' @return Python dictionary
+#' @export
+icevision_ClassMap <- function(classes, background = 0) {
+
+  icevision()$ClassMap(
+    classes = classes,
+    background = as.integer(background)
+  )
+
+}
 
 
+#' @title Voc parser
+#'
+#'
+#' @param annotations_dir annotations_dir
+#' @param images_dir images_dir
+#' @param class_map class_map
+#' @param masks_dir masks_dir
+#' @return None
+#' @export
+parsers_voc <- function(annotations_dir, images_dir, class_map, masks_dir = NULL) {
 
+  icevision()$parsers$voc(
+    annotations_dir = annotations_dir,
+    images_dir = images_dir,
+    class_map = class_map,
+    masks_dir = masks_dir
+  )
 
-
-
+}
 
 
 

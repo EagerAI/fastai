@@ -46,6 +46,9 @@ icevision_aug_tfms <- function(size, presize = NULL,
     pad = pad
   )
 
+  if(!is.null(args$presize))
+    args$presize <- as.integer(args$presize)
+
   do.call(icevision()$tfms$albumentations$aug_tfms, args)
 
 }

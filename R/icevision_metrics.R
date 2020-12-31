@@ -20,7 +20,7 @@ COCOMetric <- function(metric_type = 'bbox', print_summary = FALSE, show_pbar = 
     show_pbar = show_pbar
   )
 
-  do.call(icevision()$all$COCOMetric, args)
+  do.call(icevision()$COCOMetric, args)
 
 }
 
