@@ -35,4 +35,5 @@ h2z-preds/
 ^.*__pycache__$
 imdb_sample/
 adult_sample/
+odFridgeObjects/
 
