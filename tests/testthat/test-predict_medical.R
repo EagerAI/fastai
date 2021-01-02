@@ -18,6 +18,7 @@ test_succeeds('prepare dataloader and model', {
                            batch_tfms = aug_transforms(size = 224))
 
   dls = pneumothorax %>% dataloaders(as.matrix(df))
+  dls %>% show_batch()
   learn = cnn_learner(dls, resnet34(), metrics = accuracy)
 })
 
