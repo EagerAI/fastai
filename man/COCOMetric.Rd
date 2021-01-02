@@ -4,7 +4,11 @@
 \alias{COCOMetric}
 \title{COCOMetric}
 \usage{
-COCOMetric(metric_type = "bbox", print_summary = FALSE, show_pbar = FALSE)
+COCOMetric(
+  metric_type = COCOMetricType()$bbox,
+  print_summary = FALSE,
+  show_pbar = FALSE
+)
 }
 \arguments{
 \item{metric_type}{Dependent on the task you're solving.}

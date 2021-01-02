@@ -53,7 +53,7 @@ crap <- function() try(reticulate::import_from_path('fastaibuilt', path = python
 #' @title Icevision module
 #'
 #' @return None
-icevision <- function() try(reticulate::import("icevision"), TRUE)
+icevision <- function() try(reticulate::import("icevision.all", convert = TRUE), TRUE)
 
 #' @title Ignite module
 #'

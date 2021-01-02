@@ -13,7 +13,7 @@
 install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrite = FALSE,
                            extra_pkgs = c('kaggle', 'transformers', 'pytorch_lightning', 'timm',
                                           'catalyst', 'ignite', 'fastinference[interp]', 'shap',
-                                          'blurr'), skip_git_pkgs = FALSE) {
+                                          'blurr', 'icevision[all]'), skip_git_pkgs = FALSE) {
 
   required_py_pkgs <- c('IPython', 'torch', 'torchvision', 'fastai',
                        'pydicom', 'kornia', 'cv2',
@@ -144,6 +144,13 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   if (!length(required_py_pkgs) == 0) {
 
     if(py_av) {
+
+      # keep current version due to:
+      # ERROR: Could not build wheels for opencv-python-headless which use PEP 517 and cannot be installed directly
+      # Failed to build opencv-python-headless
+      if(!length(required_py_pkgs) == 0) {
+        required_py_pkgs = append(required_py_pkgs,'opencv-python-headless==4.4.0.46')
+      }
 
       if (os %in% 'linux' & !length(required_py_pkgs) == 0) {
         if(os %in% 'linux' & gpu & cuda_version %in% '9.2' & torch_r & !length(required_py_pkgs) == 0) {

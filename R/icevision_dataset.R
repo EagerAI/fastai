@@ -23,7 +23,7 @@ icevision_Dataset <- function(records, tfm = NULL) {
   if(is.null(args$tfm))
     args$tfm <- NULL
 
-  do.call(icevision()$data$dataset$Dataset, args)
+  do.call(icevision()$Dataset, args)
 
 }
 
@@ -50,7 +50,7 @@ icevision_Dataset_from_images <- function(images, tfm = NULL, ...) {
   if(is.null(args$tfm))
     args$tfm <- NULL
 
-  do.call(icevision()$data$dataset$Dataset$from_images, args)
+  do.call(icevision()$Dataset$from_images, args)
 
 }
 
