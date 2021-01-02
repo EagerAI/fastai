@@ -369,6 +369,13 @@ icevision_PadIfNeeded <- function(min_height = 1024, min_width = 1024, pad_heigh
 #' @export
 icevision_Adapter <- function(tfms) {
 
+  tfms_ = tfms
+  tfms = list()
+
+  for (i in 1:length(tfms_)) {
+    tfms = append(tfms, tfms_[[i]])
+  }
+
   icevision()$tfms$A$Adapter(
     tfms = tfms
   )

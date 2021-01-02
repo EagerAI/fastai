@@ -12,7 +12,7 @@
 #' @param show_pbar If `TRUE` shows pbar when preparing the data for evaluation.
 #' @return None
 #' @export
-COCOMetric <- function(metric_type = 'bbox', print_summary = FALSE, show_pbar = FALSE) {
+COCOMetric <- function(metric_type = COCOMetricType()$bbox, print_summary = FALSE, show_pbar = FALSE) {
 
   args <- list(
     metric_type = metric_type,
