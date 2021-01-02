@@ -31,14 +31,7 @@ show_samples <- function(samples, class_map = NULL, denormalize_fn = denormalize
     show = show
   )
 
-  if(is.list(args$samples)) {
-    temp = args$samples
-    list_temp = list()
-    for (i in 1:length(temp)) {
-      list_temp <- append(list_temp, reticulate::r_to_py(list(temp[[i]])) )
-    }
-    args$samples <- list_temp
-  }
+  args$samples <- reticulate::r_to_py(args$samples)
 
   if(is.null(args$class_map))
     args$class_map <- NULL
