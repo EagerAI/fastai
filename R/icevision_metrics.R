@@ -24,4 +24,19 @@ COCOMetric <- function(metric_type = 'bbox', print_summary = FALSE, show_pbar = 
 
 }
 
+#' @title COCOMetricType
+#'
+#' @description Available options for `COCOMetric`
+#' @return None
+#'
+#' @export
+COCOMetricType <- function() {
+
+  icevision()$COCOMetricType
+
+}
+
+
+
+
 

@@ -369,7 +369,7 @@ icevision_PadIfNeeded <- function(min_height = 1024, min_width = 1024, pad_heigh
 #' @export
 icevision_Adapter <- function(tfms) {
 
-  icevision()$tfms$albumentations$Adapter(
+  icevision()$tfms$A$Adapter(
     tfms = tfms
   )
 
