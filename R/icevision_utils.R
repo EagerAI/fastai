@@ -1,6 +1,6 @@
 
 
-#' @title show_samples
+#' @title Show_samples
 #'
 #'
 #' @param samples samples

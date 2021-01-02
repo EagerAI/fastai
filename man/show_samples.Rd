@@ -2,7 +2,7 @@
 % Please edit documentation in R/icevision_utils.R
 \name{show_samples}
 \alias{show_samples}
-\title{show_samples}
+\title{Show_samples}
 \usage{
 show_samples(
   samples,
@@ -42,5 +42,5 @@ show_samples(
 None
 }
 \description{
-show_samples
+Show_samples
 }
