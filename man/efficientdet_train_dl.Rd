@@ -2,7 +2,7 @@
 % Please edit documentation in R/icevision_dataloaders.R
 \name{efficientdet_train_dl}
 \alias{efficientdet_train_dl}
-\title{Faster RSNN train dataloader}
+\title{Efficientdet train dataloader}
 \usage{
 efficientdet_train_dl(dataset, batch_tfms = NULL, ...)
 }

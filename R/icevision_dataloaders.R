@@ -85,7 +85,7 @@ faster_rcnn_valid_dl <- function(dataset, batch_tfms = NULL, ...) {
 
 ##################################################  MaskRCNN train dataloader
 
-#' @title Faster RSNN train dataloader
+#' @title Efficientdet train dataloader
 #'
 #' @description A `DataLoader` with a custom `collate_fn` that batches items as required for training the model.
 #'
