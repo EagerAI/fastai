@@ -277,6 +277,9 @@
     <loc>https://henry090.github.io/fastai//reference/COCOMetric.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/COCOMetricType.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/CohenKappa.html</loc>
   </url>
   <url>
@@ -445,6 +448,9 @@
     <loc>https://henry090.github.io/fastai//reference/Delta.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/denormalize_imagenet.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/densenet121.html</loc>
   </url>
   <url>
@@ -520,10 +526,16 @@
     <loc>https://henry090.github.io/fastai//reference/EarlyStoppingCallback.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/efficientdet_infer_dl.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/efficientdet_learner.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/efficientdet_model.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/efficientdet_predict_dl.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/efficientdet_train_dl.html</loc>
@@ -577,10 +589,16 @@
     <loc>https://henry090.github.io/fastai//reference/fastaudio.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/faster_rcnn_infer_dl.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/faster_rcnn_learner.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/faster_rcnn_model.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/faster_rcnn_predict_dl.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/faster_rcnn_train_dl.html</loc>
@@ -1501,10 +1519,16 @@
     <loc>https://henry090.github.io/fastai//reference/mask_from_blur.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/mask_rcnn_infer_dl.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/mask_rcnn_learner.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/mask_rcnn_model.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/mask_rcnn_predict_dl.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/mask_rcnn_train_dl.html</loc>
@@ -2158,7 +2182,13 @@
     <loc>https://henry090.github.io/fastai//reference/show_images.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/show_preds.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/show_results.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/show_samples.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/sigmoid.html</loc>
