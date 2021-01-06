@@ -2043,6 +2043,10 @@ Icevision module has a great set of tools for object detection tasks:
 library(fastai)
 library(magrittr)
 
+# get file
+url = "https://cvbp.blob.core.windows.net/public/datasets/object_detection/odFridgeObjects.zip"
+download.file(url,destfile = odFridgeObjects.zip)
+
 # Parser
 class_map = icevision_ClassMap(c("milk_bottle", "carton", "can", "water_bottle"))
 parser = parsers_voc(annotations_dir= "odFridgeObjects/annotations/",
