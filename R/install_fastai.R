@@ -15,6 +15,11 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
                                           'catalyst', 'ignite', 'fastinference[interp]', 'shap',
                                           'blurr', 'icevision[all]'), skip_git_pkgs = FALSE) {
 
+  if(missing(version))
+    version2 = '2.1.5'
+  else
+    version2 = version
+
   required_py_pkgs <- c('IPython', 'torch', 'torchvision', 'fastai',
                        'pydicom', 'kornia', 'cv2',
                        'skimage')
@@ -41,6 +46,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   }
 
   required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastinference[interp]", "fastinference")
+  required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="icevision[all]", "icevision")
 
   res_ = list()
   for (i in 1:length(required_py_pkgs)) {
@@ -66,6 +72,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="shap", "shap==0.35.0")
   required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="blurr", "ohmeow-blurr")
   required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastinference", "fastinference[interp]")
+  required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="icevision", "icevision[all]")
 
   # git pkgs
   #required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastaudio", "git+https://github.com/fastaudio/fastaudio.git")
@@ -81,8 +88,11 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
 
   fastaudio_ = function()  {
 
+    dont_upgr = paste('fastaudio fastai',version2, sep = '==')
+
     if (!reticulate::py_module_available('fastaudio')) {
-      reticulate::py_install('fastaudio', pip = TRUE)
+
+      reticulate::py_install(dont_upgr, pip = TRUE)
 
     }
 
