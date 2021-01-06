@@ -5,8 +5,8 @@
 \title{Show_preds}
 \usage{
 show_preds(
-  samples,
-  preds,
+  predictions,
+  idx,
   class_map = NULL,
   denormalize_fn = denormalize_imagenet(),
   display_label = TRUE,
@@ -19,9 +19,9 @@ show_preds(
 )
 }
 \arguments{
-\item{samples}{samples}
+\item{predictions}{provide list of raw predictions}
 
-\item{preds}{preds}
+\item{idx}{image indices}
 
 \item{class_map}{class_map}
 

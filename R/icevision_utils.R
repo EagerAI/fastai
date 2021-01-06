@@ -2,8 +2,8 @@
 
 #' @title Show_samples
 #'
-#'
-#' @param samples samples
+#' @param dls dataloader
+#' @param idx image indices
 #' @param class_map class_map
 #' @param denormalize_fn denormalize_fn
 #' @param display_label display_label
@@ -15,12 +15,13 @@
 #' @param dpi dots per inch
 #' @return None
 #' @export
-show_samples <- function(samples, class_map = NULL, denormalize_fn = denormalize_imagenet(),
+show_samples <- function(dls, idx, class_map = NULL, denormalize_fn = denormalize_imagenet(),
                          display_label = TRUE, display_bbox = TRUE, display_mask = TRUE,
                          ncols = 1, figsize = NULL, show = FALSE, dpi = 100) {
 
   args = list(
-    samples = samples,
+    # we will add samples argument later, below
+    #samples = samples,
     class_map = class_map,
     denormalize_fn = denormalize_fn,
     display_label = display_label,
@@ -31,13 +32,17 @@ show_samples <- function(samples, class_map = NULL, denormalize_fn = denormalize
     show = show
   )
 
-  args$samples <- reticulate::r_to_py(args$samples)
-
   if(is.null(args$class_map))
     args$class_map <- NULL
 
   if(is.null(args$figsize))
     args$figsize <- NULL
+
+
+  if(missing(idx))
+    args$samples <- reticulate::r_to_py(lapply(1:4, function(x) dls[[x]]))
+  else
+    args$samples <- reticulate::r_to_py(lapply(idx, function(x) dls[[x]]))
 
   do.call(icevision()$show_samples, args)
 
@@ -75,8 +80,8 @@ denormalize_imagenet <- function(img) {
 #' @title Show_preds
 #'
 #'
-#' @param samples samples
-#' @param preds preds
+#' @param predictions provide list of raw predictions
+#' @param idx image indices
 #' @param class_map class_map
 #' @param denormalize_fn denormalize_fn
 #' @param display_label display_label
@@ -88,14 +93,15 @@ denormalize_imagenet <- function(img) {
 #' @return None
 #' @param dpi dots per inch
 #' @export
-show_preds <- function(samples, preds, class_map = NULL,
+show_preds <- function(predictions, idx, class_map = NULL,
                        denormalize_fn = denormalize_imagenet(), display_label = TRUE,
                        display_bbox = TRUE, display_mask = TRUE, ncols = 1,
                        figsize = NULL, show = FALSE, dpi = 100) {
 
   args <- list(
-    samples = samples,
-    preds = preds,
+    #add them later to this list
+    #samples = samples,
+    #preds = preds,
     class_map = class_map,
     denormalize_fn = denormalize_fn,
     display_label = display_label,
@@ -112,6 +118,29 @@ show_preds <- function(samples, preds, class_map = NULL,
 
   if(is.null(args$figsize))
     args$figsize <- NULL
+
+  # data extraction
+
+  if(missing(idx)) {
+    predicted = reticulate::r_to_py(lapply(1:10, function(x) predictions[[2]][[x]]))
+    actual = lapply(1:10, function(x) predictions[[1]][[x]][["img"]])
+  } else {
+    predicted = reticulate::r_to_py(lapply(idx, function(x) predictions[[2]][[x]]))
+    actual = lapply(idx, function(x) predictions[[1]][[x]][["img"]])
+  }
+
+  np = reticulate::import('numpy',convert = FALSE)
+
+  for(i in 0:length(predicted)) {
+    try(predicted[[i]][["labels"]] <- np$int32(predicted[[i]][["labels"]]), TRUE)
+  }
+
+  predicted <- reticulate::r_to_py(predicted)
+
+  args$samples <- actual
+  args$preds <- predicted
+
+  ## end
 
   do.call(icevision()$show_preds, args)
 

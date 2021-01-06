@@ -5,7 +5,8 @@
 \title{Show_samples}
 \usage{
 show_samples(
-  samples,
+  dls,
+  idx,
   class_map = NULL,
   denormalize_fn = denormalize_imagenet(),
   display_label = TRUE,
@@ -18,7 +19,9 @@ show_samples(
 )
 }
 \arguments{
-\item{samples}{samples}
+\item{dls}{dataloader}
+
+\item{idx}{image indices}
 
 \item{class_map}{class_map}
 
