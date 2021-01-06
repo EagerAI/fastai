@@ -1776,6 +1776,98 @@ coco_tdl %&gt;% show_batch(dpi = 200)</code></pre>
 )</code></pre>
 </div>
 </div>
+<div id="icevision" class="section level2">
+<h2 class="hasAnchor">
+<a href="#icevision" class="anchor"></a>Icevision</h2>
+<p>Icevision module has a great set of tools for object detection tasks:</p>
+<pre><code><a href="https://github.com/henry090/fastai">library(fastai)
+library(magrittr)
+
+# get file
+url = "https://cvbp.blob.core.windows.net/public/datasets/object_detection/odFridgeObjects.zip"
+download.file(url,destfile = odFridgeObjects.zip)
+
+# Parser
+class_map = icevision_ClassMap(c("milk_bottle", "carton", "can", "water_bottle"))
+parser = parsers_voc(annotations_dir= "odFridgeObjects/annotations/",
+                     images_dir= "odFridgeObjects/images",
+                     class_map=class_map)
+records = parser$parse()
+
+# Records
+train_records = records[[1]]
+valid_records = records[[2]]
+
+# Transforms
+train_tfms = icevision_Adapter(list(icevision_aug_tfms(size=384, presize=512),
+                               icevision_Normalize()))
+valid_tfms = icevision_Adapter(list(icevision_resize_and_pad(384),icevision_Normalize()))
+
+# Datasets
+train_ds = icevision_Dataset(train_records, train_tfms)
+valid_ds = icevision_Dataset(valid_records, valid_tfms)
+
+# See batch
+
+train_ds %&gt;% show_samples(idx=c(5,10,20,50,100,99), class_map=class_map,
+                          denormalize_fn=denormalize_imagenet(),ncols = 3)
+</a></code></pre>
+<p align="center">
+<img src="files/fridge.jpg" height="300" align="center" alt="Detection"></p>
+<p>Next, we create data loader and fastai training:</p>
+<pre><code># DataLoaders
+train_dl = efficientdet_train_dl(train_ds, batch_size=16, num_workers=4, shuffle=T)
+valid_dl = efficientdet_valid_dl(valid_ds, batch_size=16, num_workers=4, shuffle=F)
+
+# Model and Metrics
+model = efficientdet_model(model_name="tf_efficientdet_lite0", num_classes=5, img_size=384)
+metrics = list(COCOMetric())
+
+# Training using Fastai
+learn = efficientdet_learner(dls=list(train_dl, valid_dl), model=model, metrics=metrics)
+res = learn %&gt;% fine_tune(10, 1e-2, freeze_epochs=10)</code></pre>
+<pre><code>epoch   train_loss   valid_loss   COCOMetric   time  
+------  -----------  -----------  -----------  ------
+0       1.711512     1.264311     0.001845     00:05 
+1       1.568228     1.247132     0.009066     00:03 
+2       1.496242     1.222866     0.010658     00:03 
+3       1.433081     1.137174     0.030878     00:03 
+4       1.349961     1.060559     0.114889     00:03 
+5       1.260490     0.937396     0.180179     00:03 
+6       1.169536     0.998160     0.174759     00:04 
+7       1.097816     0.929107     0.208315     00:03 
+8       1.042755     0.821408     0.230876     00:03 
+9       0.987962     0.840447     0.297297     00:03 
+epoch   train_loss   valid_loss   COCOMetric   time  
+------  -----------  -----------  -----------  ------
+0       0.629509     0.715716     0.325585     00:04 
+1       0.599518     0.684150     0.382239     00:03 
+2       0.585920     0.631303     0.480204     00:04 
+3       0.554550     0.615111     0.516641     00:04 
+4       0.539868     0.622383     0.459974     00:04 
+5       0.521756     0.609013     0.556388     00:04 
+6       0.498118     0.491549     0.611895     00:04 
+7       0.477656     0.469396     0.685497     00:04 
+8       0.459495     0.407668     0.713956     00:04 
+9       0.446206     0.383890     0.729540     00:04 </code></pre>
+<p>Predictions:</p>
+<pre><code># Inference
+# DataLoader
+infer_dl = efficientdet_infer_dl(valid_ds, batch_size=8)
+# Predict
+res &lt;- efficientdet_predict_dl(model, infer_dl)
+
+show_preds(
+  res,
+  c(10,20,25,12,16),
+  class_map=class_map,
+  denormalize_fn=denormalize_imagenet(),
+  ncols=5,
+  figsize=c(19,10)
+)</code></pre>
+<p align="center">
+<img src="files/output.jpg" height="300" align="center" alt="Detection"></p>
+</div>
 <div id="kaggle-1" class="section level2">
 <h2 class="hasAnchor">
 <a href="#kaggle-1" class="anchor"></a>Kaggle</h2>

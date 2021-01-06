@@ -241,8 +241,8 @@
     </div>
 
     <pre class="usage"><span class='fu'>show_preds</span><span class='op'>(</span>
-  <span class='va'>samples</span>,
-  <span class='va'>preds</span>,
+  <span class='va'>predictions</span>,
+  <span class='va'>idx</span>,
   class_map <span class='op'>=</span> <span class='cn'>NULL</span>,
   denormalize_fn <span class='op'>=</span> <span class='fu'><a href='denormalize_imagenet.html'>denormalize_imagenet</a></span><span class='op'>(</span><span class='op'>)</span>,
   display_label <span class='op'>=</span> <span class='cn'>TRUE</span>,
@@ -258,12 +258,12 @@
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>samples</th>
-      <td><p>samples</p></td>
+      <th>predictions</th>
+      <td><p>provide list of raw predictions</p></td>
     </tr>
     <tr>
-      <th>preds</th>
-      <td><p>preds</p></td>
+      <th>idx</th>
+      <td><p>image indices</p></td>
     </tr>
     <tr>
       <th>class_map</th>
