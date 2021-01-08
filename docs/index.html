@@ -169,7 +169,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/henry090/fastai/">
-    <span class="fab fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -248,7 +248,7 @@
 <pre><code><a href="https://rdrr.io/pkg/reticulate/man/install_miniconda.html">reticulate::install_miniconda()
 reticulate::py_config()</a></code></pre>
 <p><strong>2. The dev version:</strong></p>
-<pre><code>devtools::install_github('henry090/fastai')</code></pre>
+<pre><code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">devtools::install_github('henry090/fastai')</a></code></pre>
 <p><strong>3. Later, you need to install the python module <code>fastai</code>:</strong></p>
 <pre><code><a href="reference/install_fastai.html">install_fastai(gpu = FALSE, cuda_version = '10.1', overwrite = FALSE)</a></code></pre>
 <p><strong>4. Restart RStudio!</strong></p>
@@ -1536,7 +1536,7 @@ ggpubr::ggarrange(p_[[1]], p_[[2]], p_[[3]], p_[[4]], labels = types)</code></pr
 <p align="center">
 <img src="files/dcm.png" height="500" align="center" alt="dicom"></p>
 <p>Let’s try a relatively complex example:</p>
-<pre><code><a href="https://ggplot2.tidyverse.org">library(ggplot2)
+<pre><code><a href="http://ggplot2.tidyverse.org">library(ggplot2)
 
 # crop parameters
 img = dcmread('hemorrhage.dcm')
@@ -1613,7 +1613,7 @@ data
 5 0.0000002089296 5.043181
 6 0.0000002511886 5.023340</code></pre>
 <p>Visualize:</p>
-<pre><code>highcharter::hchart(data, "line", highcharter::hcaes(y = losses, x = lr_rates ))</code></pre>
+<pre><code><a href="http://jkunst.com/highcharter/reference/hchart.html">highcharter::hchart(data, "line", highcharter::hcaes(y = losses, x = lr_rates ))</a></code></pre>
 <p align="center">
 <img src="files/lr.png" height="500" align="center" alt="Learning_rates"></p>
 </div>
@@ -1702,7 +1702,7 @@ tbbox = LabeledBBox(TensorBBox(bbox[[1]]), bbox[[2]])
 <pre><code>(#2) [TensorBBox([[ 91.3000,  77.9400, 102.4300,  82.4700],
         [ 27.5800,  77.6500,  40.7600,  82.3400]]),['tv', 'tv']]</code></pre>
 <p>Visualize:</p>
-<pre><code><a href="https://rdrr.io/r/base/library.html">library(imager)
+<pre><code><a href="http://dahtah.github.io/imager">library(imager)
 coco = imager::load.image(coco_fn)
 plot(coco,axes=F)
 
