@@ -20,7 +20,9 @@
 #' @export
 error_rate <- function(inp, targ, axis = -1) {
 
-  if(!missing(inp) && !missing(targ)) {
+  if(missing(inp) & missing(targ)) {
+    vision()$all$error_rate
+  } else {
     args <- list(
       inp = inp,
       targ = targ,
@@ -28,8 +30,6 @@ error_rate <- function(inp, targ, axis = -1) {
     )
 
     do.call(vision()$all$error_rate, args)
-  } else {
-    vision$all$error_rate
   }
 
 }
