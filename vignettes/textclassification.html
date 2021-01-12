@@ -14,56 +14,20 @@
 
 <title>RoBERTa</title>
 
-<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
-// be compatible with the behavior of Pandoc < 2.8).
-document.addEventListener('DOMContentLoaded', function(e) {
-  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
-  var i, h, a;
-  for (i = 0; i < hs.length; i++) {
-    h = hs[i];
-    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
-    a = h.attributes;
-    while (a.length > 0) h.removeAttribute(a[0].name);
-  }
-});
-</script>
-<style type="text/css">
-a.anchor-section {margin-left: 10px; visibility: hidden; color: inherit;}
-a.anchor-section::before {content: '#';}
-.hasAnchor:hover a.anchor-section {visibility: visible;}
-</style>
-<script>// Anchor sections v1.0 written by Atsushi Yasumoto on Oct 3rd, 2020.
+<script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
+// v0.0.1
+// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
+
 document.addEventListener('DOMContentLoaded', function() {
-  // Do nothing if AnchorJS is used
-  if (typeof window.anchors === 'object' && anchors.hasOwnProperty('hasAnchorJSLink')) {
-    return;
-  }
-
-  const h = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
-
-  // Do nothing if sections are already anchored
-  if (Array.from(h).some(x => x.classList.contains('hasAnchor'))) {
-    return null;
-  }
-
-  // Use section id when pandoc runs with --section-divs
-  const section_id = function(x) {
-    return ((x.classList.contains('section') || (x.tagName === 'SECTION'))
-            ? x.id : '');
-  };
-
-  // Add anchors
-  h.forEach(function(x) {
-    const id = x.id || section_id(x.parentElement);
-    if (id === '') {
-      return null;
+  const codeList = document.getElementsByClassName("sourceCode");
+  for (var i = 0; i < codeList.length; i++) {
+    var linkList = codeList[i].getElementsByTagName('a');
+    for (var j = 0; j < linkList.length; j++) {
+      if (linkList[j].innerHTML === "") {
+        linkList[j].setAttribute('aria-hidden', 'true');
+      }
     }
-    let anchor = document.createElement('a');
-    anchor.href = '#' + id;
-    anchor.classList = ['anchor-section'];
-    x.classList.add('hasAnchor');
-    x.appendChild(anchor);
-  });
+  }
 });
 </script>
 
@@ -79,18 +43,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -110,7 +75,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -164,6 +129,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 })();
 </script>
+
 
 
 
@@ -370,16 +336,16 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div id="binary-task" class="section level2">
 <h2>Binary task</h2>
 <p>Grab data for binary classification:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fastai)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(zeallot)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">URLs_IMDB_SAMPLE</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(fastai)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">library</span>(magrittr)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">library</span>(zeallot)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">URLs_IMDB_SAMPLE</span>()</span></code></pre></div>
 <p>Define task:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>HF_TASKS_AUTO <span class="ot">=</span> <span class="fu">HF_TASKS_AUTO</span>()</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>task <span class="ot">=</span> HF_TASKS_AUTO<span class="sc">$</span>SequenceClassification</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>pretrained_model_name <span class="ot">=</span> <span class="st">&quot;roberta-base&quot;</span> <span class="co"># &quot;distilbert-base-uncased&quot; &quot;bert-base-uncased&quot;</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(hf_arch, hf_config, hf_tokenizer, hf_model) <span class="sc">%&lt;-%</span> <span class="fu">get_hf_objects</span>(pretrained_model_name, <span class="at">task=</span>task)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>HF_TASKS_AUTO =<span class="st"> </span><span class="kw">HF_TASKS_AUTO</span>()</span>
+<span id="cb2-2"><a href="#cb2-2"></a>task =<span class="st"> </span>HF_TASKS_AUTO<span class="op">$</span>SequenceClassification</span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a>pretrained_model_name =<span class="st"> &quot;roberta-base&quot;</span> <span class="co"># &quot;distilbert-base-uncased&quot; &quot;bert-base-uncased&quot;</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="kw">c</span>(hf_arch, hf_config, hf_tokenizer, hf_model) <span class="op">%&lt;-%</span><span class="st"> </span><span class="kw">get_hf_objects</span>(pretrained_model_name, <span class="dt">task=</span>task)</span></code></pre></div>
 <pre><code>Downloading: 100%|██████████| 481/481 [00:00&lt;00:00, 277kB/s]
 Downloading: 100%|██████████| 899k/899k [00:01&lt;00:00, 580kB/s]
 Downloading: 100%|██████████| 456k/456k [00:00&lt;00:00, 471kB/s]
@@ -388,15 +354,17 @@ Downloading: 100%|██████████| 501M/501M [03:11&lt;00:00, 2.6
 <div id="dataloader" class="section level2">
 <h2>Dataloader</h2>
 <p>Create <code>Learner</code> <a href="https://github.com/ohmeow/blurr">with Hugging Face data blocks</a>:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>blocks <span class="ot">=</span> <span class="fu">list</span>(<span class="fu">HF_TextBlock</span>(<span class="at">hf_arch=</span>hf_arch, <span class="at">hf_tokenizer=</span>hf_tokenizer), <span class="fu">CategoryBlock</span>())</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>dblock <span class="ot">=</span> <span class="fu">DataBlock</span>(<span class="at">blocks=</span>blocks,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">get_x=</span><span class="fu">ColReader</span>(<span class="st">&#39;text&#39;</span>),</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">get_y=</span><span class="fu">ColReader</span>(<span class="st">&#39;label&#39;</span>),</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">splitter=</span><span class="fu">ColSplitter</span>(<span class="at">col=</span><span class="st">&#39;is_valid&#39;</span>))</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>dls <span class="ot">=</span> dblock <span class="sc">%&gt;%</span> <span class="fu">dataloaders</span>(imdb_df, <span class="at">bs=</span><span class="dv">4</span>)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>dls <span class="sc">%&gt;%</span> <span class="fu">one_batch</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>imdb_df =<span class="st"> </span>data.table<span class="op">::</span><span class="kw">fread</span>(<span class="st">&#39;imdb_sample/texts.csv&#39;</span>)</span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a>blocks =<span class="st"> </span><span class="kw">list</span>(<span class="kw">HF_TextBlock</span>(<span class="dt">hf_arch=</span>hf_arch, <span class="dt">hf_tokenizer=</span>hf_tokenizer), <span class="kw">CategoryBlock</span>())</span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a>dblock =<span class="st"> </span><span class="kw">DataBlock</span>(<span class="dt">blocks=</span>blocks,</span>
+<span id="cb4-6"><a href="#cb4-6"></a>                   <span class="dt">get_x=</span><span class="kw">ColReader</span>(<span class="st">&#39;text&#39;</span>),</span>
+<span id="cb4-7"><a href="#cb4-7"></a>                   <span class="dt">get_y=</span><span class="kw">ColReader</span>(<span class="st">&#39;label&#39;</span>),</span>
+<span id="cb4-8"><a href="#cb4-8"></a>                   <span class="dt">splitter=</span><span class="kw">ColSplitter</span>(<span class="dt">col=</span><span class="st">&#39;is_valid&#39;</span>))</span>
+<span id="cb4-9"><a href="#cb4-9"></a></span>
+<span id="cb4-10"><a href="#cb4-10"></a>dls =<span class="st"> </span>dblock <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">dataloaders</span>(imdb_df, <span class="dt">bs=</span><span class="dv">4</span>)</span>
+<span id="cb4-11"><a href="#cb4-11"></a>dls <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">one_batch</span>()</span></code></pre></div>
 <pre><code>[[1]]
 [[1]]$input_ids
 tensor([[    0,  4833,  3009,  ...,  1916,     6,     2],
@@ -417,20 +385,20 @@ TensorCategory([0, 1, 0, 0], device=&#39;cuda:0&#39;)</code></pre>
 <div id="roberta-model" class="section level2">
 <h2>RoBERTa model</h2>
 <p>Wrap model:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">=</span> <span class="fu">HF_BaseModelWrapper</span>(hf_model)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>learn <span class="ot">=</span> <span class="fu">Learner</span>(dls,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                model,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">opt_func=</span><span class="fu">partial</span>(Adam, <span class="at">decouple_wd=</span><span class="cn">TRUE</span>),</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">loss_func=</span><span class="fu">CrossEntropyLossFlat</span>(),</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">metrics=</span>accuracy,</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">cbs=</span><span class="fu">HF_BaseModelCallback</span>(),</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">splitter=</span><span class="fu">hf_splitter</span>())</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>learn<span class="sc">$</span><span class="fu">create_opt</span>()</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>learn<span class="sc">$</span><span class="fu">freeze</span>()</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>learn <span class="sc">%&gt;%</span> <span class="fu">summary</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>model =<span class="st"> </span><span class="kw">HF_BaseModelWrapper</span>(hf_model)</span>
+<span id="cb6-2"><a href="#cb6-2"></a></span>
+<span id="cb6-3"><a href="#cb6-3"></a>learn =<span class="st"> </span><span class="kw">Learner</span>(dls,</span>
+<span id="cb6-4"><a href="#cb6-4"></a>                model,</span>
+<span id="cb6-5"><a href="#cb6-5"></a>                <span class="dt">opt_func=</span><span class="kw">partial</span>(Adam, <span class="dt">decouple_wd=</span><span class="ot">TRUE</span>),</span>
+<span id="cb6-6"><a href="#cb6-6"></a>                <span class="dt">loss_func=</span><span class="kw">CrossEntropyLossFlat</span>(),</span>
+<span id="cb6-7"><a href="#cb6-7"></a>                <span class="dt">metrics=</span>accuracy,</span>
+<span id="cb6-8"><a href="#cb6-8"></a>                <span class="dt">cbs=</span><span class="kw">HF_BaseModelCallback</span>(),</span>
+<span id="cb6-9"><a href="#cb6-9"></a>                <span class="dt">splitter=</span><span class="kw">hf_splitter</span>())</span>
+<span id="cb6-10"><a href="#cb6-10"></a></span>
+<span id="cb6-11"><a href="#cb6-11"></a>learn<span class="op">$</span><span class="kw">create_opt</span>()</span>
+<span id="cb6-12"><a href="#cb6-12"></a>learn<span class="op">$</span><span class="kw">freeze</span>()</span>
+<span id="cb6-13"><a href="#cb6-13"></a></span>
+<span id="cb6-14"><a href="#cb6-14"></a>learn <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summary</span>()</span></code></pre></div>
 <pre><code>epoch   train_loss   valid_loss   accuracy   time  
 ------  -----------  -----------  ---------  ------
 HF_BaseModelWrapper (Input shape: 4 x 512)
@@ -736,9 +704,9 @@ Callbacks:
 <div id="conclusion" class="section level2">
 <h2>Conclusion</h2>
 <p>Train and predict:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> learn <span class="sc">%&gt;%</span> <span class="fu">fit_one_cycle</span>(<span class="dv">3</span>, <span class="at">lr_max=</span><span class="fl">1e-3</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>learn <span class="sc">%&gt;%</span> <span class="fu">predict</span>(imdb_df<span class="sc">$</span>text[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>result =<span class="st"> </span>learn <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fit_one_cycle</span>(<span class="dv">3</span>, <span class="dt">lr_max=</span><span class="fl">1e-3</span>)</span>
+<span id="cb8-2"><a href="#cb8-2"></a></span>
+<span id="cb8-3"><a href="#cb8-3"></a>learn <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">predict</span>(imdb_df<span class="op">$</span>text[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>])</span></code></pre></div>
 </div>
 
 

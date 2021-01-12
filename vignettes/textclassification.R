@@ -15,6 +15,8 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 #  c(hf_arch, hf_config, hf_tokenizer, hf_model) %<-% get_hf_objects(pretrained_model_name, task=task)
 
 ## -----------------------------------------------------------------------------
+#  imdb_df = data.table::fread('imdb_sample/texts.csv')
+#  
 #  blocks = list(HF_TextBlock(hf_arch=hf_arch, hf_tokenizer=hf_tokenizer), CategoryBlock())
 #  
 #  dblock = DataBlock(blocks=blocks,

@@ -51,6 +51,8 @@ Downloading: 100%|██████████| 501M/501M [03:11<00:00, 2.62MB
 Create ```Learner``` [with Hugging Face data blocks](https://github.com/ohmeow/blurr):
 
 ```{r}
+imdb_df = data.table::fread('imdb_sample/texts.csv')
+
 blocks = list(HF_TextBlock(hf_arch=hf_arch, hf_tokenizer=hf_tokenizer), CategoryBlock())
 
 dblock = DataBlock(blocks=blocks,
