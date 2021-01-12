@@ -1,5 +1,10 @@
 
-## 2.0.3 (Unreleased)
+## 2.0.4 (Unreleased)
+
+* stick to fastaudio 0.1.3 (resolve dependencies)
+
+
+## 2.0.3 
 
 * current stable version of ```fast.ai``` is ```2.1.5```
 * lots of new callback ops
