@@ -4,33 +4,10 @@
 \alias{HF_TextBlock}
 \title{HF_TextBlock}
 \usage{
-HF_TextBlock(
-  hf_arch = NULL,
-  hf_tokenizer = NULL,
-  max_length = 512,
-  padding = TRUE,
-  truncation = TRUE,
-  is_split_into_words = FALSE,
-  n_tok_inps = 1,
-  ...
-)
+HF_TextBlock(...)
 }
 \arguments{
-\item{hf_arch}{achitecture}
-
-\item{hf_tokenizer}{tokenizer}
-
-\item{max_length}{maximum length}
-
-\item{padding}{padding or not}
-
-\item{truncation}{truncation or not}
-
-\item{is_split_into_words}{to split into words or not}
-
-\item{n_tok_inps}{number of tok inp}
-
-\item{...}{additional arguments}
+\item{...}{arguments to pass}
 }
 \value{
 None

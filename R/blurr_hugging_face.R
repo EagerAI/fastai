@@ -29,38 +29,29 @@ HF_BaseInput <- function(...) {
 #' @description A basic wrapper that links defaults transforms for the data block API
 #'
 #'
-#' @param hf_arch achitecture
-#' @param hf_tokenizer tokenizer
-#' @param max_length maximum length
-#' @param padding padding or not
-#' @param truncation truncation or not
-#' @param is_split_into_words to split into words or not
-#' @param n_tok_inps number of tok inp
-#' @param ... additional arguments
+#' @param ... arguments to pass
 #' @return None
 #' @export
-HF_TextBlock <- function(hf_arch=NULL, hf_tokenizer=NULL,
-                         max_length=512, padding=TRUE, truncation=TRUE, is_split_into_words=FALSE,
-                         n_tok_inps=1, ...) {
+HF_TextBlock <- function(...) {
 
   args <- list(
-    hf_arch=hf_arch,
-    hf_tokenizer=hf_tokenizer,
-    max_length=as.integer(max_length),
-    padding=padding,
-    truncation=truncation,
-    is_split_into_words=is_split_into_words,
-    n_tok_inps=n_tok_inps,
-    ...
+   ...
   )
 
-  if(!is.null(args$max_length)) {
-    args$max_length = as.integer(args$max_length)
+  strings = c('max_length', 'n_tok_inps')
+
+  for (i in 1:length(strings)) {
+    if(!is.null(args[[strings[i]]])) {
+      args[[strings[i]]] <- as.integer(args[[strings[i]]])
+    }
   }
 
-  if(!is.null(args$n_tok_inps)) {
-    args$n_tok_inps = as.integer(args$n_tok_inps)
+  disable_paral = function() {
+    reticulate::py_run_string('import os
+os.environ["TOKENIZERS_PARALLELISM"] = "false"')
   }
+
+  try(disable_paral(),TRUE)
 
   do.call(blurr()$data$all$HF_TextBlock, args)
 
