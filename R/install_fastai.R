@@ -88,7 +88,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
 
   fastaudio_ = function()  {
 
-    dont_upgr = paste('fastaudio fastai',version2, sep = '==')
+    dont_upgr = paste('fastaudio==0.1.3 fastai',version2, sep = '==')
 
     if (!reticulate::py_module_available('fastaudio')) {
 
