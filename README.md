@@ -14,7 +14,7 @@ and includes "out of the box" support for `vision`, `text`, `tabular`,
 
 <img src="files/fastai.png" width=200 align=right style="margin-left: 15px;" alt="fastai"/>
 
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![CRAN status](https://www.r-pkg.org/badges/version/fastai)](https://CRAN.R-project.org/package=fastai)
 [![Last month downloads](http://cranlogs.r-pkg.org/badges/last-month/fastai?color=green)](https://cran.r-project.org/package=fastai)
 
