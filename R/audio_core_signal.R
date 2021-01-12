@@ -113,20 +113,14 @@ AudioTensor <- function(x, sr = NULL) {
 #'
 #' @param fn function
 #' @param cache_folder cache folder
-#' @param out out format
-#' @param normalization apply normalization or not
+#' @param normalize apply normalization or not
 #' @param channels_first channels first/last
 #' @param num_frames number of frames
-#' @param offset offset
-#' @param signalinfo signal info
-#' @param encodinginfo encoding info
-#' @param filetype the type of file
+#' @param frame_offset offset
 #' @return None
 #' @export
-AudioTensor_create <- function(fn, cache_folder = NULL, out = NULL,
-                               normalization = TRUE, channels_first = TRUE,
-                               num_frames = 0, offset = 0, signalinfo = NULL,
-                               encodinginfo = NULL, filetype = NULL) {
+AudioTensor_create <- function(fn, cache_folder = NULL, frame_offset = 0, num_frames = -1,
+                               normalize = TRUE, channels_first = TRUE) {
 
 
   if(missing(fn)) {
@@ -135,31 +129,14 @@ AudioTensor_create <- function(fn, cache_folder = NULL, out = NULL,
     args = list(
       fn = fn,
       cache_folder = cache_folder,
-      out = out,
-      normalization = normalization,
-      channels_first = channels_first,
+      frame_offset = as.integer(frame_offset),
       num_frames = as.integer(num_frames),
-      offset = as.integer(offset),
-      signalinfo = signalinfo,
-      encodinginfo = encodinginfo,
-      filetype = filetype
+      normalize = normalize,
+      channels_first = channels_first
     )
 
     if(is.null(args$cache_folder))
       args$cache_folder <- NULL
-
-    if(is.null(args$out))
-      args$out <- NULL
-
-    if(is.null(args$signalinfo))
-      args$signalinfo <- NULL
-
-    if(is.null(args$encodinginfo))
-      args$encodinginfo <- NULL
-
-    if(is.null(args$filetype))
-      args$filetype <- NULL
-
 
     do.call(fastaudio()$core$signal$AudioTensor$create, args)
   }
