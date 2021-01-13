@@ -16,7 +16,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
                                           'blurr', 'icevision[all]'), skip_git_pkgs = FALSE) {
 
   if(missing(version))
-    version2 = '2.1.5'
+    version2 = '2.2.3'
   else
     version2 = version
 
@@ -81,7 +81,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="upit", "git+https://github.com/tmabraham/UPIT.git")
 
   if(missing(version)) {
-    required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastai", "fastai==2.1.5")
+    required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastai", "fastai==2.2.3")
   } else {
     required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastai", paste("fastai",version,sep = "=="))
   }
