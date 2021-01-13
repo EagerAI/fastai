@@ -1,6 +1,6 @@
 #' Freeze a model
 #'
-#' @param object A model 
+#' @param object A model
 #' @param ... Additional parameters
 #'
 #' @return None
@@ -11,12 +11,10 @@
 #' learnR %>% freeze()
 #' }
 freeze <- function(object, ...){
-  
-  args <- list(...)
-  
-  do.call(object$freeze, args)
+
+  object$freeze(...)
   message("The model has been frozen")
-  
+
 }
 
 #' Unfreeze a model
@@ -28,19 +26,17 @@ freeze <- function(object, ...){
 #' @export
 #'
 #' @examples
-#' 
+#'
 #' \dontrun{
 #' learnR %>% unfreeze()
 #' }
 unfreeze <- function(object, ...){
-  
-  args <- list(...)
-  
-  do.call(object$unfreeze, args)
-  message("The model has been unfrozen")
-  
-}
-  
-    
 
-    
+  object$unfreeze(...)
+  message("The model has been unfrozen")
+
+}
+
+
+
+
