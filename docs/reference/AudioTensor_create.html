@@ -243,14 +243,10 @@
     <pre class="usage"><span class='fu'>AudioTensor_create</span><span class='op'>(</span>
   <span class='va'>fn</span>,
   cache_folder <span class='op'>=</span> <span class='cn'>NULL</span>,
-  out <span class='op'>=</span> <span class='cn'>NULL</span>,
-  normalization <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  channels_first <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  num_frames <span class='op'>=</span> <span class='fl'>0</span>,
-  offset <span class='op'>=</span> <span class='fl'>0</span>,
-  signalinfo <span class='op'>=</span> <span class='cn'>NULL</span>,
-  encodinginfo <span class='op'>=</span> <span class='cn'>NULL</span>,
-  filetype <span class='op'>=</span> <span class='cn'>NULL</span>
+  frame_offset <span class='op'>=</span> <span class='fl'>0</span>,
+  num_frames <span class='op'>=</span> <span class='op'>-</span><span class='fl'>1</span>,
+  normalize <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  channels_first <span class='op'>=</span> <span class='cn'>TRUE</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -265,36 +261,20 @@
       <td><p>cache folder</p></td>
     </tr>
     <tr>
-      <th>out</th>
-      <td><p>out format</p></td>
-    </tr>
-    <tr>
-      <th>normalization</th>
-      <td><p>apply normalization or not</p></td>
-    </tr>
-    <tr>
-      <th>channels_first</th>
-      <td><p>channels first/last</p></td>
+      <th>frame_offset</th>
+      <td><p>offset</p></td>
     </tr>
     <tr>
       <th>num_frames</th>
       <td><p>number of frames</p></td>
     </tr>
     <tr>
-      <th>offset</th>
-      <td><p>offset</p></td>
+      <th>normalize</th>
+      <td><p>apply normalization or not</p></td>
     </tr>
     <tr>
-      <th>signalinfo</th>
-      <td><p>signal info</p></td>
-    </tr>
-    <tr>
-      <th>encodinginfo</th>
-      <td><p>encoding info</p></td>
-    </tr>
-    <tr>
-      <th>filetype</th>
-      <td><p>the type of file</p></td>
+      <th>channels_first</th>
+      <td><p>channels first/last</p></td>
     </tr>
     </table>
 
