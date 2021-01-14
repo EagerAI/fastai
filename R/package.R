@@ -136,7 +136,9 @@ fix_fit = function(disable_graph = FALSE) {
             if(length(strings) > 1) {
               for (i in 1:length(strings)) {
                 variable = ggplot2::sym(strings[i])
-                lp <- lp + ggplot2::geom_line(ggplot2::aes(y = !!variable, colour = !!strings[i]))
+                lp <- lp + ggplot2::geom_line(ggplot2::aes(y = !!variable, colour = !!strings[i])) +
+                  # add points
+                  ggplot2::geom_point(ggplot2::aes(y = !!variable, colour = !!strings[i]))
               }
               lp <- lp +
                 ggplot2::scale_x_continuous(breaks = seq(min(df)-1, max(df), 1)) +
@@ -149,6 +151,8 @@ fix_fit = function(disable_graph = FALSE) {
               variable <- ggplot2::sym(column_name)
               strings = column_name
               lp = lp + ggplot2::geom_line(ggplot2::aes(y = !!variable, colour = column_name)) +
+                # add points
+                ggplot2::geom_point(ggplot2::aes(y = !!variable, colour = column_name)) +
                 ggplot2::scale_x_continuous(breaks = seq(min(df)-1, max(df), 1)) +
                 ggplot2::ylab(yaxis) + ggplot2::labs(colour = yaxis) + ggplot2::theme(legend.position="bottom",
                                                                                       legend.title=ggplot2::element_text(size=9),
