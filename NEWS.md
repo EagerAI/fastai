@@ -2,7 +2,7 @@
 ## 2.0.4 (Unreleased)
 
 * stick to fastaudio 0.1.3 (resolve dependencies)
-
+* add ```geom_point``` to interactive visualization in RStudio env
 
 ## 2.0.3 
 
