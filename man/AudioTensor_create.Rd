@@ -7,14 +7,10 @@
 AudioTensor_create(
   fn,
   cache_folder = NULL,
-  out = NULL,
-  normalization = TRUE,
-  channels_first = TRUE,
-  num_frames = 0,
-  offset = 0,
-  signalinfo = NULL,
-  encodinginfo = NULL,
-  filetype = NULL
+  frame_offset = 0,
+  num_frames = -1,
+  normalize = TRUE,
+  channels_first = TRUE
 )
 }
 \arguments{
@@ -22,21 +18,13 @@ AudioTensor_create(
 
 \item{cache_folder}{cache folder}
 
-\item{out}{out format}
-
-\item{normalization}{apply normalization or not}
-
-\item{channels_first}{channels first/last}
+\item{frame_offset}{offset}
 
 \item{num_frames}{number of frames}
 
-\item{offset}{offset}
+\item{normalize}{apply normalization or not}
 
-\item{signalinfo}{signal info}
-
-\item{encodinginfo}{encoding info}
-
-\item{filetype}{the type of file}
+\item{channels_first}{channels first/last}
 }
 \value{
 None
