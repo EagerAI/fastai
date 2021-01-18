@@ -11,8 +11,8 @@
 #' @return None
 #' @export
 install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrite = FALSE,
-                           extra_pkgs = c('kaggle', 'transformers', 'pytorch_lightning', 'timm',
-                                          'catalyst', 'ignite', 'fastinference[interp]', 'shap',
+                           extra_pkgs = c('kaggle', 'transformers', 'timm',
+                                          'fastinference[interp]', 'shap',
                                           'blurr', 'icevision[all]'), skip_git_pkgs = FALSE) {
 
   if(missing(version))
@@ -27,7 +27,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   git = try(suppressWarnings(system('which git', intern = TRUE)), TRUE)
 
   if(os() == 'windows' | os() == 'mac') {
-    extra_pkgs = extra_pkgs[!extra_pkgs %in% c('blurr', 'icevision')]
+    #extra_pkgs = extra_pkgs[!extra_pkgs %in% c('blurr', 'icevision')]
   }
 
   # audio, time-series, cycle-GAN, transformers integration==blurr
@@ -77,7 +77,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   # git pkgs
   #required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastaudio", "git+https://github.com/fastaudio/fastaudio.git")
   required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="timeseries_fastai", "git+https://github.com/tcapelle/timeseries_fastai.git")
-  required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="blurr", "git+https://github.com/ohmeow/blurr.git")
+  required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="blurr", "ohmeow-blurr==0.0.21")
   required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="upit", "git+https://github.com/tmabraham/UPIT.git")
 
   if(missing(version)) {
