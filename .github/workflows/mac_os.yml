@@ -49,6 +49,7 @@ jobs:
           Rscript -e "reticulate::py_config()"
           Rscript -e "remotes::install_local()"
           Rscript -e "fastai::install_fastai('2.1.5')"
+          Rscript -e "reticulate::py_module_available('fastaudio')"
 
       - name: Check
         continue-on-error: ${{ matrix.config.allow_failure }}
