@@ -26,8 +26,8 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   # if git is available
   git = try(suppressWarnings(system('which git', intern = TRUE)), TRUE)
 
-  if(os() == 'windows' | os() == 'mac') {
-    #extra_pkgs = extra_pkgs[!extra_pkgs %in% c('blurr', 'icevision')]
+  if(os() == 'mac') {
+    extra_pkgs = extra_pkgs[!extra_pkgs %in% c('blurr', 'icevision')]
   }
 
   # audio, time-series, cycle-GAN, transformers integration==blurr
