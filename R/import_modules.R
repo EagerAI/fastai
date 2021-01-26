@@ -32,6 +32,10 @@ load_pre_models <- function() try(reticulate::import_from_path('fastaibuilt',
                                                                path = python_path())$pretrained_timm_models, TRUE)
 
 
+#' @title XLA
+#'
+#' @return None
+xla <- function() try(reticulate::import("fastai_xla_extensions.core"),TRUE)
 
 
 #' @title Timm module
