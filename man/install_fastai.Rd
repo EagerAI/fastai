@@ -9,8 +9,8 @@ install_fastai(
   gpu = FALSE,
   cuda_version = "10.1",
   overwrite = FALSE,
-  extra_pkgs = c("kaggle", "transformers", "timm", "fastinference[interp]", "shap",
-    "blurr", "icevision[all]"),
+  extra_pkgs = c("kaggle", "transformers", "timm", "fastinference[interp]", "blurr",
+    "icevision[all]"),
   skip_git_pkgs = FALSE,
   TPU = FALSE
 )

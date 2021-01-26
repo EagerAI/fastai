@@ -13,7 +13,7 @@
 #' @export
 install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrite = FALSE,
                            extra_pkgs = c('kaggle', 'transformers', 'timm',
-                                          'fastinference[interp]', 'shap',
+                                          'fastinference[interp]', #'shap',
                                           'blurr', 'icevision[all]'), skip_git_pkgs = FALSE,
                            TPU = FALSE) {
 
