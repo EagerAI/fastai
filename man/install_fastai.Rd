@@ -10,7 +10,7 @@ install_fastai(
   cuda_version = "10.1",
   overwrite = FALSE,
   extra_pkgs = c("kaggle", "transformers", "timm", "fastinference[interp]", "shap",
-    "blurr", "icevision[all]", "fastai_xla_extensions"),
+    "blurr", "icevision[all]"),
   skip_git_pkgs = FALSE,
   TPU = FALSE
 )

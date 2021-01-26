@@ -14,7 +14,7 @@
 install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrite = FALSE,
                            extra_pkgs = c('kaggle', 'transformers', 'timm',
                                           'fastinference[interp]', 'shap',
-                                          'blurr', 'icevision[all]', 'fastai_xla_extensions'), skip_git_pkgs = FALSE,
+                                          'blurr', 'icevision[all]'), skip_git_pkgs = FALSE,
                            TPU = FALSE) {
 
   if(missing(version))
@@ -191,7 +191,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
       } else if (os %in% 'linux' & length(required_py_pkgs) == 0) {
         print('Fastai is installed!')
       } else if (os %in% 'linux' & TPU) {
-        py_install(packages = c(xla,"fastai"), pip = TRUE)
+        py_install(packages = c(xla,"fastai",'fastai_xla_extensions'), pip = TRUE)
       }
 
       if (os %in% 'windows' & !length(required_py_pkgs) == 0 & torch_r & !length(required_py_pkgs) == 0) {
