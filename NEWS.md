@@ -2,7 +2,8 @@
 ## 2.0.4 (Unreleased)
 
 * stick to fastaudio 0.1.3 (resolve dependencies)
-* add ```geom_point``` to interactive visualization in RStudio env
+* add ```geom_point``` for interactive visualization within RStudio
+* [add TPU module into fastai](https://github.com/butchland/fastai_xla_extensions)
 
 ## 2.0.3 
 

@@ -42,6 +42,7 @@ jobs:
         run: |
           Rscript -e "remotes::install_github('rstudio/reticulate')"
           Rscript -e "try(reticulate::install_miniconda())"
+          Rscript -e "reticulate::py_install(c('setuptools', 'wheel', 'requests'), pip = TRUE)"
 
 
       - name: Install FASTAI

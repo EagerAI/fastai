@@ -8,12 +8,14 @@
 #' @param extra_pkgs character vector of additional packages
 #' @importFrom reticulate py_install
 #' @param skip_git_pkgs skip installation from Github
+#' @param TPU official way to install Pytorch-XLA 1.7
 #' @return None
 #' @export
 install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrite = FALSE,
                            extra_pkgs = c('kaggle', 'transformers', 'timm',
-                                          'fastinference[interp]', 'shap',
-                                          'blurr', 'icevision[all]'), skip_git_pkgs = FALSE) {
+                                          'fastinference[interp]', #'shap',
+                                          'blurr', 'icevision[all]'), skip_git_pkgs = FALSE,
+                           TPU = FALSE) {
 
   if(missing(version))
     version2 = '2.1.5'
@@ -120,6 +122,8 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
                  'torch==1.7.0+cu110 torchvision==0.8.1+cu110 torchaudio===0.7.0 -f https://download.pytorch.org/whl/torch_stable.html')
   linux_cpu = c('torch==1.7.0+cpu torchvision==0.8.1+cpu torchaudio==0.7.0 -f https://download.pytorch.org/whl/torch_stable.html')
 
+  xla = "-U cloud-tpu-client==0.10 https://storage.googleapis.com/tpu-pytorch/wheels/torch_xla-1.7-cp36-cp36m-linux_x86_64.whl"
+
   # windows
   cuda_windows = c('Follow instructions at this URL: https://github.com/pytorch/pytorch#from-source',
                    'torch==1.7.0+cu101 torchvision==0.8.1+cu101 torchaudio===0.7.0 -f https://download.pytorch.org/whl/torch_stable.html',
@@ -162,7 +166,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
         required_py_pkgs = append(required_py_pkgs,'opencv-python-headless==4.4.0.46')
       }
 
-      if (os %in% 'linux' & !length(required_py_pkgs) == 0) {
+      if (os %in% 'linux' & !length(required_py_pkgs) == 0 & !TPU) {
         if(os %in% 'linux' & gpu & cuda_version %in% '9.2' & torch_r & !length(required_py_pkgs) == 0) {
           py_install(packages = c(required_py_pkgs, cuda_linux[1]), pip = TRUE)
           fastaudio_()
@@ -186,6 +190,8 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
         }
       } else if (os %in% 'linux' & length(required_py_pkgs) == 0) {
         print('Fastai is installed!')
+      } else if (os %in% 'linux' & TPU) {
+        py_install(packages = c(xla,"fastai",'fastai_xla_extensions'), pip = TRUE)
       }
 
       if (os %in% 'windows' & !length(required_py_pkgs) == 0 & torch_r & !length(required_py_pkgs) == 0) {
