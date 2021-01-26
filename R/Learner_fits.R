@@ -266,6 +266,7 @@ to_xla <- function(object) {
 #' @param text string to pass to environment
 #' @return None
 os_environ_tpu <- function(text = 'COLAB_TPU_ADDR') {
+  xla()
   result = glue::glue('
 import os
 assert os.environ["{text}"]')
