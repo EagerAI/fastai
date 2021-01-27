@@ -1723,6 +1723,9 @@
     <loc>https://henry090.github.io/fastai//reference/os.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/os_environ_tpu.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/pad_conv_norm_relu.html</loc>
   </url>
   <url>
@@ -2476,6 +2479,9 @@
     <loc>https://henry090.github.io/fastai//reference/to_thumb.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/to_xla.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/TrackerCallback.html</loc>
   </url>
   <url>
@@ -2786,6 +2792,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/win_subdural.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/xla.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/XResNet.html</loc>
