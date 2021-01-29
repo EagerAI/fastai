@@ -13,7 +13,7 @@
 #' @export
 install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrite = FALSE,
                            extra_pkgs = c('kaggle', 'transformers', 'timm',
-                                          'fastinference[interp]', #'shap',
+                                          'fastinference[interp]',
                                           'blurr', 'icevision[all]'), skip_git_pkgs = FALSE,
                            TPU = FALSE) {
 
@@ -192,9 +192,9 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
         print('Fastai is installed!')
       } else if (os %in% 'linux' & TPU) {
 
-        if(!missing(version))
+        if(!missing(version) & os %in% 'linux' & TPU)
           py_install(packages = c(cuda_linux[2], xla,paste("fastai",version,sep = '=='),'fastai_xla_extensions'), pip = TRUE)
-        else
+        else if (missing(version) & os %in% 'linux' & TPU)
           py_install(packages = c(cuda_linux[2], xla,"fastai",'fastai_xla_extensions'), pip = TRUE)
 
       }
