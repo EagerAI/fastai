@@ -67,6 +67,7 @@ We currently prepare the examples of usage of the fastai from R in Kaggle compet
 - [NLP Binary Classification](https://www.kaggle.com/henry090/r-fastai-and-transformers)
 - [Audio classification](https://www.kaggle.com/henry090/fast-ai-from-r)
 - [CycleGAN](https://www.kaggle.com/henry090/r-fast-ai-and-cyclegan)
+- [Fastai on Colab TPUs](https://colab.research.google.com/drive/1PiBECDM552No-5apVIB8LqUSdSqqJSi-?usp=sharing)
 
 > Contributions are very welcome! 
 
