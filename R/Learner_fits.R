@@ -258,6 +258,7 @@ fine_tune <- function(object, epochs, base_lr = 0.002, freeze_epochs = 1,
 #' @description Distribute the training across TPUs
 #' @param object learner / model
 #' @return None
+#' @export
 to_xla <- function(object) {
   object$to_xla()
 }
@@ -265,6 +266,7 @@ to_xla <- function(object) {
 #' @title An environment supporting TPUs
 #' @param text string to pass to environment
 #' @return None
+#' @export
 os_environ_tpu <- function(text = 'COLAB_TPU_ADDR') {
   xla()
   result = glue::glue('
