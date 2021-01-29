@@ -193,9 +193,9 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
       } else if (os %in% 'linux' & TPU) {
 
         if(!missing(version))
-          py_install(packages = c(xla,paste("fastai",version,sep = '=='),'fastai_xla_extensions'), pip = TRUE)
+          py_install(packages = c(cuda_linux[2], xla,paste("fastai",version,sep = '=='),'fastai_xla_extensions'), pip = TRUE)
         else
-          py_install(packages = c(xla,"fastai",'fastai_xla_extensions'), pip = TRUE)
+          py_install(packages = c(cuda_linux[2], xla,"fastai",'fastai_xla_extensions'), pip = TRUE)
 
       }
 
