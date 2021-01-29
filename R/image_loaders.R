@@ -61,6 +61,14 @@ ImageDataLoaders_from_name_re <- function(path, fnames, pat, bs = 64,
     args$val_bs <- as.integer(args$val_bs)
   }
 
+  strings = c('val_bs', 'item_tfms', 'device', 'batch_tfms')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]])) {
+      args[[strings[i]]] <- NULL
+    }
+  }
+
   do.call(vision()$all$ImageDataLoaders$from_name_re,args)
 
 }
