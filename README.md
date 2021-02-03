@@ -52,7 +52,7 @@ devtools::install_github('henry090/fastai')
 **3. Later, you need to install the python module `fastai`:**
 
 ```
-install_fastai(gpu = FALSE, cuda_version = '10.1', overwrite = FALSE)
+fastai::install_fastai(gpu = FALSE, cuda_version = '10.1', overwrite = FALSE)
 ```
 
 
