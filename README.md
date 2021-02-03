@@ -40,7 +40,7 @@ Requirements:
 
 ```
 reticulate::install_miniconda()
-reticulate::py_config()
+reticulate::conda_create('r-reticulate', packages = 'python==3.6.10')
 ```
 
 **2. The dev version:**
