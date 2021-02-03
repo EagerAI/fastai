@@ -246,7 +246,7 @@
 </ul>
 <p><strong>1. Install miniconda and activate environment:</strong></p>
 <pre><code><a href="https://rdrr.io/pkg/reticulate/man/install_miniconda.html">reticulate::install_miniconda()
-reticulate::py_config()</a></code></pre>
+reticulate::conda_create('r-reticulate', packages = 'python==3.6.10')</a></code></pre>
 <p><strong>2. The dev version:</strong></p>
 <pre><code>devtools::install_github('henry090/fastai')</code></pre>
 <p><strong>3. Later, you need to install the python module <code>fastai</code>:</strong></p>
