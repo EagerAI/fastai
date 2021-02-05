@@ -31,11 +31,6 @@ and includes "out of the box" support for `vision`, `text`, `tabular`,
 
 ## Installation
 
-Requirements:
-
-- Python >= 3.6
-- CPU or GPU
-
 **1. Install miniconda and activate environment:**
 
 ```
