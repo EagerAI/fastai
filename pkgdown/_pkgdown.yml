@@ -61,6 +61,8 @@ navbar:
           href: articles/callbacks.html
         - text: "Low-level API"
           href: articles/low.html
+        - text: "Bayesian Optimization"
+          href: articles/bayes_opt.html
     - text: "NLP"
       menu:
         - text: "RoBERTa binary classification"
