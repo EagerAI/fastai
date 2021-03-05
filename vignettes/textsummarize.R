@@ -2,6 +2,9 @@
 knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 
 ## -----------------------------------------------------------------------------
+#  reticulate::py_install('ohmeow-blurr',pip = TRUE)
+
+## -----------------------------------------------------------------------------
 #  library(fastai)
 #  library(magrittr)
 #  library(zeallot)

@@ -2,6 +2,9 @@
 knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 
 ## -----------------------------------------------------------------------------
+#  reticulate::py_install('ohmeow-blurr',pip = TRUE)
+
+## -----------------------------------------------------------------------------
 #  library(fastai)
 #  library(magrittr)
 #  library(zeallot)
@@ -77,9 +80,7 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 #  learn %>% fit_one_cycle(4, lr_max=1e-3)
 
 ## -----------------------------------------------------------------------------
-#  inf_df = data.frame( 'question'= 'What did George Lucas make?',
-#                       'context'= 'George Lucas created Star Wars in 1977. He directed and produced it.')
-#  inf_df2 = data.frame( 'question'= 'When was Star Wars made?',
+#  inf_df = data.frame( 'question'= 'When was Star Wars made?',
 #                       'context'= 'George Lucas created Star Wars in 1977. He directed and produced it.')
 
 ## -----------------------------------------------------------------------------
@@ -93,9 +94,11 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 #    sapply(res[[3]],as_array)
 #  
 #    hf_tokenizer$convert_ids_to_tokens(inp[[1]]$tolist()[[1]],
-#                                       skip_special_tokens=FALSE)[sapply(res[[3]],as_array)]
+#                                       skip_special_tokens=FALSE)[sapply(res[[3]],as_array)+1]
+#    # [sapply(res[[3]],as_array)+1] here +1 because tensor starts from 0 but R from 1
 #  }
 
 ## -----------------------------------------------------------------------------
-#  
+#  cat(bert_answer(inf_df))
+#  # in 1977
 
