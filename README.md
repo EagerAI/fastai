@@ -7,9 +7,7 @@ The fastai library simplifies training fast and accurate neural nets using
 modern best practices. See the
 [fastai website](https://henry090.github.io/fastai/) to get started. The library
 is based on research into deep learning best practices undertaken at `fast.ai`,
-and includes "out of the box" support for `vision`, `text`, `tabular`,
-[audio](https://github.com/fastaudio/fastaudio),
-[time-series](https://github.com/tcapelle/timeseries_fastai), [object detection](https://github.com/airctic/icevision) and `collab`
+and includes "out of the box" support for `vision`, `text`, `tabular`, and `collab`
 (collaborative filtering) models.
 
 <img src="files/fastai.png" width=200 align=right style="margin-left: 15px;" alt="fastai"/>
@@ -35,7 +33,7 @@ and includes "out of the box" support for `vision`, `text`, `tabular`,
 
 ```
 reticulate::install_miniconda()
-reticulate::conda_create('r-reticulate', packages = 'python==3.6.10')
+reticulate::conda_create('r-reticulate')
 ```
 
 **2. The dev version:**
@@ -52,6 +50,14 @@ fastai::install_fastai(gpu = FALSE, cuda_version = '10.1', overwrite = FALSE)
 
 
 **4. Restart RStudio!**
+
+## fast.ai extensions:
+
+1. [NLP, Transformers](https://github.com/ohmeow/blurr)
+2. [Object Detection](https://github.com/airctic/icevision)
+3. [Time-series](https://github.com/tcapelle/timeseries_fastai)
+4. [CycleGAN](https://github.com/tmabraham/UPIT)
+5. [Audio](https://github.com/fastaudio/fastaudio)
 
 ## Kaggle
 
