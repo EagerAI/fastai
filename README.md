@@ -33,7 +33,7 @@ and includes "out of the box" support for `vision`, `text`, `tabular`, and `coll
 
 ```
 reticulate::install_miniconda()
-reticulate::conda_create('r-reticulate', packages = 'python==3.6.10')
+reticulate::conda_create('r-reticulate')
 ```
 
 **2. The dev version:**
