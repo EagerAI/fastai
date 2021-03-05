@@ -35,12 +35,13 @@ jobs:
 
       - name: Install Python
         run: |
-          Rscript -e "install.packages('reticulate')"
+          Rscript -e "remotes::install_github('rstudio/reticulate')"
           Rscript -e "try(reticulate::install_miniconda())"
-      - name: Install FASTAI & TORCH
+          Rscript -e "reticulate::conda_create('r-reticulate')"
+      - name: Install fastai
         run: |
-          Rscript -e "reticulate::conda_create('r-reticulate', packages = c('python==3.6.9'))"
           Rscript -e "remotes::install_local()"
+          Rscript -e "fastai::install_fastai()"
 
       - name: Check
         continue-on-error: ${{ matrix.config.allow_failure }}
