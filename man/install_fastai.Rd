@@ -25,8 +25,6 @@ install_fastai(
 \item{extra_pkgs}{character vector of additional packages}
 
 \item{TPU}{official way to install Pytorch-XLA 1.7}
-
-\item{skip_git_pkgs}{skip installation from Github}
 }
 \value{
 None
