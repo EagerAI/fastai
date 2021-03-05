@@ -202,19 +202,21 @@
 <div id="intro" class="section level2">
 <h2 class="hasAnchor">
 <a href="#intro" class="anchor"></a>Intro</h2>
-<p>The <a href="https://github.com/fastai/fastai">fastai</a> library simplifies training fast and accurate neural nets using modern best practices. See the fastai website to get started. The library is based on research into deep learning best practices undertaken at <code>fast.ai</code>, and includes “out of the box” support for <code>vision</code>, <code>text</code>, <code>tabular</code>, and <code>collab</code> (collaborative filtering) models.</p>
+<p>First, we need to install <code>blurr module</code> for <a href="https://github.com/huggingface/transformers">Transformers</a> integration.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/reticulate/man/py_install.html">py_install</a></span><span class="op">(</span><span class="st">'ohmeow-blurr'</span>,pip <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="dataset" class="section level2">
 <h2 class="hasAnchor">
 <a href="#dataset" class="anchor"></a>Dataset</h2>
 <p>Get dataset from the link:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/henry090/fastai">fastai</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org">magrittr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/nteetor/zeallot">zeallot</a></span><span class="op">)</span>
 <span class="va">squad_df</span> <span class="op">=</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">'https://raw.githubusercontent.com/ohmeow/blurr/master/nbs/squad_sample.csv'</span><span class="op">)</span></code></pre></div>
 <p>And load pretrained BERT for question answering from <code>transformers</code> library:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pretrained_model_name</span> <span class="op">=</span> <span class="st">'bert-large-uncased-whole-word-masking-finetuned-squad'</span>
 
 <span class="va">hf_model_cls</span> <span class="op">=</span> <span class="va">transformers</span><span class="op">$</span><span class="va">BertForQuestionAnswering</span>
@@ -228,7 +230,7 @@
 <h2 class="hasAnchor">
 <a href="#preprocess" class="anchor"></a>Preprocess</h2>
 <p>Prepare dataset for <code>fastai</code>:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">squad_df</span> <span class="op">=</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html">as.data.table</a></span><span class="op">(</span><span class="va">squad_df</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/py_apply.html">py_apply</a></span><span class="op">(</span><span class="va">preprocess</span><span class="op">)</span><span class="op">)</span>
 <span class="va">max_seq_len</span> <span class="op">=</span> <span class="fl">128</span>
 
@@ -242,7 +244,7 @@
 <h2 class="hasAnchor">
 <a href="#datalaoder" class="anchor"></a>Datalaoder</h2>
 <p>Crate datalaoder. But at first, create getters (how we will pick our columns):</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">trunc_strat</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">hf_tokenizer</span><span class="op">$</span><span class="va">padding_side</span> <span class="op">==</span> <span class="st">'right'</span>, <span class="st">'only_second'</span>, <span class="st">'only_first'</span><span class="op">)</span>
 
 <span class="va">before_batch_tfm</span> <span class="op">=</span> <span class="fu"><a href="../reference/HF_QABeforeBatchTransform.html">HF_QABeforeBatchTransform</a></span><span class="op">(</span><span class="va">hf_arch</span>, <span class="va">hf_tokenizer</span>,
@@ -426,7 +428,7 @@ TensorCategory([43, 90, 22, 55], device='cuda:0')</code></pre>
 <h2 class="hasAnchor">
 <a href="#train" class="anchor"></a>Train</h2>
 <p>Wrap the model and fit:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">model</span> <span class="op">=</span> <span class="fu"><a href="../reference/HF_BaseModelWrapper.html">HF_BaseModelWrapper</a></span><span class="op">(</span><span class="va">hf_model</span><span class="op">)</span>
 
 <span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/Learner.html">Learner</a></span><span class="op">(</span><span class="va">dls</span>,
@@ -445,10 +447,10 @@ TensorCategory([43, 90, 22, 55], device='cuda:0')</code></pre>
 <h2 class="hasAnchor">
 <a href="#conclusion" class="anchor"></a>Conclusion</h2>
 <p>Lets create a dataset and predict with <code>learn</code> model:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">inf_df</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span> <span class="st">'question'</span><span class="op">=</span> <span class="st">'When was Star Wars made?'</span>,
                      <span class="st">'context'</span><span class="op">=</span> <span class="st">'George Lucas created Star Wars in 1977. He directed and produced it.'</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bert_answer</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">inf_df</span><span class="op">)</span> <span class="op">{</span>
   <span class="va">test_dl</span> <span class="op">=</span> <span class="va">dls</span><span class="op">$</span><span class="fu">test_dl</span><span class="op">(</span><span class="va">inf_df</span><span class="op">)</span>
   <span class="va">inp</span> <span class="op">=</span> <span class="va">test_dl</span><span class="op">$</span><span class="fu">one_batch</span><span class="op">(</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="st">'input_ids'</span><span class="op">]</span>
@@ -463,7 +465,7 @@ TensorCategory([43, 90, 22, 55], device='cuda:0')</code></pre>
   <span class="co"># [sapply(res[[3]],as_array)+1] here +1 because tensor starts from 0 but R from 1</span>
 <span class="op">}</span></code></pre></div>
 <p>Result:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">bert_answer</span><span class="op">(</span><span class="va">inf_df</span><span class="op">)</span><span class="op">)</span>
 <span class="co"># in 1977</span></code></pre></div>
 </div>

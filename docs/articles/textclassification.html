@@ -202,19 +202,21 @@
 <div id="intro" class="section level2">
 <h2 class="hasAnchor">
 <a href="#intro" class="anchor"></a>Intro</h2>
-<p>The <a href="https://github.com/fastai/fastai">fastai</a> library simplifies training fast and accurate neural nets using modern best practices. See the fastai website to get started. The library is based on research into deep learning best practices undertaken at <code>fast.ai</code>, and includes “out of the box” support for <code>vision</code>, <code>text</code>, <code>tabular</code>, and <code>collab</code> (collaborative filtering) models.</p>
+<p>First, we need to install <code>blurr module</code> for <a href="https://github.com/huggingface/transformers">Transformers</a> integration.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/reticulate/man/py_install.html">py_install</a></span><span class="op">(</span><span class="st">'ohmeow-blurr'</span>,pip <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="binary-task" class="section level2">
 <h2 class="hasAnchor">
 <a href="#binary-task" class="anchor"></a>Binary task</h2>
 <p>Grab data for binary classification:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/henry090/fastai">fastai</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org">magrittr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/nteetor/zeallot">zeallot</a></span><span class="op">)</span>
 <span class="fu"><a href="../reference/URLs_IMDB_SAMPLE.html">URLs_IMDB_SAMPLE</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>Define task:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">HF_TASKS_AUTO</span> <span class="op">=</span> <span class="fu"><a href="../reference/HF_TASKS_AUTO.html">HF_TASKS_AUTO</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">task</span> <span class="op">=</span> <span class="va">HF_TASKS_AUTO</span><span class="op">$</span><span class="va">SequenceClassification</span>
 
@@ -229,7 +231,7 @@ Downloading: 100%|██████████| 501M/501M [03:11&lt;00:00, 2.6
 <h2 class="hasAnchor">
 <a href="#dataloader" class="anchor"></a>Dataloader</h2>
 <p>Create <code>Learner</code> <a href="https://github.com/ohmeow/blurr">with Hugging Face data blocks</a>:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">imdb_df</span> <span class="op">=</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">'imdb_sample/texts.csv'</span><span class="op">)</span>
 
 <span class="va">blocks</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="../reference/HF_TextBlock.html">HF_TextBlock</a></span><span class="op">(</span>hf_arch<span class="op">=</span><span class="va">hf_arch</span>, hf_tokenizer<span class="op">=</span><span class="va">hf_tokenizer</span><span class="op">)</span>, <span class="fu"><a href="../reference/CategoryBlock.html">CategoryBlock</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
@@ -262,7 +264,7 @@ TensorCategory([0, 1, 0, 0], device='cuda:0')</code></pre>
 <h2 class="hasAnchor">
 <a href="#roberta-model" class="anchor"></a>RoBERTa model</h2>
 <p>Wrap model:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">model</span> <span class="op">=</span> <span class="fu"><a href="../reference/HF_BaseModelWrapper.html">HF_BaseModelWrapper</a></span><span class="op">(</span><span class="va">hf_model</span><span class="op">)</span>
 
 <span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/Learner.html">Learner</a></span><span class="op">(</span><span class="va">dls</span>,
@@ -583,7 +585,7 @@ Callbacks:
 <h2 class="hasAnchor">
 <a href="#conclusion" class="anchor"></a>Conclusion</h2>
 <p>Train and predict:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">result</span> <span class="op">=</span> <span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">3</span>, lr_max<span class="op">=</span><span class="fl">1e-3</span><span class="op">)</span>
 
 <span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">imdb_df</span><span class="op">$</span><span class="va">text</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span></code></pre></div>

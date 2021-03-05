@@ -263,8 +263,8 @@
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 
 <span class='va'>aa</span> <span class='op'>=</span> <span class='fu'><a href='tensor.html'>tensor</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>1</span><span class='op'>:</span><span class='op'>-</span><span class='fl'>10</span><span class='op'>)</span>
-<span class='fu'><a href='abs.html'>abs</a></span><span class='op'>(</span><span class='va'>aa</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; tensor([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10])</div><div class='input'>
+</div><div class='output co'>#&gt; <span class='error'>Error in py_get_attr_impl(x, name, silent): AttributeError: module 'fastai.vision' has no attribute 'all'</span></div><div class='input'><span class='fu'><a href='abs.html'>abs</a></span><span class='op'>(</span><span class='va'>aa</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'aa' not found</span></div><div class='input'>
 <span class='co'># }</span>
 
 </div></pre>

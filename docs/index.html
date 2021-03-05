@@ -199,7 +199,7 @@
 <h2 class="hasAnchor">
 <a href="#r-interface-to-fastai" class="anchor"></a>R interface to fastai</h2>
 <p>The fastai package provides R wrappers to <a href="https://github.com/fastai/fastai">fastai</a>.</p>
-<p>The fastai library simplifies training fast and accurate neural nets using modern best practices. See the <a href="https://henry090.github.io/fastai/">fastai website</a> to get started. The library is based on research into deep learning best practices undertaken at <code>fast.ai</code>, and includes “out of the box” support for <code>vision</code>, <code>text</code>, <code>tabular</code>, <a href="https://github.com/fastaudio/fastaudio">audio</a>, <a href="https://github.com/tcapelle/timeseries_fastai">time-series</a>, <a href="https://github.com/airctic/icevision">object detection</a> and <code>collab</code> (collaborative filtering) models.</p>
+<p>The fastai library simplifies training fast and accurate neural nets using modern best practices. See the <a href="https://henry090.github.io/fastai/">fastai website</a> to get started. The library is based on research into deep learning best practices undertaken at <code>fast.ai</code>, and includes “out of the box” support for <code>vision</code>, <code>text</code>, <code>tabular</code>, and <code>collab</code> (collaborative filtering) models.</p>
 <p><img src="files/fastai.png" width="200" align="right" style="margin-left: 15px;" alt="fastai"></p>
 <p><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a> <a href="https://CRAN.R-project.org/package=fastai"><img src="https://www.r-pkg.org/badges/version/fastai" alt="CRAN status"></a> <a href="https://cran.r-project.org/package=fastai"><img src="http://cranlogs.r-pkg.org/badges/last-month/fastai?color=green" alt="Last month downloads"></a></p>
 </div>
@@ -244,12 +244,23 @@
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p><strong>1. Install miniconda and activate environment:</strong></p>
 <pre><code><a href="https://rdrr.io/pkg/reticulate/man/install_miniconda.html">reticulate::install_miniconda()
-reticulate::conda_create('r-reticulate', packages = 'python==3.6.10')</a></code></pre>
+reticulate::conda_create('r-reticulate')</a></code></pre>
 <p><strong>2. The dev version:</strong></p>
 <pre><code>devtools::install_github('henry090/fastai')</code></pre>
 <p><strong>3. Later, you need to install the python module <code>fastai</code>:</strong></p>
 <pre><code><a href="reference/install_fastai.html">fastai::install_fastai(gpu = FALSE, cuda_version = '10.1', overwrite = FALSE)</a></code></pre>
 <p><strong>4. Restart RStudio!</strong></p>
+</div>
+<div id="fastai-extensions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#fastai-extensions" class="anchor"></a>fast.ai extensions:</h2>
+<ol>
+<li><a href="https://github.com/ohmeow/blurr">NLP, Transformers</a></li>
+<li><a href="https://github.com/airctic/icevision">Object Detection</a></li>
+<li><a href="https://github.com/tcapelle/timeseries_fastai">Time-series</a></li>
+<li><a href="https://github.com/tmabraham/UPIT">CycleGAN</a></li>
+<li><a href="https://github.com/fastaudio/fastaudio">Audio</a></li>
+</ol>
 </div>
 <div id="kaggle" class="section level2">
 <h2 class="hasAnchor">
