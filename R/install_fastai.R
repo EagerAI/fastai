@@ -11,11 +11,12 @@
 #' @return None
 #' @export
 install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrite = FALSE,
-                           extra_pkgs = c('timm','fastinference[interp]'),
+                           extra_pkgs = c('timm'),
                            TPU = FALSE) {
   # extensions
   # 'blurr', 'icevision[all]', 'kaggle', 'transformers', git+https://github.com/tmabraham/UPIT.git
   # git+https://github.com/tcapelle/timeseries_fastai.git
+  # 'fastinference[interp]'
 
   required_py_pkgs <- c('IPython', 'torch', 'torchvision', 'fastai',
                        'pydicom', 'kornia', 'cv2',
