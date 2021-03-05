@@ -11,7 +11,7 @@
 #' @return None
 #' @export
 install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrite = FALSE,
-                           extra_pkgs = c('timm'),
+                           extra_pkgs = c('timm','fastinference[interp]'),
                            TPU = FALSE) {
   # extensions
   # 'blurr', 'icevision[all]', 'kaggle', 'transformers', git+https://github.com/tmabraham/UPIT.git
