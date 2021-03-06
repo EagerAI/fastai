@@ -1,7 +1,8 @@
 
-## 2.0.5 (Unreleased)
+## 2.0.5 
 
-- .
+- ```install_fastai``` no more supports extensions. They need to be installed separately by users.
+- PyTorch was upgraded from 1.7.0 to 1.7.1.
 
 ## 2.0.4 
 
