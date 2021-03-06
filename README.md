@@ -12,7 +12,7 @@ and includes "out of the box" support for `vision`, `text`, `tabular`, and `coll
 
 <img src="files/fastai.png" width=200 align=right style="margin-left: 15px;" alt="fastai"/>
 
-[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![CRAN status](https://www.r-pkg.org/badges/version/fastai)](https://CRAN.R-project.org/package=fastai)
 [![Last month downloads](http://cranlogs.r-pkg.org/badges/last-month/fastai?color=green)](https://cran.r-project.org/package=fastai)
 
@@ -430,7 +430,7 @@ learn %>% fit(2)
 [Computer Vision models](https://github.com/rwightman/pytorch-image-models)?**
 
 There is a function in fastai `timm_learner` which originally written by
-[Zachary Mueller](https://github.com/walkwithfastai/walkwithfastai.github.io/blob/master/02_vision.external.timm.ipynb).
+[Zachary Mueller](https://github.com/walkwithfastai/walkwithfastai.github.io/).
 It helps to quickly load the pretrained models from
 [timm library](https://github.com/rwightman/pytorch-image-models).
 
