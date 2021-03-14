@@ -1,4 +1,21 @@
 
+#' @title Load_learner
+#'
+#' @description Load a `Learner` object in `fname`, optionally putting it on the `cpu`
+#'
+#'
+#' @param fname fname
+#' @param cpu cpu or not
+#' @return learner object
+#' @export
+load_learner <- function(fname, cpu = TRUE) {
+
+  fastai2$learner$load_learner(
+    fname = fname,
+    cpu = cpu
+  )
+
+}
 
 
 

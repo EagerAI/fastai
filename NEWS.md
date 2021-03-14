@@ -1,4 +1,11 @@
 
+## 2.0.6
+
+- new function to [load_learner](https://github.com/henry090/fastai/issues/115)
+- unet_config is [Deprecated](https://github.com/henry090/fastai/issues/128)
+- while installing fast.ai Mac OS, first, it downloads PyTorch 1.8, then 1.7.1. It is fixed, [now](https://github.com/henry090/fastai/issues/129).
+
+
 ## 2.0.5 
 
 - ```install_fastai``` no more supports extensions. They need to be installed separately by users.
