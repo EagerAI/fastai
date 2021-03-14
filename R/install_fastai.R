@@ -56,7 +56,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   # linux
   cuda_linux = c('torch==1.7.1+cu92 torchvision==0.8.2+cu92 torchaudio==0.7.2 -f https://download.pytorch.org/whl/torch_stable.html',
                  'torch==1.7.1+cu101 torchvision==0.8.2+cu101 torchaudio==0.7.2 -f https://download.pytorch.org/whl/torch_stable.html',
-                 'torch torchvision torchaudio',
+                 'torch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2',
                  'torch==1.7.1+cu110 torchvision==0.8.2+cu110 torchaudio===0.7.2 -f https://download.pytorch.org/whl/torch_stable.html')
   linux_cpu = c('torch==1.7.1+cpu torchvision==0.8.2+cpu torchaudio==0.7.2 -f https://download.pytorch.org/whl/torch_stable.html')
 
@@ -155,7 +155,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
       }
 
       if (os() %in% 'mac' & !length(required_py_pkgs) == 0 & torch_r) {
-        py_install(packages = c('torch torchvision torchaudio', required_py_pkgs), pip = TRUE)
+        py_install(packages = c('torch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2', required_py_pkgs), pip = TRUE)
 
       } else if (os() %in% 'mac' & !length(required_py_pkgs) == 0 & !torch_r){
         py_install(packages = c(required_py_pkgs), pip = TRUE)
