@@ -37,11 +37,68 @@ unet_config <- function(blur = FALSE, blur_final = TRUE, self_attention = FALSE,
       args[[strings[i]]] <- NULL
   }
 
-  do.call(vision()$gan$unet_config, args)
+  .Deprecated("create_unet_model")
+  try(do.call(vision()$gan$unet_config, args),TRUE)
 
 }
 
 
+#' @title Create_unet_model
+#'
+#' @description Create custom unet architecture
+#'
+#'
+#' @param arch architecture
+#' @param n_out number of out features
+#' @param img_size imgage shape
+#' @param pretrained pretrained or not
+#' @param cut cut
+#' @param n_in number of input
+#' @param blur blur is used to avoid checkerboard artifacts at each layer.
+#' @param blur_final blur final is specific to the last layer.
+#' @param self_attention self_attention determines if we use a self attention layer at the third block before the end.
+#' @param y_range If y_range is passed, the last activations go through a sigmoid rescaled to that range.
+#' @param last_cross last_cross
+#' @param bottle bottle
+#' @param act_cls activation
+#' @param init initialzier
+#' @param norm_type normalization type
+#' @return None
+#' @export
+create_unet_model <- function(arch, n_out, img_size, pretrained = TRUE, cut = NULL,
+                              n_in = 3, blur = FALSE, blur_final = TRUE,
+                              self_attention = FALSE, y_range = NULL,
+                              last_cross = TRUE, bottle = FALSE, act_cls = nn()$ReLU,
+                              init = nn()$init$kaiming_normal_, norm_type = NULL) {
+
+  args <- list(
+    arch = arch,
+    n_out = as.integer(n_out),
+    img_size = img_size,
+    pretrained = pretrained,
+    cut = cut,
+    n_in = as.integer(n_in),
+    blur = blur,
+    blur_final = blur_final,
+    self_attention = self_attention,
+    y_range = y_range,
+    last_cross = last_cross,
+    bottle = bottle,
+    act_cls = act_cls,
+    init = init,
+    norm_type = norm_type
+  )
+
+  strings = c('norm_type', 'y_range', 'cut')
+
+  for(i in 1:length(strings)) {
+    if(is.null(args[[strings[i]]]))
+      args[[strings[i]]] <- NULL
+  }
+
+  do.call(vision()$all$create_unet_model, args)
+
+}
 
 
 #' @title Unet_learner
