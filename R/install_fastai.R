@@ -49,6 +49,8 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
 
   if(missing(version)) {
     required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastai", "fastai")
+  } else if(!missing(version) & grep('git', version)==1) {
+    required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastai", version)
   } else {
     required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastai", paste("fastai",version,sep = "=="))
   }
