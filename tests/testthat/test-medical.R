@@ -49,7 +49,9 @@ test_succeeds('datalaoder and block for URLs_SIIM_SMALL', {
   pneumothorax = DataBlock(blocks = list(ImageBlock(cls = Dicom()), CategoryBlock()),
                            get_x = function(x) {paste('siim_small', x[[1]], sep = '/')},
                            get_y = function(x) {paste(x[[2]])},
-                           batch_tfms = aug_transforms(size = 224))
+                           batch_tfms = list(aug_transforms(size = 224),
+                                             Normalize_from_stats( imagenet_stats() )
+                           ))
 
   dls = pneumothorax %>% dataloaders(as.matrix(df))
 
