@@ -4,7 +4,8 @@
 - new function to [load_learner](https://github.com/henry090/fastai/issues/115)
 - unet_config is [Deprecated](https://github.com/henry090/fastai/issues/128)
 - while installing fast.ai Mac OS, first, it downloads PyTorch 1.8, then 1.7.1. It is fixed, [now](https://github.com/henry090/fastai/issues/129).
-
+- ```nn_module()``` function allows to rename the model, e.g. ```summary(model)```
+- ```nn_module()``` will not move the model to GPU, if ```gpu``` argument is *FALSE* (by default it is *TRUE*)
 
 ## 2.0.5 
 
