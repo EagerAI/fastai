@@ -15,6 +15,13 @@ python_path <- function() {
 #' @return None
 Module_test <- function() try(reticulate::import_from_path('fastaibuilt', path = python_path())$Module_test, TRUE)
 
+#' @title Loss NN module
+#'
+#'
+#'
+#' @return None
+custom_loss <- function() try(reticulate::import_from_path('fastaibuilt', path = python_path())$custom_loss, TRUE)
+
 #' @title Bs finder
 #'
 #'
