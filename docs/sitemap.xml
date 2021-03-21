@@ -1432,6 +1432,9 @@
     <loc>https://henry090.github.io/fastai//reference/create_unet_model.html</loc>
   </url>
   <url>
+    <loc>https://henry090.github.io/fastai//reference/custom_loss.html</loc>
+  </url>
+  <url>
     <loc>https://henry090.github.io/fastai//reference/cutout_gaussian.html</loc>
   </url>
   <url>
@@ -2273,6 +2276,9 @@
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/nn.html</loc>
+  </url>
+  <url>
+    <loc>https://henry090.github.io/fastai//reference/nn_loss.html</loc>
   </url>
   <url>
     <loc>https://henry090.github.io/fastai//reference/nn_module.html</loc>
