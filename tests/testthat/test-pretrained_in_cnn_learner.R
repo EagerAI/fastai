@@ -180,7 +180,10 @@ test_succeeds('pet load densenet201', {
   summary(learn)
 })
 
-
+test_succeeds('pet load timm mixnet_xl', {
+  learn = timm_learner(dls, 'mixnet_xl', metrics = list(accuracy, error_rate))
+  summary(learn)
+})
 
 
 
