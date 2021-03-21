@@ -105,17 +105,17 @@ os = function() {
 
 #' @title Fastai custom loss
 #'
-#' @param model_fn pass custom model function
+#' @param loss_fn pass custom model function
 #' @param name set name for nn_module
 #' @return None
 #' @export
-nn_loss = function(model_fn, name = 'CustomLoss') {
+nn_loss = function(loss_fn, name = 'Custom_Loss') {
 
 
   model <- custom_loss()$CustomLoss()
-
-  r_model_call <- model_fn(model)
-  model$`_r_call` <- r_model_call
+  model$forward <- loss_fn
+ # r_model_call <- loss_fn(model)
+  #model$`_r_call` <- r_model_call
 
   #rename name
   model$`__class__`$`__name__` <- as.character(name)

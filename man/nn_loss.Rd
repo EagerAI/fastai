@@ -4,10 +4,10 @@
 \alias{nn_loss}
 \title{Fastai custom loss}
 \usage{
-nn_loss(model_fn, name = "CustomLoss")
+nn_loss(loss_fn, name = "Custom_Loss")
 }
 \arguments{
-\item{model_fn}{pass custom model function}
+\item{loss_fn}{pass custom model function}
 
 \item{name}{set name for nn_module}
 }
