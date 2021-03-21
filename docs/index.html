@@ -232,10 +232,6 @@
 <td><strong>Windows</strong></td>
 <td><img src="https://github.com/henry090/fastai/workflows/windows/badge.svg" alt="windows"></td>
 </tr>
-<tr class="even">
-<td><strong>Documentation</strong></td>
-<td><img src="https://github.com/henry090/fastai/workflows/docs/badge.svg" alt="docs"></td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -528,7 +524,9 @@ dls = ImageDataLoaders_from_name_re(
 learn = timm_learner(dls, 'cspdarknet53', metrics = list(accuracy, error_rate))
 
 learn %&gt;% summary()</a></code></pre>
-<details><summary>Model summary</summary><p>
+<details><summary>
+Model summary
+</summary><p>
 </p>
 <pre><code>Sequential (Input shape: ['10 x 3 x 224 x 224'])
 ================================================================
@@ -1018,7 +1016,9 @@ List of 32
 }
 
 attr(acc_camvid, "py_function_name") &lt;- 'acc_camvid'</code></pre>
-<details><summary>Debug acc_camvid manually</summary><p>
+<details><summary>
+Debug acc_camvid manually
+</summary><p>
 </p>
 <pre><code>batch = dls %&gt;% one_batch(convert = FALSE)</code></pre>
 <pre><code>[[1]]
@@ -1712,7 +1712,7 @@ tbbox = LabeledBBox(TensorBBox(bbox[[1]]), bbox[[2]])
 <pre><code>(#2) [TensorBBox([[ 91.3000,  77.9400, 102.4300,  82.4700],
         [ 27.5800,  77.6500,  40.7600,  82.3400]]),['tv', 'tv']]</code></pre>
 <p>Visualize:</p>
-<pre><code><a href="http://dahtah.github.io/imager/">library(imager)
+<pre><code><a href="https://rdrr.io/r/base/library.html">library(imager)
 coco = imager::load.image(coco_fn)
 plot(coco,axes=F)
 

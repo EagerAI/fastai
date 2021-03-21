@@ -5,7 +5,6 @@ class RModel(Module):
     def __init__(self):
         super(RModel, self).__init__()
 
-    def forward(self, xb):
-      return self._r_call(xb)
-
+    def forward(self, *args):
+      return self._r_call(*args)
 

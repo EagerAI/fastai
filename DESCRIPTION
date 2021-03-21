@@ -39,6 +39,5 @@ Suggests:
     utils,
     R.utils,
     viridis,
-    zeallot,
-    nandb
+    zeallot
 VignetteBuilder: knitr

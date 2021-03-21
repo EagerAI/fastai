@@ -4,10 +4,14 @@
 \alias{nn_module}
 \title{Fastai NN module}
 \usage{
-nn_module(model_fn)
+nn_module(model_fn, name = "Custom_Model", gpu = TRUE)
 }
 \arguments{
 \item{model_fn}{pass custom model function}
+
+\item{name}{set name for nn_module}
+
+\item{gpu}{move model to GPU}
 }
 \value{
 None

@@ -66,21 +66,25 @@ torch.save(a, '{temp}/torch_a')
 
 #' @title Fastai NN module
 #'
-#'
+#' @param gpu move model to GPU
 #' @param model_fn pass custom model function
-#'
+#' @param name set name for nn_module
 #' @return None
 #' @export
-nn_module = function(model_fn) {
+nn_module = function(model_fn, name = 'Custom_Model', gpu = TRUE) {
 
   # if GPU is available move to gpu
-  if(torch()$cuda$is_available()) {
+  if(torch()$cuda$is_available() & gpu) {
     model <- Module_test()$RModel()$cuda()
   } else {
     model <- Module_test()$RModel()
   }
   r_model_call <- model_fn(model)
   model$`_r_call` <- r_model_call
+
+  #rename name
+  model$`__class__`$`__name__` <- as.character(name)
+
   model
 }
 
@@ -99,7 +103,25 @@ os = function() {
 
 
 
+#' @title Fastai custom loss
+#'
+#' @param loss_fn pass custom model function
+#' @param name set name for nn_module
+#' @return None
+#' @export
+nn_loss = function(loss_fn, name = 'Custom_Loss') {
 
+
+  model <- custom_loss()$CustomLoss()
+  model$forward <- loss_fn
+ # r_model_call <- loss_fn(model)
+  #model$`_r_call` <- r_model_call
+
+  #rename name
+  model$`__class__`$`__name__` <- as.character(name)
+
+  model
+}
 
 
 
