@@ -38,3 +38,4 @@ adult_sample/
 odFridgeObjects/
 mnist.pkl
 mnist.pkl.gz
+opt.py
