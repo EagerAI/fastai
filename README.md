@@ -38,7 +38,7 @@ reticulate::conda_create('r-reticulate')
 **2. The dev version:**
 
 ```
-devtools::install_github('henry090/fastai')
+devtools::install_github('eagerai/fastai')
 ```
 
 **3. Later, you need to install the python module `fastai`:**
