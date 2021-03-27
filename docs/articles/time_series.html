@@ -252,7 +252,7 @@
 <code class="sourceCode R"><span class="va">df_train</span> <span class="op">=</span> <span class="va">df</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="va">split_idx</span>,<span class="op">]</span>
 <span class="va">df_test</span> <span class="op">=</span> <span class="va">df</span><span class="op">[</span><span class="op">(</span><span class="va">split_idx</span><span class="op">+</span><span class="fl">1</span><span class="op">)</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span>,<span class="op">]</span>
 
-<span class="va">x_cols</span> <span class="op">=</span> <span class="fu"><a href="https://generics.r-lib.org/reference/setops.html">setdiff</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">df_train</span><span class="op">)</span>,<span class="st">'y'</span><span class="op">)</span></code></pre></div>
+<span class="va">x_cols</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/generics/man/setops.html">setdiff</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">df_train</span><span class="op">)</span>,<span class="st">'y'</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="dataloader-and-inception-model" class="section level2">
 <h2 class="hasAnchor">
