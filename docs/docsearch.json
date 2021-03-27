@@ -2,21 +2,21 @@
   "index_name": "henry090",
   "start_urls": [
     {
-      "url": "https://henry090.github.io/fastai//index.html",
+      "url": "https://EagerAI.github.io/fastai//index.html",
       "selectors_key": "homepage",
       "tags": [
         "homepage"
       ]
     },
     {
-      "url": "https://henry090.github.io/fastai//reference",
+      "url": "https://EagerAI.github.io/fastai//reference",
       "selectors_key": "reference",
       "tags": [
         "reference"
       ]
     },
     {
-      "url": "https://henry090.github.io/fastai//articles",
+      "url": "https://EagerAI.github.io/fastai//articles",
       "selectors_key": "articles",
       "tags": [
         "articles"
@@ -30,7 +30,7 @@
     "/articles/index.html"
   ],
   "sitemap_urls": [
-    "https://henry090.github.io/fastai//sitemap.xml"
+    "https://EagerAI.github.io/fastai//sitemap.xml"
   ],
   "selectors": {
     "homepage": {

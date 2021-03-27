@@ -26,8 +26,8 @@ articles:
   textclassification: textclassification.html
   textsummarize: textsummarize.html
   time_series: time_series.html
-last_built: 2021-03-21T11:42Z
+last_built: 2021-03-27T08:24Z
 urls:
-  reference: https://henry090.github.io/fastai//reference
-  article: https://henry090.github.io/fastai//articles
+  reference: https://EagerAI.github.io/fastai//reference
+  article: https://EagerAI.github.io/fastai//articles
 
