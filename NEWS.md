@@ -1,4 +1,9 @@
 
+## 2.0.7
+
+- bs_finder is fixed
+- better visualization on Colab. Issue with fig size is fixed
+
 ## 2.0.6
 
 - new function to [load_learner](https://github.com/EagerAI/fastai/issues/115)
