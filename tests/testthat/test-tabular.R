@@ -35,7 +35,7 @@ test_succeeds('tabular ops dataloader', {
 
 
 test_succeeds('tabular ops create model', {
-  model = dls %>% tabular_learner(layers=c(200,100), metrics=accuracy)
+  model = dls %>% tabular_learner(layers=c(200,100), metrics=accuracy())
 })
 
 test_succeeds('tabular ops dims==batch', {
@@ -46,14 +46,14 @@ test_succeeds('tabular ops dims==batch', {
 })
 
 test_succeeds('tabular ops bs find', {
-  #bss = model %>% bs_find(1e-3)
-  #model %>% plot_bs_find()
-  #expect_s3_class(bss, 'data.frame')
+  bss = model %>% bs_find(1e-3)
+  model %>% plot_bs_find()
+  expect_s3_class(bss, 'data.frame')
 })
 
 
 test_succeeds('tabular ops train model', {
-  model %>% fit(1,1e-2)
+  model %>% fit(1,1e-3)
 })
 
 test_succeeds('tabular ops predict', {
@@ -67,7 +67,6 @@ test_succeeds('tabular ops get optimal lr', {
   expect_true(is.data.frame(df))
 })
 
-
 test_succeeds('tabular ops confusion matrix', {
   conf = model %>% get_confusion_matrix() %>% as.data.frame()
   expect_equal(names(conf),rownames(conf))
@@ -77,7 +76,7 @@ test_succeeds('tabular ops confusion matrix', {
 
 test_succeeds('tabular ops confusion matrix via class-n interp', {
   interp = ClassificationInterpretation_from_learner(model)
-  interp %>% plot_confusion_matrix(dpi = 90, figsize = c(6,6))
+  interp %>% plot_confusion_matrix()
 })
 
 
