@@ -9,10 +9,10 @@ show_batch(
   b = NULL,
   max_n = 9,
   ctxs = NULL,
-  figsize = c(19.2, 10.8),
+  figsize = c(6, 6),
   show = TRUE,
   unique = FALSE,
-  dpi = 90,
+  dpi = 120,
   ...
 )
 }

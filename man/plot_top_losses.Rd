@@ -4,14 +4,7 @@
 \alias{plot_top_losses}
 \title{Plot_top_losses}
 \usage{
-plot_top_losses(
-  interp,
-  k,
-  largest = TRUE,
-  figsize = c(19.2, 10.8),
-  ...,
-  dpi = 90
-)
+plot_top_losses(interp, k, largest = TRUE, figsize = c(7, 5), ..., dpi = 90)
 }
 \arguments{
 \item{interp}{interpretation object}

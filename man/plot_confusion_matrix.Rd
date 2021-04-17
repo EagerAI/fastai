@@ -11,9 +11,9 @@ plot_confusion_matrix(
   cmap = "Blues",
   norm_dec = 2,
   plot_txt = TRUE,
-  figsize = c(19.2, 10.8),
+  figsize = c(4, 4),
   ...,
-  dpi = 250
+  dpi = 120
 )
 }
 \arguments{
