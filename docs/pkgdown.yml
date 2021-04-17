@@ -26,7 +26,7 @@ articles:
   textclassification: textclassification.html
   textsummarize: textsummarize.html
   time_series: time_series.html
-last_built: 2021-04-17T11:24Z
+last_built: 2021-04-17T12:37Z
 urls:
   reference: https://EagerAI.github.io/fastai//reference
   article: https://EagerAI.github.io/fastai//articles
