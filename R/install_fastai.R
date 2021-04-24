@@ -22,12 +22,16 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
                        'pydicom', 'kornia', 'cv2',
                        'skimage')
 
+  if(os()=='linux')
+    required_py_pkgs <- append(required_py_pkgs,'ohmeow-blurr')
+
 
   if(length(extra_pkgs) > 0) {
     required_py_pkgs = c(required_py_pkgs, extra_pkgs)
   }
 
   required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastinference[interp]", "fastinference")
+  required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="ohmeow-blurr", "blurr")
 
   res_ = list()
   for (i in 1:length(required_py_pkgs)) {
@@ -46,6 +50,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10.1', overwrit
   required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="skimage", "scikit-image")
   required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="shap", "shap==0.35.0")
   required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastinference", "fastinference[interp]")
+  required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="blurr", "ohmeow-blurr")
 
   if(missing(version)) {
     required_py_pkgs = replace(required_py_pkgs, required_py_pkgs=="fastai", "fastai")
