@@ -10,10 +10,10 @@ test_succeeds('download URLs_IMDB', {
 test_succeeds('download URLs_IMDB Datablock', {
   path = 'imdb'
   bs = 20
-  imdb_lm = DataBlock(blocks=list(TextBlock_from_folder(path, is_lm = TRUE)),
-                      get_items = partial(get_text_files(),
-                                          folders = c('train', 'test', 'unsup')),
-                      splitter = RandomSplitter(0.1))
+  #imdb_lm = DataBlock(blocks=list(TextBlock_from_folder(path, is_lm = TRUE)),
+    #                  get_items = partial(get_text_files(),
+    #                                      folders = c('train', 'test', 'unsup')),
+    #                  splitter = RandomSplitter(0.1))
 })
 
 test_succeeds('download URLs_IMDB Datablock dataloaders', {
