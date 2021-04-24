@@ -17,7 +17,7 @@ test_succeeds('download URLs_IMDB Datablock', {
 })
 
 test_succeeds('download URLs_IMDB Datablock dataloaders', {
-  dbunch_lm = imdb_lm %>% dataloaders(source = path, path = path, bs = bs, seq_len = 10)
+  dbunch_lm = imdb_lm %>% dataloaders(source = path, path = path, bs = bs, seq_len = 10,num_workers=0L)
 })
 
 test_succeeds('download URLs_IMDB Datablock leaner', {
