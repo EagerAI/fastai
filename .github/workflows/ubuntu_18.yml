@@ -47,6 +47,7 @@ jobs:
         run: |
           Rscript -e "remotes::install_local()"
           Rscript -e "fastai::install_fastai()"
+          Rscript -e "Sys.setlocale('LC_ALL','C')"
 
       - name: Check
         continue-on-error: ${{ matrix.config.allow_failure }}

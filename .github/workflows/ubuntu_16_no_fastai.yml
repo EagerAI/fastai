@@ -48,6 +48,7 @@ jobs:
         run: |
           Rscript -e "reticulate::conda_create('r-reticulate')"
           Rscript -e "remotes::install_local()"
+          Rscript -e "Sys.setlocale('LC_ALL','C')"
 
       - name: Check
         continue-on-error: ${{ matrix.config.allow_failure }}
