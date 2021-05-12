@@ -11,7 +11,7 @@ Tokenizer_from_df(
   sep = " ",
   n_workers = 6,
   mark_fields = NULL,
-  res_col_name = "text"
+  tok_text_col = "text"
 )
 }
 \arguments{
@@ -27,7 +27,7 @@ Tokenizer_from_df(
 
 \item{mark_fields}{mark fields}
 
-\item{res_col_name}{output column name}
+\item{tok_text_col}{output column name}
 }
 \value{
 None
