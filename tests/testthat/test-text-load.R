@@ -26,7 +26,7 @@ test_succeeds('text dataloader', {
     get_y = ColReader('sentiment'),
     splitter=RandomSplitter(0.1))
 
-  data_iterator = data_block %>% dataloaders(source=df, bs=4)
+  data_iterator = data_block %>% dataloaders(source=df, bs=4,num_workers=0)
   data_iterator %>% one_batch()
 })
 
