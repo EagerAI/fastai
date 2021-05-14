@@ -395,14 +395,14 @@ TextBlock <- function(tok_tfm, vocab = NULL, is_lm = FALSE, seq_len = 72,
 #' @param sep separator
 #' @param n_workers number workers
 #' @param mark_fields mark_fields
-#' @param res_col_name result column name
+#' @param tok_text_col result column name
 #' @return None
 #' @export
 TextBlock_from_df <- function(text_cols, vocab = NULL, is_lm = FALSE,
                               seq_len = 72, backwards = FALSE, min_freq = 3,
                               max_vocab = 60000, tok = NULL, rules = NULL,
                               sep = " ", n_workers = 6, mark_fields = NULL,
-                              res_col_name = "text") {
+                              tok_text_col = "text") {
 
   args <- list(
     text_cols = text_cols,
@@ -417,7 +417,7 @@ TextBlock_from_df <- function(text_cols, vocab = NULL, is_lm = FALSE,
     sep = sep,
     n_workers = as.integer(n_workers),
     mark_fields = mark_fields,
-    res_col_name = res_col_name
+    tok_text_col = tok_text_col
   )
 
   strings = c('vocab','tok','rules','mark_fields')
@@ -795,11 +795,11 @@ RandomSplitter <- function(valid_pct = 0.2, seed = NULL) {
 #' @param sep separator
 #' @param n_workers number of workers
 #' @param mark_fields mark fields
-#' @param res_col_name output column name
+#' @param tok_text_col output column name
 #' @return None
 #' @export
 Tokenizer_from_df <- function(text_cols, tok = NULL, rules = NULL, sep = " ", n_workers = 6,
-                              mark_fields = NULL, res_col_name = "text") {
+                              mark_fields = NULL, tok_text_col = "text") {
 
   args = list(
     text_cols = text_cols,
@@ -808,7 +808,7 @@ Tokenizer_from_df <- function(text_cols, tok = NULL, rules = NULL, sep = " ", n_
     sep = sep,
     n_workers = as.integer(n_workers),
     mark_fields = mark_fields,
-    res_col_name = res_col_name
+    tok_text_col = tok_text_col
   )
 
   strings = c('mark_fields', 'tok', 'rules')

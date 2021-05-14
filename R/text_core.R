@@ -315,12 +315,12 @@ tokenize_csv <- function(fname, text_cols, outname = NULL, n_workers = 4,
 #' @param rules rules
 #' @param mark_fields mark_fields
 #' @param tok tokenizer
-#' @param res_col_name res_col_name
+#' @param tok_text_col tok_text_col
 #' @return None
 #' @export
 tokenize_df <- function(df, text_cols, n_workers = 6, rules = NULL,
                         mark_fields = NULL, tok = NULL,
-                        res_col_name = "text") {
+                        tok_text_col = "text") {
 
   args <-list(
     df = df,
@@ -329,7 +329,7 @@ tokenize_df <- function(df, text_cols, n_workers = 6, rules = NULL,
     rules = rules,
     mark_fields = mark_fields,
     tok = tok,
-    res_col_name = res_col_name
+    tok_text_col = tok_text_col
   )
 
   if(is.null(args$tok))
