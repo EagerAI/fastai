@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fastai</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.9</span>
       </span>
     </div>
 
@@ -186,7 +186,7 @@
 
       
 
-      </header><script src="low_files/header-attrs-2.7/header-attrs.js"></script><div class="row">
+      </header><script src="low_files/header-attrs-2.9/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Low-level ops</h1>
@@ -402,7 +402,7 @@
 
 <span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/files.html">file.exists</a></span><span class="op">(</span><span class="st">'mnist.pkl.gz'</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span><span class="st">'http://deeplearning.net/data/mnist/mnist.pkl.gz'</span>,<span class="st">'mnist.pkl.gz'</span><span class="op">)</span>
-  <span class="fu">R.utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/R.utils/man/compressFile.html">gunzip</a></span><span class="op">(</span><span class="st">"mnist.pkl.gz"</span>, remove<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>
+  <span class="fu">R.utils</span><span class="fu">::</span><span class="fu">gunzip</span><span class="op">(</span><span class="st">"mnist.pkl.gz"</span>, remove<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>
 <span class="op">}</span>
   
 <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">x_train</span>, <span class="va">y_train</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">x_valid</span>, <span class="va">y_valid</span><span class="op">)</span>, <span class="va">res</span><span class="op">)</span> <span class="op">%&lt;-%</span>
