@@ -7,7 +7,7 @@
 install_fastai(
   version,
   gpu = FALSE,
-  cuda_version = "10.1",
+  cuda_version = "10",
   overwrite = FALSE,
   extra_pkgs = c("timm", "fastinference[interp]"),
   TPU = FALSE
@@ -18,7 +18,7 @@ install_fastai(
 
 \item{gpu}{installation of gpu}
 
-\item{cuda_version}{if gpu true, then cuda version is required. By default it is 10.1}
+\item{cuda_version}{if gpu true, then cuda version is required. By default it is 10}
 
 \item{overwrite}{will install all the dependencies}
 
