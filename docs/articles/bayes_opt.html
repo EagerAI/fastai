@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fastai</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.9</span>
       </span>
     </div>
 
@@ -186,7 +186,7 @@
 
       
 
-      </header><script src="bayes_opt_files/header-attrs-2.7/header-attrs.js"></script><div class="row">
+      </header><script src="bayes_opt_files/header-attrs-2.9/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Bayesian Optimisation</h1>
@@ -209,7 +209,7 @@
 <a href="#bayesian-optimisation" class="anchor"></a>Bayesian Optimisation</h2>
 <p>The dataset can be downloaded from <a href="https://www.kaggle.com/c/santander-customer-transaction-prediction">Kaggle</a>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://github.com/yanyachen/rBayesianOptimization">rBayesianOptimization</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">rBayesianOptimization</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org">magrittr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EagerAI/fastai">fastai</a></span><span class="op">)</span>
 
@@ -263,7 +263,7 @@
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">search_grid_fastai</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="va">bayes_fastai</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rBayesianOptimization/man/BayesianOptimization.html">BayesianOptimization</a></span><span class="op">(</span>FUN <span class="op">=</span> <span class="va">fastai_fit</span>, bounds <span class="op">=</span> <span class="va">search_bound_fastai</span>,
+<span class="va">bayes_fastai</span> <span class="op">&lt;-</span> <span class="fu">BayesianOptimization</span><span class="op">(</span>FUN <span class="op">=</span> <span class="va">fastai_fit</span>, bounds <span class="op">=</span> <span class="va">search_bound_fastai</span>,
                                     init_points <span class="op">=</span> <span class="fl">2</span>, init_grid_dt <span class="op">=</span> <span class="va">search_grid_fastai</span>,
                                     n_iter <span class="op">=</span> <span class="fl">5</span>, acq <span class="op">=</span> <span class="st">"ucb"</span><span class="op">)</span>
 
