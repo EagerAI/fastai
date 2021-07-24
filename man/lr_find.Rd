@@ -10,7 +10,6 @@ lr_find(
   end_lr = 10,
   num_it = 100,
   stop_div = TRUE,
-  suggestions = TRUE,
   ...
 )
 }
@@ -24,8 +23,6 @@ lr_find(
 \item{num_it}{number of iterations}
 
 \item{stop_div}{stop div or not}
-
-\item{suggestions}{suggestions}
 
 \item{...}{additional arguments to pass}
 }

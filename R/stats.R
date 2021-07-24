@@ -65,7 +65,6 @@ get_confusion_matrix <- function(object) {
 #' @param end_lr end learning rate
 #' @param num_it number of iterations
 #' @param stop_div stop div or not
-#' @param suggestions suggestions
 #' @param ... additional arguments to pass
 #' @return data frame
 #'
@@ -80,7 +79,7 @@ get_confusion_matrix <- function(object) {
 #'
 #' @export
 lr_find <- function(object, start_lr = 1e-07, end_lr = 10, num_it = 100,
-                    stop_div = TRUE, suggestions = TRUE, ...) {
+                    stop_div = TRUE, ...) {
 
   args <- list(
     start_lr = start_lr,
@@ -88,7 +87,6 @@ lr_find <- function(object, start_lr = 1e-07, end_lr = 10, num_it = 100,
     num_it = as.integer(num_it),
     stop_div = stop_div,
     show_plot = FALSE,
-    suggestions = suggestions,
     ...
   )
 
