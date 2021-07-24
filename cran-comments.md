@@ -1,4 +1,4 @@
-This is the submission of 'fastai' 2.0.8 
+This is the submission of 'fastai' 2.0.9
 
 ## Test environments
 
@@ -9,6 +9,6 @@ This is the submission of 'fastai' 2.0.8
 
 ## R CMD check results
 
-There were no ERRORs, WARNINGs or NOTEs.
+There were no ERRORs, WARNINGs and 1 NOTE.
 
 
