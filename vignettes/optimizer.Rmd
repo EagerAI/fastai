@@ -333,7 +333,7 @@ List of 4
 
 A ```Optimizer``` for ```RMSProp``` with ```lr```, ```sqr_mom```, ```mom``` and ```params```.
 
-```RMSProp``` was introduced by Geoffrey Hinton in [his course](http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf). What is named ```sqr_mom``` here is the ```alpha``` in the course. Optional weight decay of ```wd``` is applied, as true weight decay (decay the weights directly) if ```decouple_wd = TRUE``` else as L2 regularization (add the decay to the gradients).
+```RMSProp``` was introduced by Geoffrey Hinton in his course. What is named ```sqr_mom``` here is the ```alpha``` in the course. Optional weight decay of ```wd``` is applied, as true weight decay (decay the weights directly) if ```decouple_wd = TRUE``` else as L2 regularization (add the decay to the gradients).
 
 ```{r}
 params = tst_param(c(1:3), c(0.1,0.2,0.3))
