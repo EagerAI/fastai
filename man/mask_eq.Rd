@@ -17,11 +17,3 @@ tensor
 \description{
 Equal
 }
-\examples{
-\donttest{
-
-aa = tensor(1:10)
-aa == aa
-
-}
-}

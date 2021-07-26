@@ -17,12 +17,3 @@ tensor
 \description{
 Greater or equal
 }
-\examples{
-\donttest{
-
-aa = tensor(1:10)
-aa >= aa
-
-}
-
-}

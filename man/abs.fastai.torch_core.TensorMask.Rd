@@ -7,20 +7,11 @@
 \method{abs}{fastai.torch_core.TensorMask}(x)
 }
 \arguments{
-\item{x}{tensor}
+\item{x}{tensor, e.g.: tensor(-1:-10)}
 }
 \value{
 tensor
 }
 \description{
 Abs
-}
-\examples{
-\donttest{
-
-aa = tensor(-1:-10)
-abs(aa)
-
-}
-
 }

@@ -19,12 +19,3 @@ tensor
 \description{
 Max
 }
-\examples{
-\donttest{
-
-aa = tensor(1:10)
-max(aa)
-
-}
-
-}
