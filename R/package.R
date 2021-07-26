@@ -88,6 +88,19 @@ fix_fit = function(disable_graph = FALSE) {
         invisible(try(set_theme(), TRUE))
 
       } else {
+
+        res=try(reticulate::py_run_string("
+import sys
+IN_COLAB = 'google.colab' in sys.modules
+file = open('res.py', 'w')
+file.write(str(IN_COLAB))
+file.close()
+"),silent=TRUE)
+
+        if(res$IN_COLAB) {
+          utils::flush.console()
+        }
+
         ## restore from temp
         tmm = tempdir()
         tmp_name = paste(tmm,"output.txt",sep = '/')
