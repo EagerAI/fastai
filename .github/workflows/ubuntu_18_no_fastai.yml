@@ -40,7 +40,7 @@ jobs:
 
       - name: Install Python
         run: |
-          Rscript -e "install.packages('reticulate')"
+          Rscript -e "install.packages(c('reticulate','png','Rcpp'))"
           Rscript -e "try(reticulate::install_miniconda())"
 
 

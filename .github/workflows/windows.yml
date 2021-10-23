@@ -37,7 +37,7 @@ jobs:
         run: |
           Rscript -e "install.packages('reticulate')"
           Rscript -e "try(reticulate::install_miniconda())"
-          Rscript -e "reticulate::conda_create('r-reticulate',python_version = '3.9')"
+          Rscript -e "reticulate::conda_create('r-reticulate',python_version = '3.10')"
       - name: Install fastai
         run: |
           Rscript -e "remotes::install_local()"
