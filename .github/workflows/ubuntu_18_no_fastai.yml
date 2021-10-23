@@ -31,9 +31,7 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           sudo apt-get install curl
-          sudo wget -q -O /tmp/libpng12.deb http://mirrors.kernel.org/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.54-1ubuntu1_amd64.deb \
-          && dpkg -i /tmp/libpng12.deb \
-          && rm /tmp/libpng12.deb
+          sudo echo "deb http://mirrors.kernel.org/ubuntu/ xenial main" | sudo tee -a /etc/apt/sources.list && sudo apt-get update && sudo apt install -y --allow-unauthenticated libpng12-0
 
       - name: Install Linux
         run: |
