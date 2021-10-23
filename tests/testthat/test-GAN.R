@@ -6,6 +6,7 @@ source("utils.R")
 
 test_succeeds('download URLs_HORSE_2_ZEBRA', {
   if(!dir.exists('horse2zebra')) {
+    options(timeout=10000)
     URLs_HORSE_2_ZEBRA()
   }
 })
