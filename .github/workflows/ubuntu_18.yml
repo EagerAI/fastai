@@ -31,8 +31,6 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           sudo apt-get install curl
-          sudo echo "deb http://mirrors.kernel.org/ubuntu/ xenial main" | sudo tee -a /etc/apt/sources.list && sudo apt-get update && sudo apt install -y --allow-unauthenticated libpng12-0
-
       - name: Install Linux
         run: |
           Rscript -e "install.packages('remotes')"
