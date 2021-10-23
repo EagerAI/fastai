@@ -28,6 +28,14 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@master
 
+      - name: Install dependencies if Linux
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get install curl
+          sudo add-apt-repository ppa:linuxuprising/libpng12
+          sudo apt update
+          sudo apt install libpng12-0
+
       - name: Install MacOS/Windows/Linux
         run: |
           Rscript -e "install.packages('remotes')"
