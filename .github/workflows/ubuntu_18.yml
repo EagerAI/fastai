@@ -31,9 +31,6 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           sudo apt-get install curl
-          sudo add-apt-repository ppa:linuxuprising/libpng12
-          sudo apt update
-          sudo apt install libpng12-0
 
       - name: Install Linux
         run: |
