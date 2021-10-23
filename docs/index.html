@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">fastai</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.0</span>
       </span>
     </div>
 
@@ -213,24 +213,20 @@
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td><strong>Xenial</strong></td>
-<td><img src="https://github.com/henry090/fastai/workflows/ubuntu_16/badge.svg" alt="ubuntu_16"></td>
-</tr>
-<tr class="even">
 <td><strong>Bionic</strong></td>
-<td><img src="https://github.com/henry090/fastai/workflows/ubuntu_18/badge.svg" alt="ubuntu_18"></td>
-</tr>
-<tr class="odd">
-<td><strong>Focal</strong></td>
-<td><img src="https://github.com/henry090/fastai/workflows/ubuntu_20/badge.svg" alt="ubuntu_20"></td>
+<td><img src="https://github.com/EagerAI/fastai/workflows/ubuntu_18/badge.svg" alt="ubuntu_18"></td>
 </tr>
 <tr class="even">
-<td><strong>Mac OS</strong></td>
-<td><img src="https://github.com/henry090/fastai/workflows/mac_os/badge.svg" alt="mac_os"></td>
+<td><strong>Focal</strong></td>
+<td><img src="https://github.com/EagerAI/fastai/workflows/ubuntu_20/badge.svg" alt="ubuntu_20"></td>
 </tr>
 <tr class="odd">
+<td><strong>Mac OS</strong></td>
+<td><img src="https://github.com/EagerAI/fastai/workflows/mac_os/badge.svg" alt="mac_os"></td>
+</tr>
+<tr class="even">
 <td><strong>Windows</strong></td>
-<td><img src="https://github.com/henry090/fastai/workflows/windows/badge.svg" alt="windows"></td>
+<td><img src="https://github.com/EagerAI/fastai/workflows/windows/badge.svg" alt="windows"></td>
 </tr>
 </tbody>
 </table>
@@ -242,7 +238,7 @@
 <pre><code><a href="https://rdrr.io/pkg/reticulate/man/install_miniconda.html">reticulate::install_miniconda()
 reticulate::conda_create('r-reticulate')</a></code></pre>
 <p><strong>2. The dev version:</strong></p>
-<pre><code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">devtools::install_github('eagerai/fastai')</a></code></pre>
+<pre><code>devtools::install_github('eagerai/fastai')</code></pre>
 <p><strong>3. Later, you need to install the python module <code>fastai</code>:</strong></p>
 <pre><code><a href="reference/install_fastai.html">fastai::install_fastai(gpu = FALSE, cuda_version = '10', overwrite = FALSE)</a></code></pre>
 <p><strong>4. Restart RStudio!</strong></p>
@@ -1623,7 +1619,7 @@ data
 5 0.0000002089296 5.043181
 6 0.0000002511886 5.023340</code></pre>
 <p>Visualize:</p>
-<pre><code><a href="http://jkunst.com/highcharter/reference/hchart.html">highcharter::hchart(data, "line", highcharter::hcaes(y = losses, x = lr_rates ))</a></code></pre>
+<pre><code>highcharter::hchart(data, "line", highcharter::hcaes(y = losses, x = lr_rates ))</code></pre>
 <p align="center">
 <img src="files/lr.png" height="500" align="center" alt="Learning_rates"></p>
 </div>
@@ -1790,6 +1786,9 @@ coco_tdl %&gt;% show_batch(dpi = 200)</code></pre>
 <h2 class="hasAnchor">
 <a href="#icevision" class="anchor"></a>Icevision</h2>
 <p>Icevision module has a great set of tools for object detection tasks:</p>
+<blockquote>
+<p>Note: First, install <a href="https://github.com/airctic/icevision">icevision module</a>: reticulate::py_install(‘icevision’, pip = TRUE)</p>
+</blockquote>
 <pre><code><a href="https://github.com/EagerAI/fastai">library(fastai)
 library(magrittr)
 
