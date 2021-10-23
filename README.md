@@ -2040,6 +2040,8 @@ Sequential(
 
 Icevision module has a great set of tools for object detection tasks:
 
+> Note: First, install [icevision module](https://github.com/airctic/icevision): reticulate::py_install('icevision', pip = TRUE)
+
 ```
 library(fastai)
 library(magrittr)
