@@ -31,7 +31,6 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           sudo apt-get install curl
-
       - name: Install Linux
         run: |
           Rscript -e "install.packages('remotes')"
@@ -40,9 +39,9 @@ jobs:
 
       - name: Install Python
         run: |
-          Rscript -e "remotes::install_github('rstudio/reticulate')"
+          Rscript -e "install.packages(c('reticulate','png','Rcpp'))"
           Rscript -e "try(reticulate::install_miniconda())"
-          Rscript -e "reticulate::conda_create('r-reticulate')"
+          Rscript -e "reticulate::conda_create('r-reticulate', python_version = '3.9')"
       - name: Install fastai
         run: |
           Rscript -e "remotes::install_local()"

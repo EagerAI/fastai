@@ -4,14 +4,15 @@ context("GAN")
 
 source("utils.R")
 
-test_succeeds('download URLs_HORSE_2_ZEBRA', {
+test_succeeds_windows('download URLs_HORSE_2_ZEBRA', {
   if(!dir.exists('horse2zebra')) {
+    options(timeout=10000)
     URLs_HORSE_2_ZEBRA()
   }
 })
 
 
-test_succeeds('dataloader URLs_HORSE_2_ZEBRA', {
+test_succeeds_windows('dataloader URLs_HORSE_2_ZEBRA', {
   horse2zebra = 'horse2zebra'
   trainA_path = file.path(horse2zebra,'trainA')
   trainB_path = file.path(horse2zebra,'trainB')
@@ -23,7 +24,7 @@ test_succeeds('dataloader URLs_HORSE_2_ZEBRA', {
   }
 })
 
-test_succeeds('CycleGAN model', {
+test_succeeds_windows('CycleGAN model', {
   if(reticulate::py_module_available('upit')) {
     cycle_gan = CycleGAN(3,3,64)
     learn = cycle_learner(dls, cycle_gan)

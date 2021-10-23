@@ -20,11 +20,10 @@ and includes "out of the box" support for `vision`, `text`, `tabular`, and `coll
 
 | Build             | Status                                                                         |
 | ----------------- | ------------------------------------------------------------------------------ |
-| **Xenial**        | ![ubuntu_16](https://github.com/henry090/fastai/workflows/ubuntu_16/badge.svg) |
-| **Bionic**        | ![ubuntu_18](https://github.com/henry090/fastai/workflows/ubuntu_18/badge.svg) |
-| **Focal**         | ![ubuntu_20](https://github.com/henry090/fastai/workflows/ubuntu_20/badge.svg) |
-| **Mac OS**        | ![mac_os](https://github.com/henry090/fastai/workflows/mac_os/badge.svg)       |
-| **Windows**       | ![windows](https://github.com/henry090/fastai/workflows/windows/badge.svg)     |
+| **Bionic**        | ![ubuntu_18](https://github.com/EagerAI/fastai/workflows/ubuntu_18/badge.svg) |
+| **Focal**         | ![ubuntu_20](https://github.com/EagerAI/fastai/workflows/ubuntu_20/badge.svg) |
+| **Mac OS**        | ![mac_os](https://github.com/EagerAI/fastai/workflows/mac_os/badge.svg)       |
+| **Windows**       | ![windows](https://github.com/EagerAI/fastai/workflows/windows/badge.svg)     |
 
 ## Installation
 
@@ -2039,6 +2038,8 @@ Sequential(
 ## Icevision
 
 Icevision module has a great set of tools for object detection tasks:
+
+> Note: First, install [icevision module](https://github.com/airctic/icevision): reticulate::py_install('icevision', pip = TRUE)
 
 ```
 library(fastai)
