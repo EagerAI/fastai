@@ -147,7 +147,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10', overwrite 
       }
 
       if (os() %in% 'mac' & !length(required_py_pkgs) == 0 & torch_r) {
-        py_install(packages = c('torch torchvision torchaudio -f https://download.pytorch.org/whl/torch_stable.html', required_py_pkgs), pip = TRUE)
+        py_install(packages = c('torch torchvision torchaudio', required_py_pkgs), pip = TRUE)
 
       } else if (os() %in% 'mac' & !length(required_py_pkgs) == 0 & !torch_r){
         py_install(packages = c(required_py_pkgs), pip = TRUE)
