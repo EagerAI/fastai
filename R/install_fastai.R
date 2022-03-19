@@ -101,16 +101,16 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10', overwrite 
 
       if (os() %in% 'linux' & !length(required_py_pkgs) == 0 & !TPU) {
         if (os() %in% 'linux' & gpu & cuda_version %in% '10' & torch_r & !length(required_py_pkgs) == 0) {
-          py_install(packages = c(required_py_pkgs, cuda_linux[1]), pip = TRUE)
+          py_install(packages = unlist( strsplit(c(required_py_pkgs, cuda_linux[1]),"[[:space:]]" )), pip = TRUE)
 
         } else if (os() %in% 'linux' & gpu & cuda_version %in% '11' & torch_r & !length(required_py_pkgs) == 0) {
-          py_install(packages = c(required_py_pkgs, cuda_linux[2]), pip = TRUE)
+          py_install(packages = unlist( strsplit( c(required_py_pkgs, cuda_linux[2]),"[[:space:]]" )), pip = TRUE)
 
         } else if(!gpu & torch_r & !length(required_py_pkgs) == 0) {
-          py_install(packages = c(linux_cpu, required_py_pkgs), pip = TRUE)
+          py_install(packages = unlist( strsplit( c(linux_cpu, required_py_pkgs),"[[:space:]]" )), pip = TRUE)
 
         } else if (!torch_r & !length(required_py_pkgs) == 0) {
-          py_install(packages = c(required_py_pkgs), pip = TRUE)
+          py_install(packages = unlist( strsplit(c(required_py_pkgs),"[[:space:]]" )), pip = TRUE)
 
         } else {
           print('Fastai is installed!')
@@ -120,24 +120,24 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10', overwrite 
       } else if (os() %in% 'linux' & TPU) {
 
         if(!missing(version) & os() %in% 'linux' & TPU)
-          py_install(packages = c(cuda_linux[2], xla,paste("fastai",version,sep = '=='),'fastai_xla_extensions'), pip = TRUE)
+          py_install(packages = unlist( strsplit( c(cuda_linux[2], xla,paste("fastai",version,sep = '=='),'fastai_xla_extensions'),"[[:space:]]" )), pip = TRUE)
         else if (missing(version) & os() %in% 'linux' & TPU)
-          py_install(packages = c(cuda_linux[2], xla,"fastai",'fastai_xla_extensions'), pip = TRUE)
+          py_install(packages = unlist( strsplit( c(cuda_linux[2], xla,"fastai",'fastai_xla_extensions'),"[[:space:]]" )), pip = TRUE)
 
       }
 
       if (os() %in% 'windows' & !length(required_py_pkgs) == 0 & torch_r & !length(required_py_pkgs) == 0) {
         if (os() %in% 'windows' & gpu & cuda_version %in% '10' & torch_r & !length(required_py_pkgs) == 0) {
-          py_install(packages = c(required_py_pkgs, cuda_windows[1]), pip = TRUE)
+          py_install(packages = unlist( strsplit( c(required_py_pkgs, cuda_windows[1]),"[[:space:]]" )), pip = TRUE)
 
         } else if (os() %in% 'windows' & gpu & cuda_version %in% '11' & torch_r & !length(required_py_pkgs) == 0) {
-          py_install(packages = c(required_py_pkgs, cuda_windows[2]), pip = TRUE)
+          py_install(packages = unlist( strsplit( c(required_py_pkgs, cuda_windows[2]),"[[:space:]]" )), pip = TRUE)
 
         } else if(!gpu & torch_r & !length(required_py_pkgs) == 0) {
-          py_install(packages = c(cpu_windows, required_py_pkgs), pip = TRUE)
+          py_install(packages = unlist( strsplit( c(cpu_windows, required_py_pkgs),"[[:space:]]" )), pip = TRUE)
 
         } else if (!torch_r & !length(required_py_pkgs) == 0) {
-          py_install(packages = c(required_py_pkgs), pip = TRUE)
+          py_install(packages = unlist( strsplit( c(required_py_pkgs),"[[:space:]]" )), pip = TRUE)
 
         } else {
           print('Fastai is installed')
@@ -147,10 +147,10 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10', overwrite 
       }
 
       if (os() %in% 'mac' & !length(required_py_pkgs) == 0 & torch_r) {
-        py_install(packages = c('torch torchvision torchaudio', required_py_pkgs), pip = TRUE)
+        py_install(packages = unlist( strsplit( c('torch torchvision torchaudio', required_py_pkgs),"[[:space:]]" )), pip = TRUE)
 
       } else if (os() %in% 'mac' & !length(required_py_pkgs) == 0 & !torch_r){
-        py_install(packages = c(required_py_pkgs), pip = TRUE)
+        py_install(packages = unlist( strsplit( c(required_py_pkgs),"[[:space:]]" )), pip = TRUE)
 
       } else {
         print('Fastai is installed!')
