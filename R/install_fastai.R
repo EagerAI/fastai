@@ -22,8 +22,9 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10', overwrite 
                        'pydicom', 'kornia', 'cv2',
                        'skimage')
 
-  if(os()=='linux')
+  if(os()=='linux') {
     required_py_pkgs <- append(required_py_pkgs,'ohmeow-blurr')
+  }
 
 
   if(length(extra_pkgs) > 0) {
@@ -61,16 +62,16 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10', overwrite 
   }
 
   # linux
-  cuda_linux = c('torch torchvision torchaudio',
-                 'torch==1.10.0+cu113 torchvision==0.11.1+cu113 torchaudio==0.10.0+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html')
-  linux_cpu = c('torch==1.10.0+cpu torchvision==0.11.1+cpu torchaudio==0.10.0+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html')
+  cuda_linux = c('torch==1.9.0+cu102 torchvision==0.10.0+cu102 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html',
+                 'torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html')
+  linux_cpu = c('torch==1.9.0+cpu torchvision==0.10.0+cpu torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html')
 
   xla = "cloud-tpu-client==0.10 torch==1.9.0 https://storage.googleapis.com/tpu-pytorch/wheels/torch_xla-1.9-cp37-cp37m-linux_x86_64.whl tensorboard-plugin-profile"
 
   # windows
-  cuda_windows = c('torch==1.10.0+cu102 torchvision==0.11.1+cu102 torchaudio===0.10.0+cu102 -f https://download.pytorch.org/whl/cu102/torch_stable.html',
-                   'torch==1.10.0+cu113 torchvision==0.11.1+cu113 torchaudio===0.10.0+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html')
-  cpu_windows = c('torch==1.8.0+cpu torchvision==0.9.0+cpu torchaudio==0.8.0 -f https://download.pytorch.org/whl/torch_stable.html')
+  cuda_windows = c('torch==1.9.0+cu102 torchvision==0.10.0+cu102 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html',
+                   'torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html')
+  cpu_windows = c('torch==1.9.0+cpu torchvision==0.10.0+cpu torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html')
 
   if('torch' %in% required_py_pkgs ) {
     torch_r = 'torch' %in% required_py_pkgs
@@ -95,22 +96,28 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10', overwrite 
 
   py_av = reticulate::py_available(TRUE)
 
+  fastai_py_install = function(pkgs) {
+    system(paste(reticulate::py_discover_config()[['python']],'-m pip install',
+                 paste(pkgs,collapse = ' ')
+                 ))
+  }
+
   if (!length(required_py_pkgs) == 0) {
 
     if(py_av) {
 
       if (os() %in% 'linux' & !length(required_py_pkgs) == 0 & !TPU) {
         if (os() %in% 'linux' & gpu & cuda_version %in% '10' & torch_r & !length(required_py_pkgs) == 0) {
-          py_install(packages = c(required_py_pkgs, cuda_linux[1]), pip = TRUE)
+           fastai_py_install( c(required_py_pkgs, cuda_linux[1]) )
 
         } else if (os() %in% 'linux' & gpu & cuda_version %in% '11' & torch_r & !length(required_py_pkgs) == 0) {
-          py_install(packages = c(required_py_pkgs, cuda_linux[2]), pip = TRUE)
+          fastai_py_install(c(required_py_pkgs, cuda_linux[2]) )
 
         } else if(!gpu & torch_r & !length(required_py_pkgs) == 0) {
-          py_install(packages = c(linux_cpu, required_py_pkgs), pip = TRUE)
+          fastai_py_install( c(linux_cpu, required_py_pkgs))
 
         } else if (!torch_r & !length(required_py_pkgs) == 0) {
-          py_install(packages = c(required_py_pkgs), pip = TRUE)
+          fastai_py_install( required_py_pkgs)
 
         } else {
           print('Fastai is installed!')
@@ -120,24 +127,24 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10', overwrite 
       } else if (os() %in% 'linux' & TPU) {
 
         if(!missing(version) & os() %in% 'linux' & TPU)
-          py_install(packages = c(cuda_linux[2], xla,paste("fastai",version,sep = '=='),'fastai_xla_extensions'), pip = TRUE)
+           fastai_py_install( c(cuda_linux[2], xla,paste("fastai",version,sep = '=='),'fastai_xla_extensions') )
         else if (missing(version) & os() %in% 'linux' & TPU)
-          py_install(packages = c(cuda_linux[2], xla,"fastai",'fastai_xla_extensions'), pip = TRUE)
+          fastai_py_install( c(cuda_linux[2], xla,"fastai",'fastai_xla_extensions') )
 
       }
 
       if (os() %in% 'windows' & !length(required_py_pkgs) == 0 & torch_r & !length(required_py_pkgs) == 0) {
         if (os() %in% 'windows' & gpu & cuda_version %in% '10' & torch_r & !length(required_py_pkgs) == 0) {
-          py_install(packages = c(required_py_pkgs, cuda_windows[1]), pip = TRUE)
+          fastai_py_install( c(paste(required_py_pkgs,collapse = ' '), cuda_windows[1]) )
 
         } else if (os() %in% 'windows' & gpu & cuda_version %in% '11' & torch_r & !length(required_py_pkgs) == 0) {
-          py_install(packages = c(required_py_pkgs, cuda_windows[2]), pip = TRUE)
+         fastai_py_install( c(paste(required_py_pkgs,collapse = ' '), cuda_windows[2]) )
 
         } else if(!gpu & torch_r & !length(required_py_pkgs) == 0) {
-          py_install(packages = c(cpu_windows, required_py_pkgs), pip = TRUE)
+          fastai_py_install( c(cpu_windows, paste(required_py_pkgs,collapse = ' ')) )
 
         } else if (!torch_r & !length(required_py_pkgs) == 0) {
-          py_install(packages = c(required_py_pkgs), pip = TRUE)
+          fastai_py_install( c(paste(required_py_pkgs,collapse = ' ')) )
 
         } else {
           print('Fastai is installed')
@@ -147,10 +154,10 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10', overwrite 
       }
 
       if (os() %in% 'mac' & !length(required_py_pkgs) == 0 & torch_r) {
-        py_install(packages = c('torch torchvision torchaudio -f https://download.pytorch.org/whl/torch_stable.html', required_py_pkgs), pip = TRUE)
+       fastai_py_install( c('torch==1.9.0 torchvision==0.10.0 torchaudio==0.9.0', paste(required_py_pkgs,collapse = ' ')) )
 
       } else if (os() %in% 'mac' & !length(required_py_pkgs) == 0 & !torch_r){
-        py_install(packages = c(required_py_pkgs), pip = TRUE)
+      fastai_py_install( c(paste(required_py_pkgs,collapse = ' ')) )
 
       } else {
         print('Fastai is installed!')
