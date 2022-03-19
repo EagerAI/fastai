@@ -90,7 +90,7 @@ test_succeeds('tabular ops shap decision plot', {
 })
 
 
-test_succeeds('tabular ops shap dependence plot', {
+test_succeeds_windows('tabular ops shap dependence plot', {
   exp %>% dependence_plot('age', class_id = 0)
 })
 
