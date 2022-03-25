@@ -135,16 +135,16 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10', overwrite 
 
       if (os() %in% 'windows' & !length(required_py_pkgs) == 0 & torch_r & !length(required_py_pkgs) == 0) {
         if (os() %in% 'windows' & gpu & cuda_version %in% '10' & torch_r & !length(required_py_pkgs) == 0) {
-          fastai_py_install( c(paste(required_py_pkgs,collapse = ' '), cuda_windows[1]) )
+          fastai_py_install( c(required_py_pkgs, cuda_windows[1]) )
 
         } else if (os() %in% 'windows' & gpu & cuda_version %in% '11' & torch_r & !length(required_py_pkgs) == 0) {
-         fastai_py_install( c(paste(required_py_pkgs,collapse = ' '), cuda_windows[2]) )
+         fastai_py_install( c(required_py_pkgs, cuda_windows[2]) )
 
         } else if(!gpu & torch_r & !length(required_py_pkgs) == 0) {
-          fastai_py_install( c(cpu_windows, paste(required_py_pkgs,collapse = ' ')) )
+          fastai_py_install( c(cpu_windows, required_py_pkgs) )
 
         } else if (!torch_r & !length(required_py_pkgs) == 0) {
-          fastai_py_install( c(paste(required_py_pkgs,collapse = ' ')) )
+          fastai_py_install( required_py_pkgs )
 
         } else {
           print('Fastai is installed')
@@ -154,10 +154,10 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '10', overwrite 
       }
 
       if (os() %in% 'mac' & !length(required_py_pkgs) == 0 & torch_r) {
-       fastai_py_install( c('torch==1.9.0 torchvision==0.10.0 torchaudio==0.9.0', paste(required_py_pkgs,collapse = ' ')) )
+       fastai_py_install( c('torch==1.9.0 torchvision==0.10.0 torchaudio==0.9.0', required_py_pkgs ) )
 
       } else if (os() %in% 'mac' & !length(required_py_pkgs) == 0 & !torch_r){
-      fastai_py_install( c(paste(required_py_pkgs,collapse = ' ')) )
+      fastai_py_install( required_py_pkgs )
 
       } else {
         print('Fastai is installed!')
