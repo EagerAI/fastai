@@ -45,11 +45,6 @@ test_succeeds('tabular ops dims==batch', {
   expect_equal(dim(list_1[[3]]), c(10,1))
 })
 
-test_succeeds('tabular ops bs find', {
-  bss = model %>% bs_find(1e-3)
-  model %>% plot_bs_find()
-  expect_s3_class(bss, 'data.frame')
-})
 
 
 test_succeeds('tabular ops train model', {
