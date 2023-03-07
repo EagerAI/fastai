@@ -7,7 +7,7 @@
 install_fastai(
   version,
   gpu = FALSE,
-  cuda_version = "10",
+  cuda_version = "11.6",
   overwrite = FALSE,
   extra_pkgs = c("timm", "fastinference[interp]"),
   TPU = FALSE
