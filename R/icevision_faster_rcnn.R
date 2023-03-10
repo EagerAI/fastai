@@ -30,8 +30,6 @@ faster_rcnn_infer_dl <- function(dataset, batch_tfms = NULL, ...) {
 
 
 #' @title Faster RCNN predict dataloader
-#'
-#'
 #' @param model model
 #' @param infer_dl infer_dl
 #' @param show_pbar show_pbar

@@ -111,8 +111,6 @@ lr_find <- function(object, start_lr = 1e-07, end_lr = 10, num_it = 100,
 
 
 #' @title Perplexity
-#'
-#'
 #' @param ... parameters to pass
 #' @return None
 #' @export
@@ -177,13 +175,19 @@ one_batch <- function(object, convert = FALSE, ... ) {
 #' }
 #'
 #' @export
-summary.fastai.learner.Learner <- function(object, ...) {
-  res = !inherits(try(object$blurr_summary, TRUE), "try-error")
-  if(res) {
-    object$blurr_summary()
-  } else {
-    object$summary()
+summary.fastai.tabular.learner.TabularLearner <- function(object, ...) {
+  res = !inherits(object,'fastai.learner.Learner')
+
+  py_fun <- function (prefix) {
+    message <- prefix
+    config <- reticulate::py_config()
+    if (!is.null(config)) {
+      message <- paste0(message)
+    }
+    cat(message)
   }
+
+  py_fun(object$summary())
 }
 
 

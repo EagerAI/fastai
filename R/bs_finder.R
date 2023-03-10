@@ -32,8 +32,6 @@ bs_find <- function(object, lr, num_it = NULL, n_batch = 5, simulate_multi_gpus 
 }
 
 #' @title Plot_bs_find
-#'
-#'
 #' @param object model
 #' @param ... additional arguments
 #' @param dpi dots per inch

@@ -41,8 +41,6 @@ load_ignore_keys <- function(model, wgts) {
 
 
 #' @title Clean_raw_keys
-#'
-#'
 #' @param wgts wgts
 #' @return None
 #' @export

@@ -1,78 +1,58 @@
 
 
 #' @title Python path
-#'
-#'
 #' @return None
 python_path <- function() {
   system.file("python", package = "fastai")
 }
 
 #' @title NN module
-#'
-#'
-#'
 #' @return None
 Module_test <- function() try(reticulate::import_from_path('fastaibuilt', path = python_path())$Module_test, TRUE)
 
 #' @title Loss NN module
-#'
-#'
-#'
 #' @return None
 custom_loss <- function() try(reticulate::import_from_path('fastaibuilt', path = python_path())$custom_loss, TRUE)
 
 #' @title Bs finder
-#'
-#'
-#'
 #' @return None
 bs_finder <- function() try(reticulate::import_from_path('fastaibuilt', path = python_path())$bs_finder, TRUE)
 
 
 
 #' @title Timm models
-#'
-#'
 #' @return None
 load_pre_models <- function() try(reticulate::import_from_path('fastaibuilt',
                                                                path = python_path())$pretrained_timm_models, TRUE)
 
 
 #' @title XLA
-#'
 #' @return None
 xla <- function() try(reticulate::import("fastai_xla_extensions.core"),TRUE)
 
 
 #' @title Timm module
-#'
 #' @return None
 timm <- function() try(reticulate::import('timm'), TRUE)
 
 
 #' @title Transformer module
-#'
 #' @return None
 hug <- function() try(reticulate::import_from_path('fastaibuilt', path = python_path())$Transformer, TRUE)
 
 #' @title Crappify module
-#'
 #' @return None
 crap <- function() try(reticulate::import_from_path('fastaibuilt', path = python_path())$crappify, TRUE)
 
 #' @title Icevision module
-#'
 #' @return None
 icevision <- function() try(reticulate::import("icevision.all", convert = TRUE), TRUE)
 
 #' @title Ignite module
-#'
 #' @return None
 migrating_ignite <- function() try(reticulate::import_from_path('fastaibuilt', path = python_path())$migrating_ignite, TRUE)
 
 #' @title Lightning module
-#'
 #' @return None
 migrating_lightning <- function() try(reticulate::import_from_path('fastaibuilt', path = python_path())$migrating_lightning, TRUE)
 
@@ -164,16 +144,12 @@ slice <- function(...) {
 }
 
 #' @title Transformers
-#'
-#'
 #' @return None
 #' @export
 transformers = function() try(reticulate::import('transformers'), TRUE)
 
 
 #' @title TransformersTokenizer
-#'
-#'
 #' @param tokenizer tokenizer object
 #' @return None
 #' @export
@@ -186,8 +162,6 @@ TransformersTokenizer <- function(tokenizer) {
 }
 
 #' @title TransformersDropOutput
-#'
-#'
 #' @return None
 #' @export
 TransformersDropOutput <- function() {

@@ -307,8 +307,6 @@ FetchPredsCallback <- function(ds_idx = 1, dl = NULL, with_input = FALSE,
 
 
 #' @title SaveModelCallback
-#'
-#'
 #' @param ... parameters to pass
 #' @return None
 #' @export
@@ -317,8 +315,6 @@ SaveModelCallback <- function(...) {
 }
 
 #' @title ShowGraphCallback
-#'
-#'
 #' @param ... parameters to pass
 #' @return None
 #' @export

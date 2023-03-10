@@ -24,8 +24,6 @@ SEBlock <- function(expansion, ni, nf, groups = 1, reduction = 16, stride = 1) {
 }
 
 #' @title SeparableBlock
-#'
-#'
 #' @param expansion decoder
 #' @param ni number of inputs
 #' @param nf number of features
@@ -228,8 +226,6 @@ CategoryBlock <- function(vocab = NULL, sort = TRUE, add_na = FALSE) {
 
 
 #' @title SEResNeXtBlock
-#'
-#'
 #' @param expansion decoder
 #' @param ni number of linear inputs
 #' @param nf number of features

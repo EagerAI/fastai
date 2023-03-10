@@ -1,6 +1,4 @@
 #' @title Adam
-#'
-#'
 #' @param ... parameters to pass
 #' @return None
 #' @export
@@ -19,8 +17,6 @@ Adam <- function(...) {
 
 
 #' @title RAdam
-#'
-#'
 #' @param ... parameters to pass
 #' @return None
 #' @export
@@ -38,8 +34,6 @@ RAdam <- function(...) {
 #attr(RAdam ,"py_function_name") <- "RAdam"
 
 #' @title SGD
-#'
-#'
 #' @param ... parameters to pass
 #' @return None
 #' @export
@@ -58,8 +52,6 @@ SGD <- function(...) {
 
 
 #' @title RMSProp
-#'
-#'
 #' @param ... parameters to pass
 #' @return None
 #' @export
@@ -78,8 +70,6 @@ RMSProp <- function(...) {
 
 
 #' @title QHAdam
-#'
-#'
 #' @param ... parameters to pass
 #' @return None
 #' @export
@@ -98,8 +88,6 @@ QHAdam <- function(...) {
 
 
 #' @title Larc
-#'
-#'
 #' @param ... parameters to pass
 #' @return None
 #' @export
@@ -115,8 +103,6 @@ Larc <- function(...) {
 }
 
 #' @title Lamb
-#'
-#'
 #' @param ... parameters to pass
 #' @return None
 #' @export
@@ -134,8 +120,6 @@ Lamb <- function(...) {
 
 
 #' @title Lookahead
-#'
-#'
 #' @param ... parameters to pass
 #' @return None
 #' @export
@@ -152,8 +136,6 @@ Lookahead <- function(...) {
 
 
 #' @title OptimWrapper
-#'
-#'
 #' @param ... parameters to pass
 #' @return None
 #' @export
@@ -170,8 +152,6 @@ OptimWrapper <- function(...) {
 
 
 #' @title Optimizer
-#'
-#'
 #' @param ... parameters to pass
 #' @return None
 #' @export
@@ -188,8 +168,6 @@ Optimizer <- function(...) {
 
 
 #' @title Noop
-#'
-#'
 #' @param ... parameters to pass
 #' @return None
 #' @export
@@ -208,7 +186,6 @@ noop <- function(...) {
 
 
 #' @title Sgd_step
-#'
 #' @return None
 #' @param p p
 #' @param lr learning rate
@@ -378,8 +355,6 @@ average_grad <- function(p, mom, dampening = FALSE, grad_avg = NULL, ...) {
 
 
 #' @title Average_sqr_grad
-#'
-#'
 #' @param p p
 #' @param sqr_mom sqr momentum
 #' @param dampening dampening
@@ -479,8 +454,6 @@ step_stat <- function(p, step = 0, ...) {
 }
 
 #' @title Debias
-#'
-#'
 #' @param mom mom
 #' @param damp damp
 #' @param step step
@@ -571,8 +544,6 @@ radam_step <- function(p, lr, mom, step, sqr_mom, grad_avg, sqr_avg, eps, beta, 
 }
 
 #' @title Qhadam_step
-#'
-#'
 #' @param p p
 #' @param lr learning rate
 #' @param mom momentum
@@ -732,8 +703,6 @@ ranger <- function(p, lr, mom = 0.95, wd = 0.01, eps = 1e-06,
 
 
 #' @title Detuplify_pg
-#'
-#'
 #' @param d d
 #' @return None
 #' @export
@@ -747,8 +716,6 @@ detuplify_pg <- function(d) {
 
 
 #' @title Set_item_pg
-#'
-#'
 #' @param pg pg
 #' @param k k
 #' @param v v

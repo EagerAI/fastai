@@ -161,8 +161,6 @@ icevision_ClassMap <- function(classes, background = 0) {
 
 
 #' @title Voc parser
-#'
-#'
 #' @param annotations_dir annotations_dir
 #' @param images_dir images_dir
 #' @param class_map class_map

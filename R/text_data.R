@@ -1,7 +1,5 @@
 
 #' @title Reverse_text
-#'
-#'
 #' @param x text
 #' @return string
 #' @export

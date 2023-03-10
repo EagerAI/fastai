@@ -147,11 +147,6 @@ hf_splitter <- function(m) {
 
 
 #' @title BLURR_MODEL_HELPER
-#'
-#'
-#'
-#'
-#'
 #' @return None
 #' @export
 helper = function() {
@@ -245,8 +240,6 @@ HF_load_dataset <- function(path, name = NULL, data_dir = NULL, data_files = NUL
 
 
 #' @title Pre_process_squad
-#'
-#'
 #' @param row row in dataframe
 #' @param hf_arch architecture
 #' @param hf_tokenizer tokenizer
@@ -311,8 +304,6 @@ HF_QABatchTransform <- function(hf_arch, hf_tokenizer, max_length = NULL,
 }
 
 #' @title HF_QuestionAnswerInput
-#'
-#'
 #' @param ... parameters to apss
 #' @return None
 #' @export
@@ -799,8 +790,6 @@ HF_TokenTensorCategory <- function() {
 
 
 #' @title Calculate_rouge
-#'
-#'
 #' @param predicted_txts predicted texts
 #' @param reference_txts reference texts
 #' @param rouge_keys rouge keys
