@@ -47,7 +47,7 @@ fix_fit = function(disable_graph = FALSE) {
       args = list(
         value, ...)
 
-      save(args, file = "~/Downloads/args.RData")
+      #save(args, file = "~/Downloads/args.RData")
 
       text = unlist(strsplit(trimws(args[[1]]),' '))
       text = text[!text=='']

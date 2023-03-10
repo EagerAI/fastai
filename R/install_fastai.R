@@ -66,7 +66,7 @@ install_fastai <- function(version, gpu = FALSE, cuda_version = '11.6', overwrit
                  'torch torchvision torchaudio')
   linux_cpu = c('torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cpu')
 
-  xla = "cloud-tpu-client==0.10 torch==1.9.0 https://storage.googleapis.com/tpu-pytorch/wheels/torch_xla-1.9-cp37-cp37m-linux_x86_64.whl tensorboard-plugin-profile"
+  xla = "cloud-tpu-client==0.10 torch==1.13.0 https://storage.googleapis.com/tpu-pytorch/wheels/colab/torch_xla-1.13-cp38-cp38-linux_x86_64.whl tensorboard-plugin-profile"
 
   # windows
   cuda_windows = c('torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu116',
