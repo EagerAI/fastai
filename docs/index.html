@@ -246,8 +246,8 @@
 <p><strong>2. The dev version:</strong></p>
 <pre><code><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">'eagerai/fastai'</span><span class="op">)</span></span></code></pre>
 <p><strong>3. Later, you need to install the python module <code>fastai</code>:</strong></p>
-<pre><code><span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/use_python.html" class="external-link">use_condaenv</a></span><span class="op">(</span><span class="st">'r-reticulate'</span>,required <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
-<span><span class="fu">fastai</span><span class="fu">::</span><span class="fu"><a href="reference/install_fastai.html">install_fastai</a></span><span class="op">(</span>gpu <span class="op">=</span> <span class="cn">FALSE</span>, cuda_version <span class="op">=</span> <span class="st">'10'</span>, overwrite <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre>
+<pre><code><span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/use_python.html" class="external-link">use_condaenv</a></span><span class="op">(</span><span class="st">'r-reticulate'</span>,required <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">fastai</span><span class="fu">::</span><span class="fu"><a href="reference/install_fastai.html">install_fastai</a></span><span class="op">(</span>gpu <span class="op">=</span> <span class="cn">FALSE</span>, cuda_version <span class="op">=</span> <span class="st">'11.6'</span>, overwrite <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre>
 <p><strong>4. Restart RStudio!</strong></p>
 </div>
 <div class="section level2">
@@ -455,8 +455,8 @@ epoch     train_loss  valid_loss  error_rate  time
 <span><span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="reference/cnn_learner.html">cnn_learner</a></span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="reference/resnet18.html">resnet18</a></span><span class="op">(</span><span class="op">)</span>, metrics <span class="op">=</span> <span class="va">accuracy</span><span class="op">)</span></span>
 <span><span class="va">learn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://generics.r-lib.org/reference/fit.html" class="external-link">fit</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span></code></pre>
 <p><img src="files/mnist.png" height="500" align="center" alt="Mnist"></p>
-<p><strong>What about the implementation of the latest <a href="https://github.com/rwightman/pytorch-image-models" class="external-link">Computer Vision models</a>?</strong></p>
-<p>There is a function in fastai <code>timm_learner</code> which originally written by <a href="https://github.com/walkwithfastai/walkwithfastai.github.io/" class="external-link">Zachary Mueller</a>. It helps to quickly load the pretrained models from <a href="https://github.com/rwightman/pytorch-image-models" class="external-link">timm library</a>.</p>
+<p><strong>What about the implementation of the latest <a href="https://github.com/huggingface/pytorch-image-models" class="external-link">Computer Vision models</a>?</strong></p>
+<p>There is a function in fastai <code>timm_learner</code> which originally written by <a href="https://github.com/walkwithfastai/walkwithfastai.github.io/" class="external-link">Zachary Mueller</a>. It helps to quickly load the pretrained models from <a href="https://github.com/huggingface/pytorch-image-models" class="external-link">timm library</a>.</p>
 <p>First, lets’s see the list of available models (TOP 10):</p>
 <pre><code>&gt; str(as.list(timm_list_models()[1:10]))
 List of 10

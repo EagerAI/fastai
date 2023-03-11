@@ -352,12 +352,12 @@ learn %>% fit(2)
 <img src="files/mnist.png" height=500 align=center alt="Mnist"/>
 
 **What about the implementation of the latest
-[Computer Vision models](https://github.com/rwightman/pytorch-image-models)?**
+[Computer Vision models](https://github.com/huggingface/pytorch-image-models)?**
 
 There is a function in fastai `timm_learner` which originally written by
 [Zachary Mueller](https://github.com/walkwithfastai/walkwithfastai.github.io/).
 It helps to quickly load the pretrained models from
-[timm library](https://github.com/rwightman/pytorch-image-models).
+[timm library](https://github.com/huggingface/pytorch-image-models).
 
 First, lets's see the list of available models (TOP 10):
 
