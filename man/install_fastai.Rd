@@ -18,13 +18,13 @@ install_fastai(
 
 \item{gpu}{installation of gpu}
 
-\item{cuda_version}{if gpu true, then cuda version is required. By default it is 10}
+\item{cuda_version}{if gpu true, then cuda version is required. By default it is 11.6}
 
 \item{overwrite}{will install all the dependencies}
 
 \item{extra_pkgs}{character vector of additional packages}
 
-\item{TPU}{official way to install Pytorch-XLA 1.7}
+\item{TPU}{official way to install Pytorch-XLA 1.13}
 }
 \value{
 None

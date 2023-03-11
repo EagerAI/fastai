@@ -44,8 +44,8 @@ devtools::install_github('eagerai/fastai')
 **3. Later, you need to install the python module `fastai`:**
 
 ```
-reticulate::use_condaenv('r-reticulate',required = T)
-fastai::install_fastai(gpu = FALSE, cuda_version = '10', overwrite = FALSE)
+reticulate::use_condaenv('r-reticulate',required = TRUE)
+fastai::install_fastai(gpu = FALSE, cuda_version = '11.6', overwrite = FALSE)
 ```
 
 

@@ -3,11 +3,11 @@
 #' @title Install fastai
 #' @param version specify version
 #' @param gpu installation of gpu
-#' @param cuda_version if gpu true, then cuda version is required. By default it is 10
+#' @param cuda_version if gpu true, then cuda version is required. By default it is 11.6
 #' @param overwrite will install all the dependencies
 #' @param extra_pkgs character vector of additional packages
 #' @importFrom reticulate py_install
-#' @param TPU official way to install Pytorch-XLA 1.7
+#' @param TPU official way to install Pytorch-XLA 1.13
 #' @return None
 #' @export
 install_fastai <- function(version, gpu = FALSE, cuda_version = '11.6', overwrite = FALSE,
