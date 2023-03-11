@@ -21,6 +21,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -33,14 +35,14 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fastai</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.2.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Tutorials
      
     <span class="caret"></span>
@@ -76,7 +78,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Migrate
      
     <span class="caret"></span>
@@ -97,7 +99,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Learn
      
     <span class="caret"></span>
@@ -115,7 +117,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Training
      
     <span class="caret"></span>
@@ -136,7 +138,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     NLP
      
     <span class="caret"></span>
@@ -165,7 +167,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/EagerAI/fastai/">
+  <a href="https://github.com/EagerAI/fastai/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -186,116 +188,124 @@
 
       
 
-      </header><script src="custom_img_files/header-attrs-2.10/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Custom Image Classification</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/EagerAI/fastai/blob/master/vignettes/custom_img.Rmd"><code>vignettes/custom_img.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/EagerAI/fastai/blob/HEAD/vignettes/custom_img.Rmd" class="external-link"><code>vignettes/custom_img.Rmd</code></a></small>
       <div class="hidden name"><code>custom_img.Rmd</code></div>
 
     </div>
 
     
     
-<div id="intro" class="section level2">
-<h2 class="hasAnchor">
-<a href="#intro" class="anchor"></a>Intro</h2>
-<p>The <a href="https://github.com/fastai/fastai">fastai</a> library simplifies training fast and accurate neural nets using modern best practices. See the fastai website to get started. The library is based on research into deep learning best practices undertaken at <code>fast.ai</code>, and includes “out of the box” support for <code>vision</code>, <code>text</code>, <code>tabular</code>, and <code>collab</code> (collaborative filtering) models.</p>
+<div class="section level2">
+<h2 id="intro">Intro<a class="anchor" aria-label="anchor" href="#intro"></a>
+</h2>
+<p>The <a href="https://github.com/fastai/fastai" class="external-link">fastai</a> library
+simplifies training fast and accurate neural nets using modern best
+practices. See the fastai website to get started. The library is based
+on research into deep learning best practices undertaken at
+<code>fast.ai</code>, and includes “out of the box” support for
+<code>vision</code>, <code>text</code>, <code>tabular</code>, and
+<code>collab</code> (collaborative filtering) models.</p>
 </div>
-<div id="preparation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#preparation" class="anchor"></a>Preparation</h2>
-<p>Via <code>rvest</code> package we can search and scrape any category of image. Int this example we will classify 4 cat categories:</p>
+<div class="section level2">
+<h2 id="preparation">Preparation<a class="anchor" aria-label="anchor" href="#preparation"></a>
+</h2>
+<p>Via <code>rvest</code> package we can search and scrape any category
+of image. Int this example we will classify 4 cat categories:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># cat categories: https://www.purina.com/cats/cat-breeds</span>
-<span class="va">f_n</span> <span class="op">=</span> <span class="st">'cats'</span>
-
-<span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.exists</a></span><span class="op">(</span><span class="va">f_n</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span><span class="op">(</span><span class="va">f_n</span><span class="op">)</span>
-<span class="op">}</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># cat categories: https://www.purina.com/cats/cat-breeds</span></span>
+<span><span class="va">f_n</span> <span class="op">=</span> <span class="st">'cats'</span></span>
+<span></span>
+<span><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/files2.html" class="external-link">dir.exists</a></span><span class="op">(</span><span class="va">f_n</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/files2.html" class="external-link">dir.create</a></span><span class="op">(</span><span class="va">f_n</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 <p>A function to download cat images:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rvest.tidyverse.org/">rvest</a></span><span class="op">)</span>
-
-<span class="va">download_pet</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">name</span>, <span class="va">dest</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">query</span> <span class="op">=</span> <span class="va">name</span>
-  <span class="va">query</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span><span class="op">(</span><span class="st">'\\s'</span>, <span class="st">'%20'</span>, <span class="va">query</span><span class="op">)</span>
-
-  <span class="va">search</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://xml2.r-lib.org/reference/read_xml.html">read_html</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"https://www.google.com/search?site=&amp;tbm=isch&amp;q"</span>, <span class="va">query</span>, sep <span class="op">=</span> <span class="st">"="</span><span class="op">)</span><span class="op">)</span>
-
-  <span class="va">urls</span> <span class="op">&lt;-</span> <span class="va">search</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/rename.html">html_nodes</a></span><span class="op">(</span><span class="st">"img"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_attr.html">html_attr</a></span><span class="op">(</span><span class="st">"src"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="va">.</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span>
-
-  <span class="va">fixed_name</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span><span class="op">(</span><span class="st">'\\s|[[:punct:]]'</span>, <span class="st">'_'</span>, <span class="va">name</span><span class="op">)</span>
-
-  <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="../reference/length.html">length</a></span><span class="op">(</span><span class="va">urls</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-    <span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span><span class="va">urls</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, destfile <span class="op">=</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">dest</span>,
-      <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span>
-        <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">fixed_name</span>,
-              <span class="fu"><a href="../reference/round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span><span class="op">*</span><span class="fl">10000</span><span class="op">)</span>,
-              sep <span class="op">=</span> <span class="st">'_'</span><span class="op">)</span>,
-        <span class="st">'.jpg'</span>, sep <span class="op">=</span> <span class="st">''</span>
-      <span class="op">)</span>
-    <span class="op">)</span>, mode <span class="op">=</span> <span class="st">'wb'</span>
-    <span class="op">)</span>
-  <span class="op">}</span>
-<span class="op">}</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rvest.tidyverse.org/" class="external-link">rvest</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">download_pet</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">name</span>, <span class="va">dest</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">query</span> <span class="op">=</span> <span class="va">name</span></span>
+<span>  <span class="va">query</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">gsub</a></span><span class="op">(</span><span class="st">'\\s'</span>, <span class="st">'%20'</span>, <span class="va">query</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="va">search</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://xml2.r-lib.org/reference/read_xml.html" class="external-link">read_html</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"https://www.google.com/search?site=&amp;tbm=isch&amp;q"</span>, <span class="va">query</span>, sep <span class="op">=</span> <span class="st">"="</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="va">urls</span> <span class="op">&lt;-</span> <span class="va">search</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/rename.html" class="external-link">html_nodes</a></span><span class="op">(</span><span class="st">"img"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_attr.html" class="external-link">html_attr</a></span><span class="op">(</span><span class="st">"src"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="va">.</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span></span>
+<span></span>
+<span>  <span class="va">fixed_name</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">gsub</a></span><span class="op">(</span><span class="st">'\\s|[[:punct:]]'</span>, <span class="st">'_'</span>, <span class="va">name</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="../reference/length.html">length</a></span><span class="op">(</span><span class="va">urls</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span><span class="va">urls</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, destfile <span class="op">=</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">dest</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span></span>
+<span>        <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">fixed_name</span>,</span>
+<span>              <span class="fu"><a href="../reference/round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span><span class="op">*</span><span class="fl">10000</span><span class="op">)</span>,</span>
+<span>              sep <span class="op">=</span> <span class="st">'_'</span><span class="op">)</span>,</span>
+<span>        <span class="st">'.jpg'</span>, sep <span class="op">=</span> <span class="st">''</span></span>
+<span>      <span class="op">)</span></span>
+<span>    <span class="op">)</span>, mode <span class="op">=</span> <span class="st">'wb'</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 </div>
-<div id="get-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#get-data" class="anchor"></a>Get data</h2>
+<div class="section level2">
+<h2 id="get-data">Get data<a class="anchor" aria-label="anchor" href="#get-data"></a>
+</h2>
 <p>Lets define cat groups:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">cat_names</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'Balinese-Javanese Cat Breed'</span>, <span class="st">'Chartreux Cat Breed'</span>, 
-              <span class="st">'Norwegian Forest Cat Breed'</span>, <span class="st">'Turkish Angora Cat Breed'</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">cat_names</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'Balinese-Javanese Cat Breed'</span>, <span class="st">'Chartreux Cat Breed'</span>, </span>
+<span>              <span class="st">'Norwegian Forest Cat Breed'</span>, <span class="st">'Turkish Angora Cat Breed'</span><span class="op">)</span></span></code></pre></div>
 <p>And iterate throught vector:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="../reference/length.html">length</a></span><span class="op">(</span><span class="va">cat_names</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu">download_pet</span><span class="op">(</span><span class="va">cat_names</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, <span class="va">f_n</span><span class="op">)</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">'Done'</span>,<span class="va">cat_names</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
-<span class="op">}</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="../reference/length.html">length</a></span><span class="op">(</span><span class="va">cat_names</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu">download_pet</span><span class="op">(</span><span class="va">cat_names</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, <span class="va">f_n</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">'Done'</span>,<span class="va">cat_names</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 </div>
-<div id="dataloaders" class="section level2">
-<h2 class="hasAnchor">
-<a href="#dataloaders" class="anchor"></a>Dataloaders</h2>
+<div class="section level2">
+<h2 id="dataloaders">Dataloaders<a class="anchor" aria-label="anchor" href="#dataloaders"></a>
+</h2>
 <p>Call libraries and import dataset:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EagerAI/fastai">fastai</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org">magrittr</a></span><span class="op">)</span>
-
-<span class="va">path</span> <span class="op">=</span> <span class="st">'cats'</span>
-<span class="va">fnames</span> <span class="op">=</span> <span class="fu"><a href="../reference/get_image_files.html">get_image_files</a></span><span class="op">(</span><span class="va">path</span><span class="op">)</span>
-
-<span class="va">fnames</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>
-<span class="co"># cats/Turkish_Angora_Cat_Breed_8583.jpg</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EagerAI/fastai" class="external-link">fastai</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">path</span> <span class="op">=</span> <span class="st">'cats'</span></span>
+<span><span class="va">fnames</span> <span class="op">=</span> <span class="fu"><a href="../reference/get_image_files.html">get_image_files</a></span><span class="op">(</span><span class="va">path</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">fnames</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span><span class="co"># cats/Turkish_Angora_Cat_Breed_8583.jpg</span></span></code></pre></div>
 <p>See batch:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">dls</span> <span class="op">=</span> <span class="fu"><a href="../reference/ImageDataLoaders_from_name_re.html">ImageDataLoaders_from_name_re</a></span><span class="op">(</span>
-  <span class="va">path</span>, <span class="va">fnames</span>, pat<span class="op">=</span><span class="st">'(.+)_\\d+.jpg$'</span>,
-  item_tfms  <span class="op">=</span> <span class="fu"><a href="../reference/Resize.html">Resize</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">200</span><span class="op">)</span>, bs <span class="op">=</span> <span class="fl">15</span>,
-  batch_tfms <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="../reference/aug_transforms.html">aug_transforms</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">224</span>, min_scale <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span>,
-                  <span class="fu"><a href="../reference/Normalize_from_stats.html">Normalize_from_stats</a></span><span class="op">(</span> <span class="fu"><a href="../reference/imagenet_stats.html">imagenet_stats</a></span><span class="op">(</span><span class="op">)</span> <span class="op">)</span>
-  <span class="op">)</span>
-<span class="op">)</span>
-
-
-<span class="va">dls</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/show_batch.html">show_batch</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">dls</span> <span class="op">=</span> <span class="fu"><a href="../reference/ImageDataLoaders_from_name_re.html">ImageDataLoaders_from_name_re</a></span><span class="op">(</span></span>
+<span>  <span class="va">path</span>, <span class="va">fnames</span>, pat<span class="op">=</span><span class="st">'(.+)_\\d+.jpg$'</span>,</span>
+<span>  item_tfms  <span class="op">=</span> <span class="fu"><a href="../reference/Resize.html">Resize</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">200</span><span class="op">)</span>, bs <span class="op">=</span> <span class="fl">15</span>,</span>
+<span>  batch_tfms <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="../reference/aug_transforms.html">aug_transforms</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">224</span>, min_scale <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span>,</span>
+<span>                  <span class="fu"><a href="../reference/Normalize_from_stats.html">Normalize_from_stats</a></span><span class="op">(</span> <span class="fu"><a href="../reference/imagenet_stats.html">imagenet_stats</a></span><span class="op">(</span><span class="op">)</span> <span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va">dls</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/show_batch.html">show_batch</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span></code></pre></div>
 <center>
 <p><img src="images/cats.png" alt="_" style="width: 700px;"></p>
 </center>
 </div>
-<div id="fit-model" class="section level2">
-<h2 class="hasAnchor">
-<a href="#fit-model" class="anchor"></a>Fit model</h2>
-<p>Define <code>cnn_learner</code> and fit. But before that it is better to see the train metrics as well.</p>
+<div class="section level2">
+<h2 id="fit-model">Fit model<a class="anchor" aria-label="anchor" href="#fit-model"></a>
+</h2>
+<p>Define <code>cnn_learner</code> and fit. But before that it is better
+to see the train metrics as well.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/cnn_learner.html">cnn_learner</a></span><span class="op">(</span><span class="va">dls</span>, <span class="fu"><a href="../reference/resnet50.html">resnet50</a></span><span class="op">(</span><span class="op">)</span>, metrics <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">accuracy</span>, <span class="va">error_rate</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">learn</span><span class="op">$</span><span class="va">recorder</span><span class="op">$</span><span class="va">train_metrics</span> <span class="op">=</span> <span class="cn">TRUE</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/cnn_learner.html">cnn_learner</a></span><span class="op">(</span><span class="va">dls</span>, <span class="fu"><a href="../reference/resnet50.html">resnet50</a></span><span class="op">(</span><span class="op">)</span>, metrics <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">accuracy</span>, <span class="va">error_rate</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">learn</span><span class="op">$</span><span class="va">recorder</span><span class="op">$</span><span class="va">train_metrics</span> <span class="op">=</span> <span class="cn">TRUE</span></span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">1e-3</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">learn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">1e-3</span><span class="op">)</span></span></code></pre></div>
 <pre><code>epoch     train_loss  train_accuracy  train_error_rate  valid_loss  valid_accuracy  valid_er_r
 0         2.145128    0.333333        0.666667          1.205951    0.500000        0.500000  
 1         1.480864    0.650000        0.350000          0.605784    0.812500        0.187500    
@@ -303,16 +313,16 @@
 3         0.858903    0.916667        0.083333          0.219998    0.875000        0.125000   
 4         0.706619    0.933333        0.066667          0.231960    0.937500        0.062500   </code></pre>
 </div>
-<div id="conclusion" class="section level2">
-<h2 class="hasAnchor">
-<a href="#conclusion" class="anchor"></a>Conclusion</h2>
+<div class="section level2">
+<h2 id="conclusion">Conclusion<a class="anchor" aria-label="anchor" href="#conclusion"></a>
+</h2>
 <p>Predict random image:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">fnames</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>
-
-<span class="co"># cats/Turkish_Angora_Cat_Breed_8583.jpg</span>
-
-<span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">fnames</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">fnames</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span></span>
+<span><span class="co"># cats/Turkish_Angora_Cat_Breed_8583.jpg</span></span>
+<span></span>
+<span><span class="va">learn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">fnames</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>$probabilities
 Balinese_Javanese_Cat_Breed Chartreux_Cat_Breed Norwegian_Forest_Cat_Breed Turkish_Angora_Cat_Breed
 1                 0.001805532         0.004121034                 0.09873049                0.8953429
@@ -333,11 +343,13 @@ $labels
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://github.com/henry090">Turgut Abdullayev</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://github.com/henry090" class="external-link">Turgut Abdullayev</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

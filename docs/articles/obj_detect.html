@@ -21,6 +21,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -33,14 +35,14 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fastai</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.2.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Tutorials
      
     <span class="caret"></span>
@@ -76,7 +78,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Migrate
      
     <span class="caret"></span>
@@ -97,7 +99,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Learn
      
     <span class="caret"></span>
@@ -115,7 +117,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Training
      
     <span class="caret"></span>
@@ -136,7 +138,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     NLP
      
     <span class="caret"></span>
@@ -165,7 +167,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/EagerAI/fastai/">
+  <a href="https://github.com/EagerAI/fastai/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -186,92 +188,98 @@
 
       
 
-      </header><script src="obj_detect_files/header-attrs-2.10/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Object detection</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/EagerAI/fastai/blob/master/vignettes/obj_detect.Rmd"><code>vignettes/obj_detect.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/EagerAI/fastai/blob/HEAD/vignettes/obj_detect.Rmd" class="external-link"><code>vignettes/obj_detect.Rmd</code></a></small>
       <div class="hidden name"><code>obj_detect.Rmd</code></div>
 
     </div>
 
     
     
-<div id="intro" class="section level2">
-<h2 class="hasAnchor">
-<a href="#intro" class="anchor"></a>Intro</h2>
-<p>The <a href="https://github.com/fastai/fastai">fastai</a> library simplifies training fast and accurate neural nets using modern best practices. See the fastai website to get started. The library is based on research into deep learning best practices undertaken at <code>fast.ai</code>, and includes “out of the box” support for <code>vision</code>, <code>text</code>, <code>tabular</code>, and <code>collab</code> (collaborative filtering) models.</p>
-<p>Original demo by <a href="https://github.com/muellerzr/Practical-Deep-Learning-for-Coders-2.0/blob/master/Computer%20Vision/06_Object_Detection.ipynb">Zachary</a></p>
+<div class="section level2">
+<h2 id="intro">Intro<a class="anchor" aria-label="anchor" href="#intro"></a>
+</h2>
+<p>The <a href="https://github.com/fastai/fastai" class="external-link">fastai</a> library
+simplifies training fast and accurate neural nets using modern best
+practices. See the fastai website to get started. The library is based
+on research into deep learning best practices undertaken at
+<code>fast.ai</code>, and includes “out of the box” support for
+<code>vision</code>, <code>text</code>, <code>tabular</code>, and
+<code>collab</code> (collaborative filtering) models.</p>
+<p>Original demo by <a href="https://github.com/muellerzr/Practical-Deep-Learning-for-Coders-2.0/blob/master/Computer%20Vision/06_Object_Detection.ipynb" class="external-link">Zachary</a></p>
 </div>
-<div id="dataset" class="section level2">
-<h2 class="hasAnchor">
-<a href="#dataset" class="anchor"></a>Dataset</h2>
+<div class="section level2">
+<h2 id="dataset">Dataset<a class="anchor" aria-label="anchor" href="#dataset"></a>
+</h2>
 <p>Grab data:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/URLs_COCO_TINY.html">URLs_COCO_TINY</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/URLs_COCO_TINY.html">URLs_COCO_TINY</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Read <code>json</code> file and get annotations:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">images</span>, <span class="va">lbl_bbox</span><span class="op">)</span> <span class="op">%&lt;-%</span> <span class="fu"><a href="../reference/get_annotations.html">get_annotations</a></span><span class="op">(</span><span class="st">'coco_tiny/train.json'</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">lbl_bbox</span><span class="op">)</span> <span class="op">=</span> <span class="va">images</span>
-
-<span class="va">img2bbox</span> <span class="op">=</span> <span class="va">lbl_bbox</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">images</span>, <span class="va">lbl_bbox</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/zeallot/man/operator.html" class="external-link">%&lt;-%</a></span> <span class="fu"><a href="../reference/get_annotations.html">get_annotations</a></span><span class="op">(</span><span class="st">'coco_tiny/train.json'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">lbl_bbox</span><span class="op">)</span> <span class="op">=</span> <span class="va">images</span></span>
+<span></span>
+<span><span class="va">img2bbox</span> <span class="op">=</span> <span class="va">lbl_bbox</span></span></code></pre></div>
 </div>
-<div id="dataloader" class="section level2">
-<h2 class="hasAnchor">
-<a href="#dataloader" class="anchor"></a>Dataloader</h2>
+<div class="section level2">
+<h2 id="dataloader">Dataloader<a class="anchor" aria-label="anchor" href="#dataloader"></a>
+</h2>
 <p>Prepare laoder object:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">get_y</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">o</span><span class="op">)</span> <span class="va">img2bbox</span><span class="op">[[</span><span class="va">o</span><span class="op">$</span><span class="va">name</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>,
-             <span class="kw">function</span><span class="op">(</span><span class="va">o</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">as.list</a></span><span class="op">(</span><span class="va">img2bbox</span><span class="op">[[</span><span class="va">o</span><span class="op">$</span><span class="va">name</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">coco</span> <span class="op">=</span> <span class="fu"><a href="../reference/DataBlock.html">DataBlock</a></span><span class="op">(</span>blocks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="../reference/ImageBlock.html">ImageBlock</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="../reference/BBoxBlock.html">BBoxBlock</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="../reference/BBoxLblBlock.html">BBoxLblBlock</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,
-                 get_items <span class="op">=</span> <span class="fu"><a href="../reference/get_image_files.html">get_image_files</a></span><span class="op">(</span><span class="op">)</span>,
-                 splitter <span class="op">=</span> <span class="fu"><a href="../reference/RandomSplitter.html">RandomSplitter</a></span><span class="op">(</span><span class="op">)</span>,
-                 get_y <span class="op">=</span> <span class="va">get_y</span>,
-                 item_tfms <span class="op">=</span> <span class="fu"><a href="../reference/Resize.html">Resize</a></span><span class="op">(</span><span class="fl">128</span><span class="op">)</span>,
-                 batch_tfms <span class="op">=</span> <span class="fu"><a href="../reference/aug_transforms.html">aug_transforms</a></span><span class="op">(</span><span class="op">)</span>,
-                 n_inp <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
-
-<span class="va">dls</span> <span class="op">=</span> <span class="va">coco</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/dataloaders.html">dataloaders</a></span><span class="op">(</span><span class="st">'coco_tiny/train'</span><span class="op">)</span>
-<span class="va">dls</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/show_batch.html">show_batch</a></span><span class="op">(</span>max_n <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">get_y</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">o</span><span class="op">)</span> <span class="va">img2bbox</span><span class="op">[[</span><span class="va">o</span><span class="op">$</span><span class="va">name</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>             <span class="kw">function</span><span class="op">(</span><span class="va">o</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">as.list</a></span><span class="op">(</span><span class="va">img2bbox</span><span class="op">[[</span><span class="va">o</span><span class="op">$</span><span class="va">name</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">coco</span> <span class="op">=</span> <span class="fu"><a href="../reference/DataBlock.html">DataBlock</a></span><span class="op">(</span>blocks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="../reference/ImageBlock.html">ImageBlock</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="../reference/BBoxBlock.html">BBoxBlock</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="../reference/BBoxLblBlock.html">BBoxLblBlock</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                 get_items <span class="op">=</span> <span class="fu"><a href="../reference/get_image_files.html">get_image_files</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>                 splitter <span class="op">=</span> <span class="fu"><a href="../reference/RandomSplitter.html">RandomSplitter</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>                 get_y <span class="op">=</span> <span class="va">get_y</span>,</span>
+<span>                 item_tfms <span class="op">=</span> <span class="fu"><a href="../reference/Resize.html">Resize</a></span><span class="op">(</span><span class="fl">128</span><span class="op">)</span>,</span>
+<span>                 batch_tfms <span class="op">=</span> <span class="fu"><a href="../reference/aug_transforms.html">aug_transforms</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>                 n_inp <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dls</span> <span class="op">=</span> <span class="va">coco</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/dataloaders.html">dataloaders</a></span><span class="op">(</span><span class="st">'coco_tiny/train'</span><span class="op">)</span></span>
+<span><span class="va">dls</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/show_batch.html">show_batch</a></span><span class="op">(</span>max_n <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span></code></pre></div>
 <center>
 <p><img src="images/detect.png" alt="_" style="width: 700px;"></p>
 </center>
 </div>
-<div id="retinanet" class="section level2">
-<h2 class="hasAnchor">
-<a href="#retinanet" class="anchor"></a>RetinaNet</h2>
+<div class="section level2">
+<h2 id="retinanet">RetinaNet<a class="anchor" aria-label="anchor" href="#retinanet"></a>
+</h2>
 <p>Build a model with RetinaNet components:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">encoder</span> <span class="op">=</span> <span class="fu"><a href="../reference/create_body.html">create_body</a></span><span class="op">(</span><span class="fu"><a href="../reference/resnet34.html">resnet34</a></span><span class="op">(</span><span class="op">)</span>, pretrained <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-
-<span class="va">arch</span> <span class="op">=</span> <span class="fu"><a href="../reference/RetinaNet.html">RetinaNet</a></span><span class="op">(</span><span class="va">encoder</span>, <span class="fu"><a href="../reference/get_c.html">get_c</a></span><span class="op">(</span><span class="va">dls</span><span class="op">)</span>, final_bias<span class="op">=</span><span class="op">-</span><span class="fl">4</span><span class="op">)</span>
-
-<span class="va">ratios</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="fl">2</span>,<span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>
-<span class="va">scales</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">**</span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">/</span><span class="fl">3</span><span class="op">)</span>, <span class="fl">2</span><span class="op">**</span><span class="op">(</span><span class="op">-</span><span class="fl">2</span><span class="op">/</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">crit</span> <span class="op">=</span> <span class="fu"><a href="../reference/RetinaNetFocalLoss.html">RetinaNetFocalLoss</a></span><span class="op">(</span>scales <span class="op">=</span> <span class="va">scales</span>, ratios <span class="op">=</span> <span class="va">ratios</span><span class="op">)</span>
-
-<span class="va">nn</span> <span class="op">=</span> <span class="fu"><a href="../reference/nn.html">nn</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="va">retinanet_split</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">m</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="../reference/L.html">L</a></span><span class="op">(</span><span class="va">m</span><span class="op">$</span><span class="va">encoder</span>,<span class="va">nn</span><span class="op">$</span><span class="fu">Sequential</span><span class="op">(</span><span class="va">m</span><span class="op">$</span><span class="va">c5top6</span>, <span class="va">m</span><span class="op">$</span><span class="va">p6top7</span>, <span class="va">m</span><span class="op">$</span><span class="va">merges</span>,
-                       <span class="va">m</span><span class="op">$</span><span class="va">smoothers</span>, <span class="va">m</span><span class="op">$</span><span class="va">classifier</span>, <span class="va">m</span><span class="op">$</span><span class="va">box_regressor</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="fu">map</span><span class="op">(</span><span class="fu"><a href="../reference/params.html">params</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-<span class="op">}</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">encoder</span> <span class="op">=</span> <span class="fu"><a href="../reference/create_body.html">create_body</a></span><span class="op">(</span><span class="fu"><a href="../reference/resnet34.html">resnet34</a></span><span class="op">(</span><span class="op">)</span>, pretrained <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">arch</span> <span class="op">=</span> <span class="fu"><a href="../reference/RetinaNet.html">RetinaNet</a></span><span class="op">(</span><span class="va">encoder</span>, <span class="fu"><a href="../reference/get_c.html">get_c</a></span><span class="op">(</span><span class="va">dls</span><span class="op">)</span>, final_bias<span class="op">=</span><span class="op">-</span><span class="fl">4</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">ratios</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="fl">2</span>,<span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">scales</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">**</span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">/</span><span class="fl">3</span><span class="op">)</span>, <span class="fl">2</span><span class="op">**</span><span class="op">(</span><span class="op">-</span><span class="fl">2</span><span class="op">/</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">crit</span> <span class="op">=</span> <span class="fu"><a href="../reference/RetinaNetFocalLoss.html">RetinaNetFocalLoss</a></span><span class="op">(</span>scales <span class="op">=</span> <span class="va">scales</span>, ratios <span class="op">=</span> <span class="va">ratios</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">nn</span> <span class="op">=</span> <span class="fu"><a href="../reference/nn.html">nn</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">retinanet_split</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">m</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="../reference/L.html">L</a></span><span class="op">(</span><span class="va">m</span><span class="op">$</span><span class="va">encoder</span>,<span class="va">nn</span><span class="op">$</span><span class="fu">Sequential</span><span class="op">(</span><span class="va">m</span><span class="op">$</span><span class="va">c5top6</span>, <span class="va">m</span><span class="op">$</span><span class="va">p6top7</span>, <span class="va">m</span><span class="op">$</span><span class="va">merges</span>,</span>
+<span>                       <span class="va">m</span><span class="op">$</span><span class="va">smoothers</span>, <span class="va">m</span><span class="op">$</span><span class="va">classifier</span>, <span class="va">m</span><span class="op">$</span><span class="va">box_regressor</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="fu">map</span><span class="op">(</span><span class="fu"><a href="../reference/params.html">params</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 </div>
-<div id="fit" class="section level2">
-<h2 class="hasAnchor">
-<a href="#fit" class="anchor"></a>Fit</h2>
+<div class="section level2">
+<h2 id="fit">Fit<a class="anchor" aria-label="anchor" href="#fit"></a>
+</h2>
 <p>Unfreeze and train model:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/Learner.html">Learner</a></span><span class="op">(</span><span class="va">dls</span>, <span class="va">arch</span>, loss_func <span class="op">=</span> <span class="va">crit</span>, splitter <span class="op">=</span> <span class="va">retinanet_split</span><span class="op">)</span>
-
-<span class="va">learn</span><span class="op">$</span><span class="fu">freeze</span><span class="op">(</span><span class="op">)</span>
-
-<span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fu"><a href="../reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1e-5</span>, <span class="fl">1e-4</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/Learner.html">Learner</a></span><span class="op">(</span><span class="va">dls</span>, <span class="va">arch</span>, loss_func <span class="op">=</span> <span class="va">crit</span>, splitter <span class="op">=</span> <span class="va">retinanet_split</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">learn</span><span class="op">$</span><span class="fu">freeze</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">learn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fu"><a href="../reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1e-5</span>, <span class="fl">1e-4</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>epoch     train_loss  valid_loss  time    
 0         3.377425    3.352676    00:06     
 1         3.304372    2.941969    00:03     
@@ -297,11 +305,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://github.com/henry090">Turgut Abdullayev</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://github.com/henry090" class="external-link">Turgut Abdullayev</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

@@ -21,6 +21,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -33,14 +35,14 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fastai</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.2.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Tutorials
      
     <span class="caret"></span>
@@ -76,7 +78,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Migrate
      
     <span class="caret"></span>
@@ -97,7 +99,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Learn
      
     <span class="caret"></span>
@@ -115,7 +117,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Training
      
     <span class="caret"></span>
@@ -136,7 +138,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     NLP
      
     <span class="caret"></span>
@@ -165,7 +167,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/EagerAI/fastai/">
+  <a href="https://github.com/EagerAI/fastai/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -186,188 +188,196 @@
 
       
 
-      </header><script src="data_aug_files/header-attrs-2.10/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Data augmentation</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/EagerAI/fastai/blob/master/vignettes/data_aug.Rmd"><code>vignettes/data_aug.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/EagerAI/fastai/blob/HEAD/vignettes/data_aug.Rmd" class="external-link"><code>vignettes/data_aug.Rmd</code></a></small>
       <div class="hidden name"><code>data_aug.Rmd</code></div>
 
     </div>
 
     
     
-<div id="intro" class="section level2">
-<h2 class="hasAnchor">
-<a href="#intro" class="anchor"></a>Intro</h2>
-<p>The <a href="https://github.com/fastai/fastai">fastai</a> library simplifies training fast and accurate neural nets using modern best practices. See the fastai website to get started. The library is based on research into deep learning best practices undertaken at <code>fast.ai</code>, and includes “out of the box” support for <code>vision</code>, <code>text</code>, <code>tabular</code>, and <code>collab</code> (collaborative filtering) models.</p>
+<div class="section level3">
+<h3 id="intro">Intro<a class="anchor" aria-label="anchor" href="#intro"></a>
+</h3>
+<p>The <a href="https://github.com/fastai/fastai" class="external-link">fastai</a> library
+simplifies training fast and accurate neural nets using modern best
+practices. See the fastai website to get started. The library is based
+on research into deep learning best practices undertaken at
+<code>fast.ai</code>, and includes “out of the box” support for
+<code>vision</code>, <code>text</code>, <code>tabular</code>, and
+<code>collab</code> (collaborative filtering) models.</p>
 </div>
-<div id="dataset" class="section level2">
-<h2 class="hasAnchor">
-<a href="#dataset" class="anchor"></a>Dataset</h2>
-<p>Data augmentation plays a huge role while working on Computer Vision task. Because the proper image transformation can drastically improve the generalization while building a deep learning model.</p>
+<div class="section level3">
+<h3 id="dataset">Dataset<a class="anchor" aria-label="anchor" href="#dataset"></a>
+</h3>
+<p>Data augmentation plays a huge role while working on Computer Vision
+task. Because the proper image transformation can drastically improve
+the generalization while building a deep learning model.</p>
 <p>Read image:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">img</span> <span class="op">=</span> <span class="fu">fastai</span><span class="fu">::</span><span class="fu"><a href="../reference/Image_create.html">Image_create</a></span><span class="op">(</span><span class="st">'files/cat.jpeg'</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">img</span> <span class="op">=</span> <span class="fu">fastai</span><span class="fu">::</span><span class="fu"><a href="../reference/Image_create.html">Image_create</a></span><span class="op">(</span><span class="st">'files/cat.jpeg'</span><span class="op">)</span></span></code></pre></div>
 <p>Plot it:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">img</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/show.html">show</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">img</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/show.html">show</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>&lt;center&gt;
 
 &lt;img src="images/cat.png" alt="_" style="width: 350px;"/&gt;
 
 &lt;/center&gt;</code></pre>
 </div>
-<div id="flipped" class="section level2">
-<h2 class="hasAnchor">
-<a href="#flipped" class="anchor"></a>Flipped</h2>
+<div class="section level3">
+<h3 id="flipped">Flipped<a class="anchor" aria-label="anchor" href="#flipped"></a>
+</h3>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">img_res</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">img</span>, <span class="va">img</span><span class="op">$</span><span class="fu">flip_lr</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-<span class="va">titles</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'original'</span>, <span class="st">'flipped'</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">fig</span>, <span class="va">axs</span><span class="op">)</span> <span class="op">%&lt;-%</span> <span class="fu"><a href="../reference/subplots.html">subplots</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>
-
-<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">img_res</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/show_image.html">show_image</a></span><span class="op">(</span>ax <span class="op">=</span> <span class="va">axs</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>,
-               title<span class="op">=</span><span class="va">titles</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span>
-<span class="op">}</span>
-
-<span class="va">img</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">img_res</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">img</span>, <span class="va">img</span><span class="op">$</span><span class="fu">flip_lr</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">titles</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'original'</span>, <span class="st">'flipped'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">fig</span>, <span class="va">axs</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/zeallot/man/operator.html" class="external-link">%&lt;-%</a></span> <span class="fu"><a href="../reference/subplots.html">subplots</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">img_res</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/show_image.html">show_image</a></span><span class="op">(</span>ax <span class="op">=</span> <span class="va">axs</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>               title<span class="op">=</span><span class="va">titles</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">img</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></span></code></pre></div>
 <pre><code>&lt;center&gt;
 
 &lt;img src="images/flip.png" alt="_" style="width: 350px;"/&gt;
 
 &lt;/center&gt;</code></pre>
 </div>
-<div id="dihedral" class="section level2">
-<h2 class="hasAnchor">
-<a href="#dihedral" class="anchor"></a>Dihedral</h2>
+<div class="section level3">
+<h3 id="dihedral">Dihedral<a class="anchor" aria-label="anchor" href="#dihedral"></a>
+</h3>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">fig</span>, <span class="va">axs</span><span class="op">)</span> <span class="op">%&lt;-%</span> <span class="fu"><a href="../reference/subplots.html">subplots</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span>
-
-<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">8</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="../reference/show_image.html">show_image</a></span><span class="op">(</span><span class="fu"><a href="../reference/DihedralItem.html">DihedralItem</a></span><span class="op">(</span>p <span class="op">=</span> <span class="fl">1.</span><span class="op">)</span><span class="op">(</span><span class="va">img</span>, split_idx <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>, ctx <span class="op">=</span> <span class="va">axs</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
-<span class="op">}</span>
-
-<span class="va">img</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">fig</span>, <span class="va">axs</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/zeallot/man/operator.html" class="external-link">%&lt;-%</a></span> <span class="fu"><a href="../reference/subplots.html">subplots</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">8</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="../reference/show_image.html">show_image</a></span><span class="op">(</span><span class="fu"><a href="../reference/DihedralItem.html">DihedralItem</a></span><span class="op">(</span>p <span class="op">=</span> <span class="fl">1.</span><span class="op">)</span><span class="op">(</span><span class="va">img</span>, split_idx <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>, ctx <span class="op">=</span> <span class="va">axs</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">img</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></span></code></pre></div>
 <pre><code>&lt;center&gt;
 
 &lt;img src="images/dihedral.png" alt="_" style="width: 350px;"/&gt;
 
 &lt;/center&gt;</code></pre>
 </div>
-<div id="croppad" class="section level2">
-<h2 class="hasAnchor">
-<a href="#croppad" class="anchor"></a>CropPad</h2>
+<div class="section level3">
+<h3 id="croppad">CropPad<a class="anchor" aria-label="anchor" href="#croppad"></a>
+</h3>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sz</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">300L</span>, <span class="fl">500L</span>, <span class="fl">700L</span><span class="op">)</span>
-<span class="va">size</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">'Size'</span>, <span class="va">sz</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">fig</span>, <span class="va">axs</span><span class="op">)</span> <span class="op">%&lt;-%</span> <span class="fu"><a href="../reference/subplots.html">subplots</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">12</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span>
-
-<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="../reference/show_image.html">show_image</a></span><span class="op">(</span><span class="va">img</span><span class="op">$</span><span class="fu">crop_pad</span><span class="op">(</span><span class="va">sz</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span>, ctx <span class="op">=</span> <span class="va">axs</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, title <span class="op">=</span> <span class="va">size</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span>
-<span class="op">}</span>
-
-<span class="va">img</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sz</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">300L</span>, <span class="fl">500L</span>, <span class="fl">700L</span><span class="op">)</span></span>
+<span><span class="va">size</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">'Size'</span>, <span class="va">sz</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">fig</span>, <span class="va">axs</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/zeallot/man/operator.html" class="external-link">%&lt;-%</a></span> <span class="fu"><a href="../reference/subplots.html">subplots</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">12</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="../reference/show_image.html">show_image</a></span><span class="op">(</span><span class="va">img</span><span class="op">$</span><span class="fu">crop_pad</span><span class="op">(</span><span class="va">sz</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span>, ctx <span class="op">=</span> <span class="va">axs</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, title <span class="op">=</span> <span class="va">size</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">img</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></span></code></pre></div>
 <pre><code>&lt;center&gt;
 
 &lt;img src="images/crop.png" alt="_" style="width: 350px;"/&gt;
 
 &lt;/center&gt;</code></pre>
 </div>
-<div id="padmodes" class="section level1">
-<h1 class="hasAnchor">
-<a href="#padmodes" class="anchor"></a>PadModes</h1>
+<div class="section level2">
+<h2 id="padmodes">PadModes<a class="anchor" aria-label="anchor" href="#padmodes"></a>
+</h2>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">pad_modes</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'border'</span>, <span class="st">'reflection'</span>, <span class="st">'zeros'</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">fig</span>, <span class="va">axs</span><span class="op">)</span> <span class="op">%&lt;-%</span> <span class="fu"><a href="../reference/subplots.html">subplots</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">12</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span>
-
-<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="../reference/show_image.html">show_image</a></span><span class="op">(</span><span class="va">img</span><span class="op">$</span><span class="fu">crop_pad</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">600L</span>,<span class="fl">700L</span><span class="op">)</span>, pad_mode <span class="op">=</span> <span class="va">pad_modes</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span>,
-             ctx <span class="op">=</span> <span class="va">axs</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, title <span class="op">=</span> <span class="va">pad_modes</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span>
-<span class="op">}</span>
-
-<span class="va">img</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">pad_modes</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'border'</span>, <span class="st">'reflection'</span>, <span class="st">'zeros'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">fig</span>, <span class="va">axs</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/zeallot/man/operator.html" class="external-link">%&lt;-%</a></span> <span class="fu"><a href="../reference/subplots.html">subplots</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">12</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="../reference/show_image.html">show_image</a></span><span class="op">(</span><span class="va">img</span><span class="op">$</span><span class="fu">crop_pad</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">600L</span>,<span class="fl">700L</span><span class="op">)</span>, pad_mode <span class="op">=</span> <span class="va">pad_modes</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>             ctx <span class="op">=</span> <span class="va">axs</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, title <span class="op">=</span> <span class="va">pad_modes</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">img</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></span></code></pre></div>
 <pre><code>&lt;center&gt;
 
 &lt;img src="images/modes.png" alt="_" style="width: 350px;"/&gt;
 
 &lt;/center&gt;</code></pre>
-<div id="randomcrop" class="section level2">
-<h2 class="hasAnchor">
-<a href="#randomcrop" class="anchor"></a>RandomCrop</h2>
+<div class="section level3">
+<h3 id="randomcrop">RandomCrop<a class="anchor" aria-label="anchor" href="#randomcrop"></a>
+</h3>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">fig</span>, <span class="va">axs</span><span class="op">)</span> <span class="op">%&lt;-%</span> <span class="fu"><a href="../reference/subplots.html">subplots</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">12</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">ff</span> <span class="op">=</span> <span class="fu"><a href="../reference/RandomCrop.html">RandomCrop</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>
-
-<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="../reference/show_image.html">show_image</a></span><span class="op">(</span><span class="fu">ff</span><span class="op">(</span><span class="va">img</span><span class="op">)</span>, ctx <span class="op">=</span> <span class="va">axs</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
-<span class="op">}</span>
-
-<span class="va">img</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">fig</span>, <span class="va">axs</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/zeallot/man/operator.html" class="external-link">%&lt;-%</a></span> <span class="fu"><a href="../reference/subplots.html">subplots</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">12</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">ff</span> <span class="op">=</span> <span class="fu"><a href="../reference/RandomCrop.html">RandomCrop</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="../reference/show_image.html">show_image</a></span><span class="op">(</span><span class="fu">ff</span><span class="op">(</span><span class="va">img</span><span class="op">)</span>, ctx <span class="op">=</span> <span class="va">axs</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">img</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></span></code></pre></div>
 <pre><code>&lt;center&gt;
 
 &lt;img src="images/random_crop.png" alt="_" style="width: 350px;"/&gt;
 
 &lt;/center&gt;</code></pre>
 </div>
-<div id="centercrop" class="section level2">
-<h2 class="hasAnchor">
-<a href="#centercrop" class="anchor"></a>CenterCrop</h2>
+<div class="section level3">
+<h3 id="centercrop">CenterCrop<a class="anchor" aria-label="anchor" href="#centercrop"></a>
+</h3>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">fig</span>, <span class="va">axs</span><span class="op">)</span> <span class="op">%&lt;-%</span> <span class="fu"><a href="../reference/subplots.html">subplots</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">12</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">ff</span> <span class="op">=</span> <span class="fu"><a href="../reference/RandomCrop.html">RandomCrop</a></span><span class="op">(</span><span class="fl">100L</span><span class="op">)</span>
-
-<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="../reference/show_image.html">show_image</a></span><span class="op">(</span><span class="fu">ff</span><span class="op">(</span><span class="va">img</span>, split_idx <span class="op">=</span> <span class="fl">1L</span><span class="op">)</span>, ctx <span class="op">=</span> <span class="va">axs</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
-<span class="op">}</span>
-
-<span class="va">img</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">fig</span>, <span class="va">axs</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/zeallot/man/operator.html" class="external-link">%&lt;-%</a></span> <span class="fu"><a href="../reference/subplots.html">subplots</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">12</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">ff</span> <span class="op">=</span> <span class="fu"><a href="../reference/RandomCrop.html">RandomCrop</a></span><span class="op">(</span><span class="fl">100L</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="../reference/show_image.html">show_image</a></span><span class="op">(</span><span class="fu">ff</span><span class="op">(</span><span class="va">img</span>, split_idx <span class="op">=</span> <span class="fl">1L</span><span class="op">)</span>, ctx <span class="op">=</span> <span class="va">axs</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">img</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></span></code></pre></div>
 <pre><code>&lt;center&gt;
 
 &lt;img src="images/center_crop.png" alt="_" style="width: 350px;"/&gt;
 
 &lt;/center&gt;</code></pre>
 </div>
-<div id="resize-method" class="section level2">
-<h2 class="hasAnchor">
-<a href="#resize-method" class="anchor"></a>Resize method</h2>
+<div class="section level3">
+<h3 id="resize-method">Resize method<a class="anchor" aria-label="anchor" href="#resize-method"></a>
+</h3>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">resize</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'squish'</span>, <span class="st">'pad'</span>, <span class="st">'crop'</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">fig</span>, <span class="va">axs</span><span class="op">)</span> <span class="op">%&lt;-%</span> <span class="fu"><a href="../reference/subplots.html">subplots</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">12</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span>
-
-<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">rsz</span> <span class="op">=</span> <span class="fu"><a href="../reference/Resize.html">Resize</a></span><span class="op">(</span><span class="fl">256</span>, method <span class="op">=</span> <span class="va">resize</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span>
-  <span class="fu"><a href="../reference/show_image.html">show_image</a></span><span class="op">(</span><span class="fu">rsz</span><span class="op">(</span><span class="va">img</span>, split_idx <span class="op">=</span> <span class="fl">0L</span><span class="op">)</span>, ctx <span class="op">=</span> <span class="va">axs</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, title <span class="op">=</span> <span class="va">resize</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span>
-<span class="op">}</span>
-
-<span class="va">img</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">resize</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'squish'</span>, <span class="st">'pad'</span>, <span class="st">'crop'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">fig</span>, <span class="va">axs</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/zeallot/man/operator.html" class="external-link">%&lt;-%</a></span> <span class="fu"><a href="../reference/subplots.html">subplots</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">12</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">rsz</span> <span class="op">=</span> <span class="fu"><a href="../reference/Resize.html">Resize</a></span><span class="op">(</span><span class="fl">256</span>, method <span class="op">=</span> <span class="va">resize</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/show_image.html">show_image</a></span><span class="op">(</span><span class="fu">rsz</span><span class="op">(</span><span class="va">img</span>, split_idx <span class="op">=</span> <span class="fl">0L</span><span class="op">)</span>, ctx <span class="op">=</span> <span class="va">axs</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, title <span class="op">=</span> <span class="va">resize</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">img</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></span></code></pre></div>
 <pre><code>&lt;center&gt;
 
 &lt;img src="images/resize.png" alt="_" style="width: 350px;"/&gt;
 
 &lt;/center&gt;</code></pre>
 </div>
-<div id="randomresizecrop" class="section level2">
-<h2 class="hasAnchor">
-<a href="#randomresizecrop" class="anchor"></a>RandomResizeCrop</h2>
+<div class="section level3">
+<h3 id="randomresizecrop">RandomResizeCrop<a class="anchor" aria-label="anchor" href="#randomresizecrop"></a>
+</h3>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">fig</span>, <span class="va">axs</span><span class="op">)</span> <span class="op">%&lt;-%</span> <span class="fu"><a href="../reference/subplots.html">subplots</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">3</span>, figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">9</span>, <span class="fl">9</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">ff</span> <span class="op">=</span> <span class="fu"><a href="../reference/RandomResizedCrop.html">RandomResizedCrop</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>
-
-<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">9</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="../reference/show_image.html">show_image</a></span><span class="op">(</span><span class="fu">ff</span><span class="op">(</span><span class="va">img</span><span class="op">)</span>, ctx <span class="op">=</span> <span class="va">axs</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
-<span class="op">}</span>
-
-<span class="va">img</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">fig</span>, <span class="va">axs</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/zeallot/man/operator.html" class="external-link">%&lt;-%</a></span> <span class="fu"><a href="../reference/subplots.html">subplots</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">3</span>, figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">9</span>, <span class="fl">9</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">ff</span> <span class="op">=</span> <span class="fu"><a href="../reference/RandomResizedCrop.html">RandomResizedCrop</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">9</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="../reference/show_image.html">show_image</a></span><span class="op">(</span><span class="fu">ff</span><span class="op">(</span><span class="va">img</span><span class="op">)</span>, ctx <span class="op">=</span> <span class="va">axs</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">img</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></span></code></pre></div>
 <pre><code>&lt;center&gt;
 
 &lt;img src="images/random_resize.png" alt="_" style="width: 350px;"/&gt;
@@ -388,11 +398,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://github.com/henry090">Turgut Abdullayev</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://github.com/henry090" class="external-link">Turgut Abdullayev</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

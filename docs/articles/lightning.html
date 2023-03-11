@@ -21,6 +21,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -33,14 +35,14 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fastai</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.2.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Tutorials
      
     <span class="caret"></span>
@@ -76,7 +78,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Migrate
      
     <span class="caret"></span>
@@ -97,7 +99,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Learn
      
     <span class="caret"></span>
@@ -115,7 +117,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Training
      
     <span class="caret"></span>
@@ -136,7 +138,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     NLP
      
     <span class="caret"></span>
@@ -165,7 +167,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/EagerAI/fastai/">
+  <a href="https://github.com/EagerAI/fastai/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -186,13 +188,13 @@
 
       
 
-      </header><script src="lightning_files/header-attrs-2.10/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Migrating from Lightning</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/EagerAI/fastai/blob/master/vignettes/lightning.Rmd"><code>vignettes/lightning.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/EagerAI/fastai/blob/HEAD/vignettes/lightning.Rmd" class="external-link"><code>vignettes/lightning.Rmd</code></a></small>
       <div class="hidden name"><code>lightning.Rmd</code></div>
 
     </div>
@@ -202,26 +204,27 @@
 <center>
 <p><img src="images/lightning.png" alt="_" style="width: 600px;"></p>
 </center>
-<div id="intro" class="section level2">
-<h2 class="hasAnchor">
-<a href="#intro" class="anchor"></a>Intro</h2>
-<p>Lightning disentangles PyTorch code to decouple the science from the engineering.</p>
+<div class="section level2">
+<h2 id="intro">Intro<a class="anchor" aria-label="anchor" href="#intro"></a>
+</h2>
+<p>Lightning disentangles PyTorch code to decouple the science from the
+engineering.</p>
 </div>
-<div id="lightning-with-fastai" class="section level2">
-<h2 class="hasAnchor">
-<a href="#lightning-with-fastai" class="anchor"></a>Lightning with fastai</h2>
+<div class="section level2">
+<h2 id="lightning-with-fastai">Lightning with fastai<a class="anchor" aria-label="anchor" href="#lightning-with-fastai"></a>
+</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EagerAI/fastai">fastai</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org">magrittr</a></span><span class="op">)</span>
-
-<span class="va">model</span> <span class="op">=</span> <span class="fu"><a href="../reference/LitModel.html">LitModel</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="va">data</span> <span class="op">=</span> <span class="fu"><a href="../reference/Data_Loaders.html">Data_Loaders</a></span><span class="op">(</span><span class="va">model</span><span class="op">$</span><span class="fu">train_dataloader</span><span class="op">(</span><span class="op">)</span>, <span class="va">model</span><span class="op">$</span><span class="fu">val_dataloader</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="fu">cuda</span><span class="op">(</span><span class="op">)</span>
-
-<span class="va">nn</span> <span class="op">=</span> <span class="fu"><a href="../reference/nn.html">nn</a></span><span class="op">(</span><span class="op">)</span>
-<span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/Learner.html">Learner</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">model</span>, loss_func <span class="op">=</span> <span class="va">nn</span><span class="op">$</span><span class="va">functional</span><span class="op">$</span><span class="va">cross_entropy</span>, opt_func <span class="op">=</span> <span class="va">Adam</span>,
-                metrics <span class="op">=</span> <span class="va">accuracy</span><span class="op">)</span>
-<span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0.001</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EagerAI/fastai" class="external-link">fastai</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">model</span> <span class="op">=</span> <span class="fu"><a href="../reference/LitModel.html">LitModel</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">data</span> <span class="op">=</span> <span class="fu"><a href="../reference/Data_Loaders.html">Data_Loaders</a></span><span class="op">(</span><span class="va">model</span><span class="op">$</span><span class="fu">train_dataloader</span><span class="op">(</span><span class="op">)</span>, <span class="va">model</span><span class="op">$</span><span class="fu">val_dataloader</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="fu">cuda</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">nn</span> <span class="op">=</span> <span class="fu"><a href="../reference/nn.html">nn</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/Learner.html">Learner</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">model</span>, loss_func <span class="op">=</span> <span class="va">nn</span><span class="op">$</span><span class="va">functional</span><span class="op">$</span><span class="va">cross_entropy</span>, opt_func <span class="op">=</span> <span class="va">Adam</span>,</span>
+<span>                metrics <span class="op">=</span> <span class="va">accuracy</span><span class="op">)</span></span>
+<span><span class="va">learn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0.001</span><span class="op">)</span></span></code></pre></div>
 <pre><code>epoch     train_loss  valid_loss  accuracy  time    
 0         0.354146    0.334655    0.911300  00:09   </code></pre>
 </div>
@@ -238,11 +241,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://github.com/henry090">Turgut Abdullayev</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://github.com/henry090" class="external-link">Turgut Abdullayev</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

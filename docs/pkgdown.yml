@@ -1,5 +1,5 @@
-pandoc: 2.11.4
-pkgdown: 1.6.1
+pandoc: 2.19.2
+pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   Basic_Tabular: Basic_Tabular.html
@@ -26,8 +26,8 @@ articles:
   textclassification: textclassification.html
   textsummarize: textsummarize.html
   time_series: time_series.html
-last_built: 2021-10-23T19:30Z
+last_built: 2023-03-11T08:52Z
 urls:
-  reference: https://EagerAI.github.io/fastai//reference
-  article: https://EagerAI.github.io/fastai//articles
+  reference: https://EagerAI.github.io/fastai/reference
+  article: https://EagerAI.github.io/fastai/articles
 

@@ -21,6 +21,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -33,14 +35,14 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fastai</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.2.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Tutorials
      
     <span class="caret"></span>
@@ -76,7 +78,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Migrate
      
     <span class="caret"></span>
@@ -97,7 +99,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Learn
      
     <span class="caret"></span>
@@ -115,7 +117,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Training
      
     <span class="caret"></span>
@@ -136,7 +138,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     NLP
      
     <span class="caret"></span>
@@ -165,7 +167,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/EagerAI/fastai/">
+  <a href="https://github.com/EagerAI/fastai/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -186,128 +188,131 @@
 
       
 
-      </header><script src="audio_files/header-attrs-2.10/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Audio Classification</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/EagerAI/fastai/blob/master/vignettes/audio.Rmd"><code>vignettes/audio.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/EagerAI/fastai/blob/HEAD/vignettes/audio.Rmd" class="external-link"><code>vignettes/audio.Rmd</code></a></small>
       <div class="hidden name"><code>audio.Rmd</code></div>
 
     </div>
 
     
     
-<div id="intro" class="section level2">
-<h2 class="hasAnchor">
-<a href="#intro" class="anchor"></a>Intro</h2>
+<div class="section level2">
+<h2 id="intro">Intro<a class="anchor" aria-label="anchor" href="#intro"></a>
+</h2>
 <p>First, we need to install <code>fastaudio module</code>.</p>
-<pre><code><a href="https://rdrr.io/pkg/reticulate/man/py_install.html">reticulate::py_install('fastaudio',pip = TRUE)</a></code></pre>
+<pre><code><span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_install.html" class="external-link">py_install</a></span><span class="op">(</span><span class="st">'fastaudio'</span>,pip <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre>
 </div>
-<div id="dataset" class="section level2">
-<h2 class="hasAnchor">
-<a href="#dataset" class="anchor"></a>Dataset</h2>
+<div class="section level2">
+<h2 id="dataset">Dataset<a class="anchor" aria-label="anchor" href="#dataset"></a>
+</h2>
 <p>Grab data:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/URLs_SPEAKERS10.html">URLs_SPEAKERS10</a></span><span class="op">(</span><span class="op">)</span>
-<span class="va">path_dig</span> <span class="op">=</span> <span class="st">'SPEAKERS10'</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/URLs_SPEAKERS10.html">URLs_SPEAKERS10</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">path_dig</span> <span class="op">=</span> <span class="st">'SPEAKERS10'</span></span></code></pre></div>
 <p>See audio extensions:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/audio_extensions.html">audio_extensions</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span>
-<span class="co">#[1] ".aif"  ".aifc" ".aiff" ".au"   ".m3u"  ".mp2" </span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/audio_extensions.html">audio_extensions</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span></span>
+<span><span class="co">#[1] ".aif"  ".aifc" ".aiff" ".au"   ".m3u"  ".mp2" </span></span></code></pre></div>
 <p>Read files:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">fnames</span> <span class="op">=</span> <span class="fu"><a href="../reference/get_files.html">get_files</a></span><span class="op">(</span><span class="va">path_dig</span>, extensions <span class="op">=</span> <span class="fu"><a href="../reference/audio_extensions.html">audio_extensions</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-<span class="co"># (#3842) [Path('SPEAKERS10/f0004_us_f0004_00414.wav')...]</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">fnames</span> <span class="op">=</span> <span class="fu"><a href="../reference/get_files.html">get_files</a></span><span class="op">(</span><span class="va">path_dig</span>, extensions <span class="op">=</span> <span class="fu"><a href="../reference/audio_extensions.html">audio_extensions</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># (#3842) [Path('SPEAKERS10/f0004_us_f0004_00414.wav')...]</span></span></code></pre></div>
 </div>
-<div id="visualize" class="section level2">
-<h2 class="hasAnchor">
-<a href="#visualize" class="anchor"></a>Visualize</h2>
+<div class="section level2">
+<h2 id="visualize">Visualize<a class="anchor" aria-label="anchor" href="#visualize"></a>
+</h2>
 <p>Read audio data and visualize a tensor:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">at</span> <span class="op">=</span> <span class="fu"><a href="../reference/AudioTensor_create.html">AudioTensor_create</a></span><span class="op">(</span><span class="va">fnames</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span>
-<span class="va">at</span>; <span class="va">at</span><span class="op">$</span><span class="va">shape</span>
-<span class="va">at</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/show.html">show</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">at</span> <span class="op">=</span> <span class="fu"><a href="../reference/AudioTensor_create.html">AudioTensor_create</a></span><span class="op">(</span><span class="va">fnames</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">at</span>; <span class="va">at</span><span class="op">$</span><span class="va">shape</span></span>
+<span><span class="va">at</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/show.html">show</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span></code></pre></div>
 <center>
 <p><img src="images/voice.png" alt="_" style="width: 700px;"></p>
 </center>
 </div>
-<div id="preparing-the-dataset" class="section level2">
-<h2 class="hasAnchor">
-<a href="#preparing-the-dataset" class="anchor"></a>Preparing the dataset</h2>
-<p>fastaudio has a AudioConfig class which allows us to prepare different settings for our dataset. Currently it has:</p>
+<div class="section level2">
+<h2 id="preparing-the-dataset">Preparing the dataset<a class="anchor" aria-label="anchor" href="#preparing-the-dataset"></a>
+</h2>
+<p>fastaudio has a AudioConfig class which allows us to prepare
+different settings for our dataset. Currently it has:</p>
 <ul>
 <li>BasicMelSpectrogram</li>
 <li>BasicMFCC</li>
 <li>BasicSpectrogram</li>
 <li>Voice</li>
 </ul>
-<p>Voice module is the most suitable because it contains human voices.</p>
+<p>Voice module is the most suitable because it contains human
+voices.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">cfg</span> <span class="op">=</span> <span class="fu"><a href="../reference/Voice.html">Voice</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="va">cfg</span><span class="op">$</span><span class="va">f_max</span>; <span class="va">cfg</span><span class="op">$</span><span class="va">sample_rate</span>
-<span class="co">#[1] 8000 # frequency range</span>
-<span class="co">#[1] 16000 # the sampling rate</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">cfg</span> <span class="op">=</span> <span class="fu"><a href="../reference/Voice.html">Voice</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">cfg</span><span class="op">$</span><span class="va">f_max</span>; <span class="va">cfg</span><span class="op">$</span><span class="va">sample_rate</span></span>
+<span><span class="co">#[1] 8000 # frequency range</span></span>
+<span><span class="co">#[1] 16000 # the sampling rate</span></span></code></pre></div>
 <p>Turn data into spectrogram and crop signal:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">aud2spec</span> <span class="op">=</span> <span class="fu"><a href="../reference/AudioToSpec_from_cfg.html">AudioToSpec_from_cfg</a></span><span class="op">(</span><span class="va">cfg</span><span class="op">)</span>
-
-<span class="va">crop1s</span> <span class="op">=</span> <span class="fu"><a href="../reference/ResizeSignal.html">ResizeSignal</a></span><span class="op">(</span><span class="fl">1000</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">aud2spec</span> <span class="op">=</span> <span class="fu"><a href="../reference/AudioToSpec_from_cfg.html">AudioToSpec_from_cfg</a></span><span class="op">(</span><span class="va">cfg</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">crop1s</span> <span class="op">=</span> <span class="fu"><a href="../reference/ResizeSignal.html">ResizeSignal</a></span><span class="op">(</span><span class="fl">1000</span><span class="op">)</span></span></code></pre></div>
 <p>Create a pipeline and see the result:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">pipe</span> <span class="op">=</span> <span class="fu"><a href="../reference/Pipeline.html">Pipeline</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">AudioTensor_create</span>, <span class="va">crop1s</span>, <span class="va">aud2spec</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/connections.html">pipe</a></span><span class="op">(</span><span class="va">fnames</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/show.html">show</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">pipe</span> <span class="op">=</span> <span class="fu"><a href="../reference/Pipeline.html">Pipeline</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">AudioTensor_create</span>, <span class="va">crop1s</span>, <span class="va">aud2spec</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">pipe</a></span><span class="op">(</span><span class="va">fnames</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/show.html">show</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="dataloader" class="section level2">
-<h2 class="hasAnchor">
-<a href="#dataloader" class="anchor"></a>Dataloader</h2>
+<div class="section level2">
+<h2 id="dataloader">Dataloader<a class="anchor" aria-label="anchor" href="#dataloader"></a>
+</h2>
 <p>As usual, prepare a datalaoder:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">item_tfms</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="../reference/ResizeSignal.html">ResizeSignal</a></span><span class="op">(</span><span class="fl">1000</span><span class="op">)</span>, <span class="va">aud2spec</span><span class="op">)</span>
-
-<span class="va">get_y</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/substr.html">substring</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">name</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>
-
-<span class="va">aud_digit</span> <span class="op">=</span> <span class="fu"><a href="../reference/DataBlock.html">DataBlock</a></span><span class="op">(</span>blocks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="../reference/AudioBlock.html">AudioBlock</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="../reference/CategoryBlock.html">CategoryBlock</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,
-                      get_items <span class="op">=</span> <span class="va">get_audio_files</span>,
-                      splitter <span class="op">=</span> <span class="fu"><a href="../reference/RandomSplitter.html">RandomSplitter</a></span><span class="op">(</span><span class="op">)</span>,
-                      item_tfms <span class="op">=</span> <span class="va">item_tfms</span>,
-                      get_y <span class="op">=</span> <span class="va">get_y</span><span class="op">)</span>
-
-<span class="va">dls</span> <span class="op">=</span> <span class="va">aud_digit</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/dataloaders.html">dataloaders</a></span><span class="op">(</span>source <span class="op">=</span> <span class="va">path_dig</span>, bs <span class="op">=</span> <span class="fl">64</span><span class="op">)</span>
-
-<span class="va">dls</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/show_batch.html">show_batch</a></span><span class="op">(</span>figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">8.5</span><span class="op">)</span>, nrows <span class="op">=</span> <span class="fl">3</span>, ncols <span class="op">=</span> <span class="fl">3</span>, max_n <span class="op">=</span> <span class="fl">9</span>, dpi <span class="op">=</span> <span class="fl">180</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">item_tfms</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="../reference/ResizeSignal.html">ResizeSignal</a></span><span class="op">(</span><span class="fl">1000</span><span class="op">)</span>, <span class="va">aud2spec</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">get_y</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/substr.html" class="external-link">substring</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">name</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">aud_digit</span> <span class="op">=</span> <span class="fu"><a href="../reference/DataBlock.html">DataBlock</a></span><span class="op">(</span>blocks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="../reference/AudioBlock.html">AudioBlock</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="../reference/CategoryBlock.html">CategoryBlock</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                      get_items <span class="op">=</span> <span class="va">get_audio_files</span>,</span>
+<span>                      splitter <span class="op">=</span> <span class="fu"><a href="../reference/RandomSplitter.html">RandomSplitter</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>                      item_tfms <span class="op">=</span> <span class="va">item_tfms</span>,</span>
+<span>                      get_y <span class="op">=</span> <span class="va">get_y</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dls</span> <span class="op">=</span> <span class="va">aud_digit</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/dataloaders.html">dataloaders</a></span><span class="op">(</span>source <span class="op">=</span> <span class="va">path_dig</span>, bs <span class="op">=</span> <span class="fl">64</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dls</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/show_batch.html">show_batch</a></span><span class="op">(</span>figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">8.5</span><span class="op">)</span>, nrows <span class="op">=</span> <span class="fl">3</span>, ncols <span class="op">=</span> <span class="fl">3</span>, max_n <span class="op">=</span> <span class="fl">9</span>, dpi <span class="op">=</span> <span class="fl">180</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="pretrained-model" class="section level2">
-<h2 class="hasAnchor">
-<a href="#pretrained-model" class="anchor"></a>Pretrained model</h2>
-<p>We will use a pretrained ResNet model. However, the channel number and weight dimension have to be changed:</p>
+<div class="section level2">
+<h2 id="pretrained-model">Pretrained model<a class="anchor" aria-label="anchor" href="#pretrained-model"></a>
+</h2>
+<p>We will use a pretrained ResNet model. However, the channel number
+and weight dimension have to be changed:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">torch</span> <span class="op">=</span> <span class="fu"><a href="../reference/torch.html">torch</a></span><span class="op">(</span><span class="op">)</span>
-<span class="va">nn</span> <span class="op">=</span> <span class="fu"><a href="../reference/nn.html">nn</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/Learner.html">Learner</a></span><span class="op">(</span><span class="va">dls</span>, <span class="fu"><a href="../reference/xresnet18.html">xresnet18</a></span><span class="op">(</span>pretrained <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>, <span class="va">nn</span><span class="op">$</span><span class="fu">CrossEntropyLoss</span><span class="op">(</span><span class="op">)</span>, metrics<span class="op">=</span><span class="va">accuracy</span><span class="op">)</span>
-
-<span class="co"># channel from 3 to 1</span>
-<span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[[</span><span class="st">'in_channels'</span><span class="op">]</span><span class="op">]</span> <span class="op">%f%</span> <span class="fl">1L</span>
-<span class="co"># reshape</span>
-<span class="va">new_weight_shape</span> <span class="op">&lt;-</span> <span class="va">torch</span><span class="op">$</span><span class="va">nn</span><span class="op">$</span><span class="va">parameter</span><span class="op">$</span><span class="fu">Parameter</span><span class="op">(</span>
-  <span class="op">(</span><span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">$</span><span class="va">weight</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/narrow.html">narrow</a></span><span class="op">(</span><span class="st">'[:,1,:,:]'</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="fu">unsqueeze</span><span class="op">(</span><span class="fl">1L</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># assign with %f%</span>
-<span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[[</span><span class="st">'weight'</span><span class="op">]</span><span class="op">]</span> <span class="op">%f%</span> <span class="va">new_weight_shape</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">torch</span> <span class="op">=</span> <span class="fu"><a href="../reference/torch.html">torch</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">nn</span> <span class="op">=</span> <span class="fu"><a href="../reference/nn.html">nn</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/Learner.html">Learner</a></span><span class="op">(</span><span class="va">dls</span>, <span class="fu"><a href="../reference/xresnet18.html">xresnet18</a></span><span class="op">(</span>pretrained <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>, <span class="va">nn</span><span class="op">$</span><span class="fu">CrossEntropyLoss</span><span class="op">(</span><span class="op">)</span>, metrics<span class="op">=</span><span class="va">accuracy</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># channel from 3 to 1</span></span>
+<span><span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[[</span><span class="st">'in_channels'</span><span class="op">]</span><span class="op">]</span> <span class="op"><a href="../reference/grapes-f-grapes.html">%f%</a></span> <span class="fl">1L</span></span>
+<span><span class="co"># reshape</span></span>
+<span><span class="va">new_weight_shape</span> <span class="op">&lt;-</span> <span class="va">torch</span><span class="op">$</span><span class="va">nn</span><span class="op">$</span><span class="va">parameter</span><span class="op">$</span><span class="fu">Parameter</span><span class="op">(</span></span>
+<span>  <span class="op">(</span><span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">$</span><span class="va">weight</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/narrow.html">narrow</a></span><span class="op">(</span><span class="st">'[:,1,:,:]'</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="fu">unsqueeze</span><span class="op">(</span><span class="fl">1L</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># assign with %f%</span></span>
+<span><span class="va">learn</span><span class="op">$</span><span class="va">model</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">[[</span><span class="st">'weight'</span><span class="op">]</span><span class="op">]</span> <span class="op"><a href="../reference/grapes-f-grapes.html">%f%</a></span> <span class="va">new_weight_shape</span></span></code></pre></div>
 <p>Find <code>lr</code>:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">lrs</span> <span class="op">=</span> <span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/lr_find.html">lr_find</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#SuggestedLRs(lr_min=0.03019951581954956, lr_steep=0.0030199517495930195)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">lrs</span> <span class="op">=</span> <span class="va">learn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/lr_find.html">lr_find</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#SuggestedLRs(lr_min=0.03019951581954956, lr_steep=0.0030199517495930195)</span></span></code></pre></div>
 </div>
-<div id="conclusion" class="section level2">
-<h2 class="hasAnchor">
-<a href="#conclusion" class="anchor"></a>Conclusion</h2>
+<div class="section level2">
+<h2 id="conclusion">Conclusion<a class="anchor" aria-label="anchor" href="#conclusion"></a>
+</h2>
 <p>And <code>fit</code>:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">1e-3</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">learn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">1e-3</span><span class="op">)</span></span></code></pre></div>
 <pre><code>epoch     train_loss  valid_loss  accuracy  time    
 0         5.494162    3.295561    0.632812  00:06     
 1         1.962470    0.236809    0.877604  00:06     
@@ -333,11 +338,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://github.com/henry090">Turgut Abdullayev</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://github.com/henry090" class="external-link">Turgut Abdullayev</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
