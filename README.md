@@ -44,6 +44,7 @@ devtools::install_github('eagerai/fastai')
 **3. Later, you need to install the python module `fastai`:**
 
 ```
+reticulate::use_condaenv('r-reticulate',required = T)
 fastai::install_fastai(gpu = FALSE, cuda_version = '10', overwrite = FALSE)
 ```
 
@@ -197,17 +198,6 @@ model %>% plot_loss(dpi = 200)
 
 <img src="files/plot_loss.png" height=500 align=center alt="lr"/>
 
-At the same time, users can find optimal batch size.
-
-Implementation of OpenAI paper ["An Empirical Model of Large-Batch Training"](https://arxiv.org/pdf/1812.06162.pdf) for Fastai was done by [hal-314](https://github.com/hal-314/fastai-batch-size-finder):
-
-```
-bss = model %>% bs_find(lr=1e-3)
-
-model %>% plot_bs_find()
-```
-
-<img src="files/plot_bs.png" height=500 align=center alt="bs"/>
 
 See training process:
 
@@ -253,68 +243,6 @@ Get predictions on new data:
 6 0.5111378 0.4888622       0
 ```
 
-Fastinference by [Zachary Mueller](https://github.com/muellerzr/fastinference)
-has ShapInterpretation function that allows to utilize various methods within
-the SHAP interpretation library. Currently `summary_plot`, `dependence_plot`,
-`waterfall_plot`, `force_plot`, and `decision_plot` are supported.
-
-First, get explanation object:
-
-```
-exp = ShapInterpretation(model,n_samples = 20)
-# 100%|██████████| 20/20 [02:49<00:00,  8.46s/it]
-```
-
-Then, visualize decision plot:
-
-```
-exp %>% decision_plot(class_id = 1, row_idx = 2)
-```
-
-<center>
-<img src="files/shap1.png" height=500 align=center alt="Shap"/>
-</center>
-
-Dependence plot:
-
-```
-exp %>% dependence_plot('age', class_id = 0)
-```
-
-<center>
-<img src="files/shap2.png" height=500 align=center alt="Shap"/>
-</center>
-
-Summary plot:
-
-```
-exp %>% summary_plot()
-```
-
-<center>
-<img src="files/shap3.png" height=500 align=center alt="Shap"/>
-</center>
-
-Waterfall plot:
-
-```
-exp %>% waterfall_plot(row_idx=10)
-```
-
-<p align="center">
-<img src="files/shap4.png" height=500 align=center alt="Shap"/>
-</p>
-
-Force (JS) plot:
-
-```
-exp %>% force_plot(class_id = 0)
-```
-
-<p align="center">
-<img src="files/force_.png" height=500 align=center alt="Shap"/>
-</p>
-
 ## Image data
 
 Get Pets dataset:
@@ -346,8 +274,7 @@ Dataloader:
 dls = ImageDataLoaders_from_name_re(
   path, fnames, pat='(.+)_\\d+.jpg$',
   item_tfms=Resize(size = 460), bs = 10,
-  batch_tfms=list(aug_transforms(size = 224, min_scale = 0.75),
-                  Normalize_from_stats( imagenet_stats() )
+  batch_tfms=list(Normalize_from_stats( imagenet_stats() )
                   )
 )
 ```
@@ -355,7 +282,7 @@ dls = ImageDataLoaders_from_name_re(
 Show batch for visualization:
 
 ```
-dls %>% show_batch(dpi = 150)
+dls %>% show_batch()
 ```
 
 <img src="files/pets.png" height=500 align=center alt="Pets"/>
@@ -409,12 +336,11 @@ Alternatively, load images from folders:
 URLs_MNIST_SAMPLE()
 
 # transformations
-tfms = aug_transforms(do_flip = FALSE)
 path = 'mnist_sample'
 bs = 20
 
 #load into memory
-data = ImageDataLoaders_from_folder(path, batch_tfms = tfms, size = 26, bs = bs)
+data = ImageDataLoaders_from_folder(path, size = 26, bs = bs)
 
 # Visualize and train
 data %>% show_batch(dpi = 150)
@@ -467,8 +393,7 @@ fnames = get_image_files(path_img)
 dls = ImageDataLoaders_from_name_re(
   path, fnames, pat='(.+)_\\d+.jpg$',
   item_tfms=Resize(size = 460), bs = 10,
-  batch_tfms=list(aug_transforms(size = 224, min_scale = 0.75),
-                  Normalize_from_stats( imagenet_stats() )
+  batch_tfms=list(Normalize_from_stats( imagenet_stats() )
   )
 )
 
@@ -885,71 +810,7 @@ learn %>% show_results(max_n = 16, figsize = c(8,8), ds_idx=0)
 
 </center>
 
-## CycleGAN
 
-CycleGAN package by [Tanishq Abraham](https://github.com/tmabraham/UPIT) makes
-building and training a CycleGAN model very easy
-
-Get data:
-
-```
-URLs_HORSE_2_ZEBRA()
-```
-
-Prepare data:
-
-```
-horse2zebra = 'horse2zebra'
-
-
-trainA_path = file.path(horse2zebra,'trainA')
-trainB_path = file.path(horse2zebra,'trainB')
-testA_path = file.path(horse2zebra,'testA')
-testB_path = file.path(horse2zebra,'testB')
-
-dls = get_dls(trainA_path, trainB_path, num_A = 130,load_size = 270,crop_size = 144,bs=4)
-
-```
-
-Build model:
-
-```
-cycle_gan = CycleGAN(3,3,64)
-learn = cycle_learner(dls, cycle_gan)
-```
-
-And fit:
-
-```
-learn %>% fit_flat_lin(4,4,2e-4)
-```
-
-```
-epoch   train_loss   id_loss_A   id_loss_B   gen_loss_A   gen_loss_B   cyc_loss_A   cyc_loss_B   D_A_loss   D_B_loss   time
-------  -----------  ----------  ----------  -----------  -----------  -----------  -----------  ---------  ---------  -----
-0       10.500859    1.551905    1.678394    0.375322     0.385088     3.266770     3.509404     0.367762   0.367762   00:19
-1       9.547493     1.267837    1.453950    0.301558     0.298583     2.698074     3.106223     0.253554   0.253554   00:19
-2       8.938786     1.234537    1.250279    0.328651     0.328309     2.618085     2.713281     0.237375   0.237375   00:19
-3       8.391484     1.066745    1.227453    0.327970     0.336748     2.285323     2.669749     0.240033   0.240033   00:19
-4       7.642654     0.941413    1.057014    0.327448     0.350729     1.980680     2.274255     0.246695   0.246695   00:19
-5       7.478543     0.966484    1.111054    0.291666     0.384912     2.119692     2.446879     0.251393   0.251393   00:18
-6       7.190168     0.961237    1.034505    0.315916     0.397697     1.990408     2.182239     0.222851   0.222851   00:19
-7       6.902316     0.891176    1.001932    0.343578     0.386471     1.848317     2.137690     0.215832   0.215832   00:19
-```
-
-Get predicitons and see results:
-
-```
-learn %>% get_preds_cyclegan(testA_path, './h2z-preds')
-
-learn %>% show_results()
-```
-
-<center>
-
-<img src="files/cycleGAN.png" height=600 align=center alt="Mnist"/>
-
-</center>
 
 ## Unet example
 
@@ -985,8 +846,7 @@ camvid = DataBlock(blocks = c(ImageBlock(), MaskBlock(codes)),
                    get_items = get_image_files,
                    splitter = FileSplitter('camvid/valid.txt'),
                    get_y = function(x) {paste('camvid/labels/',x$stem,'_P',x$suffix,sep = '')},
-                   batch_tfms = list(aug_transforms(size = list(200,266)),
-                                     Normalize_from_stats( imagenet_stats() )
+                   batch_tfms = list(Normalize_from_stats( imagenet_stats() )
                    )
 )
 
@@ -1697,7 +1557,7 @@ scale = list(FALSE, TRUE, dicom_windows$brain, dicom_windows$subdural)
 titles = c('raw','normalized','brain windowed','subdural windowed')
 
 library(zeallot)
-c(fig, axs) %<-% subplots()
+c(fig, axs[[2]]) %<-% subplots()
 
 for (i in 1:4) {
   img %>% show(scale = scale[[i]],
@@ -1987,7 +1847,7 @@ coco_dsrc = Datasets(c(rep(coco_fn,10)),
 coco_tdl = TfmdDL(coco_dsrc, bs = 9,
                   after_item = list(BBoxLabeler(), PointScaler(),
                                  ToTensor()),
-                  after_batch = list(IntToFloatTensor(), aug_transforms())
+                  after_batch = list(IntToFloatTensor())
                   )
 
 coco_tdl %>% show_batch(dpi = 200)
@@ -2035,262 +1895,6 @@ Sequential(
   (my_conv4): Conv2d(1, 20, kernel_size=(5, 5), stride=(1, 1))
 )
 ```
-
-## Icevision
-
-Icevision module has a great set of tools for object detection tasks:
-
-> Note: First, install [icevision module](https://github.com/airctic/icevision): reticulate::py_install('icevision', pip = TRUE)
-
-```
-library(fastai)
-library(magrittr)
-
-# get file
-url = "https://cvbp.blob.core.windows.net/public/datasets/object_detection/odFridgeObjects.zip"
-download.file(url,destfile = odFridgeObjects.zip)
-
-# Parser
-class_map = icevision_ClassMap(c("milk_bottle", "carton", "can", "water_bottle"))
-parser = parsers_voc(annotations_dir= "odFridgeObjects/annotations/",
-                     images_dir= "odFridgeObjects/images",
-                     class_map=class_map)
-records = parser$parse()
-
-# Records
-train_records = records[[1]]
-valid_records = records[[2]]
-
-# Transforms
-train_tfms = icevision_Adapter(list(icevision_aug_tfms(size=384, presize=512),
-                               icevision_Normalize()))
-valid_tfms = icevision_Adapter(list(icevision_resize_and_pad(384),icevision_Normalize()))
-
-# Datasets
-train_ds = icevision_Dataset(train_records, train_tfms)
-valid_ds = icevision_Dataset(valid_records, valid_tfms)
-
-# See batch
-
-train_ds %>% show_samples(idx=c(5,10,20,50,100,99), class_map=class_map,
-                          denormalize_fn=denormalize_imagenet(),ncols = 3)
-
-```
-
-<p align="center">
-<img src="files/fridge.jpg" height=300 align=center alt="Detection"/>
-</p>
-
-Next, we create data loader and fastai training:
-
-```
-# DataLoaders
-train_dl = efficientdet_train_dl(train_ds, batch_size=16, num_workers=4, shuffle=T)
-valid_dl = efficientdet_valid_dl(valid_ds, batch_size=16, num_workers=4, shuffle=F)
-
-# Model and Metrics
-model = efficientdet_model(model_name="tf_efficientdet_lite0", num_classes=5, img_size=384)
-metrics = list(COCOMetric())
-
-# Training using Fastai
-learn = efficientdet_learner(dls=list(train_dl, valid_dl), model=model, metrics=metrics)
-res = learn %>% fine_tune(10, 1e-2, freeze_epochs=10)
-```
-
-```
-epoch   train_loss   valid_loss   COCOMetric   time  
-------  -----------  -----------  -----------  ------
-0       1.711512     1.264311     0.001845     00:05 
-1       1.568228     1.247132     0.009066     00:03 
-2       1.496242     1.222866     0.010658     00:03 
-3       1.433081     1.137174     0.030878     00:03 
-4       1.349961     1.060559     0.114889     00:03 
-5       1.260490     0.937396     0.180179     00:03 
-6       1.169536     0.998160     0.174759     00:04 
-7       1.097816     0.929107     0.208315     00:03 
-8       1.042755     0.821408     0.230876     00:03 
-9       0.987962     0.840447     0.297297     00:03 
-epoch   train_loss   valid_loss   COCOMetric   time  
-------  -----------  -----------  -----------  ------
-0       0.629509     0.715716     0.325585     00:04 
-1       0.599518     0.684150     0.382239     00:03 
-2       0.585920     0.631303     0.480204     00:04 
-3       0.554550     0.615111     0.516641     00:04 
-4       0.539868     0.622383     0.459974     00:04 
-5       0.521756     0.609013     0.556388     00:04 
-6       0.498118     0.491549     0.611895     00:04 
-7       0.477656     0.469396     0.685497     00:04 
-8       0.459495     0.407668     0.713956     00:04 
-9       0.446206     0.383890     0.729540     00:04 
-```
-
-Predictions:
-
-```
-# Inference
-# DataLoader
-infer_dl = efficientdet_infer_dl(valid_ds, batch_size=8)
-# Predict
-res <- efficientdet_predict_dl(model, infer_dl)
-
-show_preds(
-  res,
-  c(10,20,25,12,16),
-  class_map=class_map,
-  denormalize_fn=denormalize_imagenet(),
-  ncols=5,
-  figsize=c(19,10)
-)
-```
-
-<p align="center">
-<img src="files/output.jpg" height=300 align=center alt="Detection"/>
-</p>
-
-
-
-## Kaggle
-
-Kaggle API is fantastic because it simplifies all the necessary steps for
-participating in a competition! Using the API it is possible to directly
-download/submit files, check leader board and etc. If you want to use this
-functionality, then it is important to place your `kaggle.json` to `.kaggle`
-folder:
-
-<p align="center">
-<img src="files/kaggle.png" height=400 align=center alt="Annotation"/>
-</p>
-
-Let's participate in a `Titanic` competition:
-
-```
-library(fastai)
-library(magrittr)
-
-com_nm = 'titanic'
-
-titanic_files = competition_list_files(com_nm)
-titanic_files = lapply(1:length(titanic_files),
-                      function(x) as.character(titanic_files[[x]]))
-
-str(titanic_files)
-
-if(!dir.exists(com_nm)) {
-  dir.create(com_nm)
-}
-
-# download via api
-competition_download_files(competition = com_nm, path = com_nm, unzip = TRUE)
-
-train = data.table::fread(paste(com_nm, 'train.csv', sep = '/'))
-
-train[['Survived']] = as.factor(train[['Survived']])
-train[['Name']] <- NULL
-train[['PassengerId']] <- NULL
-
-str(train)
-```
-
-```
-Classes ‘data.table’ and 'data.frame':	595 obs. of  10 variables:
- $ Survived: Factor w/ 2 levels "0","1": 1 2 2 2 1 1 1 1 2 2 ...
- $ Pclass  : int  3 1 3 1 3 3 1 3 3 2 ...
- $ Sex     : chr  "male" "female" "female" "female" ...
- $ Age     : num  22 38 26 35 35 NA 54 2 27 14 ...
- $ SibSp   : int  1 1 0 1 0 0 0 3 0 1 ...
- $ Parch   : int  0 0 0 0 0 0 0 1 2 0 ...
- $ Ticket  : chr  "A/5 21171" "PC 17599" "STON/O2. 3101282" "113803" ...
- $ Fare    : num  7.25 71.28 7.92 53.1 8.05 ...
- $ Cabin   : chr  "" "C85" "" "C123" ...
- $ Embarked: chr  "S" "C" "S" "S" ...
- - attr(*, ".internal.selfref")=<externalptr>
-```
-
-Preprocess:
-
-```
-dep_var = 'Survived'
-cont_names = c('Fare','Parch', 'SibSp', 'Pclass')
-cat_names = setdiff(names(train),c(cont_names,dep_var))
-
-
-tot = 1:nrow(train)
-tr_idx = sample(nrow(train), 0.8 * nrow(train))
-ts_idx = tot[!tot %in% tr_idx]
-```
-
-Dataloader:
-
-```
-procs = list(FillMissing(),Categorify(),Normalize())
-
-dls = TabularDataTable(train, procs, cat_names, cont_names,
-                       y_names = dep_var, splits = list(tr_idx, ts_idx) ) %>%
-  dataloaders(bs = 30)
-
-
-model = dls %>% tabular_learner(layers=c(200,100),
-                                config = tabular_config(embed_p = 0.3, use_bn = FALSE),
-                                metrics = list(accuracy, RocAucBinary(),
-                                               Precision(), Recall()))
-```
-
-Fit:
-
-```
-model %>% lr_find()
-
-model %>% plot_lr_find()
-
-res = model %>% fit(4, lr = 1e-3)
-```
-
-Prepare test dataset and submit:
-
-```
-test = data.table::fread(paste(com_nm, 'test.csv', sep = '/'))
-
-test$Fare[is.na(test$Fare)] = median(test$Fare, na.rm = TRUE)
-
-submission = model %>% predict(test)
-
-head(submission)
-```
-
-```
-          0         1 class
-1 0.7636479 0.2363522     0
-2 0.7594652 0.2405347     0
-3 0.6516959 0.3483041     0
-4 0.7734003 0.2265998     0
-5 0.5761551 0.4238448     0
-6 0.7645358 0.2354642     0
-```
-
-```
-# add col names
-submission = data.frame(PassengerId = test$PassengerId,
-                        Survived = submission$class)
-
-dest = paste(com_nm, 'submission.csv',sep = '/')
-
-# write
-data.table::fwrite(submission, dest)
-
-# submit via api
-competition_submit(dest, 'sumbission from R!', competition = com_nm)
-```
-
-```
-100%|██████████| 9.27k/9.27k [00:04<00:00, 2.02kB/s]
-Successfully submitted to Titanic: Machine Learning from Disaster
-```
-
-Enter `Kaggle.com` and see if everything works fine:
-
-<p align="center">
-<img src="files/result.png" height=400 align=center alt="Annotation"/>
-</p>
 
 ## Code of Conduct
 

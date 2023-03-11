@@ -1,8 +1,5 @@
 
 #' @title Is Rmarkdown?
-#'
-#'
-#'
 #' @return logical True/False
 #' @export
 is_rmarkdown = function() {
@@ -47,8 +44,6 @@ is_rmarkdown = function() {
 
 
 #' @title Show_batch
-#'
-#'
 #' @param dls dataloader object
 #' @param b defaults to one_batch
 #' @param max_n maximum images
@@ -323,8 +318,6 @@ most_confused <- function(interp, min_val = 1) {
 
 
 #' @title Subplots
-#'
-#'
 #' @param nrows number of rows
 #' @param ncols number of columns
 #' @param figsize figure size

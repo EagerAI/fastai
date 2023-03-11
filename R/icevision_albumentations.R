@@ -418,8 +418,6 @@ icevision_HueSaturationValue <- function(hue_shift_limit = 20,
 }
 
 #' @title BasicIAATransform
-#'
-#'
 #' @param always_apply always_apply
 #' @param p p
 #' @return None
@@ -435,8 +433,6 @@ icevision_BasicIAATransform <- function(always_apply = FALSE, p = 0.5) {
 
 
 #' @title BasicTransform
-#'
-#'
 #' @param always_apply always_apply
 #' @param p p
 #' @return None
@@ -1012,8 +1008,6 @@ icevision_FDA <- function(reference_images, beta_limit = 0.1, read_fn = icevisio
 
 
 #' @title Read_rgb_image
-#'
-#'
 #' @param path path
 #' @return None
 #' @export
@@ -1030,8 +1024,6 @@ icevision_read_rgb_image <- function(path) {
 }
 
 #' @title Read_bgr_image
-#'
-#'
 #' @param path path
 #' @return None
 #' @export
@@ -2020,8 +2012,6 @@ icevision_Normalize <- function(mean = list(0.485, 0.456, 0.406),
 }
 
 #' @title OpticalDistortion
-#'
-#'
 #' @details distort_limit (float, (float, float)): If distort_limit is a single float, the range will be (-distort_limit, distort_limit). Default: (-0.05, 0.05). shift_limit (float, (float, float))): If shift_limit is a single float, the range will be (-shift_limit, shift_limit). Default: (-0.05, 0.05). interpolation (OpenCV flag): flag that is used to specify the interpolation algorithm. Should be one of: cv2.INTER_NEAREST, cv2.INTER_LINEAR, cv2.INTER_CUBIC, cv2.INTER_AREA, cv2.INTER_LANCZOS4. Default: cv2.INTER_LINEAR. border_mode (OpenCV flag): flag that is used to specify the pixel extrapolation method. Should be one of: cv2.BORDER_CONSTANT, cv2.BORDER_REPLICATE, cv2.BORDER_REFLECT, cv2.BORDER_WRAP, cv2.BORDER_REFLECT_101. Default: cv2.BORDER_REFLECT_101 value (int, float, list of ints, list of float): padding value if border_mode is cv2.BORDER_CONSTANT. mask_value (int, float, list of ints, list of float): padding value if border_mode is cv2.BORDER_CONSTANT applied for masks. Targets: image, mask Image types: uint8, float32
 #'
 #' @param distort_limit distort_limit
@@ -2212,8 +2202,6 @@ icevision_RandomFog <- function(fog_coef_lower = 0.3, fog_coef_upper = 1,
 }
 
 #' @title RandomGamma
-#'
-#'
 #' @details gamma_limit (float or (float, float)): If gamma_limit is a single float value, the range will be (-gamma_limit, gamma_limit). Default: (80, 120). eps: Deprecated. Targets: image Image types: uint8, float32
 #'
 #' @param gamma_limit gamma_limit
@@ -2963,8 +2951,6 @@ icevision_VerticalFlip <- function(always_apply = FALSE, p = 0.5) {
 
 
 #' @title Resize_and_pad
-#'
-#'
 #' @param size size
 #' @param pad pad
 #' @return None

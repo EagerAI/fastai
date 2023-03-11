@@ -21,6 +21,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -33,14 +35,14 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fastai</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.2.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Tutorials
      
     <span class="caret"></span>
@@ -76,7 +78,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Migrate
      
     <span class="caret"></span>
@@ -97,7 +99,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Learn
      
     <span class="caret"></span>
@@ -115,7 +117,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Training
      
     <span class="caret"></span>
@@ -136,7 +138,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     NLP
      
     <span class="caret"></span>
@@ -165,7 +167,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/EagerAI/fastai/">
+  <a href="https://github.com/EagerAI/fastai/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -186,75 +188,81 @@
 
       
 
-      </header><script src="callbacks_files/header-attrs-2.10/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Callbacks</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/EagerAI/fastai/blob/master/vignettes/callbacks.Rmd"><code>vignettes/callbacks.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/EagerAI/fastai/blob/HEAD/vignettes/callbacks.Rmd" class="external-link"><code>vignettes/callbacks.Rmd</code></a></small>
       <div class="hidden name"><code>callbacks.Rmd</code></div>
 
     </div>
 
     
     
-<div id="intro" class="section level2">
-<h2 class="hasAnchor">
-<a href="#intro" class="anchor"></a>Intro</h2>
-<p>The <a href="https://github.com/fastai/fastai">fastai</a> library simplifies training fast and accurate neural nets using modern best practices. See the fastai website to get started. The library is based on research into deep learning best practices undertaken at <code>fast.ai</code>, and includes “out of the box” support for <code>vision</code>, <code>text</code>, <code>tabular</code>, and <code>collab</code> (collaborative filtering) models.</p>
+<div class="section level2">
+<h2 id="intro">Intro<a class="anchor" aria-label="anchor" href="#intro"></a>
+</h2>
+<p>The <a href="https://github.com/fastai/fastai" class="external-link">fastai</a> library
+simplifies training fast and accurate neural nets using modern best
+practices. See the fastai website to get started. The library is based
+on research into deep learning best practices undertaken at
+<code>fast.ai</code>, and includes “out of the box” support for
+<code>vision</code>, <code>text</code>, <code>tabular</code>, and
+<code>collab</code> (collaborative filtering) models.</p>
 </div>
-<div id="mnist-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#mnist-data" class="anchor"></a>MNIST data</h2>
+<div class="section level2">
+<h2 id="mnist-data">MNIST data<a class="anchor" aria-label="anchor" href="#mnist-data"></a>
+</h2>
 <p>Download and prepare data:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/URLs_MNIST_SAMPLE.html">URLs_MNIST_SAMPLE</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/URLs_MNIST_SAMPLE.html">URLs_MNIST_SAMPLE</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Transformations:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># transformations</span>
-<span class="va">tfms</span> <span class="op">=</span> <span class="fu"><a href="../reference/aug_transforms.html">aug_transforms</a></span><span class="op">(</span>do_flip <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="va">path</span> <span class="op">=</span> <span class="st">'mnist_sample'</span>
-<span class="va">bs</span> <span class="op">=</span> <span class="fl">20</span>
-
-<span class="co">#load into memory</span>
-<span class="va">data</span> <span class="op">=</span> <span class="fu"><a href="../reference/ImageDataLoaders_from_folder.html">ImageDataLoaders_from_folder</a></span><span class="op">(</span><span class="va">path</span>, batch_tfms <span class="op">=</span> <span class="va">tfms</span>, size <span class="op">=</span> <span class="fl">26</span>, bs <span class="op">=</span> <span class="va">bs</span><span class="op">)</span>
-
-<span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/cnn_learner.html">cnn_learner</a></span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="../reference/resnet18.html">resnet18</a></span><span class="op">(</span><span class="op">)</span>, metrics <span class="op">=</span> <span class="va">accuracy</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># transformations</span></span>
+<span><span class="va">tfms</span> <span class="op">=</span> <span class="fu"><a href="../reference/aug_transforms.html">aug_transforms</a></span><span class="op">(</span>do_flip <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="va">path</span> <span class="op">=</span> <span class="st">'mnist_sample'</span></span>
+<span><span class="va">bs</span> <span class="op">=</span> <span class="fl">20</span></span>
+<span></span>
+<span><span class="co">#load into memory</span></span>
+<span><span class="va">data</span> <span class="op">=</span> <span class="fu"><a href="../reference/ImageDataLoaders_from_folder.html">ImageDataLoaders_from_folder</a></span><span class="op">(</span><span class="va">path</span>, batch_tfms <span class="op">=</span> <span class="va">tfms</span>, size <span class="op">=</span> <span class="fl">26</span>, bs <span class="op">=</span> <span class="va">bs</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/cnn_learner.html">cnn_learner</a></span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="../reference/resnet18.html">resnet18</a></span><span class="op">(</span><span class="op">)</span>, metrics <span class="op">=</span> <span class="va">accuracy</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="terminateonnancallback" class="section level2">
-<h2 class="hasAnchor">
-<a href="#terminateonnancallback" class="anchor"></a>TerminateOnNaNCallback</h2>
+<div class="section level2">
+<h2 id="terminateonnancallback">TerminateOnNaNCallback<a class="anchor" aria-label="anchor" href="#terminateonnancallback"></a>
+</h2>
 <p><code>Cbs</code> argument means callbacks:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">1</span>, cbs <span class="op">=</span> <span class="fu"><a href="../reference/TerminateOnNaNCallback.html">TerminateOnNaNCallback</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">learn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">1</span>, cbs <span class="op">=</span> <span class="fu"><a href="../reference/TerminateOnNaNCallback.html">TerminateOnNaNCallback</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="earlystoppingcallback" class="section level2">
-<h2 class="hasAnchor">
-<a href="#earlystoppingcallback" class="anchor"></a>EarlyStoppingCallback</h2>
+<div class="section level2">
+<h2 id="earlystoppingcallback">EarlyStoppingCallback<a class="anchor" aria-label="anchor" href="#earlystoppingcallback"></a>
+</h2>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">10</span>, cbs <span class="op">=</span> <span class="fu"><a href="../reference/EarlyStoppingCallback.html">EarlyStoppingCallback</a></span><span class="op">(</span>monitor<span class="op">=</span><span class="st">'valid_loss'</span>, patience <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">learn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">10</span>, cbs <span class="op">=</span> <span class="fu"><a href="../reference/EarlyStoppingCallback.html">EarlyStoppingCallback</a></span><span class="op">(</span>monitor<span class="op">=</span><span class="st">'valid_loss'</span>, patience <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>epoch     train_loss  valid_loss  accuracy  time
 0         0.023524    0.009781    0.996565  00:16
 1         0.033328    0.019839    0.993621  00:16
 No improvement since epoch 0: early stopping</code></pre>
 <p>Save best model for each epoch:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/cnn_learner.html">cnn_learner</a></span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="../reference/resnet18.html">resnet18</a></span><span class="op">(</span><span class="op">)</span>, metrics <span class="op">=</span> <span class="va">accuracy</span>, path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">3</span>, cbs <span class="op">=</span> <span class="fu"><a href="../reference/SaveModelCallback.html">SaveModelCallback</a></span><span class="op">(</span>every_epoch <span class="op">=</span> <span class="cn">TRUE</span>,  fname <span class="op">=</span> <span class="st">'model'</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/cnn_learner.html">cnn_learner</a></span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="../reference/resnet18.html">resnet18</a></span><span class="op">(</span><span class="op">)</span>, metrics <span class="op">=</span> <span class="va">accuracy</span>, path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">learn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">3</span>, cbs <span class="op">=</span> <span class="fu"><a href="../reference/SaveModelCallback.html">SaveModelCallback</a></span><span class="op">(</span>every_epoch <span class="op">=</span> <span class="cn">TRUE</span>,  fname <span class="op">=</span> <span class="st">'model'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>See folder:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span><span class="op">(</span><span class="st">'models'</span><span class="op">)</span>
-<span class="co"># [1] "model_0.pth" "model_1.pth" "model_2.pth"</span></code></pre></div>
-<pre><code># [1] "model_0.pth" "model_1.pth" "model_2.pth"</code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="st">'models'</span><span class="op">)</span></span>
+<span><span class="co"># [1] "model_0.pth" "model_1.pth" "model_2.pth"</span></span></code></pre></div>
+<pre><code><span><span class="co"># [1] "model_0.pth" "model_1.pth" "model_2.pth"</span></span></code></pre>
 </div>
-<div id="reducelronplateau" class="section level2">
-<h2 class="hasAnchor">
-<a href="#reducelronplateau" class="anchor"></a>ReduceLROnPlateau</h2>
+<div class="section level2">
+<h2 id="reducelronplateau">ReduceLROnPlateau<a class="anchor" aria-label="anchor" href="#reducelronplateau"></a>
+</h2>
 <p>Decrease learning rate if loss is not improved:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">1e-2</span>, cbs <span class="op">=</span> <span class="fu"><a href="../reference/ReduceLROnPlateau.html">ReduceLROnPlateau</a></span><span class="op">(</span>monitor<span class="op">=</span><span class="st">'valid_loss'</span>, patience <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">learn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">1e-2</span>, cbs <span class="op">=</span> <span class="fu"><a href="../reference/ReduceLROnPlateau.html">ReduceLROnPlateau</a></span><span class="op">(</span>monitor<span class="op">=</span><span class="st">'valid_loss'</span>, patience <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>epoch     train_loss  valid_loss  accuracy  time
 0         0.117138    0.038180    0.987242  00:17
 1         0.140064    0.006160    0.996565  00:16
@@ -275,21 +283,22 @@ Epoch 8: reducing lr to 4.337456332530222e-05
 Epoch 9: reducing lr to 1.0114427793916913e-08</code></pre>
 <p>Or add new parameter <code>min_lr</code>:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">1e-2</span>, cbs <span class="op">=</span> <span class="fu"><a href="../reference/ReduceLROnPlateau.html">ReduceLROnPlateau</a></span><span class="op">(</span>monitor<span class="op">=</span><span class="st">'valid_loss'</span>,
-min_delta<span class="op">=</span><span class="fl">0.1</span>, patience <span class="op">=</span> <span class="fl">1</span>, min_lr <span class="op">=</span> <span class="fl">1e-8</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">learn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">1e-2</span>, cbs <span class="op">=</span> <span class="fu"><a href="../reference/ReduceLROnPlateau.html">ReduceLROnPlateau</a></span><span class="op">(</span>monitor<span class="op">=</span><span class="st">'valid_loss'</span>,</span>
+<span>min_delta<span class="op">=</span><span class="fl">0.1</span>, patience <span class="op">=</span> <span class="fl">1</span>, min_lr <span class="op">=</span> <span class="fl">1e-8</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="csvlogger" class="section level2">
-<h2 class="hasAnchor">
-<a href="#csvlogger" class="anchor"></a>CSVLogger</h2>
-<p>Save train history. In addition, for multiple callbacks it is important to pass them within list:</p>
+<div class="section level2">
+<h2 id="csvlogger">CSVLogger<a class="anchor" aria-label="anchor" href="#csvlogger"></a>
+</h2>
+<p>Save train history. In addition, for multiple callbacks it is
+important to pass them within list:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/cnn_learner.html">cnn_learner</a></span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="../reference/resnet18.html">resnet18</a></span><span class="op">(</span><span class="op">)</span>, metrics <span class="op">=</span> <span class="va">accuracy</span>, path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">2</span>, cbs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="../reference/CSVLogger.html">CSVLogger</a></span><span class="op">(</span><span class="op">)</span>,
-                                      <span class="fu"><a href="../reference/ReduceLROnPlateau.html">ReduceLROnPlateau</a></span><span class="op">(</span>monitor<span class="op">=</span><span class="st">'valid_loss'</span>,
-                                      min_delta<span class="op">=</span><span class="fl">0.1</span>, patience <span class="op">=</span> <span class="fl">1</span>, min_lr <span class="op">=</span> <span class="fl">1e-8</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="va">history</span>  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">'history.csv'</span><span class="op">)</span>
-<span class="va">history</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/cnn_learner.html">cnn_learner</a></span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="../reference/resnet18.html">resnet18</a></span><span class="op">(</span><span class="op">)</span>, metrics <span class="op">=</span> <span class="va">accuracy</span>, path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">learn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">2</span>, cbs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="../reference/CSVLogger.html">CSVLogger</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>                                      <span class="fu"><a href="../reference/ReduceLROnPlateau.html">ReduceLROnPlateau</a></span><span class="op">(</span>monitor<span class="op">=</span><span class="st">'valid_loss'</span>,</span>
+<span>                                      min_delta<span class="op">=</span><span class="fl">0.1</span>, patience <span class="op">=</span> <span class="fl">1</span>, min_lr <span class="op">=</span> <span class="fl">1e-8</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">history</span>  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="st">'history.csv'</span><span class="op">)</span></span>
+<span><span class="va">history</span></span></code></pre></div>
 <pre><code>epoch train_loss valid_loss  accuracy  time
 1     0 0.15677054 0.09788394 0.9646713 00:17
 2     1 0.08268011 0.05654754 0.9803729 00:17</code></pre>
@@ -307,11 +316,13 @@ min_delta<span class="op">=</span><span class="fl">0.1</span>, patience <span cl
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://github.com/henry090">Turgut Abdullayev</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://github.com/henry090" class="external-link">Turgut Abdullayev</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

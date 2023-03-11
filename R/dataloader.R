@@ -2,8 +2,6 @@
 
 
 #' @title Data Loaders
-#'
-#'
 #' @param ... parameters to pass
 #'
 #' @return loader object

@@ -45,9 +45,6 @@ icevision_FixedSplitter <- function(splits) {
 
 
 #' @title SingleSplitSplitter
-#'
-#'
-#'
 #' @param ... arguments to pass
 #'
 #'

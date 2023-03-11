@@ -27,6 +27,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -39,14 +41,14 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">fastai</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.2.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Tutorials
      
     <span class="caret"></span>
@@ -82,7 +84,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Migrate
      
     <span class="caret"></span>
@@ -103,7 +105,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Learn
      
     <span class="caret"></span>
@@ -121,7 +123,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Training
      
     <span class="caret"></span>
@@ -142,7 +144,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     NLP
      
     <span class="caret"></span>
@@ -171,7 +173,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/EagerAI/fastai/">
+  <a href="https://github.com/EagerAI/fastai/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -195,18 +197,22 @@
       </header><div class="row">
   <div class="contents col-md-9">
 
-<div id="r-interface-to-fastai" class="section level2">
-<h2 class="hasAnchor">
-<a href="#r-interface-to-fastai" class="anchor"></a>R interface to fastai</h2>
-<p>The fastai package provides R wrappers to <a href="https://github.com/fastai/fastai">fastai</a>.</p>
-<p>The fastai library simplifies training fast and accurate neural nets using modern best practices. See the <a href="https://eagerai.github.io/fastai/">fastai website</a> to get started. The library is based on research into deep learning best practices undertaken at <code>fast.ai</code>, and includes “out of the box” support for <code>vision</code>, <code>text</code>, <code>tabular</code>, and <code>collab</code> (collaborative filtering) models.</p>
+<div class="section level2">
+<h2 id="r-interface-to-fastai">R interface to fastai<a class="anchor" aria-label="anchor" href="#r-interface-to-fastai"></a>
+</h2>
+<p>The fastai package provides R wrappers to <a href="https://github.com/fastai/fastai" class="external-link">fastai</a>.</p>
+<p>The fastai library simplifies training fast and accurate neural nets using modern best practices. See the <a href="https://eagerai.github.io/fastai/" class="external-link">fastai website</a> to get started. The library is based on research into deep learning best practices undertaken at <code>fast.ai</code>, and includes “out of the box” support for <code>vision</code>, <code>text</code>, <code>tabular</code>, and <code>collab</code> (collaborative filtering) models.</p>
 <p><img src="files/fastai.png" width="200" align="right" style="margin-left: 15px;" alt="fastai"></p>
-<p><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a> <a href="https://CRAN.R-project.org/package=fastai"><img src="https://www.r-pkg.org/badges/version/fastai" alt="CRAN status"></a> <a href="https://cran.r-project.org/package=fastai"><img src="http://cranlogs.r-pkg.org/badges/last-month/fastai?color=green" alt="Last month downloads"></a></p>
+<p><a href="https://lifecycle.r-lib.org/articles/stages.html" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a> <a href="https://CRAN.R-project.org/package=fastai" class="external-link"><img src="https://www.r-pkg.org/badges/version/fastai" alt="CRAN status"></a> <a href="https://cran.r-project.org/package=fastai" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/last-month/fastai?color=green" alt="Last month downloads"></a></p>
 </div>
-<div id="continuous-build-status" class="section level2">
-<h2 class="hasAnchor">
-<a href="#continuous-build-status" class="anchor"></a>Continuous Build Status</h2>
+<div class="section level2">
+<h2 id="continuous-build-status">Continuous Build Status<a class="anchor" aria-label="anchor" href="#continuous-build-status"></a>
+</h2>
 <table class="table">
+<colgroup>
+<col width="17%">
+<col width="82%">
+</colgroup>
 <thead><tr class="header">
 <th>Build</th>
 <th>Status</th>
@@ -231,69 +237,70 @@
 </tbody>
 </table>
 </div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <p><strong>1. Install miniconda and activate environment:</strong></p>
-<pre><code><a href="https://rdrr.io/pkg/reticulate/man/install_miniconda.html">reticulate::install_miniconda()
-reticulate::conda_create('r-reticulate')</a></code></pre>
+<pre><code><span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/install_miniconda.html" class="external-link">install_miniconda</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/conda-tools.html" class="external-link">conda_create</a></span><span class="op">(</span><span class="st">'r-reticulate'</span><span class="op">)</span></span></code></pre>
 <p><strong>2. The dev version:</strong></p>
-<pre><code>devtools::install_github('eagerai/fastai')</code></pre>
+<pre><code><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">'eagerai/fastai'</span><span class="op">)</span></span></code></pre>
 <p><strong>3. Later, you need to install the python module <code>fastai</code>:</strong></p>
-<pre><code><a href="reference/install_fastai.html">fastai::install_fastai(gpu = FALSE, cuda_version = '10', overwrite = FALSE)</a></code></pre>
+<pre><code><span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/use_python.html" class="external-link">use_condaenv</a></span><span class="op">(</span><span class="st">'r-reticulate'</span>,required <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
+<span><span class="fu">fastai</span><span class="fu">::</span><span class="fu"><a href="reference/install_fastai.html">install_fastai</a></span><span class="op">(</span>gpu <span class="op">=</span> <span class="cn">FALSE</span>, cuda_version <span class="op">=</span> <span class="st">'10'</span>, overwrite <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre>
 <p><strong>4. Restart RStudio!</strong></p>
 </div>
-<div id="fastai-extensions" class="section level2">
-<h2 class="hasAnchor">
-<a href="#fastai-extensions" class="anchor"></a>fast.ai extensions:</h2>
-<ol>
-<li><a href="https://github.com/ohmeow/blurr">NLP, Transformers</a></li>
-<li><a href="https://github.com/airctic/icevision">Object Detection</a></li>
-<li><a href="https://github.com/tcapelle/timeseries_fastai">Time-series</a></li>
-<li><a href="https://github.com/tmabraham/UPIT">CycleGAN</a></li>
-<li><a href="https://github.com/fastaudio/fastaudio">Audio</a></li>
+<div class="section level2">
+<h2 id="fastai-extensions">fast.ai extensions:<a class="anchor" aria-label="anchor" href="#fastai-extensions"></a>
+</h2>
+<ol style="list-style-type: decimal">
+<li><a href="https://github.com/ohmeow/blurr" class="external-link">NLP, Transformers</a></li>
+<li><a href="https://github.com/airctic/icevision" class="external-link">Object Detection</a></li>
+<li><a href="https://github.com/tcapelle/timeseries_fastai" class="external-link">Time-series</a></li>
+<li><a href="https://github.com/tmabraham/UPIT" class="external-link">CycleGAN</a></li>
+<li><a href="https://github.com/fastaudio/fastaudio" class="external-link">Audio</a></li>
 </ol>
 </div>
-<div id="kaggle" class="section level2">
-<h2 class="hasAnchor">
-<a href="#kaggle" class="anchor"></a>Kaggle</h2>
+<div class="section level2">
+<h2 id="kaggle">Kaggle<a class="anchor" aria-label="anchor" href="#kaggle"></a>
+</h2>
 <p>We currently prepare the examples of usage of the fastai from R in Kaggle competitions:</p>
 <ul>
-<li><a href="https://www.kaggle.com/henry090/r-interface-to-fastai">Introduction</a></li>
-<li><a href="https://www.kaggle.com/henry090/r-and-fastai">MNIST with Pytorch and fastai</a></li>
-<li><a href="https://www.kaggle.com/henry090/r-fastai-and-transformers">NLP Binary Classification</a></li>
-<li><a href="https://www.kaggle.com/henry090/fast-ai-from-r">Audio classification</a></li>
-<li><a href="https://www.kaggle.com/henry090/r-fast-ai-and-cyclegan">CycleGAN</a></li>
-<li><a href="https://colab.research.google.com/drive/1PiBECDM552No-5apVIB8LqUSdSqqJSi-?usp=sharing">Fastai on Colab TPUs</a></li>
+<li><a href="https://www.kaggle.com/henry090/r-interface-to-fastai" class="external-link">Introduction</a></li>
+<li><a href="https://www.kaggle.com/henry090/r-and-fastai" class="external-link">MNIST with Pytorch and fastai</a></li>
+<li><a href="https://www.kaggle.com/henry090/r-fastai-and-transformers" class="external-link">NLP Binary Classification</a></li>
+<li><a href="https://www.kaggle.com/henry090/fast-ai-from-r" class="external-link">Audio classification</a></li>
+<li><a href="https://www.kaggle.com/henry090/r-fast-ai-and-cyclegan" class="external-link">CycleGAN</a></li>
+<li><a href="https://colab.research.google.com/drive/1PiBECDM552No-5apVIB8LqUSdSqqJSi-?usp=sharing" class="external-link">Fastai on Colab TPUs</a></li>
 </ul>
 <blockquote>
 <p>Contributions are very welcome!</p>
 </blockquote>
 </div>
-<div id="tabular-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#tabular-data" class="anchor"></a>Tabular data</h2>
-<pre><code><a href="https://magrittr.tidyverse.org">library(magrittr)
-library(fastai)
-
-# download
-URLs_ADULT_SAMPLE()
-
-# read data
-df = data.table::fread('adult_sample/adult.csv')</a></code></pre>
+<div class="section level2">
+<h2 id="tabular-data">Tabular data<a class="anchor" aria-label="anchor" href="#tabular-data"></a>
+</h2>
+<pre><code><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EagerAI/fastai" class="external-link">fastai</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># download</span></span>
+<span><span class="fu"><a href="reference/URLs_ADULT_SAMPLE.html">URLs_ADULT_SAMPLE</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># read data</span></span>
+<span><span class="va">df</span> <span class="op">=</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/fread.html" class="external-link">fread</a></span><span class="op">(</span><span class="st">'adult_sample/adult.csv'</span><span class="op">)</span></span></code></pre>
 <p>Variables:</p>
-<pre><code>dep_var = 'salary'
-cat_names = c('workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race')
-cont_names = c('age', 'fnlwgt', 'education-num')</code></pre>
+<pre><code><span><span class="va">dep_var</span> <span class="op">=</span> <span class="st">'salary'</span></span>
+<span><span class="va">cat_names</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'workclass'</span>, <span class="st">'education'</span>, <span class="st">'marital-status'</span>, <span class="st">'occupation'</span>, <span class="st">'relationship'</span>, <span class="st">'race'</span><span class="op">)</span></span>
+<span><span class="va">cont_names</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'age'</span>, <span class="st">'fnlwgt'</span>, <span class="st">'education-num'</span><span class="op">)</span></span></code></pre>
 <p>Preprocess strategy:</p>
-<pre><code>procs = list(FillMissing(),Categorify(),Normalize())</code></pre>
+<pre><code><span><span class="va">procs</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="reference/FillMissing.html">FillMissing</a></span><span class="op">(</span><span class="op">)</span>,<span class="fu"><a href="reference/Categorify.html">Categorify</a></span><span class="op">(</span><span class="op">)</span>,<span class="fu"><a href="reference/Normalize.html">Normalize</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 <p>Prepare:</p>
-<pre><code>dls = TabularDataTable(df, procs, cat_names, cont_names,
-      y_names = dep_var, splits = list(c(1:32000),c(32001:32561))) %&gt;%
-      dataloaders(bs = 64)</code></pre>
+<pre><code><span><span class="va">dls</span> <span class="op">=</span> <span class="fu"><a href="reference/TabularDataTable.html">TabularDataTable</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">procs</span>, <span class="va">cat_names</span>, <span class="va">cont_names</span>,</span>
+<span>      y_names <span class="op">=</span> <span class="va">dep_var</span>, splits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">32000</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">32001</span><span class="op">:</span><span class="fl">32561</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>      <span class="fu"><a href="reference/dataloaders.html">dataloaders</a></span><span class="op">(</span>bs <span class="op">=</span> <span class="fl">64</span><span class="op">)</span></span></code></pre>
 <p>Summary:</p>
-<pre><code>model = dls %&gt;% tabular_learner(layers=c(200,100), metrics=accuracy)
-model %&gt;% summary()</code></pre>
+<pre><code><span><span class="va">model</span> <span class="op">=</span> <span class="va">dls</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/tabular_learner.html">tabular_learner</a></span><span class="op">(</span>layers<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">200</span>,<span class="fl">100</span><span class="op">)</span>, metrics<span class="op">=</span><span class="va">accuracy</span><span class="op">)</span></span>
+<span><span class="va">model</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="op">)</span></span></code></pre>
 <pre><code>TabularModel (Input shape: ['64 x 7', '64 x 3'])
 ================================================================
 Layer (type)         Output Shape         Param #    Trainable
@@ -343,12 +350,12 @@ Callbacks:
   - Recorder
   - ProgressCallback</code></pre>
 <p>Before fitting try to find optimal learning rate:</p>
-<pre><code>model %&gt;% lr_find()
-
-model %&gt;% plot_lr_find(dpi = 200)</code></pre>
+<pre><code><span><span class="va">model</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/lr_find.html">lr_find</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">model</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/plot_lr_find.html">plot_lr_find</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span></code></pre>
 <p><img src="files/plot_lr.png" height="500" align="center" alt="lr"></p>
 <p>Run:</p>
-<pre><code>model %&gt;% fit(5, lr = 10^-1)</code></pre>
+<pre><code><span><span class="va">model</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://generics.r-lib.org/reference/fit.html" class="external-link">fit</a></span><span class="op">(</span><span class="fl">5</span>, lr <span class="op">=</span> <span class="fl">10</span><span class="op">^</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span></span></code></pre>
 <pre><code>epoch     train_loss  valid_loss  accuracy  time
 0         0.360149    0.329587    0.846702  00:04
 1         0.352106    0.345761    0.828877  00:04
@@ -356,26 +363,20 @@ model %&gt;% plot_lr_find(dpi = 200)</code></pre>
 3         0.347277    0.333084    0.852050  00:04
 4         0.348969    0.350707    0.830660  00:04</code></pre>
 <p>Plot loss history:</p>
-<pre><code>model %&gt;% plot_loss(dpi = 200)</code></pre>
+<pre><code><span><span class="va">model</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/plot_loss.html">plot_loss</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span></code></pre>
 <p><img src="files/plot_loss.png" height="500" align="center" alt="lr"></p>
-<p>At the same time, users can find optimal batch size.</p>
-<p>Implementation of OpenAI paper <a href="https://arxiv.org/pdf/1812.06162.pdf">“An Empirical Model of Large-Batch Training”</a> for Fastai was done by <a href="https://github.com/hal-314/fastai-batch-size-finder">hal-314</a>:</p>
-<pre><code>bss = model %&gt;% bs_find(lr=1e-3)
-
-model %&gt;% plot_bs_find()</code></pre>
-<p><img src="files/plot_bs.png" height="500" align="center" alt="bs"></p>
 <p>See training process:</p>
 <p align="center">
 <img src="files/fastai.gif" height="350" align="center" alt="train"></p>
 <p>Get confusion matrix:</p>
-<pre><code>model %&gt;% get_confusion_matrix()</code></pre>
+<pre><code><span><span class="va">model</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/get_confusion_matrix.html">get_confusion_matrix</a></span><span class="op">(</span><span class="op">)</span></span></code></pre>
 <pre><code>       &lt;50k  &gt;=50k
 &lt;50k   407    22
 &gt;=50k   68    64</code></pre>
 <p>Plot it:</p>
-<pre><code>interp = ClassificationInterpretation_from_learner(model)
-
-interp %&gt;% plot_confusion_matrix(dpi = 90,figsize = c(6,6))</code></pre>
+<pre><code><span><span class="va">interp</span> <span class="op">=</span> <span class="fu"><a href="reference/ClassificationInterpretation_from_learner.html">ClassificationInterpretation_from_learner</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">interp</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/plot_confusion_matrix.html">plot_confusion_matrix</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">90</span>,figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">6</span>,<span class="fl">6</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 <p><img src="files/conf_.png" height="500" align="center" alt="Pets"></p>
 <p>Get predictions on new data:</p>
 <pre><code>&gt; model %&gt;% predict(df[10:15,])
@@ -387,61 +388,33 @@ interp %&gt;% plot_confusion_matrix(dpi = 90,figsize = c(6,6))</code></pre>
 4 0.5013804 0.4986197       0
 5 0.4964157 0.5035844       1
 6 0.5111378 0.4888622       0</code></pre>
-<p>Fastinference by <a href="https://github.com/muellerzr/fastinference">Zachary Mueller</a> has ShapInterpretation function that allows to utilize various methods within the SHAP interpretation library. Currently <code>summary_plot</code>, <code>dependence_plot</code>, <code>waterfall_plot</code>, <code>force_plot</code>, and <code>decision_plot</code> are supported.</p>
-<p>First, get explanation object:</p>
-<pre><code>exp = ShapInterpretation(model,n_samples = 20)
-# 100%|██████████| 20/20 [02:49&lt;00:00,  8.46s/it]</code></pre>
-<p>Then, visualize decision plot:</p>
-<pre><code>exp %&gt;% decision_plot(class_id = 1, row_idx = 2)</code></pre>
-<center>
-<img src="files/shap1.png" height="500" align="center" alt="Shap">
-</center>
-<p>Dependence plot:</p>
-<pre><code>exp %&gt;% dependence_plot('age', class_id = 0)</code></pre>
-<center>
-<img src="files/shap2.png" height="500" align="center" alt="Shap">
-</center>
-<p>Summary plot:</p>
-<pre><code>exp %&gt;% summary_plot()</code></pre>
-<center>
-<img src="files/shap3.png" height="500" align="center" alt="Shap">
-</center>
-<p>Waterfall plot:</p>
-<pre><code>exp %&gt;% waterfall_plot(row_idx=10)</code></pre>
-<p align="center">
-<img src="files/shap4.png" height="500" align="center" alt="Shap"></p>
-<p>Force (JS) plot:</p>
-<pre><code>exp %&gt;% force_plot(class_id = 0)</code></pre>
-<p align="center">
-<img src="files/force_.png" height="500" align="center" alt="Shap"></p>
 </div>
-<div id="image-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#image-data" class="anchor"></a>Image data</h2>
+<div class="section level2">
+<h2 id="image-data">Image data<a class="anchor" aria-label="anchor" href="#image-data"></a>
+</h2>
 <p>Get Pets dataset:</p>
-<pre><code><a href="reference/URLs_PETS.html">URLs_PETS()</a></code></pre>
+<pre><code><span><span class="fu"><a href="reference/URLs_PETS.html">URLs_PETS</a></span><span class="op">(</span><span class="op">)</span></span></code></pre>
 <p>Define path to folders:</p>
-<pre><code>path = 'oxford-iiit-pet'
-path_anno = 'oxford-iiit-pet/annotations'
-path_img = 'oxford-iiit-pet/images'
-fnames = get_image_files(path_img)</code></pre>
+<pre><code><span><span class="va">path</span> <span class="op">=</span> <span class="st">'oxford-iiit-pet'</span></span>
+<span><span class="va">path_anno</span> <span class="op">=</span> <span class="st">'oxford-iiit-pet/annotations'</span></span>
+<span><span class="va">path_img</span> <span class="op">=</span> <span class="st">'oxford-iiit-pet/images'</span></span>
+<span><span class="va">fnames</span> <span class="op">=</span> <span class="fu"><a href="reference/get_image_files.html">get_image_files</a></span><span class="op">(</span><span class="va">path_img</span><span class="op">)</span></span></code></pre>
 <p>See one of examples:</p>
-<pre><code>fnames[1]
-
-oxford-iiit-pet/images/american_pit_bull_terrier_129.jpg</code></pre>
+<pre><code><span><span class="va">fnames</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">oxford</span><span class="op">-</span><span class="va">iiit</span><span class="op">-</span><span class="va">pet</span><span class="op">/</span><span class="va">images</span><span class="op">/</span><span class="va">american_pit_bull_terrier_129.jpg</span></span></code></pre>
 <p>Dataloader:</p>
-<pre><code>dls = ImageDataLoaders_from_name_re(
-  path, fnames, pat='(.+)_\\d+.jpg$',
-  item_tfms=Resize(size = 460), bs = 10,
-  batch_tfms=list(aug_transforms(size = 224, min_scale = 0.75),
-                  Normalize_from_stats( imagenet_stats() )
-                  )
-)</code></pre>
+<pre><code><span><span class="va">dls</span> <span class="op">=</span> <span class="fu"><a href="reference/ImageDataLoaders_from_name_re.html">ImageDataLoaders_from_name_re</a></span><span class="op">(</span></span>
+<span>  <span class="va">path</span>, <span class="va">fnames</span>, pat<span class="op">=</span><span class="st">'(.+)_\\d+.jpg$'</span>,</span>
+<span>  item_tfms<span class="op">=</span><span class="fu"><a href="reference/Resize.html">Resize</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">460</span><span class="op">)</span>, bs <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  batch_tfms<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="reference/Normalize_from_stats.html">Normalize_from_stats</a></span><span class="op">(</span> <span class="fu"><a href="reference/imagenet_stats.html">imagenet_stats</a></span><span class="op">(</span><span class="op">)</span> <span class="op">)</span></span>
+<span>                  <span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre>
 <p>Show batch for visualization:</p>
-<pre><code>dls %&gt;% show_batch(dpi = 150)</code></pre>
+<pre><code><span><span class="va">dls</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/show_batch.html">show_batch</a></span><span class="op">(</span><span class="op">)</span></span></code></pre>
 <p><img src="files/pets.png" height="500" align="center" alt="Pets"></p>
 <p>Model architecture:</p>
-<pre><code>learn = cnn_learner(dls, resnet34(), metrics = error_rate)</code></pre>
+<pre><code><span><span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="reference/cnn_learner.html">cnn_learner</a></span><span class="op">(</span><span class="va">dls</span>, <span class="fu"><a href="reference/resnet34.html">resnet34</a></span><span class="op">(</span><span class="op">)</span>, metrics <span class="op">=</span> <span class="va">error_rate</span><span class="op">)</span></span></code></pre>
 <p>And fit:</p>
 <pre><code>learn %&gt;% fit_one_cycle(n_epoch = 2)
 
@@ -449,42 +422,41 @@ epoch     train_loss  valid_loss  error_rate  time
 0         0.904872    0.317927    0.105548    00:35
 1         0.694395    0.239520    0.083897    00:36</code></pre>
 <p>Get confusion matrix and plot:</p>
-<pre><code>conf = learn %&gt;% get_confusion_matrix()
-
-library(highcharter)
-hchart(conf, label = TRUE) %&gt;%
-    hc_yAxis(title = list(text = 'Actual')) %&gt;%
-    hc_xAxis(title = list(text = 'Predicted'),
-             labels = list(rotation = -90))</code></pre>
+<pre><code><span><span class="va">conf</span> <span class="op">=</span> <span class="va">learn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/get_confusion_matrix.html">get_confusion_matrix</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://jkunst.com/highcharter/" class="external-link">highcharter</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://jkunst.com/highcharter/reference/hchart.html" class="external-link">hchart</a></span><span class="op">(</span><span class="va">conf</span>, label <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://jkunst.com/highcharter/reference/hc_yAxis.html" class="external-link">hc_yAxis</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">'Actual'</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://jkunst.com/highcharter/reference/hc_xAxis.html" class="external-link">hc_xAxis</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">'Predicted'</span><span class="op">)</span>,</span>
+<span>             labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>rotation <span class="op">=</span> <span class="op">-</span><span class="fl">90</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 <p><img src="files/conf.png" height="500" align="center" alt="Pets"></p>
 <blockquote>
 <p>Note that the plot is built with highcharter.</p>
 </blockquote>
 <p>Plot top losses:</p>
-<pre><code>interp = ClassificationInterpretation_from_learner(learn)
-
-interp %&gt;% plot_top_losses(k = 9, figsize = c(15,11))</code></pre>
+<pre><code><span><span class="va">interp</span> <span class="op">=</span> <span class="fu"><a href="reference/ClassificationInterpretation_from_learner.html">ClassificationInterpretation_from_learner</a></span><span class="op">(</span><span class="va">learn</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">interp</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/plot_top_losses.html">plot_top_losses</a></span><span class="op">(</span>k <span class="op">=</span> <span class="fl">9</span>, figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">15</span>,<span class="fl">11</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 <p><img src="files/top_loss.png" height="500" align="center" alt="Pets"></p>
 <p>Alternatively, load images from folders:</p>
-<pre><code><a href="reference/URLs_MNIST_SAMPLE.html"># get sample data
-URLs_MNIST_SAMPLE()
-
-# transformations
-tfms = aug_transforms(do_flip = FALSE)
-path = 'mnist_sample'
-bs = 20
-
-#load into memory
-data = ImageDataLoaders_from_folder(path, batch_tfms = tfms, size = 26, bs = bs)
-
-# Visualize and train
-data %&gt;% show_batch(dpi = 150)
-
-learn = cnn_learner(data, resnet18(), metrics = accuracy)
-learn %&gt;% fit(2)</a></code></pre>
+<pre><code><span><span class="co"># get sample data</span></span>
+<span><span class="fu"><a href="reference/URLs_MNIST_SAMPLE.html">URLs_MNIST_SAMPLE</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># transformations</span></span>
+<span><span class="va">path</span> <span class="op">=</span> <span class="st">'mnist_sample'</span></span>
+<span><span class="va">bs</span> <span class="op">=</span> <span class="fl">20</span></span>
+<span></span>
+<span><span class="co">#load into memory</span></span>
+<span><span class="va">data</span> <span class="op">=</span> <span class="fu"><a href="reference/ImageDataLoaders_from_folder.html">ImageDataLoaders_from_folder</a></span><span class="op">(</span><span class="va">path</span>, size <span class="op">=</span> <span class="fl">26</span>, bs <span class="op">=</span> <span class="va">bs</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Visualize and train</span></span>
+<span><span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/show_batch.html">show_batch</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">150</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="reference/cnn_learner.html">cnn_learner</a></span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="reference/resnet18.html">resnet18</a></span><span class="op">(</span><span class="op">)</span>, metrics <span class="op">=</span> <span class="va">accuracy</span><span class="op">)</span></span>
+<span><span class="va">learn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://generics.r-lib.org/reference/fit.html" class="external-link">fit</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span></code></pre>
 <p><img src="files/mnist.png" height="500" align="center" alt="Mnist"></p>
-<p><strong>What about the implementation of the latest <a href="https://github.com/rwightman/pytorch-image-models">Computer Vision models</a>?</strong></p>
-<p>There is a function in fastai <code>timm_learner</code> which originally written by <a href="https://github.com/walkwithfastai/walkwithfastai.github.io/">Zachary Mueller</a>. It helps to quickly load the pretrained models from <a href="https://github.com/rwightman/pytorch-image-models">timm library</a>.</p>
+<p><strong>What about the implementation of the latest <a href="https://github.com/rwightman/pytorch-image-models" class="external-link">Computer Vision models</a>?</strong></p>
+<p>There is a function in fastai <code>timm_learner</code> which originally written by <a href="https://github.com/walkwithfastai/walkwithfastai.github.io/" class="external-link">Zachary Mueller</a>. It helps to quickly load the pretrained models from <a href="https://github.com/rwightman/pytorch-image-models" class="external-link">timm library</a>.</p>
 <p>First, lets’s see the list of available models (TOP 10):</p>
 <pre><code>&gt; str(as.list(timm_list_models()[1:10]))
 List of 10
@@ -500,26 +472,25 @@ List of 10
  $ : chr "densenet121"</code></pre>
 <p>Exciting!</p>
 <p>Now, load and train pets dataset:</p>
-<pre><code><a href="https://magrittr.tidyverse.org">library(magrittr)
-library(fastai)
-
-path = 'oxford-iiit-pet'
-
-path_img = 'oxford-iiit-pet/images'
-
-fnames = get_image_files(path_img)
-
-dls = ImageDataLoaders_from_name_re(
-  path, fnames, pat='(.+)_\\d+.jpg$',
-  item_tfms=Resize(size = 460), bs = 10,
-  batch_tfms=list(aug_transforms(size = 224, min_scale = 0.75),
-                  Normalize_from_stats( imagenet_stats() )
-  )
-)
-
-learn = timm_learner(dls, 'cspdarknet53', metrics = list(accuracy, error_rate))
-
-learn %&gt;% summary()</a></code></pre>
+<pre><code><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EagerAI/fastai" class="external-link">fastai</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">path</span> <span class="op">=</span> <span class="st">'oxford-iiit-pet'</span></span>
+<span></span>
+<span><span class="va">path_img</span> <span class="op">=</span> <span class="st">'oxford-iiit-pet/images'</span></span>
+<span></span>
+<span><span class="va">fnames</span> <span class="op">=</span> <span class="fu"><a href="reference/get_image_files.html">get_image_files</a></span><span class="op">(</span><span class="va">path_img</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dls</span> <span class="op">=</span> <span class="fu"><a href="reference/ImageDataLoaders_from_name_re.html">ImageDataLoaders_from_name_re</a></span><span class="op">(</span></span>
+<span>  <span class="va">path</span>, <span class="va">fnames</span>, pat<span class="op">=</span><span class="st">'(.+)_\\d+.jpg$'</span>,</span>
+<span>  item_tfms<span class="op">=</span><span class="fu"><a href="reference/Resize.html">Resize</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">460</span><span class="op">)</span>, bs <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  batch_tfms<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="reference/Normalize_from_stats.html">Normalize_from_stats</a></span><span class="op">(</span> <span class="fu"><a href="reference/imagenet_stats.html">imagenet_stats</a></span><span class="op">(</span><span class="op">)</span> <span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="reference/timm_learner.html">timm_learner</a></span><span class="op">(</span><span class="va">dls</span>, <span class="st">'cspdarknet53'</span>, metrics <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">accuracy</span>, <span class="va">error_rate</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">learn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="op">)</span></span></code></pre>
 <details><summary>
 Model summary
 </summary><p>
@@ -832,7 +803,7 @@ Callbacks:
   - ProgressCallback</code></pre>
 
 </details><p>And finally, fit:</p>
-<pre><code>learn %&gt;% fit_one_cycle(3)</code></pre>
+<pre><code><span><span class="va">learn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span></code></pre>
 <pre><code>epoch   train_loss   valid_loss   accuracy   error_rate   time
 ------  -----------  -----------  ---------  -----------  ------
 0       1.206384     0.518956     0.847091   0.152909     01:00
@@ -840,129 +811,87 @@ Callbacks:
 2       0.657220     0.328548     0.899188   0.100812     00:59
 </code></pre>
 <p>See results:</p>
-<pre><code>learn %&gt;% show_results()</code></pre>
+<pre><code><span><span class="va">learn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/show_results.html">show_results</a></span><span class="op">(</span><span class="op">)</span></span></code></pre>
 <p>Impressive!</p>
 <p><img src="files/darknet.png" height="500" align="center" alt="Mnist"></p>
-<div id="gan-example" class="section level3">
-<h3 class="hasAnchor">
-<a href="#gan-example" class="anchor"></a>GAN example</h3>
+<div class="section level3">
+<h3 id="gan-example">GAN example<a class="anchor" aria-label="anchor" href="#gan-example"></a>
+</h3>
 <p>Get data (4,4 GB):</p>
-<pre><code><a href="reference/URLs_LSUN_BEDROOMS.html">URLs_LSUN_BEDROOMS()
-
-path = 'bedroom'</a></code></pre>
+<pre><code><span><span class="fu"><a href="reference/URLs_LSUN_BEDROOMS.html">URLs_LSUN_BEDROOMS</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">path</span> <span class="op">=</span> <span class="st">'bedroom'</span></span></code></pre>
 <p>Dataloader function:</p>
-<pre><code>get_dls &lt;- function(bs, size) {
-  dblock = DataBlock(blocks = list(TransformBlock(), ImageBlock()),
-                     get_x = generate_noise(),
-                     get_items = get_image_files(),
-                     splitter = IndexSplitter(c()),
-                     item_tfms = Resize(size, method = "crop"),
-                     batch_tfms = Normalize_from_stats(c(0.5,0.5,0.5), c(0.5,0.5,0.5))
-  )
-  dblock %&gt;% dataloaders(source = path, path = path,bs = bs)
-}
-
-dls = get_dls(128, 64)</code></pre>
+<pre><code><span><span class="va">get_dls</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">bs</span>, <span class="va">size</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">dblock</span> <span class="op">=</span> <span class="fu"><a href="reference/DataBlock.html">DataBlock</a></span><span class="op">(</span>blocks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="reference/TransformBlock.html">TransformBlock</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="reference/ImageBlock.html">ImageBlock</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                     get_x <span class="op">=</span> <span class="fu"><a href="reference/generate_noise.html">generate_noise</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>                     get_items <span class="op">=</span> <span class="fu"><a href="reference/get_image_files.html">get_image_files</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>                     splitter <span class="op">=</span> <span class="fu"><a href="reference/IndexSplitter.html">IndexSplitter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                     item_tfms <span class="op">=</span> <span class="fu"><a href="reference/Resize.html">Resize</a></span><span class="op">(</span><span class="va">size</span>, method <span class="op">=</span> <span class="st">"crop"</span><span class="op">)</span>,</span>
+<span>                     batch_tfms <span class="op">=</span> <span class="fu"><a href="reference/Normalize_from_stats.html">Normalize_from_stats</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.5</span>,<span class="fl">0.5</span>,<span class="fl">0.5</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.5</span>,<span class="fl">0.5</span>,<span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span>  <span class="va">dblock</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/dataloaders.html">dataloaders</a></span><span class="op">(</span>source <span class="op">=</span> <span class="va">path</span>, path <span class="op">=</span> <span class="va">path</span>,bs <span class="op">=</span> <span class="va">bs</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">dls</span> <span class="op">=</span> <span class="fu"><a href="reference/get_dls.html">get_dls</a></span><span class="op">(</span><span class="fl">128</span>, <span class="fl">64</span><span class="op">)</span></span></code></pre>
 <p>Generator and discriminator:</p>
-<pre><code>generator = basic_generator(out_size = 64, n_channels = 3, n_extra_layers = 1)
-critic    = basic_critic(in_size = 64, n_channels = 3, n_extra_layers = 1,
-                                    act_cls = partial(nn$LeakyReLU, negative_slope = 0.2))
-</code></pre>
+<pre><code><span><span class="va">generator</span> <span class="op">=</span> <span class="fu"><a href="reference/basic_generator.html">basic_generator</a></span><span class="op">(</span>out_size <span class="op">=</span> <span class="fl">64</span>, n_channels <span class="op">=</span> <span class="fl">3</span>, n_extra_layers <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">critic</span>    <span class="op">=</span> <span class="fu"><a href="reference/basic_critic.html">basic_critic</a></span><span class="op">(</span>in_size <span class="op">=</span> <span class="fl">64</span>, n_channels <span class="op">=</span> <span class="fl">3</span>, n_extra_layers <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>                                    act_cls <span class="op">=</span> <span class="fu"><a href="reference/partial.html">partial</a></span><span class="op">(</span><span class="va">nn</span><span class="op">$</span><span class="va">LeakyReLU</span>, negative_slope <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 <p>Model:</p>
-<pre><code>learn = GANLearner_wgan(dls, generator, critic, opt_func = partial(Adam(), mom=0.))</code></pre>
+<pre><code><span><span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="reference/GANLearner_wgan.html">GANLearner_wgan</a></span><span class="op">(</span><span class="va">dls</span>, <span class="va">generator</span>, <span class="va">critic</span>, opt_func <span class="op">=</span> <span class="fu"><a href="reference/partial.html">partial</a></span><span class="op">(</span><span class="fu"><a href="reference/Adam.html">Adam</a></span><span class="op">(</span><span class="op">)</span>, mom<span class="op">=</span><span class="fl">0.</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 <p>And fit:</p>
-<pre><code>learn$recorder$train_metrics = TRUE
-learn$recorder$valid_metrics = FALSE
-
-learn %&gt;% fit(1, 2e-4, wd = 0)</code></pre>
+<pre><code><span><span class="va">learn</span><span class="op">$</span><span class="va">recorder</span><span class="op">$</span><span class="va">train_metrics</span> <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="va">learn</span><span class="op">$</span><span class="va">recorder</span><span class="op">$</span><span class="va">valid_metrics</span> <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span></span>
+<span><span class="va">learn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://generics.r-lib.org/reference/fit.html" class="external-link">fit</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2e-4</span>, wd <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre>
 <pre><code>epoch     train_loss  gen_loss  crit_loss  time
 0         -0.555554   0.516327  -0.967604  05:06</code></pre>
 <p>This is the result for 1 epoch.</p>
-<pre><code>learn %&gt;% show_results(max_n = 16, figsize = c(8,8), ds_idx=0)</code></pre>
+<pre><code><span><span class="va">learn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/show_results.html">show_results</a></span><span class="op">(</span>max_n <span class="op">=</span> <span class="fl">16</span>, figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">8</span>,<span class="fl">8</span><span class="op">)</span>, ds_idx<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span></code></pre>
 <center>
 <p><img src="files/gan.png" height="600" align="center" alt="Mnist"></p>
 </center>
 </div>
 </div>
-<div id="cyclegan" class="section level2">
-<h2 class="hasAnchor">
-<a href="#cyclegan" class="anchor"></a>CycleGAN</h2>
-<p>CycleGAN package by <a href="https://github.com/tmabraham/UPIT">Tanishq Abraham</a> makes building and training a CycleGAN model very easy</p>
-<p>Get data:</p>
-<pre><code><a href="reference/URLs_HORSE_2_ZEBRA.html">URLs_HORSE_2_ZEBRA()</a></code></pre>
-<p>Prepare data:</p>
-<pre><code>horse2zebra = 'horse2zebra'
-
-
-trainA_path = file.path(horse2zebra,'trainA')
-trainB_path = file.path(horse2zebra,'trainB')
-testA_path = file.path(horse2zebra,'testA')
-testB_path = file.path(horse2zebra,'testB')
-
-dls = get_dls(trainA_path, trainB_path, num_A = 130,load_size = 270,crop_size = 144,bs=4)
-</code></pre>
-<p>Build model:</p>
-<pre><code>cycle_gan = CycleGAN(3,3,64)
-learn = cycle_learner(dls, cycle_gan)</code></pre>
-<p>And fit:</p>
-<pre><code>learn %&gt;% fit_flat_lin(4,4,2e-4)</code></pre>
-<pre><code>epoch   train_loss   id_loss_A   id_loss_B   gen_loss_A   gen_loss_B   cyc_loss_A   cyc_loss_B   D_A_loss   D_B_loss   time
-------  -----------  ----------  ----------  -----------  -----------  -----------  -----------  ---------  ---------  -----
-0       10.500859    1.551905    1.678394    0.375322     0.385088     3.266770     3.509404     0.367762   0.367762   00:19
-1       9.547493     1.267837    1.453950    0.301558     0.298583     2.698074     3.106223     0.253554   0.253554   00:19
-2       8.938786     1.234537    1.250279    0.328651     0.328309     2.618085     2.713281     0.237375   0.237375   00:19
-3       8.391484     1.066745    1.227453    0.327970     0.336748     2.285323     2.669749     0.240033   0.240033   00:19
-4       7.642654     0.941413    1.057014    0.327448     0.350729     1.980680     2.274255     0.246695   0.246695   00:19
-5       7.478543     0.966484    1.111054    0.291666     0.384912     2.119692     2.446879     0.251393   0.251393   00:18
-6       7.190168     0.961237    1.034505    0.315916     0.397697     1.990408     2.182239     0.222851   0.222851   00:19
-7       6.902316     0.891176    1.001932    0.343578     0.386471     1.848317     2.137690     0.215832   0.215832   00:19</code></pre>
-<p>Get predicitons and see results:</p>
-<pre><code>learn %&gt;% get_preds_cyclegan(testA_path, './h2z-preds')
-
-learn %&gt;% show_results()</code></pre>
-<center>
-<p><img src="files/cycleGAN.png" height="600" align="center" alt="Mnist"></p>
-</center>
-</div>
-<div id="unet-example" class="section level2">
-<h2 class="hasAnchor">
-<a href="#unet-example" class="anchor"></a>Unet example</h2>
+<div class="section level2">
+<h2 id="unet-example">Unet example<a class="anchor" aria-label="anchor" href="#unet-example"></a>
+</h2>
 <p>Call libraries:</p>
-<pre><code><a href="https://github.com/EagerAI/fastai">library(fastai)
-library(magrittr)</a></code></pre>
+<pre><code><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EagerAI/fastai" class="external-link">fastai</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span></span></code></pre>
 <p>Get data</p>
-<pre><code><a href="reference/URLs_CAMVID.html">URLs_CAMVID()</a></code></pre>
+<pre><code><span><span class="fu"><a href="reference/URLs_CAMVID.html">URLs_CAMVID</a></span><span class="op">(</span><span class="op">)</span></span></code></pre>
 <p>Specify folders:</p>
-<pre><code>path = 'camvid'
-fnames = get_image_files(paste(path,'images',sep = '/'))
-lbl_names = get_image_files(paste(path,'labels',sep = '/'))
-codes = data.table::fread(paste(path,'codes.txt',sep = '/'), header = FALSE)[['V1']]
-valid_fnames = data.table::fread(paste(path,'valid.txt',sep = '/'),header = FALSE)[['V1']]
-# batch size
-bs = 8</code></pre>
+<pre><code><span><span class="va">path</span> <span class="op">=</span> <span class="st">'camvid'</span></span>
+<span><span class="va">fnames</span> <span class="op">=</span> <span class="fu"><a href="reference/get_image_files.html">get_image_files</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">path</span>,<span class="st">'images'</span>,sep <span class="op">=</span> <span class="st">'/'</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">lbl_names</span> <span class="op">=</span> <span class="fu"><a href="reference/get_image_files.html">get_image_files</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">path</span>,<span class="st">'labels'</span>,sep <span class="op">=</span> <span class="st">'/'</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">codes</span> <span class="op">=</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/fread.html" class="external-link">fread</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">path</span>,<span class="st">'codes.txt'</span>,sep <span class="op">=</span> <span class="st">'/'</span><span class="op">)</span>, header <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">[[</span><span class="st">'V1'</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="va">valid_fnames</span> <span class="op">=</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/fread.html" class="external-link">fread</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">path</span>,<span class="st">'valid.txt'</span>,sep <span class="op">=</span> <span class="st">'/'</span><span class="op">)</span>,header <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">[[</span><span class="st">'V1'</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="co"># batch size</span></span>
+<span><span class="va">bs</span> <span class="op">=</span> <span class="fl">8</span></span></code></pre>
 <p>Define a loader object:</p>
-<pre><code>camvid = DataBlock(blocks = c(ImageBlock(), MaskBlock(codes)),
-                   get_items = get_image_files,
-                   splitter = FileSplitter('camvid/valid.txt'),
-                   get_y = function(x) {paste('camvid/labels/',x$stem,'_P',x$suffix,sep = '')},
-                   batch_tfms = list(aug_transforms(size = list(200,266)),
-                                     Normalize_from_stats( imagenet_stats() )
-                   )
-)
-
-# prefix and suffix of the name of the file
-x$stem; x$suffix</code></pre>
+<pre><code><span><span class="va">camvid</span> <span class="op">=</span> <span class="fu"><a href="reference/DataBlock.html">DataBlock</a></span><span class="op">(</span>blocks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="reference/ImageBlock.html">ImageBlock</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="reference/MaskBlock.html">MaskBlock</a></span><span class="op">(</span><span class="va">codes</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                   get_items <span class="op">=</span> <span class="va">get_image_files</span>,</span>
+<span>                   splitter <span class="op">=</span> <span class="fu"><a href="reference/FileSplitter.html">FileSplitter</a></span><span class="op">(</span><span class="st">'camvid/valid.txt'</span><span class="op">)</span>,</span>
+<span>                   get_y <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">'camvid/labels/'</span>,<span class="va">x</span><span class="op">$</span><span class="va">stem</span>,<span class="st">'_P'</span>,<span class="va">x</span><span class="op">$</span><span class="va">suffix</span>,sep <span class="op">=</span> <span class="st">''</span><span class="op">)</span><span class="op">}</span>,</span>
+<span>                   batch_tfms <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="reference/Normalize_from_stats.html">Normalize_from_stats</a></span><span class="op">(</span> <span class="fu"><a href="reference/imagenet_stats.html">imagenet_stats</a></span><span class="op">(</span><span class="op">)</span> <span class="op">)</span></span>
+<span>                   <span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># prefix and suffix of the name of the file</span></span>
+<span><span class="va">x</span><span class="op">$</span><span class="va">stem</span>; <span class="va">x</span><span class="op">$</span><span class="va">suffix</span></span></code></pre>
 <p>Dataloader object and list of labels:</p>
-<pre><code>dls = camvid %&gt;% dataloaders(source = "camvid/images", bs = bs, path = path)
-
-dls %&gt;% show_batch()
-
-void_code = which(codes == "Void")
-
-dls$vocab = codes
-
-name2id = as.list(1:(length(codes)))
-names(name2id) = codes</code></pre>
+<pre><code><span><span class="va">dls</span> <span class="op">=</span> <span class="va">camvid</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/dataloaders.html">dataloaders</a></span><span class="op">(</span>source <span class="op">=</span> <span class="st">"camvid/images"</span>, bs <span class="op">=</span> <span class="va">bs</span>, path <span class="op">=</span> <span class="va">path</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dls</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/show_batch.html">show_batch</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">void_code</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html" class="external-link">which</a></span><span class="op">(</span><span class="va">codes</span> <span class="op">==</span> <span class="st">"Void"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dls</span><span class="op">$</span><span class="va">vocab</span> <span class="op">=</span> <span class="va">codes</span></span>
+<span></span>
+<span><span class="va">name2id</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">as.list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="op">(</span><span class="fu"><a href="reference/length.html">length</a></span><span class="op">(</span><span class="va">codes</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">name2id</span><span class="op">)</span> <span class="op">=</span> <span class="va">codes</span></span></code></pre>
 <center>
 <p><img src="files/unet.png" height="600" align="center" alt="Mnist"></p>
 </center>
@@ -1001,22 +930,22 @@ List of 32
  $ Void             : int 31
  $ Wall             : int 32</code></pre>
 <p>Custom accuracy function:</p>
-<pre><code>acc_camvid &lt;- function(input, target) {
-  target = target$squeeze(1L)
-  # exclude/filter void label
-  mask = target != void_code
-  return(
-    (input$argmax(dim=1L)[mask]$eq(target[mask])) %&gt;%
-      float() %&gt;% mean()
-  )
-}
-
-attr(acc_camvid, "py_function_name") &lt;- 'acc_camvid'</code></pre>
+<pre><code><span><span class="va">acc_camvid</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">target</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">target</span> <span class="op">=</span> <span class="va">target</span><span class="op">$</span><span class="fu">squeeze</span><span class="op">(</span><span class="fl">1L</span><span class="op">)</span></span>
+<span>  <span class="co"># exclude/filter void label</span></span>
+<span>  <span class="va">mask</span> <span class="op">=</span> <span class="va">target</span> <span class="op">!=</span> <span class="va">void_code</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span></span>
+<span>    <span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="fu">argmax</span><span class="op">(</span>dim<span class="op">=</span><span class="fl">1L</span><span class="op">)</span><span class="op">[</span><span class="va">mask</span><span class="op">]</span><span class="op">$</span><span class="fu">eq</span><span class="op">(</span><span class="va">target</span><span class="op">[</span><span class="va">mask</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>      <span class="fu"><a href="reference/float.html">float</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">acc_camvid</span>, <span class="st">"py_function_name"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">'acc_camvid'</span></span></code></pre>
 <details><summary>
 Debug acc_camvid manually
 </summary><p>
 </p>
-<pre><code>batch = dls %&gt;% one_batch(convert = FALSE)</code></pre>
+<pre><code><span><span class="va">batch</span> <span class="op">=</span> <span class="va">dls</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/one_batch.html">one_batch</a></span><span class="op">(</span>convert <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre>
 <pre><code>[[1]]
 TensorImage([[[[-1.4419e+00, -1.3117e+00, -1.1976e+00,  ...,  2.2489e+00,
             2.2238e+00,  2.0948e+00],
@@ -1329,14 +1258,14 @@ TensorMask([[[ 4,  4,  4,  ...,  4,  4,  4],
          [17, 17, 17,  ..., 17, 17, 17],
          [17, 17, 17,  ..., 17, 17, 17]]], device='cuda:0')</code></pre>
 <p>The shape of the tensors:</p>
-<pre><code>batch[[1]]$shape;batch[[2]]$shape</code></pre>
+<pre><code><span><span class="va">batch</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">shape</span>;<span class="va">batch</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">shape</span></span></code></pre>
 <pre><code>torch.Size([8, 3, 200, 266])
 torch.Size([8, 200, 266])</code></pre>
 <p>Define input and target:</p>
-<pre><code>input = batch[[1]]
-target = batch[[2]]</code></pre>
+<pre><code><span><span class="va">input</span> <span class="op">=</span> <span class="va">batch</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="va">target</span> <span class="op">=</span> <span class="va">batch</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span></span></code></pre>
 <p>Filter Void class:</p>
-<pre><code>mask = target != void_code</code></pre>
+<pre><code><span><span class="va">mask</span> <span class="op">=</span> <span class="va">target</span> <span class="op">!=</span> <span class="va">void_code</span></span></code></pre>
 <p><code>31</code> will be filtered as <code>False</code>:</p>
 <pre><code>TensorMask([[[True, True, True,  ..., True, True, True],
          [True, True, True,  ..., True, True, True],
@@ -1397,47 +1326,47 @@ tensor([0., 0., 0.,  ..., 0., 0., 0.], device='cuda:0')</code></pre>
 tensor(0.0011, device='cuda:0')</code></pre>
 
 </details><p>Resnet34 model architecture for unet:</p>
-<pre><code>learn = unet_learner(dls, resnet34(), metrics = acc_camvid)</code></pre>
+<pre><code><span><span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="reference/unet_learner.html">unet_learner</a></span><span class="op">(</span><span class="va">dls</span>, <span class="fu"><a href="reference/resnet34.html">resnet34</a></span><span class="op">(</span><span class="op">)</span>, metrics <span class="op">=</span> <span class="va">acc_camvid</span><span class="op">)</span></span></code></pre>
 <p>And finally, fit:</p>
-<pre><code>lr = 3e-3
-wd = 1e-2
-
-learn %&gt;% fit_one_cycle(2, slice(lr), pct_start = 0.9, wd = wd)</code></pre>
+<pre><code><span><span class="va">lr</span> <span class="op">=</span> <span class="fl">3e-3</span></span>
+<span><span class="va">wd</span> <span class="op">=</span> <span class="fl">1e-2</span></span>
+<span></span>
+<span><span class="va">learn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fu"><a href="reference/slice.html">slice</a></span><span class="op">(</span><span class="va">lr</span><span class="op">)</span>, pct_start <span class="op">=</span> <span class="fl">0.9</span>, wd <span class="op">=</span> <span class="va">wd</span><span class="op">)</span></span></code></pre>
 <pre><code>epoch     train_loss  valid_loss  acc_camvid  time
 0         1.367869    1.239496    0.666145    00:25
 1         0.929434    0.661407    0.839969    00:23</code></pre>
-<pre><code>learn %&gt;% show_results(max_n = 1, figsize = c(20,10), vmin = 1, vmax = 30)</code></pre>
+<pre><code><span><span class="va">learn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/show_results.html">show_results</a></span><span class="op">(</span>max_n <span class="op">=</span> <span class="fl">1</span>, figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">20</span>,<span class="fl">10</span><span class="op">)</span>, vmin <span class="op">=</span> <span class="fl">1</span>, vmax <span class="op">=</span> <span class="fl">30</span><span class="op">)</span></span></code></pre>
 <p><img src="files/unetres.png" height="500" align="center" alt="lr"></p>
 </div>
-<div id="collab-collaborative-filtering" class="section level2">
-<h2 class="hasAnchor">
-<a href="#collab-collaborative-filtering" class="anchor"></a>Collab (Collaborative filtering)</h2>
+<div class="section level2">
+<h2 id="collab-collaborative-filtering">Collab (Collaborative filtering)<a class="anchor" aria-label="anchor" href="#collab-collaborative-filtering"></a>
+</h2>
 <p>Call libraries:</p>
-<pre><code><a href="https://github.com/nteetor/zeallot">library(zeallot)
-library(magrittr)</a></code></pre>
+<pre><code><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/nteetor/zeallot" class="external-link">zeallot</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span></span></code></pre>
 <p>Get data:</p>
-<pre><code><a href="reference/URLs_MOVIE_LENS_ML_100k.html">URLs_MOVIE_LENS_ML_100k()</a></code></pre>
+<pre><code><span><span class="fu"><a href="reference/URLs_MOVIE_LENS_ML_100k.html">URLs_MOVIE_LENS_ML_100k</a></span><span class="op">(</span><span class="op">)</span></span></code></pre>
 <p>Specify column names:</p>
-<pre><code>c(user,item,title)  %&lt;-% list('userId','movieId','title')</code></pre>
+<pre><code><span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">user</span>,<span class="va">item</span>,<span class="va">title</span><span class="op">)</span>  <span class="op"><a href="https://rdrr.io/pkg/zeallot/man/operator.html" class="external-link">%&lt;-%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">'userId'</span>,<span class="st">'movieId'</span>,<span class="st">'title'</span><span class="op">)</span></span></code></pre>
 <p>Read datasets:</p>
-<pre><code>ratings = fread('ml-100k/u.data', col.names = c(user,item,'rating','timestamp'))
-movies = fread('ml-100k/u.item', col.names = c(item, 'title', 'date', 'N', 'url',
-                                                           paste('g',1:19,sep = '')))</code></pre>
+<pre><code><span><span class="va">ratings</span> <span class="op">=</span> <span class="fu">fread</span><span class="op">(</span><span class="st">'ml-100k/u.data'</span>, col.names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">user</span>,<span class="va">item</span>,<span class="st">'rating'</span>,<span class="st">'timestamp'</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">movies</span> <span class="op">=</span> <span class="fu">fread</span><span class="op">(</span><span class="st">'ml-100k/u.item'</span>, col.names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">item</span>, <span class="st">'title'</span>, <span class="st">'date'</span>, <span class="st">'N'</span>, <span class="st">'url'</span>,</span>
+<span>                                                           <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">'g'</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">19</span>,sep <span class="op">=</span> <span class="st">''</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 <p>Left join on item:</p>
-<pre><code>rating_movie = ratings[movies[, .SD, .SDcols=c(item,title)], on = item]</code></pre>
+<pre><code><span><span class="va">rating_movie</span> <span class="op">=</span> <span class="va">ratings</span><span class="op">[</span><span class="va">movies</span><span class="op">[</span>, <span class="va">.SD</span>, .SDcols<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">item</span>,<span class="va">title</span><span class="op">)</span><span class="op">]</span>, on <span class="op">=</span> <span class="va">item</span><span class="op">]</span></span></code></pre>
 <p>Load data from dataframe (R):</p>
-<pre><code>dls = CollabDataLoaders_from_df(rating_movie, seed=42, valid_pct=0.1, bs=64, item_name=title, path='ml-100k')</code></pre>
+<pre><code><span><span class="va">dls</span> <span class="op">=</span> <span class="fu"><a href="reference/CollabDataLoaders_from_df.html">CollabDataLoaders_from_df</a></span><span class="op">(</span><span class="va">rating_movie</span>, seed<span class="op">=</span><span class="fl">42</span>, valid_pct<span class="op">=</span><span class="fl">0.1</span>, bs<span class="op">=</span><span class="fl">64</span>, item_name<span class="op">=</span><span class="va">title</span>, path<span class="op">=</span><span class="st">'ml-100k'</span><span class="op">)</span></span></code></pre>
 <p>Build model:</p>
-<pre><code>learn = collab_learner(dls, n_factors = 40, y_range=c(0, 5.5))</code></pre>
+<pre><code><span><span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="reference/collab_learner.html">collab_learner</a></span><span class="op">(</span><span class="va">dls</span>, n_factors <span class="op">=</span> <span class="fl">40</span>, y_range<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">5.5</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 <p>Start learning:</p>
-<pre><code>learn %&gt;% fit_one_cycle(1, 5e-3,  wd = 1e-1)</code></pre>
+<pre><code><span><span class="va">learn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5e-3</span>,  wd <span class="op">=</span> <span class="fl">1e-1</span><span class="op">)</span></span></code></pre>
 <p>Get top 1,000 movies:</p>
-<pre><code>top_movies = head(unique(rating_movie[ , count := .N, by = .(title)]
-                    [order(count,decreasing = T)]
-                    [, c('title','count')]),
-                   1e3)[['title']]</code></pre>
+<pre><code><span><span class="va">top_movies</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">rating_movie</span><span class="op">[</span> , <span class="va">count</span> <span class="op">:=</span> <span class="va">.N</span>, by <span class="op">=</span> <span class="fu">.</span><span class="op">(</span><span class="va">title</span><span class="op">)</span><span class="op">]</span></span>
+<span>                    <span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html" class="external-link">order</a></span><span class="op">(</span><span class="va">count</span>,decreasing <span class="op">=</span> <span class="cn">T</span><span class="op">)</span><span class="op">]</span></span>
+<span>                    <span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'title'</span>,<span class="st">'count'</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>                   <span class="fl">1e3</span><span class="op">)</span><span class="op">[[</span><span class="st">'title'</span><span class="op">]</span><span class="op">]</span></span></code></pre>
 <p>Find mean ratings for the films:</p>
-<pre><code>mean_ratings = unique(rating_movie[ , .(mean = mean(rating)), by = title])</code></pre>
+<pre><code><span><span class="va">mean_ratings</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">rating_movie</span><span class="op">[</span> , <span class="fu">.</span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">rating</span><span class="op">)</span><span class="op">)</span>, by <span class="op">=</span> <span class="va">title</span><span class="op">]</span><span class="op">)</span></span></code></pre>
 <pre><code>                                          title     mean
    1:                          Toy Story (1995) 3.878319
    2:                          GoldenEye (1995) 3.206107
@@ -1451,14 +1380,14 @@ movies = fread('ml-100k/u.item', col.names = c(item, 'title', 'date', 'N', 'url'
 1663:                       You So Crazy (1994) 3.000000
 1664: Scream of Stone (Schrei aus Stein) (1991) 3.000000</code></pre>
 <p>Extract bias:</p>
-<pre><code>movie_bias = learn %&gt;% get_bias(top_movies, is_item = TRUE)
-
-result = data.table(bias = movie_bias,
-           title = top_movies)
-
-res = merge(result, mean_ratings, all.y = FALSE)
-
-res[order(bias, decreasing = TRUE)]</code></pre>
+<pre><code><span><span class="va">movie_bias</span> <span class="op">=</span> <span class="va">learn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/get_bias.html">get_bias</a></span><span class="op">(</span><span class="va">top_movies</span>, is_item <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">result</span> <span class="op">=</span> <span class="fu">data.table</span><span class="op">(</span>bias <span class="op">=</span> <span class="va">movie_bias</span>,</span>
+<span>           title <span class="op">=</span> <span class="va">top_movies</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">res</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/merge.html" class="external-link">merge</a></span><span class="op">(</span><span class="va">result</span>, <span class="va">mean_ratings</span>, all.y <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">res</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html" class="external-link">order</a></span><span class="op">(</span><span class="va">bias</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">]</span></span></code></pre>
 <pre><code>                                           title        bias     mean
    1:                           Star Wars (1977)  0.29479960 4.358491
    2:                               Fargo (1996)  0.25264889 4.155512
@@ -1472,145 +1401,145 @@ res[order(bias, decreasing = TRUE)]</code></pre>
  999:             Speed 2: Cruise Control (1997) -0.06567496 2.131579
 1000:           Island of Dr. Moreau, The (1996) -0.07530680 2.157895</code></pre>
 <p>Get weights:</p>
-<pre><code>movie_w = learn %&gt;% get_weights(top_movies, is_item = TRUE, convert = TRUE)</code></pre>
+<pre><code><span><span class="va">movie_w</span> <span class="op">=</span> <span class="va">learn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/get_weights.html">get_weights</a></span><span class="op">(</span><span class="va">top_movies</span>, is_item <span class="op">=</span> <span class="cn">TRUE</span>, convert <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre>
 <p>Visualize with highcharter:</p>
-<pre><code>rownames(movie_w) = res$title
-
-highcharter::hchart(princomp(movie_w, cor = TRUE)) %&gt;% highcharter::hc_legend(enabled = FALSE)</code></pre>
+<pre><code><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">movie_w</span><span class="op">)</span> <span class="op">=</span> <span class="va">res</span><span class="op">$</span><span class="va">title</span></span>
+<span></span>
+<span><span class="fu">highcharter</span><span class="fu">::</span><span class="fu"><a href="https://jkunst.com/highcharter/reference/hchart.html" class="external-link">hchart</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/princomp.html" class="external-link">princomp</a></span><span class="op">(</span><span class="va">movie_w</span>, cor <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">highcharter</span><span class="fu">::</span><span class="fu"><a href="https://jkunst.com/highcharter/reference/hc_legend.html" class="external-link">hc_legend</a></span><span class="op">(</span>enabled <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre>
 <p><img src="files/pca.png" height="500" align="center" alt="PCA"></p>
 </div>
-<div id="text-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#text-data" class="anchor"></a>Text data</h2>
+<div class="section level2">
+<h2 id="text-data">Text data<a class="anchor" aria-label="anchor" href="#text-data"></a>
+</h2>
 <p>Grab data:</p>
-<pre><code><a href="reference/URLs_IMDB.html">URLs_IMDB()</a></code></pre>
+<pre><code><span><span class="fu"><a href="reference/URLs_IMDB.html">URLs_IMDB</a></span><span class="op">(</span><span class="op">)</span></span></code></pre>
 <p>Specify path and small batch_size because it consumes a lot of GPU:</p>
-<pre><code>path = 'imdb'
-bs = 20</code></pre>
+<pre><code><span><span class="va">path</span> <span class="op">=</span> <span class="st">'imdb'</span></span>
+<span><span class="va">bs</span> <span class="op">=</span> <span class="fl">20</span></span></code></pre>
 <p>Create datablock and iterator:</p>
-<pre><code>imdb_lm = DataBlock(blocks=list(TextBlock_from_folder(path, is_lm = TRUE)),
-                    get_items = partial(get_text_files(),
-                    folders = c('train', 'test', 'unsup')),
-                    splitter = RandomSplitter(0.1))
-
-dbunch_lm = imdb_lm %&gt;% dataloaders(source = path, path = path, bs = bs, seq_len = 80)</code></pre>
+<pre><code><span><span class="va">imdb_lm</span> <span class="op">=</span> <span class="fu"><a href="reference/DataBlock.html">DataBlock</a></span><span class="op">(</span>blocks<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="reference/TextBlock_from_folder.html">TextBlock_from_folder</a></span><span class="op">(</span><span class="va">path</span>, is_lm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                    get_items <span class="op">=</span> <span class="fu"><a href="reference/partial.html">partial</a></span><span class="op">(</span><span class="fu"><a href="reference/get_text_files.html">get_text_files</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>                    folders <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'train'</span>, <span class="st">'test'</span>, <span class="st">'unsup'</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                    splitter <span class="op">=</span> <span class="fu"><a href="reference/RandomSplitter.html">RandomSplitter</a></span><span class="op">(</span><span class="fl">0.1</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dbunch_lm</span> <span class="op">=</span> <span class="va">imdb_lm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/dataloaders.html">dataloaders</a></span><span class="op">(</span>source <span class="op">=</span> <span class="va">path</span>, path <span class="op">=</span> <span class="va">path</span>, bs <span class="op">=</span> <span class="va">bs</span>, seq_len <span class="op">=</span> <span class="fl">80</span><span class="op">)</span></span></code></pre>
 <p>Load a pretrained model and fit:</p>
-<pre><code>learn = language_model_learner(dbunch_lm, AWD_LSTM(), drop_mult = 0.3,
-                               metrics = list(accuracy, Perplexity()))
-
-learn %&gt;% fit_one_cycle(1, 2e-2, moms = c(0.8, 0.7, 0.8))</code></pre>
+<pre><code><span><span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="reference/language_model_learner.html">language_model_learner</a></span><span class="op">(</span><span class="va">dbunch_lm</span>, <span class="fu"><a href="reference/AWD_LSTM.html">AWD_LSTM</a></span><span class="op">(</span><span class="op">)</span>, drop_mult <span class="op">=</span> <span class="fl">0.3</span>,</span>
+<span>                               metrics <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">accuracy</span>, <span class="fu"><a href="reference/Perplexity.html">Perplexity</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">learn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2e-2</span>, moms <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.8</span>, <span class="fl">0.7</span>, <span class="fl">0.8</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 <blockquote>
-<p>Note: <a href="https://github.com/fastai/fastai/issues/1439">AWD_LSTM() can throw an error</a>. In this case find and clean “.fastai” folder.</p>
+<p>Note: <a href="https://github.com/fastai/fastai/issues/1439" class="external-link">AWD_LSTM() can throw an error</a>. In this case find and clean “.fastai” folder.</p>
 </blockquote>
 </div>
-<div id="medical-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#medical-data" class="anchor"></a>Medical data</h2>
-<p><a href="https://www.kaggle.com/c/rsna-intracranial-hemorrhage-detection/overview">Import dicom data</a>:</p>
-<pre><code>img = dcmread('hemorrhage.dcm')</code></pre>
-<p>Visualize data with different <a href="https://radiopaedia.org/articles/windowing-ct">windowing effects</a>:</p>
-<pre><code>dicom_windows = dicom_windows()
-scale = list(FALSE, TRUE, dicom_windows$brain, dicom_windows$subdural)
-titles = c('raw','normalized','brain windowed','subdural windowed')
-
-library(zeallot)
-c(fig, axs) %&lt;-% subplots()
-
-for (i in 1:4) {
-  img %&gt;% show(scale = scale[[i]],
-               ax = axs[[i]],
-               title=titles[i])
-}
-
-img %&gt;% plot(dpi = 250)</code></pre>
+<div class="section level2">
+<h2 id="medical-data">Medical data<a class="anchor" aria-label="anchor" href="#medical-data"></a>
+</h2>
+<p><a href="https://www.kaggle.com/c/rsna-intracranial-hemorrhage-detection/overview" class="external-link">Import dicom data</a>:</p>
+<pre><code><span><span class="va">img</span> <span class="op">=</span> <span class="fu"><a href="reference/dcmread.html">dcmread</a></span><span class="op">(</span><span class="st">'hemorrhage.dcm'</span><span class="op">)</span></span></code></pre>
+<p>Visualize data with different <a href="https://radiopaedia.org/articles/windowing-ct" class="external-link">windowing effects</a>:</p>
+<pre><code><span><span class="va">dicom_windows</span> <span class="op">=</span> <span class="fu"><a href="reference/dicom_windows.html">dicom_windows</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">scale</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="va">dicom_windows</span><span class="op">$</span><span class="va">brain</span>, <span class="va">dicom_windows</span><span class="op">$</span><span class="va">subdural</span><span class="op">)</span></span>
+<span><span class="va">titles</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'raw'</span>,<span class="st">'normalized'</span>,<span class="st">'brain windowed'</span>,<span class="st">'subdural windowed'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/nteetor/zeallot" class="external-link">zeallot</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">fig</span>, <span class="va">axs</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/zeallot/man/operator.html" class="external-link">%&lt;-%</a></span> <span class="fu"><a href="reference/subplots.html">subplots</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">img</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/show.html">show</a></span><span class="op">(</span>scale <span class="op">=</span> <span class="va">scale</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>               ax <span class="op">=</span> <span class="va">axs</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>               title<span class="op">=</span><span class="va">titles</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">img</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/plot.html">plot</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></span></code></pre>
 <p align="center">
 <img src="files/brain.png" height="500" align="center" alt="dicom"></p>
 <p>Apply different cmaps:</p>
-<pre><code>img %&gt;% show(cmap = cm()$gist_ncar, figsize = c(6,6))
-img %&gt;% plot()</code></pre>
+<pre><code><span><span class="va">img</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/show.html">show</a></span><span class="op">(</span>cmap <span class="op">=</span> <span class="fu"><a href="reference/cm.html">cm</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">gist_ncar</span>, figsize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">6</span>,<span class="fl">6</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">img</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/plot.html">plot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre>
 <p align="center">
 <img src="files/cmap.png" height="500" align="center" alt="dicom"></p>
 <p>Or get dcm matrix and plot with ggplot:</p>
-<pre><code>types = c('raw', 'normalized', 'brain', 'subdural')
-p_ = list()
-for ( i in 1:length(types)) {
-  p = nandb::matrix_raster_plot(img %&gt;% get_dcm_matrix(type = types[i]))
-  p_[[i]] = p
-}
-
-ggpubr::ggarrange(p_[[1]], p_[[2]], p_[[3]], p_[[4]], labels = types)</code></pre>
+<pre><code><span><span class="va">types</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'raw'</span>, <span class="st">'normalized'</span>, <span class="st">'brain'</span>, <span class="st">'subdural'</span><span class="op">)</span></span>
+<span><span class="va">p_</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="kw">for</span> <span class="op">(</span> <span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="reference/length.html">length</a></span><span class="op">(</span><span class="va">types</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">p</span> <span class="op">=</span> <span class="fu">nandb</span><span class="fu">::</span><span class="fu"><a href="https://rorynolan.github.io/nandb/reference/matrix_raster_plot.html" class="external-link">matrix_raster_plot</a></span><span class="op">(</span><span class="va">img</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/get_dcm_matrix.html">get_dcm_matrix</a></span><span class="op">(</span>type <span class="op">=</span> <span class="va">types</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="va">p_</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">=</span> <span class="va">p</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu">ggpubr</span><span class="fu">::</span><span class="fu"><a href="https://rpkgs.datanovia.com/ggpubr/reference/ggarrange.html" class="external-link">ggarrange</a></span><span class="op">(</span><span class="va">p_</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="va">p_</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>, <span class="va">p_</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span>, <span class="va">p_</span><span class="op">[[</span><span class="fl">4</span><span class="op">]</span><span class="op">]</span>, labels <span class="op">=</span> <span class="va">types</span><span class="op">)</span></span></code></pre>
 <p align="center">
 <img src="files/dcm.png" height="500" align="center" alt="dicom"></p>
 <p>Let’s try a relatively complex example:</p>
-<pre><code><a href="https://ggplot2.tidyverse.org">library(ggplot2)
-
-# crop parameters
-img = dcmread('hemorrhage.dcm')
-res = img %&gt;% mask_from_blur(win_brain()) %&gt;%
-  mask2bbox()
-
-types = c('raw', 'normalized', 'brain', 'subdural')
-
-# colors for matrix filling
-colors = list(viridis::inferno(30), viridis::magma(30),
-              viridis::plasma(30), viridis::cividis(30))
-scan_ = c('uniform_blur2d', 'gauss_blur2d')
-p_ = list()
-
-for ( i in 1:length(types)) {
-  if(i == 3) {
-    scan = scan_[1]
-  } else if (i==4) {
-    scan = scan_[2]
-  } else {
-    scan = ''
-  }
-
-  # crop with x/y_lim functions from ggplot
-  if(i==2) {
-    p = nandb::matrix_raster_plot(img %&gt;% get_dcm_matrix(type = types[i],
-                                                         scan = scan),
-                                                         colours = colors[[i]])
-    p = p + ylim(c(res[[1]][[1]],res[[2]][[1]])) + xlim(c(res[[1]][[2]],res[[2]][[2]]))
-
-  # zoom image (25 %)
-  } else if (i==4) {
-
-    img2 = img
-    img2 %&gt;% zoom(0.25)
-    p = nandb::matrix_raster_plot(img2 %&gt;% get_dcm_matrix(type = types[i],
-                                                          scan = scan),
-                                                          colours = colors[[i]])
-  } else {
-    p = nandb::matrix_raster_plot(img %&gt;% get_dcm_matrix(type = types[i],
-                                                         scan = scan),
-                                                         colours = colors[[i]])
-  }
-
-  p_[[i]] = p
-}
-
-ggpubr::ggarrange(p_[[1]],
-                  p_[[2]],
-                  p_[[3]],
-                  p_[[4]],
-                  labels = paste(types[1:4],
-                                 paste(c('','',scan_))[1:4])
-                  )</a></code></pre>
+<pre><code><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># crop parameters</span></span>
+<span><span class="va">img</span> <span class="op">=</span> <span class="fu"><a href="reference/dcmread.html">dcmread</a></span><span class="op">(</span><span class="st">'hemorrhage.dcm'</span><span class="op">)</span></span>
+<span><span class="va">res</span> <span class="op">=</span> <span class="va">img</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/mask_from_blur.html">mask_from_blur</a></span><span class="op">(</span><span class="fu"><a href="reference/win_brain.html">win_brain</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="reference/mask2bbox.html">mask2bbox</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">types</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'raw'</span>, <span class="st">'normalized'</span>, <span class="st">'brain'</span>, <span class="st">'subdural'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># colors for matrix filling</span></span>
+<span><span class="va">colors</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">viridis</span><span class="fu">::</span><span class="fu"><a href="https://sjmgarnier.github.io/viridisLite/reference/viridis.html" class="external-link">inferno</a></span><span class="op">(</span><span class="fl">30</span><span class="op">)</span>, <span class="fu">viridis</span><span class="fu">::</span><span class="fu"><a href="https://sjmgarnier.github.io/viridisLite/reference/viridis.html" class="external-link">magma</a></span><span class="op">(</span><span class="fl">30</span><span class="op">)</span>,</span>
+<span>              <span class="fu">viridis</span><span class="fu">::</span><span class="fu"><a href="https://sjmgarnier.github.io/viridisLite/reference/viridis.html" class="external-link">plasma</a></span><span class="op">(</span><span class="fl">30</span><span class="op">)</span>, <span class="fu">viridis</span><span class="fu">::</span><span class="fu"><a href="https://sjmgarnier.github.io/viridisLite/reference/viridis.html" class="external-link">cividis</a></span><span class="op">(</span><span class="fl">30</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">scan_</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'uniform_blur2d'</span>, <span class="st">'gauss_blur2d'</span><span class="op">)</span></span>
+<span><span class="va">p_</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">for</span> <span class="op">(</span> <span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="reference/length.html">length</a></span><span class="op">(</span><span class="va">types</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw">if</span><span class="op">(</span><span class="va">i</span> <span class="op">==</span> <span class="fl">3</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">scan</span> <span class="op">=</span> <span class="va">scan_</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">i</span><span class="op">==</span><span class="fl">4</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">scan</span> <span class="op">=</span> <span class="va">scan_</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="va">scan</span> <span class="op">=</span> <span class="st">''</span></span>
+<span>  <span class="op">}</span></span>
+<span></span>
+<span>  <span class="co"># crop with x/y_lim functions from ggplot</span></span>
+<span>  <span class="kw">if</span><span class="op">(</span><span class="va">i</span><span class="op">==</span><span class="fl">2</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">p</span> <span class="op">=</span> <span class="fu">nandb</span><span class="fu">::</span><span class="fu"><a href="https://rorynolan.github.io/nandb/reference/matrix_raster_plot.html" class="external-link">matrix_raster_plot</a></span><span class="op">(</span><span class="va">img</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/get_dcm_matrix.html">get_dcm_matrix</a></span><span class="op">(</span>type <span class="op">=</span> <span class="va">types</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>,</span>
+<span>                                                         scan <span class="op">=</span> <span class="va">scan</span><span class="op">)</span>,</span>
+<span>                                                         colours <span class="op">=</span> <span class="va">colors</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span>    <span class="va">p</span> <span class="op">=</span> <span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html" class="external-link">ylim</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">res</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>,<span class="va">res</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html" class="external-link">xlim</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">res</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>,<span class="va">res</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="co"># zoom image (25 %)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">i</span><span class="op">==</span><span class="fl">4</span><span class="op">)</span> <span class="op">{</span></span>
+<span></span>
+<span>    <span class="va">img2</span> <span class="op">=</span> <span class="va">img</span></span>
+<span>    <span class="va">img2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/zoom.html">zoom</a></span><span class="op">(</span><span class="fl">0.25</span><span class="op">)</span></span>
+<span>    <span class="va">p</span> <span class="op">=</span> <span class="fu">nandb</span><span class="fu">::</span><span class="fu"><a href="https://rorynolan.github.io/nandb/reference/matrix_raster_plot.html" class="external-link">matrix_raster_plot</a></span><span class="op">(</span><span class="va">img2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/get_dcm_matrix.html">get_dcm_matrix</a></span><span class="op">(</span>type <span class="op">=</span> <span class="va">types</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>,</span>
+<span>                                                          scan <span class="op">=</span> <span class="va">scan</span><span class="op">)</span>,</span>
+<span>                                                          colours <span class="op">=</span> <span class="va">colors</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="va">p</span> <span class="op">=</span> <span class="fu">nandb</span><span class="fu">::</span><span class="fu"><a href="https://rorynolan.github.io/nandb/reference/matrix_raster_plot.html" class="external-link">matrix_raster_plot</a></span><span class="op">(</span><span class="va">img</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/get_dcm_matrix.html">get_dcm_matrix</a></span><span class="op">(</span>type <span class="op">=</span> <span class="va">types</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>,</span>
+<span>                                                         scan <span class="op">=</span> <span class="va">scan</span><span class="op">)</span>,</span>
+<span>                                                         colours <span class="op">=</span> <span class="va">colors</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span></span>
+<span>  <span class="va">p_</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">=</span> <span class="va">p</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu">ggpubr</span><span class="fu">::</span><span class="fu"><a href="https://rpkgs.datanovia.com/ggpubr/reference/ggarrange.html" class="external-link">ggarrange</a></span><span class="op">(</span><span class="va">p_</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>                  <span class="va">p_</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>                  <span class="va">p_</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>                  <span class="va">p_</span><span class="op">[[</span><span class="fl">4</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>                  labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">types</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>,</span>
+<span>                                 <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">''</span>,<span class="st">''</span>,<span class="va">scan_</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span></span>
+<span>                  <span class="op">)</span></span></code></pre>
 <p align="center">
 <img src="files/dcm2.png" height="500" align="center" alt="dicom2"></p>
 </div>
-<div id="additional-features" class="section level2">
-<h2 class="hasAnchor">
-<a href="#additional-features" class="anchor"></a>Additional features</h2>
-<div id="find-optimal-learning-rate" class="section level3">
-<h3 class="hasAnchor">
-<a href="#find-optimal-learning-rate" class="anchor"></a>Find optimal learning rate</h3>
+<div class="section level2">
+<h2 id="additional-features">Additional features<a class="anchor" aria-label="anchor" href="#additional-features"></a>
+</h2>
+<div class="section level3">
+<h3 id="find-optimal-learning-rate">Find optimal learning rate<a class="anchor" aria-label="anchor" href="#find-optimal-learning-rate"></a>
+</h3>
 <p>Get optimal learning rate and then fit:</p>
-<pre><code>data = model %&gt;% lr_find()
-data
-
-# SuggestedLRs(lr_min=0.017378008365631102, lr_steep=0.0020892962347716093)</code></pre>
+<pre><code><span><span class="va">data</span> <span class="op">=</span> <span class="va">model</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/lr_find.html">lr_find</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">data</span></span>
+<span></span>
+<span><span class="co"># SuggestedLRs(lr_min=0.017378008365631102, lr_steep=0.0020892962347716093)</span></span></code></pre>
 <pre><code>         lr_rates   losses
 1 0.0000001000000 5.349157
 2 0.0000001202264 5.231493
@@ -1619,161 +1548,159 @@ data
 5 0.0000002089296 5.043181
 6 0.0000002511886 5.023340</code></pre>
 <p>Visualize:</p>
-<pre><code>highcharter::hchart(data, "line", highcharter::hcaes(y = losses, x = lr_rates ))</code></pre>
+<pre><code><span><span class="fu">highcharter</span><span class="fu">::</span><span class="fu"><a href="https://jkunst.com/highcharter/reference/hchart.html" class="external-link">hchart</a></span><span class="op">(</span><span class="va">data</span>, <span class="st">"line"</span>, <span class="fu">highcharter</span><span class="fu">::</span><span class="fu"><a href="https://jkunst.com/highcharter/reference/hcaes.html" class="external-link">hcaes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">losses</span>, x <span class="op">=</span> <span class="va">lr_rates</span> <span class="op">)</span><span class="op">)</span></span></code></pre>
 <p align="center">
 <img src="files/lr.png" height="500" align="center" alt="Learning_rates"></p>
 </div>
-<div id="visualize-batch" class="section level3">
-<h3 class="hasAnchor">
-<a href="#visualize-batch" class="anchor"></a>Visualize batch</h3>
+<div class="section level3">
+<h3 id="visualize-batch">Visualize batch<a class="anchor" aria-label="anchor" href="#visualize-batch"></a>
+</h3>
 <p>Visualize tensor(s):</p>
-<pre><code># get batch
-batch = dls %&gt;% one_batch(convert = TRUE)
-
-# visualize img 9 with transformations
-magick::image_read(batch[[1]][[9]])</code></pre>
+<pre><code><span><span class="co"># get batch</span></span>
+<span><span class="va">batch</span> <span class="op">=</span> <span class="va">dls</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/one_batch.html">one_batch</a></span><span class="op">(</span>convert <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># visualize img 9 with transformations</span></span>
+<span><span class="fu">magick</span><span class="fu">::</span><span class="fu">image_read</span><span class="op">(</span><span class="va">batch</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="fl">9</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></code></pre>
 <p align="center">
 <img src="files/cat.png" height="500" align="center" alt="Batch"></p>
 </div>
-<div id="mask" class="section level3">
-<h3 class="hasAnchor">
-<a href="#mask" class="anchor"></a>Mask</h3>
+<div class="section level3">
+<h3 id="mask">Mask<a class="anchor" aria-label="anchor" href="#mask"></a>
+</h3>
 <p>Visualize mask:</p>
-<pre><code><a href="https://magrittr.tidyverse.org">library(magrittr)
-library(fastai)
-
-# original image
-fns = get_image_files('camvid/images')
-cam_fn = capture.output(fns[0])
-
-# mask
-mask_fn = 'camvid/labels/0016E5_01110_P.png'
-cam_img = Image_create(cam_fn)
-
-# create mask
-tmask = Transform(Mask_create())
-mask = tmask(mask_fn)
-
-# visualize
-mask %&gt;% to_matrix() %&gt;%
-  nandb::matrix_raster_plot(colours = viridis::plasma(3)) + theme(legend.position = "none")</a></code></pre>
+<pre><code><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EagerAI/fastai" class="external-link">fastai</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># original image</span></span>
+<span><span class="va">fns</span> <span class="op">=</span> <span class="fu"><a href="reference/get_image_files.html">get_image_files</a></span><span class="op">(</span><span class="st">'camvid/images'</span><span class="op">)</span></span>
+<span><span class="va">cam_fn</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/utils/capture.output.html" class="external-link">capture.output</a></span><span class="op">(</span><span class="va">fns</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># mask</span></span>
+<span><span class="va">mask_fn</span> <span class="op">=</span> <span class="st">'camvid/labels/0016E5_01110_P.png'</span></span>
+<span><span class="va">cam_img</span> <span class="op">=</span> <span class="fu"><a href="reference/Image_create.html">Image_create</a></span><span class="op">(</span><span class="va">cam_fn</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># create mask</span></span>
+<span><span class="va">tmask</span> <span class="op">=</span> <span class="fu"><a href="reference/Transform.html">Transform</a></span><span class="op">(</span><span class="fu"><a href="reference/Mask_create.html">Mask_create</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">mask</span> <span class="op">=</span> <span class="fu">tmask</span><span class="op">(</span><span class="va">mask_fn</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># visualize</span></span>
+<span><span class="va">mask</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/to_matrix.html">to_matrix</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">nandb</span><span class="fu">::</span><span class="fu"><a href="https://rorynolan.github.io/nandb/reference/matrix_raster_plot.html" class="external-link">matrix_raster_plot</a></span><span class="op">(</span>colours <span class="op">=</span> <span class="fu">viridis</span><span class="fu">::</span><span class="fu"><a href="https://sjmgarnier.github.io/viridisLite/reference/viridis.html" class="external-link">plasma</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code></pre>
 <p align="center">
 <img src="files/mask.png" height="500" align="center" alt="Mask"></p>
 </div>
-<div id="tensorpoints" class="section level3">
-<h3 class="hasAnchor">
-<a href="#tensorpoints" class="anchor"></a>TensorPoints</h3>
+<div class="section level3">
+<h3 id="tensorpoints">TensorPoints<a class="anchor" aria-label="anchor" href="#tensorpoints"></a>
+</h3>
 <p>Load Tiny Mnist:</p>
-<pre><code><a href="reference/URLs_MNIST_TINY.html"># download
-URLs_MNIST_TINY()
-
-# black and white img
-timg = Transform(ImageBW_create)
-mnist_fn = "mnist_tiny/valid/3/9007.png"
-mnist_img = timg(mnist_fn)
-
-# resize img
-pnt_img = TensorImage(mnist_img %&gt;% Image_resize(size = list(28,35)))
-
-# visualize
-library(ggplot2)
-pnt_img %&gt;% to_matrix() %&gt;% nandb::matrix_raster_plot(colours = c('white','black')) +
-  geom_point(aes(x=0, y=0),size=2, colour="red")+
-  geom_point(aes(x=0, y=35),size=2, colour="red")+
-  geom_point(aes(x=28, y=0),size=2, colour="red")+
-  geom_point(aes(x=28, y=35),size=2, colour="red")+
-  geom_point(aes(x=9, y=17),size=2, colour="red")+
-  theme(legend.position = "none")</a></code></pre>
+<pre><code><span><span class="co"># download</span></span>
+<span><span class="fu"><a href="reference/URLs_MNIST_TINY.html">URLs_MNIST_TINY</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># black and white img</span></span>
+<span><span class="va">timg</span> <span class="op">=</span> <span class="fu"><a href="reference/Transform.html">Transform</a></span><span class="op">(</span><span class="va">ImageBW_create</span><span class="op">)</span></span>
+<span><span class="va">mnist_fn</span> <span class="op">=</span> <span class="st">"mnist_tiny/valid/3/9007.png"</span></span>
+<span><span class="va">mnist_img</span> <span class="op">=</span> <span class="fu">timg</span><span class="op">(</span><span class="va">mnist_fn</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># resize img</span></span>
+<span><span class="va">pnt_img</span> <span class="op">=</span> <span class="fu"><a href="reference/TensorImage.html">TensorImage</a></span><span class="op">(</span><span class="va">mnist_img</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/Image_resize.html">Image_resize</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">28</span>,<span class="fl">35</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># visualize</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="va">pnt_img</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/to_matrix.html">to_matrix</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">nandb</span><span class="fu">::</span><span class="fu"><a href="https://rorynolan.github.io/nandb/reference/matrix_raster_plot.html" class="external-link">matrix_raster_plot</a></span><span class="op">(</span>colours <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'white'</span>,<span class="st">'black'</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="fl">0</span>, y<span class="op">=</span><span class="fl">0</span><span class="op">)</span>,size<span class="op">=</span><span class="fl">2</span>, colour<span class="op">=</span><span class="st">"red"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="fl">0</span>, y<span class="op">=</span><span class="fl">35</span><span class="op">)</span>,size<span class="op">=</span><span class="fl">2</span>, colour<span class="op">=</span><span class="st">"red"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="fl">28</span>, y<span class="op">=</span><span class="fl">0</span><span class="op">)</span>,size<span class="op">=</span><span class="fl">2</span>, colour<span class="op">=</span><span class="st">"red"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="fl">28</span>, y<span class="op">=</span><span class="fl">35</span><span class="op">)</span>,size<span class="op">=</span><span class="fl">2</span>, colour<span class="op">=</span><span class="st">"red"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="fl">9</span>, y<span class="op">=</span><span class="fl">17</span><span class="op">)</span>,size<span class="op">=</span><span class="fl">2</span>, colour<span class="op">=</span><span class="st">"red"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code></pre>
 <p align="center">
 <img src="files/ggplot.png" height="500" align="center" alt="Mnist_3"></p>
 </div>
-<div id="annotations-on-tiny-coco" class="section level3">
-<h3 class="hasAnchor">
-<a href="#annotations-on-tiny-coco" class="anchor"></a>Annotations on Tiny COCO</h3>
-<pre><code><a href="https://magrittr.tidyverse.org">library(magrittr)
-library(zeallot)
-library(fastai)
-
-URLs_COCO_TINY()
-
-c(images, lbl_bbox) %&lt;-% get_annotations('coco_tiny/train.json')
-timg = Transform(ImageBW_create)
-idx = 49
-c(coco_fn,bbox) %&lt;-% list(paste('coco_tiny/train',images[[idx]],sep = '/'),
-                       lbl_bbox[[idx]])
-coco_img = timg(coco_fn)
-
-tbbox = LabeledBBox(TensorBBox(bbox[[1]]), bbox[[2]])
-</a></code></pre>
+<div class="section level3">
+<h3 id="annotations-on-tiny-coco">Annotations on Tiny COCO<a class="anchor" aria-label="anchor" href="#annotations-on-tiny-coco"></a>
+</h3>
+<pre><code><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/nteetor/zeallot" class="external-link">zeallot</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EagerAI/fastai" class="external-link">fastai</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/URLs_COCO_TINY.html">URLs_COCO_TINY</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">images</span>, <span class="va">lbl_bbox</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/zeallot/man/operator.html" class="external-link">%&lt;-%</a></span> <span class="fu"><a href="reference/get_annotations.html">get_annotations</a></span><span class="op">(</span><span class="st">'coco_tiny/train.json'</span><span class="op">)</span></span>
+<span><span class="va">timg</span> <span class="op">=</span> <span class="fu"><a href="reference/Transform.html">Transform</a></span><span class="op">(</span><span class="va">ImageBW_create</span><span class="op">)</span></span>
+<span><span class="va">idx</span> <span class="op">=</span> <span class="fl">49</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">coco_fn</span>,<span class="va">bbox</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/zeallot/man/operator.html" class="external-link">%&lt;-%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">'coco_tiny/train'</span>,<span class="va">images</span><span class="op">[[</span><span class="va">idx</span><span class="op">]</span><span class="op">]</span>,sep <span class="op">=</span> <span class="st">'/'</span><span class="op">)</span>,</span>
+<span>                       <span class="va">lbl_bbox</span><span class="op">[[</span><span class="va">idx</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">coco_img</span> <span class="op">=</span> <span class="fu">timg</span><span class="op">(</span><span class="va">coco_fn</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">tbbox</span> <span class="op">=</span> <span class="fu"><a href="reference/LabeledBBox.html">LabeledBBox</a></span><span class="op">(</span><span class="fu"><a href="reference/TensorBBox.html">TensorBBox</a></span><span class="op">(</span><span class="va">bbox</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>, <span class="va">bbox</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></code></pre>
 <pre><code>(#2) [TensorBBox([[ 91.3000,  77.9400, 102.4300,  82.4700],
         [ 27.5800,  77.6500,  40.7600,  82.3400]]),['tv', 'tv']]</code></pre>
 <p>Visualize:</p>
-<pre><code><a href="https://rdrr.io/r/base/library.html">library(imager)
-coco = imager::load.image(coco_fn)
-plot(coco,axes=F)
-
-for ( i in 1:length(bbox[[1]])) {
-  rect(bbox[[1]][[i]][[1]],bbox[[1]][[i]][[2]],
-       bbox[[1]][[i]][[3]],bbox[[1]][[i]][[4]],
-       border = "white", lwd = 2)
-
-  text(bbox[[1]][[i]][[3]]-2.5,bbox[[1]][[i]][[4]]+2.5, labels = bbox[[2]][i],
-       offset = 2,
-       pos = 2,
-       cex = 1,
-       col = "white"
-  )
-}
-</a></code></pre>
+<pre><code><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://dahtah.github.io/imager/" class="external-link">imager</a></span><span class="op">)</span></span>
+<span><span class="va">coco</span> <span class="op">=</span> <span class="fu">imager</span><span class="fu">::</span><span class="fu">load.image</span><span class="op">(</span><span class="va">coco_fn</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/plot.html">plot</a></span><span class="op">(</span><span class="va">coco</span>,axes<span class="op">=</span><span class="cn">F</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">for</span> <span class="op">(</span> <span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="reference/length.html">length</a></span><span class="op">(</span><span class="va">bbox</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/rect.html" class="external-link">rect</a></span><span class="op">(</span><span class="va">bbox</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>,<span class="va">bbox</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>       <span class="va">bbox</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span>,<span class="va">bbox</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="fl">4</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>       border <span class="op">=</span> <span class="st">"white"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="fu"><a href="reference/text.html">text</a></span><span class="op">(</span><span class="va">bbox</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span><span class="op">-</span><span class="fl">2.5</span>,<span class="va">bbox</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="fl">4</span><span class="op">]</span><span class="op">]</span><span class="op">+</span><span class="fl">2.5</span>, labels <span class="op">=</span> <span class="va">bbox</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>,</span>
+<span>       offset <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>       pos <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>       cex <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>       col <span class="op">=</span> <span class="st">"white"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre>
 <p align="center">
 <img src="files/annotate.png" height="500" align="center" alt="Annotation"></p>
 <p>Alternatively, we could see batch via dataloader:</p>
-<pre><code>idx = 3
-c(coco_fn,bbox) %&lt;-% list(paste('coco_tiny/train',images[[idx]],sep = '/'),
-                          lbl_bbox[[idx]])
-
-coco_bb = function(x) {
- TensorBBox_create(bbox[[1]])
-}
-
-coco_lbl = function(x) {
-  bbox[[2]]
-}
-
-coco_dsrc = Datasets(c(rep(coco_fn,10)),
-                     list(Image_create(), list(coco_bb),
-                     list( coco_lbl, MultiCategorize(add_na = TRUE) )
-                          ), n_inp = 1)
-
-coco_tdl = TfmdDL(coco_dsrc, bs = 9,
-                  after_item = list(BBoxLabeler(), PointScaler(),
-                                 ToTensor()),
-                  after_batch = list(IntToFloatTensor(), aug_transforms())
-                  )
-
-coco_tdl %&gt;% show_batch(dpi = 200)</code></pre>
+<pre><code><span><span class="va">idx</span> <span class="op">=</span> <span class="fl">3</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">coco_fn</span>,<span class="va">bbox</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/zeallot/man/operator.html" class="external-link">%&lt;-%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">'coco_tiny/train'</span>,<span class="va">images</span><span class="op">[[</span><span class="va">idx</span><span class="op">]</span><span class="op">]</span>,sep <span class="op">=</span> <span class="st">'/'</span><span class="op">)</span>,</span>
+<span>                          <span class="va">lbl_bbox</span><span class="op">[[</span><span class="va">idx</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">coco_bb</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span> <span class="fu"><a href="reference/TensorBBox_create.html">TensorBBox_create</a></span><span class="op">(</span><span class="va">bbox</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">coco_lbl</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">bbox</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">coco_dsrc</span> <span class="op">=</span> <span class="fu"><a href="reference/Datasets.html">Datasets</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">coco_fn</span>,<span class="fl">10</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                     <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="reference/Image_create.html">Image_create</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">coco_bb</span><span class="op">)</span>,</span>
+<span>                     <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span> <span class="va">coco_lbl</span>, <span class="fu"><a href="reference/MultiCategorize.html">MultiCategorize</a></span><span class="op">(</span>add_na <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">)</span></span>
+<span>                          <span class="op">)</span>, n_inp <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">coco_tdl</span> <span class="op">=</span> <span class="fu"><a href="reference/TfmdDL.html">TfmdDL</a></span><span class="op">(</span><span class="va">coco_dsrc</span>, bs <span class="op">=</span> <span class="fl">9</span>,</span>
+<span>                  after_item <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="reference/BBoxLabeler.html">BBoxLabeler</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="reference/PointScaler.html">PointScaler</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>                                 <span class="fu"><a href="reference/ToTensor.html">ToTensor</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                  after_batch <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="reference/IntToFloatTensor.html">IntToFloatTensor</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span>                  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">coco_tdl</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="reference/show_batch.html">show_batch</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span></code></pre>
 <p align="center">
 <img src="files/annotate_.png" height="500" align="center" alt="Annotation_"></p>
 </div>
-<div id="nn-module" class="section level3">
-<h3 class="hasAnchor">
-<a href="#nn-module" class="anchor"></a>NN module</h3>
+<div class="section level3">
+<h3 id="nn-module">NN module<a class="anchor" aria-label="anchor" href="#nn-module"></a>
+</h3>
 <p>To build a custom sequential model and pass it to learner:</p>
-<pre><code>nn$Sequential() +
-  nn$Conv2d(1L,20L,5L) +
-  nn$Conv2d(1L,20L,5L) +
-  nn$Conv2d(1L,20L,5L)</code></pre>
+<pre><code><span><span class="va">nn</span><span class="op">$</span><span class="fu">Sequential</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="va">nn</span><span class="op">$</span><span class="fu">Conv2d</span><span class="op">(</span><span class="fl">1L</span>,<span class="fl">20L</span>,<span class="fl">5L</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="va">nn</span><span class="op">$</span><span class="fu">Conv2d</span><span class="op">(</span><span class="fl">1L</span>,<span class="fl">20L</span>,<span class="fl">5L</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="va">nn</span><span class="op">$</span><span class="fu">Conv2d</span><span class="op">(</span><span class="fl">1L</span>,<span class="fl">20L</span>,<span class="fl">5L</span><span class="op">)</span></span></code></pre>
 <pre><code>Sequential(
   (0): Conv2d(1, 20, kernel_size=(5, 5), stride=(1, 1))
   (1): Conv2d(1, 20, kernel_size=(5, 5), stride=(1, 1))
   (2): Conv2d(1, 20, kernel_size=(5, 5), stride=(1, 1))
 )</code></pre>
 <p>To specify the name of the layers, one has to pass layer within lists, because torch layers have no <code>name</code> argument:</p>
-<pre><code>nn$Sequential() +
-  nn$Conv2d(1L,20L,5L) +
-  list('my_conv2',nn$Conv2d(1L,20L,5L)) +
-  nn$Conv2d(1L,20L,5L) +
-  list('my_conv4',nn$Conv2d(1L,20L,5L))</code></pre>
+<pre><code><span><span class="va">nn</span><span class="op">$</span><span class="fu">Sequential</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="va">nn</span><span class="op">$</span><span class="fu">Conv2d</span><span class="op">(</span><span class="fl">1L</span>,<span class="fl">20L</span>,<span class="fl">5L</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">'my_conv2'</span>,<span class="va">nn</span><span class="op">$</span><span class="fu">Conv2d</span><span class="op">(</span><span class="fl">1L</span>,<span class="fl">20L</span>,<span class="fl">5L</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="va">nn</span><span class="op">$</span><span class="fu">Conv2d</span><span class="op">(</span><span class="fl">1L</span>,<span class="fl">20L</span>,<span class="fl">5L</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">'my_conv4'</span>,<span class="va">nn</span><span class="op">$</span><span class="fu">Conv2d</span><span class="op">(</span><span class="fl">1L</span>,<span class="fl">20L</span>,<span class="fl">5L</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 <pre><code>Sequential(
   (0): Conv2d(1, 20, kernel_size=(5, 5), stride=(1, 1))
   (my_conv2): Conv2d(1, 20, kernel_size=(5, 5), stride=(1, 1))
@@ -1782,255 +1709,68 @@ coco_tdl %&gt;% show_batch(dpi = 200)</code></pre>
 )</code></pre>
 </div>
 </div>
-<div id="icevision" class="section level2">
-<h2 class="hasAnchor">
-<a href="#icevision" class="anchor"></a>Icevision</h2>
-<p>Icevision module has a great set of tools for object detection tasks:</p>
-<blockquote>
-<p>Note: First, install <a href="https://github.com/airctic/icevision">icevision module</a>: reticulate::py_install(‘icevision’, pip = TRUE)</p>
-</blockquote>
-<pre><code><a href="https://github.com/EagerAI/fastai">library(fastai)
-library(magrittr)
-
-# get file
-url = "https://cvbp.blob.core.windows.net/public/datasets/object_detection/odFridgeObjects.zip"
-download.file(url,destfile = odFridgeObjects.zip)
-
-# Parser
-class_map = icevision_ClassMap(c("milk_bottle", "carton", "can", "water_bottle"))
-parser = parsers_voc(annotations_dir= "odFridgeObjects/annotations/",
-                     images_dir= "odFridgeObjects/images",
-                     class_map=class_map)
-records = parser$parse()
-
-# Records
-train_records = records[[1]]
-valid_records = records[[2]]
-
-# Transforms
-train_tfms = icevision_Adapter(list(icevision_aug_tfms(size=384, presize=512),
-                               icevision_Normalize()))
-valid_tfms = icevision_Adapter(list(icevision_resize_and_pad(384),icevision_Normalize()))
-
-# Datasets
-train_ds = icevision_Dataset(train_records, train_tfms)
-valid_ds = icevision_Dataset(valid_records, valid_tfms)
-
-# See batch
-
-train_ds %&gt;% show_samples(idx=c(5,10,20,50,100,99), class_map=class_map,
-                          denormalize_fn=denormalize_imagenet(),ncols = 3)
-</a></code></pre>
-<p align="center">
-<img src="files/fridge.jpg" height="300" align="center" alt="Detection"></p>
-<p>Next, we create data loader and fastai training:</p>
-<pre><code># DataLoaders
-train_dl = efficientdet_train_dl(train_ds, batch_size=16, num_workers=4, shuffle=T)
-valid_dl = efficientdet_valid_dl(valid_ds, batch_size=16, num_workers=4, shuffle=F)
-
-# Model and Metrics
-model = efficientdet_model(model_name="tf_efficientdet_lite0", num_classes=5, img_size=384)
-metrics = list(COCOMetric())
-
-# Training using Fastai
-learn = efficientdet_learner(dls=list(train_dl, valid_dl), model=model, metrics=metrics)
-res = learn %&gt;% fine_tune(10, 1e-2, freeze_epochs=10)</code></pre>
-<pre><code>epoch   train_loss   valid_loss   COCOMetric   time  
-------  -----------  -----------  -----------  ------
-0       1.711512     1.264311     0.001845     00:05 
-1       1.568228     1.247132     0.009066     00:03 
-2       1.496242     1.222866     0.010658     00:03 
-3       1.433081     1.137174     0.030878     00:03 
-4       1.349961     1.060559     0.114889     00:03 
-5       1.260490     0.937396     0.180179     00:03 
-6       1.169536     0.998160     0.174759     00:04 
-7       1.097816     0.929107     0.208315     00:03 
-8       1.042755     0.821408     0.230876     00:03 
-9       0.987962     0.840447     0.297297     00:03 
-epoch   train_loss   valid_loss   COCOMetric   time  
-------  -----------  -----------  -----------  ------
-0       0.629509     0.715716     0.325585     00:04 
-1       0.599518     0.684150     0.382239     00:03 
-2       0.585920     0.631303     0.480204     00:04 
-3       0.554550     0.615111     0.516641     00:04 
-4       0.539868     0.622383     0.459974     00:04 
-5       0.521756     0.609013     0.556388     00:04 
-6       0.498118     0.491549     0.611895     00:04 
-7       0.477656     0.469396     0.685497     00:04 
-8       0.459495     0.407668     0.713956     00:04 
-9       0.446206     0.383890     0.729540     00:04 </code></pre>
-<p>Predictions:</p>
-<pre><code># Inference
-# DataLoader
-infer_dl = efficientdet_infer_dl(valid_ds, batch_size=8)
-# Predict
-res &lt;- efficientdet_predict_dl(model, infer_dl)
-
-show_preds(
-  res,
-  c(10,20,25,12,16),
-  class_map=class_map,
-  denormalize_fn=denormalize_imagenet(),
-  ncols=5,
-  figsize=c(19,10)
-)</code></pre>
-<p align="center">
-<img src="files/output.jpg" height="300" align="center" alt="Detection"></p>
-</div>
-<div id="kaggle-1" class="section level2">
-<h2 class="hasAnchor">
-<a href="#kaggle-1" class="anchor"></a>Kaggle</h2>
-<p>Kaggle API is fantastic because it simplifies all the necessary steps for participating in a competition! Using the API it is possible to directly download/submit files, check leader board and etc. If you want to use this functionality, then it is important to place your <code>kaggle.json</code> to <code>.kaggle</code> folder:</p>
-<p align="center">
-<img src="files/kaggle.png" height="400" align="center" alt="Annotation"></p>
-<p>Let’s participate in a <code>Titanic</code> competition:</p>
-<pre><code><a href="https://github.com/EagerAI/fastai">library(fastai)
-library(magrittr)
-
-com_nm = 'titanic'
-
-titanic_files = competition_list_files(com_nm)
-titanic_files = lapply(1:length(titanic_files),
-                      function(x) as.character(titanic_files[[x]]))
-
-str(titanic_files)
-
-if(!dir.exists(com_nm)) {
-  dir.create(com_nm)
-}
-
-# download via api
-competition_download_files(competition = com_nm, path = com_nm, unzip = TRUE)
-
-train = data.table::fread(paste(com_nm, 'train.csv', sep = '/'))
-
-train[['Survived']] = as.factor(train[['Survived']])
-train[['Name']] &lt;- NULL
-train[['PassengerId']] &lt;- NULL
-
-str(train)</a></code></pre>
-<pre><code>Classes ‘data.table’ and 'data.frame':  595 obs. of  10 variables:
- $ Survived: Factor w/ 2 levels "0","1": 1 2 2 2 1 1 1 1 2 2 ...
- $ Pclass  : int  3 1 3 1 3 3 1 3 3 2 ...
- $ Sex     : chr  "male" "female" "female" "female" ...
- $ Age     : num  22 38 26 35 35 NA 54 2 27 14 ...
- $ SibSp   : int  1 1 0 1 0 0 0 3 0 1 ...
- $ Parch   : int  0 0 0 0 0 0 0 1 2 0 ...
- $ Ticket  : chr  "A/5 21171" "PC 17599" "STON/O2. 3101282" "113803" ...
- $ Fare    : num  7.25 71.28 7.92 53.1 8.05 ...
- $ Cabin   : chr  "" "C85" "" "C123" ...
- $ Embarked: chr  "S" "C" "S" "S" ...
- - attr(*, ".internal.selfref")=&lt;externalptr&gt;</code></pre>
-<p>Preprocess:</p>
-<pre><code>dep_var = 'Survived'
-cont_names = c('Fare','Parch', 'SibSp', 'Pclass')
-cat_names = setdiff(names(train),c(cont_names,dep_var))
-
-
-tot = 1:nrow(train)
-tr_idx = sample(nrow(train), 0.8 * nrow(train))
-ts_idx = tot[!tot %in% tr_idx]</code></pre>
-<p>Dataloader:</p>
-<pre><code>procs = list(FillMissing(),Categorify(),Normalize())
-
-dls = TabularDataTable(train, procs, cat_names, cont_names,
-                       y_names = dep_var, splits = list(tr_idx, ts_idx) ) %&gt;%
-  dataloaders(bs = 30)
-
-
-model = dls %&gt;% tabular_learner(layers=c(200,100),
-                                config = tabular_config(embed_p = 0.3, use_bn = FALSE),
-                                metrics = list(accuracy, RocAucBinary(),
-                                               Precision(), Recall()))</code></pre>
-<p>Fit:</p>
-<pre><code>model %&gt;% lr_find()
-
-model %&gt;% plot_lr_find()
-
-res = model %&gt;% fit(4, lr = 1e-3)</code></pre>
-<p>Prepare test dataset and submit:</p>
-<pre><code>test = data.table::fread(paste(com_nm, 'test.csv', sep = '/'))
-
-test$Fare[is.na(test$Fare)] = median(test$Fare, na.rm = TRUE)
-
-submission = model %&gt;% predict(test)
-
-head(submission)</code></pre>
-<pre><code>          0         1 class
-1 0.7636479 0.2363522     0
-2 0.7594652 0.2405347     0
-3 0.6516959 0.3483041     0
-4 0.7734003 0.2265998     0
-5 0.5761551 0.4238448     0
-6 0.7645358 0.2354642     0</code></pre>
-<pre><code># add col names
-submission = data.frame(PassengerId = test$PassengerId,
-                        Survived = submission$class)
-
-dest = paste(com_nm, 'submission.csv',sep = '/')
-
-# write
-data.table::fwrite(submission, dest)
-
-# submit via api
-competition_submit(dest, 'sumbission from R!', competition = com_nm)</code></pre>
-<pre><code>100%|██████████| 9.27k/9.27k [00:04&lt;00:00, 2.02kB/s]
-Successfully submitted to Titanic: Machine Learning from Disaster</code></pre>
-<p>Enter <code>Kaggle.com</code> and see if everything works fine:</p>
-<p align="center">
-<img src="files/result.png" height="400" align="center" alt="Annotation"></p>
-</div>
-<div id="code-of-conduct" class="section level2">
-<h2 class="hasAnchor">
-<a href="#code-of-conduct" class="anchor"></a>Code of Conduct</h2>
-<p>Please note that the fastai project is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+<div class="section level2">
+<h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
+</h2>
+<p>Please note that the fastai project is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=fastai">https://​cloud.r-project.org/​package=fastai</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/EagerAI/fastai/">https://​github.com/​EagerAI/​fastai/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/EagerAI/fastai/issues">https://​github.com/​EagerAI/​fastai/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=fastai" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/EagerAI/fastai/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/EagerAI/fastai/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li>Apache License 2.0</li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CONTRIBUTING.html">Contributing guide</a></li>
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>
-<div class="developers">
-<h2>Developers</h2>
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>
-<a href="https://github.com/henry090">Turgut Abdullayev</a> <br><small class="roles"> Contributor, maintainer, copyright holder, author </small>  </li>
+<li><a href="authors.html#citation">Citing fastai</a></li>
 </ul>
 </div>
+
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
+<ul class="list-unstyled">
+<li>
+<a href="https://github.com/henry090" class="external-link">Turgut Abdullayev</a> <br><small class="roles"> Contributor, maintainer, copyright holder, author </small>  </li>
+</ul>
+</div>
+
+
 
   </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://github.com/henry090">Turgut Abdullayev</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://github.com/henry090" class="external-link">Turgut Abdullayev</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

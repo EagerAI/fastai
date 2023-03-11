@@ -21,6 +21,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -33,14 +35,14 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fastai</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.2.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Tutorials
      
     <span class="caret"></span>
@@ -76,7 +78,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Migrate
      
     <span class="caret"></span>
@@ -97,7 +99,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Learn
      
     <span class="caret"></span>
@@ -115,7 +117,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Training
      
     <span class="caret"></span>
@@ -136,7 +138,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     NLP
      
     <span class="caret"></span>
@@ -165,7 +167,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/EagerAI/fastai/">
+  <a href="https://github.com/EagerAI/fastai/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -186,68 +188,69 @@
 
       
 
-      </header><script src="textsummarize_files/header-attrs-2.10/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Text-summarization</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/EagerAI/fastai/blob/master/vignettes/textsummarize.Rmd"><code>vignettes/textsummarize.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/EagerAI/fastai/blob/HEAD/vignettes/textsummarize.Rmd" class="external-link"><code>vignettes/textsummarize.Rmd</code></a></small>
       <div class="hidden name"><code>textsummarize.Rmd</code></div>
 
     </div>
 
     
     
-<div id="intro" class="section level2">
-<h2 class="hasAnchor">
-<a href="#intro" class="anchor"></a>Intro</h2>
-<p>First, we need to install <code>blurr module</code> for <a href="https://github.com/huggingface/transformers">Transformers</a> integration.</p>
+<div class="section level2">
+<h2 id="intro">Intro<a class="anchor" aria-label="anchor" href="#intro"></a>
+</h2>
+<p>First, we need to install <code>blurr module</code> for <a href="https://github.com/huggingface/transformers" class="external-link">Transformers</a>
+integration.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/reticulate/man/py_install.html">py_install</a></span><span class="op">(</span><span class="st">'ohmeow-blurr'</span>,pip <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_install.html" class="external-link">py_install</a></span><span class="op">(</span><span class="st">'ohmeow-blurr'</span>,pip <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="dataset" class="section level2">
-<h2 class="hasAnchor">
-<a href="#dataset" class="anchor"></a>Dataset</h2>
+<div class="section level2">
+<h2 id="dataset">Dataset<a class="anchor" aria-label="anchor" href="#dataset"></a>
+</h2>
 <p>Get dataset from the link:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EagerAI/fastai">fastai</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org">magrittr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/nteetor/zeallot">zeallot</a></span><span class="op">)</span>
-
-<span class="va">cnndm_df</span> <span class="op">=</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">'https://raw.githubusercontent.com/ohmeow/blurr/master/nbs/cnndm_sample.csv'</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EagerAI/fastai" class="external-link">fastai</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/nteetor/zeallot" class="external-link">zeallot</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">cnndm_df</span> <span class="op">=</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/fread.html" class="external-link">fread</a></span><span class="op">(</span><span class="st">'https://raw.githubusercontent.com/ohmeow/blurr/master/nbs/cnndm_sample.csv'</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="pretrained-model" class="section level2">
-<h2 class="hasAnchor">
-<a href="#pretrained-model" class="anchor"></a>Pretrained model</h2>
+<div class="section level2">
+<h2 id="pretrained-model">Pretrained model<a class="anchor" aria-label="anchor" href="#pretrained-model"></a>
+</h2>
 <p>Get pretrained BART model from <code>transformers</code>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">transformers</span> <span class="op">=</span> <span class="fu"><a href="../reference/transformers.html">transformers</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="va">BartForConditionalGeneration</span> <span class="op">=</span> <span class="va">transformers</span><span class="op">$</span><span class="va">BartForConditionalGeneration</span>
-
-<span class="va">pretrained_model_name</span> <span class="op">=</span> <span class="st">"facebook/bart-large-cnn"</span>
-<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">hf_arch</span>, <span class="va">hf_config</span>, <span class="va">hf_tokenizer</span>, <span class="va">hf_model</span><span class="op">)</span> <span class="op">%&lt;-%</span>
-  <span class="fu"><a href="../reference/get_hf_objects.html">get_hf_objects</a></span><span class="op">(</span><span class="va">pretrained_model_name</span>,model_cls<span class="op">=</span><span class="va">BartForConditionalGeneration</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">transformers</span> <span class="op">=</span> <span class="fu"><a href="../reference/transformers.html">transformers</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">BartForConditionalGeneration</span> <span class="op">=</span> <span class="va">transformers</span><span class="op">$</span><span class="va">BartForConditionalGeneration</span></span>
+<span></span>
+<span><span class="va">pretrained_model_name</span> <span class="op">=</span> <span class="st">"facebook/bart-large-cnn"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">hf_arch</span>, <span class="va">hf_config</span>, <span class="va">hf_tokenizer</span>, <span class="va">hf_model</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/zeallot/man/operator.html" class="external-link">%&lt;-%</a></span></span>
+<span>  <span class="fu"><a href="../reference/get_hf_objects.html">get_hf_objects</a></span><span class="op">(</span><span class="va">pretrained_model_name</span>,model_cls<span class="op">=</span><span class="va">BartForConditionalGeneration</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="datablock" class="section level2">
-<h2 class="hasAnchor">
-<a href="#datablock" class="anchor"></a>Datablock</h2>
+<div class="section level2">
+<h2 id="datablock">Datablock<a class="anchor" aria-label="anchor" href="#datablock"></a>
+</h2>
 <p>Create datablock and see batch:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">before_batch_tfm</span> <span class="op">=</span> <span class="fu"><a href="../reference/HF_SummarizationBeforeBatchTransform.html">HF_SummarizationBeforeBatchTransform</a></span><span class="op">(</span><span class="va">hf_arch</span>, 
-                                                        <span class="va">hf_tokenizer</span>, max_length<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">256</span>, <span class="fl">130</span><span class="op">)</span><span class="op">)</span>
-<span class="va">blocks</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="../reference/HF_Text2TextBlock.html">HF_Text2TextBlock</a></span><span class="op">(</span>before_batch_tfms<span class="op">=</span><span class="va">before_batch_tfm</span>, 
-                                input_return_type<span class="op">=</span><span class="va">HF_SummarizationInput</span><span class="op">)</span>, <span class="fu"><a href="../reference/noop.html">noop</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">dblock</span> <span class="op">=</span> <span class="fu"><a href="../reference/DataBlock.html">DataBlock</a></span><span class="op">(</span>blocks<span class="op">=</span><span class="va">blocks</span>,
-                   get_x<span class="op">=</span><span class="fu"><a href="../reference/ColReader.html">ColReader</a></span><span class="op">(</span><span class="st">'article'</span><span class="op">)</span>,
-                   get_y<span class="op">=</span><span class="fu"><a href="../reference/ColReader.html">ColReader</a></span><span class="op">(</span><span class="st">'highlights'</span><span class="op">)</span>,
-                   splitter<span class="op">=</span><span class="fu"><a href="../reference/RandomSplitter.html">RandomSplitter</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">dls</span> <span class="op">=</span> <span class="va">dblock</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/dataloaders.html">dataloaders</a></span><span class="op">(</span><span class="va">cnndm_df</span>, bs<span class="op">=</span><span class="fl">2</span><span class="op">)</span>
-
-<span class="va">dls</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/one_batch.html">one_batch</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">before_batch_tfm</span> <span class="op">=</span> <span class="fu"><a href="../reference/HF_SummarizationBeforeBatchTransform.html">HF_SummarizationBeforeBatchTransform</a></span><span class="op">(</span><span class="va">hf_arch</span>, </span>
+<span>                                                        <span class="va">hf_tokenizer</span>, max_length<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">256</span>, <span class="fl">130</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">blocks</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="../reference/HF_Text2TextBlock.html">HF_Text2TextBlock</a></span><span class="op">(</span>before_batch_tfms<span class="op">=</span><span class="va">before_batch_tfm</span>, </span>
+<span>                                input_return_type<span class="op">=</span><span class="va">HF_SummarizationInput</span><span class="op">)</span>, <span class="fu"><a href="../reference/noop.html">noop</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dblock</span> <span class="op">=</span> <span class="fu"><a href="../reference/DataBlock.html">DataBlock</a></span><span class="op">(</span>blocks<span class="op">=</span><span class="va">blocks</span>,</span>
+<span>                   get_x<span class="op">=</span><span class="fu"><a href="../reference/ColReader.html">ColReader</a></span><span class="op">(</span><span class="st">'article'</span><span class="op">)</span>,</span>
+<span>                   get_y<span class="op">=</span><span class="fu"><a href="../reference/ColReader.html">ColReader</a></span><span class="op">(</span><span class="st">'highlights'</span><span class="op">)</span>,</span>
+<span>                   splitter<span class="op">=</span><span class="fu"><a href="../reference/RandomSplitter.html">RandomSplitter</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dls</span> <span class="op">=</span> <span class="va">dblock</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/dataloaders.html">dataloaders</a></span><span class="op">(</span><span class="va">cnndm_df</span>, bs<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dls</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/one_batch.html">one_batch</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>[[1]]
 [[1]]$input_ids
 tensor([[    0,    36, 16256,    43,   480,  2193,     7,    62,     7,   158,
@@ -382,40 +385,56 @@ tensor([[ 1625,  4452,     7,    62,     7,   158,   135,     9,    70,   684,
             18, 18631,  1843,    26,    14,    24,    69,   979,    18,  2236,
             15,     5,  7158,   486,   479,     2]], device='cuda:0')</code></pre>
 </div>
-<div id="train" class="section level2">
-<h2 class="hasAnchor">
-<a href="#train" class="anchor"></a>Train</h2>
+<div class="section level2">
+<h2 id="train">Train<a class="anchor" aria-label="anchor" href="#train"></a>
+</h2>
 <p>Define a <code>Learner</code> object and train the model:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">text_gen_kwargs</span> <span class="op">=</span> <span class="va">hf_config</span><span class="op">$</span><span class="va">task_specific_params</span><span class="op">[</span><span class="st">'summarization'</span><span class="op">]</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
-<span class="va">text_gen_kwargs</span><span class="op">[</span><span class="st">'max_length'</span><span class="op">]</span> <span class="op">=</span> <span class="fl">130L</span>; <span class="va">text_gen_kwargs</span><span class="op">[</span><span class="st">'min_length'</span><span class="op">]</span> <span class="op">=</span> <span class="fl">30L</span>
-
-<span class="va">text_gen_kwargs</span>
-
-<span class="va">model</span> <span class="op">=</span> <span class="fu"><a href="../reference/HF_BaseModelWrapper.html">HF_BaseModelWrapper</a></span><span class="op">(</span><span class="va">hf_model</span><span class="op">)</span>
-<span class="va">model_cb</span> <span class="op">=</span> <span class="fu"><a href="../reference/HF_SummarizationModelCallback.html">HF_SummarizationModelCallback</a></span><span class="op">(</span>text_gen_kwargs<span class="op">=</span><span class="va">text_gen_kwargs</span><span class="op">)</span>
-
-<span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/Learner.html">Learner</a></span><span class="op">(</span><span class="va">dls</span>,
-                <span class="va">model</span>,
-                opt_func<span class="op">=</span><span class="fu"><a href="../reference/partial.html">partial</a></span><span class="op">(</span><span class="va">Adam</span><span class="op">)</span>,
-                loss_func<span class="op">=</span><span class="fu"><a href="../reference/CrossEntropyLossFlat.html">CrossEntropyLossFlat</a></span><span class="op">(</span><span class="op">)</span>, <span class="co">#HF_PreCalculatedLoss()</span>
-                cbs<span class="op">=</span><span class="va">model_cb</span>,
-                splitter<span class="op">=</span><span class="fu"><a href="../reference/partial.html">partial</a></span><span class="op">(</span><span class="va">summarization_splitter</span>, arch<span class="op">=</span><span class="va">hf_arch</span><span class="op">)</span><span class="op">)</span> <span class="co">#.to_native_fp16() #.to_fp16()</span>
-
-<span class="va">learn</span><span class="op">$</span><span class="fu">create_opt</span><span class="op">(</span><span class="op">)</span>
-<span class="va">learn</span><span class="op">$</span><span class="fu">freeze</span><span class="op">(</span><span class="op">)</span>
-
-<span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">1</span>, lr_max<span class="op">=</span><span class="fl">4e-5</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">text_gen_kwargs</span> <span class="op">=</span> <span class="va">hf_config</span><span class="op">$</span><span class="va">task_specific_params</span><span class="op">[</span><span class="st">'summarization'</span><span class="op">]</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="va">text_gen_kwargs</span><span class="op">[</span><span class="st">'max_length'</span><span class="op">]</span> <span class="op">=</span> <span class="fl">130L</span>; <span class="va">text_gen_kwargs</span><span class="op">[</span><span class="st">'min_length'</span><span class="op">]</span> <span class="op">=</span> <span class="fl">30L</span></span>
+<span></span>
+<span><span class="va">text_gen_kwargs</span></span>
+<span></span>
+<span><span class="va">model</span> <span class="op">=</span> <span class="fu"><a href="../reference/HF_BaseModelWrapper.html">HF_BaseModelWrapper</a></span><span class="op">(</span><span class="va">hf_model</span><span class="op">)</span></span>
+<span><span class="va">model_cb</span> <span class="op">=</span> <span class="fu"><a href="../reference/HF_SummarizationModelCallback.html">HF_SummarizationModelCallback</a></span><span class="op">(</span>text_gen_kwargs<span class="op">=</span><span class="va">text_gen_kwargs</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/Learner.html">Learner</a></span><span class="op">(</span><span class="va">dls</span>,</span>
+<span>                <span class="va">model</span>,</span>
+<span>                opt_func<span class="op">=</span><span class="fu"><a href="../reference/partial.html">partial</a></span><span class="op">(</span><span class="va">Adam</span><span class="op">)</span>,</span>
+<span>                loss_func<span class="op">=</span><span class="fu"><a href="../reference/CrossEntropyLossFlat.html">CrossEntropyLossFlat</a></span><span class="op">(</span><span class="op">)</span>, <span class="co">#HF_PreCalculatedLoss()</span></span>
+<span>                cbs<span class="op">=</span><span class="va">model_cb</span>,</span>
+<span>                splitter<span class="op">=</span><span class="fu"><a href="../reference/partial.html">partial</a></span><span class="op">(</span><span class="va">summarization_splitter</span>, arch<span class="op">=</span><span class="va">hf_arch</span><span class="op">)</span><span class="op">)</span> <span class="co">#.to_native_fp16() #.to_fp16()</span></span>
+<span></span>
+<span><span class="va">learn</span><span class="op">$</span><span class="fu">create_opt</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">learn</span><span class="op">$</span><span class="fu">freeze</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">learn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">1</span>, lr_max<span class="op">=</span><span class="fl">4e-5</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="conclusion" class="section level2">
-<h2 class="hasAnchor">
-<a href="#conclusion" class="anchor"></a>Conclusion</h2>
+<div class="section level2">
+<h2 id="conclusion">Conclusion<a class="anchor" aria-label="anchor" href="#conclusion"></a>
+</h2>
 <p>Predict a new text:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">test_article</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">[1448 chars quoted with '"']</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">test_article</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"About 10 men armed with pistols and small machine guns raided a casino in Switzerland </span></span>
+<span><span class="st">and made off into France with several hundred thousand Swiss francs in the early hours </span></span>
+<span><span class="st">of Sunday morning, police said. The men, dressed in black clothes and black ski masks, </span></span>
+<span><span class="st">split into two groups during the raid on the Grand Casino Basel, Chief Inspector Peter </span></span>
+<span><span class="st">Gill told CNN. One group tried to break into the casino's vault on the lower level</span></span>
+<span><span class="st">but could not get in, but they did rob the cashier of the money that was not secured, </span></span>
+<span><span class="st">he said. The second group of armed robbers entered the upper level where the roulette </span></span>
+<span><span class="st">and blackjack tables are located and robbed the cashier there, he said. As the thieves </span></span>
+<span><span class="st">were leaving the casino, a woman driving by and unaware of what was occurring unknowingly </span></span>
+<span><span class="st">blocked the armed robbers' vehicles. A gunman pulled the woman from her vehicle, beat</span></span>
+<span><span class="st">her, and took off for the French border. The other gunmen followed into France, which </span></span>
+<span><span class="st">is only about 100 meters (yards) from the casino, Gill said. There were about 600 people </span></span>
+<span><span class="st">in the casino at the time of the robbery. There were no serious injuries, although one </span></span>
+<span><span class="st">guest on the Casino floor was kicked in the head by one of the robbers when he moved, </span></span>
+<span><span class="st">the police officer said. Swiss authorities are working closely with French authorities,</span></span>
+<span><span class="st">Gill said. The robbers spoke French and drove vehicles with French lRicense plates. </span></span>
+<span><span class="st">CNN's Andreena Narayan contributed to this report."</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">outputs</span> <span class="op">=</span> <span class="va">learn</span><span class="op">$</span><span class="fu">blurr_summarize</span><span class="op">(</span><span class="va">test_article</span>, num_return_sequences<span class="op">=</span><span class="fl">3L</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="va">outputs</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">outputs</span> <span class="op">=</span> <span class="va">learn</span><span class="op">$</span><span class="fu">blurr_summarize</span><span class="op">(</span><span class="va">test_article</span>, num_return_sequences<span class="op">=</span><span class="fl">3L</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="va">outputs</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
  Robbers made off with several hundred thousand Swiss francs in the early hours of Sunday morning, police say .
 The men, dressed in black clothes and black ski masks, split into two groups during the raid on the Grand Casino Basel .
@@ -449,11 +468,13 @@ A woman driving by unknowingly blocked the robbers' vehicles and was beaten to d
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://github.com/henry090">Turgut Abdullayev</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://github.com/henry090" class="external-link">Turgut Abdullayev</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

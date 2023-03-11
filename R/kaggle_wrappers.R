@@ -119,8 +119,6 @@ competition_leaderboard_download <- function(competition, path, quiet = TRUE) {
 }
 
 #' @title Competitions list
-#'
-#'
 #' @param group group to filter result to
 #' @param category category to filter result to
 #' @param sort_by how to sort the result, see valid_competition_sort_by for options

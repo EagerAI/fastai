@@ -167,8 +167,6 @@ RatioResize <- function(max_sz, resamples = list(2, 0),
 
 
 #' @title TensorImage
-#'
-#'
 #' @param x tensor
 #' @return None
 #' @export
@@ -181,8 +179,6 @@ TensorImage <- function(x) {
 }
 
 #' @title Aaffine_coord
-#'
-#'
 #' @param x tensor
 #' @param mat mat
 #' @param coord_tfm coordinate tfm

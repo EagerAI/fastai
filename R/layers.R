@@ -188,8 +188,6 @@ AdaptiveConcatPool2d <- function(size = NULL) {
 
 
 #' @title Adaptive_pool
-#'
-#'
 #' @param pool_type pooling type
 #' @return Nonee
 #' @export
@@ -414,8 +412,6 @@ init_default <- function(m, func = nn()$init$kaiming_normal_) {
 }
 
 #' @title Init_linear
-#'
-#'
 #' @param m parameter
 #' @param act_func activation function
 #' @param init initializer
@@ -672,9 +668,6 @@ PixelShuffle_ICNR <- function(ni, nf = NULL, scale = 2, blur = FALSE,
 
 
 #' @title Sequential
-#'
-#'
-#'
 #' @param ... parameters to pass
 #'
 #' @return None
@@ -685,9 +678,6 @@ sequential = function(...) {
 }
 
 #' @title SequentialEx
-#'
-#'
-#'
 #' @param ... parameters to pass
 #'
 #' @return None
@@ -786,8 +776,6 @@ SEModule <- function(ch, reduction, act_cls = nn()$ReLU) {
 
 
 #' @title Swish
-#'
-#'
 #' @param x tensor
 #' @param inplace inplace or not
 #' @return None
@@ -834,8 +822,6 @@ MishJitAutoFn <- function(...) {
 
 
 #' @title Mish
-#'
-#'
 #' @param x tensor
 #' @return None
 #' @export
@@ -848,8 +834,6 @@ mish <- function(x) {
 }
 
 #' @title Class Mish
-#'
-#'
 #' @param ... parameters to pass
 #' @return None
 #' @export
@@ -867,7 +851,6 @@ Mish_ <- function(...) {
 
 
 #' @title Children_and_parameters
-#'
 #' @description Return the children of `m` and its direct parameters not registered in modules.
 #'
 #'

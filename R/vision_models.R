@@ -228,8 +228,6 @@ SqueezeNet <- function(version = "1_0", num_classes = 1000) {
 
 
 #' @title Resnet50
-#'
-#'
 #' @details "Deep Residual Learning for Image Recognition" <https://arxiv.org/pdf/1512.03385.pdf>
 #'
 #' @param pretrained pretrained or not
@@ -275,8 +273,6 @@ resnet34 <- function(pretrained = FALSE, progress) {
 }
 
 #' @title Resnet18
-#'
-#'
 #' @details "Deep Residual Learning for Image Recognition" <https://arxiv.org/pdf/1512.03385.pdf>
 #'
 #' @param pretrained pretrained or not
@@ -298,8 +294,6 @@ resnet18 <- function(pretrained = FALSE, progress) {
 }
 
 #' @title Resnet152
-#'
-#'
 #' @details "Deep Residual Learning for Image Recognition" <https://arxiv.org/pdf/1512.03385.pdf>
 #'
 #' @param pretrained pretrained or not
@@ -377,8 +371,6 @@ ResNet <- function(block, layers, num_classes = 1000, zero_init_residual = FALSE
 }
 
 #' @title Densenet121
-#'
-#'
 #' @details "Densely Connected Convolutional Networks" <https://arxiv.org/pdf/1608.06993.pdf>
 #'
 #' @param pretrained pretrained or not
@@ -400,8 +392,6 @@ densenet121 <- function(pretrained = FALSE, progress) {
 }
 
 #' @title Densenet161
-#'
-#'
 #' @details "Densely Connected Convolutional Networks" <https://arxiv.org/pdf/1608.06993.pdf>
 #'
 #' @param pretrained pretrained or not
@@ -423,8 +413,6 @@ densenet161 <- function(pretrained = FALSE, progress) {
 }
 
 #' @title Densenet169
-#'
-#'
 #' @details "Densely Connected Convolutional Networks" <https://arxiv.org/pdf/1608.06993.pdf>
 #'
 #' @param pretrained pretrained or not
@@ -446,8 +434,6 @@ densenet169 <- function(pretrained = FALSE, progress) {
 }
 
 #' @title Densenet201
-#'
-#'
 #' @details "Densely Connected Convolutional Networks" <https://arxiv.org/pdf/1608.06993.pdf>
 #'
 #' @param pretrained pretrained or not

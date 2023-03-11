@@ -1,7 +1,5 @@
 
 #' @title Generate noise
-#'
-#'
 #' @param fn path
 #' @param size the size
 #' @return None
@@ -590,8 +588,6 @@ accuracy_thresh_expand <- function(y_pred, y_true, thresh = 0.5, sigmoid = TRUE)
 }
 
 #' @title Set freeze model
-#'
-#'
 #' @param m parameters
 #' @param rg rg
 #' @return None
@@ -784,8 +780,6 @@ GANLearner_from_learners <- function(gen_learn, crit_learn, switcher = NULL, wei
 
 
 #' @title Learner
-#'
-#'
 #' @param ... parameters to pass
 #' @return None
 #'
@@ -811,8 +805,6 @@ Learner = function(...) {
 
 
 #' @title Get_c
-#'
-#'
 #' @param dls dataloader object
 #' @return number of layers
 #'

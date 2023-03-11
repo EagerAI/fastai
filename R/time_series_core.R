@@ -59,8 +59,6 @@ show_array <- function(array, ax = NULL, figsize = NULL, title = NULL, ctx = NUL
 
 
 #' @title TSeries_create
-#'
-#'
 #' @param x tensor
 #' @param ... additional parameters
 #' @return tensor

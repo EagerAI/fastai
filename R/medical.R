@@ -1,8 +1,6 @@
 
 
 #' @title Dicom class
-#'
-#'
 #' @return None
 #' @export
 Dicom = function() {
@@ -189,8 +187,6 @@ get_dcm_matrix <- function(img, type = 'raw', scan = '', size = 50, convert = TR
 
 
 #' @title Mask from blur
-#'
-#'
 #' @param img image
 #' @param window windowing effect
 #' @param sigma sigma
@@ -210,8 +206,6 @@ mask_from_blur <- function(img, window, sigma = 0.3, thresh = 0.05, remove_max =
 }
 
 #' @title Zoom
-#'
-#'
 #' @param img image files
 #' @param ratio ratio
 #' @return image
@@ -225,8 +219,6 @@ zoom <- function(img, ratio) {
 }
 
 #' @title Mask2bbox
-#'
-#'
 #' @param mask mask
 #' @param convert to R matrix
 #' @return tensor

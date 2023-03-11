@@ -2,8 +2,6 @@
 
 
 #' @title ConvT_norm_relu
-#'
-#'
 #' @param ch_in input
 #' @param ch_out output
 #' @param norm_layer normalziation layer
@@ -29,8 +27,6 @@ convT_norm_relu <- function(ch_in, ch_out, norm_layer, ks = 3, stride = 2, bias 
 
 
 #' @title Pad_conv_norm_relu
-#'
-#'
 #' @param ch_in input
 #' @param ch_out output
 #' @param pad_mode padding mode
@@ -100,8 +96,6 @@ ResnetBlock <- function(dim, pad_mode = "reflection", norm_layer = NULL, dropout
 
 
 #' @title Resnet_generator
-#'
-#'
 #' @param ch_in input
 #' @param ch_out output
 #' @param n_ftrs filter
@@ -134,8 +128,6 @@ resnet_generator <- function(ch_in, ch_out, n_ftrs = 64, norm_layer = NULL,
 
 
 #' @title Conv_norm_lr
-#'
-#'
 #' @param ch_in input
 #' @param ch_out output
 #' @param norm_layer normalziation layer
@@ -176,8 +168,6 @@ conv_norm_lr <- function(ch_in, ch_out, norm_layer = NULL, ks = 3, bias = TRUE,
 
 
 #' @title Discriminator
-#'
-#'
 #' @param ch_in input
 #' @param n_ftrs number of filters
 #' @param n_layers number of layers
@@ -536,8 +526,6 @@ get_preds_cyclegan <- function(learn, test_path, pred_path, bs = 4, num_workers 
 }
 
 #' @title Export_generator
-#'
-#'
 #' @param learn learner/model
 #' @param generator_name generator name
 #' @param path path (save dir)

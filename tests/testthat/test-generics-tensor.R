@@ -73,7 +73,7 @@ test_succeeds('check min', {
 })
 
 test_succeeds('check dim', {
-  res = matrix(runif(100),nrow = 5, ncol = 5)
+  res = matrix(runif(25),nrow = 5, ncol = 5)
   res_tensor = tensor(res)
   expect_equal(dim(res),dim(res_tensor))
 })

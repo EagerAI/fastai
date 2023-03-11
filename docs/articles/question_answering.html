@@ -21,6 +21,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -33,14 +35,14 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fastai</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.2.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Tutorials
      
     <span class="caret"></span>
@@ -76,7 +78,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Migrate
      
     <span class="caret"></span>
@@ -97,7 +99,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Learn
      
     <span class="caret"></span>
@@ -115,7 +117,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Training
      
     <span class="caret"></span>
@@ -136,7 +138,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     NLP
      
     <span class="caret"></span>
@@ -165,7 +167,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/EagerAI/fastai/">
+  <a href="https://github.com/EagerAI/fastai/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -186,96 +188,99 @@
 
       
 
-      </header><script src="question_answering_files/header-attrs-2.10/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Question-Answering</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/EagerAI/fastai/blob/master/vignettes/question_answering.Rmd"><code>vignettes/question_answering.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/EagerAI/fastai/blob/HEAD/vignettes/question_answering.Rmd" class="external-link"><code>vignettes/question_answering.Rmd</code></a></small>
       <div class="hidden name"><code>question_answering.Rmd</code></div>
 
     </div>
 
     
     
-<div id="intro" class="section level2">
-<h2 class="hasAnchor">
-<a href="#intro" class="anchor"></a>Intro</h2>
-<p>First, we need to install <code>blurr module</code> for <a href="https://github.com/huggingface/transformers">Transformers</a> integration.</p>
+<div class="section level2">
+<h2 id="intro">Intro<a class="anchor" aria-label="anchor" href="#intro"></a>
+</h2>
+<p>First, we need to install <code>blurr module</code> for <a href="https://github.com/huggingface/transformers" class="external-link">Transformers</a>
+integration.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/reticulate/man/py_install.html">py_install</a></span><span class="op">(</span><span class="st">'ohmeow-blurr'</span>,pip <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_install.html" class="external-link">py_install</a></span><span class="op">(</span><span class="st">'ohmeow-blurr'</span>,pip <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="dataset" class="section level2">
-<h2 class="hasAnchor">
-<a href="#dataset" class="anchor"></a>Dataset</h2>
+<div class="section level2">
+<h2 id="dataset">Dataset<a class="anchor" aria-label="anchor" href="#dataset"></a>
+</h2>
 <p>Get dataset from the link:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EagerAI/fastai">fastai</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org">magrittr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/nteetor/zeallot">zeallot</a></span><span class="op">)</span>
-<span class="va">squad_df</span> <span class="op">=</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">'https://raw.githubusercontent.com/ohmeow/blurr/master/nbs/squad_sample.csv'</span><span class="op">)</span></code></pre></div>
-<p>And load pretrained BERT for question answering from <code>transformers</code> library:</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EagerAI/fastai" class="external-link">fastai</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/nteetor/zeallot" class="external-link">zeallot</a></span><span class="op">)</span></span>
+<span><span class="va">squad_df</span> <span class="op">=</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/fread.html" class="external-link">fread</a></span><span class="op">(</span><span class="st">'https://raw.githubusercontent.com/ohmeow/blurr/master/nbs/squad_sample.csv'</span><span class="op">)</span></span></code></pre></div>
+<p>And load pretrained BERT for question answering from
+<code>transformers</code> library:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">pretrained_model_name</span> <span class="op">=</span> <span class="st">'bert-large-uncased-whole-word-masking-finetuned-squad'</span>
-
-<span class="va">hf_model_cls</span> <span class="op">=</span> <span class="va">transformers</span><span class="op">$</span><span class="va">BertForQuestionAnswering</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">hf_arch</span>, <span class="va">hf_config</span>, <span class="va">hf_tokenizer</span>, <span class="va">hf_model</span><span class="op">)</span> <span class="op">%&lt;-%</span> 
-  <span class="fu"><a href="../reference/get_hf_objects.html">get_hf_objects</a></span><span class="op">(</span><span class="va">pretrained_model_name</span>, model_cls<span class="op">=</span><span class="va">hf_model_cls</span><span class="op">)</span>
-
-<span class="va">preprocess</span> <span class="op">=</span> <span class="fu"><a href="../reference/partial.html">partial</a></span><span class="op">(</span><span class="fu"><a href="../reference/pre_process_squad.html">pre_process_squad</a></span><span class="op">(</span><span class="op">)</span>, hf_arch<span class="op">=</span><span class="va">hf_arch</span>, hf_tokenizer<span class="op">=</span><span class="va">hf_tokenizer</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">pretrained_model_name</span> <span class="op">=</span> <span class="st">'bert-large-uncased-whole-word-masking-finetuned-squad'</span></span>
+<span></span>
+<span><span class="va">hf_model_cls</span> <span class="op">=</span> <span class="va">transformers</span><span class="op">$</span><span class="va">BertForQuestionAnswering</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">hf_arch</span>, <span class="va">hf_config</span>, <span class="va">hf_tokenizer</span>, <span class="va">hf_model</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/zeallot/man/operator.html" class="external-link">%&lt;-%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/get_hf_objects.html">get_hf_objects</a></span><span class="op">(</span><span class="va">pretrained_model_name</span>, model_cls<span class="op">=</span><span class="va">hf_model_cls</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">preprocess</span> <span class="op">=</span> <span class="fu"><a href="../reference/partial.html">partial</a></span><span class="op">(</span><span class="fu"><a href="../reference/pre_process_squad.html">pre_process_squad</a></span><span class="op">(</span><span class="op">)</span>, hf_arch<span class="op">=</span><span class="va">hf_arch</span>, hf_tokenizer<span class="op">=</span><span class="va">hf_tokenizer</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="preprocess" class="section level2">
-<h2 class="hasAnchor">
-<a href="#preprocess" class="anchor"></a>Preprocess</h2>
+<div class="section level2">
+<h2 id="preprocess">Preprocess<a class="anchor" aria-label="anchor" href="#preprocess"></a>
+</h2>
 <p>Prepare dataset for <code>fastai</code>:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">squad_df</span> <span class="op">=</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html">as.data.table</a></span><span class="op">(</span><span class="va">squad_df</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/py_apply.html">py_apply</a></span><span class="op">(</span><span class="va">preprocess</span><span class="op">)</span><span class="op">)</span>
-<span class="va">max_seq_len</span> <span class="op">=</span> <span class="fl">128</span>
-
-<span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="va">squad_df</span><span class="op">)</span>
-
-<span class="va">squad_df</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">8</span>,<span class="fl">10</span><span class="op">:</span><span class="fl">12</span><span class="op">)</span><span class="op">]</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">squad_df</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">8</span>,<span class="fl">10</span><span class="op">:</span><span class="fl">12</span><span class="op">)</span><span class="op">]</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="va">squad_df</span> <span class="op">=</span> <span class="va">squad_df</span><span class="op">[</span><span class="va">is_impossible</span> <span class="op">==</span> <span class="cn">FALSE</span> <span class="op">&amp;</span> <span class="va">tokenized_input_len</span> <span class="op">&lt;</span> <span class="va">max_seq_len</span><span class="op">]</span>
-<span class="va">vocab</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">max_seq_len</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">squad_df</span> <span class="op">=</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">squad_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/py_apply.html">py_apply</a></span><span class="op">(</span><span class="va">preprocess</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">max_seq_len</span> <span class="op">=</span> <span class="fl">128</span></span>
+<span></span>
+<span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span><span class="va">squad_df</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">squad_df</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">8</span>,<span class="fl">10</span><span class="op">:</span><span class="fl">12</span><span class="op">)</span><span class="op">]</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">squad_df</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">8</span>,<span class="fl">10</span><span class="op">:</span><span class="fl">12</span><span class="op">)</span><span class="op">]</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/vector.html" class="external-link">as.vector</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">squad_df</span> <span class="op">=</span> <span class="va">squad_df</span><span class="op">[</span><span class="va">is_impossible</span> <span class="op">==</span> <span class="cn">FALSE</span> <span class="op">&amp;</span> <span class="va">tokenized_input_len</span> <span class="op">&lt;</span> <span class="va">max_seq_len</span><span class="op">]</span></span>
+<span><span class="va">vocab</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">max_seq_len</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="datalaoder" class="section level2">
-<h2 class="hasAnchor">
-<a href="#datalaoder" class="anchor"></a>Datalaoder</h2>
-<p>Crate datalaoder. But at first, create getters (how we will pick our columns):</p>
+<div class="section level2">
+<h2 id="datalaoder">Datalaoder<a class="anchor" aria-label="anchor" href="#datalaoder"></a>
+</h2>
+<p>Crate datalaoder. But at first, create getters (how we will pick our
+columns):</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">trunc_strat</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">hf_tokenizer</span><span class="op">$</span><span class="va">padding_side</span> <span class="op">==</span> <span class="st">'right'</span>, <span class="st">'only_second'</span>, <span class="st">'only_first'</span><span class="op">)</span>
-
-<span class="va">before_batch_tfm</span> <span class="op">=</span> <span class="fu"><a href="../reference/HF_QABeforeBatchTransform.html">HF_QABeforeBatchTransform</a></span><span class="op">(</span><span class="va">hf_arch</span>, <span class="va">hf_tokenizer</span>,
-                                             max_length <span class="op">=</span> <span class="va">max_seq_len</span>,
-                                             truncation <span class="op">=</span> <span class="va">trunc_strat</span>,
-                                             tok_kwargs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">'return_special_tokens_mask'</span> <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">blocks</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
-  <span class="fu"><a href="../reference/HF_TextBlock.html">HF_TextBlock</a></span><span class="op">(</span>before_batch_tfms<span class="op">=</span><span class="va">before_batch_tfm</span>, input_return_type<span class="op">=</span><span class="va">HF_QuestionAnswerInput</span><span class="op">)</span>,
-  <span class="fu"><a href="../reference/CategoryBlock.html">CategoryBlock</a></span><span class="op">(</span>vocab<span class="op">=</span><span class="va">vocab</span><span class="op">)</span>,
-  <span class="fu"><a href="../reference/CategoryBlock.html">CategoryBlock</a></span><span class="op">(</span>vocab<span class="op">=</span><span class="va">vocab</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="co"># question and context</span>
-<span class="va">get_x</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
-  <span class="kw">if</span><span class="op">(</span><span class="va">hf_tokenizer</span><span class="op">$</span><span class="va">padding_side</span> <span class="op">==</span> <span class="st">'right'</span><span class="op">)</span> <span class="op">{</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">x</span><span class="op">[[</span><span class="st">'question'</span><span class="op">]</span><span class="op">]</span>, <span class="va">x</span><span class="op">[[</span><span class="st">'context'</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
-  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">x</span><span class="op">[[</span><span class="st">'context'</span><span class="op">]</span><span class="op">]</span>, <span class="va">x</span><span class="op">[[</span><span class="st">'question'</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
-  <span class="op">}</span>
-<span class="op">}</span>
-
-<span class="va">dblock</span> <span class="op">=</span> <span class="fu"><a href="../reference/DataBlock.html">DataBlock</a></span><span class="op">(</span>blocks<span class="op">=</span><span class="va">blocks</span>,
-                   get_x<span class="op">=</span><span class="va">get_x</span>,
-                   get_y<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="../reference/ColReader.html">ColReader</a></span><span class="op">(</span><span class="st">'tok_answer_start'</span><span class="op">)</span>, <span class="fu"><a href="../reference/ColReader.html">ColReader</a></span><span class="op">(</span><span class="st">'tok_answer_end'</span><span class="op">)</span><span class="op">)</span>,
-                   splitter<span class="op">=</span><span class="fu"><a href="../reference/RandomSplitter.html">RandomSplitter</a></span><span class="op">(</span><span class="op">)</span>,
-                   n_inp<span class="op">=</span><span class="fl">1</span><span class="op">)</span>
-
-<span class="va">dls</span> <span class="op">=</span> <span class="va">dblock</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/dataloaders.html">dataloaders</a></span><span class="op">(</span><span class="va">squad_df</span>, bs<span class="op">=</span><span class="fl">4</span><span class="op">)</span>
-
-<span class="va">dls</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/one_batch.html">one_batch</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">trunc_strat</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">hf_tokenizer</span><span class="op">$</span><span class="va">padding_side</span> <span class="op">==</span> <span class="st">'right'</span>, <span class="st">'only_second'</span>, <span class="st">'only_first'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">before_batch_tfm</span> <span class="op">=</span> <span class="fu"><a href="../reference/HF_QABeforeBatchTransform.html">HF_QABeforeBatchTransform</a></span><span class="op">(</span><span class="va">hf_arch</span>, <span class="va">hf_tokenizer</span>,</span>
+<span>                                             max_length <span class="op">=</span> <span class="va">max_seq_len</span>,</span>
+<span>                                             truncation <span class="op">=</span> <span class="va">trunc_strat</span>,</span>
+<span>                                             tok_kwargs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">'return_special_tokens_mask'</span> <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">blocks</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="../reference/HF_TextBlock.html">HF_TextBlock</a></span><span class="op">(</span>before_batch_tfms<span class="op">=</span><span class="va">before_batch_tfm</span>, input_return_type<span class="op">=</span><span class="va">HF_QuestionAnswerInput</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="../reference/CategoryBlock.html">CategoryBlock</a></span><span class="op">(</span>vocab<span class="op">=</span><span class="va">vocab</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="../reference/CategoryBlock.html">CategoryBlock</a></span><span class="op">(</span>vocab<span class="op">=</span><span class="va">vocab</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># question and context</span></span>
+<span><span class="va">get_x</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw">if</span><span class="op">(</span><span class="va">hf_tokenizer</span><span class="op">$</span><span class="va">padding_side</span> <span class="op">==</span> <span class="st">'right'</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">x</span><span class="op">[[</span><span class="st">'question'</span><span class="op">]</span><span class="op">]</span>, <span class="va">x</span><span class="op">[[</span><span class="st">'context'</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">x</span><span class="op">[[</span><span class="st">'context'</span><span class="op">]</span><span class="op">]</span>, <span class="va">x</span><span class="op">[[</span><span class="st">'question'</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">dblock</span> <span class="op">=</span> <span class="fu"><a href="../reference/DataBlock.html">DataBlock</a></span><span class="op">(</span>blocks<span class="op">=</span><span class="va">blocks</span>,</span>
+<span>                   get_x<span class="op">=</span><span class="va">get_x</span>,</span>
+<span>                   get_y<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="../reference/ColReader.html">ColReader</a></span><span class="op">(</span><span class="st">'tok_answer_start'</span><span class="op">)</span>, <span class="fu"><a href="../reference/ColReader.html">ColReader</a></span><span class="op">(</span><span class="st">'tok_answer_end'</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                   splitter<span class="op">=</span><span class="fu"><a href="../reference/RandomSplitter.html">RandomSplitter</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>                   n_inp<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dls</span> <span class="op">=</span> <span class="va">dblock</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/dataloaders.html">dataloaders</a></span><span class="op">(</span><span class="va">squad_df</span>, bs<span class="op">=</span><span class="fl">4</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dls</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/one_batch.html">one_batch</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>[[1]]
 [[1]]$input_ids
 tensor([[  101, 20773,  2207,  1996,  2299,  1000,  1000,  4195,  1000,  1000,
@@ -424,50 +429,50 @@ TensorCategory([42, 88, 20, 49], device='cuda:0')
 [[3]]
 TensorCategory([43, 90, 22, 55], device='cuda:0')</code></pre>
 </div>
-<div id="train" class="section level2">
-<h2 class="hasAnchor">
-<a href="#train" class="anchor"></a>Train</h2>
+<div class="section level2">
+<h2 id="train">Train<a class="anchor" aria-label="anchor" href="#train"></a>
+</h2>
 <p>Wrap the model and fit:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">model</span> <span class="op">=</span> <span class="fu"><a href="../reference/HF_BaseModelWrapper.html">HF_BaseModelWrapper</a></span><span class="op">(</span><span class="va">hf_model</span><span class="op">)</span>
-
-<span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/Learner.html">Learner</a></span><span class="op">(</span><span class="va">dls</span>,
-                <span class="va">model</span>,
-                opt_func<span class="op">=</span><span class="fu"><a href="../reference/partial.html">partial</a></span><span class="op">(</span><span class="va">Adam</span>, decouple_wd<span class="op">=</span><span class="cn">T</span><span class="op">)</span>,
-                cbs<span class="op">=</span><span class="fu"><a href="../reference/HF_QstAndAnsModelCallback.html">HF_QstAndAnsModelCallback</a></span><span class="op">(</span><span class="op">)</span>,
-                splitter<span class="op">=</span><span class="fu"><a href="../reference/hf_splitter.html">hf_splitter</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">learn</span><span class="op">$</span><span class="va">loss_func</span><span class="op">=</span><span class="fu"><a href="../reference/MultiTargetLoss.html">MultiTargetLoss</a></span><span class="op">(</span><span class="op">)</span>
-<span class="va">learn</span><span class="op">$</span><span class="fu">create_opt</span><span class="op">(</span><span class="op">)</span>                <span class="co"># -&gt; will create your layer groups based on your "splitter" function</span>
-<span class="va">learn</span><span class="op">$</span><span class="fu">freeze</span><span class="op">(</span><span class="op">)</span>
-
-<span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">4</span>, lr_max<span class="op">=</span><span class="fl">1e-3</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">model</span> <span class="op">=</span> <span class="fu"><a href="../reference/HF_BaseModelWrapper.html">HF_BaseModelWrapper</a></span><span class="op">(</span><span class="va">hf_model</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">learn</span> <span class="op">=</span> <span class="fu"><a href="../reference/Learner.html">Learner</a></span><span class="op">(</span><span class="va">dls</span>,</span>
+<span>                <span class="va">model</span>,</span>
+<span>                opt_func<span class="op">=</span><span class="fu"><a href="../reference/partial.html">partial</a></span><span class="op">(</span><span class="va">Adam</span>, decouple_wd<span class="op">=</span><span class="cn">T</span><span class="op">)</span>,</span>
+<span>                cbs<span class="op">=</span><span class="fu"><a href="../reference/HF_QstAndAnsModelCallback.html">HF_QstAndAnsModelCallback</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>                splitter<span class="op">=</span><span class="fu"><a href="../reference/hf_splitter.html">hf_splitter</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">learn</span><span class="op">$</span><span class="va">loss_func</span><span class="op">=</span><span class="fu"><a href="../reference/MultiTargetLoss.html">MultiTargetLoss</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">learn</span><span class="op">$</span><span class="fu">create_opt</span><span class="op">(</span><span class="op">)</span>                <span class="co"># -&gt; will create your layer groups based on your "splitter" function</span></span>
+<span><span class="va">learn</span><span class="op">$</span><span class="fu">freeze</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">learn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/fit_one_cycle.html">fit_one_cycle</a></span><span class="op">(</span><span class="fl">4</span>, lr_max<span class="op">=</span><span class="fl">1e-3</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="conclusion" class="section level2">
-<h2 class="hasAnchor">
-<a href="#conclusion" class="anchor"></a>Conclusion</h2>
+<div class="section level2">
+<h2 id="conclusion">Conclusion<a class="anchor" aria-label="anchor" href="#conclusion"></a>
+</h2>
 <p>Lets create a dataset and predict with <code>learn</code> model:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">inf_df</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span> <span class="st">'question'</span><span class="op">=</span> <span class="st">'When was Star Wars made?'</span>,
-                     <span class="st">'context'</span><span class="op">=</span> <span class="st">'George Lucas created Star Wars in 1977. He directed and produced it.'</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">inf_df</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span> <span class="st">'question'</span><span class="op">=</span> <span class="st">'When was Star Wars made?'</span>,</span>
+<span>                     <span class="st">'context'</span><span class="op">=</span> <span class="st">'George Lucas created Star Wars in 1977. He directed and produced it.'</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">bert_answer</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">inf_df</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">test_dl</span> <span class="op">=</span> <span class="va">dls</span><span class="op">$</span><span class="fu">test_dl</span><span class="op">(</span><span class="va">inf_df</span><span class="op">)</span>
-  <span class="va">inp</span> <span class="op">=</span> <span class="va">test_dl</span><span class="op">$</span><span class="fu">one_batch</span><span class="op">(</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="st">'input_ids'</span><span class="op">]</span>
-
-  <span class="va">res</span> <span class="op">=</span> <span class="va">learn</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">inf_df</span><span class="op">)</span>
-
-  <span class="co"># as_array is a function to turn a torch tensor to R array</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">res</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span>,<span class="va">as_array</span><span class="op">)</span>
-
-  <span class="va">hf_tokenizer</span><span class="op">$</span><span class="fu">convert_ids_to_tokens</span><span class="op">(</span><span class="va">inp</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="fu">tolist</span><span class="op">(</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>,
-                                     skip_special_tokens<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">res</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span>,<span class="va">as_array</span><span class="op">)</span><span class="op">+</span><span class="fl">1</span><span class="op">]</span>
-  <span class="co"># [sapply(res[[3]],as_array)+1] here +1 because tensor starts from 0 but R from 1</span>
-<span class="op">}</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">bert_answer</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">inf_df</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">test_dl</span> <span class="op">=</span> <span class="va">dls</span><span class="op">$</span><span class="fu">test_dl</span><span class="op">(</span><span class="va">inf_df</span><span class="op">)</span></span>
+<span>  <span class="va">inp</span> <span class="op">=</span> <span class="va">test_dl</span><span class="op">$</span><span class="fu">one_batch</span><span class="op">(</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="st">'input_ids'</span><span class="op">]</span></span>
+<span></span>
+<span>  <span class="va">res</span> <span class="op">=</span> <span class="va">learn</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">inf_df</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="co"># as_array is a function to turn a torch tensor to R array</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="va">res</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span>,<span class="va">as_array</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="va">hf_tokenizer</span><span class="op">$</span><span class="fu">convert_ids_to_tokens</span><span class="op">(</span><span class="va">inp</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="fu">tolist</span><span class="op">(</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>                                     skip_special_tokens<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="va">res</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span>,<span class="va">as_array</span><span class="op">)</span><span class="op">+</span><span class="fl">1</span><span class="op">]</span></span>
+<span>  <span class="co"># [sapply(res[[3]],as_array)+1] here +1 because tensor starts from 0 but R from 1</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 <p>Result:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">bert_answer</span><span class="op">(</span><span class="va">inf_df</span><span class="op">)</span><span class="op">)</span>
-<span class="co"># in 1977</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">bert_answer</span><span class="op">(</span><span class="va">inf_df</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># in 1977</span></span></code></pre></div>
 </div>
   </div>
 
@@ -482,11 +487,13 @@ TensorCategory([43, 90, 22, 55], device='cuda:0')</code></pre>
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://github.com/henry090">Turgut Abdullayev</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://github.com/henry090" class="external-link">Turgut Abdullayev</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

@@ -570,8 +570,6 @@ SentencePieceTokenizer <- function(lang = "en", special_toks = NULL,
 
 
 #' @title Fa_collate
-#'
-#'
 #' @param t text
 #' @return None
 #'
@@ -589,8 +587,6 @@ fa_collate <- function(t) {
 }
 
 #' @title Da_convert
-#'
-#'
 #' @param t text
 #' @return None
 #' @export

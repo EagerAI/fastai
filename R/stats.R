@@ -111,8 +111,6 @@ lr_find <- function(object, start_lr = 1e-07, end_lr = 10, num_it = 100,
 
 
 #' @title Perplexity
-#'
-#'
 #' @param ... parameters to pass
 #' @return None
 #' @export

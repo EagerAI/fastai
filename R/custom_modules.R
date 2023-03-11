@@ -1,8 +1,6 @@
 
 
 #' @title Net
-#'
-#'
 #' @description Net model from Migrating_Pytorch
 #' @return model
 #'
@@ -52,8 +50,6 @@ test_loader = function() {
 
 
 #' @title Get data loaders
-#'
-#'
 #' @param train_batch_size train dataset batch size
 #' @param val_batch_size validation dataset batch size
 #' @return None

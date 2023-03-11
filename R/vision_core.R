@@ -69,8 +69,6 @@ n_px = function(img) {
 
 
 #' @title Shape
-#'
-#'
 #' @param img image
 #' @return None
 #' @export
@@ -80,8 +78,6 @@ shape = function(img) {
 
 
 #' @title Aspect
-#'
-#'
 #' @param img image
 #' @return None
 #' @export
@@ -500,9 +496,6 @@ Datasets <- function(items = NULL, tfms = NULL, tls = NULL, n_inp = NULL,
 
 
 #' @title Image
-#'
-#'
-#'
 #' @param ... parameters to pass
 #' @return None
 #' @export

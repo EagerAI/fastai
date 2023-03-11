@@ -29,8 +29,6 @@ efficientdet_infer_dl <- function(dataset, batch_tfms = NULL, ...) {
 
 
 #' @title Efficientdet predict dataloader
-#'
-#'
 #' @param model model
 #' @param infer_dl infer_dl
 #' @param show_pbar show_pbar

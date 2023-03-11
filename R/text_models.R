@@ -158,8 +158,6 @@ LinearDecoder <- function(n_out, n_hid, output_p = 0.1, tie_encoder = NULL, bias
 
 
 #' @title Sequential RNN
-#'
-#'
 #' @param ... parameters to pass
 #' @return layer
 #' @export

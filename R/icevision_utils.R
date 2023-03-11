@@ -59,8 +59,6 @@ show_samples <- function(dls, idx, class_map = NULL, denormalize_fn = denormaliz
 
 
 #' @title Denormalize_imagenet
-#'
-#'
 #' @param img img
 #' @return None
 #' @export
@@ -78,8 +76,6 @@ denormalize_imagenet <- function(img) {
 
 
 #' @title Show_preds
-#'
-#'
 #' @param predictions provide list of raw predictions
 #' @param idx image indices
 #' @param class_map class_map
