@@ -1,5 +1,4 @@
 ## R interface to fastai
-
 The fastai package provides R wrappers to
 [fastai](https://github.com/fastai/fastai).
 
