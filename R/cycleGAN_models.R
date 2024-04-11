@@ -442,7 +442,7 @@ cycle_learner <- function(dls, m, opt_func = Adam(), show_imgs = TRUE,
 #' @export
 URLs_HORSE_2_ZEBRA <- function(filename = 'horse2zebra', unzip = TRUE) {
 
-  download.file('https://people.eecs.berkeley.edu/~taesung_park/CycleGAN/datasets/horse2zebra.zip',
+  download.file('https://efrosgans.eecs.berkeley.edu/cyclegan/datasets/horse2zebra.zip',
                 destfile = paste(filename,'.zip',sep = ''))
 
   if(unzip)
