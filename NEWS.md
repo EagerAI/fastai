@@ -1,4 +1,8 @@
 
+## 2.2.2
+
+- Updated installation function ```install_fastai```
+
 ## 2.2.1
 
 - Fixed breaking changes during model training
