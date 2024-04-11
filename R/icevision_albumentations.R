@@ -1407,7 +1407,7 @@ icevision_IAAAdditiveGaussianNoise <- function(loc = 0,
 #'
 #' @description Place a regular grid of points on the input and randomly move the neighbourhood of these point around
 #'
-#' @details via affine transformations. Note: This class introduce interpolation artifacts to mask if it has values other than {0;1}
+#' @details via affine transformations. Note: This class introduce interpolation artifacts to mask if it has values other than (0;1)
 #'
 #' @param scale scale
 #' @param translate_percent translate_percent
@@ -1420,8 +1420,7 @@ icevision_IAAAdditiveGaussianNoise <- function(loc = 0,
 #' @param always_apply always_apply
 #' @param p p
 #' @return None
-#' @section Targets:
-#' image, mask
+#' @section Targets: image, mask
 #' @return None
 #' @export
 icevision_IAAAffine <- function(scale = 1.0, translate_percent = NULL,
@@ -1563,15 +1562,14 @@ icevision_IAAFlipud <- function(always_apply = FALSE, p = 0.5) {
 #'
 #' @description Perform a random four point perspective transform of the input.
 #'
-#' @details Note: This class introduce interpolation artifacts to mask if it has values other than {0;1}
+#' @details Note: This class introduce interpolation artifacts to mask if it has values other than (0;1)
 #'
 #' @param scale scale
 #' @param keep_size keep_size
 #' @param always_apply always_apply
 #' @param p p
 #'
-#' @section Targets:
-#' image, mask
+#' @section Targets: image, mask
 #' @return None
 #' @export
 icevision_IAAPerspective <- function(scale = list(0.05, 0.1), keep_size = TRUE,
@@ -1590,7 +1588,7 @@ icevision_IAAPerspective <- function(scale = list(0.05, 0.1), keep_size = TRUE,
 #'
 #' @description Place a regular grid of points on the input and randomly move the neighbourhood of these point around
 #'
-#' @details via affine transformations. Note: This class introduce interpolation artifacts to mask if it has values other than {0;1}
+#' @details via affine transformations. Note: This class introduce interpolation artifacts to mask if it has values other than (0;1)
 #'
 #' @param scale scale
 #' @param nb_rows nb_rows
@@ -1601,8 +1599,7 @@ icevision_IAAPerspective <- function(scale = list(0.05, 0.1), keep_size = TRUE,
 #' @param always_apply always_apply
 #' @param p p
 #'
-#' @section Targets:
-#' image, mask
+#' @section Targets: image, mask
 #' @return None
 #' @export
 icevision_IAAPiecewiseAffine <- function(scale = list(0.03, 0.05),

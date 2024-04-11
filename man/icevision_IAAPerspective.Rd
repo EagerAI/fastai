@@ -27,10 +27,9 @@ None
 Perform a random four point perspective transform of the input.
 }
 \details{
-Note: This class introduce interpolation artifacts to mask if it has values other than {0;1}
+Note: This class introduce interpolation artifacts to mask if it has values other than (0;1)
 }
 \section{Targets}{
-
-image, mask
+ image, mask
 }
 

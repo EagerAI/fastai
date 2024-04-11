@@ -39,10 +39,9 @@ None
 Place a regular grid of points on the input and randomly move the neighbourhood of these point around
 }
 \details{
-via affine transformations. Note: This class introduce interpolation artifacts to mask if it has values other than {0;1}
+via affine transformations. Note: This class introduce interpolation artifacts to mask if it has values other than (0;1)
 }
 \section{Targets}{
-
-image, mask
+ image, mask
 }
 
