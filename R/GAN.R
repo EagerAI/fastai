@@ -46,6 +46,7 @@ IndexSplitter <- function(valid_idx) {
     args <- list(
       valid_idx = valid_idx
     )
+    print(args)
     do.call(vision()$gan$IndexSplitter,args)
   }
 
